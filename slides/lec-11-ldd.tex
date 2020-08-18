@@ -1,0 +1,967 @@
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+\usepackage{times}
+%\usepackage{nttfoilhead}
+%\newcommand{\myslide}[1]{\foilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
+%\newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
+%\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
+
+\input{headxx.tex}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+\avmfont{\sc}
+\begin{document}
+\avmfont{\it}
+
+\header{Lecture 11}{Long Distance Dependencies}{}
+\maketitle
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 14}
+\begin{itemize}
+\item Some examples of long-distance dependencies
+\item What is new and different about it
+%\item Brief sketch of the TG approach
+\item Broad outlines of our approach
+\item Details of our approach
+\item Subject extraction
+\item Coordinate Structure Constraint
+%\item Wrap up HPSG
+\end{itemize}
+
+% \section{Review of Binding}
+
+% \myslide{Binding deals with pronouns}
+
+% \begin{exe}
+% \ix She likes herself
+% \ix *She$_i$ likes her$_i$.
+% \ix We gave presents to ourselves.
+% \ix *We gave presents to us.
+% \ix We gave ourselves presents
+% \ix *We gave us presents.
+% \ix *Leslie told us about us.
+% \ix Leslie told us about ourselves.
+% \ix *Leslie told ourselves about us.
+% \ix *Leslie told ourselves about ourselves.
+% \end{exe}
+
+% \myslide{Some Terminology}
+% \begin{itemize}
+% \item \txx{Binding}: The association between a pronoun
+% and an antecedent.
+% \item \txx{Anaphoric}: A term to describe an element (e.g.
+% a pronoun) that derives its interpretation from
+% some other expression in the discourse.
+% \item \txx{Antecedent}: The expression an anaphoric
+% expression derives its interpretation from.
+% \item \txx{Anaphora}: The relationship between an
+% anaphoric expression and its antecedent.
+% \end{itemize}
+
+% \myslide{The Argument Realization Principle}
+% \begin{itemize}
+% \item We introduce a feature ARG-ST:\\
+% \begin{avm}\avmfont{\sc} 
+% \[ \asort{word}  
+%  syn & \[ val & \[ spr &  \@{A} \\comps &  \@{B} \] \] \\
+%  arg-st & \< \@{A} $\oplus$ \@{B} \> \]
+% \end{avm}
+% \item This is a constraint on the type \val{word}
+% \begin{itemize}
+% \item It’s neither in \ft{syn} nor \ft{sem}.
+% \item It only appears on lexical heads (not
+% appropriate for type phrase)
+% \item No principle stipulates identity
+% between \ft{arg-st}s.
+% \end{itemize}
+% \end{itemize}
+
+% \myslide{The Binding Principles}
+% \begin{itemize}
+% \item \txx{Principle A}: A [\ft{mode} \val{ana}] element must be
+% outranked by a coindexed element.
+% \item \txx{Principle B}: A [\ft{mode} \val{ref}] element must not
+% be outranked by a coindexed element.
+% \item \txx{Anaphoric Agreement Principle} (AAP):
+% Coindexed NPs agree.
+% \end{itemize}
+
+% \begin{description}
+% \item [Formalization] ~\\[-2ex]
+% \begin{itemize}
+% \item Definition: If A precedes B on some \ft{arg-st} list,
+% then A \txx{outranks} B.
+% \item Elements that must be anaphoric --- that is, that
+% require an antecedent --- are lexically marked
+% [\ft{mode} \val{ana}]. These include reflexive pronouns
+% and reciprocals.
+% \end{itemize}
+
+% \end{description}
+% \myslide{Binding in PPs}
+% \begin{itemize}
+% \item The Binding Principles by themselves don’t block:
+%   \begin{exe}
+%     \ix I brought a book with me.
+%     \ix *I brought a book with myself.
+%     \ix *I mailed a book to me.
+%     \ix I mailed a book to myself.
+%   \end{exe}
+% \item Two Types of Prepositions
+% \begin{itemize}
+% \item \txx{Argument-marking}: Function like casemarkers, indicating the
+% roles of NP referents in the situation denoted by the verb.
+%  \begin{itemize}
+%   \item Share their objects' \ft{mode} and \ft{index} values.
+%   \end{itemize}
+% \item \txx{Predicative}: Introduce their own predication.
+%   \begin{itemize}
+%   \item Introduce their own \ft{mode} and \ft{index} values.
+% \end{itemize}
+% \end{itemize}
+% \end{itemize}
+
+
+% % \myslide{Redefining Rank}
+% %  \begin{itemize}
+% % \item If there is an \ft{arg-st} list on which A
+% % precedes B, then A outranks B.
+% % \item If a node is coindexed with its daughter, they
+% % are of equal rank -- that is, they outrank the
+% % same nodes and are outranked by the same
+% % nodes.
+% % \end{itemize}
+
+% \myslide{\eng{I sent a letter to myself}}
+
+% \begin{avmtree}\avmfont{\sc} 
+% \br{S}{
+%   \br{\@1 NP$_i$}{ \lf{\eng{I}} }
+%   \br{VP \[ \q< \@1 \q> \]}{ 
+%     \br{V \[ spr & \q< \@1 \q> \\
+%              comps & \q< \@2, \@3 \q> \\ 
+%              arg-st & \q< \@1, \@2, \@3 \q> \]}{
+%       \lf{\eng{sent}}}
+%     \br{\@2 NP$_j$}{
+%       \br{D}{\lf{\eng{a}}}
+%       \br{N$_j$}{\lf{\eng{letter}}}}
+%     \br{\@3 PP$_i$}{
+%       \br{P$_i$}{\lf{\eng{to}}}
+%       \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{myself}}}}
+% }}
+% \end{avmtree}
+
+
+
+% \myslide{The Imperative Rule}
+
+% \begin{avm}\avmfont{\sc} 
+% \[ \asort{phrase}  
+%    head & verb \\
+%    val & \[ spr  & \<  \> \] \\
+%    sem & \[ mode & dir \\ index & $s$ \] \]
+%               \ $\rightarrow$\ \HD \ 
+% \[ \asort{phrase}  
+%    head & \[ \asort{verb} form & base \]\\
+%    val & \[ spr  & \< NP \[ per 2nd \]  \> \] \\
+%    sem & \[ index & $s$ \] \]
+% \end{avm}
+
+
+% \begin{itemize}\addtolength{\itemsep}{-2ex}
+% \item Internal structure of a VP
+% \item Directive function
+% \item Base form
+% \item Only 2nd person reflexives
+% \end{itemize}
+
+% \myslide{Imperative example}
+% %\begin{multicols}{2}
+% \begin{avmtree}\avmfont{\sc} 
+% \br{S}{
+%   \br{VP \[ spr & \q< \@1 NP$_h$ \[ per 2nd \\ num sg \] \]}{ 
+%     \br{V \[ spr & \q< \@1 \q>  \\ arg-st & \q< \@1 NP$_h$,  \@2 PP$_i$ \q> \]}{
+%       \lf{\eng{vote}}}
+%     \br{\@2 PP$_i$}{
+%       \br{P$_i$}{\lf{\eng{for}}}
+%       \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{yourself}}}}
+% }}
+% \end{avmtree}
+% %\newpage
+
+% % \begin{itemize}
+% % \item What's the SPR value on S?
+% % %Why?
+% % \item What's the SPR value on VP?
+% % %Why?
+% % \item What's the SPR value on V?
+% % %Why?
+% % \item Which nodes have ARG-ST?
+% % \item Which ARG-ST matters for
+% % the licensing of \eng{yourself}?
+% % \end{itemize}
+% % %\newpage
+
+\myslide{A Note on Adjectives}
+
+\begin{itemize}
+ \item Attributive adjectives are related to predicative adjectives by
+   a lexical rule that co-indexes the first element of \ft{arg-st} with
+   \ft{mod} and sets \ft{spr} to an empty list: 
+   \eng{The dog is red}  \into \eng{The red dog}
+   \\    \scalebox{0.8}{\begin{avm}\avmfont{\sc}
+      \< \textnormal{red}, \ \[ \asort{word}
+      head & {\it adj} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< \@1 NP \>\\
+              comps & \<  \>\\
+              mod & \<  \> \] \\
+      arg-st &      \< \@1  \>   
+      \]\> \ \
+\into \ \ 
+  \< \textnormal{red}, \ \[ \asort{word}
+      head & {\it adj} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \<  \>\\
+              comps & \<  \>\\
+              mod & \< \@1 NP \> \] \\
+  arg-st &      \< \@1  \>   
+     \]\>
+     \end{avm}}
+ \item We can't just co-index \ft{spr} and \ft{mod}.  Why?
+ \item To form sentences, the \ft{spr} adjectives need a
+   subject-raising \eng{be} to make the head of the sentence a verb.
+ \end{itemize}
+
+
+\section{Long Distance Dependencies}
+
+
+\myslide{Examples}
+\begin{multicols}{2}
+\begin{itemize}
+\item \emp{Grammatical}:
+  \begin{exe}
+    \ex \eng{Did you find something?}  
+    \ex \eng{Tell me you talked to someone!}
+  \end{exe}
+\item \txx{wh-questions}:
+  \begin{exe}
+    \ex \eng{What did you find? } 
+    \ex \eng{Tell me who you talked to}
+  \end{exe}
+\item  \txx{relative clauses}:
+  \begin{exe}
+    \ex \eng{the item that I found}
+    \ex \eng{the guy who(m) I talked to}
+  \end{exe}
+\item \emp{Ungrammatical}:
+  \begin{exe}
+    \ex *\eng{did you find}
+    \ex *\eng{you talked to}
+  \end{exe}
+\item  \txx{topicalization}:
+  \begin{exe}
+    \ex \eng{The manual, I can't find.}
+    \ex \eng{Chris, you should talk to.}
+  \end{exe}
+\item  \lex{easy}-\txx{adjectives}:
+  \begin{exe}
+    \ex \eng{My house is easy to find.}
+    \ex \eng{Pat is hard to talk to.}
+  \end{exe}
+\end{itemize}
+\end{multicols}
+
+\myslide{What these have in common}
+\begin{itemize}
+\item There is a \txx{gap}: nothing following \lex{find} and \lex{to},
+even though both normally require objects.
+\item Something that fills the role of the element
+missing from the gap occurs at the beginning of
+the clause.
+\item We use topicalization and \lex{easy}-adjectives to
+illustrate the phenomenon:
+\begin{exe}
+  \ex \eng{The manual, I can't find \blank}
+  \ex \eng{Chris is easy to talk to \blank}
+\end{exe}
+\end{itemize}
+
+\myslide{Gaps and their fillers can be far apart}
+\begin{exe}
+  \ex \eng{The solution to this problem, Pat said that
+  someone claimed you thought I would never
+  find \blank.}
+  \ex \eng{Chris is easy to consider it impossible for anyone
+  but a genius to try to talk to \blank.}
+\end{exe}
+\vspace*{-2ex}
+\begin{itemize} 
+\item Fillers often have syntactic properties associated with their
+  gaps
+\end{itemize}
+\begin{exe}
+\ex
+\begin{xlist}
+  \ex \eng{Him, I haven’t met \blank.}
+  \ex \eng{*He, I haven’t met \blank.}
+\end{xlist}
+\ex
+\begin{xlist}
+  \ex \eng{The scissors, Pat told us  \blank were missing.}
+  \ex \eng{*The scissors, Pat told us  \blank was missing.}
+\end{xlist}
+\ex
+\begin{xlist}
+  \ex \eng{On Pat, you can rely \blank}.
+  \ex \eng{*To Pat, you can rely \blank.}
+\end{xlist}
+\end{exe}
+\begin{itemize}
+\item That’s why we call them \txx{long distance dependencies}
+\end{itemize}
+
+
+% \myslide{LDDs in TG}
+% \begin{itemize}
+% \item These were long thought to constitute the
+% strongest evidence for transformations.
+% \item They were handled in TG by moving the filler
+% from the gap position.
+% \item Case, agreement, preposition selection could
+% apply before movement.
+% \end{itemize}
+
+% \myslide{A big debate about LDDs in TG}
+% \begin{itemize}
+% \item Does long-distance movement take place in one fell swoop
+% or in lots of little steps?
+% \end{itemize}
+% % ↑
+
+% % ↑
+
+% % ↑
+% % ↑
+
+% Swooping
+
+% Looping
+
+
+\myslide{Other relevant facts}
+
+\begin{itemize}
+\item Various languages show morphological marking
+on the verbs or complementizers of clauses
+between the filler and the gap.
+\item Psycholinguistic evidence indicates increased
+processing load in the region between filler and
+gap.
+% \item This opens the door to non-transformational
+% analyses, in which the filler-gap dependency is
+% mediated by local information passing.
+\end{itemize}
+
+\myslide{A Rough Sketch of Our Approach}
+\begin{itemize}
+\item A feature \ft{gap} records information about a
+missing constituent.
+\item The \ft{gap} value is passed up the tree by a new
+principle.
+\item A new grammar rule expands S as a filler
+followed by another S whose \ft{gap} value
+matches the filler.
+\item Caveat: Making the details of this general
+idea work involves several complications.
+\item The core idea comes from Gazdar (1981)
+\end{itemize}
+
+
+
+\myslide{The Feature \ft{gap}}
+\begin{itemize}
+\item Like valence features and \ft{arg-st}, \ft{gap}’s
+value is a list of feature structures (often
+empty).  You can have multiple gaps.
+\item Subject gaps are introduced by a lexical rule.
+\item Non-subject gaps are introduced by revising
+the Argument Realization Principle.
+\end{itemize}
+
+\myslide{The Revised ARP}
+
+\begin{avm}\avmfont{\sc} 
+\[ \asort{word}  
+ syn & \[ val & \[ spr &  \@{A} \\comps &  \@{B} $\ominus$ \@{C} \] \\
+          gap & \@{C} \] \\
+ arg-st & \< \@{A} $\oplus$ \@{B}\> \]
+\end{avm}
+\begin{itemize}
+\item $\ominus$ is a kind of list subtraction 
+  \begin{itemize}
+  \item it's not always defined (the sublist must exist on the main list)
+  \item when defined, it's not always unique 
+  \end{itemize}
+\item The ARP now says the non-\ft{spr} arguments are
+distributed between \ft{comps} and \ft{gap}.
+\end{itemize}
+
+\myslide{A Word with a Non-Empty \ft{gap} Value}
+
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{hand}, \ \[ \asort{word}
+      syn & \[ head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< \@1 NP \[ case & nom \\ agr & non-3sing \] \> \\ 
+      comps & \< \@3 PP:to \> \] \\
+      gap &  \< \@2NP \[ acc \] \> \] \\
+      arg-st & \< \@1, \@2, \@3 \>
+      \]\>
+    \end{avm}
+
+% \myslide{How We Want \ft{gap} to Propagate}
+% \MyLogo{Traditionally called \ft{slash}: VP/NP}
+% \begin{avmtree}\avmfont{\sc}
+% \br{S \[ gap & \el \]}{ \br{NP \[ gap & \el \]}{\lf{Kim}}
+%   \br{S/NP \[ gap & \q< NP \q> \]}{\br{NP \[ gap & \el \]}{\lf{we}}
+%     \br{VP/NP \[ gap & \q< NP \q> \]}{\br{V \[ gap & \el \]}{\lf{know}}
+%       \br{S/NP \[ gap & \q< NP \q> \]}{\br{NP \[ gap & \el \]}{\lf{Bobby}}
+%         \br{VP/NP \[ gap & \q< NP \q> \]}{\lf{hates}}}}}}
+% \end{avmtree}
+
+
+\myslide{How We Want \ft{gap} to Propagate}
+\MyLogo{Traditionally called \ft{slash}: VP/NP}
+% Kim we know bobby likes
+\newcommand{\avn}[2]{#1\\\smaller\begin{avm}\avmfont{\sc}\[ #2 \]\end{avm}} %avm node
+\newcommand{\avN}[2]{#1\,\smaller\begin{avm}\avmfont{\sc}\[ #2 \]\end{avm}} %avm node
+\newcommand{\avX}[1]{\begin{avm}\avmfont{\sc}\[ #1 \]\end{avm}} %avm node
+
+\scalebox{0.8}{\begin{tikzpicture}
+\tikzset{level distance=8ex}
+\tikzset{frontier/.style={distance from root=40ex}}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\Tree [.\avn{S}{gap & \el} 
+         [.\avn{NP}{gap & \el} Kim ]
+         \edge[style=double,very thick];
+         [.\avn{S/NP}{gap & \q< NP \q>} 
+           [.\avn{NP}{gap & \el} we ]
+           \edge[style=double,very thick];
+           [.\avn{VP/NP}{gap & \q< NP \q>} 
+           \edge[style=double,very thick];
+              [.\avn{V}{gap & \el} know ]
+              [.\avn{S/NP}{gap & \q< NP \q>} 
+                [.\avn{NP}{gap & \el} Bobby ]
+                \edge[style=double,very thick];
+                [.\avn{VP/NP}{gap & \q< NP \q>} likes ] ] ] ] ]
+\end{tikzpicture}}
+                              
+
+\myslide{What \ft{gap} Propagation should doing}
+\MyLogo{}
+\begin{itemize}
+\item Pass any \ft{gap} values from daughters up to their
+mothers,
+\item[\ldots] \emp{except} when the filler is found.
+\item For topicalization, we can write the exception into
+the grammar rule
+\item For \lex{easy}-adjectives, the NP that corresponds to the
+gap is the subject, which is introduced by the
+Head-Specifier Rule.
+\item Since specifiers are not generally gap fillers, we
+can't write the gap-filling into the HSR.
+\end{itemize}
+
+\myslide{Our Solution to this Problem}
+\begin{itemize}
+\item For \lex{easy}-adjectives, we treat the adjective formally
+as the filler, marking its \ft{spr} value as coindexed
+with its \ft{gap} value.
+\item We use a feature \ft{stop-gap} to trigger the
+  emptying of the \ft{gap} list.
+  \begin{itemize}
+  \item \ft{stop-gap} stops gap propagation
+  \item \lex{easy}-adjectives mark \ft{stop-gap} lexically
+  \item a new grammar rule, the \txx{Head-Filler Rule}
+    mentions \ft{stop-gap}
+  \end{itemize}
+\end{itemize}
+
+\myslide{The \ft{gap} Principle}
+A local subtree $\Phi$ satisfies the \ft{gap} Principle with respect to a
+headed rule  if and only if $\Phi$ satisfies:
+
+% \begin{avmtree}\avmfont{\sc}
+%      \br{\[ gap & \( \@{A_1} \ $\oplus$\  \ldots \ $\oplus$\ \@{A_n} \)
+%        \ $\ominus$\  \@{A_0}\]}{
+%      \br{\[ gap & \@{A_1} \]}{\tlf{~}}
+%       \lf{\ldots}
+%       \br{\HD \[ gap & \@{A_i} \\ stop-gap & \@{A_0} \]}{\tlf{~}}
+%       \lf{\ldots}
+%       \br{\[ gap & \@{A_n} \]}{\tlf{~}}}
+% \end{avmtree}
+
+\begin{tikzpicture}
+\tikzset{level distance=8ex}
+   \Tree [.\avX{gap & \( \@{A_1} \ $\oplus$\  \ldots \ $\oplus$\
+                         \@{A_n} \) $\ominus$\  \@{A_0}} 
+            [.\avX{gap & \@{A_1}} ]
+            [.{\ldots}  ]
+            \edge[style=double,very thick];
+            [.\avN{H}{gap & \@{A_i}\\ stop-gap & \@{A_0}}   ]
+            [.{\ldots}  ]
+            [.\avX{gap & \@{A_n}} ] ]
+\end{tikzpicture}
+
+
+\myslide{How does \ft{stop-gap} work?}
+\begin{itemize}
+\item \ft{stop-gap} is empty almost everywhere
+\item When a gap is filled, \ft{stop-gap} is nonempty,
+and its value is the same as the gap being filled.
+\item This blocks propagation of that \ft{gap} value, so
+gaps are only filled once.
+\item The nonempty \ft{stop-gap} values come from two
+  sources:
+  \begin{itemize}
+  \item a stipulation in the Head-Filler Rule
+  \item lexical entries for \lex{easy}-adjectives
+  \end{itemize}
+\item No principle propagates \ft{stop-gap}
+\end{itemize}
+
+\myslide{The Head-Filler Rule}
+
+\begin{avm}\avmfont{\sc}
+
+\[{\it phrase}\] \ \ \into \ \ 
+\ \ \@1 \[ gap & \el \]\ \  
+\HD \[ head &  \val{verb}  \\
+       val & \[ spr & \el\\
+                comps & \el\] \\
+       gap & \< \@1 \> \\
+       stop-gap & \< \@1 \> \]
+\end{avm}
+\begin{itemize}\addtolength{\itemsep}{-2ex}
+\item This only covers gap filling in Ss
+\item The filler has to be identical to the \ft{gap} value
+\item The \ft{stop-gap} value is also identical
+\item The \ft{gap} Principle ensures that the mother's \ft{gap} value is the
+empty list
+\end{itemize}
+
+\myslide{Gap Filling with \lex{easy}-Adjectives}
+  \begin{exe}
+    \ex \label{l:easy}
+ \scalebox{0.8}{\begin{avm}\avmfont{\sc}
+      \< \textnormal{easy}, \ \[ \asort{word}
+      syn & \[ head & {\it adj} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< \@1 \>\\
+              comps & \< \@3 \> \] \\
+      stop-gap & \< \@2 \>\] \\
+      arg-st &      \< \@1 NP$_i$,  \@3 VP \[ inf & + \\ gap & \< \@2 NP$_i$ \> \], \ldots  \>   
+      \]\> \ \
+    \end{avm}}
+
+  \end{exe}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Because \ft{stop-gap} and \ft{gap} have the same value, that
+value will be subtracted from the mother's \ft{gap} value.
+\item The first argument is coindexed with the \ft{gap} value,
+accounting for the interpretation of the subject as the filler.
+\end{itemize}
+
+\myslide{A Tree for \eng{easy to talk to \blank}}
+\begin{tikzpicture}
+\tikzset{level distance=13ex}
+%\tikzset{frontier/.style={distance from root=40ex}}
+\tikzset{level 2/.style={level distance=20ex}}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\Tree [.\avn{AP}{val & \[ spr & \< \@2NP$_i$ \> \]\\ gap & \el}
+\edge[style=double,very thick];
+         [.\avn{A}{ val & \[ spr & \< \@2 \> \\ comps & \< \@3 \> \]\\ 
+                    gap & \< ~ \> \\ 
+                    stop-gap & \< \@1 \>} easy ]
+         [.\avn{\bx{3} VP/NP}{val & \[ spr & \< NP \> \]\\ 
+                           gap & \< \@1 NP$_i$ \>} \edge[roof]; {to talk to} ] ]
+
+\end{tikzpicture}
+% \begin{avmtree}\avmfont{\sc}
+
+% \br{AP \[ val & \[ spr & \< \@2NP$_i$ \> \]\\ gap & \el \]}{
+%   \br{A \[ val & \[ spr & \< \@2 \> \\ comps & \< \@3 \> \]\\ 
+%     gap & \< ~ \> \\ stop-gap & \< \@1 \>\]}{\lf{easy}}
+%   \br{\@3 VP\[ val & \[ spr & \< NP \> \]\\ 
+%                gap & \< \@1 NP$_i$ \> \]}{\tlf{to talk to \blank}}}
+
+% \end{avmtree}
+
+\myslide{\ft{stop-gap} Housekeeping}
+\begin{itemize}
+\item Lexical entries with nonempty \ft{stop-gap}
+values (like \lex{easy}) are rare, so \ft{stop-gap} is by
+default empty in the lexicon.
+\item Head-Specifier and Head-Modifier rules need to
+say [\ft{stop-gap} $<$ $>$]
+\item Lexical rules preserve \ft{stop-gap} values.
+\end{itemize}
+
+\myslide{\ft{gap} Housekeeping}
+\begin{itemize}
+\item[Q] The initial symbol must say [\ft{gap} $< >$ ]. Why?
+  \begin{itemize}
+  \item[A] To block \eng{*Pat found} and \eng{*Chris talked to} as
+    stand-alone sentences.
+  \end{itemize}
+\item[Q] The Imperative Rule must propagate \ft{gap} values.
+  Why?
+  \begin{itemize}
+  \item[A] It's not a headed rule, so the effect of the \ft{gap}
+    Principle must be replicated
+  \item [A] Imperatives can have gaps:
+    \\ \eng{This book, put on the top shelf!}
+  \end{itemize}
+\end{itemize}
+
+\myslide{Sentences with Multiple Gaps}
+\begin{itemize}
+\item Famous examples:
+  \begin{exe}
+    \ex \eng{This violin, sonatas are easy to play \blank on \blank.}
+    \ex \eng{*Sonatas, this violin is easy to play \blank on \blank.}
+  \end{exe}
+\item Our analysis gets this:
+  \begin{itemize}
+  \item The subject of \lex{easy} is coindexed with the first
+    element of the \ft{gap} list.
+  \item The Head-Filler rule only allows one \ft{gap}
+    remaining.
+  \end{itemize}
+\item There are languages that allow multiple gaps more
+generally.
+\end{itemize}
+
+\myslide{Where We Are}
+
+\begin{itemize}
+\item \txx{filler-gap} structures:
+  \begin{exe}
+   \ex \eng{The solution to this problem, nobody
+   understood \blank}
+   \ex \eng{That problem is easy to understand \blank}
+ \end{exe}
+\item The feature \ft{gap} encodes information about
+missing constituents
+\item Modified ARP allows arguments that should be on
+the \ft{comps} list to show up in the \ft{gap} list
+\item \ft{gap} values are passed up the tree by the \ft{gap}
+Principle
+% \end{itemize}
+\newpage
+% \myslide{Where We Are (continued)}
+\item The feature \ft{stop-gap} signals where \ft{gap} passing
+should stop
+\item The Head-Filler Rule matches a filler to a \ft{gap} and
+(via \ft{stop-gap}) empties \ft{gap}
+\item Lexical entries for \lex{easy}-adjectives require a gap in
+the complement, coindex the subject with the gap,
+and (via \ft{stop-gap}) empty \ft{gap} on the mother
+\end{itemize}
+
+\myslide{More Phenomena filler \ldots}
+
+\begin{itemize}
+\item Sentences with subject gaps
+\item Gaps in coordinate constructions
+\end{itemize}
+
+\myslide{Subject Gaps}
+\begin{itemize}
+\item The ARP revision only allowed missing
+complements.
+\item But gaps occur in subject position, too:
+  \begin{exe}
+    \ex \eng{\ul{This problem}, everyone thought  \blank was too easy.}
+  \end{exe}
+\item We handle these via a lexical rule that, in effect,
+moves the contents of the SPR list into the \ft{gap} list
+\end{itemize}
+
+\myslide{The Subject Extraction Lexical Rule}
+
+\scalebox{0.9}{\begin{avm}\avmfont{\sc}
+\[ \asort{pi-rule}
+input & \< X, \[ syn & \[ head & verb \\
+                          val & \[ spr & \< Z \> \] \] \\
+                 arg-st & \@{A}         \]   \>\\
+output & \<Y,  \[ syn & \[val & \[ spr & \< ~~  \>\\ 
+                          gap & \< \@1 \> \] \] \\
+                 arg-st & \@{A} \< \@1, \ldots \>        \]   \> \]
+\end{avm}}
+
+\begin{itemize}
+\item NB: This says nothing about the phonology, because the
+default for pi-rules is to leave the phonology unchanged.
+\end{itemize}
+
+\myslide{A Lexical Sequence This Licenses}
+
+\begin{avm}\avmfont{\sc}
+      \< \textnormal{likes}, \ \[ \asort{word}
+      syn & \[
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \<  \>\\
+              comps & \< \@2  \> \] \\
+      gap & \< \@1 NP \[ case & nom \\ agr & 3sing \] \> \\
+      stop-gap & \< ~~ \>\]\\
+      arg-st &      \< \@1, \@2 NP:acc  \>   
+      \]\>
+    \end{avm}
+    
+
+\begin{itemize}
+\item Note that the ARP is satisfied
+\end{itemize}
+
+
+\myslide{A Tree with a Subject Gap}
+\MyLogo{\eng{Kim$_i$ we know  \blank$_i$ likes Bobby}}
+\scalebox{0.8}{\begin{tikzpicture}
+\tikzset{level distance=8ex}
+\tikzset{frontier/.style={distance from root=40ex}}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\Tree [.\avn{S}{gap & \el} 
+         [.\avn{NP}{gap & \el} Kim ]
+         \edge[style=double,very thick];
+         [.\avn{S/NP}{gap & \q< NP \q>} 
+           [.\avn{NP}{gap & \el} we ]
+           \edge[style=double,very thick];
+           [.\avn{VP/NP}{gap & \q< NP \q>} 
+           \edge[style=double,very thick];
+              [.\avn{V}{gap & \el} know ]
+              [.\avn{S/NP}{gap & \q< NP \q>} 
+              \edge[style=double,very thick];
+                [.\avn{V/NP}{gap & \q< NP \q>} likes ]
+                [.\avn{NP}{gap & \el} Bobby ]  ] ] ] ]
+\end{tikzpicture}}
+                    
+
+\myslide{Island Constraints}
+\begin{itemize}
+\item There are configurations that block filler-gap
+dependencies, sometimes called \txx{islands}
+\item Trying to explain them has been a central topic of
+syntactic research since the mid 1960s
+\item We'll look at just one, Ross's so-called
+\txx{Coordinate Structure Constraint}
+\item Loose statement of the constraint: a constituent
+outside a coordinate structure cannot be the filler
+for a gap inside the coordinate structure.
+\end{itemize}
+
+\myslide{Coordinate Structure Constraint Examples}
+
+\begin{exe}
+  \ex \eng{*This problem, nobody finished the extra credit and \blank}
+  \ex \eng{*This problem, nobody finished \blank and the extra credit.}
+  \ex \eng{*This problem, nobody finished  \blank and started the extra credit.}
+  \ex \eng{*This problem, nobody started the extra credit and finished \blank}
+  \ex \eng{This problem, everybody started \blank and nobody finished  \blank}
+\end{exe}
+
+\begin{itemize}
+\item In a coordinate structure,
+  \begin{itemize}
+  \item no conjunct can be a gap (\txx{conjunct constraint})
+  \item no gap can be contained in a conjunct if its filler is
+    outside of that conjunct (element constraint)
+  \item[\ldots] unless each conjunct has a gap that is paired
+with the same filler (\txx{across-the-board exception})
+\end{itemize}
+\end{itemize}
+
+\myslide{These observations cry out for explanation}
+\begin{itemize}
+\item In our analysis, the conjunct constraint is an immediate
+consequence: individual conjuncts are not on the \ft{arg-st} list
+of any word, so they can't be put on the \ft{gap} list
+\item The element constraint and ATB exception suggest that \ft{gap}
+is one of those features (along with \ft{val} and \ft{form}) that
+must agree across conjuncts.
+\item Note: There is no ATB exception to the conjunct constraint.
+  \begin{exe}
+    \ex \eng{*This problem, you can compare only \blank and \blank.}
+  \end{exe}
+\end{itemize}
+
+\myslide{Our Coordination Rule, so far}
+
+\scalebox{0.75}{\begin{avm}\avmfont{\sc}
+    \[  val & \@0 \\ ind & $s_0$ \]
+    \ \into \ 
+  \[  val & \@0 \\ ind & $s_1$  \] \ \ldots \  
+   \[  val & \@0  \\ ind & $s_{n-1}$ \]
+    \[ head & conj \\
+     ind  & $s_0$ \\ 
+    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
+  \[  val & \@0 \\ ind & $s_n$ \]
+  \end{avm}}
+
+
+\begin{itemize}
+\item Recall that we have tinkered with what must agree across
+conjuncts at various times.
+\item Now we'll add \ft{gap} to the things that conjuncts must share
+\end{itemize}
+
+
+\myslide{Our Final Coordination Rule}
+
+\scalebox{0.75}{\begin{avm}\avmfont{\sc}
+    \[  val & \@0 \\ ind & $s_0$ \\ gap & \@{A} \]
+    \ \into \ 
+  \[  val & \@0 \\ ind & $s_1$  \\ gap & \@{A}\] \ \ldots \  
+   \[  val & \@0  \\ ind & $s_{n-1}$ \\ gap & \@{A}\]
+    \[ head & conj \\
+     ind  & $s_0$ \\ 
+    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
+  \[  val & \@0 \\ ind & $s_n$ \\ gap & \@{A}\]
+  \end{avm}}
+
+\begin{itemize}
+\item We've just added \ft{gap} to all the conjuncts and the mother.
+\item This makes the conjuncts all have the same gap (if any)
+\item Why do we need it on the mother?
+\end{itemize}
+
+
+\myslide{Closing Remarks on LDDs}
+\begin{itemize}
+\item This is a huge topic; we've only scratched the
+surface
+\item There are many more kinds of LDDs, which
+would require additional grammar rules
+\item There are also more island constraints, which also
+need to be explained
+\item Our account of the coordinate structure constraint
+(based on ideas of Gazdar) is a step in the right
+direction, but it would be even better to explain why certain
+features must agree across conjuncts.
+\end{itemize}
+
+
+\myslide{Overview of LDD}
+\begin{itemize}
+\item Some examples of the phenomenon
+\item What is new and different about it
+\item Broad outlines of our approach
+\item Details of our approach
+\item Subject extraction
+\item Coordinate Structure Constraint
+\end{itemize}
+
+\myslide{P0: Semantics are \lex{easy}}
+
+Add the semantics to the lexeme \lex{easy} given on slide \pageref{l:easy}.
+
+Then give the full rels list for the top node (i.e. the whole
+sentence) for (\ref{s:easyi}) and (\ref{s:easyii}).  What is the deep
+subject of \lex{easy} in each sentence?  
+
+ \begin{exe}
+    \ex \label{s:easyi}\eng{My house is easy to find.}
+    \ex \label{s:easyii}\eng{Pat is easy to talk to.}
+  \end{exe}
+
+\myslide{P1: A Tree with a Gap}
+\MyLogo{Based on  Chapter 14, Problem 1, Sag, Wasow and Bender (2003)}
+Draw a tree for (\ref{s:toy-exxb}).  
+%You should provide about the same
+%level of formal detail as in (\ref{gapbb-tree}).
+Use abbreviations for the node labels, and show the value of \ft{gap}
+on all nodes.  Show the value of \ft{stop-gap} on any node where it is
+non-empty.
+
+\begin{exe}
+  \ex \label{s:toy-exxb} \eng{This baby, I know that they handed a toy to {\blank}}
+\end{exe}
+
+\myslide{P2: Blocking Filled Gaps}
+\MyLogo{Based on  Chapter 14, Problem 2, Sag, Wasow and Bender (2003)}
+
+Examples (i) and (ii) are well-formed, but example (iii) is
+ungrammatical:
+
+\begin{exe}
+\exi{(i)}  \eng{Pat thinks that I rely on some sort of trick.}
+\exi{(ii)} \eng{This mnemonic, Pat thinks that I rely on.}
+\exi{(iii)} *\eng{This mnemonic, Pat thinks that I rely on some sort of trick.}
+\end{exe}
+Explain in detail why the mechanisms that license (i) and (ii) do not
+also permit (iii).
+
+\myslide{P3: Subject Gaps} 
+\MyLogo{Based on Chapter 14, Problem 3, Sag, Wasow and Bender (2003)} 
+
+This problem is to make sure you understand how our
+analysis accounts for examples like (\ref{se-s}).
+
+\begin{exe}
+\ex \label{se-s}
+\begin{xlisti}
+\ex \label{se-sa}\eng{Which candidates do you think like %raw oysters?
+oysters on the half-shell?}
+\ex \label{se-sb} \eng{That candidate, I think likes %raw oysters.
+oysters on the half-shell.}
+\end{xlisti}
+\end{exe}
+
+\begin{itemize}
+\item [A.] Sketch the family of lexical sequences for \lex{likes} that is the input
+to the Subject Extraction Lexical Rule.
+
+\item [B.] Sketch the family of lexical sequences for \lex{likes} that is the
+corresponding output of the Subject Extraction Lexical Rule.
+
+%\item [(b)] Sketch the lexical entry for {\it likes} that is the output
+%of the Subject Extraction Lexical Rule.
+
+\item[C.] Sketch the %entire 
+tree for the sentence in (\ref{se-sb}).
+%Provide about the same level of formal detail as in (\ref{gapbb-tree}).
+Use abbreviations for node labels, but show the value of \ft{gap} on
+all nodes and the value of \ft{stop-gap} on any node where it is non-empty.
+You may abbreviate the structure over the NP \eng{oysters on the
+half-shell} with a triangle.
+%Be sure to explain how our grammar ensures that all relevant feature
+%specifications are as they are in your sketch.
+
+\item[D.] Does our analysis correctly predict the contrast between
+(\ref{se-sb}) and \ref{onew}?\\
+\begin{exe}
+  \ex \label{onew} *\eng{Those candidates, I think likes %raw oysters.
+    oysters on the half-shell.}
+\end{exe}
+Explain why or why not.
+\end{itemize}
+
+\myslide{Questions (2017)}
+\input{lec-11-ldd-q}
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\end{itemize}
+
+
+
+\end{document}

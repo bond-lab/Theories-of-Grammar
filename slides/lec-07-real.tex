@@ -1,0 +1,481 @@
+\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+\input{headx.tex}
+%%% FIXME should be slant
+\usepackage{mathptmx}
+
+\usepackage{bchart}
+\avmfont{\sc}
+\begin{document}
+\avmfont{\it}\header{Lecture 7}{Grammar and Processing}{}
+\maketitle
+
+%\
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 9}
+\begin{itemize}
+\item Psycholinguistics and grammar design
+  \begin{itemize}
+  \item What grammar has to say
+  \item What psychological evidence has to say
+    \begin{itemize}
+    \item Acquisition
+    \item Production
+    \item Comprehension
+    \end{itemize}
+  \item Universals
+  \end{itemize}
+\end{itemize}
+
+\myslide{What does grammar have to do with psychology?}
+
+Three ways it could be relevant:
+
+\begin{itemize}
+\item It provides insight into how children 
+acquire language.
+\item It provides insight into how speakers 
+produce utterances. 
+\item It provides insight into how listeners 
+understand utterances. 
+\end{itemize}
+
+\myslide{Our model: Key characteristics}
+
+\vfill
+\begin{center}\Large
+ \txx{Surface-oriented} \\[3ex]
+ \txx{Constraint-based} \\[3ex]
+ \txx{Lexicalist}
+\end{center}
+\vfill
+\myslide{Chomsky’s position:}
+
+
+\begin{itemize}
+\item Grammar represents knowledge of language 
+(\txx{competence}).
+\item This is distinct from use of language (\txx{performance}).
+\item We can draw a strong conclusion about language 
+acquisition, namely, most grammatical knowledge is 
+innate and task-specific.
+\item Serious study of language use (production and 
+comprehension) depends on having a well-developed 
+theory of competence.
+\end{itemize}
+
+\myslide{Brief remarks on language acquisition}
+
+\begin{itemize}
+\item Chomsky’s nativism is very controversial
+  \begin{itemize}
+  \item It is based on the \txx{poverty of the stimulus} argument, and a 
+    model of learning as hypothesis testing.  
+  \item The environment may be more informative than he assumes.
+  \item There may be more powerful learning methods than he 
+    assumes.
+  \end{itemize}
+\item There has not been much work on language acquisition 
+  using constraint-based lexicalist theories like ours;  \emp{but}
+  \begin{itemize}
+  \item Explicit formulation is a prerequisite for testing learning models
+  \item Our feature structures could model richer context information.
+  \end{itemize}
+\item We’re neutral with respect to this controversy.
+\end{itemize}
+
+\myslide{Production and Grammar}
+
+
+\begin{itemize}
+\item Evidence for left-to-right effects
+\item Evidence for top-down planning
+\end{itemize}
+
+\myslide{Disfluencies are sensitive to structure}
+
+Repeat rate of \eng{the} varies with position and complexity of the NP it
+introduces:
+
+
+\begin{itemize}
+\item More common in front of complex NPs
+\item More common with prominent NPs
+  \\ Topic $>$ Subject $>$ Direct Object $>$ Preposition Object
+\end{itemize}
+
+\begin{exe}
+  \ex \eng{\ul{The the} book I told the student about on the train}
+\end{exe}
+
+\myslide{Production errors are sensitive to syntactic structure}
+
+\begin{itemize}
+\item Agreement errors are more common with PP complements than
+  sentential complements: errors like (\ref{s:wolfb}) are
+  significantly more common than errors like~(\ref{s:wolfa}).
+  \begin{exe}
+    \ex\label{s:wolfa} *\eng{The claim that the wolves had raised the
+      babies were rejected.}
+    
+    \ex\label{s:wolfb} *\eng{The claim about the
+      newborn babies were rejected.}
+  \end{exe}
+\item Why?
+  \begin{itemize}
+  \item Speculation: Clauses are their own 
+    agreement domains, so people don’t 
+    mistake an NP in a lower clause as a trigger 
+    for agreement
+  \item Original work: Kay Bock (1980s).
+  \end{itemize}
+\end{itemize}
+
+\myslide{Some high-level sentence planning is necessary, too}
+
+\begin{exe}
+\item\gll Ich habe   \ul{dem}  Mann,  den    ich \uwave{gesehen} habe geholfen. \\
+I   have  the-dat man who-acc I   seen      have   helped\\
+\trans    “I helped the man I saw”
+\ex \gll Ich habe   \ul{den}   Mann,  dem    ich \uwave{geholfen} habe gesehen.\\
+    I   have the-acc man  who-dat I    helped    have   seen.\\
+\trans    “I saw the man I helped ”
+\end{exe}
+\begin{itemize}
+\item The choice between \eng{dem} and \eng{den} depends on the choice of 
+  verbs several words later.
+\end{itemize}
+
+\myslide{Interaction of top-down and left-to-right information}
+
+
+\begin{itemize}
+\item Grammar plays a role in production.
+\item Partial grammatical information should be accessible by 
+the production mechanism as needed.
+\item This argues against grammatical theories that involve 
+sequential derivations with fixed ordering.
+\item Our theory of grammar has the requisite flexibility.
+\end{itemize}
+
+\myslide{Comprehension}
+
+
+\begin{itemize}
+\item Early work tried to use transformational grammar in 
+modeling comprehension
+\item \txx{The Derivational Theory of Complexity}:  The 
+psychological complexity of a sentence increases 
+with the number of transformations involved in its 
+derivation.
+\item Initial results seemed promising, but later work 
+falsified the DTC.
+\end{itemize}
+
+\myslide{Some relevant quotes}
+
+
+\begin{itemize}
+\item “The results show a remarkable correlation of 
+amount of memory and number of transformations” 
+\\ \mbox{} \hfill ---  Chomsky (1968)
+\item “[I]nvestigations of DTC…have generally proved 
+equivocal.  This argues against the occurrence of 
+grammatical derivations in the computations 
+involved in sentence recognition”                              
+\\ \mbox{} \hfill --- Fodor, Bever, \& Garrett (1974)
+\end{itemize}
+
+% \myslide{Another quote}
+
+
+\begin{itemize}
+\item “Experimental investigations of the 
+psychological reality of linguistic structural 
+descriptions have \ldots proved quite successful.”                                        
+\\ \mbox{} \hfill --- Fodor, Bever, \& Garrett (1974)
+\item In particular, they concluded that \txx{deep 
+structures} and \txx{surface structures} were 
+psychologically real, but the transformations 
+relating them weren’t.
+\end{itemize}
+
+\myslide{Evidence for the Psychological Reality of Deep Structures}
+
+
+\begin{itemize}
+\item The proposed Deep Structure for (\ref{s:g2}) had three
+  occurrences of \lex{detective}, while the proposed DS for (\ref{s:g1})
+  had only two:
+\begin{exe}
+  \ex \label{s:g1} \eng{The governor asked the detective to prevent drinking.}
+  \ex \label{s:g2} \eng{The  governor asked the detective to cease drinking.}
+\end{exe}
+\item In a recall experiment, \lex{detective} was significantly more 
+effective in prompting people to remember (\ref{s:g2}) than (\ref{s:g1}). 
+\end{itemize}
+
+\myslide{Typical Problem Cases for the DTC}
+\begin{exe}
+  \ex \label{s:g11} \eng{Pat swam faster than Chris swam.}
+  \ex \label{s:g12} \eng{Pat swam faster than Chris did.}
+  \ex \label{s:g13} \eng{Pat swam faster than Chris.}
+\end{exe}
+\begin{itemize}
+\item The DTC predicts that (\ref{s:g11}) should be less complex than
+  (\ref{s:g12}) or (\ref{s:g13}), because (\ref{s:g12}) and
+  (\ref{s:g13}) involve an extra deletion transformation.
+\item In fact, subjects responded more slowly to (\ref{s:g11}) than to 
+either (\ref{s:g12}) or (\ref{s:g13}).
+\end{itemize}
+
+\myslide{What should a psychologically real theory of grammar be like?}
+
+\begin{itemize}
+\item The \txx{deep structure} distinctions that are not evident 
+on the surface should be represented.
+\item The transformational operations relating deep and 
+surface structures should not be part of the theory.
+\item Our information-rich trees include all of the essential 
+information in the traditional deep structures, but 
+without the transformations.
+\end{itemize}
+
+\myslide{Jerry Fodor claims the human mind is \txx{modular}}
+
+\begin{quote}
+  “A module is \ldots{} an informationally encapsulated computational system --
+  an inference-making mechanism whose access to background information
+  is constrained by general features of cognitive architecture.”
+\end{quote}
+\mbox{} \hfill --- Fodor, 1985  
+
+\begin{itemize}
+\item A central issue in psycholinguistics over the past 20 years has
+  been whether language is processed in a modular fashion.
+\end{itemize}
+
+\myslide{Tanenhaus’s Eye-Tracking Experiments}
+
+
+\begin{itemize}
+\item Participants wear a device on their heads that makes 
+a videotape showing exactly what they’re looking at.
+\item They listen to spoken instructions and carry out 
+various tasks. 
+\item They eye-tracking provides evidence of the 
+cognitive activity of participants that can be 
+correlated with the linguistic input. 
+\end{itemize}
+
+\myslide{Non-linguistic visual information affects lexical access}
+
+
+\begin{itemize}
+\item Participants’ gaze settled on a referent before the 
+word was completed, unless the initial syllable of the 
+word was consistent with more than one object.  
+\item For example, participants’ gaze rested on the pencil 
+after hearing \eng{Pick up the pencil}
+more slowly when both a \textbf{p}encil and a \textbf{p}enny were 
+present.
+\end{itemize}
+
+\myslide{Non-linguistic visual information affects syntactic processing}
+
+
+\begin{itemize}
+\item Eye movements showed that people hearing (\ref{s:apple}) often 
+temporarily misinterpreted on the towel as the 
+destination.
+\begin{exe}
+  \ex \label{s:apple} \eng{Put the apple on the towel in the box.}
+\end{exe}
+\item When \eng{on the towel} helped them choose between two 
+apples, such misparses were significantly less 
+frequent than when there was only one apple.
+\end{itemize}
+
+\myslide{General Conclusion of Eye-Tracking Studies}
+
+
+\begin{itemize}
+\item People use whatever information is available as 
+soon as it is useful in interpreting utterances.
+\item This argues against Fodorian modularity.
+\item It argues for a model of language in which 
+information is represented in a uniform, order-
+independent fashion.
+\end{itemize}
+
+\myslide{Speakers know a great deal about individual words}
+
+\begin{itemize}
+\item Individual lexical items have many idiosyncrasies in 
+where they can occur, and in where they tend to 
+occur.  
+\item For example, the verb \lex{behoove} occurs only with the 
+subject \lex{it} (and only in certain verb forms), and the 
+verb \lex{beware} has only the base form.
+\item We also know that the transitive use of \lex{walk} is much 
+rarer than the intransitive. 
+\end{itemize}
+
+\myslide{Different verbs favor different COMPS lists}
+\begin{center}
+  \begin{bchart}[max=100,step=25,unit=\%,scale=2.2]
+    \bcbar[plain, text=tell]{100} \bcbar[plain, text=give]{85}
+    \bcbar[plain, text=show]{85} \bcbar[plain, text=hand]{68}
+    \bcbar[plain, text=fax]{56} \bcbar[plain, text=bring]{38}
+    \bcbar[plain, text=send]{20} \bcbar[plain, text=sell]{10}
+    \bcxlabel{\% V-NP-NP vs V-NP-PP (in the NYT)}
+  \end{bchart}
+\end{center}
+
+\myslide{Lexical biases influence processing}
+\begin{itemize}
+\item Wasow et al. ran a production experiment to test 
+whether ambiguity avoidance would influence 
+speakers’ choice between (\ref{s:g111}) and (\ref{s:g112}): 
+\begin{exe}
+\ex \label{s:g111} \eng{They gave Grant’s letters to Lincoln to a museum.} \hfill NP-PP
+\ex \label{s:g112} \eng{They gave a museum Grant’s letters to Lincoln.} \hfill NP-NP
+\end{exe}
+\item Ambiguity avoidance predicts that you should prefer (\ref{s:g112})
+\item Lexical bias of the verbs turned out to be a significant 
+predictor of which form speakers used (and ambiguity 
+avoidance turned out not to be).
+\end{itemize}
+
+\myslide{Experimental Method}
+
+\begin{itemize}
+\item Speaker and Listener sit next to each other.  Speaker can see a screen.
+\item Speaker silently reads a sentence shown on the screen \\ \eng{A
+    museum in Philadelphia received Grant's letters to Lincoln from
+    the foundation.}
+\item The sentence disappears from the screen.
+\item Listener asks a question:
+\\ \eng{What did the foundation do?}
+\item The speaker answers the listener's question.
+\\ \eng{The foundation gave \ldots{}. the 
+museum, um, Grant's letter's 
+to Lincoln.}
+\item The listener records which kind of response on 
+a list (from two choices).
+\end{itemize}
+
+\myslide{Experimental Results on Local Ambiguity}
+
+\begin{center}
+  \begin{bchart}[max=100,step=25,unit=\%,scale=2.2]
+    \bcbar[plain, text=V-NP-PP~bias, color=red!20]{70}
+    \bclabel{\shortstack{No potential \\ local ambiguity}}
+    \bcbar[plain, text=V-NP-NP~bias]{78}
+    \smallskip
+    \bcbar[plain, text=V-NP-PP~bias, color=red!20]{48}
+    \bclabel{\shortstack{Potential\\ local ambiguity}}
+    \bcbar[plain, text=V-NP-NP~bias]{68}
+    \bcxlabel{\% V-NP-NP vs V-NP-PP}
+  \end{bchart}
+\end{center}
+
+\begin{itemize}
+\item Arnold, Wasow, Asudeh \& Alrenga (2004:
+\textit{Journal of Memory \& Language})
+re-ran the experiment with slightly better 
+methodology and found an even stronger reverse 
+ambiguity effect.
+\end{itemize}
+
+\myslide{A psychologically real grammar should be lexicalist}
+
+
+\begin{itemize}
+\item Early generative grammars downplayed the lexicon.
+\item Now, however, the importance of the lexicon is widely 
+recognized.
+\item This aspect of grammar has been developed in greater 
+detail in HPSG than in any other theory.
+\item It would be easy to add frequency information to the
+lexicon, though there is debate over the wisdom of 
+doing so.
+\item Frequency is currently recorded as part of the \txx{parse
+    ranking model}s which select the most plausible out of all
+  possible interpretations.
+\end{itemize}
+
+\myslide{Conclusion}
+
+
+\begin{itemize}
+\item Grammatical theory should inform and be informed 
+by psycholinguistic experimentation.
+\item This has happened less than it should have.
+\item Existing psycholinguistic evidence favors a 
+constraint-based, lexicalist approach (like HPSG).
+\end{itemize}
+
+\myslide{Universals?}
+\MyLogo{\url{http://www.delph-in.net/matrix/}}
+
+\begin{itemize}
+\item \txx{Principles and Parameters (P\&P)}: attempts to relate multiple 
+typological properties to single parameters (\emp{top-down}).
+\item \txx{Grammar Matrix}: attempts to 
+describe many languages in a consistent 
+framework and then takes stock of common 
+constraints (\emp{bottom-up}).
+\end{itemize}
+
+\myslide{Universals?}
+\MyLogo{These are candidate universal facts about language}
+\begin{itemize}
+\item Case constraint
+\item SHAC
+\item Binding theory
+\item Head-complement/-specifier/-modifier
+\item Head Feature Principle
+\item Valence Principle
+\item Semantic Compositionality Principle
+\item \ldots{}
+\end{itemize}
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 9}
+\begin{itemize}
+\item Psycholinguistics and grammar design
+  \begin{itemize}
+  \item What grammar has to say
+  \item What psychological evidence has to say
+    \begin{itemize}
+    \item Acquisition
+    \item Production
+    \item Comprehension
+    \end{itemize}
+  \item Universals
+  \end{itemize}
+\end{itemize}
+
+
+\myslide{P1: Constant Rules}
+\MyLogo{Based on  Chapter 9, Problem 1, Sag, Wasow and Bender (2003)}
+
+The Singular Noun Lexical Rule, the Non-3rd-Singular Verb Lexical
+Rule, and the Base Form Lexical Rule are all inflectional lexical
+rules ({\it i-rule}) which have no effect on the shape (i.e.\ the
+phonology) of the word.
+
+\begin{itemize}
+\item[A.] Explain why we need these rules anyway.  
+\item[B.] Each of these rules have lexical exceptions, in the sense
+that there are lexemes that idiosyncratically don't undergo them.
+Thus, there are some nouns without singular forms, verbs without
+non-third-person singular present tense forms, and verbs without base
+forms.  List any you can think of. 
+\end{itemize}
+
+\input{lec-07-questions}
+
+\end{document}

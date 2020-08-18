@@ -1,0 +1,670 @@
+\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+\input{headx.tex}
+
+\usepackage{times}
+\usepackage{bchart}
+%\usepackage{pgfplots}
+\avmfont{\sc}
+\begin{document}
+\header{Lecture 9}{Non-referential NPs, Expletives, and Extraposition}{}
+\maketitle
+
+
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 11}
+
+\begin{itemize}
+\item Existentials  (\eng{There is an X}, \ldots)
+\item Extraposition (\eng{It worries me that X}, \ldots))
+\item Idioms (\eng{X takes advantage of Y}, \ldots)
+\end{itemize}
+
+\myslide{Where We Are, and Where We’re Going}
+
+\begin{itemize}
+\item Last time, we met the passive \lex{be}.
+\item Passive \lex{be} is just a special case -- that \lex{be}
+generally introduces [PRED +] constituents 
+%(next slide).
+\item Today, we’ll start with another \lex{be}, which 
+occurs in existential sentences starting with 
+\lex{there}, e.g. \eng{There is a monster in Loch Ness.}
+\item Then we’ll look at this use of \lex{there}.
+\item Which will lead us to a more general 
+examination of NPs that don’t refer, including 
+some uses of \lex{it} and certain idiomatic uses of 
+NPs.
+\end{itemize}
+
+\myslide{Chapter 10 entry for be}
+
+\begin{avm}
+  \< \textnormal{be},\ \[{\it be-lxm}\\
+  arg-st & \< {\@1} , \avml\[syn & \[head & \[{\it verb}\\
+  form &  pass \]\\
+  val & \[spr & \q< {\@1} \q>\\
+  comps & \el \]\]\\
+  sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
+  sem & \[index & \ $s$\\ %{\@3}\\
+  restr & {\el} \] \] \>
+\end{avm}
+
+
+\myslide{Copula (generalized)}
+
+\begin{avm}
+  \< \textnormal{be},\ \[{\it be-lxm}\\
+  arg-st & \< {\@1} , \avml\[syn & \[head & \[ pred \ $+$ \]\\
+  val & \[spr & \q< {\@1} \q>\\
+  comps & \el \]\]\\
+  sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
+  sem & \[index & \ $s$\\ %{\@3}\\
+  restr & {\el} \] \] \>
+\end{avm}
+
+\myslide{Existentials}
+
+\begin{itemize}
+\item The \lex{be} in \eng{There is a page missing} cannot be the 
+same \lex{be} that occurs in sentences like \eng{Pat is tall} or 
+\eng{A cat was chased by a dog}.  Why not?
+\item So we need a separate lexical entry for this \lex{be}, 
+  stipulating:
+  \begin{itemize}
+  \item Its SPR must be \lex{there}
+  \item It takes two complements, the first an NP and the 
+    second an AP, PP, or (certain kind of) VP.
+  \item The semantics should capture the relation between, e.g. 
+    \eng{There is a page missing} and \eng{A page is missing}.  
+  \end{itemize}
+\end{itemize}
+
+\myslide{Lexical Entry for the Existential \lex{be}}
+
+\begin{avm}
+  \< \textnormal{be},\ \[\makebox[0mm][l]{\textit{exist-be-lxm}}\\
+  arg-st & \< \shortstack{NP\\\[ form
+    & there \]}, {\@1},
+  \avml\[syn & \[head & \[ pred \ $+$ \]\\
+  val & \[spr \q< {\@1} \q> \\ comps \el \]\]\\
+  sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
+  sem & \[index & \ $s$\\ %{\@3}\\
+  restr & {\el} \] \] \>
+\end{avm}
+
+
+\myslide{Questions About the Existential \lex{be}}
+
+\begin{itemize}
+\item What type of constituent is the third argument?
+\item Why is the third argument [\ft{pred} +]?
+\item Why is the second argument tagged as identical to the \ft{spr}
+  of the third argument?
+\end{itemize}
+
+\begin{center}
+  \begin{tiny}
+    \begin{avm}
+      \< \textnormal{be},\ \[\makebox[0mm][l]{\textit{exist-be-lxm}}\\
+      arg-st & \< \shortstack{NP\\\[ form
+          & there\]}, {\@1},
+      \avml\[syn & \[head & \[ pred \ $+$ \]\\
+      val & \[spr \q< {\@1} \q> \\ comps \el \]\]\\
+      sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
+      sem & \[index & \ $s$\\ %{\@3}\\
+      restr & {\el} \] \] \>
+    \end{avm}
+  \end{tiny}
+\end{center}
+
+\myslide{There are questions left}
+
+\begin{itemize}
+\item What is the contribution of this \lex{be} to the semantics of the sentences 
+it occurs in?
+\item Can all [\ft{pred} +] predicates appear as the third argument in 
+existentials?
+\item How do we rule out *\lex{There was a greyhound a good runner}?  
+\end{itemize}
+
+\begin{center}
+  \begin{tiny}
+    \begin{avm}
+      \< \textnormal{be},\ \[\makebox[0mm][l]{\textit{exist-be-lxm}}\\
+      arg-st & \< \shortstack{NP\\\[ form
+          & there \]}, {\@1},
+      \avml\[syn & \[head & \[ pred \ $+$ \]\\
+      val & \[spr \q< {\@1} \q> \\ comps \el \]\]\\
+      sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
+      sem & \[index & \ $s$\\ %{\@3}\\
+      restr & {\el} \] \] \>
+    \end{avm}
+  \end{tiny}
+\end{center}
+
+
+\myslide{The Entry for Existential \lex{there}}
+
+\begin{center}
+  \begin{avm}
+    \< \textnormal{there},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
+    syn & \[head & \[ form & there \\
+    agr  & \[ per \ 3rd \]   \] \]\\
+    sem & \[mode & none \\
+    index & none \\
+    rest & \el \]
+    \] \>
+  \end{avm}
+\end{center}
+
+\myslide{Questions About Existential there}
+
+\begin{itemize}
+\item Why do we call it a pronoun?
+\item Why don't we give it a value for \ft{num}?
+\item What does this entry claim is \lex{there}’s contribution to the
+  semantics of the sentences it appears in?
+\item Is this a correct claim?
+\end{itemize}
+
+\begin{center} \tiny
+  \begin{avm}
+    \< \textnormal{there},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
+    syn & \[head & \[ form & there \\
+    agr  & \[ per \ 3rd \]   \] \]\\
+    sem & \[mode & none \\
+    index & none \\
+    rest & \el \]
+    \] \>
+  \end{avm}
+\end{center}
+
+
+\myslide{Other NPs that don’t seem to refer}
+
+{\large
+\begin{exe}
+\ex \eng{\ul{It} sucks that the Rockies lost the series.}
+\ex \eng{\ul{It} is raining.}
+\ex \eng{Andy took \ul{advantage} of the opportunity.}
+\ex \eng{Lou kicked \ul{the bucket}.}
+\end{exe}
+}
+
+\myslide{What about \eng{It follows that you are wrong}?}
+\MyLogo{$^*$We need these anyway (independently motivated)}
+\begin{itemize}
+\item This is an example of \txx{extraposition}
+\item To analyze it we need:
+  \begin{itemize}
+  \item An analysis of this use of \lex{that}$^*$
+  \item Entries for verbs that take clausal subjects $^*$
+    \begin{exe}
+      \ex \label{s:that:follows} \eng{\ul{That you are wrong} follows}
+    \end{exe}
+  \item A lexical entry for dummy \lex{it}
+  \item A rule to account for the relationship 
+    between pairs like  (\ref{s:that:follows}) and (\ref{s:follows:that})
+\begin{exe}
+  \ex \label{s:follows:that}
+  \eng{\ul{It} follows \ul{that you are wrong}.}
+\end{exe}
+\end{itemize}
+\end{itemize}
+
+\myslide{The Entry for Dummy \lex{it}}
+
+\begin{center}
+  \begin{avm}
+    \< \textnormal{it},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
+    syn & \[head & \[ form & it \\
+    agr  & 3sing   \] \]\\
+    sem & \[mode & none \\
+    index & none \\
+    rest & \el \]
+    \] \>
+  \end{avm}
+\end{center}
+
+\myslide{Questions About Dummy \lex{it}}
+
+
+\begin{itemize}
+\item How does it differ from the entry for dummy \lex{there}? 
+Why do they differ in this way?
+\item Is this the only entry for \lex{it}?
+\end{itemize}
+\begin{center}\small
+  \begin{avm}
+    \< \textnormal{it},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
+    syn & \[head & \[ form & it \\
+    agr  & 3sing   \] \]\\
+    sem & \[mode & none \\
+    index & none \\
+    rest & \el \]
+    \] \>
+  \end{avm}
+\end{center}
+
+\myslide{A New Type of Lexeme:  Complementizers}
+
+\begin{center}\large
+  \begin{avm}
+    \textit{comp-lxm}:  \[ \\
+    syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
+    agr  & 3sing   \] \\
+    val & \[ spr & \el \] \]\\
+    arg-str & \< \shortstack{S \\ \[ index & s \]}\>\\
+    sem & \[ index & s \\
+    rest & \el \]
+    \] 
+  \end{avm}
+\end{center}
+
+
+\myslide{Questions About the Type \val{comp-lxm}}
+
+\begin{itemize}
+\item Why does it stipulate values for both \ft{spr} and \ft{arg-st}?
+\item Why is its \ft{index} value the same as its argument’s?
+\item What is its semantic contribution?
+\end{itemize}
+\begin{center}\small
+  \begin{avm}
+    \textit{comp-lxm}:  \[ \\
+    syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
+    agr  & 3sing   \] \\
+    val & \[ spr & \el \] \]\\
+    arg-str & \< \shortstack{S \\ \[ index & s \]}\>\\
+    sem & \[ index & s \\
+    rest & \el \]
+    \] 
+  \end{avm}
+\end{center}
+
+
+
+\myslide{The Type comp}
+
+
+\begin{center}
+  \begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+\it
+\br{\shortstack{pos\\ \[ \textsc{form, pred} \]}}{\br{agr-pos \[ \textsc{agr} \] }{ 
+    \br{verb \[ \textsc{aux} \]}{}
+    \br{nominal \[ \textsc{case} \]}{
+      \br{\shortstack{noun \\ \mbox{} }}{}
+      \br{\shortstack{comp \\\[ \textsc{form} \ cform \]}}{}}
+    \br{det \[ \textsc{count} \]}{} }
+  \lf{prep}
+  \lf{adj}
+  \lf{conj}}
+\end{avmtree}
+\end{center}
+
+\myslide{The Lexical Entry for Complementizer \lex{that}}
+\bigskip
+\begin{center}\large
+  \begin{avm}
+   \< \textnormal{that},\ \[\makebox[0mm][l]{\textit{comp-lxm}}\\
+    arg-st  & \< \[ form & fin \]\>\\
+    sem & \[mode & prop \]
+    \] \>
+  \end{avm}
+\end{center}
+\myslide{\ldots  with inherited information filled in}
+
+\begin{center}\small
+  \begin{avm}
+   \< \textnormal{that},\ \[\makebox[0mm][l]{\textit{comp-lxm}}\\
+   syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
+    form & \OV{cform} \\
+    agr  & 3sing   \] \\
+    val & \[ spr & \el \] \]\\
+    arg-st  & \< \shortstack{S \\ \[ index & s \\ form & fin\] }\>\\
+    sem & \[mode & prop \\
+    index & s \\
+    rest & \el \]
+    \] \>
+  \end{avm}
+\end{center}
+
+\begin{itemize}
+\item Question: Where did [\ft{form} \val{cform}] come from?
+\end{itemize}
+
+\myslide{Structure of a Complementizer Phrase}
+
+\begin{exe}
+  \ex \eng{that the Giants lost}
+\end{exe}
+
+% \begin{center}\small
+%   \begin{tree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+% \br{\textnormal{CP} \begin{avm}\[ \ft{head} & \@1 \\
+%           \ft{val} & \< \ft{spr} & \el \\ \ft{comps} & \el \> \]\end{avm}}%
+% {\br{\textnormal{C} \begin{avm}\[ \ft{head} & \@1 \[\textit{comp} 
+% \\  \ft{form} & cform \] \\
+%           \ft{val} & \< \ft{spr} & \el \\ \ft{comps} & \< \@2 \> \> \]
+% \end{avm}}{\lf{that}}
+% \br{\@2 \textnormal{S}}{\tlf{the Giants lost}}}
+% \end{tree}
+% \end{center}
+% \newpage
+\begin{center}
+  \begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+\it
+\br{\textnormal{CP} \[ \ft{head} & \@1 \\
+          \ft{val} & \< \ft{spr} & \el \\ \ft{comps} & \el \> \]}%
+{\br{\textnormal{C} \[ \ft{head} & \@1 \[\textit{comp} \\  \ft{form} & cform \] \\
+          \ft{val} & \< \ft{spr} & \< \mbox{} \> \\ \ft{comps} & \< \@2 \> \> \]}{\lf{that}}
+\br{\@2 \textnormal{S}}{\tlf{the Giants lost}}}
+\end{avmtree}
+\end{center}
+
+
+
+\myslide{Sample Verb with a CP Subject}
+
+
+\bigskip
+\begin{center}\large
+  \begin{avm}
+   \< \textnormal{matter},\ \[\makebox[0mm][l]{\textit{siv-lxm}}\\
+    arg-st  & \< \[ sem & \[ index & \@1 \] \]\>\\
+    sem & \[index & s \\
+    rstr & \<  reln & \prd{matter} \\
+               sit & s \\
+               mattering & \@1 
+\> \]
+    \] \>
+  \end{avm}
+\end{center}
+
+Note:  the only constraint on the first argument is semantic
+
+\myslide{A Problem}
+
+\begin{itemize}
+\item We constrained the subject of matter only semantically.  However\ldots{}
+\item CP and S are semantically identical, but we get:
+  \begin{exe} 
+    \ex \eng{That Bush won matters}  vs. \eng{*Bush won matters}
+  \end{exe}
+\item Argument-marking PPs are semantically identical to their object 
+  NPs, but we get:
+  \begin{exe} 
+    \ex \eng{The election mattered} vs. \eng{*Of the election mattered}
+  \end{exe}
+\item So we need to add a syntactic constraint.
+\end{itemize}
+
+\newpage
+
+\begin{center}\small
+  \begin{avm}
+   \< \textnormal{matter},\ \[\makebox[0mm][l]{\textit{siv-lxm}}\\
+    arg-st  & \< \[ syn & \[ head & \OV{nominal} \] \\
+                    sem & \[ index & \@1 \] \]\>\\
+    sem & \[index & s \\
+    rstr & \<  \[ reln & \prd{matter} \\
+                  sit & s \\
+                  mattering & \@1 \] \> \]
+    \] \>
+  \end{avm}
+\end{center}
+
+
+\begin{itemize}
+\item  S and PP subjects are generally impossible, so this constraint should
+   probably be on \val{verb-lxm}.
+ \end{itemize}
+ 
+
+\myslide{Extraposition (at last)}
+%\MyLogo{Examples adapted from wikipedia}
+\begin{itemize}
+\item Extraposition alters word order so that a relatively "heavy"
+  constituent appears to the right of its canonical position.
+\end{itemize}
+
+\begin{exe}\large
+  \ex 
+  \begin{xlist}
+    \ex  \eng{\ul{That you were wrong} follows.}
+    \ex \eng{\ul{It} follows \ul{that you were wrong}.}
+  \end{xlist}
+  \ex 
+  \begin{xlist}
+    \ex  \eng{\ul{That I mistyped it} was frustrating.}
+    \ex \eng{\ul{It} was frustrating \ul{that I mistyped it}.}
+  \end{xlist}
+  \ex 
+  \begin{xlist}
+   \ex \eng{Did \ul{that this happened} surprise you?}
+   \ex  \eng{Did it surprise you \ul{that this happened}?}
+  \end{xlist}
+\end{exe}
+
+
+
+% [1]
+%   Extraposing a constituent results in a discontinuity and in this
+%   regard, it is unlike shifting, which does not generate a
+%   discontinuity. The extraposed constituent is separated from its
+%   governor by one or more words that dominate its governor. Two types
+%   of extraposition are acknowledged in theoretical syntax: standard
+%   cases where extraposition is optional and it-extraposition where
+%   extraposition is obligatory. Extraposition is motivated in part by a
+%   desire to reduce center embedding by increasing right-branching and
+%   thus easing processing, center-embedded structures being more
+%   difficult to process. Extraposition occurs frequently in English and
+%   related languages.
+
+\myslide{The Extraposition Lexical Rule}
+
+\begin{center}\small
+  \begin{avm}\avmfont{\sc}
+      \[ \asort{pi-rule}
+      input & \< X, \[ syn & \[ val & \[ spr & \< \@1 CP \> \\ comps & \@{A} \] \]  \]  \>\\
+      output & \<Y,  \[ syn & \[val & \[ spr & \< NP \[ form & it \] \> \\
+      comps & \@{A} $\oplus$ \< \@1 \> \] \] \] \> \]
+
+    \end{avm}
+\end{center}
+
+\begin{itemize}
+\item Why is the type \val{pi-rule}?
+\item Why doesn’t it say anything about the semantics?
+\item  Why is the \ft{comps} value \avmbox{A} not $\langle \rangle$  ?
+\end{itemize}
+
+\myslide{Extraposition with Verbs whose \ft{comps} lists are Nonempty}
+
+
+\begin{exe}\large
+\ex \eng{It worries me that war is imminent.}
+\ex \eng{It occurred to Pat that Chris knew the answer.}
+\ex \eng{It endeared you to Andy that you wore a funny hat.}
+\end{exe}
+
+\myslide{Another Nonreferential Noun: \lex{advantage}}
+\bigskip
+\begin{center}
+  \begin{avm}
+    \< \textnormal{advantage},\ \[\makebox[0mm][l]{\textit{massn-lxm}}\\
+    syn & \[head & \[ form & advantage \\
+    agr  & 3sing   \] \]\\
+    sem & \[mode & none \\
+    index & none \\
+    rest & \el \]
+    \] \>
+  \end{avm}
+\end{center}
+
+
+\myslide{The Verb that Selects \lex{advantage}}
+\MyLogo{\textbf{take\_advantage} $\approx$ \textbf{exploit}}
+\begin{center}
+  \begin{avm}
+   \< \textnormal{take},\ \[\makebox[0mm][l]{\textit{ptv-lxm}}\\
+    arg-st  & \< NP$_i$, \[ form & advantage \], 
+    \[ form & of  \\
+       index & j \]\>\\
+    sem & \[index & s \\
+    rstr & \<  \[ reln & \prd{take\_advantage} \\
+               sit & s \\
+               exploiter & i \\
+               exploited & j \] \> \]
+    \] \>
+  \end{avm}
+\end{center}
+
+
+\myslide{Our analyses of idioms and passives interact\ldots{}}
+
+
+\begin{itemize}
+\item We generate
+\begin{exe} 
+  \ex \eng{Advantage was taken of the situation by many people.}
+  \ex \eng{Tabs are kept on foreign students.}
+\end{exe}
+\item But not:
+  \begin{exe} 
+    \ex \eng{Many people were taken advantage of.}
+  \end{exe}
+\item Why not?
+\end{itemize}
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 11}
+
+\begin{itemize}
+\item Existentials (\lex{there}, \lex{be})
+\item Extraposition (\lex{that}, \lex{it}, LR)
+\item Idioms (\lex{take\_advantage}, \ldots)
+\end{itemize}
+
+\myslide{P1: \lex{there} and Agreement}
+\MyLogo{Based on  Chapter 11, Problem 1, Sag, Wasow and Bender (2003)}
+
+The analysis of existential \lex{there} sentences presented so far
+says nothing about verb agreement.
+
+\begin{itemize}
+\item[A.] Consult your intuitions (and/or those of your friends, if
+  you wish) to determine what the facts are regarding number
+ agreement of the verb in \lex{there} sentences.
+ Give an informal statement of a generalization covering these facts,
+ and illustrate it with both grammatical and ungrammatical examples.
+ [{\sl Note: Intuitions vary regarding this question, across both
+    individuals and  dialects.  Hence there is more
+    than one right answer to this question.}]
+
+\item[B.] How would you elaborate or modify our analysis of the \lex{there}
+  construction so as to capture the generalization you have discovered?
+  Be as precise as you can.
+\end{itemize}
+
+
+\myslide{P2: Passing Up the Index}
+\MyLogo{Based on  Chapter 11, Problem 3, Sag, Wasow and Bender (2003)}
+
+\begin{itemize}
+\item[A.] Give the \ft{restr} value that our grammar should assign to
+the sentence in~(i).  Be sure that the \ft{sit} value of the \eng{smoke}
+predication
+is identified with the \ft{annoyance} value of the \prd{annoy}
+predication.
+
+\begin{itemize}
+\item[(i)] \eng{That Dana is smoking annoys Leslie.}
+\end{itemize}
+
+\noindent [{\sl Hint: This sentence involves two of the phenomena
+  analyzed in this chapter: predicative complements of \lex{be} and CP subjects.}]
+
+\item[B.] Draw a tree for (i).  Use abbreviations for node labels, but
+  show the index on each node.
+
+\item[C.] Explain how the \ft{sit} value of the \prd{smoke} 
+%relation
+predication
+gets identified with the \ft{annoyance} value of the \prd{annoy} 
+%relation.
+predication.
+Be sure to make reference to lexical entries, phrase structure rules,
+and principles, as appropriate.
+
+\end{itemize}
+
+
+%\vbox{
+
+
+\myslide{P3: An Annoying Problem}
+\MyLogo{Based on  Chapter 11, Problem 4, Sag, Wasow and Bender (2003)}
+
+Assume that the lexical entry for the verb \lex{annoy} is the
+following: 
+%(Note that the first argument of this lexeme
+%overrides the \index{defaults} default condition -- associated with the type {\it
+%verb-lxm} -- requiring the first argument to be an NP.)
+
+\begin{exe}
+\ex\label{s:exi} {\begin{avm}
+
+\< \textnormal{annoy} ,\  \[{\it stv-lxm}\\
+              arg-st & \< \[sem\ [index\ {\@1}{\,}]\] ,
+                               NP$_i$ \> \\
+%			  \[sem\ [index $i$]\] \> \\
+              sem    & \[index & $s$\\
+                         restr  & \< \[reln & \prd{annoy}\\
+                                       sit & \ \  $s$\\
+                            	       annoyed & \ \ $i$\\
+                            	       annoyance & \ \ {\@1} \] \> \]\] \>
+\end{avm}}
+\end{exe}
+
+\newpage
+\begin{itemize}
+% \item[A.] Show the lexeme that this lexical entry licenses, being sure
+% to include all of the constraints it inherits from its supertypes.
+% Show a lexical entry for {\it annoys} that results from
+% applying the 3rd-Singular Verb Lexical Rule to this entry.
+\item[A.] What constraints are imposed on the lexical sequences that
+  result from applying the \txx{3rd-Singular Verb Lexical Rule} to
+  this entry (including those that involve inheritance of constraints
+  from the entry's supertypes)?
+% \item[B.] Show the lexical entry that results from applying the
+% \index{Extraposition Lexical Rule} Extraposition Lexical Rule to
+% your answer to part (A).
+
+\item[B.] What constraints are imposed on lexical sequences that
+  result from applying the \txx{Extraposition Lexical Rule} to your
+  answer to part (A)?
+
+\item[C.] Draw a tree structure for the sentence in (\ref{s:exii}).
+  You should show the value of all \ft{sem} features on all of the nodes,
+  as well as the \ft{spr} and \ft{comps} features for \eng{annoys}.
+
+\begin{exe}
+  \ex\label{s:exii} \eng{It annoys Lee that Fido barks}.
+\end{exe}
+\newpage
+\item[D.] The lexical entry for \lex{annoy} allows NP subjects as
+  well, as in (\ref{s:exiii}).  Why doesn't the grammar then also
+  license (\ref{s:exiv})?
+
+\begin{exe}
+\ex\label{s:exiii} \eng{Sandy annoys me.}
+
+\ex\label{s:exiv} \bad \eng{It annoys me Sandy.}
+\end{exe}
+\end{itemize}
+
+
+\end{document}

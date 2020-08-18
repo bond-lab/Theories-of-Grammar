@@ -1,0 +1,315 @@
+\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+\usepackage{times}
+%\usepackage{nttfoilhead}
+%\newcommand{\myslide}[1]{\foilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
+%\newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
+%\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
+
+\input{headx.tex}
+
+\avmfont{\sc}
+\begin{document}
+\avmfont{\it}
+\header{Lecture 16}{Sign-Based Construction Grammar}{}
+\maketitle
+
+
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 16}
+
+\begin{itemize}
+\item Chapter 16 framework (same analyses, 
+different underlying system)
+\item General wrap up
+\end{itemize}
+
+\myslide{Construction Grammar (CxG)}
+
+\begin{itemize}
+\item A family of grammars based on the idea that
+  \begin{itemize}
+  \item Knowledge of a language comes from \emp{form and function pairings}
+  \item \txx{function} includes meaning, content, or intent 
+    (both semantics and pragmatics)
+  \item \txx{form} includes phonology, syntax, orthography
+  \end{itemize}
+\item CxG grew out of generative semantics and cognitive linguistics,
+  by researchers such as Charles Fillmore, Paul Kay and George Lakoff
+\item Instead of language as a grammar+lexicon, think of it as a
+  structured network of families of constructions
+\end{itemize}
+
+
+\myslide{Construction Grammars}
+\begin{itemize}
+\item \txx{Sign-based-Construction Grammar} (Berkeley Construction Grammar)
+  \\  unification-based framework (with computational implementation)
+\item \txx{Goldbergian/Lakovian Construction Grammar}
+  \\ psychologically plausible
+\item \txx{Radical Construction Grammar}
+  \\ syntactic categories, roles, and relations are not universal: 
+  \\ they are not only language-specific, but also construction specific 
+\item \txx{Embodied Construction Grammar}
+  \\ relates constructions to embodiment and sensorimotor experience
+\item \txx{Fluid Construction Grammar}
+  \\ learns grammars from the environment (with computational implementation)
+\end{itemize}
+
+
+\myslide{Overview of Differences (SBCG vs HPSG)}
+
+\begin{itemize}
+\item Multiple Inheritance
+\item Signs
+\item Grammar rules form a hierarchy --- many more rules
+\item Every tree node has its own phonology
+\item Many principles become constraints on 
+grammar rules
+\item The definition of well-formedness is 
+simplified
+\end{itemize}
+
+
+
+
+\section{Wrap Up}
+
+\myslide{Big picture: Our model}
+\begin{center}
+  \LARGE HPSG \\
+  \Large Head-driven Phrase Structure Grammar  
+\end{center}
+
+\begin{itemize}
+\item Describes a set of strings
+\item Associates semantic representations (and
+trees) with well-formed strings
+\begin{itemize}
+\item Is stated in terms of declarative constraints
+\item[\ldots]  which are order-independent
+\item Locates most constraints `in the lexicon'
+\item Is stated in a precise fashion
+\end{itemize}
+\end{itemize}
+
+
+\myslide{Parts of our model}
+\begin{itemize}
+\item Type hierarchy (lexical types, other types)
+\item Phrase structure rules
+\item Lexical rules
+\item Lexical entries
+\item Grammatical principles
+\item Initial symbol
+\end{itemize}
+
+
+\myslide{Universals in our model}
+\begin{itemize}
+%\item Case constraint 
+\item SHAC
+\item Binding theory
+\item Head-complement/-specifier/-modifier
+\item Head Feature Principle
+\item Valence Principle
+\item Semantic Compositionality Principle
+\item \ldots 
+\end{itemize}
+
+
+% \myslide{Key characteristics}
+% \begin{itemize}
+% \item Surface-oriented
+% \item Constraint-based
+% \item Lexicalist
+% \end{itemize}
+% \myslide{Psycholinguistic Evidence}
+% \begin{itemize}
+% \item Evidence for left-to-right effects
+%   \begin{itemize}
+%   \item Disfluencies are sensitive to structure
+%   \item Repeat rate of \eng{the} varies with position and complexity of the NP it introduces
+%   \item More complex NPs produce more disfluency
+%   \end{itemize}
+% \item Evidence for top-down planning
+%   \begin{itemize}
+%   \item Agreement errors are more common with PP complements
+% than sentential complements: errors like (2) are significantly
+% more common than errors like (1).
+% \begin{exe}
+%   \ex \eng{*The claim that the wolves had raised the babies were rejected.
+%   \ex \eng{*The claim about the newborn babies were rejected.
+% \end{exe}
+% \end{itemize}
+% \end{itemize}
+
+
+% \myslide{So what?}
+% \begin{itemize}
+% \item Speculation: Clauses are their own agreement domains, so people don't
+% mistake an NP in a lower clause as a trigger for agreement
+
+% \item Grammar plays a role in production.
+% \item Partial grammatical information should be accessible by
+% the production mechanism as needed.
+% % \begin{itemize}
+% % \item This argues against grammatical theories that involve
+% % sequential derivations with fixed ordering.
+% % \begin{itemize}
+% \item Our theory of grammar has the requisite flexibility.
+% \end{itemize}
+
+
+% \myslide{Speakers know a great deal about individual words}
+% \begin{itemize}\addtolength{\itemsep}{-1ex}
+% \item Individual lexical items have many idiosyncrasies in
+% where they can occur, and in where they tend to
+% occur.
+% \begin{itemize}
+% \item For example, the verb \textit{behoove} occurs only with the
+% subject it (and only in certain verb forms), and the
+% verb \textit{beware} has only the base form.
+% \item Transitive use of \textit{walk} is much rarer than the intransitive.
+% \end{itemize}
+% \item Lexical biases influence processing
+% \item Wasow et al ran a production experiment to test
+% whether ambiguity avoidance would influence
+% speakers' choice between the following:
+% \begin{exe}
+%   \ex \eng{They gave Grant's letters to Lincoln to a museum.
+%   \ex \eng{ They gave a museum Grant's letters to Lincoln.
+% \end{exe}
+% \item 
+% Lexical bias of the verbs turned out to be a significant
+% predictor of which form speakers used (and ambiguity
+% avoidance turned out not to be).
+% \end{itemize}
+
+% % \myslide{Experimental Method}
+
+% % LISTENER
+
+% % SPEAKER
+
+% % 1. Speaker silently reads a sentence:
+% % A museum in Philadelphia received Grant's
+% % letters to Lincoln from the foundation.
+
+% % \myslide{Experimental Method, continued}
+% % What did the
+% % foundation do?
+
+% % LISTENER
+
+% % SPEAKER
+
+% % 2. The sentence disappears from the screen.
+% % The listener reads the next question from a list.
+
+% % \myslide{Experimental Method, continued}
+% % The foundation gave \ldots . the
+% % museum, um, Grant's letter's
+% % to Lincoln.
+
+% % LISTENER
+
+% % SPEAKER
+
+% % 3. The speaker answers the listener's question.
+% % The listener chooses the correct response on
+% % a list (from two choices).
+
+% % \myslide{Experimental Results on Local Ambiguity}
+% % V-NP-PP bias
+% % V-NP-NP bias
+
+% % 100%
+% % 75%
+% % 50%
+% % 25%
+% % 0%
+
+% % % NP NP
+
+% % No potential local ambiguity
+
+% % Potential local ambiguity
+
+% % \myslide{Reverse ambiguity effect}
+% % \begin{itemize}
+% % \item Arnold, Wasow, Asudeh \& Alrenga 2004
+% % Journal of Memory \& Language
+% % \begin{itemize}
+% % \item Re-ran the experiment with slightly better
+
+% % methodology and found a stronger reverse
+% % ambiguity effect.
+
+
+% \myslide{A psychologically real grammar should be lexicalist}
+% \begin{itemize}
+% %\item Early generative grammars downplayed the lexicon.
+% \item Now the importance of the lexicon is widely
+% recognized.
+% \item This aspect of grammar has been developed in greater
+% detail in HPSG than in any other.
+% \end{itemize}
+
+% \myslide{Conclusion}
+% \begin{itemize}
+% \item Grammatical theory should inform and be informed
+% by psycholinguistic experimentation.
+% \item This has happened less than it should have.
+% \item Existing psycholinguistic evidence favors a
+% constraint-based, lexicalist approach (like ours).
+% \end{itemize}
+
+\myslide{Design Goals of our Model}
+
+\begin{itemize}
+\item Precise
+\item Robust
+\item Psychologically Plausible
+\item Computationally Tractable
+\end{itemize}
+
+
+\myslide{Course overview}
+
+\begin{itemize}
+\item Survey of some phenomena central to 
+syntactic theory
+\item Introduction to the HPSG framework
+\item Process over product: How to build a 
+grammar fragment
+\item Value of precise formulation (and of getting 
+a computer to do the tedious part for you!)
+\end{itemize}
+
+\myslide{Reflection}
+
+\begin{itemize}
+\item What was the most surprising thing in this 
+class?
+\item What do you think is most likely wrong?
+\item What do you think is the coolest result?
+\item What do you think you’re most likely to 
+remember?
+\item How do you think this course will influence 
+your work as a (computational) linguist?
+\end{itemize}
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 16}
+
+\begin{itemize}
+\item Chapter 16 framework (same analyses, 
+different underlying system)
+\item General wrap up
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,779 @@
+\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+\input{headx.tex}
+
+\usepackage{times}
+\usepackage{bchart}
+%\usepackage{pgfplots}
+\avmfont{\sc}
+\begin{document}
+\header{Lecture 10}{Raising and Control}{}
+\maketitle
+
+%
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 12}
+
+\begin{itemize}
+\item Intro to topic
+\item Infinitival \lex{to}
+\item (Subject) raising verbs
+\item (Subject) control verbs
+\item Raising/control in Transformational Grammar
+\item Object raising and object control
+%\item If time: Problem 12.4
+\end{itemize}
+
+\myslide{Where We Are \& Where We’re Going}
+
+\begin{itemize}
+\item In the last two lectures, we have seen a kind of 
+subject sharing -- that is, cases where one NP 
+served as the \ft{spr} for two different verbs.  
+Examples?
+\item Last time, we looked at \txx{dummy} NPs --  that is, 
+non-referential NPs.  Examples?
+\item Today, we’re going to look at the kind of subject 
+sharing we saw with \lex{be} in more detail.
+\item Then we’ll look at another kind of subject 
+sharing, using dummy NPs in differentiating the 
+two kinds.
+\end{itemize}
+
+
+\myslide{What Makes This Topic Different}
+\begin{itemize}
+\item The phenomena we have looked at so far (\txx{agreement},
+  \txx{binding}, \txx{imperatives}, \txx{passives},
+  \txx{existentials}, \txx{extraposition}) are easy to pick out on the
+  basis of their form alone.
+\item In this chapter, we look at constructions with the general form
+  NP-V-(NP)-\lex{to}-VP.  It turns out that they divide into two
+  kinds, differing in both syntactic and semantic properties.
+\end{itemize}
+
+\myslide{The Central Idea}
+
+\begin{itemize}
+\item  \eng{Pat continues to avoid conflict} and 
+\eng{Pat tries to avoid conflict} 
+both have the form NP-V-\lex{to}-VP
+  \begin{itemize}
+  \item But \lex{continue} is semantically a one-place 
+    predicate, expressing a property of a situation 
+    (namely, that it continues to be the case)
+  \item Whereas \lex{try} is semantically a two-place 
+    predicate, expressing a relation between someone 
+    who tries and a situation s/he tries to bring about.
+  \end{itemize}
+\item This semantic difference has syntactic effects.
+\end{itemize}
+
+\myslide{The Status of Infinitival \lex{to}}
+
+
+\begin{itemize}
+\item It’s not obvious what part of speech to assign to \lex{to}.  
+\item It’s not the same as the preposition to:
+  \begin{exe}
+    \ex \eng{Pat aspires to stardom}
+    \ex \eng{Pat aspires to be a good actor}
+    \ex *\eng{Pat aspires to stardom and to be a good actor}
+  \end{exe}
+\item We call it an \txx{auxiliary verb}, because this will make 
+our analysis of auxiliaries a little simpler.
+\end{itemize}
+
+\myslide{The Lexical Entry for Infinitival \lex{to}}
+\begin{center}
+  \begin{small}
+    \begin{avm}
+      \< \textnormal{to}, \[
+      syn &  \[ head & \[ form & base\\
+      inf & $+$ \\
+      aux & $+$ \] \] \\
+      arg-st & \< \@1,
+      \[ head & \[{\tiny \it verb} \\
+      inf & $-$ \\
+      form & base \] \\
+      val & \[ spr & \< \@1 \> \\
+      comps & \< ~ \> \] \\
+      sem & \[ index & s \] \] \> \\
+      sem & \[ index & s \\ restr & \< \> \] \] \>
+    \end{avm}
+  \end{small}
+\end{center}
+\myslide{The Syntax of Infinitival  \lex{to}}
+
+\begin{center}
+  \begin{avm}
+    \[ syn &  \[ head & \[ form & base\\
+    inf & $+$ \\
+    aux & $+$ \] \] \]
+  \end{avm}
+\end{center}
+
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item This makes it a verb, because \ft{aux} is declared on verb
+\item {[\ft{inf}  $+$]} uniquely identifies the infinitival \lex{to}
+\item Verbs select complements with different combinations 
+  of \ft{form} and \ft{inf} values, e.g.
+  \begin{itemize}
+  \item complements of \lex{condescend} are [\ft{form} \val{base}] and [\ft{inf} $+$]
+  \item complements of \lex{should} are [\ft{form} \val{base}] and [\ft{inf} $-$]
+  \item complements of \lex{help} are [\ft{form} \val{base}]
+  \end{itemize}
+\item The meaning of [\ft{aux} $+$] becomes clear in Chapter 13.
+\end{itemize}
+
+\myslide{The Argument Structure}
+\begin{center}
+  \begin{avm}
+     \[ arg-st & \< \@1,
+      \[ head & \[{\tiny \it verb} \\
+      inf & $-$ \\
+      form & base \] \\
+      val & \[ spr & \< \@1 \> \\
+      comps & \< ~ \> \] \\
+      sem & \[ index & s \] \] \> \] 
+  \end{avm}
+\end{center}
+\begin{itemize}
+\item What kind of constituent is the second argument?
+\item The tagging of the first argument and the \ft{spr} of the second 
+argument is exactly like \lex{be}.
+\end{itemize}
+
+\myslide{The Semantics of Infinitival \lex{to}}
+\begin{center} \small
+  \begin{avm}
+     \[ arg-st & \< \@1,
+      \[ head & \[{\tiny \it verb} \\
+      inf & $-$ \\
+      form & base \] \\
+      val & \[ spr & \< \@1 \> \\
+      comps & \< ~ \> \] \\
+      sem & \[ index & \OV{s} \] \] \> \\
+      sem & \[ index & \OV{s} \\ restr & \< \> \] \]
+  \end{avm}
+\end{center}
+
+\begin{itemize}
+\item The \ft{index} value is taken from the \ft{sem} of the second
+  argument.
+\item What is the semantic contribution of \lex{to}?
+\end{itemize}
+
+\myslide{Dummies and \lex{continue}}
+
+\begin{itemize}
+\item Some examples:
+  \begin{exe}
+\ex \eng{There continue to be seats available.}
+\ex \eng{It continues to matter that we lost.}
+\ex \eng{Advantage continues to be taken of the innocent.}
+\ex *\eng{It continues to be seats available.}
+\ex *\eng{There continues to matter that we lost.}
+\ex *\eng{Advantage continues to be kept of the innocent.}
+\end{exe}
+\item Generalization:  Non-referential NPs can appear as the 
+subject of \lex{continue} just in case they could be the subject 
+of the complement of \lex{continue}.
+\end{itemize}
+
+\myslide{A New Type, for Verbs like \lex{continue}}
+
+\begin{center} \small
+\txx{Subject-Raising Verb Lexeme} (\val{srv-lxm}) \\
+  \begin{avm}
+     \[ arg-st & \< \@1,
+      \[ 
+      val & \[ spr & \< \@1 \> \\
+      comps & \< ~ \> \] \\
+      sem & \[ index & \OV{s} \] \] \> \\
+      sem & \[ restr & \< \[ arg & s \] \> \] \]
+  \end{avm}
+\end{center}
+
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The subject sharing is just like for \lex{be} and \lex{to}: the
+  subject of \lex{continue} is also the subject of its complement
+\item  \lex{continue} imposes no other constraints on its subject
+\item The index of the complement must be an argument of the 
+predication introduced by the verb
+\end{itemize}
+
+\myslide{The Lexical Entry for \lex{continue}}
+
+\bigskip
+\begin{center}
+    \begin{avm}
+      \< \textnormal{continue}, \[{\tiny \val{srv-lxm}}\\[-3ex]
+      syn &  \[ arg-st & \< X,
+                  VP \[ inf & $+$  \]  \] \> \\
+      sem & \[ index & s$_1$ \\ 
+               restr & \< \[ reln & \textbf{continue} \\ 
+                             sit & s$_1$ \] \> \] \] \>
+    \end{avm}
+\end{center}
+
+
+
+\myslide{\lex{continue} with Inherited Information}
+
+\begin{center}
+  \begin{small}
+    \begin{avm}
+      \< \textnormal{continue}, \[{\tiny \val{srv-lxm}}\\[-3ex]
+      syn &  \[ head & \[{\tiny \val{verb}} \\
+      pred & $-$ \\
+      inf & $-$ \\
+      agr & \@2 \] \] \\
+      arg-st & \< \@1 \[ head & \val{nominal}\\
+                         val &  \[ spr \< \>  & comps \< \> \]  \],
+                  VP \[ inf & $+$ \\ spr  & \< \@1 \> \\ index & s$_2$ \]
+      \> \\
+      sem & \[ mode & prop \\ index & s$_1$ \\ 
+               restr & \< \[ reln & \textbf{continue} \\ 
+                             sit & s$_1$ \\ arg & s$_2$  \] \> \] \] \>
+    \end{avm}
+  \end{small}
+\end{center}
+
+
+\myslide{Key Property of Subject-Raising Verbs}
+
+The subject plays no semantic role in the predication introduced by
+the \txx{SRV} itself.  Its semantic role (if any) is only in the
+predication introduced in the complement.
+
+\begin{center}
+  \begin{small}
+    \begin{avm}
+      \< \textnormal{continue}, \[{\tiny \val{srv-lxm}}\\[-3ex]
+      arg-st & \< \OV{\@1} \[ head & \val{nominal}\\
+                         val &  \[ spr \< \>  & comps \< \> \]  \],
+                  VP \[ inf & $+$ \\ spr  & \< \OV{\@1} \> \\ 
+                        index & \OVB{s$_2$} \]
+      \> \\
+      sem & \[ mode & prop \\ index & s$_1$ \\ 
+               restr & \< \[ reln & \textbf{continue} \\ 
+                             sit & s$_1$ \\ arg & \OVB{s$_2$}  \] \> \] \] \>
+    \end{avm}
+  \end{small}
+\end{center}
+
+
+\myslide{Constraints on SRV's subjects are from their complements}
+
+\begin{itemize}
+\item SRVs take dummy subjects when and only when their 
+complements do.
+\item SRVs take idiom chunk subjects when and only when their 
+complements do.
+\item Passivizing the complement of an SRV doesn’t change the 
+truth conditions of the whole sentence:
+\begin{exe}
+\ex \eng{Skeptics continue to question your hypothesis} 
+\ex \eng{Your hypothesis continues to be questioned by skeptics}
+\end{exe}
+\end{itemize}
+
+\myslide{\lex{continue} with active complement}
+
+\begin{center} 
+  \scalebox{0.7}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_i$}{\lf{Skeptics}}
+      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+        \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{continue}}
+        \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{\br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{to}}
+                \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+                  \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{question}}
+                  \br{NP$_j$}{\tlf{your hypothesis}}}}}}
+
+\end{avmtree}}
+\end{center}
+
+\scalebox{0.7}{\raisebox{8ex}[0ex][0ex]{\small \begin{avm}
+  \[ restr & \avmbox{A} \< \[ reln & \textbf{question} \\ doubter & i \\ doubted & j\], 
+  \ldots \> \]
+\end{avm}}}
+
+
+
+\myslide{\lex{continue} with passive complement}
+\begin{center} 
+  \scalebox{0.55}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_j$}{\tlf{Your hypothesis}}
+      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+        \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{continue}}
+        \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+          \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{to}}
+          \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+            \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{be}}
+            \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+              \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{questioned}}
+              \br{NP$_i$}{\br{P$_i$}{\lf{by}}
+                \br{NP$_i$}{\br{NOM$_i$}{\lf{skeptics}}}}}}}}}
+
+\end{avmtree}}
+\end{center}
+\scalebox{0.7}{\raisebox{8ex}[0ex][0ex]{\small \begin{avm}
+  \[ restr & \avmbox{A} \< \[ reln & \textbf{question} \\ doubter & i \\ doubted & j\], 
+  \ldots \> \]
+\end{avm}}}
+
+
+\myslide{Control Verbs}
+
+\begin{itemize}
+\item Control verbs, like \lex{try}, appear in contexts that 
+look just like the contexts for raising verbs:
+\begin{xlisti}
+\ex \eng{Pat tried to stay calm}
+\trans looks superficially like
+\ex \eng{Pat continued to stay calm}
+\end{xlisti}
+\item Control verbs also share their subjects with their 
+complements, but in a different way.
+\item A control verb expresses a relation between the 
+referent of its subject and the situation denoted by 
+its complement.
+\end{itemize}
+
+\myslide{Control Verbs Are Not Transparent }
+
+
+\begin{itemize}
+\item They never take dummies or idiom chunks as 
+  subjects.
+  \begin{xlisti}
+    \ex *\eng{There try to be bugs in my program}
+    \ex *\eng{It tries to upset me that the Giants lost}
+    \ex *\eng{Advantage tries to be taken of tourists}
+  \end{xlisti}
+\item Passivizing the complement’s verb changes the truth 
+conditions.
+\begin{xlisti}
+    \ex \eng{The police tried to arrest disruptive demonstrators}
+    \trans $\not=$
+    \ex \eng{Disruptive demonstrators tried to be arrested by the police}
+  \end{xlisti}
+\end{itemize}
+
+\myslide{A New Type}
+\begin{center} \small
+\txx{Subject-Control Verb Lexeme} (\val{scv-lxm})\\
+  \begin{avm}
+     \[ arg-st & \< NP$_i$,
+      \[ 
+      val & \[ spr & \< NP$_i$ \> \\
+      comps & \< ~ \> \] \\
+      sem & \[ index & \OV{s} \] \] \> \\
+      sem & \[ restr & \< \[ arg & s \] \> \] \]
+  \end{avm}
+\end{center}
+
+\begin{itemize}\addtolength{\itemsep}{-2ex}
+\item This differs from \val{srv-lxm} in that the first argument and the
+   \ft{spr} of the second argument are coindexed, not tagged (re-entrant). 
+\item This means that they only need to share \ft{index} values, but may
+   differ on other features
+\item And the first argument -- the subject -- must have an \ft{index}
+  value, so it cannot be non-referential
+\end{itemize}
+
+\myslide{The lexical entry for \lex{try}}
+
+\bigskip
+\begin{center}
+    \begin{avm}
+      \< \textnormal{try}, \[{\tiny \val{scv-lxm}}\\[-3ex]
+      syn &  \[ arg-st & \< NP$_i$,
+                  VP \[ inf & $+$  \]  \] \> \\
+      sem & \[ index & s$_1$ \\ 
+               restr & \< \[ reln & \textbf{try} \\ 
+                             sit & s$_1$ \\
+                             trier & i \] \> \] \] \>
+    \end{avm}
+\end{center}
+
+
+Note that the subject (NP$_i$) plays a semantic role with 
+respect to the verb, namely the \ft{trier}.
+
+\myslide{\lex{try} with Inherited Information}
+
+\begin{tabular}[t]{cc}
+\begin{minipage}{0.5\linewidth}
+  \footnotesize
+    \begin{avm}
+      \< \textnormal{try}, \[{\tiny \val{scv-lxm}}\\[-3ex]
+      syn &  \[ head & \[{\tiny \val{verb}} \\
+      pred & $-$ \\
+      inf & $-$ \\a
+      agr & \@1 \] \] \\
+      arg-st & \< NP$_i$,
+                  VP \[ inf & $+$ \\ spr  & \< NP$_i$ \> \\ index & s$_2$ \]
+      \> \\
+      sem & \[ mode & prop \\ index & s$_1$ \\ 
+               restr & \< \[ reln & \textbf{try} \\ 
+                             sit & s$_1$ \\ 
+                             arg & s$_2$\\
+                             trier & i  \] \> \] \] \>
+    \end{avm}
+  \end{minipage}
+  &
+\begin{minipage}{0.4\linewidth}
+\small
+Things to Note:
+\begin{itemize}
+\item The first argument has an index
+\item The first argument is coindexed with \ft{spr} of the second argument
+\item Both the first and  second arguments play 
+semantic roles in the \prd{try} relation
+\item Very little had to be stipulated in the entry 
+\end{itemize}
+\end{minipage}
+\end{tabular}
+
+\myslide{Questions}
+\begin{itemize}
+\item What rules out dummies and idiom chunks as 
+subjects of \lex{try}?
+\item What accounts for the semantic non-equivalence of 
+pairs like the following?
+\begin{xlisti}
+  \ex \eng{Reporters tried to interview the candidate}
+  \ex \eng{The candidate tried to be interviewed by reporters}
+\end{xlisti}
+\item Why does \lex{continue} behave differently in these 
+respects?
+\end{itemize}
+
+\myslide{\lex{try} with an active complement}
+
+\begin{center} 
+  \scalebox{0.7}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_i$}{\tlf{The police}}
+      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+        \br{V \[ \ft{spr} \< \avmbox{1}$_i$ \> \]}{\lf{tried}}
+        \br{VP \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{\br{V \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{\lf{to}}
+                \br{VP \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{
+                  \br{V \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{\lf{arrest}}
+                  \br{NP$_j$}{\tlf{the suspects}}}}}}
+\end{avmtree}}
+\end{center}
+
+\scalebox{0.7}{\raisebox{12ex}[0ex][0ex]{\small \begin{avm}
+  \[ restr & \avmbox{A} \< 
+  \[ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & i \\ tried & s$_2$ \], \\
+  \[ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j\]
+  \ldots \> \]
+\end{avm}}}
+
+
+
+\myslide{\lex{try} with passive complement}
+\begin{center} 
+  \scalebox{0.55}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_j$}{\tlf{The suspects}}
+      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
+        \br{V \[ \ft{spr} \< \avmbox{1}$_j$ \> \]}{\lf{tried}}
+        \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
+          \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{to}}
+          \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
+            \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{be}}
+            \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
+              \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{arrested}}
+              \br{NP$_i$}{\br{P$_i$}{\lf{by}}
+                \br{NP$_i$}{\br{NOM$_i$}{\tlf{the police}}}}}}}}}
+
+\end{avmtree}}
+\end{center}
+\scalebox{0.7}{\raisebox{22ex}[0ex][0ex]{\small \begin{avm}
+  \[ restr & \avmbox{A} \< 
+  \[ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & \OV{j} \\ tried & s$_2$ \], \\
+  \[ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j\]
+  \ldots \> \]
+\end{avm}}}
+
+
+\myslide{ARG-ST of raising vs control verbs}
+\bigskip
+
+\begin{center}
+\begin{tabular}{cc}
+  \begin{avm}
+    \< NP$_i$,\ \ 
+    VP \[ inf & $+$ \\ spr  & \< NP$_i$ \> \\ index & s$_2$ \]
+    \> 
+  \end{avm}& 
+  \begin{avm}
+    \< \@1 NP,\ \ 
+    VP \[ inf & $+$ \\ spr  & \< \@1 \> \\ index & s$_2$ \]
+    \> 
+  \end{avm} \\
+  \\[2ex]
+  \txx{Control} & \txx{Raising}
+\end{tabular}
+\end{center}
+
+
+
+\myslide{Raising \& Control in Transformational Grammar}
+
+
+\begin{itemize}
+\item Raising
+  \begin{exe}
+    \ex    \eng{\rnode{A}{\rule{4em}{1pt}} continue [\rnode{B}{\ul{the dogs}} to bark]}
+    
+     \ncbar[offsetB=4pt,angleA=-90,nodesep=3pt]{<-}{A}{B}
+  \end{exe}
+\item Control
+  \begin{exe}
+    \ex \eng{[the dogs]$_i$ try [NP$_i$  to bark]}
+  \end{exe}
+  \begin{itemize}
+  \item In early TG, the NP got deleted.
+  \item In more recent TG, it’s a silent pronoun.
+  \end{itemize}
+\end{itemize}
+
+\myslide{Problems with the TG Accounts}
+
+
+\begin{itemize}
+\item Details never fully worked out (e.g. where does \lex{to}
+come from?)
+
+\item What blocks 
+  \begin{xlisti}
+    \ex *\eng{The cat continued (for) the dog to bark}
+    \ex *\lex{The cat tried (for) the dog to bark}?
+
+  \end{xlisti}
+
+\item Failure of experimental attempts to find evidence for 
+psychological reality of these transformations.
+\end{itemize}
+
+\myslide{We make another raising/control distinction}
+
+\begin{exe}
+  \ex 
+  \begin{xlist}
+    \ex \eng{I \ul{expected} Leslie to be aggressive.} \hfill \val{orv}
+    \ex \eng{I \ul{persuaded} Leslie to be aggressive.} \hfill \val{ocv}
+  \end{xlist}
+\end{exe}
+
+\begin{center} \small
+  \begin{tabular}{cc}
+\txx{Object-Raising Verb Lexeme} (\val{orv-lxm}) &
+\txx{Object-Control Verb Lexeme} (\val{ocv-lxm}) \\
+  \begin{avm}
+     \[ arg-st & \< NP, \@1,
+                   \[ spr   & \< \@1 \> \\
+                      comps & \< ~ \> \\
+                      index & \OV{s}  \] \> \\
+      sem & \[ restr & \< \[ arg & s \] \> \] \]
+  \end{avm}
+&    \begin{avm}
+      \[ arg-st & \< NP, NP$_i$,
+                     \[  spr & \< NP$_i$ \> \\
+                        comps & \< ~ \> \\
+                        index & \OV{s}  \] \> \\
+       sem & \[ restr & \< \[ arg & s \] \> \] \]
+   \end{avm}
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item The formal distinction is again between tagging and coindexing
+\item This time it’s the second argument and the \ft{spr} of the third
+  argument.
+\end{itemize}
+
+\myslide{Example \typ{orv-lxm} and \typ{ocv-lxm Entries}}
+
+\begin{center} \small
+  \begin{tabular}{cc}
+\txx{Object-Raising Verb Lexeme} (\val{orv-lxm}) &
+\txx{Object-Control Verb Lexeme} (\val{ocv-lxm}) \\
+  \begin{avm} \tiny
+     \< \textnormal{expect}, \ 
+     \[\val{\tiny orv-lxm} \\
+     arg-st & \< NP$_j$, X, VP \[ inf & $+$ \] \> \\
+      sem & \[ index & s \\
+               restr & \< \[ reln & \prd{expect} \\
+                             sit & s \\
+                             expecter & j  \] \> \] \] \>
+  \end{avm}
+& \begin{avm} \tiny
+     \< \textnormal{persuade}, \ 
+     \[\val{\tiny orv-lxm} \\
+     arg-st & \< NP$_j$, NP$_i$, VP \[ inf & $+$ \] \> \\
+      sem & \[ index & s \\
+               restr & \< \[ reln & \prd{persuade} \\
+                             sit & s \\
+                             persuader & j\\
+                             persuadee & i \] \> \] \] \>
+  \end{avm} 
+\end{tabular}
+\end{center}
+
+
+
+\begin{itemize}
+\item Note that the \val{orv-lxm} \prd{persuade} relation has three arguments,
+  but the \prd{expect} relation has only two
+\item And the object’s \ft{index} plays a role in the \prd{persuade} relation,
+  but not in the \prd{expect} relation
+\end{itemize}
+
+% \myslide{Justifying the difference between expect and persuade (Prob. 12.4)}
+
+% Construct examples of each of the following four 
+% types which show a contrast between expect and 
+% persuade:
+% \begin{enumerate}
+% \item Examples with dummy \lex{there}
+% \item Examples with dummy \lex{it}
+% \item Examples with idiom chunks
+% \item Examples of relevant pairs of sentences containing 
+% active and passive complements.  Indicate whether 
+% they are or are not paraphrases of each other. 
+% \end{enumerate}
+
+\myslide{P1: Classifying Verbs}
+\MyLogo{Based on  Chapter 12, Problem 1, Sag, Wasow and Bender (2003)}
+
+\noindent Classify the following verbs as raising or control:
+%Give as many distinct tests as you can to justify your
+%classifications, constructing three or four interestingly different
+%examples for each verb.
+
+\begin{itemize}
+\item \lex{tend, decide, manage, fail, happen}
+\end{itemize}
+
+\noindent
+Justify your classification by applying each of the following four
+tests to each verb.  Show your work by providing relevant examples
+and indicating their grammaticality. 
+
+\begin{itemize} 
+\item[(i)] Can the verb take a  dummy \lex{there} subject if and only if its complement selects for a dummy \lex{there} subject?
+
+\item[(ii)] Can the verb take a dummy \lex{it} subject if and only if
+  its complement selects for a dummy \lex{it} subject?
+
+\item[(iii)] Can the verb take an idiom chunk subject if and only
+if the rest of the idiom is in its complement?
+
+\item[(iv)] Do pairs of sentences containing active and 
+passive complements to the verb end up being  paraphrases 
+of each other?
+\end{itemize}
+
+\noindent
+Make sure to restrict your attention to cases of the form: \hbox{NP V
+  {\it to} VP}. That is, ignore cases like \eng{Kim manages a store},
+\eng{Alex failed physics}, and any other valence that doesn't resemble
+the \lex{continue} vs.\ \lex{try} pattern.
+
+\myslide{P2: Classifying \index{adjective}Adjectives}
+\MyLogo{Based on  Chapter 12, Problem 2, Sag, Wasow and Bender (2003)}
+Classify the following adjectives as \index{raising!adjective}raising or 
+\index{control!adjective}control:
+%Justify your classifications, constructing three or four
+%interestingly different relevant examples for each adjective.
+
+\begin{itemize}
+\item \lex{ anxious, apt, bound, certain, lucky}
+\end{itemize}
+
+\noindent
+Justify your classification by providing each of the four types
+of data discussed in the previous problem for each adjective.
+
+Make sure to restrict your attention to cases of the form: \hbox{NP
+  \lex{be} Adj \lex{to} VP}. That is, ignore cases like \eng{Kim is
+  anxious about the exam}, \eng{Carrie is certain of the answer}, and
+any other valence that doesn't resemble the \lex{likely} vs.\
+\lex{eager} pattern.
+
+\myslide{P3: \lex{expect} vs.\ \lex{persuade}}
+\MyLogo{Based on  Chapter 12, Problem 4, Sag, Wasow and Bender (2003)}
+
+Construct the arguments that underlie the proposed distinction between
+\typ{orv-lxm} and \typ{ocv-lxm}.
+
+Construct examples of each of the following four types which 
+show a contrast between \lex{expect} and \lex{persuade}.  Explain how
+the contrasts are accounted for by the differences in the types
+\typ{orv-lxm} and \typ{ocv-lxm} and/or the lexical entries for \lex{expect}
+and \lex{persuade}.
+
+\begin{itemize} \addtolength{\itemsep}{-1ex}
+\item[(i)] Examples with dummy \lex{there}.
+
+\item[(ii)] Examples with dummy \lex{it}.
+
+\item[(iii)] Examples with idiom chunks.
+
+\item[(iv)] Examples of relevant pairs of sentences containing 
+active and passive complements.  Indicate whether they are or are
+not paraphrases of each other.
+\end{itemize}
+
+
+
+% \noindent Again, make sure you ignore all irrelevant uses of
+% these verbs, including cases of 
+% %finite 
+% CP complements, e.g.\ \eng{persuade NP that ...} or
+% \eng{expect that ...} and anything else not directly relevant (\eng{I
+%   expect to go}, \eng{I am expecting Kim}, \eng{She is expecting}, and
+% so forth).
+
+\myslide{P4: A Type for Existential \lex{be}}
+\MyLogo{Based on  Chapter 12, Problem 6, Sag, Wasow and Bender (2003)}
+
+The \lex{be} that takes \lex{there} as its subject wasn't given a true
+lexical type in Chapter 11 (Sag, Wasow and Bender, 2003), because no
+suitable type had been introduced.  One of the types in this chapter
+will do, if we make some of its constraints defeasible.
+
+\begin{itemize}
+\item[A.] Which of the types introduced in this chapter comes
+closest to being consistent with the constraints on \lex{there}-taking
+\lex{be}?
+\item[B.] Rewrite that type indicating which constraints must
+be made defeasible.
+\item[C.] Give a stream-lined lexical entry for the \lex{there}-taking
+\lex{be} which stipulates only those constraints which are truly
+idiosyncratic to the lexeme.
+\end{itemize}
+
+
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 12}
+\begin{itemize}
+\item Intro to topic
+\item Infinitival \lex{to}
+\item (Subject) raising verbs
+\item (Subject) control verbs
+\item Raising/control in TG
+\item Object raising and object control
+\end{itemize}
+
+
+
+\input{lec-10-control-q}
+
+\end{document}

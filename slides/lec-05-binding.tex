@@ -1,0 +1,749 @@
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+
+\input{headx.tex}
+
+\avmfont{\sc}
+\begin{document}
+\avmfont{\it}
+
+\header{Lecture 5}{Binding Theory}{}
+\maketitle
+
+
+\myslide{Overview}
+\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 7}
+\begin{itemize}
+\item What we are trying to do
+\item Last week: Semantics
+\item Review of Chapter 1's informal binding theory
+\item What we already have that’s useful
+\item What we add in Ch 7 (ARG-ST, ARP)
+\item Formalized Binding Theory
+\item Binding and PPs
+\item Imperatives
+\end{itemize}
+
+
+
+\myslide{What We’re Trying To Do}
+\begin{itemize}
+\item Objectives
+\begin{itemize}
+\item Develop a theory of knowledge of language
+\item Represent linguistic information explicitly enough to
+distinguish well-formed from ill-formed expressions
+\item Be parsimonious, capturing linguistically significant
+generalizations.
+\end{itemize}
+\item Why Formalize?
+\begin{itemize}
+\item To formulate testable predictions
+\item To check for consistency
+\item To make it possible to get a computer to do it for us
+\end{itemize}
+\end{itemize}
+
+\myslide{How We Construct Sentences}
+\begin{itemize}
+\item The Components of Our Grammar
+\begin{itemize}
+\item Grammar rules
+\item Lexical entries
+\item Principles
+\item Type hierarchy (very preliminary, so far)
+\item Initial symbol (S, for now)
+\end{itemize}
+\item We combine constraints from these components.
+%\item Q: What says we have to combine them?
+\item More in \url{hpsg.stanford.edu/book/slides/Ch6a.pdf}, 
+\\ \url{hpsg.stanford.edu/book/slides/Ch6b.pdf}
+\end{itemize}
+
+\section{Review of Semantics}
+
+\myslide{Overview}
+\begin{itemize}
+\item Which aspects of semantics we’ll tackle
+\item Semantics Principles
+\item Building semantics of phrases
+\item Modification, coordination
+\item Structural ambiguity
+\end{itemize}
+
+
+\myslide{Our Slice of a World of Meanings}
+
+Aspects of meaning we \emp{won’t} account for (in this course)
+\begin{itemize}
+\item Pragmatics
+\item Fine-grained lexical semantics
+  \\ The meaning of \eng{life} is
+  \begin{itemize}\addtolength{\itemsep}{2ex}
+  \item \iz{life}  
+or 
+\textsf{life}$'$
+or
+  \begin{avm}\avmfont{\sc}%\avmvalfont{\it}
+    \[ reln & life \\ inst & i \]
+  \end{avm}
+\item Not like wordnet: 
+\iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
+
+ % -- (a characteristic state or mode of living; "social life"; "city life"; "real life")
+ %       => being, beingness, existence -- (the state or fact of existing; "a point of view gradually coming into being"; "laws in existence for centuries")
+ %           => state -- (the way something is with respect to its main attributes; "the current state of knowledge"; "his state of health"; "in a weak financial state")
+ %               => attribute -- (an abstraction belonging to or characteristic of an entity)
+ %                   => abstraction, abstract entity -- (a general concept formed by extracting common features from specific examples)
+ %                       => entity -- (that which is perceived or known or inferred to have its own distinct existence (living or nonliving))
+ \end{itemize}
+\item Quantification \hfill (covered lightly in the book)
+\item Tense, Mood, Aspect \hfill (covered in the book)
+ \end{itemize}
+
+
+% RELN life
+% INST i
+
+\myslide{Our Slice of a World of Meanings}
+\begin{avm}\avmfont{\sc}
+\[mode &  prop \\
+ index &  $s$\\
+ restr & \< \[ RELN & {\bf save}\\
+               SIT & $s$\\
+              SAVER &  $i$\\
+              SAVED &  $j$ \] \ , 
+              \[RELN & {\bf name}\\ 
+              NAME &  Chris\\
+              NAMED & \ $i$\]\ , 
+              \[RELN & {\bf name}\\
+              NAME &  Pat\\
+              NAMED & \ $j$\] \> \]
+\end{avm} 
+\begin{quote}
+  “\ldots the linguistic meaning of \eng{Chris saved Pat} is a proposition
+  that will be true just in case there is an actual situation that
+  involves the saving of someone named Pat by someone named Chris.”
+  \begin{flushright}
+    (Sag \textit{et al}, 2003, p. 140)
+  \end{flushright}
+\end{quote}
+
+\myslide{Semantics in Constraint-Based Grammar}
+\begin{itemize}
+\item Constraints as (generalized) truth conditions
+  \begin{itemize}
+\item \txx{proposition}: what must be the case for a proposition to be true
+\item \txx{directive}: what must happen for a directive to be fulfilled
+\item \txx{question}: the kind of situation the asker is asking about
+\item \txx{reference}: the kind of entity the speaker is referring to
+\end{itemize}
+\item \txx{Syntax/semantics interface}: 
+  \begin{quote}
+    Constraints on how syntactic arguments are related to semantic
+    ones, and on how semantic information is compiled from different
+    parts of the sentence.
+  \end{quote}
+\end{itemize}
+
+\myslide{Feature Geometry}
+\begin{avm}\avmfont{\sc}
+\[\asort{expression}
+syn & \[ \asort{syn-cat}
+      head & \[ \asort{pos} ... \] \\
+      val & \[ spr & \q< ... \q> \\
+               comps & \q< ... \q> \]\]\\
+      sem & \[ \asort{sem-cat}
+      mode &  \q\{ prop, ques, dir, ref, none \q\} \\
+      index &  \q\{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \q\} \\
+      restr & \q< ... \q> \]\]
+ \end{avm}
+
+
+
+% \myslide{How the Pieces Fit Together}
+% \begin{avm}\avmfont{\sc}
+%   \< \eng{Kim}, \[syn & \[head & \[{\it noun}\\
+%   agr & {\it 3sing}\]\\
+%   val & \[spr & {\el}\\
+%   comps & {\el}\]\]\\
+%   sem & \[mode & ref\\
+%   index & \ \ $i$\\
+%   restr & \< \[reln & {\bf name}\\
+%   % sit & \ \ $s$\\
+%   name & Kim\\
+%   named & \ \ $i$\] \> \]\] \>  %
+% \end{avm}
+% \myslide{How the Pieces Fit Together}
+% \begin{avm}\avmfont{\sc}
+% \< \eng{sleep} ,\ \[syn & \[head & {\it verb}\\
+%                                      val & \[spr & \q< NP$_i$ \q>\\
+%                                      comps & \q<  \q>\]\]\\
+%                             sem & \[mode & prop\\
+%                                     index & $s$\\
+%                                     restr & \< \[reln & {\bf sleep}\\
+%                                                  sit & \ \ $s$\\
+%                                                  sleeper & \ \ $i$  \] \>\]\] \>
+%                                         \end{avm}
+% \myslide{The Pieces Together}
+
+% \begin{avmtree}\avmfont{\sc}
+%   \br{S}{
+%     \br{\@{1} NP  \[ sem & \[ index & $i$ \] \] }{\lf{\eng{Kim}}}
+%     \br{VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
+%       sem & \[ mode & prop\\
+%       index & $s$\\
+%       restr & \< \[reln & {\bf sleep}\\
+%       sit & \ \ $s$\\
+%       sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
+% \end{avmtree}
+
+
+\myslide{An Example}
+\scalebox{0.8}{\begin{avmtree}\avmfont{\sc}
+  \br{S  \[ sem & \[ mode & prop \\ index & $s$\\
+      restr & \< \[reln & {\bf name}\\
+      name & \ \ Kim \\
+      named & \ \ $i$ \],
+      \[reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  \]  \>  \] \] }{
+    \br{\@{1} NP  \[ sem & \[ mode & ref \\ index & $i$\\
+      restr & \< \[reln & {\bf name}\\
+      name & \ \ Kim \\
+     named & \ \ $i$ \] \>  \] \] }{\lf{\eng{Kim}}}
+    \br{\HD VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
+      sem & \[  mode & prop \\ index & $s$ \\ 
+      restr & \< \[reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
+\end{avmtree}}
+
+
+\myslide{How to Share Semantic Information}
+\MyLogo{List summation: $\oplus$ (technically concatenation)} 
+\begin{itemize}
+\item \txx{The Semantic Inheritance Principle}
+  \begin{quote}
+    In any headed phrase, the mother's \ft{mode} and
+    \ft{index} are identical to those of the head daughter.    
+  \end{quote}
+\item \txx{The Semantic Compositionality Principle}
+  \begin{quote}
+    In any well-formed phrase structure, the mother's
+    \ft{restr} value is the sum of the \ft{restr} values of
+    the daughters.
+  \end{quote}
+\end{itemize}
+
+\myslide{Where is the information}
+\MyLogo{}
+\begin{itemize}
+\item Words
+  \begin{itemize}
+  \item Contribute predications
+  \item ‘expose’ one index in those predications, for use by words or phrases
+  \item relate syntactic arguments to semantic arguments
+  \end{itemize}
+\item Rules
+\begin{itemize}
+\item Identify (link) feature structures across daughters
+\item License trees which are subject to the semantic principles
+  \begin{itemize}
+  \item SIP: ‘passes up’ \ft{mode} and \ft{index} from head daughter
+  \item SCP: ‘gathers up’ predications (\ft{restr} list) from all daughters
+  \end{itemize}
+\end{itemize}
+\item The semantics is strictly compositional --- all of the meaning
+  comes from the words, rules and principles.
+\end{itemize}
+
+\section{Binding}
+
+
+\myslide{Some Examples from Chapter 1}
+
+\begin{exe}
+\ix She likes herself
+\ix *She$_i$ likes her$_i$.
+\ix We gave presents to ourselves.
+\ix *We gave presents to us.
+\ix We gave ourselves presents
+\ix *We gave us presents.
+\ix *Leslie told us about us.
+\ix Leslie told us about ourselves.
+\ix *Leslie told ourselves about us.
+\ix *Leslie told ourselves about ourselves.
+\end{exe}
+
+\myslide{Some Terminology}
+\begin{itemize}
+\item \txx{Binding}: The association between a pronoun
+and an antecedent.
+\item \txx{Anaphoric}: A term to describe an element (e.g.
+a pronoun) that derives its interpretation from
+some other expression in the discourse.
+\item \txx{Antecedent}: The expression an anaphoric
+expression derives its interpretation from.
+\item \txx{Anaphora}: The relationship between an
+anaphoric expression and its antecedent.
+\end{itemize}
+
+\myslide{The Chapter 1 Binding Theory Reformulated}
+\begin{itemize}
+\item Old Formulation:
+\begin{itemize}
+\item A reflexive pronoun must be an argument of a verb that
+has another preceding argument with the same reference.
+\item A nonreflexive pronoun cannot appear as an argument of
+a verb that has a preceding coreferential argument.
+\end{itemize}
+\item New Formulation(version I):
+\begin{itemize}
+\item \txx{Principle A}: A reflexive pronoun must be
+bound by a preceding argument of the same verb.
+\item \txx{Principle B}: A nonreflexive pronoun may not
+be bound by a preceding argument of the same verb.
+\end{itemize}
+\item Opaque names come from Chomsky (1981)
+\end{itemize}
+
+\myslide{Some Challenges}
+\begin{itemize}
+\item Replace notions of \emp{bound} and \emp{preceding
+argument of the same verb} by notions
+definable in our theory.
+\item Generalize the Binding Principles to get
+better coverage.
+\end{itemize}
+
+
+\myslide{How can we do this?}
+\begin{itemize}
+\item[Q]  What would be a natural way to formalize
+the notion of “bound” in our theory?
+\item[A] Two expressions are bound if
+they have the same \ft{index} value (“are
+coindexed”).
+\item[Q] Where in our theory do we have information
+about a verb’s arguments?
+\item[A] In the verb’s \ft{valence} features.
+\item[Q] What determines the linear ordering of a
+verb’s arguments in a sentence?
+\item[A] The interaction of the grammar
+rules and the ordering of elements in the
+\ft{comps} list.
+\end{itemize}
+
+\myslide{The Argument Realization Principle}
+\begin{itemize}
+\item For Binding Theory, we need a single list with both subject
+and complements.
+\item We introduce a feature ARG-ST, with the following
+property: \\
+\begin{avm}\avmfont{\sc} 
+\[ \asort{word}  
+ syn & \[ val & \[ spr &  \@{A} \\comps &  \@{B} \] \] \\
+ arg-st & \< \@{A} $\oplus$ \@{B} \> \]
+\end{avm}
+
+\item This is a constraint on the type \val{word}
+\end{itemize}
+
+\myslide{Notes on \ft{arg-st}}
+\begin{itemize}
+\item It’s neither in \ft{syn} nor \ft{sem}.
+\item It only appears on lexical heads (not
+appropriate for type phrase)
+\item No principle stipulates identity
+between \ft{arg-st}s.
+\end{itemize}
+
+\myslide{The Binding Principles}
+\begin{itemize}
+\item \txx{Principle A}: A [\ft{mode} \val{ana}] element must be
+outranked by a coindexed element.
+\item \txx{Principle B}: A [\ft{mode} \val{ref}] element must not
+be outranked by a coindexed element.
+\end{itemize}
+
+\begin{description}
+\item [Formalization] ~\\[-2ex]
+\begin{itemize}
+\item Definition: If A precedes B on some \ft{arg-st} list,
+then A \txx{outranks} B.
+\item Elements that must be anaphoric --- that is, that
+require an antecedent --- are lexically marked
+[\ft{mode} \val{ana}]. These include reflexive pronouns
+and reciprocals.
+\end{itemize}
+\end{description}
+
+\myslide{Pronoun-Antecedent Agreement}
+\begin{itemize}
+\item The Binding Principles by themselves don’t block:
+  \begin{exe}
+    \ix * I amused yourself.
+    \ix * He amused themselves.
+    \ix * She amused himself.
+  \end{exe}
+\item Coindexed NPs refer to the same entity, and \ft{agr} features
+generally correlate with properties of the referent.
+\item The \txx{Anaphoric Agreement Principle} (AAP):
+Coindexed NPs agree.
+\end{itemize}
+
+\myslide{Binding in PPs}
+\begin{itemize}
+\item What do the Binding Principles predict about the
+following?
+\item The Binding Principles by themselves don’t block:
+  \begin{exe}
+    \ix I brought a book with me.
+    \ix *I brought a book with myself.
+    \ix *I mailed a book to me.
+    \ix I mailed a book to myself.
+  \end{exe}
+\end{itemize}
+
+\myslide{Two Types of Prepositions: the Intuition}
+\begin{itemize}
+\item \txx{Argument-marking}: Function like casemarkers in other languages, indicating the
+roles of NP referents in the situation denoted by the verb.
+\item \txx{Predicative}: Introduce their own predication.
+\end{itemize}
+
+\begin{description}
+\item [Formalization] ~\\[-2ex]
+  \begin{itemize}
+  \item Argument-marking prepositions share their
+    objects' \ft{mode} and \ft{index} values.
+    \begin{itemize}
+    \item This is done with tagging in the lexical
+      entries of such prepositions.
+    \item These features are also shared with the PP
+      node, by the Semantic Inheritance Principle.
+    \end{itemize}
+  \item Predicative prepositions introduce their own
+\ft{mode} and \ft{index} values.
+\end{itemize}
+\end{description}
+
+\myslide{Redefining Rank}
+ \begin{itemize}
+\item If there is an \ft{arg-st} list on which A
+precedes B, then A outranks B.
+\item If a node is coindexed with its daughter, they
+are of equal rank -- that is, they outrank the
+same nodes and are outranked by the same
+nodes.
+\end{itemize}
+
+\myslide{\eng{I sent a letter to myself}}
+
+\begin{avmtree}\avmfont{\sc} 
+\br{S}{
+  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
+  \br{VP \[ \q< \@1 \q> \]}{ 
+    \br{V \[ spr & \q< \@1 \q> \\
+             comps & \q< \@2, \@3 \q> \\ 
+             arg-st & \q< \@1, \@2, \@3 \q> \]}{
+      \lf{\eng{sent}}}
+    \br{\@2 NP$_j$}{
+      \br{D}{\lf{\eng{a}}}
+      \br{N$_j$}{\lf{\eng{letter}}}}
+    \br{\@3 PP$_i$}{
+      \br{P$_i$}{\lf{\eng{to}}}
+      \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{myself}}}}
+}}
+\end{avmtree}
+
+
+
+
+\myslide{The ARG-ST}
+\begin{center}
+  \begin{avm}\avmfont{\sc} 
+\[  arg-st & \< 
+NP$_i$ \[ mode & ref \],
+NP$_j$ \[ mode & ref \],
+PP$_i$ \[ mode & ana \]
+\> \]
+\end{avm}
+\end{center}
+\begin{itemize}
+\item The PP is outranked by the first NP. (Why?)
+\item \eng{myself} has the same rank as the PP. (Why?)
+\item So, \eng{myself} is outranked by the first NP. (Why?)
+\item Therefore, Principle A is satisfied.
+\end{itemize}
+
+\myslide{\eng{*I sent a letter to me}}
+\begin{avmtree}\avmfont{\sc} 
+  \br{S}{
+  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
+  \br{VP \[ \q< \@1 \q> \]}{ 
+    \br{V \[ spr & \q< \@1 \q> \\
+             comps & \q< \@2, \@3 \q> \\ 
+             arg-st & \q< \@1, \@2, \@3 \q> \]}{
+      \lf{\eng{sent}}}
+    \br{\@2 NP$_j$}{
+      \br{D}{\lf{\eng{a}}}
+      \br{N$_j$}{\lf{\eng{letter}}}}
+    \br{\@3 PP$_i$}{
+      \br{P$_i$}{\lf{\eng{to}}}
+      \br{NP$_i$ \[ mode & ref \]}{\lf{\eng{me}}}}
+}}
+\end{avmtree}
+
+\myslide{The ARG-ST}
+\begin{center}
+  \begin{avm}\avmfont{\sc} 
+\[  arg-st & \< 
+NP$_i$ \[ mode & ref \],
+NP$_j$ \[ mode & ref \],
+PP$_i$ \[ mode & ref \]
+\> \]
+\end{avm}
+\end{center}
+\begin{itemize}
+\item The PP is outranked by the first NP.
+\item \eng{me} has the same rank as the PP.
+\item So, \eng{me} is outranked by the first NP.
+\item Therefore, Principle B is violated.
+\end{itemize}
+
+\myslide{\eng{I brought a pencil with me}}
+\MyLogo{Here \eng{I} does not outrank \eng{me}, so Principle B is satisfied}
+
+\begin{avmtree}\avmfont{\sc} 
+\br{S}{
+  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
+  \br{VP \[ \q< \@1 \q> \]}{ 
+    \br{V \[ spr & \q< \@1 \q> \\
+             comps & \q< \@2 \q> \\ 
+             arg-st & \q< \@1, \@2 \q> \]}{
+      \lf{\eng{brought}}}
+    \br{\@2 NP$_j$}{
+      \br{D}{\lf{\eng{a}}}
+      \br{N$_j$}{\lf{\eng{pencil}}}}
+    \br{\@3 PP$_k$}{
+      \br{P$_k$ \[ comps & \q< \@1 \q> \\ 
+                   mod & \q< \@2 \q> \\
+                   arg-st & \q< \@1 \q> \] }{\lf{\eng{with}}}
+      \br{NP$_l$ \[ mode & ref \]}{\lf{\eng{me}}}}
+}}
+\end{avmtree}
+
+\myslide{\eng{*I brought a pencil with myself}}
+\MyLogo{Here \eng{I} does not outrank \eng{myself}, so Principle A is violated}
+
+\begin{avmtree}\avmfont{\sc} 
+\br{S}{
+  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
+  \br{VP \[ \q< \@1 \q> \]}{ 
+    \br{V \[ spr & \q< \@1 \q> \\
+             comps & \q< \@2 \q> \\ 
+             arg-st & \q< \@1, \@2 \q> \]}{
+      \lf{\eng{brought}}}
+    \br{\@2 NP$_j$}{
+      \br{D}{\lf{\eng{a}}}
+      \br{N$_j$}{\lf{\eng{pencil}}}}
+    \br{\@3 PP$_k$}{
+      \br{P$_k$ \[ comps & \q< \@1 \q> \\ 
+                   mod & \q< \@2 \q> \\
+                   arg-st & \q< \@1 \q> \] }{\lf{\eng{with}}}
+      \br{NP$_l$ \[ mode & ana \]}{\lf{\eng{myself}}}}
+}}
+\end{avmtree}
+
+\myslide{Imperatives}
+\MyLogo{}
+\begin{itemize}
+\item Have the internal structure of a VP
+  \begin{exe}
+    \ix Leave!
+    \ix Read a book!
+    \ix Give the dog a treat!
+    \ix Put the ice cream in the freezer!
+  \end{exe}
+\item Function as \txx{directives} (commands or requests)
+\item Have the verb in base form: \eng{Be careful!} not \eng{*Are careful!}
+\begin{itemize}
+\item Allow 2nd person reflexives, and no others
+\begin{exe}
+    \ix Defend yourself!
+    \ix *Defend myself/himself!
+  \end{exe}
+\end{itemize}
+\end{itemize}
+
+\myslide{The Imperative Rule}
+
+\begin{avm}\avmfont{\sc} 
+\[ \asort{phrase}  
+   head & verb \\
+   val & \[ spr  & \<  \> \] \\
+   sem & \[ mode & dir \\ index & $s$ \] \]
+              \ $\rightarrow$\ \ 
+\[ \asort{phrase}  
+   head & \[ \asort{verb} form & base \]\\
+   val & \[ spr  & \< NP \[ per 2nd \]  \> \] \\
+   sem & \[ index & $s$ \] \]
+\end{avm}
+
+
+\begin{itemize}\addtolength{\itemsep}{-2ex}
+\item Internal structure of a VP
+\item Directive function
+\item Base form
+\item Only 2nd person reflexives
+\item[Q] Note that this is not a headed rule. Why?
+\item[A] It would violate the HFP and the SIP.
+\end{itemize}
+
+\myslide{Imperative example}
+\begin{multicols}{2}
+\begin{avmtree}\avmfont{\sc} 
+\br{S}{
+  \br{VP \[ spr & \q< \@1 NP \[ per 2nd \\ num sg \] \q> \]}{ 
+    \br{V \[ spr & \q< \@1 \q> \]}{
+      \lf{\eng{vote}}}
+    \br{\@3 PP$_i$}{
+      \br{P$_i$}{\lf{\eng{for}}}
+      \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{yourself}}}}
+}}
+\end{avmtree}
+%\newpage
+
+\begin{itemize}
+\item What's the SPR value on S?
+%Why?
+\item What's the SPR value on VP?
+%Why?
+\item What's the SPR value on V?
+%Why?
+\item Which nodes have ARG-ST?
+\item Which ARG-ST matters for
+the licensing of \eng{yourself}?
+\end{itemize}
+%\newpage
+
+\end{multicols}
+
+\myslide{\ft{arg-st} on vote}
+\begin{center}
+  \begin{avm}\avmfont{\sc} 
+\[  arg-st & \< 
+NP$_i$ \[ mode & ref \\ per & 2nd \\ num & sg \],
+PP$_i$ \[ mode & ana \]
+\> \]
+\end{avm}
+\end{center}
+\begin{itemize}
+\item Is Principle A satisfied?
+\item How?
+\item Is Principle B satisfied?
+\item How?
+\end{itemize}
+
+\myslide{Day 1 Revisited}
+\begin{itemize}
+\item Recall
+  \begin{exe}
+    \ix Screw yourself!
+    \ix Go screw yourself!
+    \ix screw you!
+    \ix *Go screw you!
+  \end{exe}
+\item \eng{Screw NP!} has two analyses
+  \begin{itemize}
+  \item As an imperative
+  \item As a truly subjectless fixed expression.
+  \end{itemize}
+\item \eng{Go screw NP!} can only be analyzed as an imperative.
+\end{itemize}
+
+
+\myslide{Overview}
+\begin{itemize}\addtolength{\itemsep}{-2ex}
+\item Review of Chapter 1 informal binding
+theory
+\item Formalized Binding Theory
+  \begin{itemize}
+  \item \txx{Argument Realization Principle} (ARP)
+    \\  \ft{arg-st} = \ft{spr}  $\oplus$ \ft{comps}
+  \item \txx{Anaphoric Agreement Principle} (AAP)
+   \\ Coindexed NPs agree.
+ \item \txx{Principle A}\ \  A [\ft{mode} \val{ana}] element must be
+outranked by a coindexed element.
+\item \txx{Principle B}\ \  A [\ft{mode} \val{ref}] element must not
+be outranked by a coindexed element.
+  \end{itemize}
+\item Binding and PPs
+\item Imperatives
+\end{itemize}
+
+
+\myslide{P1: Prepositions}
+\MyLogo{Based on  Chapter 7, Problem 1, Sag, Wasow and Bender (2003)}
+
+For each of the following sentences, 
+\begin{itemize}
+\item[(a)] classify the underlined preposition into \txx{predicative}
+  or \txx{argument marking} and
+\item[(b)] justify by showing what reflexive and
+  nonreflexive coreferential 
+  pronouns can or cannot appear as the preposition's object.
+\end{itemize}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item[(i)] \eng{The dealer dealt an ace \ul{to} Bo.}
+\item[(ii)] \eng{The chemist held the sample away \ul{from} the flame.}
+\item[(iii)] \eng{Hiromi kept a flashlight \ul{beside} the bed.}
+\item[(iv)] \eng{We bought flowers \ul{for} you.}
+\item[(v)] \eng{The car has a scratch \ul{on} the fender.}
+\item[(vi)] \eng{The pronoun agrees \ul{with} its antecedent.}
+\end{itemize}
+
+\myslide{P2: Imperative `Subjects'}
+\MyLogo{Based on  Chapter 7, Problem 2, Sag, Wasow and Bender (2003)}
+\begin{itemize}
+\item Some imperatives look like they have a subject:
+  \begin{itemize}
+  \item[(i)] \eng{\ul{You} get out of here!}
+  \item[(ii)] \eng{\ul{Everybody} take out a sheet of paper!}
+  \end{itemize}
+\item But agreement is wierd:
+  \begin{itemize}
+  \item[(iii)] 
+    \eng{Everybody found 
+      $^?$himself/$^*$yourself/themselves/$^*$myself a seat.}
+  \item[(iv)]
+    \eng{Everybody find 
+      $^?$himself/yourself/$^*$themselves/$^*$myself a seat.}
+  \end{itemize}
+\item What minimal modification of the Imperative Rule would account for
+the indicated data? (don't worry about
+the semantics)
+\end{itemize}
+
+
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\end{itemize}
+
+
+\input{lec-05-questions}
+
+\end{document}
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End: 

@@ -1,0 +1,685 @@
+\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+
+\input{headx.tex}
+
+\avmfont{\sc}
+\begin{document}
+\avmfont{\it}
+
+\header{Lecture 3}{Complex Feature Values}{Valence, Agreement, Case}
+\maketitle
+
+
+\myslide{Overview}
+\MyLogo{Chapter 4}
+\begin{itemize}
+\item Last week
+\item A problem with the Chapter 3 grammar
+\item Generalize COMPS and SPR
+\item The Valence Principle
+\item Agreement
+\item The SHAC
+\item Work through problems 4.1, 4.5, 4.6
+\end{itemize}
+
+\myslide{Pizza review}
+\MyLogo{}
+\begin{itemize}
+\item Unification is an operation for combing
+constraints from different sources.
+
+\item What are those sources in the pizza
+example?
+
+\item Why do we need to combine information
+from different sources in our grammars?
+\end{itemize}
+
+\myslide{Reminder: Where We Are}
+\begin{itemize}
+\item Attempting to model English with CFG led to problems
+  with the granularity of categories, e.g.
+  \begin{itemize}
+  \item Need to distinguish various subtypes of verbs
+  \item Need to identify properties common to all verbs
+  \end{itemize}
+\begin{itemize}
+\item So we broke categories down into feature structures and
+  began constructing a hierarchy of types of feature
+  structures.
+\item This allows us to schematize rules and state crosscategorial
+  generalizations, while still making fine distinctions.
+\end{itemize}
+\end{itemize}
+
+\myslide{Heads}
+\begin{itemize}
+\item Intuitive idea: A phrase typically contains a word that
+determines its most essential properties, including
+\begin{itemize}
+\item where it occurs in larger phrases
+\item what its internal structure is
+\end{itemize}
+\item This is called the \txx{head}
+\item The term \txx{head} is used both for the head word in a
+phrase and for all the intermediate phrases containing
+that word
+\item NB: Not all phrases have heads
+\end{itemize}
+
+\myslide{Formalizing the Notion of Head}
+\begin{itemize}
+\item Expressions have a feature \ft{head}
+\item \ft{head}’s values are of type \val{pos}
+\item For \ft{head} values of type \val{agr-cat}, \ft{head}’s
+value also includes the feature \ft{agr}
+\item Well-formed trees are subject to the \txx{Head
+Feature Principle}:
+\begin{quote}
+  In any headed phrase, the \ft{head}
+value of the mother and the head daughter
+must be identical.
+\end{quote}
+\end{itemize}
+
+\myslide{A Tree is Well-Formed if \ldots }
+\begin{itemize}
+\item It and each subtree are licensed by a grammar rule
+or lexical entry
+\item All general principles (like the HFP) are satisfied.
+\item NB: Trees are part of our model of the language,
+so all their features have values (even though we
+will often be \sout{lazy} compact and leave out the values
+irrelevant to our current point).
+\end{itemize}
+
+
+\myslide{But it’s still not quite right \ldots }
+There’s still too much redundancy: the rules and features encode the same information in different ways.
+
+\begin{small}
+\begin{avm} 
+\[{\it phrase}\\
+  VAL & \[ COMPS & itr\\
+           SPR & $-$\]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
+                                               VAL & \[ COMPS & itr\\
+                                                        SPR & $-$\]\]
+\end{avm}
+
+\begin{avm} 
+\[{\it phrase}\\
+  VAL & \[ COMPS & itr\\
+           SPR & $-$ \]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
+                                               VAL & \[ COMPS & str\\
+                                                        SPR & $-$\]\]\ \ NP
+\end{avm}
+
+\begin{avm} 
+\[{\it phrase}\\
+  VAL & \[ COMPS & itr\\
+           SPR & $-$ \]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
+                                               VAL & \[ COMPS & dtr\\
+                                                        SPR & $-$\]\]\ \ NP\ \ NP
+\end{avm}
+\end{small}
+
+
+\myslide{Solution: More Elaborate Valence Feature Values}
+\begin{itemize}
+\item The rules just say that heads combine with whatever
+their lexical entries say they can (or must) combine
+with.
+\item The information about what a word can or must
+combine with is encoded in \emp{list-valued} valence
+features.
+\begin{itemize}
+\item The elements of the lists are themselves feature structures
+\item The elements are \emp{``cancelled''} off the lists once heads
+combine with their complements and specifiers.
+\end{itemize}
+\end{itemize}
+
+\myslide{Complements}
+Head-Complement Rule:
+
+\begin{avm}\avmfont{\sc} 
+\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+              \ $\rightarrow$\ \HD \ 
+             \[ \asort{word}
+             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
+\end{avm}
+\begin{itemize}
+\item This allows for arbitrary numbers of complements, but only
+applies when there is at least one.
+\begin{itemize}
+\item The possible complements are specified lexically
+\item Heads in English probably never have more than 3 or 4
+complements
+\item This doesn’t apply where Head-Complement Rule 1 would. (Why?)
+\end{itemize}
+\item This can cover lots of cases not covered by the old Head-Complement Rules 1-3. (Examples?)
+\end{itemize}
+
+\myslide{The valence comes from the lexicon}
+
+\begin{small}
+  \begin{tabular}{ll}
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{devour}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< NP \> \]
+      \]\>
+    \end{avm} &
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{put}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< NP PP \> \]
+      \]\>
+    \end{avm} \\
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{eat}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< (NP) \> \]
+      \]\>
+    \end{avm} &
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{bet}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ \< NP (NP) (S) \> \]
+      \]\>
+    \end{avm} \\
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{dine}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< \> \]
+      \]\>
+    \end{avm} &
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{fond}, \ \[ \asort{word}
+      head & {\it adjective} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< PP\emp{:\textit{of}} \> \]
+      \]\>
+    \end{avm}
+  \end{tabular}
+\end{small}
+
+
+\myslide{Question: What if English had postpositions?}
+
+\begin{avm}\avmfont{\sc} 
+\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+              \ $\rightarrow$\ \HD \ 
+             \[ \asort{word}  head & \val{verb \| adj \| noun} \\
+             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
+\end{avm}
+
+\begin{avm}\avmfont{\sc} 
+\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+              \ $\rightarrow$\ \ \ \@1, \ldots, \@{n}\ \ \HD \ 
+             \[ \asort{word} head & \val{preposition} \\
+             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]
+\end{avm}
+
+
+
+
+\myslide{Specifiers}
+
+In English, nouns can agree with their specifiers.
+\begin{itemize}
+\item In Number:
+  \begin{exe}
+    \ix This dog barked.
+    \ix \bad This dogs barked.
+    \ix \bad These dog barked.
+    \ix These dogs barked.
+  \end{exe}
+\item In Countability
+  \begin{exe}
+\ix Much furniture was broken.
+\ix * A furniture was broken.
+\ix * Much chair was broken.
+\ix A chair was broken. 
+\end{exe}
+\end{itemize}
+
+\myslide{Head-Specifier Rule (Version I)}
+
+\begin{avm}\[{\it phrase}\\
+             VAL & \[ COMPS & \el\\
+                      SPR & \el\]\]\ \ \
+$\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
+			                VAL & \[ COMPS & \el\\
+                                                 SPR & \q< {\@2} \q> \]\] 
+\end{avm}
+\begin{itemize}
+\item Combines the rules expanding S and NP.
+\item In principle also generalizes to other categories.
+\item Question: Why is SPR list-valued?
+\end{itemize}
+
+\myslide{Question:}
+
+
+Why are these right-branching? That is, what formal property of our
+grammar forces the COMPS to be lower in the tree than the SPR?
+
+\begin{center}
+  \begin{tree}
+    \br{S}{\br{NP}{} \br{VP}{\br{V}{}\br{NP}{}}}
+  \end{tree}
+  \begin{tree}
+    \br{NP}{\br{D}{} \br{NOM}{\br{N}{}\br{PP}{}}}
+  \end{tree}
+\end{center}
+
+
+\myslide{Another Question \ldots}
+\begin{itemize}
+\item What determines the VAL value of phrasal nodes?
+\item \txx{The Valence Principle}
+  \begin{quote}
+    Unless the rule says otherwise, the mother’s
+    values for the VAL features (SPR and
+    COMPS) are identical to those of the head
+    daughter.
+  \end{quote}
+\end{itemize}
+
+
+\myslide{More on the Valence Principle}
+\begin{itemize}
+\item Intuitively, the VAL features list the contextual
+requirements that haven’t yet been found.
+\item This way of thinking about it (like talk of
+“cancellation”) is bottom-up and procedural.
+\item But formally, the Valence Principle (like the rest of
+our grammar) is just a well-formedness constraint
+on trees, without inherent directionality.
+
+\end{itemize}
+
+\myslide{So far, we have:}
+\begin{itemize}
+\item Replaced atomic-valued VAL features with list-valued
+ones.
+\item Generalized Head-Complement and Head-Specifier
+rules, to say that heads combine with whatever their
+lexical entries say they should combine with.
+\item Introduced the Valence Principle to keep the information on the
+  COMPS and SPR lists until it gets ``canceled'' by the
+  Head-Complement and Head-Specifier rules.
+\end{itemize}
+
+\myslide{The Parallelism between S and NP}
+\begin{itemize}
+\item Motivation:
+\begin{itemize}
+  \item pairs like 
+    \begin{exe}
+      \ix Chris lectured about syntax
+      \ix Chris’s lecture about syntax
+    \end{exe}
+  \item both S and NP exhibit agreement
+ \begin{exe}
+   \ix The bird sings/*sing
+   \ix The birds sing/*sings
+   \ix this/*these bird 
+   \ix these/*this birds
+\end{exe}
+\end{itemize}
+\item So we treat NP as the saturated category of type \val{noun}
+and S as the saturated category of type \val{verb}.
+\end{itemize}
+
+\myslide{Any other reason to treat V as the head of S?}
+\begin{itemize}
+\item In standard English, sentences must have verbs.
+\\ (How about non-standard English or other
+languages?)
+\item Verbs taking S complements can influence the form
+of the verb in the complement:
+\begin{exe}
+  \ix I insist/*recall (that) you \ul{be} here on time.
+\end{exe}
+\item Making V the head of S helps us state such
+restrictions formally
+\end{itemize}
+
+\myslide{A possible formalization of the restriction}
+
+
+   \begin{avm}\avmfont{\sc}
+      \< \textnormal{insist}, \ \[ \asort{word}
+      head & \textit{verb}\\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ SPR & \< NP \> \\
+               COMPS & \< S\[ head & \[  mood & subjunctive \] \] \> \]
+      \]\>
+    \end{avm} %\[ \asort{verb} mood & subjunctive \]
+
+Note that this requires that the verb be the head of the
+complement. We don’t have access to the features of the other
+constituents of the complement.
+
+\begin{center}\small
+  \begin{avm}\avmfont{\sc}
+    S =  \[ head & \textit{verb}\\
+    val & \[ SPR & \<  \> \\
+    COMPS & \< \> \] \]
+  \end{avm}
+\end{center}
+
+\myslide{Complements vs. Modifiers}
+\MyLogo{Arguments vs Adjuncts}
+\begin{itemize}
+\item Intuitive idea: Complements introduce
+essential participants in the situation denoted;
+modifiers refine the description.
+\item Generally accepted distinction, but disputes
+over individual cases.
+\item Linguists rely on heuristics to decide how to
+analyze questionable cases (usually PPs).
+\end{itemize}
+
+
+\myslide{Heuristics for Complements vs. Modifiers}
+\MyLogo{\ent = entail; \ngv = doesn't entail}
+\begin{itemize}
+\item Obligatory PPs are usually complements.
+\item Temporal \& locative PPs are usually modifiers.
+\item An entailment test:
+\\ If \blu{\textit{X Ved (NP) PP} \ngv \textit{X did something PP}}, then the PP is a complement.
+\begin{exe}
+  \ix Pat relied on Chris    \ngv Pat did something on Chris
+  \ix Pat put nuts in a cup  \ngv Pat did something in a cup
+  \ix Pat slept until noon   \ent Pat did something until noon
+  \ix Pat ate lunch at Bytes \ent Pat did something at Bytes
+  \end{exe}
+\end{itemize}
+
+\myslide{Agreement}
+\MyLogo{}
+\begin{itemize}
+\item Two kinds so far (namely?)
+\item Both initially handled via stipulation in the
+Head-Specifier Rule
+\item But if we want to use this rule for categories
+that don’t have the AGR feature (such as PPs
+and APs, in English), we can’t build it into
+the rule.
+\end{itemize}
+
+\myslide{The Specifier-Head Agreement Constraint (SHAC)}
+Verbs and nouns must be specified as:
+\begin{center}
+  \begin{avm}\avmfont{\sc}
+    \[ head & \[ agr \@1 \] \\
+    val & \[ spr \< agr \@1 \> \] \]
+  \end{avm}
+\end{center}
+
+\begin{itemize}
+\item Why is this lexical?
+\end{itemize}
+
+\myslide{Type Hierarchy (new Agreement!)}
+
+\begin{center}
+  \begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+\it
+\br{feat-struc}{ \br{ expression  \[ \textsc{head, val} \] }{\lf{word}
+                                  \lf{phrase}}
+                 \br{agr-cat \[ \textsc{per,num} \] }{
+                   \br{non-3sing}{
+                     \br{non-1sing}{\lf{2sing} \lf{pl}} \lf{1sing}}
+                   \br{3sing \[ gend \] }{}}
+                 \br{val-cat \[ \textsc{spr, comps} \] }{ }
+                 \br{pos}{\br{agr-pos \[ \textsc{agr} \] }{ 
+                     \br{noun \[ \textsc{case} \]}{}
+                     \br{verb \[ \textsc{aux} \]}{}
+                     \br{det \[ \textsc{count} \]}{} }
+                   \lf{prep}
+                   \lf{adj}
+                   \lf{conj}}}
+\end{avmtree}
+\end{center}
+
+
+
+\myslide{An example}
+\scalebox{0.6}{
+\begin{avmtree}
+\br{\begin{avm}
+    \[ {\it phrase}\\
+       HEAD & \@{0}\\ 
+       VAL & \[ SPR & \el\\
+                COMPS & \el \]\]
+    \end{avm}}{\br{\begin{avm}
+	       \@1\[{\it phrase}\\
+		     HEAD & \@4\\
+		     VAL & \[ SPR & \el\\
+		              COMPS & \el \]\]
+	          \end{avm}}{\psset{levelsep=1.4in}\br{\begin{avm}
+			          \@2\[ {\it word}\\
+					HEAD & \[ {\it det}\\
+						  AGR & \@3\\
+						  COUNT & + \]\\
+					VAL & \[ SPR & \el\\
+					         COMPS & \el \]\] 
+				 \end{avm}}{\lf{The}}
+			     \br{\begin{avm}
+				  \[ {\it word}\\
+				     HEAD & \@4\[ {\it noun}\\
+						  AGR & \@3\[ {\it 3sing}\\
+							      PER & 3rd\\
+							      NUM & sg \] \]\\
+				     VAL & \[ SPR & \q< {\@2} \q>\\
+				              COMPS & \el \]\]
+				 \end{avm}}{\lf{dog}}}
+		\br{\begin{avm}
+		    \[ {\it word}\\
+		       HEAD & {\@0}\[{\it verb}\\
+                                     AGR\ \ {\@3}\]\\
+		       VAL & \[ SPR & \q< {\@1} \q>\\
+		                COMPS & \el \]\]
+		    \end{avm}}{\lf{walks}}}
+\end{avmtree}}
+
+
+
+\myslide{The Count/Mass Distinction}
+\begin{itemize}
+\item Partially semantically motivated
+\begin{itemize}
+  \item mass terms tend to refer to undifferentiated substances (\lex{air,
+butter, courtesy, information})
+\item count nouns tend to refer to individual entities (\lex{bird,
+cookie, insult, fact})
+\end{itemize}
+\item But there are exceptions:
+  \begin{itemize}
+  \item \lex{succotash} (mass) denotes a mix of corn \& lima beans, so
+it’s not undifferentiated.
+  \item \lex{furniture, footwear, cutlery, \ldots} refer to individuatable
+artifacts with mass terms
+  \item \lex{cabbage} can be either count or mass, but many speakers
+get \lex{lettuce} only as mass.
+  \item borderline case: \lex{data}
+  \end{itemize}
+\end{itemize}
+
+
+\myslide{Our Formalization of the Count/Mass Distinction}
+\begin{itemize}
+\item Determiners are:
+\begin{itemize}
+  \item $[\ft{count} -]$ (\lex{much} and, in some dialects, \lex{less}),
+  \item $[\ft{count} +]$ (\lex{a, six, many, \ldots})
+  \item lexically underspecified (\lex{the, all, some, no, \ldots})
+  \end{itemize}
+\item Nouns select appropriate determiners
+  \begin{itemize}
+  \item “count nouns” say $[\ft{spr} < [\ft{count} +] >]$
+  \item “mass nouns” say $[\ft{spr} < [\ft{count} -] >]$
+  \end{itemize}
+\item Nouns themselves aren’t marked for the feature \ft{count}
+\item So the SHAC plays no role in count/mass marking.
+\end{itemize}
+
+\myslide{Overview}
+\begin{itemize}
+\item A problem with the Chapter 3 grammar
+\item Generalize COMPS and SPR
+\item The Valence Principle
+\item Agreement
+\item The SHAC
+\item (Work through problems 4.1, 4.5, 4.6)
+\end{itemize}
+\myslide{4.1 Valence Variations} Write lexical entries (including
+HEAD, SPR, and COMPS values). You may use NP, VP, etc.\ as
+abbreviations for the feature structures on COMPS lists.
+
+As you do this problem, keep the following points in mind: (1) In 
+chapter~4 COMPS became a list-valued feature,
+and (2) heads select for their specifier and complements (if they have
+any); the elements on the SPR and COMPS lists do not
+simultaneously select for the head.
+
+\noindent
+[{\sl Hint: For the purposes of this problem, assume that adjectives
+and prepositions all have empty SPR lists.}]
+
+\begin{itemize}
+% \item[A.] What does the grammaticality of sentences like {\it Kim put the
+% book here/there} suggest about the COMPS and HEAD values of the 
+% words {\it here} and {\it there}? 
+
+\item[A.] Write lexical entries for the words {\it here} and {\it there} as
+they are used in (i).
+
+   \begin{exe}
+   \exi{(i)}\it Kim put the book here/there.
+   \end{exe}
+
+\noindent
+[{\sl Hint: Compare (i) to (7) on p97.}]
+\newpage
+% % \item[B.] What is the COMPS value for the adjective {\it fond}?
+
+% \item[B.] Write a lexical entry for the \index{adjective}adjective {\it fond}.
+% Your lexical entry should account for 
+% the contrast between (\ref{fondex}e,g) and (\ref{fondex}h).
+% %the data in (\ref{fondex}d--h).
+% %Cite positive and negative examples supporting the COMPS value you
+% %assign to this lexical item.
+
+\item[C.] Assume that motion verbs like {\it jump}, {\it move}, etc.\
+take an \index{optionality!optional PP complement}\index{prepositional phrase (PP)!complement!optional}optional PP complement:
+
+\begin{quote}
+\begin{avm}
+\[ COMPS & \q< (PP) \q> \]
+\end{avm}
+\end{quote}
+%
+Write
+the lexical entries for the
+\index{preposition (P)}prepositions {\it out}, {\it from} and {\it of}:
+
+   \begin{itemize}
+   \item[(i)] Kim jumped out of the bushes.
+   \item[(ii)] Bo jumped out from the bushes.
+   \item[(iii)] Lee moved from under the bushes.   
+   \item[(iv)] Leslie jumped out from under the bushes.
+   \item[(v)] Dana jumped from the bushes.
+   \item[(vi)] Chris ran out the door.
+   \item[(vii)] \bad Kim jumped out of from the bushes.
+   \item[(viii)] Kim jumped out.
+   \item[(ix)] \bad Kim jumped from.
+   \end{itemize}
+\newpage
+\item[D.] Based on the following data, 
+% sketch 
+write 
+the \index{lexical entry} lexical entries for
+the words {\it grew} (in the `become' sense, not the `cultivate'
+sense), {\it seemed}, {\it happy}, and {\it close}. 
+
+   \begin{itemize}
+   \item[(i)] They seemed happy (to me).
+   \item[(ii)] Lee seemed an excellent choice (to me).
+   \item[(iii)] \bad They seemed (to me).
+   \item[(iv)] They grew happy.
+   \item[(v)] \bad They grew a monster (to me).
+   \item[(vi)] \bad They grew happy to me.
+   \item[(vii)] They grew close to me.
+   \item[(viii)] They seemed close to me to Sandy.
+   \end{itemize}
+
+\noindent
+[{\sl Note: \index{adjective phrase (AP)} APs have an internal structure 
+%that is 
+analogous to that of
+VPs. Though no adjectives select NP complements (in English), there
+are some adjectives that select PP complements (e.g.\ {\it to me}),
+and some that do not.}]
+\newpage
+\item[E.] Using the lexical entries you wrote for part (D), draw
+a tree (showing the values of HEAD, SPR, and COMPS at each node,
+using tags as appropriate) for {\it They seemed close to me to Sandy}.
+
+\end{itemize}
+
+
+
+\myslide{4.5 Facts of English case}
+\begin{itemize}
+\item For each of the following positions,
+determine which case the pronouns in that
+position must have:
+\begin{itemize}
+\item Subject of a sentence
+\item Direct object of a verb
+\item Second object of a verb like \lex{give}
+\item Object of a preposition
+\end{itemize}
+\item Give examples
+\end{itemize}
+
+\myslide{4.6 A lexicalist analysis}
+\begin{itemize}
+\item Section 4.8 hinted that case marking can be
+limited in the same way that we handle
+agreement, i.e., without any changes to the
+grammar rules. Show how this can be done.
+Your answer should include lexical entries
+for they, us, likes, and with.
+\item Hint: Assume that there is a feature CASE
+with the values ‘acc’ and ‘nom’, and assume
+that English pronouns have CASE features
+specified in their lexical entries.
+\end{itemize}
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\end{itemize}
+
+\end{document}
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End: 

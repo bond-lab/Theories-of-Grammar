@@ -1,0 +1,859 @@
+\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+
+
+\input{headx.tex}
+
+\avmfont{\sc}
+\begin{document}
+\avmfont{\it}
+
+\header{Lecture 4}{Semantics}{}
+\maketitle
+
+
+\myslide{Overview}
+\begin{itemize}
+\item Last week: HC, HS, VP, SHAC
+\item Some notes on the linguist's stance
+\item Which aspects of semantics we’ll tackle
+\item Our formalization; Semantics Principles
+\item Building semantics of phrases
+\item Modification, coordination
+\item Structural ambiguity
+\end{itemize}
+
+\myslide{Overview}
+%\MyLogo{Chapter 4}
+
+\begin{itemize}
+\item Complex Feature Structures allow us to
+  \begin{itemize}
+  \item Write more general rules
+  \item Constrain them lexically
+  \end{itemize}
+\end{itemize}
+
+\myslide{Head-Complement Rule}
+
+\begin{avm}\avmfont{\sc} 
+\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+              \ $\rightarrow$\ \HD \ 
+             \[ \asort{word}
+             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
+\end{avm}
+\begin{itemize}
+\item The possible complements are specified lexically \\
+\begin{small}\begin{tabular}{ll}
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{devour}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< NP \> \]
+      \]\>
+    \end{avm} &
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{put}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ COMPS & \< NP PP \> \]
+      \]\>
+    \end{avm} 
+  \end{tabular}
+\end{small}
+\end{itemize}
+
+\myslide{Head-Specifier Rule}
+
+\begin{avm}\[{\it phrase}\\
+             VAL & \[ COMPS & \el\\
+                      SPR & \el\]\]\ \ \
+$\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
+			                VAL & \[ COMPS & \el\\
+                                                 SPR & \q< {\@2} \q> \]\] 
+\end{avm}
+\begin{itemize}
+\item Combines the rules expanding S and NP (and other, \ldots).
+\item Again, restrictions on specifiers come from the lexicon.
+\end{itemize}
+\begin{small}\begin{tabular}{ll}
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{dog}, \ \[ \asort{word}
+      head & {\it noun} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< D \> \\ comps & \el \]
+      \]\>
+    \end{avm} &
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{eat}, \ \[ \asort{word}
+      head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< NP \> \\  comps & \< (NP) \> \]
+      \]\>
+    \end{avm} 
+  \end{tabular}
+\end{small}
+
+\myslide{Two Principles}
+\begin{itemize}
+\item \txx{The Valence Principle}
+  \begin{quote}
+    Unless the rule says otherwise, the mother’s
+    values for the VAL features (SPR and
+    COMPS) are identical to those of the head
+    daughter.
+  \end{quote}
+\item \txx{The Specifier-Head Agreement Constraint (SHAC)}
+\\ Verbs and nouns must be specified as:
+\begin{center}
+  \begin{avm}\avmfont{\sc}
+    \[ head & \[ agr \@1 \] \\
+    val & \[ spr \< agr \@1 \> \] \]
+  \end{avm}
+\end{center}
+Actually inherited from a lexical super-type
+\end{itemize}
+
+\section{Semantics}
+
+\myslide{Overview}
+\begin{itemize}
+\item Some notes on the linguist's stance
+\item Which aspects of semantics we’ll tackle
+\item Our formalization; Semantics Principles
+\item Building semantics of phrases
+\item Modification, coordination
+\item Structural ambiguity
+\end{itemize}
+
+
+\myslide{The Linguist's Stance: Building a precise model}
+
+\begin{itemize}
+\item Some of our statements are statements about how the model
+works:
+\begin{quote}
+  “[\val{prep}] and [\ft{agr} \val{3sing}] can’t be combined because AGR is not a
+  feature of the type prep.”
+\end{quote}
+\item Some of our statements are statements about how (we think)
+English or language in general works.
+\begin{quote}
+  “The determiners \eng{a} and \eng{many} only occur with count nouns, the
+  determiner \eng{much} only occurs with mass nouns, and the determiner \eng{the}
+  occurs with either.”
+\end{quote}
+\item Some are statements about how we code a particular
+linguistic fact within the model.
+\begin{quote}
+  “All count nouns are [\ft{spr}  $<$ [\ft{count} +]$>$].”
+\end{quote}
+\end{itemize}
+
+\myslide{The Linguist's Stance:}
+
+A Vista on the Set of Possible English Sentences
+\begin{itemize}
+\item \ldots  as a background against which linguistic
+  elements (words, phrases) have a distribution
+\item \ldots  as an arena in which linguistic elements
+  “behave” in certain ways
+\end{itemize}
+
+
+\myslide{Semantics: Where's the Beef?}
+
+So far, our grammar has no semantic representations. We
+have, however, been relying on semantic intuitions in our
+argumentation, and discussing semantic contrasts where
+they line up (or don't) with syntactic ones.
+
+\begin{itemize}
+
+\item structural ambiguity
+\item S/NP parallelism
+\item count/mass distinction
+\item complements vs. modifiers
+\end{itemize}
+
+\myslide{Our Slice of a World of Meanings}
+
+Aspects of meaning we \emp{won't} account for (in this course)
+\begin{itemize}
+\item Pragmatics
+\item Fine-grained lexical semantics
+  \\ The meaning of \eng{life} is
+  \begin{itemize}\addtolength{\itemsep}{2ex}
+  \item \iz{life}  (or \textsf{life}$'$)
+\item
+  \begin{avm}\avmfont{\sc}%\avmvalfont{\it}
+    \[ reln & life \\ inst & i \]
+  \end{avm}
+\item Not like wordnet: 
+\iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
+
+ % -- (a characteristic state or mode of living; "social life"; "city life"; "real life")
+ %       => being, beingness, existence -- (the state or fact of existing; "a point of view gradually coming into being"; "laws in existence for centuries")
+ %           => state -- (the way something is with respect to its main attributes; "the current state of knowledge"; "his state of health"; "in a weak financial state")
+ %               => attribute -- (an abstraction belonging to or characteristic of an entity)
+ %                   => abstraction, abstract entity -- (a general concept formed by extracting common features from specific examples)
+ %                       => entity -- (that which is perceived or known or inferred to have its own distinct existence (living or nonliving))
+ \end{itemize}
+
+ \end{itemize}
+
+
+% RELN life
+% INST i
+
+\myslide{Our Slice of a World of Meanings}
+\begin{avm}\avmfont{\sc}
+\[mode &  prop \\
+ index &  $s$\\
+ restr & \< \[ RELN & {\bf save}\\
+               SIT & $s$\\
+              SAVER &  $i$\\
+              SAVED &  $j$ \] \ , 
+              \[RELN & {\bf name}\\
+              NAME &  Chris\\
+              NAMED & \ $i$\]\ , 
+              \[RELN & {\bf name}\\
+              NAME &  Pat\\
+              NAMED & \ $j$\] \> \]
+\end{avm} 
+\begin{quote}
+  “\ldots the linguistic meaning of \eng{Chris saved Pat} is a proposition
+  that will be true just in case there is an actual situation that
+  involves the saving of someone named Pat by someone named Chris.”
+  \begin{flushright}
+    (Sag \textit{et al}, 2003, p. 140)
+  \end{flushright}
+\end{quote}
+
+\myslide{Our Slice of a World of Meanings}
+
+What we are accounting for is the \txx{compositionality} of
+sentence meaning.
+
+\begin{itemize}
+\item How the pieces fit together
+  \begin{quote}
+    \txx{Semantic arguments} and \txx{indices}    
+  \end{quote}
+\item How the meanings of the parts add up to the meaning
+of the whole.
+\begin{quote}
+  Appending \ft{restr} lists up the tree  
+\end{quote}
+\end{itemize}
+
+The value of \txx{\ft{restr}iction} is the set of conditions that must
+hold (in some possible world) for the expression to be applicable.
+
+\myslide{Semantics in Constraint-Based Grammar}
+\begin{itemize}
+\item Constraints as (generalized) truth conditions
+  \begin{itemize}
+\item \txx{proposition}: what must be the case for a proposition to be true
+\item \txx{directive}: what must happen for a directive to be fulfilled
+\item \txx{question}: the kind of situation the asker is asking about
+\item \txx{reference}: the kind of entity the speaker is referring to
+\end{itemize}
+\item \txx{Syntax/semantics interface}: 
+  \begin{quote}
+    Constraints on how syntactic arguments are related to semantic
+    ones, and on how semantic information is compiled from different
+    parts of the sentence.
+  \end{quote}
+\end{itemize}
+
+\myslide{Feature Geometry}
+\begin{avm}\avmfont{\sc}
+\[\asort{expression}
+syn & \[ \asort{syn-cat}
+      head & \[ \asort{pos} ... \] \\
+      val & \[ spr & \q< ... \q> \\
+               comps & \q< ... \q> \]\]\\
+      sem & \[ \asort{sem-cat}
+      mode &  \q\{ prop, ques, dir, ref, none \q\} \\
+      index &  \q\{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \q\} \\
+      restr & \q< ... \q> \]\]
+ \end{avm}
+
+
+
+\myslide{How the Pieces Fit Together}
+\begin{avm}\avmfont{\sc}
+  \< \eng{Kim}, \[syn & \[head & \[{\it noun}\\
+  agr & {\it 3sing}\]\\
+  val & \[spr & {\el}\\
+  comps & {\el}\]\]\\
+  sem & \[mode & ref\\
+  index & \ \ $i$\\
+  restr & \< \[reln & {\bf name}\\
+  % sit & \ \ $s$\\
+  name & Kim\\
+  named & \ \ $i$\] \> \]\] \>  %
+\end{avm}
+\myslide{How the Pieces Fit Together}
+\begin{avm}\avmfont{\sc}
+\< \eng{sleep} ,\ \[syn & \[head & {\it verb}\\
+                                     val & \[spr & \q< NP$_i$ \q>\\
+                                     comps & \q<  \q>\]\]\\
+                            sem & \[mode & prop\\
+                                    index & $s$\\
+                                    restr & \< \[reln & {\bf sleep}\\
+                                                 sit & \ \ $s$\\
+                                                 sleeper & \ \ $i$  \] \>\]\] \>
+                                        \end{avm}
+\myslide{The Pieces Together}
+
+\begin{avmtree}\avmfont{\sc}
+  \br{S}{
+    \br{\@{1} NP  \[ sem & \[ index & $i$ \] \] }{\lf{\eng{Kim}}}
+    \br{VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
+      sem & \[ mode & prop\\
+      index & $s$\\
+      restr & \< \[reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
+\end{avmtree}
+
+
+\myslide{Another View of the Same Tree}
+\scalebox{0.8}{\begin{avmtree}\avmfont{\sc}
+  \br{S  \[ sem & \[ mode & prop \\ index & $s$\\
+      restr & \< \[reln & {\bf name}\\
+      name & \ \ Kim  \\ named & \ \ $i$ \] ,
+      \[reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  \]  \>  \] \] }{
+    \br{\@{1} NP  \[ sem & \[ mode & ref \\ index & $i$\\
+      restr & \< \[reln & {\bf name}\\
+      name & \ \ Kim \\ named & \ \ $i$ \] \>  \] \] }{\lf{\eng{Kim}}}
+    \br{\HD VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
+      sem & \[  mode & prop \\ index & $s$ \\ 
+      restr & \< \[reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
+\end{avmtree}}
+
+
+\myslide{How to Share Semantic Information}
+
+We need the Semantics Principles
+\begin{itemize}
+\item \txx{The Semantic Inheritance Principle}
+  \begin{quote}
+    In any headed phrase, the mother's \ft{mode} and
+    \ft{index} are identical to those of the head daughter.    
+  \end{quote}
+\item \txx{The Semantic Compositionality Principle}
+  \begin{quote}
+    In any well-formed phrase structure, the mother's
+    \ft{restr} value is the sum of the \ft{restr} values of
+    the daughter.
+  \end{quote}
+\end{itemize}
+
+List summation: $\oplus$ (technically concatenation) 
+$\langle A \rangle \oplus \langle B \rangle \ne 
+\langle B \rangle \oplus \langle A \rangle$
+
+$\langle a_1, a_2, \ldots, a_n \rangle \oplus \langle b_1, b_2, \ldots, b_m \rangle = 
+\langle a_1, a_2, \ldots, a_n,  b_1, b_2, \ldots, b_m \rangle $
+
+$ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \rangle = 
+\langle b_1, b_2, \ldots, b_m,   a_1, a_2, \ldots, a_n \rangle $
+
+\myslide{What Identifies Indices?}
+
+\scalebox{1.0}{\begin{avmtree}\avmfont{\sc}
+  \br{S}{
+    \br{\@{1} NP$_i$}{
+      \br{D}{\lf{\eng{The}}}
+      \br{Nom$_i$}{\lf{\eng{cat}}}
+      }
+      \br{VP \[ spr & \< \@{1} \> \]}{
+        \br{VP   \[ spr & \< \@{1} \>  \\
+          restr & \< \[reln & {\bf sleep}\\
+          sit & \ \ $s$\\
+          sleeper & \ \ $i$  \] \>  \]    }{\lf{\eng{slept}}}
+        \br{PP}{\tlf{\eng{on the mat}}}}}
+\end{avmtree}}
+
+
+
+
+\myslide{Summary: Words \ldots }
+\begin{itemize}
+\item contribute predications
+\item ‘expose’ one index in those predications, for use by words or phrases
+\item relate syntactic arguments to semantic arguments
+ \\ \scalebox{0.8}{\begin{avm}\avmfont{\sc}
+\< \eng{sleep} ,\ \[syn & \[head & {\it verb}\\
+                                     val & \[spr & \q< NP$_i$ \q>\\
+                                     comps & \q<  \q>\]\]\\
+                            sem & \[mode & prop\\
+                                    index & $s$\\
+                                    restr & \< \[reln & {\bf sleep}\\
+                                                 sit & \ \ $s$\\
+                                                 sleeper & \ \ $i$  \] \>\]\] \>
+                                        \end{avm}}
+\end{itemize}
+
+\myslide{Summary: Grammar Rules \ldots }
+\begin{itemize}
+\item Identify feature structures (including the \ft{index} value) across daughters
+  \begin{itemize}\addtolength{\itemsep}{1ex}
+  \item Head Specifier Rule \\
+\scalebox{0.9}{\begin{avm}\avmfont{\sc}
+  \[ \asort{phrase} 
+  val & \[ spr & \el \] \] \ \ \
+  $\rightarrow$\ \ \ \ {\@1}\ \ \ \ \HD\[ %{\it phrase}\\
+  val & \[ spr & \q< {\@1} \q>  \\ comps & \el \]\] 
+\end{avm}}
+\item Head Complement Rule \\
+\scalebox{0.9}{\begin{avm}\avmfont{\sc}
+    \[ \asort{phrase}
+    val & \[ comps & \<  \> \] \]
+    \ $\rightarrow$\ \HD \ 
+    \[ \asort{word}
+    val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
+\end{avm}}
+\item Head Modifier Rule \\
+\scalebox{0.9}{\begin{avm}\avmfont{\sc}
+    \[ \asort{phrase} \]
+    \ $\rightarrow$\ \HD \ \@1  \[ val & \[ comps & \el \]  \] \ \ 
+    \[ val & \[ comps & \el \\ mod & \< \@1 \> \] \]
+\end{avm}}
+\end{itemize}
+\end{itemize}
+
+\myslide{Summary: Grammar Rules \ldots }
+
+\begin{itemize}
+\item Identify feature structures (including the \ft{index} value) across daughters
+\item License trees which are subject to the semantic principles
+  \begin{itemize}
+  \item SIP: ‘passes up’ \ft{mode} and \ft{index} from head daughter
+  \item SCP: ‘gathers up’ predications (\ft{restr} list) from all daughters
+  \end{itemize}
+\item The semantics is strictly compositional --- all of the meaning
+  comes from the words, rules and principles.
+  \begin{itemize}
+  \item We then enrich this with pragmatic inference --- but we need a
+    base to infer from
+  \end{itemize}
+\end{itemize}
+
+\myslide{Other Aspects of Semantics}
+\begin{itemize}
+\item Tense, Quantification (only touched on here)
+\item Modification
+\item Coordination
+\item Structural Ambiguity
+\end{itemize}
+
+\myslide{Evolution of a Phrase Structure Rule}
+\begin{itemize}
+\item [C2] NOM \into NOM PP; VP \into VP PP
+\item [C3] 
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+    \[ \asort{phrase} val & \[ spr & - \\ comps & itr \] \] 
+    \ $\rightarrow$\ \HD \  \[ \asort{phrase}  val & \[ spr & - \]   \] \ \ 
+    PP 
+\end{avm}}
+\item [C4] 
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+    \[ \asort{phrase}  \]
+    \ $\rightarrow$\ \HD \ \[  val & \[ comps & \el \]  \] \ \ 
+    PP
+\end{avm}}
+\item[C5]
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+    \[ \asort{phrase} \]
+    \ $\rightarrow$
+    \HD \ \@1  \[ syn &  \[ val & \[ comps & \el \]  \] \] \ \ 
+    \[ syn & \[ val & \[ comps & \el \\ mod & \< \@1 \> \] \] \]
+  \end{avm}}
+
+\item[=] 
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+     \[ \asort{phrase} \]
+     \ $\rightarrow$\ \HD \ \@1   \[ comps & \el  \] \ \ 
+      \[ comps & \el \\ mod & \< \@1 \> \] 
+ \end{avm}} 
+
+
+\myslide{Evolution of Another Phrase Structure Rule}
+
+\begin{itemize}
+\item [C2] X \into X+ CONJ X; 
+\item [C3] 
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+    \@1 \ \into \ \@{1}+ \ \ 
+    \[ \asort{word} head & conj \] \ \ 
+    \@1
+\end{avm}}
+\item [C4] 
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+    \[ val & \@1 \] \ \into \ \[ val & \@1 \]+ \ \ 
+    \[ \asort{word} head & conj \] \ \ 
+    \[ val & \@1 \]
+\end{avm}}
+\item[C5]
+\scalebox{0.8}{\begin{avm}\avmfont{\sc}
+    \[ syn & \[ val & \@0 \] \\ 
+       sem & \[ ind & $s_0$ \]  \]
+    \ \into \ 
+  \end{avm}} \\
+\scalebox{0.65}{\begin{avm}\avmfont{\sc}
+  \[ syn & \[ val & \@0 \] \\ 
+       sem & \[ ind & $s_1$ \]  \] \ \ldots \  
+   \[ syn & \[ val & \@0 \] \\ 
+     sem & \[ ind & $s_{n-1}$ \] \]
+    \[ syn & \[ head & conj \] \\
+    sem & \[ ind  & $s_0$ \\ 
+    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q> \]  \]\ \ 
+  \[ syn & \[ val & \@0 \] \\ 
+     sem & \[ ind & $s_n$ \] \]
+  \end{avm}}
+\item[=]
+\scalebox{0.75}{\begin{avm}\avmfont{\sc}
+    \[  val & \@0 \\ ind & $s_0$ \]
+    \ \into \ 
+  \[  val & \@0 \\ ind & $s_1$  \] \ \ldots \  
+   \[  val & \@0  \\ ind & $s_{n-1}$ \]
+    \[ head & conj \\
+     ind  & $s_0$ \\ 
+    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
+  \[  val & \@0 \\ ind & $s_n$ \]
+  \end{avm}}
+\end{itemize}
+\end{itemize}
+% \item[=] 
+% \scalebox{0.8}{\begin{avm}\avmfont{\sc}
+%      \[ \asort{phrase} \]
+%      \ $\rightarrow$\ \HD \ \@1   \[ comps & \el  \] \ \ 
+%       \[ comps & \el \\ mod & \< \@1 \> \] 
+%  \end{avm}} 
+
+\myslide{Combining Constraints and Coordination}
+
+\begin{itemize}
+\item  Coordination Rule \\
+\scalebox{0.75}{\begin{avm}\avmfont{\sc}
+    \[  val & \@0 \\ ind & $s_0$ \]
+    \ \into \ 
+  \[  val & \@0 \\ ind & $s_1$  \] \ \ldots \  
+   \[  val & \@0  \\ ind & $s_{n-1}$ \]
+    \[ head & conj \\
+     ind  & $s_0$ \\ 
+    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
+  \[  val & \@0 \\ ind & $s_n$ \]
+  \end{avm}}
+\item Lexical Entry for \lex{and} \\
+  \scalebox{0.9}{\begin{avm}\avmfont{\sc}
+      \< \eng{and} ,\ \[ syn & \[head & {\it conj} \] \\
+                          sem & \[mode & none\\
+                                  ind & $s$\\
+                                  restr & \< \[reln & {\bf and}\\
+                                               sit & \ \ $s$\\ \] \>\]\] \>
+                                        \end{avm}}
+\end{itemize}
+
+\myslide{Combining Constraints and Coordination}
+\noindent\scalebox{0.9}{\begin{avmtree}\avmfont{\sc}
+\br{S \[ ind & $s_0$ \\
+restr & 
+\< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
+ \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
+\@0 \ \[reln & {\bf and}\\
+sit & \ \ $s_0$\\ 
+args & \q< $s_1, s_2$ \q> \], 
+\[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
+\[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\] \> \]}{
+  \br{S \[ ind & $s_1$ \]}{ \tlf{\eng{Joe jokes}}}
+  \br{\[ head & {\it conj} \\
+         ind & $s_0$\\
+        restr & \< \@0 \[reln & {\bf and} \] \> \] }{\lf{\eng{and}}}
+  \br{S \[ ind & $s_2$ \]}{ \tlf{\eng{Kim smiles}}}
+}
+\end{avmtree}}
+
+\myslide{Ambiguity}
+\noindent\scalebox{0.7}{\begin{avmtree}\avmfont{\sc}
+\br{S \[ ind & $s_0$ \\
+restr & 
+\< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
+ \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
+\@0 \ \[reln & {\bf and}\\
+sit & \ \ $s_0$\\ 
+args & \q< $s_1, s_2$ \q> \], 
+\[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
+\[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\],
+\[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_0$ \]  \> \]}{
+\br{\@1 S \[ ind & $s_0$ \]}{
+  \br{S \[ ind & $s_1$ \]}{ \tlf{\eng{Joe jokes}}}
+  \br{\[ head & {\it conj} \\
+         ind & $s_0$\\
+        restr & \< \@0 \[reln & {\bf and} \] \> \] }{\lf{\eng{and}}}
+  \br{S \[ ind & $s_2$ \]}{ \tlf{\eng{Kim smiles}}}
+}
+\br{ADV \[ mod \q< \@1 \q> \]}{\tlf{\eng{often}}}}
+\end{avmtree}}
+
+\myslide{Ambiguity}
+\noindent\scalebox{0.7}{\begin{avmtree}\avmfont{\sc}
+\br{S \[ ind & $s_0$ \\
+restr & 
+\< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
+ \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
+\@0 \ \[reln & {\bf and}\\
+sit & \ \ $s_0$\\ 
+args & \q< $s_1, s_2$ \q> \], 
+\[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
+\[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\],
+\[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_2$ \]  \> \]}{
+  \br{S \[ ind & $s_1$ \]}{ \tlf{\eng{Joe jokes}}}
+  \br{\[ head & {\it conj} \\
+         ind & $s_0$\\
+        restr & \< \@0 \[reln & {\bf and} \] \> \] }{\lf{\eng{and}}}
+\br{S \[ ind & $s_2$ \]}{
+  \br{\@1 S \[ ind & $s_2$ \]}{ \tlf{\eng{Kim smiles}}}
+  \br{ADV \[ mod \q< \@1 \q> \]}{\tlf{\eng{often}}}}}
+\end{avmtree}}
+
+
+
+\myslide{Question About Structural Ambiguity}
+Why isn’t this a possible semantic representation for
+the string \eng{Joe jokes and Kim smiles often}?
+
+\noindent\scalebox{0.6}{\begin{avm}\avmfont{\sc}
+\[ ind & $s_0$ \\
+  mode & prop \\
+  restr & 
+  \< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
+  \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
+  \@0 \ \[reln & {\bf and}\\
+  sit & \ \ $s_0$\\ 
+  args & \q< $s_1, s_2$ \q> \], 
+  \[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
+  \[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\],
+  \[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_1$ \]  \> \]
+\end{avm}}
+
+\myslide{Some Standard Extensions}
+
+\begin{itemize}
+\item Quantification
+  \begin{itemize}
+  \item typically expressed as restrictions on scope
+  \item Minimal Recursion Semantics goes further
+  \end{itemize}
+\item Pragmatics
+  \begin{itemize}
+  \item typically expressed as another feature: \ft{context}
+  \item contains things like \val{speaker, hearer, audience}
+  \item used for pronominal reference, politeness
+\end{itemize}
+\end{itemize}
+
+
+\myslide{Problem: Two Kinds of Modifiers in English}
+In English, modifiers of nouns can appear either
+before or after the noun, although any given modifier is usually
+restricted to one position or the other.
+
+\begin{itemize}
+\item[(i)] \textit{The red dog on the roof}
+\item[(ii)]  \bad{\it The on the roof dog}
+\item[(iii)]  \bad{\it The dog red}
+\end{itemize}
+%
+Our current Head-Modifier Rule only licenses post-head modifiers
+(like {\it on the roof} in (i)).
+
+\newpage 
+\begin{itemize}
+\item[A.] Write a second Head-Modifier Rule that licenses
+\index{pre head modifier@pre-head modifier}pre-head modifiers
+(e.g., {\it red} in (i)).
+\item[B.] Modify the Head-Modifier 1 and Head-Modifier 2 Rules so that
+they are sensitive to which kind of modifier is present and don't
+generate (ii) or (iii).  [\textsl{Hint: Use a feature
+{\rm [}POST-HEAD \{+,$-$\}{\rm ]} to distinguish {\it red} and {\it on the roof}.}]
+\item[C.] Is POST-HEAD a \index{HEAD}HEAD feature? Why or why not? 
+\item[D.] Give lexical entries for {\it red} and {\it on} that show
+the value of POST-HEAD. (You may omit the SEM features in these entries.)
+\item[E.] Is (i) ambiguous according to your grammar (i.e.\ 
+the Chapter 5 grammar modified to include the two Head-Modifier Rules,
+instead of just one)? Explain your answer.  
+\end{itemize}
+
+This problem assumed that we don't want to make the two Head-Modifier
+Rules sensitive to the part of speech of the modifier.  One reason for
+this is that modifiers of the same part of speech can occur before and
+after the head, even though individual modifiers might be restricted
+to one position or the other.
+
+\begin{itemize}
+\item[F.] Provide three examples of English NPs with
+\index{adjective}adjectives or APs after the noun. 
+\item[G.] Provide three examples of \index{adverb (ADV)}adverbs that can come before 
+the verbs they modify.
+\item[H.] Provide three examples of adverbs that can come after
+the verbs they modify.
+\index{ambiguity}
+\end{itemize}
+
+
+\myslide{Problem: Semantics of Number Names}
+In  Chapter 3, we considered the
+syntax of English number names, and in particular how
+to find the head of a number name expression. Based on the
+results of that problem, the lexical entry for
+{\it hundred} in a number name like {\it two hundred five}
+should include the constraints in (i): (Here we are assuming
+a new subtype of {\it pos}, {\it number}, which is appropriate
+for number name words.)
+\index{pos@{\it pos}}
+\index{number@{\it number}}
+
+\begin{itemize}
+\item[(i)] \scalebox{0.8}{\begin{avm}
+\< hundred , \[ SYN \[ HEAD & {\it number}\\
+                       VAL & \[ SPR & \q< \[ HEAD & {\it number} \] \q>\\
+                                COMPS & \q< \[ HEAD & {\it number} \] \q> \]\]\] \>
+\end{avm}}
+%\index{SPR}
+%\index{COMPS}
+\end{itemize}
+
+\noindent
+This lexical entry interacts with our ordinary Head-Complement
+and Head-Specifier Rules to give us the phrase structure shown in
+(ii):
+
+\begin{itemize}
+\item[(ii)] \scalebox{0.8}{\begin{tree}
+\br{NumP}{\br{NumP}{\lf{two}}
+	  \br{Num$'$}{\br{Num}{\lf{hundred}}
+		      \br{NumP}{\lf{five}}}}
+\end{tree}}
+\end{itemize}
+
+Smith (1999) provides a compositional semantics
+of number names. The semantics of this NP should be (iii):
+
+\begin{itemize}
+\item[(iii)]
+\scalebox{0.6}{\begin{avm}
+\[ INDEX & $i$\\
+   MODE & ref\\
+   RESTR & {\Huge$\langle$}\  \[\avmspan{RELN \ {\bf constant}}\\
+		 INST & \ \ \ $l$\\
+		 VALUE &  \ \ \ 2\]\ ,
+              \[\avmspan{RELN \ {\bf times}}\\
+		 RESULT & \ \ $k$\\
+		 FACTOR1 & \ \ $l$\\
+                 FACTOR2 & \ \ $m$ \]\ , 
+	     \[\avmspan{RELN \ {\bf constant}}\\
+		 INST & \ \ \ $m$\\
+		 VALUE & \ \ 100 \]\ , \hspace{10pt}\[ RELN & {\bf plus}\\
+ 		 RESULT & \  \ $i$\\
+	         TERM1 & \ \ $j$\\
+		 TERM2 & \ \ $k$ \]\ , 
+              \[\avmspan{RELN \ {\bf constant}}\\
+		 INST & \ \ \ $j$\\
+                 VALUE & \ \ \ 5 \]\ {\Huge$\rangle$} \]
+\end{avm}}
+\end{itemize}
+
+\noindent
+This  expresses ``(two times one hundred) plus five" (i.e.\ 
+205) as a FS.
+
+\begin{itemize} 
+
+\item[A.] Assume that the two constant 
+% relations 
+predications
+with the values 2 and
+5 are contributed by the lexical entries for {\it two} and {\it five}.
+What predications must be on the \index{RESTR}RESTR list of the lexical entry for
+{\it hundred} in order to build (iii) as the SEM value of {\it two
+hundred five}?
+\item[B.] The lexical entry for {\it hundred} will identify the
+indices of its specifier and complement with the value of some feature
+of a predication on its RESTR list.  Which feature of which predication
+is the \index{index}index of the specifier identified with?  What about the index
+of the complement?
+\item[C.] The lexical entry for {\it hundred} will identify its
+own INDEX with the value of some feature of some predication on
+its RESTR list.  Which feature of which predication must this
+be, in order for the grammar 
+to build (iii) as the SEM value of {\it two hundred five}?
+
+\newpage
+
+\item[D.] Based on your answers in parts (A)--(C), 
+give a lexical entry for {\it hundred} that includes
+the constraints in (i) and a fully specified SEM value.  
+[{\sl Note: Your lexical entry need only account for {\it hundred}
+as it is used in {\it two hundred five}. Don't worry about other
+valence possibilities, such as 
+{\it two hundred}, {\it two hundred and five}, or {\it a hundred}.}]
+\item[E.] The syntax and semantics of number names do
+not line up neatly: In the syntax, {\it hundred} forms a constituent
+with {\it five}, and {\it two} combines with {\it hundred five} to
+give a larger constituent.  In the semantics, the constant
+% relations 
+predications
+with the values 2 and 100 are related via the times 
+% relation
+predication.
+The result of that is related to the constant 
+% relation 
+predication
+with the value
+5, via the plus 
+predication
+% relation.  
+Why is this mismatch not a problem for the grammar?
+\end{itemize}
+
+
+
+
+\myslide{Overview}
+\begin{itemize}
+\item Some notes on the linguist's stance
+\item Which aspects of semantics we’ll tackle
+\item Our formalization; Semantics Principles
+\item Building semantics of phrases
+\item Modification, coordination
+\item Structural ambiguity
+\end{itemize}
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\end{itemize}
+
+\input{lq-04-semantics}
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End: 
+
