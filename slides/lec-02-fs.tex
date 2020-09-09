@@ -7,7 +7,7 @@
 %% FIXME: not all of the features are smallcaps :-(
 %%
 \input{headx.tex}
-
+\usepackage{forest}
 %\avmfont{\sc}
 \begin{document}
 %\avmfont{\it}
@@ -619,13 +619,15 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 \it
 \br{feat-struc}{ \br{ expression  \[ \textsc{head, val} \] }{\lf{word}
                                   \lf{phrase}}
-                 \br{val-cat \[ \textsc{spr, comps} \] }{ }
 			\br{pos}{\br{agr-pos \[ \textsc{agr} \] }{ \lf{noun}
                             \lf{verb \[ \textsc{aux} \]}
 				 \lf{det}}
 				 \lf{prep}
 				 \lf{adj}
-				 \lf{conj}}}
+				 \lf{conj}}
+                     \br{val-cat \[ \textsc{spr, comps} \] }{ }
+                     \br{agr-cat \[ \textsc{per, num} \] }{ } 
+                             }
 \end{avmtree}
 \end{center}
 
@@ -728,6 +730,8 @@ Which simple phrase structure rules (Ch 2) do these correspond to?
 \end{itemize}
 
 \myslide{Reformulating the Grammar Rules II}
+\MyLogo{Head-Specifier Rule 2 updated in the problems}
+
 \begin{itemize}
 \item Head-Specifier Rule 1:
 
@@ -901,26 +905,69 @@ the value of \ft{agr}, how did the tree on the previous slide get
 
 
 
-\myslide{3.1}
 
+\myslide{3.1 Applying the grammar}
+\begin{itemize}
+\item[A.] Formulate \index{agreement|(} a \index{lexical entry} lexical entry for the word {\it defendants}.
+\item[B.] Draw a tree for the sentence {\it The defendants walk}.  Show
+the values for all of the features on every node and use tags to indicate
+the effects of any identities that the %rules require.
+grammar requires.
+\item[C.] Explain how your lexical entry for {\it defendants} interacts
+with the Chapter 3 grammar to rule out {\it *The defendants walks}.
+Your explanation should make reference to grammar rules, lexical
+entries and the \index{Head Feature Principle (HFP)}HFP. \index{agreement|)}
+\end{itemize}
+
+\myslide{Determiner-Noun Agreement}
+
+The Chapter 3 grammar declares AGR to be a feature
+appropriate for the types {\it noun}, {\it verb}, and {\it det}, but
+so far we haven't discussed agreement involving determiners.  Unlike
+the determiner {\it the}, most other English determiners do show
+agreement with the nouns they combine with:
+
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item[(i)] a bird/*a birds
+\item[(ii)] this bird/*this birds
+\item[(iii)] that bird/*that birds
+\item[(iv)] these birds/*these bird
+\item[(v)] those birds/*those bird
+\item[(vi)] many birds/*many bird
+\end{itemize}
+\newpage
 
 \begin{itemize}
-
-\item Formulate a lexcial entry for the word \eng{defendants}
-  
-\item Draw a tree for \eng{The defendents walk}.  Show all the features on all of the nodes and use tags to show identities.
-
-  \item Explain how you the grammar blocks \eng{The defendents walks}.  You should refer to the lexical entries, rules and HFP.
-  
+\item[A.] Formulate lexical entries for {\it this} and {\it these}.
+\item[B.] Modify Head-Specifier Rule 2 so that it enforces agreement
+between the noun and the determiner just like Head-Specifier Rule 1
+enforces agreement between the NP and the VP.
+\item[C.] Draw a tree for the NP {\it these birds}. Show the
+value for all features of every node and use tags to indicate the
+effects of any identities that the %rules 
+grammar 
+(including your modified
+HSR2 and the Head Feature Principle) requires.
 \end{itemize}
 
 
-\myslide{Acknowledgments and References}
+\myslide{Types for English Agreement}
 
+\begin{forest}
+  /tikz/every node/.append style={font=\it},
+  [agr-cat [sg,name=sg [3sg]] [, phantom] [, phantom]  [, phantom] [non-3sg
+  [1sg, name=1sg] [non-1sg [2sg, name=2sg] [pl]]]]
+  \draw (sg.south) -- (1sg.north);
+  \draw (sg.south) -- (2sg.north);
+\end{forest}
+
+\myslide{Acknowledgments and References}
 \begin{itemize}
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
+\item Problems from Sag, Wasow and Bender (2003)
+
 \end{itemize}
 
 
