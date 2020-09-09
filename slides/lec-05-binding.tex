@@ -32,6 +32,7 @@
 \item Develop a theory of knowledge of language
 \item Represent linguistic information explicitly enough to
 distinguish well-formed from ill-formed expressions
+\item Assign plausible semantic representations
 \item Be parsimonious, capturing linguistically significant
 generalizations.
 \end{itemize}
@@ -55,8 +56,8 @@ generalizations.
 \end{itemize}
 \item We combine constraints from these components.
 %\item Q: What says we have to combine them?
-\item More in \url{hpsg.stanford.edu/book/slides/Ch6a.pdf}, 
-\\ \url{hpsg.stanford.edu/book/slides/Ch6b.pdf}
+% \item More in \url{hpsg.stanford.edu/book/slides/Ch6a.pdf}, 
+% \\ \url{hpsg.stanford.edu/book/slides/Ch6b.pdf}
 \end{itemize}
 
 \section{Review of Semantics}
@@ -338,7 +339,7 @@ rules and the ordering of elements in the
 \begin{itemize}
 \item For Binding Theory, we need a single list with both subject
 and complements.
-\item We introduce a feature ARG-ST, with the following
+\item We introduce a feature \ft{arg-st}, with the following
 property: \\
 \begin{avm}\avmfont{\sc} 
 \[ \asort{word}  
@@ -349,7 +350,7 @@ property: \\
 \item This is a constraint on the type \val{word}
 \end{itemize}
 
-\myslide{Notes on \ft{arg-st}}
+\myslide{Notes on ARG-ST}
 \begin{itemize}
 \item It’s neither in \ft{syn} nor \ft{sem}.
 \item It only appears on lexical heads (not
@@ -371,10 +372,11 @@ be outranked by a coindexed element.
 \begin{itemize}
 \item Definition: If A precedes B on some \ft{arg-st} list,
 then A \txx{outranks} B.
-\item Elements that must be anaphoric --- that is, that
+\item Elements that must be \txx{anaphoric} --- that is, that
 require an antecedent --- are lexically marked
 [\ft{mode} \val{ana}]. These include reflexive pronouns
-and reciprocals.
+and reciprocals.  
+\item Normal \txx{referential} NPs, including pronouns,  are marked [\ft{mode} \val{ref}].
 \end{itemize}
 \end{description}
 
@@ -428,6 +430,22 @@ roles of NP referents in the situation denoted by the verb.
 \end{itemize}
 \end{description}
 
+\myslide{Argument-marking preposition \eng{to}}
+\begin{avm}\avmfont{\sc}
+  \< \textit{to}, \[ syn & \[ head & prep \\
+                     val &  \[ spr \< \> \] \] \\
+
+                   arg-st & \< NP \[syn & \[ head & \[ case & acc \]  \]\\
+                                  sem & \[ mode & \@1 \\ index & \@2 \] \] \>  \\
+                   sem &  \[ mode & \@1 \\ index & \@2 \] \]    \>
+\end{avm}
+
+\begin{avm}\avmfont{\sc} 
+  \textsc{arg-st} =  \< spr $\oplus$ comps \> 
+\end{avm}
+
+Therfore comps here is a singleton list with the NP in it, \ldots
+
 \myslide{Redefining Rank}
  \begin{itemize}
 \item If there is an \ft{arg-st} list on which A
@@ -474,7 +492,8 @@ PP$_i$ \[ mode & ana \]
 \item The PP is outranked by the first NP. (Why?)
 \item \eng{myself} has the same rank as the PP. (Why?)
 \item So, \eng{myself} is outranked by the first NP. (Why?)
-\item Therefore, Principle A is satisfied.
+\item Therefore, Principle A is satisfied:  A [\ft{mode} \val{ana}] element must be
+outranked by a coindexed element.
 \end{itemize}
 
 \myslide{\eng{*I sent a letter to me}}
@@ -509,8 +528,9 @@ PP$_i$ \[ mode & ref \]
 \item The PP is outranked by the first NP.
 \item \eng{me} has the same rank as the PP.
 \item So, \eng{me} is outranked by the first NP.
-\item Therefore, Principle B is violated.
-\end{itemize}
+\item Therefore, Principle B is violated: A [\ft{mode} \val{ref}] element must not
+be outranked by a coindexed element.
+\end{itemize} 
 
 \myslide{\eng{I brought a pencil with me}}
 \MyLogo{Here \eng{I} does not outrank \eng{me}, so Principle B is satisfied}
@@ -737,7 +757,7 @@ the semantics)
 \end{itemize}
 
 
-\input{lec-05-questions}
+%\input{lec-05-questions}
 
 \end{document}
 
