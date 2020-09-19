@@ -1,7 +1,7 @@
-\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
 \input{headx.tex}
 %%% FIXME should be slant
-\usepackage{mathptmx}
+%\usepackage{mathptmx}
 
 \usepackage{bchart}
 \avmfont{\sc}
@@ -107,6 +107,8 @@ introduces:
 
 \begin{exe}
   \ex \eng{\ul{The the} book I told the student about on the train}
+  \ex $>$ \eng{The book I told \ul{the the} student about on the train}
+  \ex $>$ \eng{The book I told the student about on \ul{the the} train}
 \end{exe}
 
 \myslide{Production errors are sensitive to syntactic structure}
@@ -119,7 +121,7 @@ introduces:
     \ex\label{s:wolfa} *\eng{The claim that the wolves had raised the
       babies were rejected.}
     
-    \ex\label{s:wolfb} *\eng{The claim about the
+    \ex\label{s:wolfb}  $>$ *\eng{The claim about the
       newborn babies were rejected.}
   \end{exe}
 \item Why?
@@ -414,7 +416,7 @@ doing so.
 by psycholinguistic experimentation.
 \item This has happened less than it should have.
 \item Existing psycholinguistic evidence favors a 
-constraint-based, lexicalist approach (like HPSG).
+constraint-based, lexicalist approach (like HPSG, lFG, construction grammar).
 \end{itemize}
 
 \myslide{Universals?}
@@ -427,6 +429,17 @@ typological properties to single parameters (\emp{top-down}).
 describe many languages in a consistent 
 framework and then takes stock of common 
 constraints (\emp{bottom-up}).
+\begin{itemize}
+\item Until we know more detail about more languages, we cannot test theories properly
+\item So describing languages \emp{in precise detail} is very important
+\item HPSG is fully in the tradition of language documentation
+\item The \href{http://depts.washington.edu/uwcl/aggregation/}{The
+    AGGREGATION Project}\footnote{Automatic Generation of Grammars for
+    Endangered Languages from Glosses and Typological Information}
+  attempts to automate the construction of grammar fragments from
+  language descriptions, building on interlinear glossed text (IGT)
+  and using the Grammar Matrix
+\end{itemize}
 \end{itemize}
 
 \myslide{Universals?}
@@ -473,9 +486,24 @@ phonology) of the word.
 that there are lexemes that idiosyncratically don't undergo them.
 Thus, there are some nouns without singular forms, verbs without
 non-third-person singular present tense forms, and verbs without base
-forms.  List any you can think of. 
+forms.  List any you can think of. The verb part is \emp{HARD}
 \end{itemize}
 
-\input{lec-07-questions}
+\color{white}{
+\begin{itemize}\addtolength{\itemsep}{-1em}
+\item[*] \textit{kudos,  outskirts, clothes, shenanigans, suds, \ldots, *scissors, *trousers, \ldots}
+\item[*] \textit{behoove} (only \textit{it behooves}), \textit{beware} (only base) 
+\item[*] modals: \textit{must, should, \ldots} \textit{* You must should go}
+\end{itemize}}
+
+%\input{lec-07-questions}
 
 \end{document}
+
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End: 

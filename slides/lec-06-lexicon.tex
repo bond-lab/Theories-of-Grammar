@@ -1,4 +1,4 @@
-\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
 
 \input{headx.tex}
 
@@ -9,841 +9,247 @@
 \maketitle
 
 
-\myslide{Questions}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 8}
+\myslide{Lexical Types and Rules}
+
+We will use slides from Emily Bender:
 
 
-\Q can you please explain or give examples on the lexical rule instantiation?
+\begin{itemize}
+\item \href{ch08a-uw.pdf}{Lexical Types}
+\item \href{ch08a-uw.pdf}{Lexical Rules}
+\end{itemize}
 
-\A There are many in the slides
 
-\Q Why is there a need for default?
+\myslide{P1: \eng{'s} and the SHAC}
+\MyLogo{Based on  Chapter 8 Problem 1, Sag, Wasow and Bender (2003)}
 
-\A So that we can express things more compactly
+The name `Specifier-Head Agreement Constraint' suggests that heads
+always agree with their specifiers.  Examples like \eng{Pat's parents}
+and \eng{the children's game} look like counterexamples:  in both
+cases, the possessive NP in the DP that functions as the specifier of
+the noun differs in number from that noun.
 
-\Q What is an example of a constraint that will cause contradiction to the default constraint inheritance?
+Explain why these are not really counterexamples, given our
+formulation of SHAC as a type constraint, together with the analysis
+of possessives developed in Problem 4 of Chapter 6.  {\sl [Hint: The
+  fact that \eng{'s} is the head of the DP is crucial.]}
 
-\A \ft{spr} \val{$< DP >$} in proper noun \eng{Miami Heat}
+\myslide{P2: Plural and Mass NPs Without Specifiers}
+\MyLogo{Based on  Chapter 8, Problem 2, Sag, Wasow and Bender (2003)}
 
-\Q Why is ARG-ST included under adj-lxm \& conj-lxm, but not adv-lxm \& det-lxm?
-
-\A I think it is everywhere, maybe just not shown for space
+There is a problem with our treatment of  common nouns.  
+The type  \val{cn-lxm} requires common nouns to have nonempty SPR lists, and this
+requirement is preserved in the  Plural Noun Lexical Rule.
+Similarly, the type \val{massn-lxm} inherits the constraint on the SPR,
+and this constraint is preserved when these nouns undergo the inflectional
+rules.
+This treatment makes the wrong predictions:
+%But
+specifiers are optional for plural nouns and mass nouns.
+\begin{itemize}
+\item[A.] 
+%Give at least three examples showing the \index{optionality of specifier} optionality of 
+%specifiers for \index{noun (N)!plural noun} plural and \index{noun (N)!mass noun} mass nouns.
+Give examples showing, for one plural noun 
+and one \index{noun (N)!mass noun} mass noun, that
+the specifier is optional (i.e.\ permitted but not obligatory).
+\end{itemize}
 
 \newpage
+Two \index{noun phrase (NP)!without determiner|(} obvious approaches to this problem are the following:
+%\pagebreak
+\begin{itemize}
+\item[(i)] allow empty SPR lists in the lexical entries for plural
+and mass nouns; or 
+\item[(ii)] introduce a new  \index{phrase structure!rule (PS rule)}grammar rule to account for NPs with
+plural or mass heads and no specifiers.
+\end{itemize}
 
-\Q In a nutshell, would it be accurate to say that inflectional rules affect the SYN feature while derivational rules affect the SEM feature?
+\noindent
+Alternative (i) would involve modifying the Plural Noun Lexical Rule,
+%as well as introducing a new subtype of \val{cn-lxm} for mass nouns.
+as well as the type \val{massn-lxm} to make the first member of
+the ARG-ST list optional.\footnote{This would require making the
+constraint on the ARG-ST of \val{cn-lxm} defeasible.}
+\index{noun phrase (NP)!without determiner|)}  
 
-\A I think that describes their main effect, yes (although of course
-both get changed)
+The rule in alternative (ii) is analogous to the \index{Imperative
+Rule} Imperative Rule given in Chapter 7, in that it would have only
+one constituent on the right hand side, and its function would be to
+license a constituent without a specifier, although its daughter has a
+nonempty SPR list.
 
-\Q In this week's readings it said that lexeme and expression are both direct subtypes of synsem. Looking at the tree given on pg 229, I have the understanding that the features that fall under expressions cannot be in the same synsem as the features that fall under lexeme. However, I do not really understand what this means, how it is possible or if my understanding is even correct.
+It turns out that alternative (i) makes incorrect predictions about
+prenominal modifiers (see Problem~1 of Chapter~5).  We want adjectives
+like \eng{cute} to modify plural nouns even when they don't have
+specifiers:
 
-\A Yes, that is correct.  So, for example, $phrase$ does not have \ft{arg-st}
+\begin{itemize}
+\item[(iii)] \eng{Cute puppies make people happy.}
+\end{itemize}
+
+\noindent
+Under alternative (i), in order to generate (iii), we would have
+to allow adjectives like \eng{cute} to modify NPs (i.e.\ expressions
+that are \mbox{[SPR $\langle$  $\rangle$]}).  If we do that, however, we have no
+way to block (iv):\footnote{There are also technical problems with
+making alternative (i) work with the ARP.}
+
+\begin{itemize}
+\item[(iv)] \bad{Cute the puppies make people happy.}
+\end{itemize}
 
 \newpage
+Alternative (ii), on the other hand, would allow \eng{cute}
+to always modify a \index{NOM}NOM \mbox{([SPR $\langle$ DP $\rangle$])}
+constituent.  A NOM, modified or otherwise, could either be
+the daughter of the non-branching rule, or the head daughter of
+the \index{Head Specifier Rule@Head-Specifier Rule}Head-Specifier Rule.
 
-\Q Last-week's topic:
-For the imperative rule, why is the COMPS list empty?
-
-\A Because we want the verb to have all of its compliments before we
-use it.  \eng{*Put!} vs \eng{Put it there!}
-
-\Q Is the defeasible symbol '/' only used for lexeme?
-
-\A No it can be used elsewhere (such as in rules)
-
-\Q
-What is the difference between an empty list $ < >$ and a defeasible
-list $/< >$? (E.g. ARG-ST $<DP> + < >$ and ARG-ST $<DP> + /< >$)
-
-\A One can be overuled by more specific types the other cannot.
-
-\newpage
-
-\Q Gerneral qns
-Is ARG-ST $<DP$ \\
-  $[COUNT +]>$ ([...] on the 2nd line)
-and ARG-ST DP [COUNT +] the same?
-
-\A No: only the first one is correct (ARG-ST must be a list)
-
-\Q Could you explain what the function of INPUT and OUTPUT is? Why do we need them?
-
-\A Input is daughter, output is mother.   The rule applies to
-something (the input) to make something different (the output), declaratively.
-
-\newpage
-
-\Q Apart from the exceptions of some proper nouns like mountains and team names, could this exception (that proper nouns are usually 3sing and ARG-ST list must be empty) be applied to brand names as well?
-
-For example,
-\\(1) The Blackberrys/-ies we saw today were stunning!
-\\(2) *The Blackberrys/ies we saw today is stunning! 
-
-\A Yes!
-
-
-
-\Q In the beginning of the chapter, they were talking about the concept of "words with spaces". What are they and how does it relate to the chapter's discussion of lexemes?
-
-\A Things that look like two words, but act as one: \eng{ad hoc}
-
-\newpage
-
-\Q How do we determine whether or not a constraint is defeasible? Is everything non-defeasible till there is a counterexample that shows that it is? 
-
-\A In the model, it is only defeasible if we say it is.  We make
-things defeasible if they are true for most types, but not all.
-
-\Q Why does the book say that only S with FORM finite can be stand-alone sentences (51), when it gave examples in its list (48) of values for FORM that are also acceptable sentences?
-
-\A in examples like \eng{Kim is \ul{eating} lunch}, \eng{eating} is
-FORM prp, but the sentence is headed by \eng{is} which is FORM fin.
-
-\newpage
-
-% \Q Around pages 243/244, we get introduced to a Two-Argument taking preposition for 'around' in (42) "I wrapped the blanket around me";  besides mentioning that it's the first time we see the same constituent being arguments of two things st the same time, the book seems to not motivate why would a preposition need a specifier (if it's selected by the verb); the same (or similar) seems to be happening in (45), where adjectives now have an NP specifier...
-
-% \A See chapter~12
-
-
-
-
-\myslide{Acknowledgments and References}
 
 \begin{itemize}
-\item Course design and slides borrow heavily from Emily Bender's course:
-\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
-\\ \url{http://courses.washington.edu/ling566}
+%\item[B.]  The ARP does not manage to sufficiently constrain what
+%alternative (i) would allow.  Explain why.\smallskip
+%
+%\noindent
+%[{\sl Hint: Assume that alternative
+%(i) involves making the \index{determiner (D)} determiner an optional member of the noun's
+%ARG-ST. Consider all the ways that an \index{ARGUMENT STRUCTURE (ARG ST)@ARGUMENT-STRUCTURE (ARG-ST)} ARG-ST element could be realized
+%on the SPR or COMPS list.  You may also want to construct examples of
+%common nouns with complements but no specifiers.}]
+
+\item[B.]  Formulate the rule required for alternative (ii).  \smallskip
+%Be as precise as you can.\smallskip%\hfill\break
+
+\noindent
+{[{\sl Hint:  The trickiest part is formulating the rule so that it
+applies to both plural \index{noun (N)!count noun}count nouns and \index{noun (N)!mass noun}mass nouns, while not applying
+to singular count nouns.  You will need to include a disjunction in 
+the rule.  The 
+%\index{SPR}
+SPR list of the \index{head daughter (H)}head daughter is a good place to state
+it, since the three types of nouns differ in the requirements they
+place on their specifiers.}]}
+\index{noun (N)!singular noun}
+\index{specifier!optional|)}
+
+%disjunction of plural or mass nouns.  The place to do this is in the
+%SPR list of the feature structure description 
+%on the right hand side of the rule.}]
 \end{itemize}
 
 
-\end{document}
-
-\avmfont{\sc}
-\begin{document}
-\avmfont{\it}
-
-\header{Lecture 5}{Binding Theory}{}
-\maketitle
-
-
-\myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 7}
-\begin{itemize}
-\item What we are trying to do
-\item Last week: Semantics
-\item Review of Chapter 1's informal binding theory
-\item What we already have that’s useful
-\item What we add in Ch 7 (ARG-ST, ARP)
-\item Formalized Binding Theory
-\item Binding and PPs
-\item Imperatives
-\end{itemize}
-
-
-
-\myslide{What We’re Trying To Do}
-\begin{itemize}
-\item Objectives
-\begin{itemize}
-\item Develop a theory of knowledge of language
-\item Represent linguistic information explicitly enough to
-distinguish well-formed from ill-formed expressions
-\item Be parsimonious, capturing linguistically significant
-generalizations.
-\end{itemize}
-\item Why Formalize?
-\begin{itemize}
-\item To formulate testable predictions
-\item To check for consistency
-\item To make it possible to get a computer to do it for us
-\end{itemize}
-\end{itemize}
-
-\myslide{How We Construct Sentences}
-\begin{itemize}
-\item The Components of Our Grammar
-\begin{itemize}
-\item Grammar rules
-\item Lexical entries
-\item Principles
-\item Type hierarchy (very preliminary, so far)
-\item Initial symbol (S, for now)
-\end{itemize}
-\item We combine constraints from these components.
-%\item Q: What says we have to combine them?
-\item More in \url{hpsg.stanford.edu/book/slides/Ch6a.pdf}, 
-\\ \url{hpsg.stanford.edu/book/slides/Ch6b.pdf}
-\end{itemize}
-
-\section{Review of Semantics}
-
-\myslide{Overview}
-\begin{itemize}
-\item Which aspects of semantics we’ll tackle
-\item Semantics Principles
-\item Building semantics of phrases
-\item Modification, coordination
-\item Structural ambiguity
-\end{itemize}
-
-
-\myslide{Our Slice of a World of Meanings}
-
-Aspects of meaning we \emp{won’t} account for (in this course)
-\begin{itemize}
-\item Pragmatics
-\item Fine-grained lexical semantics
-  \\ The meaning of \eng{life} is
-  \begin{itemize}\addtolength{\itemsep}{2ex}
-  \item \iz{life}  
-or 
-\textsf{life}$'$
-or
-  \begin{avm}\avmfont{\sc}%\avmvalfont{\it}
-    \[ reln & life \\ inst & i \]
-  \end{avm}
-\item Not like wordnet: 
-\iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
-
- % -- (a characteristic state or mode of living; "social life"; "city life"; "real life")
- %       => being, beingness, existence -- (the state or fact of existing; "a point of view gradually coming into being"; "laws in existence for centuries")
- %           => state -- (the way something is with respect to its main attributes; "the current state of knowledge"; "his state of health"; "in a weak financial state")
- %               => attribute -- (an abstraction belonging to or characteristic of an entity)
- %                   => abstraction, abstract entity -- (a general concept formed by extracting common features from specific examples)
- %                       => entity -- (that which is perceived or known or inferred to have its own distinct existence (living or nonliving))
- \end{itemize}
-\item Quantification \hfill (covered lightly in the book)
-\item Tense, Mood, Aspect \hfill (covered in the book)
- \end{itemize}
-
-
-% RELN life
-% INST i
-
-\myslide{Our Slice of a World of Meanings}
-\begin{avm}\avmfont{\sc}
-\[mode &  prop \\
- index &  $s$\\
- restr & \< \[ RELN & {\bf save}\\
-               SIT & $s$\\
-              SAVER &  $i$\\
-              SAVED &  $j$ \] \ , 
-              \[RELN & {\bf name}\\ 
-              NAME &  Chris\\
-              NAMED & \ $i$\]\ , 
-              \[RELN & {\bf name}\\
-              NAME &  Pat\\
-              NAMED & \ $j$\] \> \]
-\end{avm} 
-\begin{quote}
-  “\ldots the linguistic meaning of \eng{Chris saved Pat} is a proposition
-  that will be true just in case there is an actual situation that
-  involves the saving of someone named Pat by someone named Chris.”
-  \begin{flushright}
-    (Sag \textit{et al}, 2003, p. 140)
-  \end{flushright}
-\end{quote}
-
-\myslide{Semantics in Constraint-Based Grammar}
-\begin{itemize}
-\item Constraints as (generalized) truth conditions
-  \begin{itemize}
-\item \txx{proposition}: what must be the case for a proposition to be true
-\item \txx{directive}: what must happen for a directive to be fulfilled
-\item \txx{question}: the kind of situation the asker is asking about
-\item \txx{reference}: the kind of entity the speaker is referring to
-\end{itemize}
-\item \txx{Syntax/semantics interface}: 
-  \begin{quote}
-    Constraints on how syntactic arguments are related to semantic
-    ones, and on how semantic information is compiled from different
-    parts of the sentence.
-  \end{quote}
-\end{itemize}
-
-\myslide{Feature Geometry}
-\begin{avm}\avmfont{\sc}
-\[\asort{expression}
-syn & \[ \asort{syn-cat}
-      head & \[ \asort{pos} ... \] \\
-      val & \[ spr & \q< ... \q> \\
-               comps & \q< ... \q> \]\]\\
-      sem & \[ \asort{sem-cat}
-      mode &  \q\{ prop, ques, dir, ref, none \q\} \\
-      index &  \q\{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \q\} \\
-      restr & \q< ... \q> \]\]
- \end{avm}
-
-
-
-% \myslide{How the Pieces Fit Together}
-% \begin{avm}\avmfont{\sc}
-%   \< \eng{Kim}, \[syn & \[head & \[{\it noun}\\
-%   agr & {\it 3sing}\]\\
-%   val & \[spr & {\el}\\
-%   comps & {\el}\]\]\\
-%   sem & \[mode & ref\\
-%   index & \ \ $i$\\
-%   restr & \< \[reln & {\bf name}\\
-%   % sit & \ \ $s$\\
-%   name & Kim\\
-%   named & \ \ $i$\] \> \]\] \>  %
-% \end{avm}
-% \myslide{How the Pieces Fit Together}
-% \begin{avm}\avmfont{\sc}
-% \< \eng{sleep} ,\ \[syn & \[head & {\it verb}\\
-%                                      val & \[spr & \q< NP$_i$ \q>\\
-%                                      comps & \q<  \q>\]\]\\
-%                             sem & \[mode & prop\\
-%                                     index & $s$\\
-%                                     restr & \< \[reln & {\bf sleep}\\
-%                                                  sit & \ \ $s$\\
-%                                                  sleeper & \ \ $i$  \] \>\]\] \>
-%                                         \end{avm}
-% \myslide{The Pieces Together}
-
-% \begin{avmtree}\avmfont{\sc}
-%   \br{S}{
-%     \br{\@{1} NP  \[ sem & \[ index & $i$ \] \] }{\lf{\eng{Kim}}}
-%     \br{VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
-%       sem & \[ mode & prop\\
-%       index & $s$\\
-%       restr & \< \[reln & {\bf sleep}\\
-%       sit & \ \ $s$\\
-%       sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
-% \end{avmtree}
-
-
-\myslide{An Example}
-\scalebox{0.8}{\begin{avmtree}\avmfont{\sc}
-  \br{S  \[ sem & \[ mode & prop \\ index & $s$\\
-      restr & \< \[reln & {\bf name}\\
-      name & \ \ Kim \\
-      named & \ \ $i$ \],
-      \[reln & {\bf sleep}\\
-      sit & \ \ $s$\\
-      sleeper & \ \ $i$  \]  \>  \] \] }{
-    \br{\@{1} NP  \[ sem & \[ mode & ref \\ index & $i$\\
-      restr & \< \[reln & {\bf name}\\
-      name & \ \ Kim \\
-     named & \ \ $i$ \] \>  \] \] }{\lf{\eng{Kim}}}
-    \br{\HD VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
-      sem & \[  mode & prop \\ index & $s$ \\ 
-      restr & \< \[reln & {\bf sleep}\\
-      sit & \ \ $s$\\
-      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
-\end{avmtree}}
-
-
-\myslide{How to Share Semantic Information}
-\MyLogo{List summation: $\oplus$ (technically concatenation)} 
-\begin{itemize}
-\item \txx{The Semantic Inheritance Principle}
-  \begin{quote}
-    In any headed phrase, the mother's \ft{mode} and
-    \ft{index} are identical to those of the head daughter.    
-  \end{quote}
-\item \txx{The Semantic Compositionality Principle}
-  \begin{quote}
-    In any well-formed phrase structure, the mother's
-    \ft{restr} value is the sum of the \ft{restr} values of
-    the daughters.
-  \end{quote}
-\end{itemize}
-
-\myslide{Where is the information}
-\MyLogo{}
-\begin{itemize}
-\item Words
-  \begin{itemize}
-  \item Contribute predications
-  \item ‘expose’ one index in those predications, for use by words or phrases
-  \item relate syntactic arguments to semantic arguments
-  \end{itemize}
-\item Rules
-\begin{itemize}
-\item Identify (link) feature structures across daughters
-\item License trees which are subject to the semantic principles
-  \begin{itemize}
-  \item SIP: ‘passes up’ \ft{mode} and \ft{index} from head daughter
-  \item SCP: ‘gathers up’ predications (\ft{restr} list) from all daughters
-  \end{itemize}
-\end{itemize}
-\item The semantics is strictly compositional --- all of the meaning
-  comes from the words, rules and principles.
-\end{itemize}
-
-\section{Binding}
-
-
-\myslide{Some Examples from Chapter 1}
+\myslide{P3: Arguments in Japanese}
+\MyLogo{Based on  Chapter 8, Problem 6, Sag, Wasow and Bender (2003)}
+As noted \index{Japanese|(}
+in Chapter 2, Japanese word order differs from English in a number of ways,
+including the fact that it is a \index{Subject Object Verb (SOV)@Subject-Object-Verb (SOV)} `Subject-Object-Verb' (SOV) language.  Here
+are a few relevant examples. In the glosses, `{\sc nom}', `{\sc acc}', and 
+`{\sc dat}' stand for \index{nominative case} nominative,
+\index{accusative case} accusative, and \index{dative case} dative 
+case, respectively.  (Note that Japanese has one more case -- dative -- than
+English does.  This doesn't have any important effects on the analysis; it
+merely requires that we posit one more possible value of \index{CASE}CASE for Japanese
+than for English).\footnote{The examples
+marked with `*' here
+are unacceptable with the indicated meanings.  Some of these might be
+well-formed with some other meaning of no direct relevance; others might be
+well-formed with special \index{intonation} intonation that we will ignore for present
+purposes.}
 
 \begin{exe}
-\ix She likes herself
-\ix *She$_i$ likes her$_i$.
-\ix We gave presents to ourselves.
-\ix *We gave presents to us.
-\ix We gave ourselves presents
-\ix *We gave us presents.
-\ix *Leslie told us about us.
-\ix Leslie told us about ourselves.
-\ix *Leslie told ourselves about us.
-\ix *Leslie told ourselves about ourselves.
+  \ex %一人 の 男 が その 本 を 読んだ 。
+  \gll Hitorino  otoko-ga sono  hon-o yonda. \\
+ one  man-{\sc nom} that  book-{\sc acc} read.{\sc past} \\
+\trans {`One man read that book.'}
+
+[cf.\ *Yonda hitorino otoko-ga sono hon-o. \\ {*}Hitorino otoko-ga yonda
+sono hon-o. \\ {*}Otoko-ga hitorino sono hon-o yonda. \\ {*}Hitorino
+otoko-ga hon-o sono yonda. \\ {*}Hitorino otoko-ni/-o sono hon-o
+yonda. \\ {*}Hitorino otoko-ga sono hon-ga/-ni yonda.]  
+
+\ex 
+\gll  Hanako-ga  hon-o  yonda \\
+ Hanako-{\sc nom}  book-{\sc acc}  read.{\sc past} \\
+\trans {`Hanako read the book(s)'}
+
+[cf.\ *Yonda Hanako-ga hon-o. \\ {*}Hanako-ga yonda hon-o. \\
+{*}Hanako-ni/-o hon-o yonda. \\ {*}Hanako-ga hon-ni/-ga yonda.]
+
+\ex \label{5}
+\gll   sensei-ga  Taroo-ni  sono   hon-o  ageta \\
+ teacher-{\sc nom} Taroo-{\sc dat} that   book-{\sc acc} gave.{\sc past} \\
+ \trans {`The teacher(s) gave that book to Taroo'}
+
+[cf.\ *Ageta sensei-ga Taroo-ni sono hon-o. \\ {*}Sensei-ga ageta Taroo-ni
+sono hon-o. \\ {*}Sensei-ga Taroo-ni ageta sono hon-o. \\ {*}Sensei-o/-ni
+Taroo-ni sono hon-o ageta. \\ {*}Sensei-ga Taroo-ga/-o sono hon-o ageta.\\
+{*}Sensei-ga Taroo-ni sono hon-ga/-ni ageta.]
+
+%\item[(iv)]{\shortex{2}
+%\eng{Sono hon-ga \it akai}
+%{that book-nom  be.red}
+%{`That book is red'}
+%
+%[cf. \ *Akai sono hon-ga.]}
+
+\ex\label{2}
+\gll Hanako-ga   kita \\
+ Hanako-{\sc nom}   arrive.{\sc past} \\
+\trans {`Hanako arrived.'}
+
+[cf. \ *Kita Hanako-ga.]
+
 \end{exe}
 
-\myslide{Some Terminology}
-\begin{itemize}
-\item \txx{Binding}: The association between a pronoun
-and an antecedent.
-\item \txx{Anaphoric}: A term to describe an element (e.g.
-a pronoun) that derives its interpretation from
-some other expression in the discourse.
-\item \txx{Antecedent}: The expression an anaphoric
-expression derives its interpretation from.
-\item \txx{Anaphora}: The relationship between an
-anaphoric expression and its antecedent.
+
+									
+\noindent
+As the contrasting ungrammatical examples show, the verb must appear
+in final position in \index{Japanese} Japanese. In addition, we see
+that \index{verb (V)} verbs select for NPs of a particular
+\index{case} case, much as in English. In the following tasks, assume
+that the nouns and verbs of Japanese are \index{inflection!inflected word} inflected words, derived by lexical rule from the appropriate
+lexemes.
+
+\begin{itemize}\addtolength{\itemsep}{1ex}
+
+\item[A.] Write \index{Head Specifier Rule@Head-Specifier Rule}Head-Specifier and 
+\index{Head Complement Rule@Head-Complement Rule}Head-Complement Rules for
+Japanese that account for the data illustrated here.  How are
+they different (if at all) from the Head-Specifier and Head-Complement 
+Rules for English?
+%Given the data illustrated here, how could the 
+%Head-Specifier and Head-Complement rules be revised to deal
+%with Japanese? Explain the effect of the difference(s) you have posited.
+
+\item[B.] Give the lexical entry for each of the verbs
+illustrated in (i)--(iv). 
+
+[{\sl Make sure your entries interact with the rules you
+formulated in part (A) to account for the above data.  The data given
+permit you to specify only some features; leave others unspecified.
+Assume that there is a Past-Tense Verb Lexical Rule (an \val{i-rule})
+that relates your lexical entries to the words shown in (i)--(iv).  We
+have not provided a hierarchy of lexeme types for Japanese.  You may
+either give all relevant constraints directly on the lexical entries,
+or posit and use subtypes of \val{lexeme}.  In the latter case, you
+must also provide those types.}]
+\newpage
+
+\item[C.] Give the lexical entries for the nouns \eng{Taroo} and
+\eng{hon}. [{\sl See notes on part (B).}]
+
+\item[D.] Formulate the lexical rule for deriving the inflected
+forms ending in \eng{-o} from
+the nominal lexemes.
+
+% EB -- they've been doing this over and over again.  Enough already.
+%\item[E.] Explain the role of the \index{Head Feature Principle (HFP)} Head Feature Principle 
+%in accounting for the case-selecting properties of verbs in
+%(i)--(iv).
+
 \end{itemize}
-
-\myslide{The Chapter 1 Binding Theory Reformulated}
-\begin{itemize}
-\item Old Formulation:
-\begin{itemize}
-\item A reflexive pronoun must be an argument of a verb that
-has another preceding argument with the same reference.
-\item A nonreflexive pronoun cannot appear as an argument of
-a verb that has a preceding coreferential argument.
-\end{itemize}
-\item New Formulation(version I):
-\begin{itemize}
-\item \txx{Principle A}: A reflexive pronoun must be
-bound by a preceding argument of the same verb.
-\item \txx{Principle B}: A nonreflexive pronoun may not
-be bound by a preceding argument of the same verb.
-\end{itemize}
-\item Opaque names come from Chomsky (1981)
-\end{itemize}
-
-\myslide{Some Challenges}
-\begin{itemize}
-\item Replace notions of \emp{bound} and \emp{preceding
-argument of the same verb} by notions
-definable in our theory.
-\item Generalize the Binding Principles to get
-better coverage.
-\end{itemize}
-
-
-\myslide{How can we do this?}
-\begin{itemize}
-\item[Q]  What would be a natural way to formalize
-the notion of “bound” in our theory?
-\item[A] Two expressions are bound if
-they have the same \ft{index} value (“are
-coindexed”).
-\item[Q] Where in our theory do we have information
-about a verb’s arguments?
-\item[A] In the verb’s \ft{valence} features.
-\item[Q] What determines the linear ordering of a
-verb’s arguments in a sentence?
-\item[A] The interaction of the grammar
-rules and the ordering of elements in the
-\ft{comps} list.
-\end{itemize}
-
-\myslide{The Argument Realization Principle}
-\begin{itemize}
-\item For Binding Theory, we need a single list with both subject
-and complements.
-\item We introduce a feature ARG-ST, with the following
-property: \\
-\begin{avm}\avmfont{\sc} 
-\[ \asort{word}  
- syn & \[ val & \[ spr &  \@{A} \\comps &  \@{B} \] \] \\
- arg-st & \< \@{A} $\oplus$ \@{B} \> \]
-\end{avm}
-
-\item This is a constraint on the type \val{word}
-\end{itemize}
-
-\myslide{Notes on \ft{arg-st}}
-\begin{itemize}
-\item It’s neither in \ft{syn} nor \ft{sem}.
-\item It only appears on lexical heads (not
-appropriate for type phrase)
-\item No principle stipulates identity
-between \ft{arg-st}s.
-\end{itemize}
-
-\myslide{The Binding Principles}
-\begin{itemize}
-\item \txx{Principle A}: A [\ft{mode} \val{ana}] element must be
-outranked by a coindexed element.
-\item \txx{Principle B}: A [\ft{mode} \val{ref}] element must not
-be outranked by a coindexed element.
-\end{itemize}
-
-\begin{description}
-\item [Formalization] ~\\[-2ex]
-\begin{itemize}
-\item Definition: If A precedes B on some \ft{arg-st} list,
-then A \txx{outranks} B.
-\item Elements that must be anaphoric --- that is, that
-require an antecedent --- are lexically marked
-[\ft{mode} \val{ana}]. These include reflexive pronouns
-and reciprocals.
-\end{itemize}
-\end{description}
-
-\myslide{Pronoun-Antecedent Agreement}
-\begin{itemize}
-\item The Binding Principles by themselves don’t block:
-  \begin{exe}
-    \ix * I amused yourself.
-    \ix * He amused themselves.
-    \ix * She amused himself.
-  \end{exe}
-\item Coindexed NPs refer to the same entity, and \ft{agr} features
-generally correlate with properties of the referent.
-\item The \txx{Anaphoric Agreement Principle} (AAP):
-Coindexed NPs agree.
-\end{itemize}
-
-\myslide{Binding in PPs}
-\begin{itemize}
-\item What do the Binding Principles predict about the
-following?
-\item The Binding Principles by themselves don’t block:
-  \begin{exe}
-    \ix I brought a book with me.
-    \ix *I brought a book with myself.
-    \ix *I mailed a book to me.
-    \ix I mailed a book to myself.
-  \end{exe}
-\end{itemize}
-
-\myslide{Two Types of Prepositions: the Intuition}
-\begin{itemize}
-\item \txx{Argument-marking}: Function like casemarkers in other languages, indicating the
-roles of NP referents in the situation denoted by the verb.
-\item \txx{Predicative}: Introduce their own predication.
-\end{itemize}
-
-\begin{description}
-\item [Formalization] ~\\[-2ex]
-  \begin{itemize}
-  \item Argument-marking prepositions share their
-    objects' \ft{mode} and \ft{index} values.
-    \begin{itemize}
-    \item This is done with tagging in the lexical
-      entries of such prepositions.
-    \item These features are also shared with the PP
-      node, by the Semantic Inheritance Principle.
-    \end{itemize}
-  \item Predicative prepositions introduce their own
-\ft{mode} and \ft{index} values.
-\end{itemize}
-\end{description}
-
-\myslide{Redefining Rank}
- \begin{itemize}
-\item If there is an \ft{arg-st} list on which A
-precedes B, then A outranks B.
-\item If a node is coindexed with its daughter, they
-are of equal rank -- that is, they outrank the
-same nodes and are outranked by the same
-nodes.
-\end{itemize}
-
-\myslide{\eng{I sent a letter to myself}}
-
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2, \@3 \q> \\ 
-             arg-st & \q< \@1, \@2, \@3 \q> \]}{
-      \lf{\eng{sent}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{letter}}}}
-    \br{\@3 PP$_i$}{
-      \br{P$_i$}{\lf{\eng{to}}}
-      \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{myself}}}}
-}}
-\end{avmtree}
-
-
-
-
-\myslide{The ARG-ST}
-\begin{center}
-  \begin{avm}\avmfont{\sc} 
-\[  arg-st & \< 
-NP$_i$ \[ mode & ref \],
-NP$_j$ \[ mode & ref \],
-PP$_i$ \[ mode & ana \]
-\> \]
-\end{avm}
-\end{center}
-\begin{itemize}
-\item The PP is outranked by the first NP. (Why?)
-\item \eng{myself} has the same rank as the PP. (Why?)
-\item So, \eng{myself} is outranked by the first NP. (Why?)
-\item Therefore, Principle A is satisfied.
-\end{itemize}
-
-\myslide{\eng{*I sent a letter to me}}
-\begin{avmtree}\avmfont{\sc} 
-  \br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2, \@3 \q> \\ 
-             arg-st & \q< \@1, \@2, \@3 \q> \]}{
-      \lf{\eng{sent}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{letter}}}}
-    \br{\@3 PP$_i$}{
-      \br{P$_i$}{\lf{\eng{to}}}
-      \br{NP$_i$ \[ mode & ref \]}{\lf{\eng{me}}}}
-}}
-\end{avmtree}
-
-\myslide{The ARG-ST}
-\begin{center}
-  \begin{avm}\avmfont{\sc} 
-\[  arg-st & \< 
-NP$_i$ \[ mode & ref \],
-NP$_j$ \[ mode & ref \],
-PP$_i$ \[ mode & ref \]
-\> \]
-\end{avm}
-\end{center}
-\begin{itemize}
-\item The PP is outranked by the first NP.
-\item \eng{me} has the same rank as the PP.
-\item So, \eng{me} is outranked by the first NP.
-\item Therefore, Principle B is violated.
-\end{itemize}
-
-\myslide{\eng{I brought a pencil with me}}
-\MyLogo{Here \eng{I} does not outrank \eng{me}, so Principle B is satisfied}
-
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2 \q> \\ 
-             arg-st & \q< \@1, \@2 \q> \]}{
-      \lf{\eng{brought}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{pencil}}}}
-    \br{\@3 PP$_k$}{
-      \br{P$_k$ \[ comps & \q< \@1 \q> \\ 
-                   mod & \q< \@2 \q> \\
-                   arg-st & \q< \@1 \q> \] }{\lf{\eng{with}}}
-      \br{NP$_l$ \[ mode & ref \]}{\lf{\eng{me}}}}
-}}
-\end{avmtree}
-
-\myslide{\eng{*I brought a pencil with myself}}
-\MyLogo{Here \eng{I} does not outrank \eng{myself}, so Principle A is violated}
-
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2 \q> \\ 
-             arg-st & \q< \@1, \@2 \q> \]}{
-      \lf{\eng{brought}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{pencil}}}}
-    \br{\@3 PP$_k$}{
-      \br{P$_k$ \[ comps & \q< \@1 \q> \\ 
-                   mod & \q< \@2 \q> \\
-                   arg-st & \q< \@1 \q> \] }{\lf{\eng{with}}}
-      \br{NP$_l$ \[ mode & ana \]}{\lf{\eng{myself}}}}
-}}
-\end{avmtree}
-
-\myslide{Imperatives}
-\MyLogo{}
-\begin{itemize}
-\item Have the internal structure of a VP
-  \begin{exe}
-    \ix Leave!
-    \ix Read a book!
-    \ix Give the dog a treat!
-    \ix Put the ice cream in the freezer!
-  \end{exe}
-\item Function as \txx{directives} (commands or requests)
-\item Have the verb in base form: \eng{Be careful!} not \eng{*Are careful!}
-\begin{itemize}
-\item Allow 2nd person reflexives, and no others
-\begin{exe}
-    \ix Defend yourself!
-    \ix *Defend myself/himself!
-  \end{exe}
-\end{itemize}
-\end{itemize}
-
-\myslide{The Imperative Rule}
-
-\begin{avm}\avmfont{\sc} 
-\[ \asort{phrase}  
-   head & verb \\
-   val & \[ spr  & \<  \> \] \\
-   sem & \[ mode & dir \\ index & $s$ \] \]
-              \ $\rightarrow$\ \ 
-\[ \asort{phrase}  
-   head & \[ \asort{verb} form & base \]\\
-   val & \[ spr  & \< NP \[ per 2nd \]  \> \] \\
-   sem & \[ index & $s$ \] \]
-\end{avm}
-
-
-\begin{itemize}\addtolength{\itemsep}{-2ex}
-\item Internal structure of a VP
-\item Directive function
-\item Base form
-\item Only 2nd person reflexives
-\item[Q] Note that this is not a headed rule. Why?
-\item[A] It would violate the HFP and the SIP.
-\end{itemize}
-
-\myslide{Imperative example}
-\begin{multicols}{2}
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{VP \[ spr & \q< \@1 NP \[ per 2nd \\ num sg \] \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \]}{
-      \lf{\eng{vote}}}
-    \br{\@3 PP$_i$}{
-      \br{P$_i$}{\lf{\eng{for}}}
-      \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{yourself}}}}
-}}
-\end{avmtree}
-%\newpage
-
-\begin{itemize}
-\item What's the SPR value on S?
-%Why?
-\item What's the SPR value on VP?
-%Why?
-\item What's the SPR value on V?
-%Why?
-\item Which nodes have ARG-ST?
-\item Which ARG-ST matters for
-the licensing of \eng{yourself}?
-\end{itemize}
-%\newpage
-
-\end{multicols}
-
-\myslide{\ft{arg-st} on vote}
-\begin{center}
-  \begin{avm}\avmfont{\sc} 
-\[  arg-st & \< 
-NP$_i$ \[ mode & ref \\ per & 2nd \\ num & sg \],
-PP$_i$ \[ mode & ana \]
-\> \]
-\end{avm}
-\end{center}
-\begin{itemize}
-\item Is Principle A satisfied?
-\item How?
-\item Is Principle B satisfied?
-\item How?
-\end{itemize}
-
-\myslide{Day 1 Revisited}
-\begin{itemize}
-\item Recall
-  \begin{exe}
-    \ix Screw yourself!
-    \ix Go screw yourself!
-    \ix screw you!
-    \ix *Go screw you!
-  \end{exe}
-\item \eng{Screw NP!} has two analyses
-  \begin{itemize}
-  \item As an imperative
-  \item As a truly subjectless fixed expression.
-  \end{itemize}
-\item \eng{Go screw NP!} can only be analyzed as an imperative.
-\end{itemize}
-
-
-\myslide{Overview}
-\begin{itemize}\addtolength{\itemsep}{-2ex}
-\item Review of Chapter 1 informal binding
-theory
-\item Formalized Binding Theory
-  \begin{itemize}
-  \item \txx{Argument Realization Principle} (ARP)
-    \\  \ft{arg-st} = \ft{spr}  $\oplus$ \ft{comps}
-  \item \txx{Anaphoric Agreement Principle} (AAP)
-   \\ Coindexed NPs agree.
- \item \txx{Principle A}\ \  A [\ft{mode} \val{ana}] element must be
-outranked by a coindexed element.
-\item \txx{Principle B}\ \  A [\ft{mode} \val{ref}] element must not
-be outranked by a coindexed element.
-  \end{itemize}
-\item Binding and PPs
-\item Imperatives
-\end{itemize}
-
-
-\myslide{P1: Prepositions}
-\MyLogo{Based on  Chapter 7, Problem 1, Sag, Wasow and Bender (2003)}
-
-For each of the following sentences, 
-\begin{itemize}
-\item[(a)] classify the underlined preposition into \txx{predicative}
-  or \txx{argument marking} and
-\item[(b)] justify by showing what reflexive and
-  nonreflexive coreferential 
-  pronouns can or cannot appear as the preposition's object.
-\end{itemize}
-\begin{itemize}\addtolength{\itemsep}{-1.5ex}
-\item[(i)] \eng{The dealer dealt an ace \ul{to} Bo.}
-\item[(ii)] \eng{The chemist held the sample away \ul{from} the flame.}
-\item[(iii)] \eng{Hiromi kept a flashlight \ul{beside} the bed.}
-\item[(iv)] \eng{We bought flowers \ul{for} you.}
-\item[(v)] \eng{The car has a scratch \ul{on} the fender.}
-\item[(vi)] \eng{The pronoun agrees \ul{with} its antecedent.}
-\end{itemize}
-
-\myslide{P2: Imperative `Subjects'}
-\MyLogo{Based on  Chapter 7, Problem 2, Sag, Wasow and Bender (2003)}
-\begin{itemize}
-\item Some imperatives look like they have a subject:
-  \begin{itemize}
-  \item[(i)] \eng{\ul{You} get out of here!}
-  \item[(ii)] \eng{\ul{Everybody} take out a sheet of paper!}
-  \end{itemize}
-\item But agreement is wierd:
-  \begin{itemize}
-  \item[(iii)] 
-    \eng{Everybody found 
-      $^?$himself/$^*$yourself/themselves/$^*$myself a seat.}
-  \item[(iv)]
-    \eng{Everybody find 
-      $^?$himself/yourself/$^*$themselves/$^*$myself a seat.}
-  \end{itemize}
-\item What minimal modification of the Imperative Rule would account for
-the indicated data? (don't worry about
-the semantics)
-\end{itemize}
-
 
 
 \myslide{Acknowledgments and References}
@@ -855,7 +261,7 @@ the semantics)
 \end{itemize}
 
 
-\input{lec-05-questions}
+%\input{lec-05-questions}
 
 \end{document}
 

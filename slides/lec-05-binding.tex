@@ -607,7 +607,8 @@ be outranked by a coindexed element.
               \ $\rightarrow$\ \ 
 \[ \asort{phrase}  
    head & \[ \asort{verb} form & base \]\\
-   val & \[ spr  & \< NP \[ per 2nd \]  \> \] \\
+   val & \[ spr  & \< NP \[ per 2nd \]   \> \\
+            comps & \< \>  \] \\
    sem & \[ index & $s$ \] \]
 \end{avm}
 
@@ -704,7 +705,125 @@ be outranked by a coindexed element.
 \end{itemize}
 
 
-\myslide{P1: Prepositions}
+\myslide{P1: English Possessives I}
+\MyLogo{Based on  Chapter 6, Problem 3, Sag, Wasow and Bender (2003)}
+
+English uses {\it 's} to express possession, as in the following examples:
+
+\begin{exe}
+\ex  \eng{Leslie's coffee spilled.}
+\ex  \eng{Jesse met the president of the university's cousin.}\label{s:i}
+\ex  \bad{Jesse met the president's of the university cousin.}
+\ex  \eng{Don't touch that plant growing by the trail's leaves.}\label{s:iv}
+\ex \bad{Don't touch that plant's growing by the trail leaves.}
+\ex  \eng{The person you were talking to's pants are torn.}\label{s:vi}
+\ex  \bad{The person's you were talking to pants are torn.}\label{s:vii}
+\end{exe}
+(While examples (\ref{s:iv}) and (\ref{s:vi}) are a bit awkward, people do use such
+sentences, and there is certainly nowhere else that the \eng{'s} could
+be placed to improve them).  
+\begin{itemize}
+\item[A.] What is the generalization about where the \eng{'s} of
+possession appears in English?
+\end{itemize}
+\newpage
+
+% Consider noun \index{possessive}
+% phrases like \eng{Kim's brother} and \eng{the president's salary}. 
+One
+traditional treatment of the possessive marker (\eng{'s})
+% in English 
+is to
+claim it is a \index{case} case marker.
+%-- which in our terms would mean it is a value of the feature \index{CASE!possessive}CASE.
+In our terms this means that it indicates 
+a particular value for the feature CASE (say, `poss' for `possessive')
+on the word it attaches to.
+% The principal objection to a treatment of \eng{'s}
+% as a case marker is that, in conjunction with our analysis of case (in
+% particular our assumption that \index{CASE} CASE is a HEAD feature),
+% it makes the wrong 
+% predictions about examples like the following:
+%\begin{itemize}
+%\item[B.] 
+If we tried to formalize this traditional treatment of \eng{'s}, we
+% would  need 
+might posit
+a rule along the following lines, 
+based on the fact that possessive NPs appear in the same position as determiners:
+\begin{itemize}
+\item[] D \ $\rightarrow$\ \ \begin{avm} NP \[CASE & poss \]\end{avm}
+\end{itemize}
+Taken together with our assumption that \index{CASE}CASE is
+a \index{head feature}HEAD feature,  such an analysis of \eng{'s} 
+%as a case marker 
+makes predictions about the grammaticality of (\ref{s:i})--(\ref{s:vii}).  
+\begin{itemize}
+\item[B.] Which of these sentences does it
+predict should be grammatical, and why?
+
+\end{itemize}
+
+\myslide{P2: English Possessives II}
+\MyLogo{Based on  Chapter 6, Problem 4, Sag, Wasow and Bender (2003)}
+
+An  alternative analysis of the possessive is to say that %it 
+\eng{'s}
+is a
+\index{determiner (D)} determiner that builds a \index{determiner phrase
+(DP)} determiner phrase (abbreviated DP),
+via the \index{Head Specifier Rule@Head-Specifier Rule}Head-Specifier Rule. 
+On this
+analysis,  \eng{'s} selects for no complements, but it obligatorily
+takes an NP \index{specifier} specifier. The word \eng{'s} thus has a lexical category
+that is like an intransitive verb in valence.
+
+This analysis is somewhat unintuitive, for two reasons:  first, it
+requires that we have an independent lexical entry for \eng{'s}, which
+seems more like a piece of a word, phonologically;  and second, it makes
+the nonword \eng{'s} the head of its phrase!  However, this analysis
+does a surprisingly good job of predicting the facts of English
+ possessives, so we shall adopt it, at least for purposes of
+this text.
+
+\begin{itemize}
+\item[A.] Ignoring semantics for the moment, give the lexical entry for
+\eng{'s} assuming its analysis as a \index{determiner (D)} determiner, and draw 
+%a phrasal SD (that
+%is, 
+a tree 
+%description) 
+for the NP \eng{Kim's brother}. 
+%(Use abbreviations when
+%necessary, for example: \hbox{NP[3rd, sg]} or
+%\hbox{[SPR $\langle$NP[nom]$\rangle$]}.)
+(The tree should show the value of \ft{head, spr} and \ft{comps} on every
+node.  Use tags to show identities required by the grammar.
+You may omit other features.)
+
+\item[B.] Explain how your lexical entry gets the facts right in the 
+% {\it Queen of England} examples above. 
+following examples:
+\begin{exe}
+\ex \eng{The Queen of England's crown disappeared.}
+\ex \bad{The Queen's of England crown disappeared.}
+\end{itemize}
+
+\item[C.] How does this analysis handle recursion in possessives, 
+for example, \eng{Robin's brother's wife}, or \eng{Robin's brother's wife's
+parents}?  Provide at least one tree %description 
+fragment
+to illustrate your
+explanation.
+% (again you can abbreviate complex feature structures
+% in your trees, 
+%if the omitted details are clearly irrelevant).
+(You may use abbreviations for node labels in the tree.)
+\end{itemize}
+
+
+
+\myslide{P3: Prepositions}
 \MyLogo{Based on  Chapter 7, Problem 1, Sag, Wasow and Bender (2003)}
 
 For each of the following sentences, 
@@ -724,7 +843,7 @@ For each of the following sentences,
 \item[(vi)] \eng{The pronoun agrees \ul{with} its antecedent.}
 \end{itemize}
 
-\myslide{P2: Imperative `Subjects'}
+\myslide{P4: Imperative `Subjects'}
 \MyLogo{Based on  Chapter 7, Problem 2, Sag, Wasow and Bender (2003)}
 \begin{itemize}
 \item Some imperatives look like they have a subject:

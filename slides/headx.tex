@@ -16,17 +16,23 @@
 \normalsize  \texttt{bond@ieee.org}}
 \MyLogo{HG4041 (2020)}
 \renewcommand{\logo}{#2}
-%\MyLogo{奈良女子大学：欧米言語情報理論ＩＩ}
+\hypersetup{
+   pdfinfo={
+     Author={Francis Bond},
+     Title={#1: #2},
+     Subject={HG4041: Theories of Grammar},
+     Keywords={Syntax, Semantics, HPSG, Unification, Constructions},
+     License={CC BY 4.0}
+   }
+ }
+
 \date{#1
-\\ Location: LHN-TR+36}
-\special{! /pdfmark where
-  {pop} {userdict /pdfmark /cleartomark load put} ifelse
-  [ /Author (Francis Bond)
-  /Title (#1: #2)
-  /Subject (HG4041: Theories of Grammar)
-  /Keywords (Syntax, Semantics, HPSG, Unification)
-  /DOCINFO pdfmark}
+  \\ Location: LHN-TR+36}
 }
+\usepackage[hidelinks]{hyperref}
+
+
+
 
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -44,7 +50,7 @@
 \newcommand{\subhead}[1]{\noindent\textbf{#1}\\[5mm]}
 
 \newcommand{\Bad}{\emp{\raisebox{0.15ex}{\ensuremath{\mathbf{\otimes}}}}}
-\newcommand{\bad}{*}
+\newcommand{\bad}[1]{*\eng{#1}}
 
 \newcommand{\com}[1]{\hfill (\emp{#1})}%
 
@@ -129,5 +135,5 @@
 
 \newcommand{\A}{\noindent\textbf{A}: }
 \newcommand{\Q}{\noindent\textbf{Q}: }
-\newcommand{\C}{\noindent\textbf{C}: }
+%\newcommand{\C}{\noindent\textbf{C}: }
 
