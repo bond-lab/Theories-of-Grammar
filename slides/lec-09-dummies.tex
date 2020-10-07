@@ -1,7 +1,7 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 \input{headx.tex}
 
-\usepackage{times}
+%\usepackage{times}
 \usepackage{bchart}
 %\usepackage{pgfplots}
 \avmfont{\sc}
@@ -21,14 +21,14 @@
 \item Idioms (\eng{X takes advantage of Y}, \ldots)
 \end{itemize}
 
-\myslide{Where We Are, and Where We’re Going}
+
 
 \begin{itemize}
-\item Last time, we met the passive \lex{be}.
+\item In Chapter~10, we met the passive \lex{be}.
 \item Passive \lex{be} is just a special case -- that \lex{be}
 generally introduces [PRED +] constituents 
 %(next slide).
-\item Today, we’ll start with another \lex{be}, which 
+\item Today, we’ll introduce another \lex{be}, which 
 occurs in existential sentences starting with 
 \lex{there}, e.g. \eng{There is a monster in Loch Ness.}
 \item Then we’ll look at this use of \lex{there}.
@@ -37,6 +37,8 @@ examination of NPs that don’t refer, including
 some uses of \lex{it} and certain idiomatic uses of 
 NPs.
 \end{itemize}
+
+
 
 \myslide{Chapter 10 entry for be}
 
@@ -51,22 +53,31 @@ NPs.
   restr & {\el} \] \] \>
 \end{avm}
 
+This takes only passive lexemes: \begin{avm}\[ form &  pass \]\end{avm}.
 
 \myslide{Copula (generalized)}
-
+\MyLogo{SWB p334}
 \begin{avm}
   \< \textnormal{be},\ \[{\it be-lxm}\\
   arg-st & \< {\@1} , \avml\[syn & \[head & \[ pred \ $+$ \]\\
-  val & \[spr & \q< {\@1} \q>\\
+  val & \[spr & \q< {\@1} \q> \\ 
   comps & \el \]\]\\
   sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
   sem & \[index & \ $s$\\ %{\@3}\\
   restr & {\el} \] \] \>
 \end{avm}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-2ex}
+\item Allow also (\txx{pred}icative) adjectives \lex{fond}, \lex{sleeping}
+  are  [PRED +].
+\item \lex{mere} is [PRED -] %\begin{avm}\[ pred &  - \]\end{avm}.
+\item Most adjectives cane be either  
+\end{itemize}
+
 
 \myslide{Existentials}
 
-\begin{itemize}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
 \item The \lex{be} in \eng{There is a page missing} cannot be the 
 same \lex{be} that occurs in sentences like \eng{Pat is tall} or 
 \eng{A cat was chased by a dog}.  Why not?
@@ -79,6 +90,12 @@ same \lex{be} that occurs in sentences like \eng{Pat is tall} or
   \item The semantics should capture the relation between, e.g. 
     \eng{There is a page missing} and \eng{A page is missing}.  
   \end{itemize}
+\item More examples:
+  \begin{exe}
+    \ex \eng{There was a person at the door}
+    \ex \eng{There are many people fond of linguistics}
+    \ex \eng{There are people looking at us}
+  \end{exe}
 \end{itemize}
 
 \myslide{Lexical Entry for the Existential \lex{be}}
@@ -256,7 +273,7 @@ Why do they differ in this way?
     syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
     agr  & 3sing   \] \\
     val & \[ spr & \el \] \]\\
-    arg-str & \< \shortstack{S \\ \[ index & s \]}\>\\
+    arg-st & \< \shortstack{S \\ \[ index & s \]}\>\\
     sem & \[ index & s \\
     rest & \el \]
     \] 
@@ -277,7 +294,7 @@ Why do they differ in this way?
     syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
     agr  & 3sing   \] \\
     val & \[ spr & \el \] \]\\
-    arg-str & \< \shortstack{S \\ \[ index & s \]}\>\\
+    arg-st & \< \shortstack{S \\ \[ index & s \]}\>\\
     sem & \[ index & s \\
     rest & \el \]
     \] 
@@ -463,6 +480,25 @@ Note:  the only constraint on the first argument is semantic
 %   difficult to process. Extraposition occurs frequently in English and
 %   related languages.
 
+
+\myslide{Post Inflectional Lexical Rule: \val{pi-rule}}
+\begin{center}%\small
+  \begin{avm}\avmfont{\sc}
+     \asort{pi-rule}:  \[ \asort{lrule}
+        input & \< / \@0, \[ \asort{word}
+            syn & \[ head & / \@1 \] \\
+            val & \[ mod &  \@{A}  \] \] \>\\
+        output & \< / \@0,  \[ \asort{word}
+            syn & \[ head & / \@1 \] \\
+            val & \[ mod &  \@{A}  \] \]  \>  \]
+
+    \end{avm}
+\end{center}
+
+We use this when we expect the structure to largely formed, and we
+want to change the order of things, \ldots
+
+
 \myslide{The Extraposition Lexical Rule}
 
 \begin{center}\small
@@ -481,7 +517,9 @@ Note:  the only constraint on the first argument is semantic
 \item  Why is the \ft{comps} value \avmbox{A} not $\langle \rangle$  ?
 \end{itemize}
 
-\myslide{Extraposition with Verbs whose \ft{comps} lists are Nonempty}
+
+
+\myslide{Extraposition with verbs whose \ft{comps} lists are nonempty}
 
 
 \begin{exe}\large
@@ -490,7 +528,7 @@ Note:  the only constraint on the first argument is semantic
 \ex \eng{It endeared you to Andy that you wore a funny hat.}
 \end{exe}
 
-\myslide{Another Nonreferential Noun: \lex{advantage}}
+\myslide{Another nonreferential noun: \lex{advantage}}
 \bigskip
 \begin{center}
   \begin{avm}
@@ -505,7 +543,7 @@ Note:  the only constraint on the first argument is semantic
 \end{center}
 
 
-\myslide{The Verb that Selects \lex{advantage}}
+\myslide{The verb that selects \lex{advantage}}
 \MyLogo{\textbf{take\_advantage} $\approx$ \textbf{exploit}}
 \begin{center}
   \begin{avm}
