@@ -1,8 +1,8 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 \input{headx.tex}
 
-\usepackage{times}
-\usepackage{bchart}
+%\usepackage{times}
+%\usepackage{bchart}
 %\usepackage{pgfplots}
 \avmfont{\sc}
 \begin{document}
@@ -28,12 +28,15 @@
 \myslide{Where We Are \& Where We’re Going}
 
 \begin{itemize}
-\item In the last two lectures, we have seen a kind of 
-subject sharing -- that is, cases where one NP 
-served as the \ft{spr} for two different verbs.  
-Examples?
-\item Last time, we looked at \txx{dummy} NPs --  that is, 
-non-referential NPs.  Examples?
+\item Revision
+  \begin{itemize}
+  \item In the last two lectures, we have seen a kind of 
+    \txx{subject sharing} -- that is, cases where one NP 
+    served as the \ft{spr} for two different verbs.  
+    Examples?
+  \item Last time, we looked at \txx{dummy} NPs --  that is, 
+    non-referential NPs.  Examples?
+  \end{itemize}
 \item Today, we’re going to look at the kind of subject 
 sharing we saw with \lex{be} in more detail.
 \item Then we’ll look at another kind of subject 
@@ -63,9 +66,11 @@ both have the form NP-V-\lex{to}-VP
   \item But \lex{continue} is semantically a one-place 
     predicate, expressing a property of a situation 
     (namely, that it continues to be the case)
+    \\ \prd{continue(avoid(Pat,conflict))}
   \item Whereas \lex{try} is semantically a two-place 
     predicate, expressing a relation between someone 
     who tries and a situation s/he tries to bring about.
+    \\ \prd{try(Pat, avoid(Pat, conflict)}
   \end{itemize}
 \item This semantic difference has syntactic effects.
 \end{itemize}
@@ -79,7 +84,8 @@ both have the form NP-V-\lex{to}-VP
   \begin{exe}
     \ex \eng{Pat aspires to stardom}
     \ex \eng{Pat aspires to be a good actor}
-    \ex *\eng{Pat aspires to stardom and to be a good actor}
+    \ex *?\eng{Pat aspires to stardom and to be a good actor}
+    \ex *\eng{Pat aspires to stardom and  be a good actor}
   \end{exe}
 \item We call it an \txx{auxiliary verb}, because this will make 
 our analysis of auxiliaries a little simpler.
@@ -455,7 +461,7 @@ respects?
 \myslide{\lex{try} with an active complement}
 
 \begin{center} 
-  \scalebox{0.7}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+  \scalebox{0.8}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
     \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_i$}{\tlf{The police}}
       \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
         \br{V \[ \ft{spr} \< \avmbox{1}$_i$ \> \]}{\lf{tried}}
@@ -466,7 +472,7 @@ respects?
 \end{avmtree}}
 \end{center}
 
-\scalebox{0.7}{\raisebox{12ex}[0ex][0ex]{\small \begin{avm}
+\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \begin{avm}
   \[ restr & \avmbox{A} \< 
   \[ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & i \\ tried & s$_2$ \], \\
   \[ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j\]
@@ -476,8 +482,9 @@ respects?
 
 
 \myslide{\lex{try} with passive complement}
+\vspace*{-2ex}
 \begin{center} 
-  \scalebox{0.55}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
+  \scalebox{0.7}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
     \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_j$}{\tlf{The suspects}}
       \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
         \br{V \[ \ft{spr} \< \avmbox{1}$_j$ \> \]}{\lf{tried}}
@@ -487,8 +494,6 @@ respects?
             \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{be}}
             \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
               \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{arrested}}
-              \br{NP$_i$}{\br{P$_i$}{\lf{by}}
-                \br{NP$_i$}{\br{NOM$_i$}{\tlf{the police}}}}}}}}}
 
 \end{avmtree}}
 \end{center}
@@ -498,7 +503,7 @@ respects?
   \[ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j\]
   \ldots \> \]
 \end{avm}}}
-
+\vspace*{-5ex}
 
 \myslide{ARG-ST of raising vs control verbs}
 \bigskip
