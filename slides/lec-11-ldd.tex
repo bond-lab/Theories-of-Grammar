@@ -19,7 +19,7 @@
 
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 14}
+\MyLogo{\citet*{Sag:Wasow:Bender:2003} --- Chapter 14}
 \begin{itemize}
 \item Some examples of long-distance dependencies
 \item What is new and different about it
@@ -214,7 +214,7 @@
    \eng{The dog is red}  \into \eng{The red dog}
    \\    \scalebox{0.8}{\begin{avm}\avmfont{\sc}
       \< \textnormal{red}, \ \[ \asort{word}
-      head & {\it adj} \\
+      head &  \[ \asort{adj} pred & $+$ \]  \\
       % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
       val & \[ spr & \< \@1 NP \>\\
               comps & \<  \>\\
@@ -232,8 +232,8 @@
      \]\>
      \end{avm}}
  \item We can't just co-index \ft{spr} and \ft{mod}.  Why?
- \item To form sentences, the \ft{spr} adjectives need a
-   subject-raising \eng{be} to make the head of the sentence a verb.
+ \item The \ft{spr} adjectives need a
+   subject-raising \eng{be} to form a sentence. Why?
  \end{itemize}
 
 
@@ -286,18 +286,18 @@ the clause.
 \item We use topicalization and \lex{easy}-adjectives to
 illustrate the phenomenon:
 \begin{exe}
-  \ex \eng{The manual, I can't find \blank}
-  \ex \eng{Chris is easy to talk to \blank}
+  \ex \eng{The manual$_g$, I can't find \blank$_g$}
+  \ex \eng{Chris$_g$ is easy to talk to \blank$_g$}
 \end{exe}
 \end{itemize}
 
 \myslide{Gaps and their fillers can be far apart}
 \begin{exe}
-  \ex \eng{The solution to this problem, Pat said that
+  \ex \eng{\ul{The solution to this problem}$_g$, Pat said that
   someone claimed you thought I would never
-  find \blank.}
-  \ex \eng{Chris is easy to consider it impossible for anyone
-  but a genius to try to talk to \blank.}
+  find \blank$_g$.}
+  \ex \eng{Chri$_g$s is easy to consider it impossible for anyone
+  but a genius to try to talk to \blank$_g$.}
 \end{exe}
 \vspace*{-2ex}
 \begin{itemize} 
@@ -307,22 +307,22 @@ illustrate the phenomenon:
 \begin{exe}
 \ex
 \begin{xlist}
-  \ex \eng{Him, I haven’t met \blank.}
-  \ex \eng{*He, I haven’t met \blank.}
+  \ex \eng{Him$_g$, I haven’t met \blank$_g$.}
+  \ex \eng{*He$_g$, I haven’t met \blank$_g$.}
 \end{xlist}
 \ex
 \begin{xlist}
-  \ex \eng{The scissors, Pat told us  \blank were missing.}
-  \ex \eng{*The scissors, Pat told us  \blank was missing.}
+  \ex \eng{The scissors$_g$, Pat told us  \blank were missing$_g$.}
+  \ex \eng{*The scissors$_g$, Pat told us  \blank was missing$_g$.}
 \end{xlist}
 \ex
 \begin{xlist}
-  \ex \eng{On Pat, you can rely \blank}.
-  \ex \eng{*To Pat, you can rely \blank.}
+  \ex \eng{\ul{On Pat}$_g$, you can rely \blank$_g$}.
+  \ex \eng{*\ul{To Pat}$_g$, you can rely \blank$_g$.}
 \end{xlist}
 \end{exe}
 \begin{itemize}
-\item That’s why we call them \txx{long distance dependencies}
+\item That’s why we call them \txx{long distance \ul{dependencies}}
 \end{itemize}
 
 
@@ -373,12 +373,12 @@ gap.
 missing constituent.
 \item The \ft{gap} value is passed up the tree by a new
 principle.
-\item A new grammar rule expands S as a filler
+\item A new grammar rule allows us to expand S as a filler
 followed by another S whose \ft{gap} value
 matches the filler.
 \item Caveat: Making the details of this general
 idea work involves several complications.
-\item The core idea comes from Gazdar (1981)
+\item The core idea comes from \citet{Gazdar:1981} 
 \end{itemize}
 
 
@@ -424,6 +424,34 @@ distributed between \ft{comps} and \ft{gap}.
       \]\>
     \end{avm}
 
+    \myslide{A Word with another Non-Empty \ft{gap} Value}
+
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{hand}, \ \[ \asort{word}
+      syn & \[ head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< \@1 NP \[ case & nom \\ agr & non-3sing \] \> \\ 
+      comps & \< \@2NP \[ acc \] \> \] \\
+      gap &  \<  \@3 PP:to \> \] \\
+      arg-st & \< \@1, \@2, \@3 \>
+      \]\>
+    \end{avm}
+
+\myslide{The same word with an Empty \ft{gap} Value}
+\MyLogo{The ARP gives rise to multiple lexemes}
+
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{hand}, \ \[ \asort{word}
+      syn & \[ head & {\it verb} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< \@1 NP \[ case & nom \\ agr & non-3sing \] \> \\ 
+      comps & \< \@2NP \[ acc \], \@3 PP:to \> \] \\
+      gap &  \<  \> \] \\
+      arg-st & \< \@1, \@2, \@3 \>
+      \]\>
+    \end{avm}
+
+    
 % \myslide{How We Want \ft{gap} to Propagate}
 % \MyLogo{Traditionally called \ft{slash}: VP/NP}
 % \begin{avmtree}\avmfont{\sc}
@@ -435,8 +463,9 @@ distributed between \ft{comps} and \ft{gap}.
 % \end{avmtree}
 
 
-\myslide{How We Want \ft{gap} to Propagate}
-\MyLogo{Traditionally called \ft{slash}: VP/NP}
+\myslide{How We Want GAP to Propagate}
+\MyLogo{Traditionally called \ft{slash}: VP/NP
+  (think of it as a VP missing an NP)}
 % Kim we know bobby likes
 \newcommand{\avn}[2]{#1\\\smaller\begin{avm}\avmfont{\sc}\[ #2 \]\end{avm}} %avm node
 \newcommand{\avN}[2]{#1\,\smaller\begin{avm}\avmfont{\sc}\[ #2 \]\end{avm}} %avm node
@@ -462,7 +491,7 @@ distributed between \ft{comps} and \ft{gap}.
 \end{tikzpicture}}
                               
 
-\myslide{What \ft{gap} Propagation should doing}
+\myslide{What GAP Propagation should doing}
 \MyLogo{}
 \begin{itemize}
 \item Pass any \ft{gap} values from daughters up to their
@@ -488,13 +517,14 @@ with its \ft{gap} value.
   \item \ft{stop-gap} stops gap propagation
   \item \lex{easy}-adjectives mark \ft{stop-gap} lexically
   \item a new grammar rule, the \txx{Head-Filler Rule}
-    mentions \ft{stop-gap}
+    contains \ft{stop-gap}
   \end{itemize}
 \end{itemize}
 
-\myslide{The \ft{gap} Principle}
+\myslide{The GAP Principle}
 A local subtree $\Phi$ satisfies the \ft{gap} Principle with respect to a
 headed rule  if and only if $\Phi$ satisfies:
+
 
 % \begin{avmtree}\avmfont{\sc}
 %      \br{\[ gap & \( \@{A_1} \ $\oplus$\  \ldots \ $\oplus$\ \@{A_n} \)
@@ -517,6 +547,12 @@ headed rule  if and only if $\Phi$ satisfies:
             [.{\ldots}  ]
             [.\avX{gap & \@{A_n}} ] ]
 \end{tikzpicture}
+
+\begin{itemize}
+\item The \ft{gap} of the mother is the append of the GAPs of the daughters
+\item [\ldots{}] minus \ft{stop-gap} on the head daughter
+ 
+\end{itemize}
 
 
 \myslide{How does \ft{stop-gap} work?}
@@ -633,8 +669,8 @@ say [\ft{stop-gap} $<$ $>$]
 \begin{itemize}
 \item Famous examples:
   \begin{exe}
-    \ex \eng{This violin, sonatas are easy to play \blank on \blank.}
-    \ex \eng{*Sonatas, this violin is easy to play \blank on \blank.}
+    \ex \eng{This violin$_i$, sonatas$_j$ are easy to play \blank$_j$ on \blank$_i$.}
+    \ex \eng{*Sonatas$_j$, this violin$_i$ is easy to play \blank$_j$ on \blank$_i$.}
   \end{exe}
 \item Our analysis gets this:
   \begin{itemize}
@@ -652,9 +688,9 @@ generally.
 \begin{itemize}
 \item \txx{filler-gap} structures:
   \begin{exe}
-   \ex \eng{The solution to this problem, nobody
+   \ex \eng{\ul{The solution to this problem}, nobody
    understood \blank}
-   \ex \eng{That problem is easy to understand \blank}
+   \ex \eng{\ul{That problem} is easy to understand \blank}
  \end{exe}
 \item The feature \ft{gap} encodes information about
 missing constituents
@@ -964,6 +1000,8 @@ Explain why or why not.
 \end{itemize}
 
 
+\bibliographystyle{aclnat}
+\bibliography{abb,mtg,nlp,ling}
 
 \end{document}
 %%% Local Variables: 
