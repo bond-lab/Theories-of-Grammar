@@ -1,0 +1,36 @@
+{
+  "title": "Theories of Grammar (HG4041) — Nanyang Technological University — Fall 2025",
+  "creators": [
+    {
+      "name": "Bond, Francis",
+      "affiliation": "Palacký University Olomouc",
+      "orcid": "0000-0002-5739-8094"
+    }
+  ],
+  "description": "Snapshot of the course *Theories of Grammar* (HG4041), taught at NTU in 2020. Includes lecture slides, problem sets with solutions, readings, example grammars, and supplementary LaTeX templates. Topics covered include part of speech types, constituent structure, syntax-semantics interface, complementation, raising, control, passives, long-distance dependencies, Sign-based Construction Grammar, and minimalist syntax.",
+  "keywords": [
+    "syntax",
+    "grammar",
+    "linguistics",
+    "formal grammar",
+    "teaching materials",
+    "HPSG",
+    "minimalist syntax"
+  ],
+  "license": "CC-BY-4.0",
+  "language": "eng",
+  "upload_type": "lesson",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/bond-lab/Theories-of-Grammar",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://bond-lab.github.io/Theories-of-Grammar/",
+      "relation": "isAlternateIdentifier",
+      "resource_type": "publication"
+    }
+  ],
+  "version": "2025-autumn"
+}
