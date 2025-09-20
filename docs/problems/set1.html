@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+ <title>JMORF: Morpho-Syntax</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	  crossorigin="anonymous">
+<style>
+ .examples { counter-reset: ex; }
+.ex {
+  counter-increment: ex;
+  display: flex;
+  align-items: flex-start;
+  gap: .6em;
+  margin: .4em 0;
+}
+.ex::before { content: "(" counter(ex) ")"; }
+
+  .igl {
+    border-collapse: collapse;
+    font-family: ui-monospace, monospace;
+    width: auto;            /* fine to keep; not strictly necessary */
+    table-layout: auto;
+  }
+  .igl td { padding: 2px 6px; text-align: left; }
+  .igl .english { text-align: left; padding-top: 6px; }
+
+  /* no borders */
+  .igl, .igl td { border: none; }
+</style>
+</head>
+<body class="container">
+<div class="column">
+
+
+<h1><a href="https://bond-lab.github.io/Theories-of-Grammar/">KOL/JMORF:
+    Morpho-Syntax</a></h1>
+
+<h2>Problem Set One</h2>
+
+<ul>
+  <li>Give one example each of lexical and structural ambiguity in a language other than English, with enough explanation that a non-speaker of the language can understand the ambiguity.
+</ul>
+
+<h3>Example (lexical)</h3>
+<div class="examples">
+  <div class="ex">
+    <table class="igl">
+      <tr>
+        <td>kore</td><td>-wa</td><td>nan</td><td>desu</td><td>ka</td>
+      </tr>
+      <tr>
+        <td>DET</td><td>CM</td><td>DEM/NOUN</td><td>VERB</td><td>SFP</td>
+      </tr>
+      <tr>
+        <td>this</td><td>TOP</td><td>what/naan</td><td>COP</td><td>Q</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="english">‘What is this?’</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="english">‘Is this naan (bread)?’</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<p>In Japanese <i>nan</i> is ambiguous when spoken between an
+interrogative (何 "what") and Naan (ナン "Indian Bread"), and many
+other things.  The ambiguity is normally resolved when written.
+
+<p>Return to <a href="../index.html">course page</a></p>
+
+</div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

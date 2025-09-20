@@ -10,7 +10,7 @@
 
 
 \begin{document}
-\header{Lecture 1}{Introduction, Organization}{First attempts at a theory of grammar}\maketitle
+\header{Lecture 1}{Introduction, Organization}{Morphology and Syntax}\maketitle
 
 %\include{schedule}
 
@@ -22,15 +22,13 @@
 Competence/performance
 \item Some history
 \item Why study syntax?
-\item Two theories that won’t work
-\item Context Free Grammars
-\item Central claims of CFG
+\item Morphology
 \end{itemize}
 
 \myslide{Administrivia}
 \begin{description}
 \item [Coordinator]  Francis \ul{Bond} 
-{\small \url{<bond@ieee.org>} !\url{<fcbond@ntu.edu.sg>}}
+\url{<bond@ieee.org>}
 \item All other details on the web page
 
 % \item [Lecturer]  Joanna \ul{Sio} Ut Seong 
@@ -50,52 +48,11 @@ Competence/performance
 
 
 \begin{itemize}
+\item Weekly Problems (50\%)
 \item Mid-term (20\%)
-\item Final (20\%)
-\item Group Project: Presentation (20\%) 
-  \begin{itemize}
-  \item Give a precise and explicit model of some phenomenon not covered in class
-  \item The talk must motivate the choice of phenomenon
-  \item You need only cover  existing work
-  \item In-class presentation with slides or handouts, not to exceed 17 minutes (12 presentation, 5 QA)
-  \item You should choose something relevant to your final project if possible
-  \end{itemize}
-\newpage
-\item Individual Project (40\%) 
-  \begin{itemize}
-  \item Give a precise and explicit model for some phenomenon not covered in class
-    \begin{itemize}
-    \item You should give attested and constructed examples
-    \item You should clearly indicate what you can and can't explain
-    \item It is expected that you can not explain everything perfectly
-    \item Your model should make clear predictions
-    \end{itemize}
-  \item The paper must motivate the choice of phenomenon
-  \item You should cover relevant existing work \emp{and add something new}
-  \item LMS format, not to exceed 12 pages
-  \end{itemize}
+\item Final (30\%)
 \end{itemize}
 
-
-\myslide{Guidelines for Written Work in LMS}
-
-\begin{itemize}
-\item All assignments must follow the \textit{Guidelines to Submitting Written Work for the Division of Linguistics and Multilingual Studies}
-  \begin{itemize}
-  \item You can get it from:
-    \url{http://www.soh.ntu.edu.sg/Programmes/linguistics/studentresources/Documents/Linguistics%20Assignment%20Guidelines.pdf}
-      \begin{itemize}
-      \item except: single spaced, double-sided
-      \end{itemize}
-  \item Useful advice on citation, transcription, formatting
-  \item I also recommend my own \textit{(Computational) Linguistics Style Guide}:
- \url{www3.ntu.edu.sg/home/fcbond/data/ling-style.pdf}
-  \item Proper citation is important 
-    \\ --- failure to cite is plagiarism --- \textbf{fail subject}
- \\ See the NTU code of academic integrity 
- \\\url{http://www.ntu.edu.sg/ai/Pages/index.aspx}
-  \end{itemize}
-\end{itemize}
 
 
 % \myslide{Course Content}
@@ -114,11 +71,13 @@ Competence/performance
 
 On completion of this module, students should be able to:
 \begin{itemize}
+\item Know the basics of morphology
 \item Recognize certain classes of syntactic phenomena
 \item Build analyses of those phenomena in a precise framework
 \item Apply the process of building a formalized analysis to test
   linguistic hypotheses
 \item Know a little about different approaches to the study of syntax
+\item Be able to present linguistics using LaTeX
 \end{itemize}
     
 %%%
@@ -134,7 +93,10 @@ On completion of this module, students should be able to:
   \begin{itemize}
   \item Sag, Wasow and Bender 2003 \textit{Syntactic Theory: A Formal Introduction} 2nd ed. CSLI (\textbf{required})
   % \item Andrew Carnie 2006 \textit{Syntax: A Generative Introduction} 2nd ed. Blackwell (\textbf{recommended})
+ \item Panocová, Renáta \href{https://unibook.upjs.sk/img/cms/2021/FF/basic-concepts-of-morphology-1.pdf}{\textit{Basic Concepts of Morphology I}} Univerzita Pavla Jozefa Šafárika  (\textbf{recommended})
   \end{itemize}
+
+  
   \begin{itemize}
   \item You should read all chapters assigned before class.
   \item Ideas from the book will be pursued in parallel with the
@@ -213,6 +175,17 @@ You must provide documentation to me and the student office.
   \item Wikipedia page has lots of links
   \end{itemize}
 \end{itemize}
+
+\myslide{Layers of Linguistic Analysis}
+\begin{enumerate}\addtolength{\itemsep}{-0.75ex}
+\item Phonetics \& Phonology
+\item \txx{Morphology}
+\item \txx{Syntax} (Grammar)
+\item Semantics 
+\item Pragmatics
+\item Stylistics
+\end{enumerate}
+
 
 \myslide{Two Conceptions of Grammar}
 \begin{itemize}
@@ -476,549 +449,273 @@ so quickly and easily.
 \item Why are you studying syntax?
 \end{itemize}
 
-\myslide{What makes a good model?}
+
+\myslide{What is Morphology}
 
 \begin{itemize}
-\item \txx{generative}: license all grammatical sentences and only them
-\\ $\Rightarrow$ \txx{precise}
-\item \txx{explanatory}: can explain generalizations
+\item \txx{Morphology} is the study of form and structure.
+\item In linguistics, it generally refers to the study of form and
+structure of words.
+\end{itemize}
+
+\myslide{Words and morphemes}
+  There are two main usages of the term \txx{word}:
+  \begin{enumerate}
+    \item Surface form (spoken or written representation)
+    \item Abstract form (lemma or dictionary entry, e.g. bare infinitives in English; nominative singular in Latin)
+  \end{enumerate}
+  \medskip
+  The class of forms representing a word in different contexts is called a \txx{lexeme}.\\
+  \eng{sing} $=$ \{\eng{sing}, \eng{sings}, \eng{sang}, \eng{sung}, \eng{singing}\}
+  
+
+% 6
+\myslide{A definition of words?}
   \begin{itemize}
-  \item  \eng{the cat chased the rat} $\sim$ \eng{the rat was chased by the cat} \com{semantics}
-  \item phrases tend to act like one member of the phrase \com{headedness}
-  \item new information tends to come first/last \com{information theory}
+  \item \txx{Words} can be described as units of language (sequences of sounds or signs) that function as meaning bearers. But this is a fuzzy notion, e.g.:
+    \begin{itemize}
+    \item \eng{sang} expresses both ``singing'' and past tense.
+    \item Is \eng{more or less} ``roughly'' one word, or are there three words?
+    \end{itemize}
   \end{itemize}
-\item \txx{concise}: the model is as simple as possible \com{elegant}
-\\ $\Rightarrow$ \txx{universal} \com{minimal stipulations}
-\item \txx{tractable}: the model can be modeled computationally
-\end{itemize}
+  \medskip
+  A structuralist solution: \txx{morphemes}.
+%% end
 
-\begin{center}
-  Our models are normally imperfect: \\
-we aim for iteratively improved approximations
-\end{center}
-
-\myslide{Insufficient Theory \#1}
-\begin{itemize}
-\item A grammar is simply a list of sentences.
-\item What’s wrong with this?
-\end{itemize}
-
-\myslide{Insufficient Theory \#2: Regular Expressions}
-\begin{exe}
-  \ex \gll the noisy dogs left \\
-  D A N V \\
-  \ex  \gll the noisy dogs chased the innocent cats \\
- D A N V D A N \\
-\end{exe}
-\begin{itemize}
-\item (D) A* N V ((D) A* N)
-\end{itemize}
-\hrule
-\txx{Regular expressions}: a formal language for matching things.
-\\[2ex]
- \begin{tabular}{ll}
-    Symbol & Matches \\ \hline
-    . & any single character\\
-%    {[ ]} & a single character that is contained within the brackets. \\
-%    & {[a-z]} specifies a range which matches any  letter from "a" to "z".\\
-%    {[\textasciicircum ~]} & 	a single character not in the brackets. \\
-%    \textasciicircum 	& the starting position within the string/line. \\
-%    \$ 	&  the ending position of the string/line. \\
-    $*$ &	the preceding element zero or more times. \\
-    ? &	 the preceding element zero or one time: OR just () = ()?. \\
-    + &	 the preceding element one or more times. \\
-    $|$ &  either the expression before or after the operator. \\
-%    $\backslash$ & escapes the following character. \\
+% 7
+  \myslide{A language:}
+  \vfill
+  \begin{center}
+  \begin{tabular}{c}
+    11--112 \txx{phonemes} \\
+    $\downarrow$ \\
+    4{,}000--10{,}000 \txx{morphemes} \\
+    $\downarrow$ \\
+    An infinite number of \txx{sentences}
   \end{tabular}
-
-% \myslide{A Finite State Machine}
-% D
-
-% N
-
-% V
-
-% D
-
-% A
-
-% N
-
-% A
-% V
-% V
-
-
-%\myslide{FSMs for Grammar, cont}
-
-% \item Why are FSMs insufficient as a
-
-% representation of natural language syntax?
-
-% \item How might they be useful anyway?
-
-
-% \myslide{Chomsky Hierarchy}
-% Type 0 Languages
-% Context-Sensitive Languages
-% Context-Free Languages
-% Regular Languages
-
-
-\myslide{Context-Free Grammar}
-\begin{itemize}
-\item A quadruple: $\langle C, V, P, S \rangle$
-\begin{itemize}
-\item[$C$] set of categories ($\alpha, \beta, \ldots$)
-\item[$V$] set of terminals (vocabulary)
-\item[$P$] set of rewrite rules $\alpha \into \beta_1, \beta_2, \ldots, \beta_n$
-\item[$S$] the start symbol $\mathbf{S} \in C$
-\end{itemize}
-\item For each rule $\alpha \into \beta_1, \beta_2, \ldots, \beta_n \in P$
-  \begin{itemize}
-  \item  $\alpha \in C$
-  \item  $\beta_i \in C \cup V; 1 \le i \le n$ 
-\end{itemize}
-\end{itemize}
-
-
-\myslide{A Toy Grammar}
-
-\begin{itemize}
-\item RULES
-\\[2ex]  \begin{tabular}{lll}
-\textbf{S}  & \into & NP VP \\
-NP & \into & (D) A* N PP*\\
-VP & \into & V (NP) (PP)\\
-PP & \into & P NP\\
-\end{tabular}
-
-\item VOCABULARY
-\begin{flushleft}
-D: the, some\\
-A: big, brown, old\\
-N: birds, fleas, dog, hunter, I\\
-V: attack, ate, watched\\
-P: for, beside, with
-\end{flushleft}
-\end{itemize}
-
-\myslide{Structural Ambiguity}
-\begin{center} \large
-  \eng{I saw the astronomer with the telescope.}
 \end{center}
 
-\myslide{Structure 1: PP under VP}
-{%
- \leaf{\emph{I}}
- \branch{1}{N}
- \branch{1}{NP}
- \leaf{\emph{saw}}
- \branch{1}{V}
- \leaf{\emph{the}}
- \branch{1}{D}
- \leaf{\emph{astronomer}}
- \branch{1}{N}
- \branch{2}{NP}
- \leaf{\emph{with}}
- \branch{1}{P}
- \leaf{\emph{the}}
- \branch{1}{D}
- \leaf{\emph{telescope}}
- \branch{1}{N}
- \branch{2}{NP}
- \branch{2}{PP}
- \branch{3}{VP}
- \branch{2}{S}
- \qobitree}
+%% end
 
-\myslide{Structure 2: PP under NP}
-\begin{small} {%
-    \leaf{\emph{I}} \branch{1}{N} \branch{1}{NP} \leaf{\emph{saw}}
-    \branch{1}{V} \leaf{\emph{the}} \branch{1}{D}
-    \leaf{\emph{astronomer}} \branch{1}{N} \leaf{\emph{with}}
-    \branch{1}{P} \leaf{\emph{the}} \branch{1}{D}
-    \leaf{\emph{telescope}} \branch{1}{N} \branch{2}{NP}
-    \branch{2}{PP} \branch{3}{NP} \branch{2}{VP}
-    \branch{2}{S} \qobitree}
-\end{small}
-
-\myslide{Constituency Tests}
-\begin{itemize}\addtolength{\itemsep}{-1ex}
-\item Recurrent Patterns
-\begin{exe}
-\ex \eng{\ul{The quick brown fox with the bushy tail} jumped over \ul{the lazy brown dog
-with one ear}.}\
-\end{exe}
-
-\item Coordination
-\begin{exe}
-\ex  \eng{\ul{The quick brown fox with the bushy tail} and \ul{the lazy brown dog with one
-ear} are friends.}
-\end{exe}
-\item Sentence-initial position
-\begin{exe}
-\ex \eng{\ul{The election of 2000}, everyone will remember for a long time.}
-\end{exe}
-\item Cleft sentences
-\begin{exe}
-\ex \eng{It was \ul{a book about syntax} that they were reading.}
-\end{exe}
-\end{itemize}
-
-\myslide{General Types of Constituency Tests}
+% 8
+\myslide{Morphemes and Morphological analysis}
 \begin{itemize}
-\item Distributional
-\item Intonational
-\item Semantic
-\item Psycholinguistic
-\item[\ldots] but they don’t always agree.
-\end{itemize}
-
-\myslide{Central claims implicit in CFG formalism:}
-\begin{enumerate}
-\item  Parts of sentences (larger than single words) are
-linguistically significant units, i.e. phrases play a role in
-determining meaning, pronunciation, and/or the
-acceptability of sentences.
-\item Phrases are contiguous portions of a sentence (no
-discontinuous constituents).
-\item Two phrases are either disjoint or one fully contains the
-other (no partially overlapping constituents).
-\item What a phrase can consist of depends only on what kind of
-a phrase it is (that is, the label on its top node), not on what
-appears around it.
-\end{enumerate}
-
-\newpage
-\begin{itemize}
-\item Claims 1-3 characterize what is called \txx{phrase structure grammar}
-
-\item Claim 4 (that the internal structure of a phrase depends only on what type of phrase it is, not on where it appears) is what makes it \txx{Context-Free}.
-
-\item \txx{Context-Sensitive Grammar} (CSG) gives up 4. 
-That is, it allows the applicability of a
-grammar rule to depend on what is in the
-neighboring environment. So rules can have the
-form: 
-\\ $A \into X$ in the context of $\alpha \_\beta$ ($\alpha A\beta \into \alpha X\beta$)
-\end{itemize}
-
-\myslide{Possible Counterexamples}
-\begin{itemize}
-\item To Claim 2 (no discontinuous constituents):
-\\ \eng{\ul{A technician} arrived \ul{who could solve the problem}.}
-
-\item To Claim 3 (no overlapping constituents):
-\\ \eng{I read \ul{what} was written about me.}
-
-\item To Claim 4 (context independence):
-  \begin{exe}
-  \ex \eng{He arrives this morning.}
-  \ex \eng{*He arrive this morning.}
-  \ex \eng{*They arrives this morning.}
-  \ex \eng{They arrive this morning.}
-  \end{exe}
-\end{itemize}
-
-
-\myslide{Trees and Rules}
-  {
- \leaf{$C_1$}
- \leaf{\ldots}
-  \leaf{$C_2$}
- \branch{3}{$C_0$} \qobitree}is a well-formed nonlexical tree if (and only if)
-\begin{itemize}
-\item  $C_0, \ldots,  C_n$ are well-formed trees
-\item $C_0$ \into $C_1 \ldots C_n$ is a grammar rule
-\end{itemize}
-
-\myslide{Bottom-up Tree Construction}
-
-\begin{flushleft}
-D: the \\
-V: chased \\
-N: dog, cat
-\end{flushleft}
-
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{chased} \branch{1}{V} \qobitree}
-{ \leaf{dog} \branch{1}{N} \qobitree}
-{ \leaf{cat} \branch{1}{N} \qobitree}
-
-\begin{tabular}{ccc}
-\multicolumn{2}{c}{NP \into D N} & VP \into V NP \\[2ex]
-
-{ \leaf{the} \branch{1}{D}
-  \leaf{dog} \branch{1}{N} 
-\branch{2}{NP} \qobitree}
-&
-{ \leaf{the} \branch{1}{D}
-  \leaf{cat} \branch{1}{N} 
-\branch{2}{NP} \qobitree}
-&
-{
-  \leaf{chased} \branch{1}{V}
-    \leaf{the} \branch{1}{D}
-    \leaf{cat} \branch{1}{N} 
-  \branch{2}{NP}
-\branch{2}{VP} \qobitree}
-\end{tabular}
-
-\newpage
-
-\begin{tabular}{c}
- S \into NP VP \\[2ex]
-{
-    \leaf{the} \branch{1}{D}
-    \leaf{dog} \branch{1}{N} 
-  \branch{2}{NP}
-    \leaf{chased} \branch{1}{V}
-      \leaf{the} \branch{1}{D}
-      \leaf{cat} \branch{1}{N} 
-    \branch{2}{NP}
-  \branch{2}{VP}
-\branch{2}{S} \qobitree}
-\end{tabular}
-
-\myslide{Top-down Tree Construction}
-
-
-\begin{tabular}{cccc}
- S \into NP VP  & VP \into V NP & NP \into D N & NP \into D N \\[2ex]
-{ \leaf{NP}
-  \leaf{VP}
-\branch{2}{S} \qobitree}
-&
-{ \leaf{V}
-  \leaf{NP}
-\branch{2}{VP} \qobitree}
-&
-{ \leaf{D}
-  \leaf{N}
-\branch{2}{NP} \qobitree}
-&
-{ \leaf{D}
-  \leaf{N}
-\branch{2}{NP} \qobitree}
-\end{tabular}
-
-{ \leaf{D}
-  \leaf{N}
-\branch{2}{NP} 
-   \leaf{V}
-   \leaf{D}
-   \leaf{N}
-\branch{2}{NP}
-\branch{2}{VP}
-\branch{2}{S} \qobitree}
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{chased} \branch{1}{V} \qobitree}
-{ \leaf{dog} \branch{1}{N} \qobitree}
-{ \leaf{cat} \branch{1}{N} \qobitree}
-
-\begin{tabular}{c}
-% Combine \\[2ex]
-{
-    \leaf{the} \branch{1}{D}
-    \leaf{dog} \branch{1}{N} 
-  \branch{2}{NP}
-    \leaf{chased} \branch{1}{V}
-      \leaf{the} \branch{1}{D}
-      \leaf{cat} \branch{1}{N} 
-    \branch{2}{NP}
-  \branch{2}{VP}
-\branch{2}{S} \qobitree}
-\end{tabular}
-
-\begin{itemize}
-\item \txx{Bottom-up}: string \into tree
-\item \txx{Top-down}: tree \into string
-\item CFG is \txx{declarative} so it is independent of order
-\end{itemize}
-
-\myslide{Weaknesses of CFG (atomic node labels)}
-\begin{itemize}
-\item It doesn’t tell us what constitutes a linguistically
-natural rule
-\begin{itemize}
-\item VP \into P NP
-\item NP \into VP S
-\end{itemize}
-\item Rules get very cumbersome once we try to deal
-with things like agreement and transitivity.
-\item It has been argued that certain languages (notably
-Swiss German and Bambara) contain constructions
-that are provably beyond the descriptive capacity of
-CFG.
-\end{itemize}
-
-\myslide{On the other hand \ldots}
-
-\begin{itemize}
-\item It’s a simple formalism that can generate
-infinite languages and assign linguistically
-plausible structures to them.
-
-\item Linguistic constructions that are beyond the
-descriptive power of CFG are rare.
-
-\item It’s computationally tractable and
-techniques for processing CFGs are well
-understood.
-\end{itemize}
-
-\myslide{So \ldots}
-
-\begin{itemize}
-\item CFG is the starting point for most
-types of generative grammar.
-
-\item The theory we develop in this course is an
-extension of CFG.
-\end{itemize}
-
-\myslide{Transitivity and Agreement}
-
-\begin{itemize}
-\item Consider the following transitivity examples
-  \begin{exe}
-    \ex \eng{The bird arrives}
-    \ex \eng{The bird devours the worm}
-    \ex *\eng{The bird arrives the worm}
-    \ex *\eng{The bird devours}
-  \end{exe}
-\item Consider the following agreement examples
-  \begin{exe}
-    \ex \eng{The bird sings}
-    \ex \eng{The birds sing}
-    \ex *\eng{The bird sing}
-    \ex *\eng{The birds sings}
-  \end{exe}
-\item Can we deal with them with a CFG?
-\end{itemize}
-
-\myslide{Summary}
-\begin{enumerate}\addtolength{\itemsep}{-1ex}
-\item Fundamentals
-\item Investigate
-\item Find out some stuff
-\item Break our theory
-\item Try to fix it.
-\item Break it again.
-\item Lather, rinse, repeat: we'll do that until we run out of time.
-\end{enumerate}
-
-Jorge Hankamer's outline of a syntax course, but it's pretty
-applicable to everything we do.  More formally: \emp{Successive Approximation}.
-
-
-\myslide{Chapter 2, Problem 1}
-\begin{tabular}{cc}
-  RULES & VOCABULARY \\[2ex]
-  \begin{minipage}[t]{0.4\linewidth}
-    \begin{tabular}[t]{lll}
-      \textbf{S}  & \into & NP VP \\
-      NP & \into & (D) NOM\\
-      VP & \into & V (NP) (NP)\\
-      NOM & \into & N\\
-      NOM & \into & NOM PP \\
-      VP  & \into & VP PP\\
-      PP  & \into & P NP\\
-      X   & \into & X+ CONJ X\\
-    \end{tabular} 
-  \end{minipage} &
-  \begin{minipage}[t]{0.5\linewidth}
-    \begin{flushleft}
-  D: a, the\\
-  N: cat, dog, hat, man, woman, roof\\
-  V: admired, disappeared, put, relied\\
-  P: in, on, with\\
-  CONJ: and, or
-\end{flushleft}
-\end{minipage}
-\end{tabular}
-
-\myslide{Chapter 2, Problem 1}
-
-\begin{itemize}
-\item [A] Make a well-formed English sentence unambiguous
-according to this grammar
-\item  [B] Make a well-formed English sentence ambiguous
-according to this grammar: draw trees
-\item  [C] Make a well-formed English sentence not licensed by
-this grammar (using $V$)
-\item [D] Why is this (C) not licensed?
-
-\newpage
-\item [E] Make a string licensed by this grammar that is not a
-  well-formed English sentence
-\item [F] How can we stop licensing the string in E (stop over-generating)
-\item [G] How many strings does this grammar license?
-\item [H] How many strings does this grammar license without conjunctions?
-\end{itemize}
-
-\myslide{Shieber 1985}
-\begin{itemize}
-\item Swiss German example:
-  \begin{exe}
-    \ex \gll \ldots mer \uline{d’chind} \uuline{em Hans} es \uwave{huus} \uline{l\"ond} \uuline{h\"alfe} \uwave{aastriiche}\\
-    \ldots we {the children-acc} Hans-dat the hous-acc let help paint \\
-    \trans we let {the children} help Hans paint the house 
-  \end{exe}
-\item Cross-serial dependency:
-\begin{itemize}
-\item \eng[let]{l\"ond} governs case on \eng[children]{d’chind}
-\item \eng[help]{h\"alfe} governs case on \eng[Hans]{Hans}
-\item \eng[paint]{aastriiche} governs case on \eng[house]{huus}
-\end{itemize}
-\item This cannot be modeled in a context free language
-\end{itemize}
-
-\myslide{Strongly/weakly CF}
-\begin{itemize}
-\item A language is weakly \emp{context-free} if the set of
-strings in the language can be generated by a CFG.
-\item A language is \emp{strongly} context-free if the CFG
-furthermore assigns the correct structures to the
-strings.
-\item Shieber’s argument is that SW is not \emp{weakly}
-context-free and therefore not \emp{strongly} context-free.
-\item Bresnan et al (1983) had already argued that Dutch
-is \emp{strongly} not context-free, but the argument was
-dependent on linguistic analyses.
-\end{itemize}
-
-\myslide{Overview}
-
-\begin{itemize}
-\item Prescriptive/descriptive grammar;
-Competence/performance
-\item Some history
-\item Why study syntax?
-\item Unsuccessful Attempts to model language
-\item Formal definition of CFG
+\item \txx{Morphemes} 
   \begin{itemize}
-  \item Constituency, ambiguity, constituency tests
-  \item Central claims of CFG
-  \item Order independence
-  \item Weaknesses of CFG
+    \item \txx{Morphemes} are minimal meaning-bearing units.\\
+          Example: \eng{talked} contains two morphemes: \eng{talk} and \eng{-ed} (past).
+    \item Form–function pairs (sound/sign–meaning): basic units of morphology.
+    \item The realisations of morphemes are called \txx{morphs}.\\
+          Example: English plural morpheme \txx{[number pl]} has allomorphs \eng{-s}, \eng{-es}, \eng{-en}, \eng{$\emptyset$}: \eng{boy-s}, \eng{box-es}, \eng{ox-en}, \eng{sheep}.
+    \item These different realisations of the same morpheme are called \txx{allomorphs}.
   \end{itemize}
-\item Next Week: Feature structures
+\item \txx{Morphological analysis}\\
+  \begin{itemize}
+    \item Segmentation of expressions into basic units (mostly starting from word-level).
+    \item Classification of these basic units according to function.
+    \end{itemize}
 \end{itemize}
 
+  %% end
 
+% 9
+\myslide{Types of morphemes}
+  \begin{itemize}
+  \item \txx{Free Morphemes}\\
+  \begin{itemize}
+    \item \txx{Free morphemes} can occur independently. Common in English and German.\\
+          Examples: \eng{boy}, \eng{sing}.
+  \end{itemize}
+  \medskip
+  \item \txx{Bound Morphemes}\\
+  \begin{itemize}
+    \item \txx{Bound morphemes} must be attached to another morpheme and cannot be used independently.\\
+          Example: \txx{[number pl]} \eng{-s} $\rightarrow$ \eng{boys}.
+    \item Typical bound morphemes are: \txx{affixes} (\eng{boy+s}, \eng{talk+ed}); \txx{clitics} (French: \eng{je ne sais pas}, \eng{je} and \eng{ne} cannot occur without a verb); \txx{roots} (Spanish \eng{habl-} needs an ending indicating person, number, mood, etc.).
+    \end{itemize}
+  \end{itemize}
+%% end
+
+% 10
+  \myslide{Formatives and pseudo-morphemes}
+  \txx{Morphemes} are form–meaning pairs, but not all segmentable forms have an identifiable meaning.
+  \begin{itemize}
+  \item \txx{Formatives}\\
+    \begin{itemize}
+    \item Forms without identifiable meaning.\\
+      Example: linking elements in German compounds: \eng{Geburt+s+tag} (birthday), \eng{Schwan+en+hals} (swan neck).
+    \end{itemize}
+  \item \txx{Pseudo-morphemes / cranberry morphemes}\\
+    \begin{itemize}
+    \item Special cases of formatives: segmentable parts of a complex word without independent meaning.\\
+      Examples: \eng{cran+berry}, \eng{rasp+berry}; \eng{re+ceive}, \eng{con+ceive}.
+    \end{itemize}
+  \end{itemize}
+
+
+% 11
+\myslide{What is morphology? (follow up)}
+  \txx{Morphology} can refer to three different things:
+  \begin{enumerate}
+    \item Description of the behaviour of morphemes and how they are combined.
+    \item Derivational, inflectional and compositional processes of word formation occurring in a specific language.\\
+          Example: ``German has a richer morphology than English.''
+    \item Description of such word-formation processes (i.e., the theory/grammar of a language’s morphology).
+    \end{enumerate}
+
+  %     We distinguish:
+  % \begin{itemize}
+  %   \item \txx{Word forming}:
+  %     \begin{itemize}
+  %       \item \txx{Derivational morphology}
+  %       \item \txx{Compounding}
+  %     \end{itemize}
+  %   \item \txx{Inflection}
+  % \end{itemize}
+%% end
+
+% % 12
+% \myslide{Root, base and stem}
+
+% \begin{description}[leftmargin=2.5em, style=nextline]
+%     \item[Root:] an unanalysable form expressing the basic lexical content of a word; also ``what is left when all affixes are stripped.''
+%     \item[Stem:] consists of at least a root; may contain derivational affix(es). In inflectional morphology, often \eng{root + thematic vowel}.
+%     \item[Base:] a form to which an affix may be added; may be simplex (root) or complex (root + affixes).
+%   \end{description}
+% %% end
+
+% % 13
+% \myslide{Areas of morphology}
+%   We distinguish:
+%   \begin{itemize}
+%     \item \txx{Word forming}:\\[0.25em]
+%       \begin{itemize}
+%         \item \txx{Derivational morphology}
+%         \item \txx{Compounding}
+%       \end{itemize}
+%     \item \txx{Inflection}
+%   \end{itemize}
+% %% end
+
+% 16
+\myslide{Inflectional Morphology}
+  \begin{itemize}
+    \item \txx{Inflection} is required by syntactic criteria (e.g., an English verb must have tense).
+    \item It marks grammatical (\txx{morphosyntactic}) distinctions:
+      \begin{description}
+        \item[Conjugation (verbal):] person, number, gender; tense, aspect, mood; agreement
+        \item[Declension (nominal):] case, number, gender, degree, definiteness
+      \end{description}
+    \item Meaning of the general concept is generally not changed, though \eng{when}, \eng{who/what}, and sometimes \eng{where/how/whether} may be specified by inflectional morphemes.
+    \item There are bound and free inflectional morphemes: \eng{go [TENSE past] : went}; \eng{go [TENSE future] : will go}.
+  \end{itemize}
+%% end
+
+% 17
+\myslide{Inflection — paradigm}
+  \begin{quote}\small
+  ``A set of forms having the same root/stem, one of which must be selected in a certain syntactic environment'' (based on Crystal 1997:277; Payne 1997:26).
+  \end{quote}
+  \medskip
+  For instance, German conjugation:
+  \medskip
+  \begin{center}
+  \begin{tabular}{llllll}
+     \textbf{present} &  &  & \textbf{past} &  & \\
+ &     \textbf{singular} & \textbf{plural} & & \textbf{singular} & \textbf{plural} \\
+    1. & \eng{dehn-e} & \eng{dehn-te}         &   1 &  \eng{dehn-en} & \eng{dehn-te-n} \\
+    2. & \eng{dehn-st} & \eng{dehn-te-st}   &   2. & \eng{dehn-t} & \eng{dehn-te-t} \\
+    3. & \eng{dehn-t} & \eng{dehn-te}       &   3. & \eng{dehn-en} & \eng{dehn-te-n} \\
+  \end{tabular}
+  \end{center}
+%% end
+
+% 18
+\myslide{Paradigm — Latin noun first declension \eng[girl]{puella}}
+  \begin{center}
+  \begin{tabular}{lll}
+    \textbf{case} & \textbf{singular} & \textbf{plural} \\
+    NOM & \eng{puella} & \eng{puellae} \\
+    GEN & \eng{puellae} & \eng{puellarum} \\
+    DAT & \eng{puellae} & \eng{puellis} \\
+    ACC & \eng{puellam} & \eng{puellas} \\
+    ABL & \eng{puella} & \eng{puellis} \\
+  \end{tabular}
+  \end{center}
+
+  We observe both:
+  \begin{itemize}
+    \item \txx{syncretism}: the same form expresses different feature combinations.\\
+          Here: \eng{-ae} = GEN or DAT singular, or NOM plural; \eng{-a} = NOM or ABL singular; \eng{-is} = DAT or ABL plural.
+    \item \txx{exponence}: relation between form and function is $m\!:\!n$.
+      \begin{itemize}
+        \item \txx{multi-exponence (cumulation)}: one form expresses several functions.\\
+              Here: \eng{-am} expresses both \txx{accusative} and \txx{singular}.
+        \item \txx{extended exponence}: in \eng{ge-dehn-t}, \eng{ge-} and \eng{-t} express one function together.
+      \end{itemize}
+  \end{itemize}
+
+    
+% 14
+\myslide{Derivational Morphology}
+  \begin{itemize}
+    \item Builds complex words by combining bound and free morphemes.
+    \item \txx{Derivational} operations are optional (not required by syntactic criteria).
+    \item They may change:
+      \begin{enumerate}
+        \item \txx{semantics}, e.g. \eng{clear} $\rightarrow$ \eng{un+clear} = \eng{unclear}
+        \item \txx{syntactic category}, e.g. \eng{derive}$_{\mathrm{V}}$ + \eng{ation}$_{\mathrm{N}}$ + \eng{al}$_{\mathrm{Adj}}$ = \eng{derivational}
+        \item \txx{valency of a verb}, e.g. Havasupai \eng{qaw} ‘it breaks’ $\rightarrow$ \eng{t+qaw} ‘he breaks it’
+        \item and more
+      \end{enumerate}
+  \end{itemize}
+%% end
+
+% 15
+\myslide{Compounding}
+  \begin{itemize}
+    \item Builds complex words by juxtaposition of free morphemes.
+    \item Examples: \eng{[sale]+s+[man]}, \eng{[dish]+[washer]}
+    \item Productive compounding results in an infinite lexicon.
+  \end{itemize}
+  \medskip
+  \[
+    \left\{\begin{array}{l}
+        English \\
+        German \\
+        Czech
+      \end{array}
+      \right\}
+    \left\{\begin{array}{l}
+        phonetics \\
+        morphology \\
+        syntax
+      \end{array}
+      \right\}
+    \left\{\begin{array}{l}
+        teacher \\
+        researcher \\
+        student
+      \end{array}
+      \right\}
+  \]
+  % \medskip
+  % \emph{Compounds are “referential islands.”}
+%% end
+
+%% end
+
+  
 \myslide{Acknowledgments and References}
 
 \begin{itemize}
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
+\item Morphology slides borrow from Antske Fokkens 
 \item Thanks to Na-Rae Han for 
   inspiration for the student policies (from  \textit{LING 2050 Special Topics in Linguistics: Corpus linguistics}, U Penn; adapted).
-\item Stuart M. Shieber. (1985) Evidence against the context-freeness of natural language. \textit{Linguistics and Philosophy}, 8:333-343
+
 \end{itemize}
 
 
