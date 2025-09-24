@@ -29,8 +29,13 @@
 \date{#1
   \\ Location: SV 2.39}
 }
-\usepackage[hidelinks]{hyperref}
-
+\usepackage{hyperref}
+\hypersetup{
+     colorlinks,
+     linkcolor={blue!50!black},
+     citecolor={red!50!black},
+     urlcolor={blue!80!black}
+   }
 
 
 
@@ -43,9 +48,9 @@
 \newcommand{\txx}[1]{\textbf{\textcolor{blue}{#1}}}
 \newcommand{\lex}[1]{\textbf{\mtcitestyle{#1}}}
 
-\usepackage{pifont}
-\renewcommand{\labelitemi}{\textcolor{violet}{\ding{227}}}
-\renewcommand{\labelitemii}{\textcolor{purple}{\ding{226}}}
+
+% \renewcommand{\labelitemi}{\textcolor{violet}{‣}}
+% \renewcommand{\labelitemii}{\textcolor{purple}{‣}}
 
 \newcommand{\subhead}[1]{\noindent\textbf{#1}\\[5mm]}
 
@@ -82,6 +87,7 @@
 \usepackage[lyons,j,e,k]{mtg2e}
 %\renewcommand{\mtcitestyle}[1]{\textcolor{-red!75!green!50}{\textsl{#1}}}
 \renewcommand{\mtcitestyle}[1]{\textcolor{teal}{\textsl{#1}}}
+\newcommand{\cs}{\mtciteform}
 \newcommand{\iz}[1]{\texttt{\textup{#1}}}
 \newcommand{\gm}{\textsc}
 \usepackage[normalem]{ulem}

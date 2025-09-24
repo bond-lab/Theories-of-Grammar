@@ -6,7 +6,11 @@
 %\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
 
 \input{headx.tex}
+\usepackage{fontspec}
 
+\setmainfont{Noto Sans}
+\newfontfamily\cjkfont{Noto Sans CJK SC}[Scale=0.9]
+\newcommand{\zh}[1]{{\cjkfont #1}}
 
 
 \begin{document}
@@ -71,7 +75,7 @@ Competence/performance
 
 On completion of this module, students should be able to:
 \begin{itemize}
-\item Know the basics of morphology
+\item Understand the basics of morphology
 \item Recognize certain classes of syntactic phenomena
 \item Build analyses of those phenomena in a precise framework
 \item Apply the process of building a formalized analysis to test
@@ -135,9 +139,9 @@ By remaining in this class, the student agrees to:
 \item Valid reasons for missing class include the following:
 \begin{enumerate}
 \item A medical emergency (including mental health emergencies)
-\item A family emergency (death, birth, natural disaster, etc).
+\item A family emergency (death, birth, natural disaster,  \ldots{})
+\item An important event (tournament, job interview, \ldots{})
 \end{enumerate}
-You must provide documentation to me and the student office.
 \item There will be significant material covered in class that is not in your readings.  You cannot expect to do well without coming to class.
 \item If you miss a class, it is your responsibility to get the notes, any handouts you missed, schedule changes, etc. from a classmate.
 \end{enumerate}
@@ -171,8 +175,8 @@ You must provide documentation to me and the student office.
 \item Online:
   \begin{itemize}
 %  \item HPSG at Stanford: \url{http://hpsg.stanford.edu/}
-  \item English Resource Grammar: \url{http://erg.delph-in.net/logon}
-  \item Wikipedia page has lots of links
+  \item English Resource Grammar: \href{https://delph-in.github.io/delphin-viz/demo/}{delph-in.github.io/delphin-viz/demo/}
+  \item Wikipedia has good summaries and many links
   \end{itemize}
 \end{itemize}
 
@@ -223,6 +227,7 @@ find acceptable
   \item Identify level of
     formality of a
     particular usage
+  \item Standardize language for smoother communication
   \end{itemize}
 \item DESCRIPTIVE
   \begin{itemize}
@@ -347,7 +352,7 @@ languages
 \item Noam Chomsky’s work in the 1950s
 radically changed linguistics, making
 syntax central.
-\item Chomsky has been the dominant figure
+\item Chomsky has been a dominant figure
 in linguistics ever since.
 \item The theory we will develop (HPSG) is in the
 tradition started by Chomsky, but
@@ -401,8 +406,6 @@ so quickly and easily.
 
 %\rule[lift]{width}{height}
 %\rule{0ex}{12ex}
-
-
   \begin{tree}\tiny
     \br{Early Transformational Grammar (1955-1964)}%
     {\br{Standard Theory (1964-1967)}{%
@@ -440,13 +443,23 @@ so quickly and easily.
 
 
 
-\myslide{Why Study Syntax?}
+\myslide{Which theory is best?}
 \begin{itemize}
-\item Why should linguists study syntax?
-%\item Why should computational linguists study syntax?
-
-\item Should anyone else study syntax? Why?
-\item Why are you studying syntax?
+\item Most theories are better at explaining some things than others
+  \begin{itemize}
+  \item HPSG is good at modelling structure and (some) meaning
+  \item Minimalism is good at modelling similarities
+  \item Dependency grammar is easy to implement (and  good for case marked languages)
+  \item Functional grammar is good at describing why we choose to use certain constructions
+  \item Conversation Analysis is good at modelling turn taking and social interaction
+  \end{itemize}
+\item I teach HPSG because I know it well
+  \begin{itemize}
+  \item I know HPSG because I sat next to Tsunkeo Nakazawa at NTT
+  \item I think it is a good model of syntax and semantics
+  \item I don't think it is the only valid way of studying language
+  \end{itemize}
+\item The general approach to analysing language should be transferable to any theory
 \end{itemize}
 
 
@@ -455,7 +468,16 @@ so quickly and easily.
 \begin{itemize}
 \item \txx{Morphology} is the study of form and structure.
 \item In linguistics, it generally refers to the study of form and
-structure of words.
+  structure of words.\\[2ex]
+  \begin{tabular}{ll}
+    \eng{horses} & horse-s \\
+    \eng{talked} & talk-ed \\
+    \eng{unhappiness} &  un-happy-ness \\
+    \eng{went} & go-ed \\
+    \eng{yes} & yes \\
+    \eng{talk}$_N$ &  \eng{talk}$_V$ \\
+    \cs{psa}  & pes+I \\ 
+  \end{tabular}
 \end{itemize}
 
 \myslide{Words and morphemes}
@@ -465,9 +487,10 @@ structure of words.
     \item Abstract form (lemma or dictionary entry, e.g. bare infinitives in English; nominative singular in Latin)
   \end{enumerate}
   \medskip
-  The class of forms representing a word in different contexts is called a \txx{lexeme}.\\
-  \eng{sing} $=$ \{\eng{sing}, \eng{sings}, \eng{sang}, \eng{sung}, \eng{singing}\}
-  
+  The class of forms representing a word in different contexts is called a \txx{lexeme}.
+  \begin{center}
+    \lex{sing} $=$ \{\eng{sing}, \eng{sings}, \eng{sang}, \eng{sung}, \eng{singing}\}
+  \end{center}  
 
 % 6
 \myslide{A definition of words?}
@@ -482,20 +505,7 @@ structure of words.
   A structuralist solution: \txx{morphemes}.
 %% end
 
-% 7
-  \myslide{A language:}
-  \vfill
-  \begin{center}
-  \begin{tabular}{c}
-    11--112 \txx{phonemes} \\
-    $\downarrow$ \\
-    4{,}000--10{,}000 \txx{morphemes} \\
-    $\downarrow$ \\
-    An infinite number of \txx{sentences}
-  \end{tabular}
-\end{center}
 
-%% end
 
 % 8
 \myslide{Morphemes and Morphological analysis}
@@ -516,18 +526,28 @@ structure of words.
     \end{itemize}
 \end{itemize}
 
-  %% end
 
-% 9
+\myslide{A language:}
+\vfill
+\begin{center}
+  \begin{tabular}{c}
+    11--112 \txx{phonemes} \\
+    $\downarrow$ \\
+    4{,}000--10{,}000 \txx{morphemes} \\
+    $\downarrow$ \\
+    An infinite number of \txx{sentences}
+  \end{tabular}
+\end{center}
+
 \myslide{Types of morphemes}
   \begin{itemize}
-  \item \txx{Free Morphemes}\\
+  \item \txx{Free Morphemes}
   \begin{itemize}
-    \item \txx{Free morphemes} can occur independently. Common in English and German.\\
-          Examples: \eng{boy}, \eng{sing}.
+    \item \txx{Free morphemes} can occur independently. Common in Chinese and English.\\
+          Examples: \eng{boy}, \eng{sing}, \zh{狗} \eng[dog]{gǒu}.
   \end{itemize}
   \medskip
-  \item \txx{Bound Morphemes}\\
+  \item \txx{Bound Morphemes}
   \begin{itemize}
     \item \txx{Bound morphemes} must be attached to another morpheme and cannot be used independently.\\
           Example: \txx{[number pl]} \eng{-s} $\rightarrow$ \eng{boys}.
@@ -540,12 +560,12 @@ structure of words.
   \myslide{Formatives and pseudo-morphemes}
   \txx{Morphemes} are form–meaning pairs, but not all segmentable forms have an identifiable meaning.
   \begin{itemize}
-  \item \txx{Formatives}\\
+  \item \txx{Formatives}
     \begin{itemize}
     \item Forms without identifiable meaning.\\
       Example: linking elements in German compounds: \eng{Geburt+s+tag} (birthday), \eng{Schwan+en+hals} (swan neck).
     \end{itemize}
-  \item \txx{Pseudo-morphemes / cranberry morphemes}\\
+  \item \txx{Pseudo-morphemes / cranberry morphemes}
     \begin{itemize}
     \item Special cases of formatives: segmentable parts of a complex word without independent meaning.\\
       Examples: \eng{cran+berry}, \eng{rasp+berry}; \eng{re+ceive}, \eng{con+ceive}.
@@ -607,7 +627,12 @@ structure of words.
         \item[Declension (nominal):] case, number, gender, degree, definiteness
       \end{description}
     \item Meaning of the general concept is generally not changed, though \eng{when}, \eng{who/what}, and sometimes \eng{where/how/whether} may be specified by inflectional morphemes.
-    \item There are bound and free inflectional morphemes: \eng{go [TENSE past] : went}; \eng{go [TENSE future] : will go}.
+    \item Some people consider bound and free inflectional morphemes:
+      \begin{itemize}
+      \item \eng{go [TENSE past] : went} 
+      \item \eng{go [TENSE future] : will go}
+      \end{itemize}
+
   \end{itemize}
 %% end
 
@@ -631,27 +656,28 @@ structure of words.
 %% end
 
 % 18
-\myslide{Paradigm — Latin noun first declension \eng[girl]{puella}}
-  \begin{center}
+\myslide{Paradigm — Czech noun first declension \eng[dog]{pes}}
+\bigskip
+\begin{center}
   \begin{tabular}{lll}
-    \textbf{case} & \textbf{singular} & \textbf{plural} \\
-    NOM & \eng{puella} & \eng{puellae} \\
-    GEN & \eng{puellae} & \eng{puellarum} \\
-    DAT & \eng{puellae} & \eng{puellis} \\
-    ACC & \eng{puellam} & \eng{puellas} \\
-    ABL & \eng{puella} & \eng{puellis} \\
+    \textbf{case} & \textbf{singular} & \textbf{plural} \\ \hline
+    NOM & \eng{pes} & \eng{psi} \\
+    GEN & \eng{psa} & \eng{psů} \\
+    DAT & \eng{psoive, psu} & \eng{psům} \\
+    ACC & \eng{psa} & \eng{psy} \\
+    VOC & \eng{pse} & \eng{psi} \\
+    LOC & \eng{psovi, psu} & \eng{psech} \\
+    INST & \eng{psem} & \eng{psy} \\
   \end{tabular}
   \end{center}
 
-  We observe both:
   \begin{itemize}
-    \item \txx{syncretism}: the same form expresses different feature combinations.\\
-          Here: \eng{-ae} = GEN or DAT singular, or NOM plural; \eng{-a} = NOM or ABL singular; \eng{-is} = DAT or ABL plural.
+  \item \txx{syncretism}: the same form expresses different feature combinations.\\
+    \eng{psa} is both \txx{genitive} and \txx{accusative}
     \item \txx{exponence}: relation between form and function is $m\!:\!n$.
       \begin{itemize}
         \item \txx{multi-exponence (cumulation)}: one form expresses several functions.\\
-              Here: \eng{-am} expresses both \txx{accusative} and \txx{singular}.
-        \item \txx{extended exponence}: in \eng{ge-dehn-t}, \eng{ge-} and \eng{-t} express one function together.
+              \eng{-ů} expresses both \txx{genitive} and \txx{plural}.
       \end{itemize}
   \end{itemize}
 
@@ -699,12 +725,23 @@ structure of words.
       \end{array}
       \right\}
   \]
-  % \medskip
-  % \emph{Compounds are “referential islands.”}
-%% end
+ 
 
-%% end
+\myslide{There are many other derivational patterns}
 
+\begin{itemize}
+\item \txx{Reduplication}: \eng{teeny-weeny}
+\item \txx{Clipping}: \eng{ad[vertisment]}, \eng{[in]flu[enza]}
+\item \txx{Acronym}: \eng{laser} ``Light Amplified by Stimulated Emission of Radiation'', \eng{hpsg} ``Head-Driven Phrase Structure Grammar'', \txx{UPOL}: ``U[niverzita] P[alackého] [v] Ol[omouci]'', \eng{東大} ``東京大学''
+\item \txx{Blending}: \eng{brunch} ``breakfast + lunch'', \cs{srandista} ``sranda (fun, joke) + humorista (humorist)'' → ``joker, funny person''
+\item \txx{Expletive infixing}: \eng{Abso-fucking-lutely} (but not \eng{Absolute-fucking-ly} or \eng{Abso-fucking-lute}!)
+\end{itemize}
+  
+\myslide{Conclusions}
+
+\begin{itemize}
+\item Next week we will look into some simple theories of 
+\end{itemize}
   
 \myslide{Acknowledgments and References}
 
