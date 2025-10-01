@@ -6,7 +6,13 @@
 %\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
 
 \input{headx.tex}
-
+\newenvironment{block}[1]%
+  {%
+    \par\medskip
+    \noindent\textbf{#1}\par}%
+  {%
+    \medskip
+  }
 
 
 \begin{document}
@@ -17,9 +23,12 @@
 \myslide{Overview}
 
 \begin{itemize}
-\item Two Syntactic Theories that won’t work
-\item Context Free Grammars
-\item Central claims of CFG
+\item Some initial attempts to model grammar
+  \begin{itemize}
+  \item Context Free Grammars
+  \item Central claims of CFG
+  \end{itemize}
+\item 
 \end{itemize}
 
 
@@ -44,6 +53,39 @@
 we aim for iteratively improved approximations
 \end{center}
 
+
+\myslide{Identifying constituents}
+\begin{block}{}
+  \begin{itemize}
+  \item
+    Language structure is \textbf{hierarchical}, and is made up of identifiable constituents
+  \item
+    Some words go together more closely to form a constituent, e.g. noun phrases and postpositional phrases.  
+  \item
+   Such strings form \textbf{immediate constituents} of units higher up in the hierarchy.
+\item
+    Constituents are identified on the basis of \textbf{formal criteria ...}
+  \end{itemize}
+\end{block}
+
+%------------------------------------------------------------------------------------------
+\myslide{Formal criteria for identifying constituents}
+\begin{block}{Three things to consider:}
+  \begin{itemize}
+  \item
+    \textbf{Distribution}: If the same sequence of constituents occurs repeatedly, this sequence might be a constituent.  
+  \item
+    \textbf{Substitution}: If we can substitute a sequence of words by a single word, keeping the reference more or less the same, then this sequence is probably a constituent.
+  \item
+    \textbf{Mobility}: If we can move a sequence of constituents around in a sentence, and they have to move together, then this is probably a constituent
+  \end{itemize}
+\end{block}
+
+
+
+
+
+
 \myslide{Insufficient Theory \#1}
 \begin{itemize}
 \item A grammar is simply a list of sentences.
@@ -53,7 +95,7 @@ we aim for iteratively improved approximations
 \myslide{Insufficient Theory \#2: Regular Expressions}
 \begin{exe}
   \ex \gll the noisy dogs left \\
-  D A N V \\
+  D A N V \\ 
   \ex  \gll the noisy dogs chased the innocent cats \\
  D A N V D A N \\
 \end{exe}
@@ -447,9 +489,287 @@ extension of CFG.
 \item Can we deal with them with a CFG?
 \end{itemize}
 
-\myslide{Summary}
+
+
+\myslide{Basic Concepts of Morphology: Morphological Models}
+\begin{itemize}
+\item \txx{Item-and-Arrangement (IA)}: list morphemes + specify their linear arrangement.
+  \\ \eng{spiral + -ize + -er}. 
+\item \txx{Item-and-Process (IP)}: items undergo processes/rules
+  \\ (\eng{make-verb}, \eng{instrument-noun}). 
+\item \txx{Word-and-Paradigm (WP)}: words as \txx{word-forms} in \txx{paradigms};
+  \\ realizational rules fill paradigm slots. 
+\item Each model fits different language properties, \ldots
+ \end{itemize}
+
+Based on Panocová (2021, Chapter 3), Czech examples added
+
+% 2
+\myslide{IA: The Morpheme List + Arrangement}
+\begin{itemize}
+  \item Hockett: utterances = minimal meaningful elements (\txx{morphemes}) arranged linearly.
+  \item Focus: \txx{free} vs.\ \txx{bound} forms; segment-and-label.
+  \item IA Worked Example
+    \begin{itemize}
+    \item \eng{spiralizer} $\Rightarrow$ \eng{spiral} + \eng{-iz(e)} + \eng{-er}.
+    \item Inventory entries: \eng{spiral} (free), \eng{-ize} (V-forming), \eng{-er} (N-forming: instrument/agent).
+    \end{itemize}
+  \end{itemize}
+  
+\myslide{IA Strengths and Weaknesses}    
+\begin{itemize}
+\item IA Strength: Transparent Affixation
+    \begin{itemize}
+    \item Agglutinative-style sequences: \txx{one function ⟷ one form}.
+    \item Hungarian: suffix allomorphs by stem vowels (back vs.\ front). \\
+      	\begin{tabular}{llll}
+	\textbf{olvas-} & `read'	& \textbf{yl-} & `sit'\\
+	\textbf{olvas-unk}	& `we read'	& \textbf{yl-ynk	} & `we sit'\\
+	\textbf{olvas-tok}	& `you (pl) read'	& \textbf{yl-tyk} & 	`you (pl) sit'\\
+	\textbf{olvas-nak}	& `they read'	& \textbf{yl-nek}	& `they sit'\\
+	\end{tabular}
+
+    \end{itemize}
+  \item IA Challenges: When Segments Don’t Behave
+    \begin{itemize}
+    \item \txx{Ablaut} pasts: \eng{take} $\rightarrow$ \eng{took}—no neat “past” morpheme.
+    \item \txx{Cumulative exponence}: Czech \eng{-u} in \eng{ženu} = [accusative singular feminine].
+    \item Such patterns motivate IP/WP analyses.
+    \end{itemize}
+  \end{itemize}
+
+\myslide{IP: Items Undergo Processes}
+\begin{itemize}
+  \item Lexicon stores bases; morphology applies \txx{processes} to derive outputs
+  \item \eng{spiral} → \eng{spiralize} (\eng{make-verb})
+    \\\eng{spiralize}  → \eng{spiralizer} \eng{instrument-noun})
+  \item IA vs.\ IP: What Counts as an “Item”?
+    \begin{itemize}
+    \item \txx{IA}: morphemes + concatenation.
+    \item \txx{IP}: bases + processes (rules for alternations, allomorphy)
+    \end{itemize}
+\end{itemize}
+
+% 8
+\myslide{WP: Words and Paradigms}
+\begin{itemize}
+  \item Central unit: \txx{word-form} (member of a lexeme’s paradigm).
+  \item Goal: \txx{realizational rules} filling paradigm slots.
+  \item Great for \txx{syncretism}, rich inflection.
+  \item WP in Action: Czech Masculine Nouns
+\begin{itemize}
+  \item Genitive plural is \eng{-ů} across many declension types. \\
+\begin{tabular}{l|l}
+Lexeme & Gen.\ pl. \\
+\hline
+\eng{pán} `lord' & \eng{pánů} \\
+\eng{hrad} `castle' & \eng{hradů} \\
+\eng{muž} `man' & \eng{mužů} \\
+\eng{stroj} `machine' & \eng{strojů} \\
+\end{tabular}
+\end{itemize}
+\medskip
+\begin{itemize}
+  \item Rule (simplified): $x_{N:Mc}$[+pl, +gen] $\Rightarrow$  \eng{$x$-ů}$_{N}$.
+\end{itemize}
+\end{itemize}
+
+% 10
+\myslide{Mini-paradigm Tables (Czech)}
+\begin{itemize}
+  \item \eng{pán} `lord' (paradigm: nominative–accusative–genitive plural):
+\end{itemize}
+\begin{tabular}{l|l}
+Nom.\ sg. & \eng{pán} \\
+Acc.\ sg. & \eng{pána} \\
+Gen.\ pl. & \eng{pánů} \\
+\end{tabular}
+
+\medskip
+\begin{itemize}
+  \item \eng{hrad} `castle' (hard-type masculine inanimate):
+\end{itemize}
+\begin{tabular}{l|l}
+Nom.\ sg. & \eng{hrad} \\
+Acc.\ sg. & \eng{hrad} \\
+Gen.\ pl. & \eng{hradů} \\
+\end{tabular}
+
+There can be many sub rules and irrgularities
+
+
+\myslide{Choosing the Right Lens}
+\begin{itemize}
+  \item \txx{IA}: clean concatenation, transparent affixation, listable allomorphy (also influential in \txx{Distributed Morphology}). 
+  \item \txx{IP}: rules/processes for alternations, non-linear morphology, construction-based generalizations. 
+  \item \txx{WP}: paradigm-centered patterns, syncretism, realizational statements over lexemes. 
+  \item Use the model that best fits the language property you’re analyzing. %
+\end{itemize}
+
+
+\myslide{How Humans Handle Morphology}
+\begin{itemize}
+  \item We combine \txx{rules} with \txx{memory}.
+  \item \txx{Rules / Productivity}: apply general patterns 
+    (\eng{talk $\rightarrow$ talked}, Cz.\ \eng{hrad $\rightarrow$ hradů}).
+  \item \txx{Lexical Memory}: store irregulars 
+    (\eng{go $\rightarrow$ went}, Cz.\ \eng{oko $\rightarrow$ oči})  and regular high-frequency forms! 
+  \item \txx{Dual-route model}: both operate in parallel.
+\end{itemize}
+
+% Optional second slide
+\myslide{Evidence: Rules + Exceptions Together}
+\begin{itemize}
+  \item \txx{Analogy}: children overgeneralize (\eng{goed}, Cz.\ \eng{?hradové}).
+  \item \txx{Frequency effects}: common forms often stored whole, retrieved faster.
+\begin{itemize}
+  \item Even \txx{regular} forms can show whole-word frequency effects at high frequency.
+  \item \txx{English} \eng{V+ed}: very frequent pasts (e.g., \eng{looked}, \eng{called}) behave like stored units rather than rule-built on the fly. \citep{Alegre:Gordon:1999}.
+  \item \txx{Dutch} \eng{N+en}: high-frequency regular plurals show evidence of storage alongside parsing. \citep{Baayen:Dijkstra:Schreuder:1997}.
+\end{itemize}
+    
+  \item \txx{Statistical sensitivity}: humans track distribution of endings; 
+    in Czech, \eng{-ů} becomes the \txx{default} genitive plural despite exceptions.
+  \item Result: humans learn to generalize where possible, memorize where needed,
+    and adjust as experience grows.
+\end{itemize}
+
+\myslide{Classification of grammatical categories}
+Languages do not differ so much in what you can say, but rather in \textit{how} you must say it.
+	
+  \begin{itemize}
+  \item
+    \textbf{Inherent categories}: show a property related to the word class they are attached to.  For example, plural in English.
+  \item
+    \textbf{Agreement categories}: show a property related to another word in the sentence.  For example in English, an \emph{-s} on the verb shows that the subject of the verb is 3rd person singular.
+   \item
+  \textbf{Relational categories}: show how a word fits into a larger structure.  For example English  \emph{I} for nominative case or \emph{me} for accusative case. The  form is determined by the grammatical relation (subject or object) of the argument.
+  \end{itemize}
+
+%-------------------------------------------------------------------------------------------
+\myslide{Different languages have different grammatical categories}
+  There is lots of variation across the languages of the world.\\
+\vspace{3mm}
+Examples of nominal grammatical categories:
+  \begin{itemize}
+  \item
+    person: 1st/2nd/3rd; inclusive~exclusive distinctions
+  \item
+  number: singular/dual/plural
+  \item
+ noun class or gender
+  \item
+case: core versus oblique
+  \item
+definiteness/specificity
+  \end{itemize}
+
+\myslide{Verbal grammatical categories}
+
+  \begin{itemize}
+  \item
+    person
+  \item
+  number and gender of arguments as agreement categories
+  \item
+ temporal deixis
+\begin{enumerate}
+	\item tripartite systems: past/present/future
+    	\item binary systems: past/non-past; non-future/future
+    	\item metrical tense systems
+        \end{enumerate}
+        \newpage
+  \item
+Aktionsart (lexical aspect): static, telic, punctual
+  \item
+Aspect:
+\begin{enumerate}
+	\item perfective and imperfective
+	\item progressive
+	\item perfect
+\end{enumerate}
+\item
+Mood and modality:  Realis versus irrealis; indicative, subjunctive, interrogative, imperative;
+\item
+Evidentiality
+  \end{itemize}
+
+\myslide{Czech verb derivational \& inflectional morphology}
+
+
+\begin{tabular}{lll}
+ & Czech & English gloss\\
+ \hline
+a. &  dát & `to give'\\
+b. & dávat & `to keep giving'\\
+c. & dám & `I will give'\\
+d. & předáš & `you will hand over'\\
+e. & prodáme & `we will sell (hand in exchange)'\\
+f. & vyprodá & `she will sell off'\\
+g. & vydám & `I will hand out, give out'\\
+h. & povyprodáme & `we will sell out gradually'\\
+i. & dáváš & `you keep giving'\\
+j. & dopovyprodávášmi & `you will gradually finish selling (it) out for me'\\
+k. & dopovyprodávámeti & `we will gradually finish selling (it) out for you'\\
+\end{tabular}
+
+What kind of information is encoded in the morphology?
+
+
+
+\myslide{Position-class diagrams: Czech verbs}
+
+\begin{center}%\small
+\begin{tabular}{llllllllll}
+    &	p4	& p3		& p2		& p1		& root 	& s1 		& s2	& s3	& s4\\
+ \hline
+a. &  		&		&		&		& dá		&		& -t & 	&\\
+b. & 		&		&		&		& dá		& -va		& -t & 	&\\
+c. & 		&		&		&		& dá		&		& -m & 	&\\
+d. & 		& 		&		& pře-	& dá 		& 		& -š 	& 	&\\
+e. & 		&		&		& pro-	& dá		&		& -m & -e & \\
+f. & 		&		& vy- 	& pro-	& dá 		& 		&	&	&\\
+g. & 		&		&		& vy- 	& dá		&		& -m & 	&\\
+h. & 		& po-	& vy-		& pro-	& dá		& 		& -m & -e & \\
+i. & 		&		&		&		& dá 		& -vá 	& -š 	& 	& \\
+j. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -š 	& 	& -mi\\
+k. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -m	& -e 	& -ti\\
+\hline
+ & \textsc{asp} 	& \textsc{asp} 	& \textsc{asp} 	& \textsc{dir} 	& root 	& \textsc{asp} 	& \textsc{s}	& \textsc{num} 	& \textsc{o}\\
+
+\end{tabular}
+\end{center}
+
+\myslide{Position-class diagrams: Czech verbs}
+
+\bigskip
+
+\hspace*{-4em}
+{\small
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+prefix.4	& prefix.3		& prefix.2		& prefix.1		& root 	& suffix.1 		& suffix.2	& suffix.3	& suffix.4\\
+\hline
+\textsc{asp} 	& \textsc{asp} 	& \textsc{asp} 	& \textsc{direction} 	& root 	& \textsc{iterative} 	& \textsc{subj}	& \textsc{number} 	& \textsc{obj}\\
+ do- 	& po- & vy- & pro- `for' & dá 	& va-$\sim$-vá & -m (1) & -e (\textsc{pl}) & =mi (\textsc{1sg.dat}) \\
+`to'	& `along' 	& `out'  & pře- `over' & `give' 	& 			& -š (2sg) & 			 & =ti (\textsc{2sg.dat}) \\
+	&  	&  	& vy- `out' &  	& 			& -0 (3sg) & 			 & 					 \\	
+\hline
+\end{tabular}}
+
+Morphology is full of special cases
+
+\begin{itemize}
+\item Not every root can take every affix
+\item The meaning changes are unpredictable
+\item There are often sound/spelling changes
+\item But you can see patterns everywhere!
+\end{itemize}
+
+  
+\myslide{How do we do linguistic analysis?}
 \begin{enumerate}\addtolength{\itemsep}{-1ex}
-\item Fundamentals
+\item Learn the Fundamentals
 \item Investigate
 \item Find out some stuff
 \item Break our theory
@@ -487,6 +807,8 @@ applicable to everything we do.  More formally: \emp{Successive Approximation}.
 \end{flushleft}
 \end{minipage}
 \end{tabular}
+
+
 
 \myslide{Chapter 2, Problem 1}
 
@@ -538,14 +860,13 @@ is \emp{strongly} not context-free, but the argument was
 dependent on linguistic analyses.
 \end{itemize}
 
+
+
+
+
 \myslide{Overview}
 
 \begin{itemize}
-\item Prescriptive/descriptive grammar;
-Competence/performance
-\item Some history
-\item Why study syntax?
-\item Unsuccessful Attempts to model language
 \item Formal definition of CFG
   \begin{itemize}
   \item Constituency, ambiguity, constituency tests
@@ -563,11 +884,12 @@ Competence/performance
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
-\item Thanks to Na-Rae Han for 
-  inspiration for the student policies (from  \textit{LING 2050 Special Topics in Linguistics: Corpus linguistics}, U Penn; adapted).
+\item Thanks to Alex Coupe for some inspirational slides
 \item Stuart M. Shieber. (1985) Evidence against the context-freeness of natural language. \textit{Linguistics and Philosophy}, 8:333-343
 \end{itemize}
 
+\bibliographystyle{aclnat}
+\bibliography{abb,mtg,nlp,ling}
 
 
 \end{document}
