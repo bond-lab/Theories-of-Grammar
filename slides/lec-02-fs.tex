@@ -92,6 +92,12 @@ fragment) for English
   \end{avm}
 \end{Large}
 
+\bigskip
+\bigskip
+\bigskip
+
+Like a dictionary in python (feature=key, value=value).
+
 \myslide{A Pizza Type Hierarchy}
 %\vspace*{-.5ex}
 \begin{avmtree}%\avmfont{\sc}
@@ -163,7 +169,7 @@ How many pizza models (by definition, fully resolved) satisfy this description?
   \[ \asort{pizza}
   crust & thick \\
   toppings &
-  \[ \asort{vegetarian} olives & + \\ onions & + \\ mushrooms& - \] \]
+  \[ \asort{vegetarian} olives & + \\ onions & + \\ mushrooms& $-$ \] \]
 \end{avm}
 \begin{avm}%\avmfont{\sc}
   \[ \asort{pizza}
@@ -196,7 +202,7 @@ models correspond to?
     \[ \asort{pizza}
     crust & thick \\
     toppings &
-    \[ olives & + \\ ham & - \] \]
+    \[ olives & + \\ ham & $-$ \] \]
     \& 
    \[ \asort{pizza}
     toppings &
@@ -213,7 +219,7 @@ Unification is also written as: $\sqcap$.
     \[ \asort{pizza}
     crust & thick \\
     toppings &
-    \[ olives & + \\ ham & - \\ onions & + \] \]
+    \[ olives & + \\ ham & $-$ \\ onions & + \] \]
   \end{avm}
 \end{center}
 
@@ -225,7 +231,7 @@ Unification is also written as: $\sqcap$.
     \[ \asort{pizza}
     crust & thick \\
     toppings &
-    \[ olives & + \\ ham & - \] \]
+    \[ olives & + \\ ham & $-$ \] \]
     \& 
    \[ \asort{pizza}
    crust & thin \\
@@ -239,7 +245,7 @@ Unification is also written as: $\sqcap$.
 
 NULL is also written as:  $\perp,  \emptyset, \phi$.
 
-\myslide{Combining Constraints}
+%\myslide{Combining Constraints}
 
 \myslide{Combining Constraints}
 \begin{center}
@@ -247,7 +253,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
     \[ \asort{pizza}
     crust & thin \\
     toppings &
-    \[ olives & + \\ ham & - \] \]
+    \[ olives & + \\ ham & $-$ \] \]
     \& 
    \[ \asort{pizza}
    crust & thin \\
@@ -277,20 +283,20 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
   \begin{avm}%\avmfont{\sc}
     \[ \asort{pizza}
     one-half &
-    \[ olives & + \\ ham & - \] \]
+    \[ olives & + \\ ham & $-$ \] \]
     \& 
    \[ \asort{pizza}
     other-half &
-    \[  olives & - \\ 
+    \[  olives & $-$ \\ 
          ham & + \] \] 
   \end{avm}
   \\ = 
   \begin{avm}%\avmfont{\sc}
  \[ \asort{pizza}
    one-half &
-   \[ olives & + \\ ham & - \] \\
+   \[ olives & + \\ ham & $-$ \] \\
    other-half &
-   \[  olives & - \\ ham & + \] \]
+   \[  olives & $-$ \\ ham & + \] \]
   \end{avm} 
 \end{center}
 
@@ -311,7 +317,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
   \begin{avm}%\avmfont{\sc}
     \[ \asort{pizza}
     one-half &
-    \@1 \[ olives & + \\ ham & - \]
+    \@1 \[ olives & + \\ ham & $-$ \]
     \\   other-half & \@1 \]
     \& 
    \[ \asort{pizza}
@@ -322,7 +328,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
   \begin{avm}%\avmfont{\sc}
  \[ \asort{pizza}
    one-half &
-    \@1 \[ olives & + \\ ham & - \\ mushroom & + \] \\
+    \@1 \[ olives & + \\ ham & $-$ \\ mushroom & + \] \\
    other-half & \@1 \]
  \end{avm} 
 \end{center}
@@ -333,7 +339,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
  \begin{avm}%\avmfont{\sc}
  \[ \asort{pizza}
    one-half &
-    \@1 \[ olives & + \\ ham & - \\ mushroom & + \] \\
+    \@1 \[ olives & + \\ ham & $-$ \\ mushroom & + \] \\
    other-half & \@1 \]
  \end{avm} 
 \\ =
@@ -341,7 +347,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
  \[ \asort{pizza}
    one-half &
     \@1 \\
-   other-half & \@1 \[ olives & + \\ ham & - \\ mushroom & + \] \]
+   other-half & \@1 \[ olives & + \\ ham & $-$ \\ mushroom & + \] \]
   \end{avm} 
 \end{center}
 
@@ -352,7 +358,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
     \[ \asort{pizza}
     crust & thick \\
     one-half &
-    \@1 \[ olives & + \\ onion & - \] 
+    \@1 \[ olives & + \\ onion & $-$ \] 
     \\ other-half & \@1  \textit{vegetarian} \]
     \& 
    \[ \asort{pizza}
@@ -685,7 +691,7 @@ or lexical entry
 \item All general principles (like the HFP) are satisfied.
 \item NB: Trees are part of our model of the language,
 so all their features have values (even though we
-will often be lazy and leave out the values
+will often be economical and leave out the values
 irrelevant to our current point).
 \end{itemize}
 
@@ -886,7 +892,7 @@ the value of \ft{agr}, how did the tree on the previous slide get
 \< \textnormal{swim}, \ 
 \[ \asort{word} 
   head & \[ \asort{verb}  agr &   \[  num & pl \] \] \\
-            val &  \[ \asort{val-cat}  comps & itr \\ spr & - \] \] 
+            val &  \[ \asort{val-cat}  comps & itr \\ spr & $-$ \] \] 
  \>
 \end{avm}
 
