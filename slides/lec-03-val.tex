@@ -1,5 +1,6 @@
-\documentclass[a4paper,landscape,headrule,footrule,dvips]{foils}
-
+\RequirePackage{expl3}
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+\PassOptionsToPackage{xetex}{expl3}
 \input{headx.tex}
 
 \avmfont{\sc}
@@ -251,12 +252,13 @@ In English, nouns can agree with their specifiers.
 
 \myslide{Head-Specifier Rule (Version I)}
 
-\begin{avm}\[{\it phrase}\\
-             VAL & \[ comps & \el\\
-                      SPR & \el\]\]\ \ \
-$\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
-			                VAL & \[ comps & \el\\
-                                                 SPR & \q< {\@2} \q> \]\] 
+\begin{avm}\avmfont{\sc}
+  \[{\it phrase}\\
+    val & \[ comps & \el\\
+      spr & \el\]\]\ \ \
+  $\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
+                                           val & \[ comps & \el\\
+                                           spr & \q< {\@2} \q> \]\] 
 \end{avm}
 \begin{itemize}
 \item Combines the rules expanding S and NP.
