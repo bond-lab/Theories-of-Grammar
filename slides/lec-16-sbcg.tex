@@ -1,6 +1,8 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 
 \input{headx.tex}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning}
 
 \avmfont{\sc}
 \begin{document}
@@ -17,7 +19,6 @@
 \begin{itemize}
 \item Chapter 16 framework (same analyses, 
 different underlying system)
-\item General wrap up
 \end{itemize}
 
 \myslide{Construction Grammar (CxG)}
@@ -35,7 +36,6 @@ different underlying system)
 \item Instead of language as a grammar+lexicon, think of it as a
   structured network of families of constructions
 \end{itemize}
-
 
 \myslide{Construction Grammars}
 \begin{itemize}
@@ -66,248 +66,231 @@ grammar rules
 simplified
 \end{itemize}
 
-Look at Ian Sag's slides (from p25) if there is time after the presentations.
+\myslide{More Inheritance (lexemes)}
+\newcommand{\twoline}[2]{\shortstack{\textit{#1}\\\textbf{#2}}}
 
+\noindent\begin{tikzpicture}[
+  level distance=7ex,
+  sibling distance=25mm,
+  every node/.style={
+    align=center,
+    font=\itshape
+  },
+  internal/.style={          % only for internal tree nodes
+    text height=1.5ex,
+    text depth=.25ex
+  },
+  level1/.style={
+    font=\scshape,
+    draw,rectangle,thick,
+    inner sep=2pt,
+    align=center
+  },
+  leaf/.style={}, % define if you want special leaf styling
+  edge from parent path={(\tikzparentnode.south)--(\tikzchildnode.north)}
+]
 
+% Root
+\node (lexeme) {lexeme}
+  % -------------------- PART-OF-SPEECH side --------------------
+  child[xshift=-6em] {node[level1] {part-of-speech}
+    child {node[internal] (verb) {verb-lxm}}
+    child {node[internal] (adj) {adj-lxm}}
+    child {node[internal] {\ldots}}
+   }
+  % -------------------- ARG-SELECTION side --------------------
+  child[xshift=6em] {node[level1] {arg-selection}
+    child {node[internal, xshift=-1em] (si) {si-lxm}}
+    child {node[internal, xshift=-0.5em] (pp) {pp-arg-lxm}}
+    child {node[internal] (sr) {sr-lxm}}
+    child {node[internal] (sc) {sc-lxm}}
+    child {node[internal] {\ldots}}
+  };
 
-\section{Wrap Up}
+%%% lexeme types as a matrix of nodes
+\matrix (bottom)  [
+  matrix of nodes,
+  below=26ex of lexeme,
+  column sep=4mm,
+  nodes={leaf} % optional: apply 'leaf' style to all
+] {
+  \twoline{siv-lxm}{die}      &
+  \twoline{piv-lxm}{rely}     &
+  \twoline{srv-lxm}{continue} &
+  \twoline{scv-lxm}{try}      &
+  \twoline{sia-lxm}{dead}     &
+  \twoline{pia-lxm}{fond}     &
+  \twoline{sra-lxm}{likely}   &
+  \twoline{sca-lxm}{eager}    \\
+};
 
-\myslide{Big picture: Our model}
-\begin{center}
-  \LARGE HPSG \\
-  \Large Head-driven Phrase Structure Grammar  
-\end{center}
+% column index:
+% 1: die, 2: rely, 3: continue, 4: try,
+% 5: dead, 6: fond, 7: likely, 8: eager
 
-\begin{itemize}
-\item Describes a set of strings
-\item Associates semantic representations (and
-trees) with well-formed strings
-\begin{itemize}
-\item Is stated in terms of declarative constraints
-\item[\ldots]  which are order-independent
-\item Locates most constraints `in the lexicon'
-\item Is stated in a precise fashion
-\end{itemize}
-\end{itemize}
+% --- part-of-speech inheritance ---
+\draw (verb.south) -- (bottom-1-1.north); % die
+\draw (verb.south) -- (bottom-1-2.north); % rely
+\draw (verb.south) -- (bottom-1-3.north); % continue
+\draw (verb.south) -- (bottom-1-4.north); % try
 
+\draw (adj.south)  -- (bottom-1-5.north); % dead
+\draw (adj.south)  -- (bottom-1-6.north); % fond
+\draw (adj.south)  -- (bottom-1-7.north); % likely
+\draw (adj.south)  -- (bottom-1-8.north); % eager
 
-\myslide{Parts of our model}
-\begin{itemize}
-\item Type hierarchy (lexical types, other types)
-\item Phrase structure rules
-\item Lexical rules
-\item Lexical entries
-\item Grammatical principles
-\item Initial symbol
-\end{itemize}
+% --- arg-selection inheritance ---
+\draw (si.south) -- (bottom-1-1.north); % die
+\draw (pp.south) -- (bottom-1-2.north); % rely
+\draw (sr.south) -- (bottom-1-3.north); % continue
+\draw (sc.south) -- (bottom-1-4.north); % try
 
+\draw (si.south) -- (bottom-1-5.north); % dead
+\draw (pp.south) -- (bottom-1-6.north); % fond
+\draw (sr.south) -- (bottom-1-7.north); % likely
+\draw (sc.south) -- (bottom-1-8.north); % eager
 
-\myslide{Universals in our model}
-\begin{itemize}
-%\item Case constraint 
-\item SHAC
-\item Binding theory
-\item Head-complement/-specifier/-modifier
-\item Head Feature Principle
-\item Valence Principle
-\item Semantic Compositionality Principle
-\item \ldots 
-\end{itemize}
+\end{tikzpicture}
 
+\myslide{More Inheritance (clauses)}
+\newcommand{\nexx}[2]{#1\\\textbf{#2}}
 
-% \myslide{Key characteristics}
-% \begin{itemize}
-% \item Surface-oriented
-% \item Constraint-based
-% \item Lexicalist
-% \end{itemize}
-% \myslide{Psycholinguistic Evidence}
-% \begin{itemize}
-% \item Evidence for left-to-right effects
-%   \begin{itemize}
-%   \item Disfluencies are sensitive to structure
-%   \item Repeat rate of \eng{the} varies with position and complexity of the NP it introduces
-%   \item More complex NPs produce more disfluency
-%   \end{itemize}
-% \item Evidence for top-down planning
-%   \begin{itemize}
-%   \item Agreement errors are more common with PP complements
-% than sentential complements: errors like (2) are significantly
-% more common than errors like (1).
-% \begin{exe}
-%   \ex \eng{*The claim that the wolves had raised the babies were rejected.
-%   \ex \eng{*The claim about the newborn babies were rejected.
-% \end{exe}
-% \end{itemize}
-% \end{itemize}
+\noindent\begin{tikzpicture}[
+    level distance=6ex,
+    every node/.style={align=center, font=\itshape},
+    partition/.style={font=\scshape, draw, rectangle, thick, inner sep=2pt, align=center},
+    edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)}
+%   every node/.style={draw, rounded corners, fill=white, minimum width=2.5cm},
+%    edge from parent/.style={draw, -},
+%    sibling distance=3cm
+]
+% Root node
+\node (construction) {construction}
+  child[xshift=-6em] {node[partition] {clausality}
+        child[sibling distance=30mm] {node {non-clause}}
+        child[sibling distance=30mm] {node {clause} 
+            % Third level children of perfective-or-experential
+          child {node (core) {core-cl}
+            child {node (decl) {decl-cl}}
+            child[xshift=3em] {node (intcl) {int-cl}}
+          }
+            child {node  (relcl) {rel-cl}}
+          }}
+  child[xshift= 6em] {node[partition] {headedness}
+  child[xshift=-3em] {node (nonhd) {non-hd-cx}}
+  child[xshift=3em] {node {hd-cx}
+    child[xshift=-2em] {node (hdspr) {hd-spr-cx}}
+    child[xshift=2em] {node (hdfill) {hd-fill-cx}}
+  }};
 
+ ------------------------------------------------------------------
+% Bottom row: 5 nodes
+% ------------------------------------------------------------------
+ \node[below=34ex of construction]   (ex3) {\nexx{imp-cl}{Go in!}};
+\node[left=1em of ex3]   (ex2)  {\nexx{top-cl}{Lee, we like}};
+ \node[left=1em of ex2] (ex1) {\nexx{simp-decl-cl}{Kim left}};
+\node[right=1em of ex3]   (ex4) {\nexx{wh-rel-cl}{which Bo saw}};
+\node[right=1em of ex4]  (ex5) {\nexx{wh-int-cl}{Who do we see?}}; %       (ex5) {example-5\\ Some text};
 
-% \myslide{So what?}
-% \begin{itemize}
-% \item Speculation: Clauses are their own agreement domains, so people don't
-% mistake an NP in a lower clause as a trigger for agreement
+% ------------------------------------------------------------------
+% Inheritance edges (multiple parents for ex1)
+% ------------------------------------------------------------------
+\draw (decl.south)  -- (ex1.north);
+\draw (hdspr.south) -- (ex1.north);
+\draw (nonhd.south)  -- (ex3.north);
+\draw (core.south) -- (ex3.north);
+\draw (decl.south)  -- (ex2.north);
+\draw (hdfill.south) -- (ex2.north);
+\draw (relcl.south)  -- (ex4.north);
+\draw (hdfill.south) -- (ex4.north);
+\draw (intcl.south)  -- (ex5.north);
+\draw (hdfill.south) -- (ex5.north);
 
-% \item Grammar plays a role in production.
-% \item Partial grammatical information should be accessible by
-% the production mechanism as needed.
-% % \begin{itemize}
-% % \item This argues against grammatical theories that involve
-% % sequential derivations with fixed ordering.
-% % \begin{itemize}
-% \item Our theory of grammar has the requisite flexibility.
-% \end{itemize}
+\end{tikzpicture}
 
+\myslide{Words are signs}
+    \begin{avm}\avmfont{\sc}
+      \< \textnormal{dog}, \ \[ \asort{word}
+      head & {\it noun} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< D \> \\ comps & \el \]
+      \]\>
+    \end{avm} 
 
-% \myslide{Speakers know a great deal about individual words}
-% \begin{itemize}\addtolength{\itemsep}{-1ex}
-% \item Individual lexical items have many idiosyncrasies in
-% where they can occur, and in where they tend to
-% occur.
-% \begin{itemize}
-% \item For example, the verb \textit{behoove} occurs only with the
-% subject it (and only in certain verb forms), and the
-% verb \textit{beware} has only the base form.
-% \item Transitive use of \textit{walk} is much rarer than the intransitive.
-% \end{itemize}
-% \item Lexical biases influence processing
-% \item Wasow et al ran a production experiment to test
-% whether ambiguity avoidance would influence
-% speakers' choice between the following:
-% \begin{exe}
-%   \ex \eng{They gave Grant's letters to Lincoln to a museum.
-%   \ex \eng{ They gave a museum Grant's letters to Lincoln.
-% \end{exe}
-% \item 
-% Lexical bias of the verbs turned out to be a significant
-% predictor of which form speakers used (and ambiguity
-% avoidance turned out not to be).
-% \end{itemize}
+    Becomes:
 
-% % \myslide{Experimental Method}
+    \begin{avm}\avmfont{\sc}
+     \ \[ \asort{word}
+        orth & \< "\textnormal{dog}" \> \\
+      syn &  \[ head & {\it noun} \\
+      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
+      val & \[ spr & \< D \> \\ comps & \el \] \]
+      \]
+    \end{avm} 
 
-% % LISTENER
+\myslide{Rules are signs}
+    \begin{avm}\avmfont{\sc}\[{\it phrase}\\
+             val & \[ comps & \el\\
+                      spr & \el\]\]\ \ \
+$\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
+			                val & \[ comps & \el\\
+                                                 spr & \q< {\@2} \q> \]\] 
+ \end{avm}
 
-% % SPEAKER
+ Becomes:
+ 
+ \begin{avm}\avmfont{\sc}
+   \[{\it head-spr-cx}\\
+     mother & \[ val.spr \< \> \] \\
+     hd-dtr & \@2 \[ val &  \[ spr \< \@1 \> \\
+                              comps \< \>  \] \] \\ 
+     dtrs & \< \@1, \@2 \>\\
+     \]
+   \end{avm}
 
-% % 1. Speaker silently reads a sentence:
-% % A museum in Philadelphia received Grant's
-% % letters to Lincoln from the foundation.
-
-% % \myslide{Experimental Method, continued}
-% % What did the
-% % foundation do?
-
-% % LISTENER
-
-% % SPEAKER
-
-% % 2. The sentence disappears from the screen.
-% % The listener reads the next question from a list.
-
-% % \myslide{Experimental Method, continued}
-% % The foundation gave \ldots . the
-% % museum, um, Grant's letter's
-% % to Lincoln.
-
-% % LISTENER
-
-% % SPEAKER
-
-% % 3. The speaker answers the listener's question.
-% % The listener chooses the correct response on
-% % a list (from two choices).
-
-% % \myslide{Experimental Results on Local Ambiguity}
-% % V-NP-PP bias
-% % V-NP-NP bias
-
-% % 100%
-% % 75%
-% % 50%
-% % 25%
-% % 0%
-
-% % % NP NP
-
-% % No potential local ambiguity
-
-% % Potential local ambiguity
-
-% % \myslide{Reverse ambiguity effect}
-% % \begin{itemize}
-% % \item Arnold, Wasow, Asudeh \& Alrenga 2004
-% % Journal of Memory \& Language
-% % \begin{itemize}
-% % \item Re-ran the experiment with slightly better
-
-% % methodology and found a stronger reverse
-% % ambiguity effect.
-
-
-% \myslide{A psychologically real grammar should be lexicalist}
-% \begin{itemize}
-% %\item Early generative grammars downplayed the lexicon.
-% \item Now the importance of the lexicon is widely
-% recognized.
-% \item This aspect of grammar has been developed in greater
-% detail in HPSG than in any other.
-% \end{itemize}
-
-% \myslide{Conclusion}
-% \begin{itemize}
-% \item Grammatical theory should inform and be informed
-% by psycholinguistic experimentation.
-% \item This has happened less than it should have.
-% \item Existing psycholinguistic evidence favors a
-% constraint-based, lexicalist approach (like ours).
-% \end{itemize}
-
-\myslide{Design Goals of our Model}
+\myslide{Principles are signs}
 
 \begin{itemize}
-\item Precise
-\item Robust
-\item Psychologically Plausible
-\item Computationally Tractable
-\end{itemize}
+\item Head Feature Principle   \\
+\begin{avm}\avmfont{\sc}
+  \[ mother.syn.head & \@1 \\
+  hd-dtr.syn.head & \@1  \]
+\end{avm}
+\item Semantic Inheritance Principle \\
+  \begin{avm}\avmfont{\sc}
+  \[ mother.sem & \[ mode  & \@1 \\
+                     index & \@2 \] \\
+  hd-dtr.sem & \[ mode  & \@1 \\
+                     index & \@2 \]  \]
+ \end{avm}
+\item Valence Principle \\
+  \begin{avm}\avmfont{\sc}
+  \[ mother.syn.val & / \@1 \\
+  hd-dtr.syn.val & / \@1  \]
+\end{avm}
+\end{itemize} 
 
+\myslide{The Root Condition (Start Symbol) is a sign}
 
-\myslide{Course overview}
+\begin{avm}\avmfont{\sc}
+  \[ syn & \[ head & \[{\it verb}\\
+        form & fin \] \\
+      val & \[ comps & \el \\
+        spr  & \el \] \]\\
+      gap & \el \]
+  \end{avm}
 
-\begin{itemize}
-\item Survey of some phenomena central to 
-syntactic theory
-\item Introduction to the HPSG framework
-\item Process over product: How to build a 
-grammar fragment
-\item Value of precise formulation (and of getting 
-a computer to do the tedious part for you!)
-\end{itemize}
-
-\myslide{Reflection}
-
-\begin{itemize}
-\item What was the most surprising thing in this 
-class?
-\item What do you think is most likely wrong?
-\item What do you think is the coolest result?
-\item What do you think you’re most likely to 
-remember?
-\item How do you think this course will influence 
-your work as a (computational) linguist?
-\end{itemize}
-
-
-\myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 16}
+\myslide{Sign-based Construction Grammar}
 
 \begin{itemize}
-\item Chapter 16 framework (same analyses, 
-different underlying system)
-\item General wrap up
+\item SBCG makes the analyses more uniform
+\item Puts information just where it is needed
+\item Merges the insights of HPSG and Construction Grammar
+\item Most recent work on HPSG is effectively work on SBCG
 \end{itemize}
 
-
+Look at Ian Sag's slides if you want to know more!
+    
 \end{document}
 %%% Local Variables: 
 %%% coding: utf-8
