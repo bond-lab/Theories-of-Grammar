@@ -290,3 +290,8 @@ TSWLatexianTemp*
 ## Student data and private material -- MUST NEVER be committed
 grades/
 local/
+
+## Editor lock and autosave files
+.#*
+\#*\#
+.~lock.*#
