@@ -1,5 +1,5 @@
 {
-  "title": "Theories of Grammar (HG4041) — Nanyang Technological University — AY2020/2021 Semester One",
+  "title": "KOL/JMORF: Morpho-Syntax — Palacký University Olomouc — Winter Semester 2025",
   "creators": [
     {
       "name": "Bond, Francis",
@@ -7,15 +7,17 @@
       "orcid": "0000-0003-4973-8068"
     }
   ],
-  "description": "Snapshot of the course *Theories of Grammar* (HG4041), taught at NTU in 2020. Includes lecture slides, problem sets with solutions, readings, example grammars, and supplementary LaTeX templates. Topics covered include part of speech types, constituent structure, syntax-semantics interface, complementation, raising, control, passives, long-distance dependencies, Sign-based Construction Grammar, and minimalist syntax.",
+  "description": "Snapshot of the course *Morpho-Syntax* (KOL/JMORF), taught at Palacký University Olomouc in the winter semester of 2025. Includes lecture slides, problem sets, and supplementary LaTeX templates. Topics covered include part of speech types, constituent structure, the syntax-semantics interface, and phenomena such as complementation, binding, passives, dummies and idioms, raising, control, and long-distance dependencies, together with Sign-based Construction Grammar. An earlier version of the course, without morphology, was taught at Nanyang Technological University as Theories of Grammar (HG4041).",
   "keywords": [
     "syntax",
+    "morphology",
+    "morpho-syntax",
     "grammar",
     "linguistics",
     "formal grammar",
     "teaching materials",
     "HPSG",
-    "minimalist syntax"
+    "Sign-based Construction Grammar"
   ],
   "license": "CC-BY-4.0",
   "language": "eng",
@@ -32,5 +34,5 @@
       "resource_type": "publication"
     }
   ],
-  "version": "2020-S1"
+  "version": "2025"
 }
