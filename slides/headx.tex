@@ -14,7 +14,7 @@
 \normalsize  \textbf{Palacký University}\\
 \normalsize  \url{https://fcbond.github.io/}\\
 \normalsize  \texttt{bond@ieee.org}}
-\MyLogo{JMORF (2025)}
+\MyLogo{JMORF (2026)}
 \renewcommand{\logo}{#2}
 \hypersetup{
    pdfinfo={
@@ -27,7 +27,7 @@
  }
 
 \date{#1
-  \\ Location: SV 2.39}
+  \\ Location: KB-1.11}
 }
 \usepackage{hyperref}
 \hypersetup{
@@ -114,6 +114,9 @@
 \usepackage{avm}
 %\avmoptions{topleft,center}
 \newcommand{\ft}[1]{\textsc{#1}}
+%%% \val is defined by some versions of avm.sty but not others,
+%%% so provide it first and then set our own definition.
+\providecommand{\val}[1]{}
 \renewcommand{\val}[1]{\textit{#1}}
 \newcommand{\typ}[1]{\textit{#1}}
 \newcommand{\prd}[1]{\textbf{#1}}
