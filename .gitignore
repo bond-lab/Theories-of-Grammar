@@ -286,3 +286,7 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+## Student data and private material -- MUST NEVER be committed
+grades/
+local/

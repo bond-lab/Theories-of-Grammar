@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+
+%%% hyperlinks
+\usepackage{hyperref,url}
+\usepackage[svgnames]{xcolor}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=DarkBlue,    
+    urlcolor=DarkRed,
+}
+
+%%% trees
+\usepackage{forest}
+\useforestlibrary{linguistics}
+\forestapplylibrarydefaults{linguistics}
+
+%%% AVMs (Language Science Press)
+\usepackage{langsci-avm}
+% \avmsetup{
+%   font=\scshape,          % attributes in small caps
+%   valfont=\itshape,       % values in italics
+%   sortfont=\scriptsize\itshape % sorts/types smaller italic
+%}
+
+%%% examples
+\usepackage{langsci-gb4e}
+\let\eachwordone=\itshape
+
+\title{HPSG LaTeX with langsc-avm}
+\author{Francis Bond (rewritten)}
+\date{October 2025}
+
+\begin{document}
+\maketitle
+
+\section{Prologue}
+
+\section{Syntactic Tree}
+For trees, we still use \href{https://ctan.org/pkg/forest}{forest}:
+
+\begin{Large}
+\begin{forest}
+for tree={
+    if n children=0{font=\itshape, tier=terminal}{},
+}
+  [S [NP [N [Kim]]]
+     [VP [V [seemed]]
+         [AP [A [close]] [PP [P [to]] [NP [N [me]]]]] 
+         [PP [P [to]] [NP [N [Sandy]]]]]]
+\end{forest}
+\end{Large}
+
+\section{AVM}
+We now use \texttt{langsci-avm}.
+
+\subsection*{Binary Head-Complement Rule}
+
+\begin{center}
+\begin{tabular}{ccc}
+\avm{[ \type*{phrase} \\
+   val & [ comps & < > ] ]
+   }     
+   &  $\to$ & 
+  \textbf{H} \avm{[ \type*{word} \\
+     val & [ comps & < \1 > ] ]\ \ \1}
+\end{tabular}
+\end{center}
+%    &
+% $\to$ 
+% &
+% \textbf{H} \ 
+% \avm{[ \type*{word} \\
+%     val & [ comps & < \@1 > ] ]}
+% \end{array}
+% % [ \type*{word}
+%    val & [ comps & < \@1 > ] ],\ \ \@1
+% }
+
+\subsection*{Lexical Entry for \textit{eat}}
+
+% \begin{avm}
+% \< \textnormal{devour},\ \[ \type*{word} \\
+%      head & \type{verb} \\
+%      val & \[ comps & \< NP \> \] \] \>
+% \end{avm}
+
+\section{Tree and AVM}
+
+AVMs can be embedded in tree nodes:
+
+% \newcommand{\avmsat}{%
+% \begin{avm}
+% \[ val & \[ spr & \eliste \\ comps & \eliste \] \]
+% \end{avm}
+% }
+
+\begin{forest}
+  [ S
+  [ NP [ N [ Kim]]
+    VP [ V [ loves] ]
+    [NP  [{every clever linguist}, roof] ]]]
+  \end{forest}   
+  
+%    \\ \begin{avm}
+% \[ val & \[ spr & \eliste \\ comps & \eliste \] \]
+% \end{avm} }
+%  [{\avmbox{1} NP \\ \avmsat} [N [Kim]]]
+%  [ {VP \\ \begin{avm}
+% \[ val & \[ spr & \< \@1 \> \\ comps & \eliste \] \]
+% \end{avm}}
+%    [{V \\ \begin{avm}
+%             \[ comps & \< NP$_i$ \> \]
+%           \end{avm}} [loves]]
+%    [NP$_i$ [{every clever linguist}, roof]]
+%  ]]
+% \end{forest}
+
+% A simpler tree with just one AVM in a leaf:
+
+% \begin{forest}
+% for tree={
+%     if n children=0{font=\itshape, tier=terminal}{},
+% }
+%  [S 
+%   [NP [N [Kim]]]
+%   [VP 
+%     [{V \\ \begin{avm}
+%              \[ comps & \< NP$_i$ \> \]
+%            \end{avm}} [loves]]
+%     [NP$_i$ [{every clever linguist}, roof]]]]
+% \end{forest}
+
+\section{Type Hierarchy}
+
+\begin{forest}
+ /tikz/every node/.append style={font=\it},
+ [agr-cat [sg,name=sg [3sg]] [,phantom] [,phantom] [,phantom]
+          [non-3sg [1sg,name=1sg] [non-1sg [2sg,name=2sg] [pl]]]]
+ \draw (sg.south) -- (1sg.north);
+ \draw (sg.south) -- (2sg.north);
+\end{forest}
+
+\section{Numbered Examples}
+
+\begin{exe}
+\ex An example
+\ex \label{s:mammoth}   
+    \gll manmosu-wa zetumetu-shita \\
+         mammoth-{\sc top} die.out-did \\
+    \trans “Mammoths died out.” [jpn]
+\ex Another example
+\end{exe}
+
+You can refer back to example (\ref{s:mammoth}).
+
+\end{document}
