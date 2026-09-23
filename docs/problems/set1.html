@@ -11,7 +11,7 @@
 	  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	  crossorigin="anonymous">
 <style>
- .examples { counter-reset: ex; }
+ body { counter-reset: ex; }   /* continuous numbering across the page */
 .ex {
   counter-increment: ex;
   display: flex;
@@ -71,9 +71,45 @@
 </div>
 
 <p>In Japanese <i>nan</i> is ambiguous when spoken between an
-interrogative (何 "what") and Naan (ナン "Indian Bread"), and many
+interrogative (何 “what”) and Naan (ナン “Indian Bread”), and many
 other things.  The ambiguity is normally resolved when written.
 
+<h3>Example (structural)</h3>
+<div class="examples">
+  <div class="ex">
+    <table class="igl">
+      <tr>
+        <td>Kolo</td><td>srazilo</td><td>auto</td>
+      </tr>
+      <tr>
+        <td>NOUN</td><td>VERB</td><td>NOUN</td>
+      </tr>
+      <tr>
+        <td>bicycle.NOM/ACC</td><td>hit.PST.N.SG</td><td>car.NOM/ACC</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="english">“The bicycle hit the car”</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="english">“The car hit the bicycle”</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<p>Czech neuter nouns such as <i>kolo</i> “bicycle” and <i>auto</i>
+“car” have the same form in the nominative and the accusative, and
+Czech word order is free.  Nothing in the sentence marks which noun is
+the subject and which is the object, so either can be the one doing
+the hitting.  The subject-first reading is preferred, but both are
+available.
+
+<p>The ambiguity disappears as soon as one of the nouns distinguishes
+the two cases: in <i>Kolo srazilo <b>ženu</b></i> “The bicycle hit the
+woman”, <i>ženu</i> can only be accusative, so only the bicycle can be
+the subject.
+
+  
 <p>Return to <a href="../index.html">course page</a></p>
 
 </div>

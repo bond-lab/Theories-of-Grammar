@@ -17,7 +17,6 @@
 
 \begin{document}
 \header{Lecture 1b}{First attempts at a theory of grammar}{}\maketitle
-
 %\include{schedule}
 
 \myslide{Overview}
@@ -36,10 +35,11 @@
   \end{itemize}
 \end{itemize}
 
+\section{Context Free Grammars}
 
 \myslide{What makes a good model?}
-
-\begin{itemize}
+\MyLogo{\textit{All grammars leak. \citep[p39]{sapir:1921} }}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
 \item \txx{generative}: license all grammatical sentences and only them
 \\ $\Rightarrow$ \txx{precise}
 \item \txx{explanatory}: can explain generalizations
@@ -54,8 +54,9 @@
 \end{itemize}
 
 \begin{center}
-  Our models are normally imperfect: \\
-we aim for iteratively improved approximations
+  Our models are normally imperfect \\
+  And language is not perfectly regular \\
+We aim for iteratively improved approximations
 \end{center}
 
 
@@ -192,50 +193,47 @@ PP & \into & P NP\\
 D: the, some\\
 A: big, brown, old\\
 N: birds, fleas, dog, hunter, I\\
-V: attack, ate, watched\\
+V: attack, ate, cured\\
 P: for, beside, with
 \end{flushleft}
 \end{itemize}
 
 \myslide{Structural Ambiguity}
 \begin{center} \large
-  \eng{I saw the astronomer with the telescope.}
+  \eng{I atecured the dog with fleas}
 \end{center}
 
 \myslide{Structure 1: PP under VP}
-{%
+\begin{center} {%
  \leaf{\emph{I}}
  \branch{1}{N}
  \branch{1}{NP}
- \leaf{\emph{saw}}
+ \leaf{\emph{cured}}
  \branch{1}{V}
  \leaf{\emph{the}}
  \branch{1}{D}
- \leaf{\emph{astronomer}}
+ \leaf{\emph{dog}}
  \branch{1}{N}
  \branch{2}{NP}
  \leaf{\emph{with}}
  \branch{1}{P}
- \leaf{\emph{the}}
- \branch{1}{D}
- \leaf{\emph{telescope}}
+ \leaf{\emph{fleas}}
  \branch{1}{N}
- \branch{2}{NP}
  \branch{2}{PP}
  \branch{3}{VP}
  \branch{2}{S}
  \qobitree}
-
+\end{center}
 \myslide{Structure 2: PP under NP}
-\begin{small} {%
-    \leaf{\emph{I}} \branch{1}{N} \branch{1}{NP} \leaf{\emph{saw}}
+\begin{center} {%
+    \leaf{\emph{I}} \branch{1}{N} \branch{1}{NP} \leaf{\emph{cured}}
     \branch{1}{V} \leaf{\emph{the}} \branch{1}{D}
-    \leaf{\emph{astronomer}} \branch{1}{N} \leaf{\emph{with}}
-    \branch{1}{P} \leaf{\emph{the}} \branch{1}{D}
-    \leaf{\emph{telescope}} \branch{1}{N} \branch{2}{NP}
+    \leaf{\emph{dog}} \branch{1}{N} \leaf{\emph{with}}
+    \branch{1}{P}
+    \leaf{\emph{fleas}} \branch{1}{N} \branch{1}{NP}
     \branch{2}{PP} \branch{3}{NP} \branch{2}{VP}
     \branch{2}{S} \qobitree}
-\end{small}
+\end{center}
 
 \myslide{Constituency Tests}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -494,7 +492,7 @@ extension of CFG.
 \item Can we deal with them with a CFG?
 \end{itemize}
 
-
+\section{Morphology}
 
 \myslide{Basic Concepts of Morphology: Morphological Models}
 \begin{itemize}
@@ -525,13 +523,13 @@ Based on Panocová (2021, Chapter 3), Czech examples added
 \begin{itemize}
 \item IA Strength: Transparent Affixation
     \begin{itemize}
-    \item Agglutinative-style sequences: \txx{one function ⟷ one form}.
+    \item Agglutinative-style sequences: \txx{one function \tot one form}.
     \item Hungarian: suffix allomorphs by stem vowels (back vs.\ front). \\
       	\begin{tabular}{llll}
-	\textbf{olvas-} & `read'	& \textbf{yl-} & `sit'\\
-	\textbf{olvas-unk}	& `we read'	& \textbf{yl-ynk	} & `we sit'\\
-	\textbf{olvas-tok}	& `you (pl) read'	& \textbf{yl-tyk} & 	`you (pl) sit'\\
-	\textbf{olvas-nak}	& `they read'	& \textbf{yl-nek}	& `they sit'\\
+	\eng{olvas-} & ``read''	& \eng{ül-} & ``sit''\\
+	\eng{olvas-unk}	& ``we read''	& \eng{ül-ünk}	& ``we sit''\\
+	\eng{olvas-tok}	& ``you (pl) read''	& \eng{ül-tök}	& ``you (pl) sit''\\
+	\eng{olvas-nak}	& ``they read''	& \eng{ül-nek}	& ``they sit''\\
 	\end{tabular}
 
     \end{itemize}
@@ -567,10 +565,10 @@ Based on Panocová (2021, Chapter 3), Czech examples added
 \begin{tabular}{l|l}
 Lexeme & Gen.\ pl. \\
 \hline
-\eng{pán} `lord' & \eng{pánů} \\
-\eng{hrad} `castle' & \eng{hradů} \\
-\eng{muž} `man' & \eng{mužů} \\
-\eng{stroj} `machine' & \eng{strojů} \\
+\eng{pán} ``lord'' & \eng{pánů} \\
+\eng{hrad} ``castle'' & \eng{hradů} \\
+\eng{muž} ``man'' & \eng{mužů} \\
+\eng{stroj} ``machine'' & \eng{strojů} \\
 \end{tabular}
 \end{itemize}
 \medskip
@@ -582,7 +580,7 @@ Lexeme & Gen.\ pl. \\
 % 10
 \myslide{Mini-paradigm Tables (Czech)}
 \begin{itemize}
-  \item \eng{pán} `lord' (paradigm: nominative–accusative–genitive plural):
+  \item \eng{pán} ``lord'' (paradigm: nominative–accusative–genitive plural):
 \end{itemize}
 \begin{tabular}{l|l}
 Nom.\ sg. & \eng{pán} \\
@@ -592,7 +590,7 @@ Gen.\ pl. & \eng{pánů} \\
 
 \medskip
 \begin{itemize}
-  \item \eng{hrad} `castle' (hard-type masculine inanimate):
+  \item \eng{hrad} ``castle'' (hard-type masculine inanimate):
 \end{itemize}
 \begin{tabular}{l|l}
 Nom.\ sg. & \eng{hrad} \\
@@ -629,8 +627,8 @@ There can be many sub rules and irregularities
   \item \txx{Frequency effects}: common forms often stored whole, retrieved faster.
 \begin{itemize}
   \item Even \txx{regular} forms can show whole-word frequency effects at high frequency.
-  \item \txx{English} \eng{V+ed}: very frequent pasts (e.g., \eng{looked}, \eng{called}) behave like stored units rather than rule-built on the fly. \citep{Alegre:Gordon:1999}.
-  \item \txx{Dutch} \eng{N+en}: high-frequency regular plurals show evidence of storage alongside parsing. \citep{Baayen:Dijkstra:Schreuder:1997}.
+  \item \txx{English} \eng{V+ed}: very frequent pasts (e.g., \eng{looked}, \eng{called}) behave like stored units rather than rule-built on the fly \citep{Alegre:Gordon:1999}.
+  \item \txx{Dutch} \eng{N+en}: high-frequency regular plurals show evidence of storage alongside parsing \citep{Baayen:Dijkstra:Schreuder:1997}.
 \end{itemize}
     
   \item \txx{Statistical sensitivity}: humans track distribution of endings; 
@@ -658,7 +656,7 @@ Languages do not differ so much in what you can say, but rather in \textit{how} 
 Examples of nominal grammatical categories:
   \begin{itemize}
   \item
-    person: 1st/2nd/3rd; inclusive~exclusive distinctions
+    person: 1st/2nd/3rd; inclusive/exclusive distinctions
   \item
   number: singular/dual/plural
   \item
@@ -682,10 +680,22 @@ definiteness/specificity
 	\item tripartite systems: past/present/future
     	\item binary systems: past/non-past; non-future/future
     	\item metrical tense systems
-        \end{enumerate}
-        \newpage
+    \\  e.g., Chibemba (Bantu) 
+  \begin{multicols}{2}
+  \begin{itemize}
+  \item  Remote Past ($<$ yesterday)
+  \item  Removed Past (yesterday)
+  \item  Near Past (today)
+  \item  Immediate Past (past few hours)
+  \item Immediate Future (next few hours)
+  \item Near Future (today)
+  \item Removed Future (tomorrow)
+  \item Remote Future ($>$ tomorrow)
+  \end{itemize}
+\end{multicols}  
+\end{enumerate}      \newpage
   \item
-Aktionsart (lexical aspect): static, telic, punctual
+Aktionsart (lexical aspect): stative, telic, punctual
   \item
 Aspect:
 \begin{enumerate}
@@ -705,45 +715,45 @@ Evidentiality
 \begin{tabular}{lll}
  & Czech & English gloss\\
  \hline
-a. &  dát & `to give'\\
-b. & dávat & `to keep giving'\\
-c. & dám & `I will give'\\
-d. & předáš & `you will hand over'\\
-e. & prodáme & `we will sell (hand in exchange)'\\
-f. & vyprodá & `she will sell off'\\
-g. & vydám & `I will hand out, give out'\\
-h. & povyprodáme & `we will sell out gradually'\\
-i. & dáváš & `you keep giving'\\
-j. & dopovyprodávášmi & `you will gradually finish selling (it) out for me'\\
-k. & dopovyprodávámeti & `we will gradually finish selling (it) out for you'\\
+a. &  dát & ``to give''\\
+b. & dávat & ``to keep giving''\\
+c. & dám & ``I will give''\\
+d. & předáš & ``you will hand over''\\
+e. & prodáme & ``we will sell (hand in exchange)''\\
+f. & vyprodá & ``(s)he will sell off''\\
+g. & vydám & ``I will hand out, give out''\\
+h. & povyprodáme & ``we will sell out gradually''\\
+i. & dáváš & ``you keep giving''\\
+j. & dopovyprodávášmi & ``you will gradually finish selling (it) out for me''\\
+k. & dopovyprodávámeti & ``we will gradually finish selling (it) out for you''\\
 \end{tabular}
 
 What kind of information is encoded in the morphology?
 
 
 
-\myslide{Position-class diagrams: Czech verbs}
+% \myslide{Position-class diagrams: Czech verbs}
 
-\begin{center}%\small
-\begin{tabular}{llllllllll}
-    &	p4	& p3		& p2		& p1		& root 	& s1 		& s2	& s3	& s4\\
- \hline
-a. &  		&		&		&		& dá		&		& -t & 	&\\
-b. & 		&		&		&		& dá		& -va		& -t & 	&\\
-c. & 		&		&		&		& dá		&		& -m & 	&\\
-d. & 		& 		&		& pře-	& dá 		& 		& -š 	& 	&\\
-e. & 		&		&		& pro-	& dá		&		& -m & -e & \\
-f. & 		&		& vy- 	& pro-	& dá 		& 		&	&	&\\
-g. & 		&		&		& vy- 	& dá		&		& -m & 	&\\
-h. & 		& po-	& vy-		& pro-	& dá		& 		& -m & -e & \\
-i. & 		&		&		&		& dá 		& -vá 	& -š 	& 	& \\
-j. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -š 	& 	& -mi\\
-k. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -m	& -e 	& -ti\\
-\hline
- & \textsc{asp} 	& \textsc{asp} 	& \textsc{asp} 	& \textsc{dir} 	& root 	& \textsc{asp} 	& \textsc{s}	& \textsc{num} 	& \textsc{o}\\
+% \begin{center}%\small
+% \begin{tabular}{llllllllll}
+%     &	p4	& p3		& p2		& p1		& root 	& s1 		& s2	& s3	& s4\\
+%  \hline
+% a. &  		&		&		&		& dá		&		& -t & 	&\\
+% b. & 		&		&		&		& dá		& -va		& -t & 	&\\
+% c. & 		&		&		&		& dá		&		& -m & 	&\\
+% d. & 		& 		&		& pře-	& dá 		& 		& -š 	& 	&\\
+% e. & 		&		&		& pro-	& dá		&		& -m & -e & \\
+% f. & 		&		& vy- 	& pro-	& dá 		& 		&	&	&\\
+% g. & 		&		&		& vy- 	& dá		&		& -m & 	&\\
+% h. & 		& po-	& vy-		& pro-	& dá		& 		& -m & -e & \\
+% i. & 		&		&		&		& dá 		& -vá 	& -š 	& 	& \\
+% j. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -š 	& 	& -mi\\
+% k. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -m	& -e 	& -ti\\
+% \hline
+%  & \textsc{asp} 	& \textsc{asp} 	& \textsc{asp} 	& \textsc{dir} 	& root 	& \textsc{asp} 	& \textsc{s}	& \textsc{num} 	& \textsc{o}\\
 
-\end{tabular}
-\end{center}
+% \end{tabular}
+% \end{center}
 
 \myslide{Position-class diagrams: Czech verbs}
 
@@ -756,9 +766,9 @@ k. & do- 	& po- 	& vy- 	& pro- 	& dá 		& -vá 	& -m	& -e 	& -ti\\
 prefix.4	& prefix.3		& prefix.2		& prefix.1		& root 	& suffix.1 		& suffix.2	& suffix.3	& suffix.4\\
 \hline
 \textsc{asp} 	& \textsc{asp} 	& \textsc{asp} 	& \textsc{direction} 	& root 	& \textsc{iterative} 	& \textsc{subj}	& \textsc{number} 	& \textsc{obj}\\
- do- 	& po- & vy- & pro- `for' & dá 	& va-$\sim$-vá & -m (1) & -e (\textsc{pl}) & =mi (\textsc{1sg.dat}) \\
-`to'	& `along' 	& `out'  & pře- `over' & `give' 	& 			& -š (2sg) & 			 & =ti (\textsc{2sg.dat}) \\
-	&  	&  	& vy- `out' &  	& 			& -0 (3sg) & 			 & 					 \\	
+ do- 	& po- & vy- & pro- ``for'' & dá 	& va-$\sim$-vá & -m (1sg) & -e (\textsc{pl}) & =mi (\textsc{1sg.dat}) \\
+``to''	& ``along'' 	& ``out''  & pře- ``over'' & ``give'' 	& 			& -š (2sg) & 			 & =ti (\textsc{2sg.dat}) \\
+	&  	&  	& vy- ``out'' &  	& 			& -$\emptyset$ (3sg) & 			 & 					 \\	
 \hline
 \end{tabular}}
 
@@ -787,7 +797,7 @@ Jorge Hankamer's outline of a syntax course, but it's pretty
 applicable to everything we do.  More formally: \emp{Successive Approximation}.
 
 
-\myslide{Chapter 2, Problem 1}
+\myslide{Chapter 2, Problem 1 --- grammar}
 \begin{tabular}{cc}
   RULES & VOCABULARY \\[2ex]
   \begin{minipage}[t]{0.4\linewidth}
@@ -815,7 +825,7 @@ applicable to everything we do.  More formally: \emp{Successive Approximation}.
 
 
 
-\myslide{Chapter 2, Problem 1}
+\myslide{Chapter 2, Problem 1 --- Questions}
 
 \begin{itemize}
 \item [A] Make a well-formed English sentence unambiguous
@@ -839,8 +849,8 @@ this grammar (using $V$)
 \item Swiss German example:
   \begin{exe}
     \ex \gll \ldots mer \uline{d’chind} \uuline{em Hans} es \uwave{huus} \uline{l\"ond} \uuline{h\"alfe} \uwave{aastriiche}\\
-    \ldots we {the children-acc} Hans-dat the hous-acc let help paint \\
-    \trans we let {the children} help Hans paint the house 
+    \ldots we {the children-\gm{acc}} Hans-\gm{dat} the house-\gm{acc} let help paint \\
+    \trans ``we let the children help Hans paint the house'' [gsw]
   \end{exe}
 \item Cross-serial dependency:
 \begin{itemize}
@@ -858,10 +868,10 @@ strings in the language can be generated by a CFG.
 \item A language is \emp{strongly} context-free if the CFG
 furthermore assigns the correct structures to the
 strings.
-\item Shieber’s argument is that SW is not \emp{weakly}
+\item Shieber’s argument is that Swiss German is not \emp{weakly}
 context-free and therefore not \emp{strongly} context-free.
-\item Bresnan et al (1983) had already argued that Dutch
-is \emp{strongly} not context-free, but the argument was
+\item Bresnan et al (1982) had already argued that Dutch
+is not \emp{strongly} context-free, but the argument was
 dependent on linguistic analyses.
 \end{itemize}
 
