@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+
+%%% uniform margins
+\usepackage[margin=25mm]{geometry}
+%%% hyperlinks
+\usepackage{hyperref,url}
+\usepackage[svgnames]{xcolor}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=DarkBlue,    
+    urlcolor=DarkRed,
+}
+
+%%% trees
+\usepackage{forest}
+\useforestlibrary{linguistics}
+\forestapplylibrarydefaults{linguistics}
+
+%%% AVMs (Language Science Press)
+\usepackage{langsci-avm}
+% \avmsetup{
+%   font=\scshape,          % attributes in small caps
+%   valfont=\itshape,       % values in italics
+%   sortfont=\scriptsize\itshape % sorts/types smaller italic
+%}
+
+%%% examples
+\usepackage{langsci-gb4e}
+\let\eachwordone=\itshape
+
+\title{A very short guide to formatting HPSG with LaTeX}
+\author{Francis Bond
+\\ \texttt{bond@ieee.org}}
+\date{February 2026}
+
+\begin{document}
+\maketitle
+
+Some recommended packages, and examples of trees and feature structures.  For some advice on style take a look at my \href{https://fcbond.github.io/static/img/ling-style.pdf}{\textit{(Computational) Linguistic Style Guidelines: a guide for the flummoxed}}, or the very comprehensive \href{https://langsci.github.io/gsr/GenericStyleRulesLangsci.pdf}{\textit{Generic Style Rules for Linguistics:
+Abridged LangSci version}}.
+%\section{Prologue}
+
+\section{Syntactic Tree}
+For trees, we use \href{https://ctan.org/pkg/forest}{forest}:
+
+\begin{center}
+  
+\begin{forest}
+for tree={
+    if n children=0{font=\itshape, tier=terminal}{},
+}
+  [S [NP [N [Kim]]]
+     [VP [V [seemed]]
+         [AP [A [close]] [PP [P [to]] [NP [N [me]]]]] 
+         [PP [P [to]] [NP [N [Sandy]]]]]]
+\end{forest}
+\end{center}
+
+You can draw the trees using brackets.
+
+\section{AVM}
+We use \href{https://ctan.org/pkg/langsci-avm}{langsci-avm} for feature structures (attribute value matrices).
+
+\subsection*{Lexical Entry for \textit{eat}}
+\begin{center}
+\avm{
+< \textnormal{devour},  
+[ \type*{word} \\ 
+  head & \type{verb} \\
+  val & [ comps & < NP > ] ] >
+}
+\end{center}
+
+\subsection*{Binary Head-Complement Rule}
+
+\begin{center}
+\begin{tabular}{ccc}
+\avm{[ \type*{phrase} \\
+   val & [ comps & < > ] ]
+   }     
+   &  $\to$ & 
+  \textbf{H} \avm{[ \type*{word} \\
+     val & [ comps & < \1 > ] ]\ \ \1}
+\end{tabular}
+\end{center}
+
+
+
+\section{Tree and AVM}
+
+AVMs can be embedded in tree nodes:
+
+\begin{forest}
+  [ S \\ \avm{ [val & [ spr & <> \\ comps & <>]]}
+   [ \avm{\1} NP \\ \avm{[val & [ spr & <> \\ comps & <>]]} 
+   [ N [ Kim] ] ]
+    [ {VP \\ \avm{[val & [ spr & < \1 > \\ comps & <>]]}}
+    [ V \\ \avm{[  spr & < \1 > \\comps & < \2 > ]} [ loves] ]
+    [\avm{\2} NP  [{every clever linguist}, roof] ]]]
+  \end{forest}   
+
+  It's easiest to build the tree first, then add the avms bit by bit, \ldots
+  
+\section{Type Hierarchy}
+
+You can also add extra lines to trees, using the underlying package \textbf{tikz}.  See the \textbf{forest} documentation for more details.
+
+\begin{forest}
+ /tikz/every node/.append style={font=\it},
+ [agr-cat [sg,name=sg [3sg]] [,phantom] [,phantom] [,phantom]
+          [non-3sg [1sg,name=1sg] [non-1sg [2sg,name=2sg] [pl]]]]
+ \draw (sg.south) -- (1sg.north);
+ \draw (sg.south) -- (2sg.north);
+\end{forest}
+
+\section{Numbered Examples and Glosses}
+
+I recommend using  \href{https://ctan.math.utah.edu/ctan/tex-archive/macros/xetex/latex/langsci/documentation/langsci-gb4e.pdf}{langsci-gb4e} for numbered examples.
+
+\begin{exe}
+\ex An example
+\ex Dalši příklad “Another example” (Czech) \label{s:dalsi}
+\ex Japanese \label{s:mammoth}   \\
+    \gll manmosu-wa zetumetu-shita \\
+         mammoth-{\sc top} die.out-did \\
+    \trans “Mammoths died out.” 
+\ex Another example
+\end{exe}
+
+You can refer to an example: (\ref{s:dalsi}) is an informal way, only ok if you know your readers will know the languages;  (\ref{s:mammoth}) follows the Leipzig Glossing Rules.
+
+In your assignment, you should gloss them with the \href{https://www.eva.mpg.de/lingua/pdf/Glossing-Rules.pdf}{Leipzig Glossing Rules}.
+
+\end{document}

@@ -1,0 +1,227 @@
+%%% ------------------------------------------------------------------
+%%% KOL/MORS Morpho-Syntax
+%%% Assignment: describe a morpho-syntactic phenomenon
+%%%
+%%% This is a skeleton.  Replace everything marked TODO, delete the
+%%% parts you do not need, and keep the parts you do.
+%%%
+%%% The packages below are the ones recommended in
+%%%   "A very short guide to formatting HPSG with LaTeX"
+%%%     https://www.overleaf.com/read/hnjksbxgbhtq
+%%% which has worked examples of trees, feature structures and glosses.
+%%% Read that first if you have not used LaTeX for linguistics before.
+%%%
+%%% To compile on your own machine:
+%%%     pdflatex assignment
+%%%     bibtex   assignment
+%%%     pdflatex assignment
+%%%     pdflatex assignment
+%%% (twice at the end, so the citations and cross-references settle)
+%%%
+%%% On Overleaf just press Recompile; it does all of that for you.
+%%% ------------------------------------------------------------------
+
+\documentclass[a4paper,12pt]{article}
+
+%%% uniform margins
+\usepackage[margin=25mm]{geometry}
+
+\usepackage[utf8]{inputenc}       % delete this line if you compile with XeLaTeX
+\usepackage[T1]{fontenc}          % proper accented letters: ě š č ř ž ý á í é
+\usepackage[english]{babel}
+
+%%% citations: \citep{...} and \citet{...}
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+
+%%% hyperlinks
+\usepackage[svgnames]{xcolor}
+\usepackage{hyperref,url}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=DarkBlue,
+    urlcolor=DarkRed,
+}
+
+%%% trees
+\usepackage{forest}
+\useforestlibrary{linguistics}
+\forestapplylibrarydefaults{linguistics}
+
+%%% AVMs (attribute value matrices), from Language Science Press
+\usepackage{langsci-avm}
+
+%%% numbered examples and glosses
+\usepackage{langsci-gb4e}
+\let\eachwordone=\itshape         % italicises the source line of a gloss
+
+%%% Some versions of gb4e need \noautomath so that _ and ^ behave
+%%% outside maths; older ones do not have it at all, so provide a
+%%% harmless fallback rather than let the file fail to compile.
+\providecommand{\noautomath}{}
+\noautomath
+
+%%% A shorthand for glossing labels, so they come out as small capitals:
+%%% type \gm{acc} and you get ACC.
+\newcommand{\gm}[1]{\textsc{\MakeLowercase{#1}}}
+
+\title{TODO: a title that names the phenomenon\\
+  \large KOL/MORS Morpho-Syntax}
+\author{TODO: First Author's Name \and TODO: Second Author's Name}
+\date{2027-01-31}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  TODO: three or four sentences.  What is the phenomenon, what is
+  puzzling about it, and what do you conclude?  Write this last.
+\end{abstract}
+
+%%% ------------------------------------------------------------------
+\section{Introduction}
+%%% ------------------------------------------------------------------
+
+TODO: Say what the phenomenon is and why it is interesting.
+``Interesting'' is subjective, so argue for it: what would we expect,
+and what happens instead?  Lead with a concrete example rather than
+with the literature.
+
+Here is how you give a numbered example:
+
+\begin{exe}
+  \ex \label{ex:good} The more you read, the better you write.
+\end{exe}
+
+Refer back to it as (\ref{ex:good}) --- never as ``the example above''.
+
+A star marks an unacceptable example.  Grouped examples share one
+number and get letters:
+
+\begin{exe}
+  \ex \begin{xlist}
+    \ex Who did you say left?
+    \ex[*]{ Who did you say that left? }
+  \end{xlist}
+\end{exe}
+
+%%% ------------------------------------------------------------------
+\section{The data}
+%%% ------------------------------------------------------------------
+
+TODO: Present the examples your argument rests on.  If they are not in
+English they must be glossed, so that a reader who does not speak the
+language can follow.
+
+This is a glossed example.  The source line and the gloss line must
+have the \emph{same number of words}, and matching hyphens, or the
+columns will not line up:
+
+\begin{exe}
+  \ex Czech [ces] \\
+      \gll Pět   žen     přišlo            \\
+           five  women   come.\gm{pst}.\gm{n}.\gm{sg} \\
+  \trans ``Five women came.''
+\end{exe}
+
+\begin{exe}
+  \ex Czech [ces] \\
+      \gll Nikdo   nic      ne-řekl          \\
+           nobody  nothing  \gm{neg}-say.\gm{pst}.\gm{m}.\gm{sg} \\
+  \trans ``Nobody said anything.''
+\end{exe}
+
+Three conventions, all of which we will mark:
+
+\begin{itemize}
+\item Cited forms go in \emph{italics}.  In a gloss the source line is
+  italicised for you, but in running text you have to do it yourself:
+  the word \emph{žena}, the suffix \emph{-ů}.
+\item Glosses of grammatical material go in \gm{small capitals};
+  lexical material stays lower case.  Follow the
+  \href{https://www.eva.mpg.de/lingua/pdf/Glossing-Rules.pdf}{Leipzig
+    Glossing Rules}.
+\item Name the language on the first line of the example, with its
+  ISO 639-3 code in square brackets: Czech \texttt{[ces]}, English
+  \texttt{[eng]}, German \texttt{[deu]}.  Look yours up if you are
+  not sure.
+\end{itemize}
+
+Cite the source of any example you did not make up yourself.
+
+%%% ------------------------------------------------------------------
+\section{Previous work}
+%%% ------------------------------------------------------------------
+
+TODO: What have other people said about this?  You need at least three
+references to the linguistic literature.  Read them --- do not cite a
+paper you have not opened.
+
+There are two citation commands.  Use \verb|\citet| when the author is
+part of your sentence, and \verb|\citep| when the citation sits in
+brackets at the end:
+
+\begin{quote}
+  \citet{shieber1985} argues that Swiss German is not context-free.\\
+  Swiss German is not context-free \citep{shieber1985}.
+\end{quote}
+
+Give a page number when you point at a specific claim, like this:
+\citep[p.~337]{shieber1985}.  A similar argument had already been made
+for Dutch \citep{bresnan-etal1982}.
+
+%%% ------------------------------------------------------------------
+\section{Analysis}
+%%% ------------------------------------------------------------------
+
+TODO: Then do \emph{one} of the following.
+
+\paragraph{Either a formal analysis.}
+Work out part of the problem as explicitly as possible, preferably in the framework we have been using \citep{sag-etal2003}.  You do not have to solve all of it --- take a piece small enough that you can be precise about it, and say what still needs to be explained.
+
+\paragraph{some examples} Delete whichever of these you do not need.  There are fuller examples, including type hierarchies and AVMs embedded in trees, in the \href{https://www.overleaf.com/read/hnjksbxgbhtq}{short
+  guide to formatting HPSG with LaTeX}.
+
+\begin{center}
+\begin{forest}
+for tree={
+    if n children=0{font=\itshape, tier=terminal}{},
+}
+  [S [NP [N [Kim]]]
+     [VP [V [left]]]]
+\end{forest}
+\end{center}
+
+\begin{center}
+\avm{[ \type*{word} \\
+       head & \type{verb} \\
+       val  & [ comps & < NP > ] ]}
+\end{center}
+
+\paragraph{Or a survey of speakers' grammaticality judgements.}
+Ask at least five speakers, report how many accepted each example, and
+say what you asked them and how.  Raw counts are fine; you are not
+expected to do statistics.  Say clearly where your speakers came from,
+because it matters for what the numbers mean.
+
+%%% ------------------------------------------------------------------
+\section{Conclusion}
+%%% ------------------------------------------------------------------
+
+TODO: What did you find?  Link back to the puzzle you opened with.
+End with what you showed, and possibly some ides for future work.
+
+%%% ------------------------------------------------------------------
+\subsection*{Contribution statement}
+%%% ------------------------------------------------------------------
+
+TODO: Say who did what.  A couple of sentences is enough, for example:
+``A.\ collected and glossed the data and wrote Sections 2 and 4;
+B.\ did the literature review and wrote Sections 1 and 3; both authors
+revised the whole paper.''
+
+%%% ------------------------------------------------------------------
+
+\bibliography{assignment}
+
+\end{document}
