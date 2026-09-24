@@ -295,3 +295,7 @@ local/
 .#*
 \#*\#
 .~lock.*#
+
+## Previous renderings of the decks, kept for comparison during the
+## langsci-avm/forest migration -- not published
+slides/old/

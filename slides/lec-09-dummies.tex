@@ -1,10 +1,9 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
-\input{headx.tex}
+\input{headx-new.tex}
 
 %\usepackage{times}
 \usepackage{bchart}
 %\usepackage{pgfplots}
-\avmfont{\sc}
 \begin{document}
 \header{Lecture 9}{Non-referential NPs, Expletives, and Extraposition}{}
 \maketitle
@@ -42,30 +41,29 @@ NPs.
 
 \myslide{Chapter 10 entry for be}
 
-\begin{avm}
-  \< \textnormal{be},\ \[{\it be-lxm}\\
-  arg-st & \< {\@1} , \avml\[syn & \[head & \[{\it verb}\\
-  form &  pass \]\\
-  val & \[spr & \q< {\@1} \q>\\
-  comps & \el \]\]\\
-  sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
-  sem & \[index & \ $s$\\ %{\@3}\\
-  restr & {\el} \] \] \>
-\end{avm}
+\avm{< \textnormal{be},\ [\type*{be-lxm}\\
+  arg-st & < {\1} , [[syn & [head & [\type*{verb}\\
+  form &  pass ]\\
+  val & [spr & < {\1} >\\
+  comps & < > ]]\\
+  sem & [index & $s$ \ ]]] > \\ %{\3}
+  sem & [index & \ $s$\\ %{\3}\\
+  restr & {< >} ] ] >
+}
 
-This takes only passive lexemes: \begin{avm}\[ form &  pass \]\end{avm}.
+This takes only passive lexemes: \avm{[ form &  pass ]
+}.
 
 \myslide{Copula (generalized)}
 \MyLogo{SWB p334}
-\begin{avm}
-  \< \textnormal{be},\ \[{\it be-lxm}\\
-  arg-st & \< {\@1} , \avml\[syn & \[head & \[ pred \ $+$ \]\\
-  val & \[spr & \q< {\@1} \q> \\ 
-  comps & \el \]\]\\
-  sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
-  sem & \[index & \ $s$\\ %{\@3}\\
-  restr & {\el} \] \] \>
-\end{avm}
+\avm{< \textnormal{be},\ [\type*{be-lxm}\\
+  arg-st & < {\1} , [[syn & [head & [ pred \ $+$ ]\\
+  val & [spr & < {\1} > \\ 
+  comps & < > ]]\\
+  sem & [index & $s$ \ ]]] > \\ %{\3}
+  sem & [index & \ $s$\\ %{\3}\\
+  restr & {< >} ] ] >
+}
 \vspace{-2ex}
 \begin{itemize}\addtolength{\itemsep}{-2ex}
 \item Allow also (\txx{pred}icative) adjectives \lex{fond}, \lex{sleeping}
@@ -100,16 +98,15 @@ same \lex{be} that occurs in sentences like \eng{Pat is tall} or
 
 \myslide{Lexical Entry for the Existential \lex{be}}
 
-\begin{avm}
-  \< \textnormal{be},\ \[\makebox[0mm][l]{\textit{exist-be-lxm}}\\
-  arg-st & \< \shortstack{NP\\\[ form
-    & there \]}, {\@1},
-  \avml\[syn & \[head & \[ pred \ $+$ \]\\
-  val & \[spr \q< {\@1} \q> \\ comps \el \]\]\\
-  sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
-  sem & \[index & \ $s$\\ %{\@3}\\
-  restr & {\el} \] \] \>
-\end{avm}
+\avm{< \textnormal{be},\ [\lbox{\textit{exist-be-lxm}}\\
+  arg-st & < !\shortstack{NP\\\avm{[ form
+    & there ]}}!, {\1},
+  [[syn & [head & [ pred \ $+$ ]\\
+  val & [spr < {\1} > \\ comps < > ]]\\
+  sem & [index & $s$ \ ]]] > \\ %{\3}
+  sem & [index & \ $s$\\ %{\3}\\
+  restr & {< >} ] ] >
+}
 
 
 \myslide{Questions About the Existential \lex{be}}
@@ -123,16 +120,15 @@ same \lex{be} that occurs in sentences like \eng{Pat is tall} or
 
 \begin{center}
   \begin{tiny}
-    \begin{avm}
-      \< \textnormal{be},\ \[\makebox[0mm][l]{\textit{exist-be-lxm}}\\
-      arg-st & \< \shortstack{NP\\\[ form
-          & there\]}, {\@1},
-      \avml\[syn & \[head & \[ pred \ $+$ \]\\
-      val & \[spr \q< {\@1} \q> \\ comps \el \]\]\\
-      sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
-      sem & \[index & \ $s$\\ %{\@3}\\
-      restr & {\el} \] \] \>
-    \end{avm}
+    \avm{< \textnormal{be},\ [\lbox{\textit{exist-be-lxm}}\\
+      arg-st & < !\shortstack{NP\\\avm{[ form
+          & there]}}!, {\1},
+      [[syn & [head & [ pred \ $+$ ]\\
+      val & [spr < {\1} > \\ comps < > ]]\\
+      sem & [index & $s$ \ ]]] > \\ %{\3}
+      sem & [index & \ $s$\\ %{\3}\\
+      restr & {< >} ] ] >
+}
   \end{tiny}
 \end{center}
 
@@ -148,16 +144,15 @@ existentials?
 
 \begin{center}
   \begin{tiny}
-    \begin{avm}
-      \< \textnormal{be},\ \[\makebox[0mm][l]{\textit{exist-be-lxm}}\\
-      arg-st & \< \shortstack{NP\\\[ form
-          & there \]}, {\@1},
-      \avml\[syn & \[head & \[ pred \ $+$ \]\\
-      val & \[spr \q< {\@1} \q> \\ comps \el \]\]\\
-      sem & \[index & $s$ \ \]\]\avmr \> \\ %{\@3}
-      sem & \[index & \ $s$\\ %{\@3}\\
-      restr & {\el} \] \] \>
-    \end{avm}
+    \avm{< \textnormal{be},\ [\lbox{\textit{exist-be-lxm}}\\
+      arg-st & < !\shortstack{NP\\\avm{[ form
+          & there ]}}!, {\1},
+      [[syn & [head & [ pred \ $+$ ]\\
+      val & [spr < {\1} > \\ comps < > ]]\\
+      sem & [index & $s$ \ ]]] > \\ %{\3}
+      sem & [index & \ $s$\\ %{\3}\\
+      restr & {< >} ] ] >
+}
   \end{tiny}
 \end{center}
 
@@ -165,15 +160,14 @@ existentials?
 \myslide{The Entry for Existential \lex{there}}
 
 \begin{center}
-  \begin{avm}
-    \< \textnormal{there},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
-    syn & \[head & \[ form & there \\
-    agr  & \[ per \ 3rd \]   \] \]\\
-    sem & \[mode & none \\
+  \avm{< \textnormal{there},\ [\lbox{\textit{prn-lxm}}\\
+    syn & [head & [ form & there \\
+    agr  & [ per \ 3rd ]   ] ]\\
+    sem & [mode & none \\
     index & none \\
-    rest & \el \]
-    \] \>
-  \end{avm}
+    rest & < > ]
+    ] >
+}
 \end{center}
 
 \myslide{Questions About Existential there}
@@ -187,15 +181,14 @@ existentials?
 \end{itemize}
 
 \begin{center} \tiny
-  \begin{avm}
-    \< \textnormal{there},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
-    syn & \[head & \[ form & there \\
-    agr  & \[ per \ 3rd \]   \] \]\\
-    sem & \[mode & none \\
+  \avm{< \textnormal{there},\ [\lbox{\textit{prn-lxm}}\\
+    syn & [head & [ form & there \\
+    agr  & [ per \ 3rd ]   ] ]\\
+    sem & [mode & none \\
     index & none \\
-    rest & \el \]
-    \] \>
-  \end{avm}
+    rest & < > ]
+    ] >
+}
 \end{center}
 
 
@@ -234,15 +227,14 @@ existentials?
 \myslide{The Entry for Dummy \lex{it}}
 
 \begin{center}
-  \begin{avm}
-    \< \textnormal{it},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
-    syn & \[head & \[ form & it \\
-    agr  & 3sing   \] \]\\
-    sem & \[mode & none \\
+  \avm{< \textnormal{it},\ [\lbox{\textit{prn-lxm}}\\
+    syn & [head & [ form & it \\
+    agr  & 3sing   ] ]\\
+    sem & [mode & none \\
     index & none \\
-    rest & \el \]
-    \] \>
-  \end{avm}
+    rest & < > ]
+    ] >
+}
 \end{center}
 
 \myslide{Questions About Dummy \lex{it}}
@@ -254,30 +246,28 @@ Why do they differ in this way?
 \item Is this the only entry for \lex{it}?
 \end{itemize}
 \begin{center}\small
-  \begin{avm}
-    \< \textnormal{it},\ \[\makebox[0mm][l]{\textit{prn-lxm}}\\
-    syn & \[head & \[ form & it \\
-    agr  & 3sing   \] \]\\
-    sem & \[mode & none \\
+  \avm{< \textnormal{it},\ [\lbox{\textit{prn-lxm}}\\
+    syn & [head & [ form & it \\
+    agr  & 3sing   ] ]\\
+    sem & [mode & none \\
     index & none \\
-    rest & \el \]
-    \] \>
-  \end{avm}
+    rest & < > ]
+    ] >
+}
 \end{center}
 
 \myslide{A New Type of Lexeme:  Complementizers}
 
 \begin{center}\large
-  \begin{avm}
-    \textit{comp-lxm}:  \[ \\
-    syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
-    agr  & 3sing   \] \\
-    val & \[ spr & \el \] \]\\
-    arg-st & \< \shortstack{S \\ \[ index & s \]}\>\\
-    sem & \[ index & s \\
-    rest & \el \]
-    \] 
-  \end{avm}
+  \avm{\textit{comp-lxm}:  [ \\
+    syn & [head & [\lbox{\textit{comp}} \\
+    agr  & 3sing   ] \\
+    val & [ spr & < > ] ]\\
+    arg-st & < !\shortstack{S \\ \avm{[ index & s ]}}!>\\
+    sem & [ index & s \\
+    rest & < > ]
+    ]
+}
 \end{center}
 
 
@@ -289,16 +279,15 @@ Why do they differ in this way?
 \item What is its semantic contribution?
 \end{itemize}
 \begin{center}\small
-  \begin{avm}
-    \textit{comp-lxm}:  \[ \\
-    syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
-    agr  & 3sing   \] \\
-    val & \[ spr & \el \] \]\\
-    arg-st & \< \shortstack{S \\ \[ index & s \]}\>\\
-    sem & \[ index & s \\
-    rest & \el \]
-    \] 
-  \end{avm}
+  \avm{\textit{comp-lxm}:  [ \\
+    syn & [head & [\lbox{\textit{comp}} \\
+    agr  & 3sing   ] \\
+    val & [ spr & < > ] ]\\
+    arg-st & < !\shortstack{S \\ \avm{[ index & s ]}}!>\\
+    sem & [ index & s \\
+    rest & < > ]
+    ]
+}
 \end{center}
 
 
@@ -307,45 +296,41 @@ Why do they differ in this way?
 
 
 \begin{center}
-  \begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-\it
-\br{\shortstack{pos\\ \[ \textsc{form, pred} \]}}{\br{agr-pos \[ \textsc{agr} \] }{ 
-    \br{verb \[ \textsc{aux} \]}{}
-    \br{nominal \[ \textsc{case} \]}{
-      \br{\shortstack{noun \\ \mbox{} }}{}
-      \br{\shortstack{comp \\\[ \textsc{form} \ cform \]}}{}}
-    \br{det \[ \textsc{count} \]}{} }
-  \lf{prep}
-  \lf{adj}
-  \lf{conj}}
-\end{avmtree}
+  \begin{forest}
+cat, for tree={font=\itshape}
+[{!\shortstack{pos\\ \avm{[ \textsc{form, pred} ]}}!} [{agr-pos \avm{[ \textsc{agr} ]}} [{verb \avm{[ \textsc{aux} ]}}]
+[{nominal \avm{[ \textsc{case} ]}} [{\shortstack{noun \\ \mbox{} }}]
+[{!\shortstack{comp \\\avm{[ \textsc{form} \ cform ]}}!}]]
+[{det \avm{[ \textsc{count} ]}}]]
+[{prep}]
+[{adj}]
+[{conj}]]
+\end{forest}
 \end{center}
 
 \myslide{The Lexical Entry for Complementizer \lex{that}}
 \bigskip
 \begin{center}\large
-  \begin{avm}
-   \< \textnormal{that},\ \[\makebox[0mm][l]{\textit{comp-lxm}}\\
-    arg-st  & \< \[ form & fin \]\>\\
-    sem & \[mode & prop \]
-    \] \>
-  \end{avm}
+  \avm{< \textnormal{that},\ [\lbox{\textit{comp-lxm}}\\
+    arg-st  & < [ form & fin ]>\\
+    sem & [mode & prop ]
+    ] >
+}
 \end{center}
 \myslide{\ldots  with inherited information filled in}
 
 \begin{center}\small
-  \begin{avm}
-   \< \textnormal{that},\ \[\makebox[0mm][l]{\textit{comp-lxm}}\\
-   syn & \[head & \[\makebox[0mm][l]{\textit{comp}} \\
+  \avm{< \textnormal{that},\ [\lbox{\textit{comp-lxm}}\\
+   syn & [head & [\lbox{\textit{comp}} \\
     form & \OV{cform} \\
-    agr  & 3sing   \] \\
-    val & \[ spr & \el \] \]\\
-    arg-st  & \< \shortstack{S \\ \[ index & s \\ form & fin\] }\>\\
-    sem & \[mode & prop \\
+    agr  & 3sing   ] \\
+    val & [ spr & < > ] ]\\
+    arg-st  & < !\shortstack{S \\ \avm{[ index & s \\ form & fin]} }!>\\
+    sem & [mode & prop \\
     index & s \\
-    rest & \el \]
-    \] \>
-  \end{avm}
+    rest & < > ]
+    ] >
+}
 \end{center}
 
 \begin{itemize}
@@ -361,24 +346,23 @@ Why do they differ in this way?
 % \begin{center}\small
 %   \begin{tree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
 % \br{\textnormal{CP} \begin{avm}\[ \ft{head} & \@1 \\
-%           \ft{val} & \< \ft{spr} & \el \\ \ft{comps} & \el \> \]\end{avm}}%
+%           \ft{val} & \< \ft{spr} & < > \\ \ft{comps} & < > \> \]\end{avm}}%
 % {\br{\textnormal{C} \begin{avm}\[ \ft{head} & \@1 \[\textit{comp} 
 % \\  \ft{form} & cform \] \\
-%           \ft{val} & \< \ft{spr} & \el \\ \ft{comps} & \< \@2 \> \> \]
+%           \ft{val} & \< \ft{spr} & < > \\ \ft{comps} & \< \@2 \> \> \]
 % \end{avm}}{\lf{that}}
 % \br{\@2 \textnormal{S}}{\tlf{the Giants lost}}}
 % \end{tree}
 % \end{center}
 % \newpage
 \begin{center}
-  \begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-\it
-\br{\textnormal{CP} \[ \ft{head} & \@1 \\
-          \ft{val} & \< \ft{spr} & \el \\ \ft{comps} & \el \> \]}%
-{\br{\textnormal{C} \[ \ft{head} & \@1 \[\textit{comp} \\  \ft{form} & cform \] \\
-          \ft{val} & \< \ft{spr} & \< \mbox{} \> \\ \ft{comps} & \< \@2 \> \> \]}{\lf{that}}
-\br{\@2 \textnormal{S}}{\tlf{the Giants lost}}}
-\end{avmtree}
+  \begin{forest}
+cat, for tree={font=\itshape}
+[{\textnormal{CP} \avm{[ \ft{head} & \1 \\
+          \ft{val} & < \ft{spr} & < > \\ \ft{comps} & < > > ]}} [{\textnormal{C} \avm{[ \ft{head} & \1 [\textit{comp} \\  \ft{form} & cform ] \\
+          \ft{val} & < \ft{spr} & < \mbox{} > \\ \ft{comps} & < \2 > > ]}} [{that}]]
+[{\avm{\2} \textnormal{S}}]]
+\end{forest}
 \end{center}
 
 
@@ -388,16 +372,15 @@ Why do they differ in this way?
 
 \bigskip
 \begin{center}\large
-  \begin{avm}
-   \< \textnormal{matter},\ \[\makebox[0mm][l]{\textit{siv-lxm}}\\
-    arg-st  & \< \[ sem & \[ index & \@1 \] \]\>\\
-    sem & \[index & s \\
-    rstr & \<  reln & \prd{matter} \\
+  \avm{< \textnormal{matter},\ [\lbox{\textit{siv-lxm}}\\
+    arg-st  & < [ sem & [ index & \1 ] ]>\\
+    sem & [index & s \\
+    rstr & <  reln & \prd{matter} \\
                sit & s \\
-               mattering & \@1 
-\> \]
-    \] \>
-  \end{avm}
+               mattering & \1 
+> ]
+    ] >
+}
 \end{center}
 
 Note:  the only constraint on the first argument is semantic
@@ -421,16 +404,15 @@ Note:  the only constraint on the first argument is semantic
 \newpage
 
 \begin{center}\small
-  \begin{avm}
-   \< \textnormal{matter},\ \[\makebox[0mm][l]{\textit{siv-lxm}}\\
-    arg-st  & \< \[ syn & \[ head & \OV{nominal} \] \\
-                    sem & \[ index & \@1 \] \]\>\\
-    sem & \[index & s \\
-    rstr & \<  \[ reln & \prd{matter} \\
+  \avm{< \textnormal{matter},\ [\lbox{\textit{siv-lxm}}\\
+    arg-st  & < [ syn & [ head & \OV{nominal} ] \\
+                    sem & [ index & \1 ] ]>\\
+    sem & [index & s \\
+    rstr & <  [ reln & \prd{matter} \\
                   sit & s \\
-                  mattering & \@1 \] \> \]
-    \] \>
-  \end{avm}
+                  mattering & \1 ] > ]
+    ] >
+}
 \end{center}
 
 
@@ -483,15 +465,14 @@ Note:  the only constraint on the first argument is semantic
 
 \myslide{Post Inflectional Lexical Rule: \val{pi-rule}}
 \begin{center}%\small
-  \begin{avm}\avmfont{\sc}
- \val{pi-rule}: \[ \asort{lrule}
-        input & \< / \@0, \[ \asort{word}
-            syn & \[ head & / \@1 \] \\
-            val & \[ mod &  \@{A}  \] \] \>\\
-        output & \< / \@0,  \[ \asort{word}
-            syn & \[ head & / \@1 \] \\
-            val & \[ mod &  \@{A}  \] \]  \>  \]  
-    \end{avm}
+  \avm{\val{pi-rule}: [\type*{lrule}
+        input & < / \0, [\type*{word}
+            syn & [ head & / \1 ] \\
+            val & [ mod &  \tag{A}  ] ] >\\
+        output & < / \0,  [\type*{word}
+            syn & [ head & / \1 ] \\
+            val & [ mod &  \tag{A}  ] ]  >  ]
+}
 \end{center}
 
 We use this when we expect the structure to be largely formed, and we
@@ -501,13 +482,11 @@ want to change the order of things, \ldots
 \myslide{The Extraposition Lexical Rule}
 
 \begin{center}\small
-  \begin{avm}\avmfont{\sc}
-      \[ \asort{pi-rule}
-      input & \< X, \[ syn & \[ val & \[ spr & \< \@1 CP \> \\ comps & \@{A} \] \]  \]  \>\\
-      output & \<Y,  \[ syn & \[val & \[ spr & \< NP \[ form & it \] \> \\
-      comps & \@{A} $\oplus$ \< \@1 \> \] \] \] \> \]
-
-    \end{avm}
+  \avm{[\type*{pi-rule}
+      input & < X, [ syn & [ val & [ spr & < \1 CP > \\ comps & \tag{A} ] ]  ]  >\\
+      output & <Y,  [ syn & [val & [ spr & < NP [ form & it ] > \\
+      comps & \tag{A} $\oplus$ < \1 > ] ] ] > ]
+}
 \end{center}
 
 \begin{itemize}
@@ -530,33 +509,31 @@ want to change the order of things, \ldots
 \myslide{Another nonreferential noun: \lex{advantage}}
 \bigskip
 \begin{center}
-  \begin{avm}
-    \< \textnormal{advantage},\ \[\makebox[0mm][l]{\textit{massn-lxm}}\\
-    syn & \[head & \[ form & advantage \\
-    agr  & 3sing   \] \]\\
-    sem & \[mode & none \\
+  \avm{< \textnormal{advantage},\ [\lbox{\textit{massn-lxm}}\\
+    syn & [head & [ form & advantage \\
+    agr  & 3sing   ] ]\\
+    sem & [mode & none \\
     index & none \\
-    rest & \el \]
-    \] \>
-  \end{avm}
+    rest & < > ]
+    ] >
+}
 \end{center}
 
 
 \myslide{The verb that selects \lex{advantage}}
 \MyLogo{\textbf{take\_advantage} $\approx$ \textbf{exploit}}
 \begin{center}
-  \begin{avm}
-   \< \textnormal{take},\ \[\makebox[0mm][l]{\textit{ptv-lxm}}\\
-    arg-st  & \< NP$_i$, \[ form & advantage \], 
-    \[ form & of  \\
-       index & j \]\>\\
-    sem & \[index & s \\
-    rstr & \<  \[ reln & \prd{take\_advantage} \\
+  \avm{< \textnormal{take},\ [\lbox{\textit{ptv-lxm}}\\
+    arg-st  & < NP$_i$, [ form & advantage ], 
+    [ form & of  \\
+       index & j ]>\\
+    sem & [index & s \\
+    rstr & <  [ reln & \prd{take\_advantage} \\
                sit & s \\
                exploiter & i \\
-               exploited & j \] \> \]
-    \] \>
-  \end{avm}
+               exploited & j ] > ]
+    ] >
+}
 \end{center}
 
 
@@ -676,18 +653,16 @@ following:
 %verb-lxm} -- requiring the first argument to be an NP.)
 
 \begin{exe}
-\ex\label{s:exi} {\begin{avm}
-
-\< \textnormal{annoy} ,\  \[{\it stv-lxm}\\
-              arg-st & \< \[sem\ [index\ {\@1}{\,}]\] ,
-                               NP$_i$ \> \\
-%			  \[sem\ [index $i$]\] \> \\
-              sem    & \[index & $s$\\
-                         restr  & \< \[reln & \prd{annoy}\\
+\ex\label{s:exi} {\avm{< \textnormal{annoy} ,\  [\type*{stv-lxm}\\
+              arg-st & < [sem\ [index\ {\1}{\,}]] ,
+                               NP$_i$ > \\
+%			  [sem\ [index $i$]] > \\
+              sem    & [index & $s$\\
+                         restr  & < [reln & \prd{annoy}\\
                                        sit & \ \  $s$\\
                             	       annoyed & \ \ $i$\\
-                            	       annoyance & \ \ {\@1} \] \> \]\] \>
-\end{avm}}
+                            	       annoyance & \ \ {\1} ] > ]] >
+}}
 \end{exe}
 
 \newpage

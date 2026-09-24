@@ -1,11 +1,9 @@
 \RequirePackage{expl3}
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 \PassOptionsToPackage{xetex}{expl3}
-\input{headx.tex}
+\input{headx-new.tex}
 
-\avmfont{\sc}
 \begin{document}
-\avmfont{\it}
 
 \header{Lecture 3}{Complex Feature Values}{Valence, Agreement, Case}
 \maketitle
@@ -99,29 +97,23 @@ irrelevant to our current point).
 There’s still too much redundancy: the rules and features encode the same information in different ways.
 
 \begin{small}
-\begin{avm} 
-\[{\it phrase}\\
-  VAL & \[ COMPS & itr\\
-           SPR & $-$\]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
-                                               VAL & \[ COMPS & itr\\
-                                                        SPR & $-$\]\]
-\end{avm}
+\avm{[\type*{phrase}\\
+  VAL & [ COMPS & itr\\
+           SPR & $-$]] \ $\rightarrow$\ \HD \ [\type*{word}\\
+                                               VAL & [ COMPS & itr\\
+                                                        SPR & $-$]]}
 
-\begin{avm} 
-\[{\it phrase}\\
-  VAL & \[ COMPS & itr\\
-           SPR & $-$ \]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
-                                               VAL & \[ COMPS & str\\
-                                                        SPR & $-$\]\]\ \ NP
-\end{avm}
+\avm{[\type*{phrase}\\
+  VAL & [ COMPS & itr\\
+           SPR & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
+                                               VAL & [ COMPS & str\\
+                                                        SPR & $-$]]\ \ NP}
 
-\begin{avm} 
-\[{\it phrase}\\
-  VAL & \[ COMPS & itr\\
-           SPR & $-$ \]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
-                                               VAL & \[ COMPS & dtr\\
-                                                        SPR & $-$\]\]\ \ NP\ \ NP
-\end{avm}
+\avm{[\type*{phrase}\\
+  VAL & [ COMPS & itr\\
+           SPR & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
+                                               VAL & [ COMPS & dtr\\
+                                                        SPR & $-$]]\ \ NP\ \ NP}
 \end{small}
 
 
@@ -143,12 +135,10 @@ combine with their complements and specifiers.
 \myslide{Complements}
 Head-Complement Rule:
 
-\begin{avm}\avmfont{\sc} 
-\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+\avm{[\type*{phrase}  val & [ comps & <  > ] ]
               \ $\rightarrow$\ \HD \ 
-             \[ \asort{word}
-             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
-\end{avm}
+             [\type*{word}
+             val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}}
 \begin{itemize}
 \item This allows for arbitrary numbers of complements, but only
 applies when there is at least one.
@@ -165,67 +155,51 @@ complements
 
 \begin{small}
   \begin{tabular}{ll}
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{devour}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ comps & \< NP \> \]
-      \]\>
-    \end{avm} &
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{put}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ comps & \< NP PP \> \]
-      \]\>
-    \end{avm} \\
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{eat}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ comps & \< (NP) \> \]
-      \]\>
-    \end{avm} &
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{bet}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ \< NP (NP) (S) \> \]
-      \]\>
-    \end{avm} \\
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{dine}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ comps & \< \> \]
-      \]\>
-    \end{avm} &
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{fond}, \ \[ \asort{word}
-      head & {\it adjective} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ comps & \< PP\emp{:\textit{of}} \> \]
-      \]\>
-    \end{avm}
+    \avm{< \textnormal{devour}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ comps & < NP > ]
+      ]>} &
+    \avm{< \textnormal{put}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ comps & < NP PP > ]
+      ]>} \\
+    \avm{< \textnormal{eat}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ comps & < (NP) > ]
+      ]>} &
+    \avm{< \textnormal{bet}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ < NP (NP) (S) > ]
+      ]>} \\
+    \avm{< \textnormal{dine}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ comps & < > ]
+      ]>} &
+    \avm{< \textnormal{fond}, \ [\type*{word}
+      head & \type{adjective} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ comps & < PP\emp{:\textit{of}} > ]
+      ]>}
   \end{tabular}
 \end{small}
 
 
 \myslide{Question: What if English had postpositions?}
 
-\begin{avm}\avmfont{\sc} 
-\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+\avm{[\type*{phrase}  val & [ comps & <  > ] ]
               \ $\rightarrow$\ \HD \ 
-             \[ \asort{word}  head & \val{verb \| adj \| noun} \\
-             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
-\end{avm}
+             [\type*{word}  head & \val{verb $|$ adj $|$ noun} \\
+             val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}}
 
-\begin{avm}\avmfont{\sc} 
-\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
-              \ $\rightarrow$\ \ \ \@1, \ldots, \@{n}\ \ \HD \ 
-             \[ \asort{word} head & \val{preposition} \\
-             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]
-\end{avm}
+\avm{[\type*{phrase}  val & [ comps & <  > ] ]
+              \ $\rightarrow$\ \ \ \1, \ldots, \tag{n}\ \ \HD \ 
+             [\type*{word} head & \val{preposition} \\
+             val & [ comps & < \1, \ldots, \tag{n} > ] ]}
 
 
 
@@ -252,14 +226,12 @@ In English, nouns can agree with their specifiers.
 
 \myslide{Head-Specifier Rule (Version I)}
 
-\begin{avm}\avmfont{\sc}
-  \[{\it phrase}\\
-    val & \[ comps & \el\\
-      spr & \el\]\]\ \ \
-  $\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
-                                           val & \[ comps & \el\\
-                                           spr & \q< {\@2} \q> \]\] 
-\end{avm}
+\avm{[\type*{phrase}\\
+    val & [ comps & < >\\
+      spr & < >]]\ \ \
+  $\rightarrow$\ \ \ \ {\2}\ \ \ \ \HD[ %\type{phrase}\\
+                                           val & [ comps & < >\\
+                                           spr & < {\2} > ]]}
 \begin{itemize}
 \item Combines the rules expanding S and NP.
 \item In principle also generalizes to other categories.
@@ -273,12 +245,18 @@ Why are these right-branching? That is, what formal property of our
 grammar forces the COMPS to be lower in the tree than the SPR?
 
 \begin{center}
-  \begin{tree}
-    \br{S}{\br{NP}{} \br{VP}{\br{V}{}\br{NP}{}}}
-  \end{tree}
-  \begin{tree}
-    \br{NP}{\br{D}{} \br{NOM}{\br{N}{}\br{PP}{}}}
-  \end{tree}
+  \begin{forest}
+cat
+[{S} [{NP}]
+[{VP} [{V}]
+[{NP}]]]
+\end{forest}
+  \begin{forest}
+cat
+[{NP} [{D}]
+[{NOM} [{N}]
+[{PP}]]]
+\end{forest}
 \end{center}
 
 
@@ -357,25 +335,21 @@ restrictions formally
 \myslide{A possible formalization of the restriction}
 
 
-   \begin{avm}\avmfont{\sc}
-      \< \textnormal{insist}, \ \[ \asort{word}
+   \avm{< \textnormal{insist}, \ [\type*{word}
       head & \textit{verb}\\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< NP \> \\
-               comps & \< S\[ head & \[  mood & subjunctive \] \] \> \]
-      \]\>
-    \end{avm} %\[ \asort{verb} mood & subjunctive \]
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < NP > \\
+               comps & < S[ head & [  mood & subjunctive ] ] > ]
+      ]>} %\[ \asort{verb} mood & subjunctive \]
 
 Note that this requires that the verb be the head of the
 complement. We don’t have access to the features of the other
 constituents of the complement.
 
 \begin{center}\small
-  \begin{avm}\avmfont{\sc}
-    S =  \[ head & \textit{verb}\\
-    val & \[ spr & \<  \> \\
-    comps & \< \> \] \]
-  \end{avm}
+  \avm{S =  [ head & \textit{verb}\\
+    val & [ spr & <  > \\
+    comps & < > ] ]}
 \end{center}
 
 \myslide{Complements vs. Modifiers}
@@ -421,10 +395,8 @@ the rule.
 \myslide{The Specifier-Head Agreement Constraint (SHAC)}
 Verbs and nouns must be specified as:
 \begin{center}
-  \begin{avm}\avmfont{\sc}
-    \[ head & \[ agr \@1 \] \\
-    val & \[ spr \< agr \@1 \> \] \]
-  \end{avm}
+  \avm{[ head & [ agr \1 ] \\
+    val & [ spr < agr \1 > ] ]}
 \end{center}
 
 \begin{itemize}
@@ -434,65 +406,55 @@ Verbs and nouns must be specified as:
 \myslide{Type Hierarchy (new Agreement!)}
 
 \begin{center}
-  \begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-\it
-\br{feat-struc}{ \br{ expression  \[ \textsc{head, val} \] }{\lf{word}
-                                  \lf{phrase}}
-                 \br{agr-cat \[ \textsc{per,num} \] }{
-                   \br{non-3sing}{
-                     \br{non-1sing}{\lf{2sing} \lf{pl}} \lf{1sing}}
-                   \br{3sing \[ gend \] }{}}
-                 \br{val-cat \[ \textsc{spr, comps} \] }{ }
-                 \br{pos}{\br{agr-pos \[ \textsc{agr} \] }{ 
-                     \br{noun \[ \textsc{case} \]}{}
-                     \br{verb \[ \textsc{aux} \]}{}
-                     \br{det \[ \textsc{count} \]}{} }
-                   \lf{prep}
-                   \lf{adj}
-                   \lf{conj}}}
-\end{avmtree}
+  \begin{forest}
+cat, for tree={font=\itshape}
+[{feat-struc} [{expression  \avm{[ \textsc{head, val} ]}} [{word}]
+[{phrase}]]
+[{agr-cat \avm{[ \textsc{per,num} ]}} [{non-3sing} [{non-1sing} [{2sing}]
+[{pl}]]
+[{1sing}]]
+[{3sing \avm{[ gend ]}}]]
+[{val-cat \avm{[ \textsc{spr, comps} ]}}]
+[{pos} [{agr-pos \avm{[ \textsc{agr} ]}} [{noun \avm{[ \textsc{case} ]}}]
+[{verb \avm{[ \textsc{aux} ]}}]
+[{det \avm{[ \textsc{count} ]}}]]
+[{prep}]
+[{adj}]
+[{conj}]]]
+\end{forest}
 \end{center}
 
 
 
 \myslide{An example}
 \scalebox{0.6}{
-\begin{avmtree}
-\br{\begin{avm}
-    \[ {\it phrase}\\
-       HEAD & \@{0}\\ 
-       VAL & \[ SPR & \el\\
-                COMPS & \el \]\]
-    \end{avm}}{\br{\begin{avm}
-	       \@1\[{\it phrase}\\
-		     HEAD & \@4\\
-		     VAL & \[ SPR & \el\\
-		              COMPS & \el \]\]
-	          \end{avm}}{\psset{levelsep=1.4in}\br{\begin{avm}
-			          \@2\[ {\it word}\\
-					HEAD & \[ {\it det}\\
-						  AGR & \@3\\
-						  COUNT & + \]\\
-					VAL & \[ SPR & \el\\
-					         COMPS & \el \]\] 
-				 \end{avm}}{\lf{The}}
-			     \br{\begin{avm}
-				  \[ {\it word}\\
-				     HEAD & \@4\[ {\it noun}\\
-						  AGR & \@3\[ {\it 3sing}\\
+\begin{forest}
+cat
+[{\avm{[\type*{phrase}\\
+       HEAD & \0\\ 
+       VAL & [ SPR & < >\\
+                COMPS & < > ]]}} [{\@1\avm{[\type*{phrase}\\
+		     HEAD & \4\\
+		     VAL & [ SPR & < >\\
+		              COMPS & < > ]]}} [{\@2\avm{[\type*{word}\\
+					HEAD & [\type*{det}\\
+						  AGR & \3\\
+						  COUNT & + ]\\
+					VAL & [ SPR & < >\\
+					         COMPS & < > ]]}} [{The}]]
+[{\avm{[\type*{word}\\
+				     HEAD & \4[\type*{noun}\\
+						  AGR & \3[\type*{3sing}\\
 							      PER & 3rd\\
-							      NUM & sg \] \]\\
-				     VAL & \[ SPR & \q< {\@2} \q>\\
-				              COMPS & \el \]\]
-				 \end{avm}}{\lf{dog}}}
-		\br{\begin{avm}
-		    \[ {\it word}\\
-		       HEAD & {\@0}\[{\it verb}\\
-                                     AGR\ \ {\@3}\]\\
-		       VAL & \[ SPR & \q< {\@1} \q>\\
-		                COMPS & \el \]\]
-		    \end{avm}}{\lf{walks}}}
-\end{avmtree}}
+							      NUM & sg ] ]\\
+				     VAL & [ SPR & < {\2} >\\
+				              COMPS & < > ]]}} [{dog}]]]
+[{\avm{[\type*{word}\\
+		       HEAD & {\0}[\type*{verb}\\
+                                     AGR\ \ {\3}]\\
+		       VAL & [ SPR & < {\1} >\\
+		                COMPS & < > ]]}} [{walks}]]]
+\end{forest}}
 
 
 
@@ -586,9 +548,7 @@ they are used in (i).
 take an \index{optionality!optional PP complement}\index{prepositional phrase (PP)!complement!optional}optional PP complement:
 
 \begin{quote}
-\begin{avm}
-\[ COMPS & \q< (PP) \q> \]
-\end{avm}
+\avm{[ COMPS & < (PP) > ]}
 \end{quote}
 %
 Write

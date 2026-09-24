@@ -5,7 +5,7 @@
 %\newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
 %\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
 
-\input{headx.tex}
+\input{headx-new.tex}
 \newenvironment{block}[1]%
   {%
     \par\medskip
@@ -16,9 +16,10 @@
 
 
 \begin{document}
-\header{Lecture 1b}{First attempts at a theory of grammar \\
+\header{Lecture 1b}{First attempts at a theory of grammar 
   and three approaches to morphology}{}\maketitle
 %\include{schedule}
+\MyLogo{CFG and Morphology}
 
 \myslide{Overview}
 
@@ -30,13 +31,13 @@
   \end{itemize}
 \item Three approaches to morphology
   \begin{itemize}
-  \item \txx{Item-and-Arrangement (IA)} 
-  \item \txx{Item-and-Process (IP)}
-  \item \txx{Word-and-Paradigm (WP)}
+  \item Item-and-Arrangement (IA) 
+  \item Item-and-Process (IP)
+  \item Word-and-Paradigm (WP)
   \end{itemize}
 \end{itemize}
 
-\section{Context Free Grammars}
+\section{Modelling Syntax \\ as Context Free Grammar}
 
 \myslide{What makes a good model?}
 \MyLogo{\textit{All grammars leak. \citep[p39]{sapir:1921} }}
@@ -59,34 +60,6 @@
   And language is not perfectly regular \\
 We aim for iteratively improved approximations
 \end{center}
-
-
-\myslide{Identifying constituents}
-\begin{block}{}
-  \begin{itemize}
-  \item
-    Language structure is \textbf{hierarchical}, and is made up of identifiable constituents
-  \item
-    Some words go together more closely to form a constituent, e.g. noun phrases and postpositional phrases.  
-  \item
-   Such strings form \textbf{immediate constituents} of units higher up in the hierarchy.
-\item
-    Constituents are identified on the basis of \textbf{formal criteria ...}
-  \end{itemize}
-\end{block}
-
-%------------------------------------------------------------------------------------------
-\myslide{Formal criteria for identifying constituents}
-\begin{block}{Three things to consider:}
-  \begin{itemize}
-  \item
-    \textbf{Distribution}: If the same sequence of constituents occurs repeatedly, this sequence might be a constituent.  
-  \item
-    \textbf{Substitution}: If we can substitute a sequence of words by a single word, keeping the reference more or less the same, then this sequence is probably a constituent.
-  \item
-    \textbf{Mobility}: If we can move a sequence of constituents around in a sentence, and they have to move together, then this is probably a constituent
-  \end{itemize}
-\end{block}
 
 
 
@@ -200,41 +173,68 @@ P: for, beside, with
 \end{itemize}
 
 \myslide{Structural Ambiguity}
-\begin{center} \large
+\begin{center} 
   \eng{I cured the dog with fleas}
 \end{center}
+\noindent\begin{tabular}{cc}
+           PP under VP & PP under NP \\
+\begin{minipage}{0.45\linewidth}
+\begin{center} \small
+\wtree{[S [NP [N [I]]]
+          [VP [V [cured]]
+              [NP [D [the]] [N [dog]]]
+              [PP [P [with]] [NP [N [fleas]]]]]]}
+\end{center}
+\end{minipage}
+&
+\begin{minipage}{0.45\linewidth}
+\begin{center} \small
+\wtree{[S [NP [N [I]]]
+          [VP [V [cured]]
+              [NP [D [the]] [N [dog]]
+                  [PP [P [with]] [NP [N [fleas]]]]]]]}
+\end{center}
 
-\myslide{Structure 1: PP under VP}
-\begin{center} {%
- \leaf{\emph{I}}
- \branch{1}{N}
- \branch{1}{NP}
- \leaf{\emph{cured}}
- \branch{1}{V}
- \leaf{\emph{the}}
- \branch{1}{D}
- \leaf{\emph{dog}}
- \branch{1}{N}
- \branch{2}{NP}
- \leaf{\emph{with}}
- \branch{1}{P}
- \leaf{\emph{fleas}}
- \branch{1}{N}
- \branch{2}{PP}
- \branch{3}{VP}
- \branch{2}{S}
- \qobitree}
-\end{center}
-\myslide{Structure 2: PP under NP}
-\begin{center} {%
-    \leaf{\emph{I}} \branch{1}{N} \branch{1}{NP} \leaf{\emph{cured}}
-    \branch{1}{V} \leaf{\emph{the}} \branch{1}{D}
-    \leaf{\emph{dog}} \branch{1}{N} \leaf{\emph{with}}
-    \branch{1}{P}
-    \leaf{\emph{fleas}} \branch{1}{N} \branch{1}{NP}
-    \branch{2}{PP} \branch{3}{NP} \branch{2}{VP}
-    \branch{2}{S} \qobitree}
-\end{center}
+\end{minipage}
+         \end{tabular}
+%          \myslide{Structure 1: PP under VP}
+% \begin{center}
+% \wtree{[S [NP [N [I]]]
+%           [VP [V [cured]]
+%               [NP [D [the]] [N [dog]]]
+%               [PP [P [with]] [NP [N [fleas]]]]]]}
+% \end{center}
+% \end{document}
+% \myslide{Structure 2: PP under NP}
+
+
+
+\myslide{Identifying constituents (nodes in the trees)}
+\begin{block}{}
+  \begin{itemize}
+  \item
+    Language structure is \textbf{hierarchical}, and is made up of identifiable constituents
+  \item
+    Some words go together more closely to form a constituent, e.g. noun phrases and postpositional phrases.  
+  \item
+   Such strings form \textbf{immediate constituents} of units higher up in the hierarchy.
+\item
+    Constituents are identified on the basis of \textbf{formal criteria ...}
+  \end{itemize}
+\end{block}
+
+%------------------------------------------------------------------------------------------
+\myslide{Formal criteria for identifying constituents}
+  \begin{itemize}
+  \item
+    \textbf{Distribution}: If the same sequence of constituents occurs repeatedly, this sequence might be a constituent.  
+  \item
+    \textbf{Substitution}: If we can substitute a sequence of words by a single word, keeping the reference more or less the same, then this sequence is probably a constituent.
+  \item
+    \textbf{Mobility}: If we can move a sequence of constituents around in a sentence, and they have to move together, then this is probably a constituent
+  \end{itemize}
+
+
 
 \myslide{Constituency Tests}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -316,16 +316,15 @@ form:
 
 
 \myslide{Trees and Rules}
-  {
- \leaf{$C_1$}
- \leaf{\ldots}
-  \leaf{$C_2$}
- \branch{3}{$C_0$} \qobitree}is a well-formed nonlexical tree if (and only if)
+  \ctree{[$C_0$ [$C_1$] [\ldots] [$C_n$]]}is a well-formed nonlexical tree if (and only if)
 \begin{itemize}
 \item  $C_0, \ldots,  C_n$ are well-formed trees
 \item $C_0$ \into $C_1 \ldots C_n$ is a grammar rule
 \end{itemize}
 
+%%% ---------------------------------------------------------------
+%%% Bottom-up: one slide per step, the tree grows as you go
+%%% ---------------------------------------------------------------
 \myslide{Bottom-up Tree Construction}
 
 \begin{flushleft}
@@ -334,108 +333,83 @@ V: chased \\
 N: dog, cat
 \end{flushleft}
 
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{chased} \branch{1}{V} \qobitree}
-{ \leaf{dog} \branch{1}{N} \qobitree}
-{ \leaf{cat} \branch{1}{N} \qobitree}
+\step{Start from the words}
+\begin{center}
+  \wtree{[D [the]]}\quad \wtree{[N [dog]]}\quad \wtree{[V [chased]]}\quad
+  \wtree{[D [the]]}\quad \wtree{[N [cat]]}
+\end{center}
 
-\begin{tabular}{ccc}
-\multicolumn{2}{c}{NP \into D N} & VP \into V NP \\[2ex]
+\myslide{Bottom-up Tree Construction}
+\step{NP \into D N}
+\begin{center}
+  \wtree{[NP [D [the]] [N [dog]]]}\quad \wtree{[V [chased]]}\quad
+  \wtree{[D [the]]}\quad \wtree{[N [cat]]}
+\end{center}
 
-{ \leaf{the} \branch{1}{D}
-  \leaf{dog} \branch{1}{N} 
-\branch{2}{NP} \qobitree}
-&
-{ \leaf{the} \branch{1}{D}
-  \leaf{cat} \branch{1}{N} 
-\branch{2}{NP} \qobitree}
-&
-{
-  \leaf{chased} \branch{1}{V}
-    \leaf{the} \branch{1}{D}
-    \leaf{cat} \branch{1}{N} 
-  \branch{2}{NP}
-\branch{2}{VP} \qobitree}
-\end{tabular}
+\myslide{Bottom-up Tree Construction}
+\step{NP \into D N}
+\begin{center}
+  \wtree{[NP [D [the]] [N [dog]]]}\quad \wtree{[V [chased]]}\quad \wtree{[NP [D [the]] [N [cat]]]}
+\end{center}
 
-\newpage
+\myslide{Bottom-up Tree Construction}
+\step{VP \into V NP}
+\begin{center}
+  \wtree{[NP [D [the]] [N [dog]]]}\quad
+  \wtree{[VP [V [chased]] [NP [D [the]] [N [cat]]]]}
+\end{center}
 
-\begin{tabular}{c}
- S \into NP VP \\[2ex]
-{
-    \leaf{the} \branch{1}{D}
-    \leaf{dog} \branch{1}{N} 
-  \branch{2}{NP}
-    \leaf{chased} \branch{1}{V}
-      \leaf{the} \branch{1}{D}
-      \leaf{cat} \branch{1}{N} 
-    \branch{2}{NP}
-  \branch{2}{VP}
-\branch{2}{S} \qobitree}
-\end{tabular}
+\myslide{Bottom-up Tree Construction}
+\step{S \into NP VP}
+\begin{center}
+  \wtree{[S [NP [D [the]] [N [dog]]]
+          [VP [V [chased]] [NP [D [the]] [N [cat]]]]]}
+\end{center}
+
+%%% ---------------------------------------------------------------
+%%% Top-down: the same tree, built from the start symbol instead
+%%% ---------------------------------------------------------------
+\myslide{Top-down Tree Construction}
+\step{Start from the start symbol}
+\begin{center} \ctree{[S]} \end{center}
 
 \myslide{Top-down Tree Construction}
+\step{S \into NP VP}
+\begin{center} \ctree{[S [NP] [VP]]} \end{center}
 
+\myslide{Top-down Tree Construction}
+\step{NP \into D N}
+\begin{center} \ctree{[S [NP [D] [N]] [VP]]} \end{center}
 
-\begin{tabular}{cccc}
- S \into NP VP  & VP \into V NP & NP \into D N & NP \into D N \\[2ex]
-{ \leaf{NP}
-  \leaf{VP}
-\branch{2}{S} \qobitree}
-&
-{ \leaf{V}
-  \leaf{NP}
-\branch{2}{VP} \qobitree}
-&
-{ \leaf{D}
-  \leaf{N}
-\branch{2}{NP} \qobitree}
-&
-{ \leaf{D}
-  \leaf{N}
-\branch{2}{NP} \qobitree}
-\end{tabular}
+\myslide{Top-down Tree Construction}
+\step{VP \into V NP}
+\begin{center} \ctree{[S [NP [D] [N]] [VP [V] [NP]]]} \end{center}
 
-{ \leaf{D}
-  \leaf{N}
-\branch{2}{NP} 
-   \leaf{V}
-   \leaf{D}
-   \leaf{N}
-\branch{2}{NP}
-\branch{2}{VP}
-\branch{2}{S} \qobitree}
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{the} \branch{1}{D} \qobitree}
-{ \leaf{chased} \branch{1}{V} \qobitree}
-{ \leaf{dog} \branch{1}{N} \qobitree}
-{ \leaf{cat} \branch{1}{N} \qobitree}
+\myslide{Top-down Tree Construction}
+\step{NP \into D N}
+\begin{center} \ctree{[S [NP [D] [N]] [VP [V] [NP [D] [N]]]]} \end{center}
 
-\begin{tabular}{c}
-% Combine \\[2ex]
-{
-    \leaf{the} \branch{1}{D}
-    \leaf{dog} \branch{1}{N} 
-  \branch{2}{NP}
-    \leaf{chased} \branch{1}{V}
-      \leaf{the} \branch{1}{D}
-      \leaf{cat} \branch{1}{N} 
-    \branch{2}{NP}
-  \branch{2}{VP}
-\branch{2}{S} \qobitree}
-\end{tabular}
+\myslide{Top-down Tree Construction}
+\step{Attach the words}
+\begin{center}
+  \wtree{[S [NP [D [the]] [N [dog]]]
+          [VP [V [chased]] [NP [D [the]] [N [cat]]]]]}
+\end{center}
+\myslide{A CFG is declarative}
+
+It says what is a possible structure not how that structure is made.
 
 \begin{itemize}
-\item \txx{Bottom-up}: string \into tree
-\item \txx{Top-down}: tree \into string
+\item \txx{Bottom-up}: string \into tree  (parsing)
+\item \txx{Top-down}: tree \into string  (generation)
 \item CFG is \txx{declarative} so it is independent of order
 \end{itemize}
 
 \myslide{Weaknesses of CFG (atomic node labels)}
 \begin{itemize}
 \item It doesn’t tell us what constitutes a linguistically
-natural rule
+  natural rule
+  \\ no reason not to have
 \begin{itemize}
 \item VP \into P NP
 \item NP \into VP S
@@ -458,12 +432,15 @@ plausible structures to them.
 \item Linguistic constructions that are beyond the
 descriptive power of CFG are rare.
 
-\item It’s computationally tractable and
-techniques for processing CFGs are well
-understood.
+\item Techniques for processing CFGs are well understood.  It's
+  computationally tractable (parsing is $O(n^3)$, or even linear for
+  the deterministic subsets used in compilers). As well as natural
+  language, we use them for programming languages, data formats (JSON,
+  internet protocols), RNA secondary structure, machine translation,
+  and constraining LLM output, \ldots
 \end{itemize}
 
-\myslide{So \ldots}
+\myslide{Therefore \ldots}
 
 \begin{itemize}
 \item CFG is the starting point for most
@@ -493,17 +470,33 @@ extension of CFG.
 \item Can we deal with them with a CFG?
 \end{itemize}
 
+\myslide{Of course, but it gets messy}
+
+\begin{itemize}
+\item S \into Vi 
+\item S \into Vt NP
+\item Vi: arrive, eat, \ldots
+\item Vt: devour, eat, \ldots
+\end{itemize}
+
+
+
 \section{Morphology}
 
 \myslide{Basic Concepts of Morphology: Morphological Models}
 \begin{itemize}
-\item \txx{Item-and-Arrangement (IA)}: list morphemes + specify their linear arrangement.
-  \\ \eng{spiral + -ize + -er}. 
-\item \txx{Item-and-Process (IP)}: items undergo processes/rules
-  \\ (\eng{make-verb}, \eng{instrument-noun}). 
-\item \txx{Word-and-Paradigm (WP)}: words as \txx{word-forms} in \txx{paradigms};
-  \\ realizational rules fill paradigm slots. 
+\item Morpheme-based (\txx{Item-and-Arrangement (IA)}): \\ list morphemes + specify their linear arrangement.
+  --- \eng{spiral + -ize + -er} 
+\item Lexeme-based (\txx{Item-and-Process (IP)}): \\ stems undergo processes/rules
+  --- \texttt{make-verb()}, \texttt{instrument-noun()}. 
+\item Word-based morphology (\txx{Word-and-Paradigm (WP)}): \\ words as \txx{word-forms} in \txx{paradigms};
+  --- realizational rules fill paradigm slots. 
 \item Each model fits different language properties, \ldots
+  \begin{itemize}
+  \item Isolating Languages (like Chinese) have almost no morphology
+  \item Agglutinative Languages (like Turkish) have easily separable morphemes
+  \item Fusion languages (like Czech) nflectional morphemes are fused together
+  \end{itemize}
  \end{itemize}
 
 Based on Panocová (2021, Chapter 3), Czech examples added
@@ -545,8 +538,8 @@ Based on Panocová (2021, Chapter 3), Czech examples added
 \myslide{IP: Items Undergo Processes}
 \begin{itemize}
   \item Lexicon stores bases; morphology applies \txx{processes} to derive outputs
-  \item \eng{spiral} → \eng{spiralize} (\texttt{make-verb})
-    \\\eng{spiralize}  → \eng{spiralizer} (\texttt{instrument-noun})
+  \item \eng{spiral} → \eng{spiralize} (\texttt{make-verb(}\eng{spiral}\texttt{)}) 
+    \\\eng{spiralize}  → \eng{spiralizer} (\texttt{instrument-noun(}\eng{spiralize}\texttt{)})
   \item IA vs.\ IP: What Counts as an “Item”?
     \begin{itemize}
     \item \txx{IA}: morphemes + concatenation.
@@ -725,8 +718,8 @@ f. & vyprodá & ``(s)he will sell off''\\
 g. & vydám & ``I will hand out, give out''\\
 h. & povyprodáme & ``we will sell out gradually''\\
 i. & dáváš & ``you keep giving''\\
-j. & dopovyprodávášmi & ``you will gradually finish selling (it) out for me''\\
-k. & dopovyprodávámeti & ``we will gradually finish selling (it) out for you''\\
+j. & dopovyprodáváš\,mi & ``you will gradually finish selling (it) out for me''\\
+k. & dopovyprodáváme\,ti & ``we will gradually finish selling (it) out for you''\\
 \end{tabular}
 
 What kind of information is encoded in the morphology?

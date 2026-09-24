@@ -1,10 +1,9 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
-\input{headx.tex}
+\input{headx-new.tex}
 
 %\usepackage{times}
 \usepackage{bchart}
 %\usepackage{pgfplots}
-\avmfont{\sc}
 \begin{document}
 \header{Lecture 8}{The Passive Construction}{}
 \maketitle
@@ -103,35 +102,37 @@ cooccurrence restrictions (that is, its valence).
 \end{itemize}  
 
 \myslide{The Passive Lexical Rule}
-\begin{avm}\avml
-\[{\it d-rule}\\
-INPUT & \< {\@1} , \[{\it tv-lxm}\\
-ARG-ST & \q< \[ INDEX & $i$ \] \q>\ \ $\oplus$\ \ \@{A}\]\>\\
-OUTPUT & \< F$_{PSP}$({\@1}) , 
-\[{\it part-lxm}\\
-SYN & \[HEAD & \[ FORM &  pass \] \] \\
+\avm{[
+[\type*{d-rule}\\
+INPUT & < {\1} , [\type*{tv-lxm}\\
+ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
+OUTPUT & < F$_{PSP}$({\1}) , 
+[\type*{part-lxm}\\
+SYN & [HEAD & [ FORM &  pass ] ] \\
 % PRED &  +
-ARG-ST &  \@{A}\ \ 
-$\oplus$\ \ \< \(\avml\hfil PP\\[-1ex]
-\[ FORM & by\\
-INDEX & $i$\]\avmr \) \> \] \>\]\avmr\end{avm}
+ARG-ST &  \tag{A}\ \ 
+$\oplus$\ \ < ([\hfil PP\\[-1ex]
+[ FORM & by\\
+INDEX & $i$]] ) > ] >]]
+}
 
 
 \myslide{Questions}
 
 \begin{footnotesize}
-  \begin{avm}\avml
-    \[{\it d-rule}\\
-    INPUT & \< {\@1} , \[{\it tv-lxm}\\
-    ARG-ST & \q< \[ INDEX & $i$ \] \q>\ \ $\oplus$\ \ \@{A}\]\>\\
-    OUTPUT & \< F$_{PSP}$({\@1}) ,
-    \[{\it part-lxm}\\
-    SYN & \[HEAD & \[ FORM &  pass \] \] \\
+  \avm{[
+    [\type*{d-rule}\\
+    INPUT & < {\1} , [\type*{tv-lxm}\\
+    ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
+    OUTPUT & < F$_{PSP}$({\1}) ,
+    [\type*{part-lxm}\\
+    SYN & [HEAD & [ FORM &  pass ] ] \\
     % PRED & +
-    ARG-ST & \@{A}\ \
-    $\oplus$\ \ \< \(\avml\hfil PP\\[-1ex]
-    \[ FORM & by\\
-    INDEX & $i$\]\avmr \) \> \] \>\]\avmr\end{avm}
+    ARG-ST & \tag{A}\ \
+    $\oplus$\ \ < ([\hfil PP\\[-1ex]
+    [ FORM & by\\
+    INDEX & $i$]] ) > ] >]]
+}
 \end{footnotesize}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
 \item Why is the morphological function F$_{PSP}$?
@@ -143,18 +144,19 @@ INDEX & $i$\]\avmr \) \> \] \>\]\avmr\end{avm}
 \myslide{More Questions}
 
 \begin{footnotesize}
-  \begin{avm}\avml
-    \[{\it d-rule}\\
-    INPUT & \< {\@1} , \[{\it tv-lxm}\\
-    ARG-ST & \q< \[ INDEX & $i$ \] \q>\ \ $\oplus$\ \ \@{A}\]\>\\
-    OUTPUT & \< F$_{PSP}$({\@1}) ,
-    \[{\it part-lxm}\\
-    SYN & \[HEAD & \[ FORM &  pass \] \] \\
+  \avm{[
+    [\type*{d-rule}\\
+    INPUT & < {\1} , [\type*{tv-lxm}\\
+    ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
+    OUTPUT & < F$_{PSP}$({\1}) ,
+    [\type*{part-lxm}\\
+    SYN & [HEAD & [ FORM &  pass ] ] \\
     % PRED & +
-    ARG-ST & \@{A}\ \
-    $\oplus$\ \ \< \(\avml\hfil PP\\[-1ex]
-    \[ FORM & by\\
-    INDEX & $i$\]\avmr \) \> \] \>\]\avmr\end{avm}
+    ARG-ST & \tag{A}\ \
+    $\oplus$\ \ < ([\hfil PP\\[-1ex]
+    [ FORM & by\\
+    INDEX & $i$]] ) > ] >]]
+}
 \end{footnotesize}
 \begin{itemize}
 \item What makes the object turn into the subject? 
@@ -197,37 +199,35 @@ We need a separate (but related) rule for this.
 \begin{tabular}{cc}
   This entry & also gets you this \\
 \begin{tiny}
-\begin{avm} 
-  \< \textnormal{love},
-  \[{\it stv-lxm}\\
-  SYN & \[HEAD & \[{\it verb}\\
-  AGR& {\@1}\]\\
-  VAL & \[SPR & \q< \[AGR\ {\@1}\]\ \q>\]\]\\
-  ARG-ST & \q< NP$_i$ , NP$_j$ \q>\\
-  SEM & \[INDEX & $s$\\
-  RESTR & \< \[RELN & {\bf love}\\
+\avm{< \textnormal{love},
+  [\type*{stv-lxm}\\
+  SYN & [HEAD & [\type*{verb}\\
+  AGR& {\1}]\\
+  VAL & [SPR & < [AGR\ {\1}]\ >]]\\
+  ARG-ST & < NP$_i$ , NP$_j$ >\\
+  SEM & [INDEX & $s$\\
+  RESTR & < [RELN & {\bf love}\\
   SIT & \ \ $s$\\
   LOVER & \ \ $i$ \\
-  LOVED & \ \ $j$ \] \>\] \]\ \>
-\end{avm} 
+  LOVED & \ \ $j$ ] >] ]\ >
+} 
 \end{tiny}
 &
 \begin{tiny}
-\begin{avm} 
-  \< \textnormal{loved}, \[{\it part-lxm}\\
-  SYN & \[HEAD & \[{\it verb}\\
-  AGR& {\@1}\\                                
-  FORM & pass\]\\
-  VAL & \[SPR & \q< \[AGR& {\@1}\]\ \q>\]\]\\
-  ARG-ST & \< NP$_j$ \( ,\ \avml\hfil PP\\[-1ex]
-  \[FORM & by\\
-  INDEX & $i$\]\avmr\ \) \>\\
-  SEM & \[INDEX & $s$\\
-  RESTR & \< \[RELN & {\bf love}\\
+\avm{< \textnormal{loved}, [\type*{part-lxm}\\
+  SYN & [HEAD & [\type*{verb}\\
+  AGR& {\1}\\                                
+  FORM & pass]\\
+  VAL & [SPR & < [AGR& {\1}]\ >]]\\
+  ARG-ST & < NP$_j$ ( ,\ [\hfil PP\\[-1ex]
+  [FORM & by\\
+  INDEX & $i$]]\ ) >\\
+  SEM & [INDEX & $s$\\
+  RESTR & < [RELN & {\bf love}\\
   SIT & \ \ $s$\\
   LOVER & \ \ $i$ \\
-  LOVED & \ \ $j$ \] \>\] \]\ \>
-\end{avm} 
+  LOVED & \ \ $j$ ] >] ]\ >
+} 
 \end{tiny}
 \end{tabular}
 
@@ -236,54 +236,51 @@ Through the magic of the Passive-Lexical rule!
 \myslide{And also this}
 
 \begin{tiny}
-   \begin{avm}      
-     \< \textnormal{loved}, 
-     \[{\it word}\\
-     SYN & \[HEAD & \[{\it verb}\\
-     AGR& {\@1}\\                                
-     FORM & pass\]\\
-     VAL & \[SPR & \q< {\@2}[AGR\ {\@1}{\,}] \q>\\
-     COMPS & {\@{B}}\]\]\\
-     ARG-ST & \< {\@2}NP$_j$ \>\ $\oplus$\ {\@{B}} \< \( ,\ \avml\hfil PP\\[-1ex]
-     \[FORM & by\\
-     INDEX & $i$\]\avmr\ \) \>\\
-     SEM & \[INDEX & $s$\\
-     RESTR & \< \[RELN & {\bf love}\\
+   \avm{< \textnormal{loved}, 
+     [\type*{word}\\
+     SYN & [HEAD & [\type*{verb}\\
+     AGR& {\1}\\                                
+     FORM & pass]\\
+     VAL & [SPR & < {\2}[AGR\ {\1}{\,}] >\\
+     COMPS & {\tag{B}}]]\\
+     ARG-ST & < {\2}NP$_j$ >\ $\oplus$\ {\tag{B}} < ( ,\ [\hfil PP\\[-1ex]
+     [FORM & by\\
+     INDEX & $i$]]\ ) >\\
+     SEM & [INDEX & $s$\\
+     RESTR & < [RELN & {\bf love}\\
      SIT & \ \ $s$\\
      LOVER & \ \ $i$ \\
-     LOVED & \ \ $j$ \] \>\] \]\ \>
-   \end{avm} 
+     LOVED & \ \ $j$ ] >] ]\ >
+} 
 \end{tiny}
 
 Through the magic of the Constant Lexeme Lexical Rule!
 
 \myslide{The \lex{be} that Occurs with Most Passives}
 
-\begin{avm}
-  \< \textnormal{be},\ \[{\it be-lxm}\\
-  ARG-ST & \< {\@1} , \avml\[SYN & \[HEAD & \[{\it verb}\\
-  FORM \ pass \]\\
-  VAL & \[SPR & \q< {\@1} \q>\\
-  COMPS & \el \]\]\\
-  SEM & \[INDEX & $s$ \ \]\]\avmr \> \\ %{\@3}
-  SEM & \[INDEX & \ $s$\\ %{\@3}\\
-  RESTR & {\el} \] \] \>
-\end{avm}
+\avm{< \textnormal{be},\ [\type*{be-lxm}\\
+  ARG-ST & < {\1} , [[SYN & [HEAD & [\type*{verb}\\
+  FORM \ pass ]\\
+  VAL & [SPR & < {\1} >\\
+  COMPS & < > ]]\\
+  SEM & [INDEX & $s$ \ ]]] > \\ %{\3}
+  SEM & [INDEX & \ $s$\\ %{\3}\\
+  RESTR & {< >} ] ] >
+}
 
 
 \myslide{Questions About the Entry for \lex{be}}
 
 \begin{tiny}
-  \begin{avm}
-  \< \textnormal{be},\ \[{\it be-lxm}\\
-  ARG-ST & \< {\@1} , \avml\[SYN & \[HEAD & \[{\it verb}\\
-  FORM \ pass \]\\
-  VAL & \[SPR & \q< {\@1} \q>\\
-  COMPS & \el \]\]\\
-  SEM & \[INDEX & $s$ \ \]\]\avmr \> \\ %{\@3}
-  SEM & \[INDEX & \ $s$\\ %{\@3}\\
-  RESTR & {\el} \] \] \>
-\end{avm}
+  \avm{< \textnormal{be},\ [\type*{be-lxm}\\
+  ARG-ST & < {\1} , [[SYN & [HEAD & [\type*{verb}\\
+  FORM \ pass ]\\
+  VAL & [SPR & < {\1} >\\
+  COMPS & < > ]]\\
+  SEM & [INDEX & $s$ \ ]]] > \\ %{\3}
+  SEM & [INDEX & \ $s$\\ %{\3}\\
+  RESTR & {< >} ] ] >
+}
 \end{tiny}
 
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -296,17 +293,14 @@ argument’s SPR value?
 \end{itemize}
 
 \myslide{Passive tree}
-\begin{tree}
-  \br{S}{
-    \br{\avmbox{1}NP}{Kim}
-    \br{VP\makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}}{
-      \br{V\tiny \makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}}{is}
-      \br{VP\makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}}{
-        \br{V}{loved}
-        \br{PP}{
-          \br{P}{by}
-          \br{NP}{everyone}}}}}
-\end{tree}
+\begin{forest}
+cat
+[{S} [{\avmbox{1}NP}]
+[{VP\makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{V\tiny \makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}}]
+[{VP\makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{V}]
+[{PP} [{P}]
+[{NP}]]]]]
+\end{forest}
 
 \begin{itemize}
 \item Which rule licenses each node?

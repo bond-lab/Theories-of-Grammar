@@ -6,7 +6,7 @@
 %%
 %% FIXME: not all of the features are smallcaps :-(
 %%
-\input{headx.tex}
+\input{headx-new.tex}
 \usepackage{forest}
 %\avmfont{\sc}
 \begin{document}
@@ -84,12 +84,10 @@ fragment) for English
 \myslide{Feature Structure Descriptions}
 \vfill
 \begin{Large}
-  \begin{avm}
-    \[ feature$_1$ &\ \ \  value$_1$\\
-    feature$_2$ &\ \ \ value$_2$\\[-1ex]
+  \avm{[ feature$_1$ &\ \ \  value$_1$\\
+    feature$_2$ &\ \ \ value$_2$\\
     \hfil.\ .\ .\hfil\\
-    feature$_n$ &\ \ \  value$_n$\]
-  \end{avm}
+    feature$_n$ &\ \ \  value$_n$]}
 \end{Large}
 
 \bigskip
@@ -100,17 +98,16 @@ Like a dictionary in python (feature=key, value=value).
 
 \myslide{A Pizza Type Hierarchy}
 %\vspace*{-.5ex}
-\begin{avmtree}%\avmfont{\sc}
-\br{\val{pizza-thing}}{
-    \br{\[ \asort{pizza} 
+\begin{forest}
+cat
+[{\val{pizza-thing}} [{\avm{[\type*{pizza} 
       crust & \{ \normalfont thick, thin, stuffed \}
-     \\ toppings & topping-set \]}{ }
-    \br{ \[ \asort{topping-set} olives & \{ +, -\} 
-      \\ onions & \{ +, -\} \\ mushrooms& \{ +, -\}  \]}{
-       \br{\val{vegetarian} }{ }
-       \br{\[ \asort{non-vegetarian} sausage & \{ +, -\} 
-         \\ pepperoni & \{ +, -\} \\ ham & \{ +, -\} \]}{}}}
-\end{avmtree}
+     \\ toppings & topping-set ]}}]
+[{\avm{[\type*{topping-set} olives & \{ +, -\} 
+      \\ onions & \{ +, -\} \\ mushrooms& \{ +, -\}  ]}} [{\val{vegetarian}}]
+[{\avm{[\type*{non-vegetarian} sausage & \{ +, -\} 
+         \\ pepperoni & \{ +, -\} \\ ham & \{ +, -\} ]}}]]]
+\end{forest}
 \vspace*{-2.5ex}
 
 \myslide{Types}
@@ -118,21 +115,20 @@ Like a dictionary in python (feature=key, value=value).
 \begin{tabular}{lll}
   Type & Features/Values & IST \\ \hline
   \smaller[2]\it pizza-thing & & NONE\\
-  \smaller[2]\it  pizza & {\small  \begin{avm}%\avmfont{\sc}
-    \[ crust & \{ \normalfont thick, thin, stuffed\}
-    \\ toppings & \it topping-set \]
-  \end{avm}}   & \smaller[2]\it  pizza-thing \\
-  \smaller[2]\it topping-set &{\small  \begin{avm}%\avmfont{\sc}
-      \[  olives & \{ +, -\} 
-    \\ onions & \{ +, -\} \\ mushrooms& \{ +, -\}  \]
- \end{avm}}   & \smaller[2]\it pizza-thing \\
+  \smaller[2]\it  pizza & {\small  \avm{%
+    [ crust & \{ \normalfont thick, thin, stuffed\}
+    \\ toppings & \it topping-set ]}}   & \smaller[2]\it  pizza-thing \\
+  \smaller[2]\it topping-set &{\small  \avm{%
+      [  olives & \{ +, -\} 
+    \\ onions & \{ +, -\} \\ mushrooms& \{ +, -\}  ]}}   & \smaller[2]\it pizza-thing \\
   \smaller[2]\it vegetarian &  & \smaller[2]\it topping-set \\
- \smaller[2]\it non-vegetarian &{\small  \begin{avm}%%%\avmfont{\sc}
-     \[ sausage & \{ +, -\}  \\ pepperoni & \{ +, -\} 
-     \\ ham & \{ +, -\} \]
- \end{avm}}   & \smaller[2]\it topping-set \\
+ \smaller[2]\it non-vegetarian &{\small  \avm{%%%
+     [ sausage & \{ +, -\}  \\ pepperoni & \{ +, -\} 
+     \\ ham & \{ +, -\} ]}}   & \smaller[2]\it topping-set \\
 
 \end{tabular}
+
+\txx{IST}: Immediate Super Type
 
 \myslide{Type Hierarchies}
 
@@ -151,12 +147,11 @@ has (the feature and feature value declarations).
 \myslide{Pizza Descriptions and Pizza Models}
 
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thick \\
     toppings &
-    \[ \asort{vegetarian} olives & + \\ onions & + \] \]
-  \end{avm}
+    [\type*{vegetarian} olives & + \\ onions & + ] ]}
 \end{center}
 How many pizza models (by definition, fully resolved) satisfy this description?
 
@@ -165,28 +160,25 @@ How many pizza models (by definition, fully resolved) satisfy this description?
 
 
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-  \[ \asort{pizza}
+  \avm{%
+  [\type*{pizza}
   crust & thick \\
   toppings &
-  \[ \asort{vegetarian} olives & + \\ onions & + \\ mushrooms& $-$ \] \]
-\end{avm}
-\begin{avm}%\avmfont{\sc}
-  \[ \asort{pizza}
+  [\type*{vegetarian} olives & + \\ onions & + \\ mushrooms& $-$ ] ]}
+\avm{%
+  [\type*{pizza}
   crust & thick \\
   toppings &
-  \[ \asort{vegetarian} olives & + \\ onions & + \\ mushrooms & + \] \]
-\end{avm}
+  [\type*{vegetarian} olives & + \\ onions & + \\ mushrooms & + ] ]}
 
 \end{center}
 \myslide{Pizza Descriptions and Pizza Models}
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thick \\
     toppings &
-    \[ \asort{vegetarian} olives & + \\ onions & + \] \]
-  \end{avm}
+    [\type*{vegetarian} olives & + \\ onions & + ] ]}
 \end{center}
 \begin{itemize}
 \item How many pizzas-in-the-world do the pizza
@@ -198,16 +190,15 @@ models correspond to?
 \myslide{Combining Constraints}
 
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thick \\
     toppings &
-    \[ olives & + \\ ham & $-$ \] \]
+    [ olives & + \\ ham & $-$ ] ]
     \& 
-   \[ \asort{pizza}
+   [\type*{pizza}
     toppings &
-    \[ olives & + \\ onions & + \] \]
-  \end{avm} 
+    [ olives & + \\ onions & + ] ]} 
 \end{center}
 
 Unification is also written as: $\sqcap$.
@@ -215,29 +206,27 @@ Unification is also written as: $\sqcap$.
 \myslide{Combining Constraints}
 
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thick \\
     toppings &
-    \[ olives & + \\ ham & $-$ \\ onions & + \] \]
-  \end{avm}
+    [ olives & + \\ ham & $-$ \\ onions & + ] ]}
 \end{center}
 
 
 
 \myslide{Combining Constraints}
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thick \\
     toppings &
-    \[ olives & + \\ ham & $-$ \] \]
+    [ olives & + \\ ham & $-$ ] ]
     \& 
-   \[ \asort{pizza}
+   [\type*{pizza}
    crust & thin \\
     toppings &
-    \[ olives & + \\ onions & + \] \]
-  \end{avm} 
+    [ olives & + \\ onions & + ] ]} 
 \begin{huge}
 \\[2ex]   = $\varphi$
 \end{huge}
@@ -249,123 +238,113 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
 
 \myslide{Combining Constraints}
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thin \\
     toppings &
-    \[ olives & + \\ ham & $-$ \] \]
+    [ olives & + \\ ham & $-$ ] ]
     \& 
-   \[ \asort{pizza}
+   [\type*{pizza}
    crust & thin \\
     toppings &
-    \[ \asort{vegetarian} \] \]
-  \end{avm} 
+    [\type*{vegetarian} ] ]} 
 \begin{huge}
 \\[2ex]   = $\varphi$
 \end{huge}
 \end{center}
 
-\textit{vegetarian} has no feature \textsc{ham}.
+\textit{vegetarian} has no feature \ft{ham}!
 
 \myslide{A New Theory of Pizzas}
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & \{ \normalfont thick, thin, stuffed \} \\
     one-half & \val{topping-set} \\
-    other-half & \val{topping-set} \]
-  \end{avm}
+    other-half & \val{topping-set} ]}
 \end{center}
 
 
 \myslide{Combining Constraints}
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     one-half &
-    \[ olives & + \\ ham & $-$ \] \]
+    [ olives & + \\ ham & $-$ ] ]
     \& 
-   \[ \asort{pizza}
+   [\type*{pizza}
     other-half &
-    \[  olives & $-$ \\ 
-         ham & + \] \] 
-  \end{avm}
+    [  olives & $-$ \\ 
+         ham & + ] ]}
   \\ = 
-  \begin{avm}%\avmfont{\sc}
- \[ \asort{pizza}
+  \avm{%
+ [\type*{pizza}
    one-half &
-   \[ olives & + \\ ham & $-$ \] \\
+   [ olives & + \\ ham & $-$ ] \\
    other-half &
-   \[  olives & $-$ \\ ham & + \] \]
-  \end{avm} 
+   [  olives & $-$ \\ ham & + ] ]} 
 \end{center}
 
 
 \myslide{Identity Constraints (tags)}
 \begin{center}
-   \begin{avm}%\avmfont{\sc}
- \[ \asort{pizza}
+   \avm{%
+ [\type*{pizza}
    one-half &
-   \[ olives & \@1 \\ ham & \@2 \] \\
+   [ olives & \1 \\ ham & \2 ] \\
    other-half &
-   \[  olives & \@1 \\ ham & \@2 \] \]
-  \end{avm} 
+   [  olives & \1 \\ ham & \2 ] ]} 
 \end{center}
 
 \myslide{Combining Constraints}
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     one-half &
-    \@1 \[ olives & + \\ ham & $-$ \]
-    \\   other-half & \@1 \]
+    \1 [ olives & + \\ ham & $-$ ]
+    \\   other-half & \1 ]
     \& 
-   \[ \asort{pizza}
+   [\type*{pizza}
     other-half &
-    \[  olives & + \\ mushroom & + \] \] 
-  \end{avm}
+    [  olives & + \\ mushroom & + ] ]}
   \\ = 
-  \begin{avm}%\avmfont{\sc}
- \[ \asort{pizza}
+  \avm{%
+ [\type*{pizza}
    one-half &
-    \@1 \[ olives & + \\ ham & $-$ \\ mushroom & + \] \\
-   other-half & \@1 \]
- \end{avm} 
+    \1 [ olives & + \\ ham & $-$ \\ mushroom & + ] \\
+   other-half & \1 ]} 
 \end{center}
 
 
 \myslide{Note}
 \begin{center}
- \begin{avm}%\avmfont{\sc}
- \[ \asort{pizza}
+ \avm{%
+ [\type*{pizza}
    one-half &
-    \@1 \[ olives & + \\ ham & $-$ \\ mushroom & + \] \\
-   other-half & \@1 \]
- \end{avm} 
+    \1 [ olives & + \\ ham & $-$ \\ mushroom & + ] \\
+   other-half & \1 ]} 
 \\ =
-  \begin{avm}%\avmfont{\sc}
- \[ \asort{pizza}
+  \avm{%
+ [\type*{pizza}
    one-half &
-    \@1 \\
-   other-half & \@1 \[ olives & + \\ ham & $-$ \\ mushroom & + \] \]
-  \end{avm} 
+    \1 \\
+   other-half & \1 [ olives & + \\ ham & $-$ \\ mushroom & + ] ]} 
 \end{center}
 
 \myslide{Combining Constraints}
 
 \begin{center}
-  \begin{avm}%\avmfont{\sc}
-    \[ \asort{pizza}
+  \avm{%
+    [\type*{pizza}
     crust & thick \\
     one-half &
-    \@1 \[ olives & + \\ onion & $-$ \] 
-    \\ other-half & \@1  \textit{vegetarian} \]
+    \1 [ olives & + \\ onion & $-$ ] 
+    \\ other-half & \1  \textit{vegetarian} ]
     \& 
-   \[ \asort{pizza}
+   [\type*{pizza}
    crust & thin \\
     one-half &
-    \[ olives & + \\ pepperoni & + \] \]
-  \end{avm} 
+    [ olives & + \\ pepperoni & + ] ]} 
 \begin{huge}
 \\[2ex]   = $\varphi$
 \end{huge}
@@ -400,41 +379,38 @@ Making the Mnemonic Meaningful
 
 
 \begin{center}
-  \begin{tree}\renewcommand{\lf}[1]{\br{#1}{}}
-\it
-\br{feat-struc}{ \br{expression}{\lf{word}
-				       	\lf{phrase}}
-			\br{pos}{\lf{noun}
-				 \lf{verb}
-				 \lf{det}
-				 \lf{prep}
-				 \lf{adj}
-				 \lf{conj}}}
-\end{tree}
+  \begin{forest}
+cat, for tree={font=\itshape}
+[{feat-struc} [{expression} [{word}]
+[{phrase}]]
+[{pos} [{noun}]
+[{verb}]
+[{det}]
+[{prep}]
+[{adj}]
+[{conj}]]]
+\end{forest}
 \end{center}
+\vspace*{5ex}
 
   \begin{tabular}{lclc}
-NP &  \begin{avm}%\avmfont{\sc}
-\[ \asort{phrase}
-   head & {\it noun} \]
-\end{avm} 
+NP &  \avm{%
+[\type*{phrase}
+   head & \type{noun} ]} 
 & VP & 
-  \begin{avm}%\avmfont{\sc}
-\[ \asort{phrase}
-   head & {\it verb} \]
-\end{avm} \\
+  \avm{%
+[\type*{phrase}
+   head & \type{verb} ]} \\
 N &
     \label{bird-ex}
-\begin{avm}%\avmfont{\sc}
-\< fly , \ \[ \asort{word}
-               head & {\it noun} \]\>
-\end{avm}
+\avm{%
+< fly , \ [\type*{word}
+               head & \type{noun} ]>}
 & V &
     \label{bird-ex}
-\begin{avm}%\avmfont{\sc}
-\< fly , \ \[ \asort{word}
-               head & {\it verb} \]\>
-\end{avm}
+\avm{%
+< fly , \ [\type*{word}
+               head & \type{verb} ]>}
   \end{tabular}
 
 
@@ -443,17 +419,17 @@ N &
 \myslide{Type Hierarchy for Parts of Speech II}
 
 \begin{center}
-  \begin{avmtree}\renewcommand{\lf}[1]{\br{#1}{}}%%\avmfont{\sc}
-\it
-\br{feat-struc}{ \br{ expression  \[ \textsc{head} \] }{\lf{word}
-                                  \lf{phrase}}
-			\br{pos}{\br{agr-pos \[ \textsc{agr} \] }{ \lf{noun}
-                            \lf{verb \[ \textsc{aux} \]}
-				 \lf{det}}
-				 \lf{prep}
-				 \lf{adj}
-				 \lf{conj}}}
-\end{avmtree}
+  \begin{forest}
+cat, for tree={font=\itshape}
+[{feat-struc} [{expression  \avm{[ \textsc{head} ]}} [{word}]
+[{phrase}]]
+[{pos} [{agr-pos \avm{[ \textsc{agr} ]}} [{noun}]
+[{verb \avm{[ \textsc{aux} ]}}]
+[{det}]]
+[{prep}]
+[{adj}]
+[{conj}]]]
+\end{forest}
 \end{center}
 
 
@@ -461,31 +437,28 @@ N &
 
 We need more information to make words agree.
 
-\begin{avm}%\avmfont{\sc}
-\< \textnormal{fly}, \ \[ \asort{word}
-               head & {\it noun} \[ \asort{agr-cat} agr 
-               & \[ per & 3 \\ num & sg \] \] \]\>
-\end{avm}
+\avm{%
+< \textnormal{fly}, \ [\type*{word}
+               head & \type{noun} [\type*{agr-cat} agr 
+               & [ per & 3 \\ num & sg ] ] ]>}
 
-\begin{avm}%\avmfont{\sc}
-\< \textnormal{flies}, \ \[ \asort{word}
-               head & {\it verb}
-               \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-               \]\>
-\end{avm}
+\avm{%
+< \textnormal{flies}, \ [\type*{word}
+               head & \type{verb}
+               [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+               ]>}
 
 \myslide{Agreement (S  $\rightarrow$  NP VP)}
 
-\begin{avm} %\avmfont{\sc}
-\[{\it phrase}\\
-  head & {\@1}{\it verb}\\
-  val & \[ comps & itr\\
-           spr & $+$\]\] \ $\rightarrow$\ \ \avml\hfil NP\\[-1ex]
-                              \[ head \ \[agr & {\@2}\]\]\avmr \ \ \[{\it phrase}\\
-                                        head & {\@1}\[agr & {\@2}\]\\
-                                        val & \[ comps & itr\\
-                                                 spr & $-$\]\]
-\end{avm}
+\avm{%
+[\type*{phrase}\\
+  head & {\1}\type{verb}\\
+  val & [ comps & itr\\
+           spr & $+$]] \ $\rightarrow$\ \ [\hfil NP\\[-1ex]
+                              [ head \ [agr & {\2}]]] \ \ [\type*{phrase}\\
+                                        head & {\1}[agr & {\2}]\\
+                                        val & [ comps & itr\\
+                                                 spr & $-$]]}
 
 The values on \ft{agr} for the subject NP and verb phrase must be identical.
 
@@ -493,24 +466,21 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 \myslide{A Simple Feature for Valence}
 
 \begin{tabular}[t]{cc}
-\begin{avm}%\avmfont{\sc}
-  iv =  \[{\it word}\\
-  head & {\it verb}\\
-  val & \[ {\it val-cat}\\
-  comps & itr\]\]
-\end{avm} &
-\begin{avm}%\avmfont{\sc}
-  tv  =  \[{\it word}\\
-  head & {\it verb}\\
-  val & \[ {\it val-cat}\\
-  comps & str \]\]
-\end{avm}\\
-\begin{avm}%\avmfont{\sc}
-  dtv =  \[{\it word}\\
-  head & {\it verb}\\
-  val & \[ {\it val-cat}\\
-  comps & dtr \]\]
-\end{avm}
+\avm{%
+  iv =  [\type*{word}\\
+  head & \type{verb}\\
+  val & [\type*{val-cat}\\
+  comps & itr]]} &
+\avm{%
+  tv  =  [\type*{word}\\
+  head & \type{verb}\\
+  val & [\type*{val-cat}\\
+  comps & str ]]}\\
+\avm{%
+  dtv =  [\type*{word}\\
+  head & \type{verb}\\
+  val & [\type*{val-cat}\\
+  comps & dtr ]]}
 \end{tabular}
 
 \ft{comps} controls how many \txx{complements} are possible.
@@ -518,68 +488,60 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 
 \myslide {Head-Complement Rules}
 \begin{small}
-1 \begin{avm}%\avmfont{\sc} 
-\[{\it phrase}\\
-  head & {\@1} \\
-  val & \[ comps & itr\\
-           spr & $-$\]\] \ $\rightarrow$\ \ \[{\it word}\\
-                                               head & {\@1}\\
-                                               val & \[ comps & itr\\
-                                                        spr & $-$\]\]
-\end{avm}
+1 \avm{% 
+[\type*{phrase}\\
+  head & {\1} \\
+  val & [ comps & itr\\
+           spr & $-$]] \ $\rightarrow$\ \ [\type*{word}\\
+                                               head & {\1}\\
+                                               val & [ comps & itr\\
+                                                        spr & $-$]]}
 
-2 \begin{avm}%\avmfont{\sc} 
-\[{\it phrase}\\
-  head & {\@1}\\
-  val & \[ comps & itr\\
-           spr & $-$ \]\] \ $\rightarrow$\ \ \[{\it word}\\
-                                               head & {\@1}\\
-                                               val & \[ comps & str\\
-                                                        spr & $-$\]\]\ \ NP
-\end{avm}
+2 \avm{% 
+[\type*{phrase}\\
+  head & {\1}\\
+  val & [ comps & itr\\
+           spr & $-$ ]] \ $\rightarrow$\ \ [\type*{word}\\
+                                               head & {\1}\\
+                                               val & [ comps & str\\
+                                                        spr & $-$]]\ \ NP}
 
-3 \begin{avm}%\avmfont{\sc}
-\[{\it phrase}\\
-  head & {\@1}\\
-  val & \[ comps & itr\\
-           spr & $-$ \]\] \ $\rightarrow$\ \ \[{\it word}\\
-                                               head & {\@1}\\
-                                               val & \[ comps & dtr\\
-                                                        spr & $-$\]\]\ \ NP\ \ NP
-\end{avm}
+3 \avm{%
+[\type*{phrase}\\
+  head & {\1}\\
+  val & [ comps & itr\\
+           spr & $-$ ]] \ $\rightarrow$\ \ [\type*{word}\\
+                                               head & {\1}\\
+                                               val & [ comps & dtr\\
+                                                        spr & $-$]]\ \ NP\ \ NP}
 \end{small}
 
 \myslide{Underspecification}
 
-\begin{avm}%\avmfont{\sc}
- V \ = \ \[{\it word}\\
-              head & {\it verb}\]
-            \end{avm}
+\avm{%
+ V \ = \ [\type*{word}\\
+              head & \type{verb}]}
 
-\begin{avm}%\avmfont{\sc} 
-            VP \ = \ \[{\it phrase}\\
-              head & {\it verb}\]
-            \end{avm}
+\avm{% 
+            VP \ = \ [\type*{phrase}\\
+              head & \type{verb}]}
 
-\begin{avm}%\avmfont{\sc}
- \[ head & {\it verb}\]
-\end{avm} 
+\avm{%
+ [ head & \type{verb}]} 
 
 
 \myslide{Another Valence Feature}
 \begin{tabular}[t]{cc}
-\begin{avm} \ \ \ \ NP  =  \ \[{\it phrase}\\
-                              head & {\it noun} \\
-			      val & \[ {\it val-cat}\\
+\avm{\ \ \ \ NP  =  \ [\type*{phrase}\\
+                              head & \type{noun} \\
+			      val & [\type*{val-cat}\\
 				       comps & itr\\
-				       spr & $+$\]\]
-\end{avm}&
-\begin{avm} NOM =  \ \[{\it phrase}\\
-                head & {\it noun} \\
-		val & \[ {\it val-cat}\\
+				       spr & $+$]]}&
+\avm{NOM =  \ [\type*{phrase}\\
+                head & \type{noun} \\
+		val & [\type*{val-cat}\\
 			 comps & itr\\
-                         spr & $-$\]\]
-\end{avm}
+                         spr & $-$]]}
 \end{tabular}
 
 
@@ -588,27 +550,23 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 \myslide{spr and Verbs}
 
 \begin{tabular}[t]{cc}
-\begin{avm} \hskip 11pt\ \ \ S  =  \ \[{\it phrase}\\
-                                       head & {\it verb} \\
-				       val & \[{\it val-cat}\\
+\avm{\hskip 11pt\ \ \ S  =  \ [\type*{phrase}\\
+                                       head & \type{verb} \\
+				       val & [\type*{val-cat}\\
 					       comps & itr\\
-					       spr & $+$\]\]
-\end{avm}&
-\begin{avm}\ \ VP =  \ \[{\it phrase}\\
-                head & {\it verb} \\  
-	        val & \[ {\it val-cat}\\
+					       spr & $+$]]}&
+\avm{\ \ VP =  \ [\type*{phrase}\\
+                head & \type{verb} \\  
+	        val & [\type*{val-cat}\\
 			 comps & itr\\
-                         spr & $-$\]\]
-\end{avm}
+                         spr & $-$]]}
 \end{tabular}
 
 \myslide{S and NP}
 
-\begin{avm}
-\[ val & \[ {\it val-cat}\\
+\avm{[ val & [\type*{val-cat}\\
 	    comps & itr\\
-            spr & $+$ \]\]
-\end{avm}
+            spr & $+$ ]]}
 
 \begin{itemize}
 \item both are fully saturated: specified and no more complements
@@ -620,21 +578,20 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 
 \myslide{Type Hierarchy So Far}
 
-\begin{center}
-  \begin{avmtree}\renewcommand{\lf}[1]{\br{#1}{}}%\avmfont{\sc}
-\it
-\br{feat-struc}{ \br{ expression  \[ \textsc{head, val} \] }{\lf{word}
-                                  \lf{phrase}}
-			\br{pos}{\br{agr-pos \[ \textsc{agr} \] }{ \lf{noun}
-                            \lf{verb \[ \textsc{aux} \]}
-				 \lf{det}}
-				 \lf{prep}
-				 \lf{adj}
-				 \lf{conj}}
-                     \br{val-cat \[ \textsc{spr, comps} \] }{ }
-                     \br{agr-cat \[ \textsc{per, num} \] }{ } 
-                             }
-\end{avmtree}
+\begin{center}\small
+  \begin{forest}
+cat, for tree={font=\itshape}
+[{feat-struc} [{expression  \avm{[ \textsc{head, val} ]}} [{word}]
+[{phrase}]]
+[{pos} [{agr-pos \avm{[ \textsc{agr} ]}} [{noun}]
+[{verb \avm{[ \textsc{aux} ]}}]
+[{det}]]
+[{prep}]
+[{adj}]
+[{conj}]]
+[{val-cat \avm{[ \textsc{spr, comps} ]}}]
+[{agr-cat \avm{[ \textsc{per, num} ]}}]]
+\end{forest}
 \end{center}
 
 
@@ -706,33 +663,27 @@ Which simple phrase structure rules (Ch 2) do these correspond to?
 \begin{itemize}
 \item  Head-Complement Rule 1:
 
-\begin{avm} 
-\[{\it phrase}\\
-  val & \[ comps & itr\\
-           spr & $-$\]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
-                                               val & \[ comps & itr\\
-                                                        spr & $-$\]\]
-\end{avm}
+\avm{[\type*{phrase}\\
+  val & [ comps & itr\\
+           spr & $-$]] \ $\rightarrow$\ \HD \ [\type*{word}\\
+                                               val & [ comps & itr\\
+                                                        spr & $-$]]}
 \item  Head-Complement Rule 2:
 
-\begin{avm} 
-\[{\it phrase}\\
-  val & \[ comps & itr\\
-           spr & $-$ \]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
-                                               val & \[ comps & str\\
-                                                        spr & $-$\]\]\ \ NP
-\end{avm}
+\avm{[\type*{phrase}\\
+  val & [ comps & itr\\
+           spr & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
+                                               val & [ comps & str\\
+                                                        spr & $-$]]\ \ NP}
 \newpage
 \item  Head-Complement Rule 3:
 
-\begin{avm} 
-\[{\it phrase}\\
-  val & \[ comps & itr\\
-           spr & $-$ \]\] \ $\rightarrow$\ \HD \ \[{\it word}\\
-                                               head & {\@1}\\
-                                               val & \[ comps & dtr\\
-                                                        spr & $-$\]\]\ \ NP\ \ NP
-\end{avm}
+\avm{[\type*{phrase}\\
+  val & [ comps & itr\\
+           spr & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
+                                               head & {\1}\\
+                                               val & [ comps & dtr\\
+                                                        spr & $-$]]\ \ NP\ \ NP}
 \end{itemize}
 
 \myslide{Reformulating the Grammar Rules II}
@@ -741,51 +692,49 @@ Which simple phrase structure rules (Ch 2) do these correspond to?
 \begin{itemize}
 \item Head-Specifier Rule 1:
 
-\begin{avm} \[{\it phrase}\\
-val & \[ comps & itr\\
-         spr & $+$\]\] \ $\rightarrow$\ \ \avml\hfil NP\\
-\[head \ \[agr \ {\@1}\]\]\avmr\ \ \ {\HD}\[{\it phrase}\\
-                                        head & \[{\it verb}\\
-agr & {\@1}\]\\
-                                        val & \[ spr & $-$\]\]\end{avm}
+\avm{[\type*{phrase}\\
+val & [ comps & itr\\
+         spr & $+$]] \ $\rightarrow$\ \ [\hfil NP\\
+[head \ [agr \ {\1}]]]\ \ \ {\HD}[\type*{phrase}\\
+                                        head & [\type*{verb}\\
+agr & {\1}]\\
+                                        val & [ spr & $-$]]}
 \item Head-Specifier Rule 2:
 
-\begin{avm} \[{\it phrase}\\
-val & \[ comps & itr\\
-         spr & $+$\]\] \ $\rightarrow$\ \ D \ \ {\HD}\[{\it phrase}\\
-                                        head & {\it noun}\\
-                                        val & \[ spr & $-$\]\]
-\end{avm}
+\avm{[\type*{phrase}\\
+val & [ comps & itr\\
+         spr & $+$]] \ $\rightarrow$\ \ D \ \ {\HD}[\type*{phrase}\\
+                                        head & \type{noun}\\
+                                        val & [ spr & $-$]]}
 \end{itemize}
 
 \myslide{Reformulating the Grammar Rules III}
 \begin{itemize}
 \item Non-Branching NP Rule
 
-\begin{avm} \[{\it phrase}\\
-%head & {\it noun}\\
-val & \[ comps & itr\\
-         spr & $+$\]\] \ $\rightarrow$\ \ {\HD}\[{\it word}\\
-                                     head & {\it noun}\\
-                                     val & \[ spr & $+$\]\]\end{avm}
+\avm{[\type*{phrase}\\
+%head & \type{noun}\\
+val & [ comps & itr\\
+         spr & $+$]] \ $\rightarrow$\ \ {\HD}[\type*{word}\\
+                                     head & \type{noun}\\
+                                     val & [ spr & $+$]]}
 
 \item Head-Modifier Rule
 
-\begin{avm}\avml \[{\it phrase}\\
-		    val & \[ comps & itr\\
-		             spr & $-$ \]\]\avmr \ 
-$\rightarrow$\ \ {\HD}\avml\[{\it phrase}\\
-			     val & \[ spr & $-$\]\]\avmr \
-                 PP
-\end{avm}
+\avm{[ [\type*{phrase}\\
+		    val & [ comps & itr\\
+		             spr & $-$ ]]] \ 
+$\rightarrow$\ \ {\HD}[[\type*{phrase}\\
+			     val & [ spr & $-$]]] \
+                 PP}
 \newpage
 \item Coordination Rule
 
-\begin{avm}\avml \[ head \@{1} \] $\rightarrow$\ \ \ %
-\[ head \@{1} \]+\ \[ {\it word}\\
- head & {\it conj} \]\  \[ head \@{1} \]\avmr
-\end{avm}
-\\ Only coordinate like things!
+\avm{[ [ head \1 ] $\rightarrow$\ \ \ %
+[ head \1 ]+\ [\type*{word}\\
+ head & \type{conj} ]\  [ head \1 ]]}
+\\[4ex]
+Only coordinate two similar things!
 \end{itemize}
 
 \myslide{Advantages of the New Formulation}
@@ -814,67 +763,56 @@ empirical work
 
 \myslide{Which rule licenses each node?}
 
-\scalebox{0.5}{\begin{avmtree}%\avmfont{\sc}
- 
-\br{\[{\it phrase}\\
-  head &\[{\it verb}\\
-  agr &\[{\it agr-cat}\\
+\scalebox{0.5}{\begin{forest}
+cat
+[{\avm{[\type*{phrase}\\
+  head &[\type*{verb}\\
+  agr &[\type*{agr-cat}\\
   per & 3rd\\ 
-  num & pl\]\]\\
-  val & \[{\it val-cat}\\
+  num & pl]]\\
+  val & [\type*{val-cat}\\
   comps & itr\\
-  spr & $+$ \]\] }{
-\br{ \[{\it phrase}\\
-                                head & \[{\it noun}\\
-                                        agr & \[{\it agr-cat}\\
+  spr & $+$ ]]}} [{\avm{[\type*{phrase}\\
+                                head & [\type*{noun}\\
+                                        agr & [\type*{agr-cat}\\
    					       per & 3rd\\
-                                                num & pl\]\]\\
- 	 		       val & \[{\it val-cat}\\
+                                                num & pl]]\\
+ 	 		       val & [\type*{val-cat}\\
  			               comps & itr\\
- 			               spr & $+$ \]\]
-} {
-\br {\[{\it word}\\
-  head &\[{\it noun}\\
-  agr & \[{\it agr-cat}\\
+ 			               spr & $+$ ]]}} [{\avm{[\type*{word}\\
+  head &[\type*{noun}\\
+  agr & [\type*{agr-cat}\\
   per & 3rd\\
-  num & pl\]\]\\
-  val & \[{\it val-cat}\\
+  num & pl]]\\
+  val & [\type*{val-cat}\\
   comps & itr\\
-  spr & $+$ \]\]
-}{\br{they}{}}
-}
-\br{\[{\it phrase}\\
-                                head &\[{\it verb}\\
-                                        agr &\[{\it agr-cat}\\
+  spr & $+$ ]]}} [{they}]]]
+[{\avm{[\type*{phrase}\\
+                                head &[\type*{verb}\\
+                                        agr &[\type*{agr-cat}\\
  					      per & 3rd\\ 
- 					      num & pl\]\]\\
- 	 		       val & \[{\it val-cat}\\
+ 					      num & pl]]\\
+ 	 		       val & [\type*{val-cat}\\
                                         comps & itr\\
-                                        spr & $-$ \]\]
-}{
-\br{\[{\it word}\\
-                             head  &\[{\it verb}\\
-                                     agr &\[{\it agr-cat}\\
+                                        spr & $-$ ]]}} [{\avm{[\type*{word}\\
+                             head  &[\type*{verb}\\
+                                     agr &[\type*{agr-cat}\\
  					   per & 3rd\\
-      				           num & pl\]\]\\
- 			    val  & \[{\it val-cat}\\
+      				           num & pl]]\\
+ 			    val  & [\type*{val-cat}\\
                                      comps & itr\\
-                                     spr  & $-$ \]\]
-}{\br{swim}{}}}
-}
-\end{avmtree}}
+                                     spr  & $-$ ]]}} [{swim}]]]]
+\end{forest}}
 \vspace*{-2ex}
 
 \myslide{In abbreviated form}
 
-\begin{avmtree}%\avmfont{\sc}
-  \br{S \newline \[ \ft{head} \@1 [ \ft{agr} \@4 
-    \[ \ft{per} & 3 \\ \ft{num} & pl \] \]}{
-    \br{NP  \[ \ft{head} \@2 \[ \ft{agr} \@4 \] \] }{
-      \br{ N  \[ \ft{head} \@2 \]} { \br{\textnormal{they}}{} }}
-    \br{VP  \[ \ft{head} \@1 \] } {
-      \br{ V  \[ \ft{head} \@1 \]} { \br{\textnormal{swim}}{ } }}}
-\end{avmtree}
+\begin{forest}
+cat
+[{S   \avm{[ \ft{head} & \1 [ \ft{agr} & \4
+    [ \ft{per} & 3 \\ \ft{num} & pl ] ] ]}} [{NP  \avm{[ \ft{head} \2 [ \ft{agr} \4 ] ]}} [{N  \avm{[ \ft{head} \2 ]}} [{\textnormal{they}}]]]
+[{VP  \avm{[ \ft{head} \1 ]}} [{V  \avm{[ \ft{head} \1 ]}} [{\textnormal{swim}}]]]]
+\end{forest}
 \vspace*{-2ex}
 \begin{flushleft}
   % HFP $\Rightarrow$ head the same for mother and daughter; \\
@@ -888,13 +826,12 @@ Since the lexical entry for swim below has only [NUM pl] as
 the value of \ft{agr}, how did the tree on the previous slide get
 [PER 3rd] in the \ft{agr} of swim?
 
-\begin{avm}%\avmfont{\sc}
-\< \textnormal{swim}, \ 
-\[ \asort{word} 
-  head & \[ \asort{verb}  agr &   \[  num & pl \] \] \\
-            val &  \[ \asort{val-cat}  comps & itr \\ spr & $-$ \] \] 
- \>
-\end{avm}
+\avm{%
+< \textnormal{swim}, \ 
+[\type*{word} 
+  head & [\type*{verb}  agr &   [  num & pl ] ] \\
+            val &  [\type*{val-cat}  comps & itr \\ spr & $-$ ] ] 
+ >}
 
 
 \myslide{Overview}

@@ -1,10 +1,8 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 
-\input{headx.tex}
+\input{headx-new.tex}
 
-\avmfont{\sc}
 \begin{document}
-\avmfont{\it}
 
 \header{Lecture 5}{Binding Theory}{}
 \maketitle
@@ -54,11 +52,10 @@ generalizations.
 \item Type hierarchy (very preliminary, so far)
 \item Initial symbol (S, for now) \\[2ex]
   \begin{small}
-   \begin{avm}\avmfont{\sc}
-    S =  \[ head & \textit{verb}\\
-    val & \[ spr & \<  \> \\
-    comps & \< \> \] \]
-  \end{avm}
+   \avm{S =  [ head & \textit{verb}\\
+    val & [ spr & <  > \\
+    comps & < > ] ]
+}
 \end{small}   
 
 \end{itemize}
@@ -91,9 +88,9 @@ Aspects of meaning we \emp{won’t} account for (in this course)
 or 
 \textsf{life}$'$
 or
-  \begin{avm}\avmfont{\sc}%\avmvalfont{\it}
-    \[ reln & life \\ inst & i \]
-  \end{avm}
+  \avm{%\avmvalfont{\it}
+    [ reln & life \\ inst & i ]
+}
 \item Not like wordnet: 
 \iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
 
@@ -113,20 +110,19 @@ or
 % INST i
 
 \myslide{Our Slice of a World of Meanings}
-\noindent\begin{avm}\avmfont{\sc}
-\[mode &  prop \\
+\noindent\avm{[mode &  prop \\
  index &  $s$\\
- restr & \< \[ RELN & {\bf save}\\
+ restr & < [ RELN & {\bf save}\\
                SIT & $s$\\
               SAVER &  $i$\\
-              SAVED &  $j$ \] \ , 
-              \[RELN & {\bf name}\\ 
+              SAVED &  $j$ ] \ , 
+              [RELN & {\bf name}\\ 
               NAME &  Chris\\
-              NAMED & \ $i$\]\ , 
-              \[RELN & {\bf name}\\
+              NAMED & \ $i$]\ , 
+              [RELN & {\bf name}\\
               NAME &  Pat\\
-              NAMED & \ $j$\] \> \]
-\end{avm} 
+              NAMED & \ $j$] > ]
+} 
 \begin{quote}
   “\ldots the linguistic meaning of \eng{Chris saved Pat} is a proposition
   that will be true just in case there is an actual situation that
@@ -154,17 +150,16 @@ or
 \end{itemize}
 
 \myslide{Feature Geometry}
-\begin{avm}\avmfont{\sc}
-\[\asort{expression}
-syn & \[ \asort{syn-cat}
-      head & \[ \asort{pos} ... \] \\
-      val & \[ spr & \q< ... \q> \\
-               comps & \q< ... \q> \]\]\\
-      sem & \[ \asort{sem-cat}
-      mode &  \q\{ prop, ques, dir, ref, none \q\} \\
-      index &  \q\{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \q\} \\
-      restr & \q< ... \q> \]\]
- \end{avm}
+\avm{[\type*{expression}
+syn & [\type*{syn-cat}
+      head & [\type*{pos} ... ] \\
+      val & [ spr & < ... > \\
+               comps & < ... > ]]\\
+      sem & [\type*{sem-cat}
+      mode &  \{ prop, ques, dir, ref, none \} \\
+      index &  \{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \} \\
+      restr & < ... > ]]
+}
 
 
 
@@ -172,8 +167,8 @@ syn & \[ \asort{syn-cat}
 % \begin{avm}\avmfont{\sc}
 %   \< \eng{Kim}, \[syn & \[head & \[{\it noun}\\
 %   agr & {\it 3sing}\]\\
-%   val & \[spr & {\el}\\
-%   comps & {\el}\]\]\\
+%   val & \[spr & {< >}\\
+%   comps & {< >}\]\]\\
 %   sem & \[mode & ref\\
 %   index & \ \ $i$\\
 %   restr & \< \[reln & {\bf name}\\
@@ -207,24 +202,24 @@ syn & \[ \asort{syn-cat}
 
 
 \myslide{An Example}
-\scalebox{0.8}{\begin{avmtree}\avmfont{\sc}
-  \br{S  \[ sem & \[ mode & prop \\ index & $s$\\
-      restr & \< \[reln & {\bf name}\\
+\scalebox{0.8}{\begin{forest}
+cat
+[{S  \avm{[ sem & [ mode & prop \\ index & $s$\\
+      restr & < [reln & {\bf name}\\
       name & \ \ Kim \\
-      named & \ \ $i$ \],
-      \[reln & {\bf sleep}\\
+      named & \ \ $i$ ],
+      [reln & {\bf sleep}\\
       sit & \ \ $s$\\
-      sleeper & \ \ $i$  \]  \>  \] \] }{
-    \br{\@{1} NP  \[ sem & \[ mode & ref \\ index & $i$\\
-      restr & \< \[reln & {\bf name}\\
+      sleeper & \ \ $i$  ]  >  ] ]}} [{\avm{\1} NP  \avm{[ sem & [ mode & ref \\ index & $i$\\
+      restr & < [reln & {\bf name}\\
       name & \ \ Kim \\
-     named & \ \ $i$ \] \>  \] \] }{\lf{\eng{Kim}}}
-    \br{\HD VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
-      sem & \[  mode & prop \\ index & $s$ \\ 
-      restr & \< \[reln & {\bf sleep}\\
+     named & \ \ $i$ ] >  ] ]}} [{\eng{Kim}}]]
+[{\HD VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
+      sem & [  mode & prop \\ index & $s$ \\ 
+      restr & < [reln & {\bf sleep}\\
       sit & \ \ $s$\\
-      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
-\end{avmtree}}
+      sleeper & \ \ $i$  ] > ] ]}} [{\eng{slept}}]]]
+\end{forest}}
 
 
 \myslide{How to Share Semantic Information}
@@ -348,11 +343,10 @@ rules and the ordering of elements in the
 and complements.
 \item We introduce a feature \ft{arg-st}, with the following
 property: \\
-\begin{avm}\avmfont{\sc} 
-\[ \asort{word}  
- syn & \[ val & \[ spr &  \@{A} \\comps &  \@{B} \] \] \\
- arg-st & \< \@{A} $\oplus$ \@{B} \> \]
-\end{avm}
+\avm{[\type*{word}  
+ syn & [ val & [ spr &  \tag{A} \\comps &  \tag{B} ] ] \\
+ arg-st & < \tag{A} $\oplus$ \tag{B} > ]
+}
 
 \item This is a constraint on the type \val{word}
 \end{itemize}
@@ -437,18 +431,16 @@ roles of NP referents in the situation denoted by the verb.
 \end{description}
 
 \myslide{Argument-marking preposition \eng{to}}
-\begin{avm}\avmfont{\sc}
-  \< \textit{to}, \[ syn & \[ head & prep \\
-                     val &  \[ spr \< \> \] \] \\
+\avm{< \textit{to}, [ syn & [ head & prep \\
+                     val &  [ spr < > ] ] \\
 
-                   arg-st & \< NP \[syn & \[ head & \[ case & acc \]  \]\\
-                                  sem & \[ mode & \@1 \\ index & \@2 \] \] \>  \\
-                   sem &  \[ mode & \@1 \\ index & \@2 \] \]    \>
-\end{avm}
+                   arg-st & < NP [syn & [ head & [ case & acc ]  ]\\
+                                  sem & [ mode & \1 \\ index & \2 ] ] >  \\
+                   sem &  [ mode & \1 \\ index & \2 ] ]    >
+}
 
-\begin{avm}\avmfont{\sc} 
-  \textsc{arg-st} =  \< spr $\oplus$ comps \> 
-\end{avm}
+\avm{\textsc{arg-st} =  < spr $\oplus$ comps >
+}
 
 Therfore comps here is a singleton list with the NP in it, \ldots
 
@@ -464,35 +456,29 @@ nodes.
 
 \myslide{\eng{I sent a letter to myself}}
 
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2, \@3 \q> \\ 
-             arg-st & \q< \@1, \@2, \@3 \q> \]}{
-      \lf{\eng{sent}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{letter}}}}
-    \br{\@3 PP$_i$}{
-      \br{P$_i$}{\lf{\eng{to}}}
-      \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{myself}}}}
-}}
-\end{avmtree}
+\begin{forest}
+cat
+[{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
+[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+             comps & < \2, \3 > \\ 
+             arg-st & < \1, \2, \3 > ]}} [{\eng{sent}}]]
+[{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
+[{N$_j$} [{\eng{letter}}]]]
+[{\avm{\3} PP$_i$} [{P$_i$} [{\eng{to}}]]
+[{NP$_i$ \avm{[ mode & ana ]}} [{\eng{myself}}]]]]]
+\end{forest}
 
 
 
 
 \myslide{The ARG-ST}
 \begin{center}
-  \begin{avm}\avmfont{\sc} 
-\[  arg-st & \< 
-NP$_i$ \[ mode & ref \],
-NP$_j$ \[ mode & ref \],
-PP$_i$ \[ mode & ana \]
-\> \]
-\end{avm}
+  \avm{[  arg-st & < 
+NP$_i$ [ mode & ref ],
+NP$_j$ [ mode & ref ],
+PP$_i$ [ mode & ana ]
+> ]
+}
 \end{center}
 \begin{itemize}
 \item The PP is outranked by the first NP. (Why?)
@@ -503,32 +489,26 @@ outranked by a coindexed element.
 \end{itemize}
 
 \myslide{\eng{*I sent a letter to me}}
-\begin{avmtree}\avmfont{\sc} 
-  \br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2, \@3 \q> \\ 
-             arg-st & \q< \@1, \@2, \@3 \q> \]}{
-      \lf{\eng{sent}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{letter}}}}
-    \br{\@3 PP$_i$}{
-      \br{P$_i$}{\lf{\eng{to}}}
-      \br{NP$_i$ \[ mode & ref \]}{\lf{\eng{me}}}}
-}}
-\end{avmtree}
+\begin{forest}
+cat
+[{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
+[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+             comps & < \2, \3 > \\ 
+             arg-st & < \1, \2, \3 > ]}} [{\eng{sent}}]]
+[{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
+[{N$_j$} [{\eng{letter}}]]]
+[{\avm{\3} PP$_i$} [{P$_i$} [{\eng{to}}]]
+[{NP$_i$ \avm{[ mode & ref ]}} [{\eng{me}}]]]]]
+\end{forest}
 
 \myslide{The ARG-ST}
 \begin{center}
-  \begin{avm}\avmfont{\sc} 
-\[  arg-st & \< 
-NP$_i$ \[ mode & ref \],
-NP$_j$ \[ mode & ref \],
-PP$_i$ \[ mode & ref \]
-\> \]
-\end{avm}
+  \avm{[  arg-st & < 
+NP$_i$ [ mode & ref ],
+NP$_j$ [ mode & ref ],
+PP$_i$ [ mode & ref ]
+> ]
+}
 \end{center}
 \begin{itemize}
 \item The PP is outranked by the first NP.
@@ -541,46 +521,36 @@ be outranked by a coindexed element.
 \myslide{\eng{I brought a pencil with me}}
 \MyLogo{Here \eng{I} does not outrank \eng{me}, so Principle B is satisfied}
 
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2 \q> \\ 
-             arg-st & \q< \@1, \@2 \q> \]}{
-      \lf{\eng{brought}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{pencil}}}}
-    \br{\@3 PP$_k$}{
-      \br{P$_k$ \[ comps & \q< \@1 \q> \\ 
-                   mod & \q< \@2 \q> \\
-                   arg-st & \q< \@1 \q> \] }{\lf{\eng{with}}}
-      \br{NP$_l$ \[ mode & ref \]}{\lf{\eng{me}}}}
-}}
-\end{avmtree}
+\begin{forest}
+cat
+[{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
+[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+             comps & < \2 > \\ 
+             arg-st & < \1, \2 > ]}} [{\eng{brought}}]]
+[{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
+[{N$_j$} [{\eng{pencil}}]]]
+[{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \1 > \\ 
+                   mod & < \2 > \\
+                   arg-st & < \1 > ]}} [{\eng{with}}]]
+[{NP$_l$ \avm{[ mode & ref ]}} [{\eng{me}}]]]]]
+\end{forest}
 
 \myslide{\eng{*I brought a pencil with myself}}
 \MyLogo{Here \eng{I} does not outrank \eng{myself}, so Principle A is violated}
 
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{\@1 NP$_i$}{ \lf{\eng{I}} }
-  \br{VP \[ \q< \@1 \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \\
-             comps & \q< \@2 \q> \\ 
-             arg-st & \q< \@1, \@2 \q> \]}{
-      \lf{\eng{brought}}}
-    \br{\@2 NP$_j$}{
-      \br{D}{\lf{\eng{a}}}
-      \br{N$_j$}{\lf{\eng{pencil}}}}
-    \br{\@3 PP$_k$}{
-      \br{P$_k$ \[ comps & \q< \@1 \q> \\ 
-                   mod & \q< \@2 \q> \\
-                   arg-st & \q< \@1 \q> \] }{\lf{\eng{with}}}
-      \br{NP$_l$ \[ mode & ana \]}{\lf{\eng{myself}}}}
-}}
-\end{avmtree}
+\begin{forest}
+cat
+[{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
+[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+             comps & < \2 > \\ 
+             arg-st & < \1, \2 > ]}} [{\eng{brought}}]]
+[{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
+[{N$_j$} [{\eng{pencil}}]]]
+[{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \1 > \\ 
+                   mod & < \2 > \\
+                   arg-st & < \1 > ]}} [{\eng{with}}]]
+[{NP$_l$ \avm{[ mode & ana ]}} [{\eng{myself}}]]]]]
+\end{forest}
 
 \myslide{Imperatives}
 \MyLogo{}
@@ -605,18 +575,17 @@ be outranked by a coindexed element.
 
 \myslide{The Imperative Rule}
 
-\begin{avm}\avmfont{\sc} 
-\[ \asort{phrase}  
+\avm{[\type*{phrase}  
    head & verb \\
-   val & \[ spr  & \<  \> \] \\
-   sem & \[ mode & dir \\ index & $s$ \] \]
+   val & [ spr  & <  > ] \\
+   sem & [ mode & dir \\ index & $s$ ] ]
               \ $\rightarrow$\ \ 
-\[ \asort{phrase}  
-   head & \[ \asort{verb} form & base \]\\
-   val & \[ spr  & \< NP \[ per 2nd \]   \> \\
-            comps & \< \>  \] \\
-   sem & \[ index & $s$ \] \]
-\end{avm}
+[\type*{phrase}  
+   head & [\type*{verb} form & base ]\\
+   val & [ spr  & < NP [ per 2nd ]   > \\
+            comps & < >  ] \\
+   sem & [ index & $s$ ] ]
+}
 
 
 \begin{itemize}\addtolength{\itemsep}{-2ex}
@@ -630,16 +599,12 @@ be outranked by a coindexed element.
 
 \myslide{Imperative example}
 \begin{multicols}{2}
-\begin{avmtree}\avmfont{\sc} 
-\br{S}{
-  \br{VP \[ spr & \q< \@1 NP \[ per 2nd \\ num sg \] \q> \]}{ 
-    \br{V \[ spr & \q< \@1 \q> \]}{
-      \lf{\eng{vote}}}
-    \br{\@3 PP$_i$}{
-      \br{P$_i$}{\lf{\eng{for}}}
-      \br{NP$_i$ \[ mode & ana \]}{\lf{\eng{yourself}}}}
-}}
-\end{avmtree}
+\begin{forest}
+cat
+[{S} [{VP \avm{[ spr & < \1 NP [ per 2nd \\ num sg ] > ]}} [{V \avm{[ spr & < \1 > ]}} [{\eng{vote}}]]
+[{\avm{\3} PP$_i$} [{P$_i$} [{\eng{for}}]]
+[{NP$_i$ \avm{[ mode & ana ]}} [{\eng{yourself}}]]]]]
+\end{forest}
 %\newpage
 
 \begin{itemize}
@@ -659,12 +624,11 @@ the licensing of \eng{yourself}?
 
 \myslide{\ft{arg-st} on vote}
 \begin{center}
-  \begin{avm}\avmfont{\sc} 
-\[  arg-st & \< 
-NP$_i$ \[ mode & ref \\ per & 2nd \\ num & sg \],
-PP$_i$ \[ mode & ana \]
-\> \]
-\end{avm}
+  \avm{[  arg-st & < 
+NP$_i$ [ mode & ref \\ per & 2nd \\ num & sg ],
+PP$_i$ [ mode & ana ]
+> ]
+}
 \end{center}
 \begin{itemize}
 \item Is Principle A satisfied?
@@ -759,7 +723,8 @@ might posit
 a rule along the following lines, 
 based on the fact that possessive NPs appear in the same position as determiners:
 \begin{itemize}
-\item[] D \ $\rightarrow$\ \ \begin{avm} NP \[CASE & poss \]\end{avm}
+\item[] D \ $\rightarrow$\ \ \avm{NP [CASE & poss ]
+}
 \end{itemize}
 Taken together with our assumption that \index{CASE}CASE is
 a \index{head feature}HEAD feature,  such an analysis of \eng{'s} 

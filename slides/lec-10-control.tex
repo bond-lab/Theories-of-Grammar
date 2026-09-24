@@ -1,10 +1,9 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
-\input{headx.tex}
+\input{headx-new.tex}
 
 %\usepackage{times}
 %\usepackage{bchart}
 %\usepackage{pgfplots}
-\avmfont{\sc}
 \begin{document}
 \header{Lecture 10}{Raising and Control}{}
 \maketitle
@@ -94,30 +93,28 @@ our analysis of auxiliaries a little simpler.
 \myslide{The Lexical Entry for Infinitival \lex{to}}
 \begin{center}
   \begin{small}
-    \begin{avm}
-      \< \textnormal{to}, \[
-      syn &  \[ head & \[ form & base\\
+    \avm{< \textnormal{to}, [
+      syn &  [ head & [ form & base\\
       inf & $+$ \\
-      aux & $+$ \] \] \\
-      arg-st & \< \@1,
-      \[ head & \[{\tiny \it verb} \\
+      aux & $+$ ] ] \\
+      arg-st & < \1,
+      [ head & [{\tiny \it verb} \\
       inf & $-$ \\
-      form & base \] \\
-      val & \[ spr & \< \@1 \> \\
-      comps & \< ~ \> \] \\
-      sem & \[ index & s \] \] \> \\
-      sem & \[ index & s \\ restr & \< \> \] \] \>
-    \end{avm}
+      form & base ] \\
+      val & [ spr & < \1 > \\
+      comps & < ~ > ] \\
+      sem & [ index & s ] ] > \\
+      sem & [ index & s \\ restr & < > ] ] >
+}
   \end{small}
 \end{center}
 \myslide{The Syntax of Infinitival  \lex{to}}
 
 \begin{center}
-  \begin{avm}
-    \[ syn &  \[ head & \[ form & base\\
+  \avm{[ syn &  [ head & [ form & base\\
     inf & $+$ \\
-    aux & $+$ \] \] \]
-  \end{avm}
+    aux & $+$ ] ] ]
+}
 \end{center}
 
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -135,15 +132,14 @@ our analysis of auxiliaries a little simpler.
 
 \myslide{The Argument Structure}
 \begin{center}
-  \begin{avm}
-     \[ arg-st & \< \@1,
-      \[ head & \[{\tiny \it verb} \\
+  \avm{[ arg-st & < \1,
+      [ head & [{\tiny \it verb} \\
       inf & $-$ \\
-      form & base \] \\
-      val & \[ spr & \< \@1 \> \\
-      comps & \< ~ \> \] \\
-      sem & \[ index & s \] \] \> \] 
-  \end{avm}
+      form & base ] \\
+      val & [ spr & < \1 > \\
+      comps & < ~ > ] \\
+      sem & [ index & s ] ] > ]
+}
 \end{center}
 \begin{itemize}
 \item What kind of constituent is the second argument?
@@ -153,16 +149,15 @@ argument is exactly like \lex{be}.
 
 \myslide{The Semantics of Infinitival \lex{to}}
 \begin{center} \small
-  \begin{avm}
-     \[ arg-st & \< \@1,
-      \[ head & \[{\tiny \it verb} \\
+  \avm{[ arg-st & < \1,
+      [ head & [{\tiny \it verb} \\
       inf & $-$ \\
-      form & base \] \\
-      val & \[ spr & \< \@1 \> \\
-      comps & \< ~ \> \] \\
-      sem & \[ index & \OV{s} \] \] \> \\
-      sem & \[ index & \OV{s} \\ restr & \< \> \] \]
-  \end{avm}
+      form & base ] \\
+      val & [ spr & < \1 > \\
+      comps & < ~ > ] \\
+      sem & [ index & \OV{s} ] ] > \\
+      sem & [ index & \OV{s} \\ restr & < > ] ]
+}
 \end{center}
 
 \begin{itemize}
@@ -192,14 +187,13 @@ of the complement of \lex{continue}.
 
 \begin{center} \small
 \txx{Subject-Raising Verb Lexeme} (\val{srv-lxm}) \\
-  \begin{avm}
-     \[ arg-st & \< \@1,
-      \[ 
-      val & \[ spr & \< \@1 \> \\
-      comps & \< ~ \> \] \\
-      sem & \[ index & \OV{s} \] \] \> \\
-      sem & \[ restr & \< \[ arg & s \] \> \] \]
-  \end{avm}
+  \avm{[ arg-st & < \1,
+      [ 
+      val & [ spr & < \1 > \\
+      comps & < ~ > ] \\
+      sem & [ index & \OV{s} ] ] > \\
+      sem & [ restr & < [ arg & s ] > ] ]
+}
 \end{center}
 
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -214,14 +208,13 @@ predication introduced by the verb
 
 \bigskip
 \begin{center}
-    \begin{avm}
-      \< \textnormal{continue}, \[{\tiny \val{srv-lxm}}\\[-3ex]
-      syn &  \[ arg-st & \< X,
-                  VP \[ inf & $+$  \]  \] \> \\
-      sem & \[ index & s$_1$ \\ 
-               restr & \< \[ reln & \textbf{continue} \\ 
-                             sit & s$_1$ \] \> \] \] \>
-    \end{avm}
+    \avm{< \textnormal{continue}, [{\tiny \val{srv-lxm}}\\[-3ex]
+      syn &  [ arg-st & < X,
+                  VP [ inf & $+$  ]  ] > \\
+      sem & [ index & s$_1$ \\ 
+               restr & < [ reln & \textbf{continue} \\ 
+                             sit & s$_1$ ] > ] ] >
+}
 \end{center}
 
 
@@ -230,20 +223,19 @@ predication introduced by the verb
 
 \begin{center}
   \begin{small}
-    \begin{avm}
-      \< \textnormal{continue}, \[{\tiny \val{srv-lxm}}\\[-3ex]
-      syn &  \[ head & \[{\tiny \val{verb}} \\
+    \avm{< \textnormal{continue}, [{\tiny \val{srv-lxm}}\\[-3ex]
+      syn &  [ head & [{\tiny \val{verb}} \\
       pred & $-$ \\
       inf & $-$ \\
-      agr & \@2 \] \] \\
-      arg-st & \< \@1 \[ head & \val{nominal}\\
-                         val &  \[ spr \< \>  & comps \< \> \]  \],
-                  VP \[ inf & $+$ \\ spr  & \< \@1 \> \\ index & s$_2$ \]
-      \> \\
-      sem & \[ mode & prop \\ index & s$_1$ \\ 
-               restr & \< \[ reln & \textbf{continue} \\ 
-                             sit & s$_1$ \\ arg & s$_2$  \] \> \] \] \>
-    \end{avm}
+      agr & \2 ] ] \\
+      arg-st & < \1 [ head & \val{nominal}\\
+                         val &  [ spr < >  & comps < > ]  ],
+                  VP [ inf & $+$ \\ spr  & < \1 > \\ index & s$_2$ ]
+      > \\
+      sem & [ mode & prop \\ index & s$_1$ \\ 
+               restr & < [ reln & \textbf{continue} \\ 
+                             sit & s$_1$ \\ arg & s$_2$  ] > ] ] >
+}
   \end{small}
 \end{center}
 
@@ -256,17 +248,16 @@ predication introduced in the complement.
 
 \begin{center}
   \begin{small}
-    \begin{avm}
-      \< \textnormal{continue}, \[{\tiny \val{srv-lxm}}\\[-3ex]
-      arg-st & \< \OV{\@1} \[ head & \val{nominal}\\
-                         val &  \[ spr \< \>  & comps \< \> \]  \],
-                  VP \[ inf & $+$ \\ spr  & \< \OV{\@1} \> \\ 
-                        index & \OVB{s$_2$} \]
-      \> \\
-      sem & \[ mode & prop \\ index & s$_1$ \\ 
-               restr & \< \[ reln & \textbf{continue} \\ 
-                             sit & s$_1$ \\ arg & \OVB{s$_2$}  \] \> \] \] \>
-    \end{avm}
+    \avm{< \textnormal{continue}, [{\tiny \val{srv-lxm}}\\[-3ex]
+      arg-st & < \OV{\1} [ head & \val{nominal}\\
+                         val &  [ spr < >  & comps < > ]  ],
+                  VP [ inf & $+$ \\ spr  & < \OV{\1} > \\ 
+                        index & \OVB{s$_2$} ]
+      > \\
+      sem & [ mode & prop \\ index & s$_1$ \\ 
+               restr & < [ reln & \textbf{continue} \\ 
+                             sit & s$_1$ \\ arg & \OVB{s$_2$}  ] > ] ] >
+}
   \end{small}
 \end{center}
 
@@ -289,48 +280,40 @@ truth conditions of the whole sentence:
 \myslide{\lex{continue} with active complement}
 
 \begin{center} 
-  \scalebox{0.7}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_i$}{\lf{Skeptics}}
-      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-        \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{continue}}
-        \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{\br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{to}}
-                \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-                  \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{question}}
-                  \br{NP$_j$}{\tlf{your hypothesis}}}}}}
-
-\end{avmtree}}
+  \scalebox{0.7}{\begin{forest}
+cat
+[{S\avmbox{A}} [{\avmbox{1} NP$_i$} [{Skeptics}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{continue}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{to}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{question}]]
+[{NP$_j$}]]]]]
+\end{forest}}
 \end{center}
 
-\scalebox{0.7}{\raisebox{16ex}[0ex][0ex]{\small \begin{avm}
-      \[ restr & \avmbox{A} \< \[ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ \], \\
-        \[ reln & \textbf{question} \\  sit  & s$_2$ \\ doubter & i \\ doubted & j\], 
-  \ldots \> \]
-\end{avm}}}
+\scalebox{0.7}{\raisebox{16ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < [ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
+        [ reln & \textbf{question} \\  sit  & s$_2$ \\ doubter & i \\ doubted & j], 
+  \ldots > ]
+}}}
 
 
 
 \myslide{\lex{continue} with passive complement}
 \begin{center} 
-  \scalebox{0.55}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_j$}{\tlf{Your hypothesis}}
-      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-        \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{continue}}
-        \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-          \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{to}}
-          \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-            \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{be}}
-            \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-              \br{V \[ \ft{spr} \< \avmbox{1} \> \]}{\lf{questioned}}
-              \br{NP$_i$}{\br{P$_i$}{\lf{by}}
-                \br{NP$_i$}{\br{NOM$_i$}{\lf{skeptics}}}}}}}}}
-
-\end{avmtree}}
+  \scalebox{0.55}{\begin{forest}
+cat
+[{S\avmbox{A}} [{\avmbox{1} NP$_j$}]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{continue}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{to}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{be}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{questioned}]]
+[{NP$_i$} [{P$_i$} [{by}]]
+[{NP$_i$} [{NOM$_i$} [{skeptics}]]]]]]]]]
+\end{forest}}
 \end{center}
-\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \begin{avm}
-      \[ restr & \avmbox{A} \<\[ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ \], \\
-        \[ reln & \textbf{question} \\ sit  & s$_2$ \\ doubter & i \\ doubted & j\], 
-  \ldots \> \]
-\end{avm}}}
+\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} <[ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
+        [ reln & \textbf{question} \\ sit  & s$_2$ \\ doubter & i \\ doubted & j], 
+  \ldots > ]
+}}}
 
 
 \myslide{Control Verbs}
@@ -373,14 +356,13 @@ conditions.
 \myslide{A New Type}
 \begin{center} \small
 \txx{Subject-Control Verb Lexeme} (\val{scv-lxm})\\
-  \begin{avm}
-     \[ arg-st & \< NP$_i$,
-      \[ 
-      val & \[ spr & \< NP$_i$ \> \\
-      comps & \< ~ \> \] \\
-      sem & \[ index & \OV{s} \] \] \> \\
-      sem & \[ restr & \< \[ arg & s \] \> \] \]
-  \end{avm}
+  \avm{[ arg-st & < NP$_i$,
+      [ 
+      val & [ spr & < NP$_i$ > \\
+      comps & < ~ > ] \\
+      sem & [ index & \OV{s} ] ] > \\
+      sem & [ restr & < [ arg & s ] > ] ]
+}
 \end{center}
 
 \begin{itemize}\addtolength{\itemsep}{-2ex}
@@ -396,15 +378,14 @@ conditions.
 
 \bigskip
 \begin{center}
-    \begin{avm}
-      \< \textnormal{try}, \[{\tiny \val{scv-lxm}}\\[-3ex]
-      syn &  \[ arg-st & \< NP$_i$,
-                  VP \[ inf & $+$  \]  \] \> \\
-      sem & \[ index & s$_1$ \\ 
-               restr & \< \[ reln & \textbf{try} \\ 
+    \avm{< \textnormal{try}, [{\tiny \val{scv-lxm}}\\[-3ex]
+      syn &  [ arg-st & < NP$_i$,
+                  VP [ inf & $+$  ]  ] > \\
+      sem & [ index & s$_1$ \\ 
+               restr & < [ reln & \textbf{try} \\ 
                              sit & s$_1$ \\
-                             trier & i \] \> \] \] \>
-    \end{avm}
+                             trier & i ] > ] ] >
+}
 \end{center}
 
 
@@ -416,21 +397,20 @@ respect to the verb, namely the \ft{trier}.
 \begin{tabular}[t]{cc}
 \begin{minipage}{0.5\linewidth}
   \footnotesize
-    \begin{avm}
-      \< \textnormal{try}, \[{\tiny \val{scv-lxm}}\\[-3ex]
-      syn &  \[ head & \[{\tiny \val{verb}} \\
+    \avm{< \textnormal{try}, [{\tiny \val{scv-lxm}}\\[-3ex]
+      syn &  [ head & [{\tiny \val{verb}} \\
       pred & $-$ \\
       inf & $-$ \\
-      agr & \@1 \] \] \\
-      arg-st & \< NP$_i$,
-                  VP \[ inf & $+$ \\ spr  & \< NP$_i$ \> \\ index & s$_2$ \]
-      \> \\
-      sem & \[ mode & prop \\ index & s$_1$ \\ 
-               restr & \< \[ reln & \textbf{try} \\ 
+      agr & \1 ] ] \\
+      arg-st & < NP$_i$,
+                  VP [ inf & $+$ \\ spr  & < NP$_i$ > \\ index & s$_2$ ]
+      > \\
+      sem & [ mode & prop \\ index & s$_1$ \\ 
+               restr & < [ reln & \textbf{try} \\ 
                              sit & s$_1$ \\ 
                              arg & s$_2$\\
-                             trier & i  \] \> \] \] \>
-    \end{avm}
+                             trier & i  ] > ] ] >
+}
   \end{minipage}
   &
 \begin{minipage}{0.4\linewidth}
@@ -463,50 +443,44 @@ respects?
 \myslide{\lex{try} with an active complement}
 
 \begin{center} 
-  \scalebox{0.8}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_i$}{\tlf{The police}}
-      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-        \br{V \[ \ft{spr} \< \avmbox{1}$_i$ \> \]}{\lf{tried}}
-        \br{VP \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{\br{V \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{\lf{to}}
-                \br{VP \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{
-                  \br{V \[ \ft{spr} \< \avmbox{2}$_i$ \> \]}{\lf{arrest}}
-                  \br{NP$_j$}{\tlf{the suspects}}}}}}
-\end{avmtree}}
+  \scalebox{0.8}{\begin{forest}
+cat
+[{S\avmbox{A}} [{\avmbox{1} NP$_i$}]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1}$_i$ > ]}} [{tried}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{to}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{arrest}]]
+[{NP$_j$}]]]]]
+\end{forest}}
 \end{center}
 
-\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \begin{avm}
-  \[ restr & \avmbox{A} \< 
-  \[ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & i \\ tried & s$_2$ \], \\
-  \[ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j\]
-  \ldots \> \]
-\end{avm}}}
+\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < 
+  [ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & i \\ tried & s$_2$ ], \\
+  [ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j]
+  \ldots > ]
+}}}
 
 
 
 \myslide{\lex{try} with passive complement}
 \vspace*{-2ex}
 \begin{center} 
-  \scalebox{0.6}{\begin{avmtree}%\renewcommand{\lf}[1]{\br{#1}{}}\avmfont{\sc}
-    \br{S\avmbox{A}}{ \br{\avmbox{1} NP$_j$}{\tlf{The suspects}}
-      \br{VP \[ \ft{spr} \< \avmbox{1} \> \]}{
-        \br{V \[ \ft{spr} \< \avmbox{1}$_j$ \> \]}{\lf{tried}}
-        \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
-          \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{to}}
-          \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
-            \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{be}}
-            \br{VP \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{
-              \br{V \[ \ft{spr} \< \avmbox{2}$_j$ \> \]}{\lf{arrested}}
-              \br{NP$_i$}{\br{P$_i$}{\lf{by}}
-                \br{NP$_i$}{\br{NOM$_i$}{\lf{the police}}}}}}}}}
-\end{avmtree}}
+  \scalebox{0.6}{\begin{forest}
+cat
+[{S\avmbox{A}} [{\avmbox{1} NP$_j$}]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1}$_j$ > ]}} [{tried}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{to}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{be}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{arrested}]]
+[{NP$_i$} [{P$_i$} [{by}]]
+[{NP$_i$} [{NOM$_i$} [{the police}]]]]]]]]]
+\end{forest}}
 \end{center}
 
-\scalebox{0.7}{\raisebox{25ex}[0ex][0ex]{\small \begin{avm}
-  \[ restr & \avmbox{A} \< 
-  \[ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & \OV{j} \\ tried & s$_2$ \], \\
-  \[ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j\]
-  \ldots \> \]
-\end{avm}}}
+\scalebox{0.7}{\raisebox{25ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < 
+  [ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & \OV{j} \\ tried & s$_2$ ], \\
+  [ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j]
+  \ldots > ]
+}}}
 \vspace*{-5ex}
 
 \myslide{ARG-ST of raising vs control verbs}
@@ -514,16 +488,14 @@ respects?
 
 \begin{center}
 \begin{tabular}{cc}
-  \begin{avm}
-    \< NP$_i$,\ \ 
-    VP \[ inf & $+$ \\ spr  & \< NP$_i$ \> \\ index & s$_2$ \]
-    \> 
-  \end{avm}& 
-  \begin{avm}
-    \< \@1 NP,\ \ 
-    VP \[ inf & $+$ \\ spr  & \< \@1 \> \\ index & s$_2$ \]
-    \> 
-  \end{avm} \\
+  \avm{< NP$_i$,\ \ 
+    VP [ inf & $+$ \\ spr  & < NP$_i$ > \\ index & s$_2$ ]
+    >
+}& 
+  \avm{< \1 NP,\ \ 
+    VP [ inf & $+$ \\ spr  & < \1 > \\ index & s$_2$ ]
+    >
+} \\
   \\[2ex]
   \txx{Control} & \txx{Raising}
 \end{tabular}
@@ -583,20 +555,18 @@ psychological reality of these transformations.
   \begin{tabular}{cc}
 \txx{Object-Raising Verb Lexeme} (\val{orv-lxm}) &
 \txx{Object-Control Verb Lexeme} (\val{ocv-lxm}) \\
-  \begin{avm}
-     \[ arg-st & \< NP, \@1,
-                   \[ spr   & \< \@1 \> \\
-                      comps & \< ~ \> \\
-                      index & \OV{s}  \] \> \\
-      sem & \[ restr & \< \[ arg & s \] \> \] \]
-  \end{avm}
-&    \begin{avm}
-      \[ arg-st & \< NP, NP$_i$,
-                     \[  spr & \< NP$_i$ \> \\
-                        comps & \< ~ \> \\
-                        index & \OV{s}  \] \> \\
-       sem & \[ restr & \< \[ arg & s \] \> \] \]
-   \end{avm}
+  \avm{[ arg-st & < NP, \1,
+                   [ spr   & < \1 > \\
+                      comps & < ~ > \\
+                      index & \OV{s}  ] > \\
+      sem & [ restr & < [ arg & s ] > ] ]
+}
+&    \avm{[ arg-st & < NP, NP$_i$,
+                     [  spr & < NP$_i$ > \\
+                        comps & < ~ > \\
+                        index & \OV{s}  ] > \\
+       sem & [ restr & < [ arg & s ] > ] ]
+}
 \end{tabular}
 \end{center}
 \begin{itemize}
@@ -611,25 +581,25 @@ psychological reality of these transformations.
   \begin{tabular}{cc}
 \txx{Object-Raising Verb Lexeme} (\val{orv-lxm}) &
 \txx{Object-Control Verb Lexeme} (\val{ocv-lxm}) \\
-  \begin{avm} \tiny
-     \< \textnormal{expect}, \ 
-     \[\val{\tiny orv-lxm} \\
-     arg-st & \< NP$_j$, X, VP \[ inf & $+$ \] \> \\
-      sem & \[ index & s \\
-               restr & \< \[ reln & \prd{expect} \\
+  \avm{\tiny
+     < \textnormal{expect}, \ 
+     [\val{\tiny orv-lxm} \\
+     arg-st & < NP$_j$, X, VP [ inf & $+$ ] > \\
+      sem & [ index & s \\
+               restr & < [ reln & \prd{expect} \\
                              sit & s \\
-                             expecter & j  \] \> \] \] \>
-  \end{avm}
-& \begin{avm} \tiny
-     \< \textnormal{persuade}, \ 
-     \[\val{\tiny orv-lxm} \\
-     arg-st & \< NP$_j$, NP$_i$, VP \[ inf & $+$ \] \> \\
-      sem & \[ index & s \\
-               restr & \< \[ reln & \prd{persuade} \\
+                             expecter & j  ] > ] ] >
+}
+& \avm{\tiny
+     < \textnormal{persuade}, \ 
+     [\val{\tiny orv-lxm} \\
+     arg-st & < NP$_j$, NP$_i$, VP [ inf & $+$ ] > \\
+      sem & [ index & s \\
+               restr & < [ reln & \prd{persuade} \\
                              sit & s \\
                              persuader & j\\
-                             persuadee & i \] \> \] \] \>
-  \end{avm} 
+                             persuadee & i ] > ] ] >
+} 
 \end{tabular}
 \end{center}
 

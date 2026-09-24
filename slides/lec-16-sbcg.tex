@@ -1,12 +1,11 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 
-\input{headx.tex}
+\input{headx-new.tex}
 \usepackage{tikz}
 \usetikzlibrary{matrix,positioning}
 
-\avmfont{\sc}
+%%% langsci-avm styles attributes and types itself; see \avmsetup
 \begin{document}
-\avmfont{\it}
 \header{Lecture 16}{Sign-Based Construction Grammar}{}
 \maketitle
 
@@ -209,76 +208,68 @@ simplified
 \end{tikzpicture}
 
 \myslide{Words are signs}
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{dog}, \ \[ \asort{word}
-      head & {\it noun} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< D \> \\ comps & \el \]
-      \]\>
-    \end{avm} 
+    \avm{
+      < \textnormal{dog}, \ [\type*{word}
+      head & \type{noun} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < D > \\ comps & < > ]
+      ]>} 
 
     Becomes:
 
-    \begin{avm}\avmfont{\sc}
-     \ \[ \asort{word}
-        orth & \< "\textnormal{dog}" \> \\
-      syn &  \[ head & {\it noun} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< D \> \\ comps & \el \] \]
-      \]
-    \end{avm} 
+    \avm{
+     \ [\type*{word}
+        orth & < "\textnormal{dog}" > \\
+      syn &  [ head & \type{noun} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < D > \\ comps & < > ] ]
+      ]} 
 
 \myslide{Rules are signs}
-    \begin{avm}\avmfont{\sc}\[{\it phrase}\\
-             val & \[ comps & \el\\
-                      spr & \el\]\]\ \ \
-$\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
-			                val & \[ comps & \el\\
-                                                 spr & \q< {\@2} \q> \]\] 
- \end{avm}
+    \avm{[\type*{phrase}\\
+             val & [ comps & < >\\
+                      spr & < >]]\ \ \
+$\rightarrow$\ \ \ \ \2\ \ \ \ \HD[ %\type{phrase}\\
+			                val & [ comps & < >\\
+                                                 spr & < \2 > ]]}
 
  Becomes:
  
- \begin{avm}\avmfont{\sc}
-   \[{\it head-spr-cx}\\
-     mother & \[ val.spr \< \> \] \\
-     hd-dtr & \@2 \[ val &  \[ spr \< \@1 \> \\
-                              comps \< \>  \] \] \\ 
-     dtrs & \< \@1, \@2 \>\\
-     \]
-   \end{avm}
+ \avm{
+   [\type*{head-spr-cx}\\
+     mother & [ val.spr < > ] \\
+     hd-dtr & \2 [ val &  [ spr < \1 > \\
+                              comps < >  ] ] \\ 
+     dtrs & < \1, \2 >\\
+     ]}
 
 \myslide{Principles are signs}
 
 \begin{itemize}
 \item Head Feature Principle   \\
-\begin{avm}\avmfont{\sc}
-  \[ mother.syn.head & \@1 \\
-  hd-dtr.syn.head & \@1  \]
-\end{avm}
+\avm{
+  [ mother.syn.head & \1 \\
+  hd-dtr.syn.head & \1  ]}
 \item Semantic Inheritance Principle \\
-  \begin{avm}\avmfont{\sc}
-  \[ mother.sem & \[ mode  & \@1 \\
-                     index & \@2 \] \\
-  hd-dtr.sem & \[ mode  & \@1 \\
-                     index & \@2 \]  \]
- \end{avm}
+  \avm{
+  [ mother.sem & [ mode  & \1 \\
+                     index & \2 ] \\
+  hd-dtr.sem & [ mode  & \1 \\
+                     index & \2 ]  ]}
 \item Valence Principle \\
-  \begin{avm}\avmfont{\sc}
-  \[ mother.syn.val & / \@1 \\
-  hd-dtr.syn.val & / \@1  \]
-\end{avm}
+  \avm{
+  [ mother.syn.val & / \1 \\
+  hd-dtr.syn.val & / \1  ]}
 \end{itemize} 
 
 \myslide{The Root Condition (Start Symbol) is a sign}
 
-\begin{avm}\avmfont{\sc}
-  \[ syn & \[ head & \[{\it verb}\\
-        form & fin \] \\
-      val & \[ comps & \el \\
-        spr  & \el \] \]\\
-      gap & \el \]
-  \end{avm}
+\avm{
+  [ syn & [ head & [\type*{verb}\\
+        form & fin ] \\
+      val & [ comps & < > \\
+        spr  & < > ] ]\\
+      gap & < > ]}
 
 \myslide{Sign-based Construction Grammar}
 

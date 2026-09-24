@@ -5,14 +5,12 @@
 %\newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
 %\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
 
-\input{headx.tex}
+\input{headx-new.tex}
 \usepackage{tikz}
 \usepackage{tikz-qtree}
 \newcommand{\bx}[1]{\avmbox{\smaller #1}}
 
-\avmfont{\sc}
 \begin{document}
-\avmfont{\it}
 
 \header{Lecture 11}{Long Distance Dependencies}{}
 \maketitle
@@ -212,25 +210,24 @@
    a lexical rule that co-indexes the first element of \ft{arg-st} with
    \ft{mod} and sets \ft{spr} to an empty list: 
 \\   \eng{The dog is red}  \into \eng{The red dog}
-   \\    \scalebox{0.8}{\begin{avm}\avmfont{\sc}
-      \< \textnormal{red}, \ \[ \asort{word}
-      head &  \[ \asort{adj} pred & $+$ \]  \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< \@1 NP \>\\
-              comps & \<  \>\\
-              mod & \<  \> \] \\
-      arg-st &      \< \@1  \>   
-      \]\> \ \
+   \\    \scalebox{0.8}{\avm{< \textnormal{red}, \ [\type*{word}
+      head &  [\type*{adj} pred & $+$ ]  \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < \1 NP >\\
+              comps & <  >\\
+              mod & <  > ] \\
+      arg-st &      < \1  >   
+      ]> \ \
 \into \ \ 
-  \< \textnormal{red}, \ \[ \asort{word}
-      head & {\it adj} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \<  \>\\
-              comps & \<  \>\\
-              mod & \< \@1 NP \> \] \\
-  arg-st &      \< \@1  \>   
-     \]\>
-     \end{avm}}
+  < \textnormal{red}, \ [\type*{word}
+      head & \type{adj} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & <  >\\
+              comps & <  >\\
+              mod & < \1 NP > ] \\
+  arg-st &      < \1  >   
+     ]>
+}}
  \item We can't just co-index \ft{spr} and \ft{mod}.  Why?
  \item The \ft{spr} adjectives need a
    subject-raising \eng{be} to form a sentence. Why?
@@ -395,12 +392,11 @@ the Argument Realization Principle.
 
 \myslide{The Revised ARP}
 
-\begin{avm}\avmfont{\sc} 
-\[ \asort{word}  
- syn & \[ val & \[ spr &  \@{A} \\comps &  \@{B} $\ominus$ \@{C} \] \\
-          gap & \@{C} \] \\
- arg-st & \< \@{A} $\oplus$ \@{B}\> \]
-\end{avm}
+\avm{[\type*{word}  
+ syn & [ val & [ spr &  \tag{A} \\comps &  \tag{B} $\ominus$ \tag{C} ] \\
+          gap & \tag{C} ] \\
+ arg-st & < \tag{A} $\oplus$ \tag{B}> ]
+}
 \begin{itemize}
 \item $\ominus$ is a kind of list subtraction 
   \begin{itemize}
@@ -413,52 +409,49 @@ distributed between \ft{comps} and \ft{gap}.
 
 \myslide{A Word with a Non-Empty \ft{gap} Value}
 
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{hand}, \ \[ \asort{word}
-      syn & \[ head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< \@1 NP \[ case & nom \\ agr & non-3sing \] \> \\ 
-      comps & \< \@3 PP:to \> \] \\
-      gap &  \< \@2NP \[ acc \] \> \] \\
-      arg-st & \< \@1, \@2, \@3 \>
-      \]\>
-    \end{avm}
+    \avm{< \textnormal{hand}, \ [\type*{word}
+      syn & [ head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
+      comps & < \3 PP:to > ] \\
+      gap &  < \tag{2NP} [ acc ] > ] \\
+      arg-st & < \1, \2, \3 >
+      ]>
+}
 
     \myslide{A Word with another Non-Empty \ft{gap} Value}
 
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{hand}, \ \[ \asort{word}
-      syn & \[ head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< \@1 NP \[ case & nom \\ agr & non-3sing \] \> \\ 
-      comps & \< \@2NP \[ acc \] \> \] \\
-      gap &  \<  \@3 PP:to \> \] \\
-      arg-st & \< \@1, \@2, \@3 \>
-      \]\>
-    \end{avm}
+    \avm{< \textnormal{hand}, \ [\type*{word}
+      syn & [ head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
+      comps & < \tag{2NP} [ acc ] > ] \\
+      gap &  <  \3 PP:to > ] \\
+      arg-st & < \1, \2, \3 >
+      ]>
+}
 
 \myslide{The same word with an Empty \ft{gap} Value}
 \MyLogo{The ARP gives rise to multiple lexemes}
 
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{hand}, \ \[ \asort{word}
-      syn & \[ head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< \@1 NP \[ case & nom \\ agr & non-3sing \] \> \\ 
-      comps & \< \@2NP \[ acc \], \@3 PP:to \> \] \\
-      gap &  \<  \> \] \\
-      arg-st & \< \@1, \@2, \@3 \>
-      \]\>
-    \end{avm}
+    \avm{< \textnormal{hand}, \ [\type*{word}
+      syn & [ head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
+      comps & < \tag{2NP} [ acc ], \3 PP:to > ] \\
+      gap &  <  > ] \\
+      arg-st & < \1, \2, \3 >
+      ]>
+}
 
     
 % \myslide{How We Want \ft{gap} to Propagate}
 % \MyLogo{Traditionally called \ft{slash}: VP/NP}
 % \begin{avmtree}\avmfont{\sc}
-% \br{S \[ gap & \el \]}{ \br{NP \[ gap & \el \]}{\lf{Kim}}
-%   \br{S/NP \[ gap & \q< NP \q> \]}{\br{NP \[ gap & \el \]}{\lf{we}}
-%     \br{VP/NP \[ gap & \q< NP \q> \]}{\br{V \[ gap & \el \]}{\lf{know}}
-%       \br{S/NP \[ gap & \q< NP \q> \]}{\br{NP \[ gap & \el \]}{\lf{Bobby}}
+% \br{S \[ gap & < > \]}{ \br{NP \[ gap & < > \]}{\lf{Kim}}
+%   \br{S/NP \[ gap & \q< NP \q> \]}{\br{NP \[ gap & < > \]}{\lf{we}}
+%     \br{VP/NP \[ gap & \q< NP \q> \]}{\br{V \[ gap & < > \]}{\lf{know}}
+%       \br{S/NP \[ gap & \q< NP \q> \]}{\br{NP \[ gap & < > \]}{\lf{Bobby}}
 %         \br{VP/NP \[ gap & \q< NP \q> \]}{\lf{hates}}}}}}
 % \end{avmtree}
 
@@ -467,27 +460,30 @@ distributed between \ft{comps} and \ft{gap}.
 \MyLogo{Traditionally called \ft{slash}: VP/NP
   (think of it as a VP missing an NP)}
 % Kim we know bobby likes
-\newcommand{\avn}[2]{#1\\\smaller\begin{avm}\avmfont{\sc}\[ #2 \]\end{avm}} %avm node
-\newcommand{\avN}[2]{#1\,\smaller\begin{avm}\avmfont{\sc}\[ #2 \]\end{avm}} %avm node
-\newcommand{\avX}[1]{\begin{avm}\avmfont{\sc}\[ #1 \]\end{avm}} %avm node
+\newcommand{\avn}[2]{#1\\\smaller\avm{[ #2 ]
+}} %avm node
+\newcommand{\avN}[2]{#1\,\smaller\avm{[ #2 ]
+}} %avm node
+\newcommand{\avX}[1]{\avm{[ #1 ]
+}} %avm node
 
 \scalebox{0.8}{\begin{tikzpicture}
 \tikzset{level distance=8ex}
 \tikzset{frontier/.style={distance from root=40ex}}
 \tikzset{every tree node/.style={align=center,anchor=north}}
-\Tree [.\avn{S}{gap & \el} 
-         [.\avn{NP}{gap & \el} Kim ]
+\Tree [.\avn{S}{gap & < >} 
+         [.\avn{NP}{gap & < >} Kim ]
          \edge[style=double,very thick];
-         [.\avn{S/NP}{gap & \q< NP \q>} 
-           [.\avn{NP}{gap & \el} we ]
+         [.\avn{S/NP}{gap & < NP >} 
+           [.\avn{NP}{gap & < >} we ]
            \edge[style=double,very thick];
-           [.\avn{VP/NP}{gap & \q< NP \q>} 
+           [.\avn{VP/NP}{gap & < NP >} 
            \edge[style=double,very thick];
-              [.\avn{V}{gap & \el} know ]
-              [.\avn{S/NP}{gap & \q< NP \q>} 
-                [.\avn{NP}{gap & \el} Bobby ]
+              [.\avn{V}{gap & < >} know ]
+              [.\avn{S/NP}{gap & < NP >} 
+                [.\avn{NP}{gap & < >} Bobby ]
                 \edge[style=double,very thick];
-                [.\avn{VP/NP}{gap & \q< NP \q>} likes ] ] ] ] ]
+                [.\avn{VP/NP}{gap & < NP >} likes ] ] ] ] ]
 \end{tikzpicture}}
                               
 
@@ -538,14 +534,14 @@ headed rule  if and only if $\Phi$ satisfies:
 
 \begin{tikzpicture}
 \tikzset{level distance=8ex}
-   \Tree [.\avX{gap & \( \@{A_1} \ $\oplus$\  \ldots \ $\oplus$\
-                         \@{A_n} \) $\ominus$\  \@{A_0}} 
-            [.\avX{gap & \@{A_1}} ]
+   \Tree [.\avX{gap & ( \tag{$A_1$} \ $\oplus$\  \ldots \ $\oplus$\
+                         \tag{$A_n$} ) $\ominus$\  \tag{$A_0$}} 
+            [.\avX{gap & \tag{$A_1$}} ]
             [.{\ldots}  ]
             \edge[style=double,very thick];
-            [.\avN{H}{gap & \@{A_i}\\ stop-gap & \@{A_0}}   ]
+            [.\avN{H}{gap & \tag{$A_i$}\\ stop-gap & \tag{$A_0$}}   ]
             [.{\ldots}  ]
-            [.\avX{gap & \@{A_n}} ] ]
+            [.\avX{gap & \tag{$A_n$}} ] ]
 \end{tikzpicture}
 
 \begin{itemize}
@@ -573,16 +569,14 @@ gaps are only filled once.
 
 \myslide{The Head-Filler Rule}
 
-\begin{avm}\avmfont{\sc}
-
-\[{\it phrase}\] \ \ \into \ \ 
-\ \ \@1 \[ gap & \el \]\ \  
-\HD \[ head &  \val{verb}  \\
-       val & \[ spr & \el\\
-                comps & \el\] \\
-       gap & \< \@1 \> \\
-       stop-gap & \< \@1 \> \]
-\end{avm}
+\avm{[\type*{phrase}] \ \ \into \ \ 
+\ \ \1 [ gap & < > ]\ \  
+\HD [ head &  \val{verb}  \\
+       val & [ spr & < >\\
+                comps & < >] \\
+       gap & < \1 > \\
+       stop-gap & < \1 > ]
+}
 \begin{itemize}\addtolength{\itemsep}{-2ex}
 \item This only covers gap filling in Ss
 \item The filler has to be identical to the \ft{gap} value
@@ -594,16 +588,15 @@ empty list
 \myslide{Gap Filling with \lex{easy}-Adjectives}
   \begin{exe}
     \ex \label{l:easy}
- \scalebox{0.8}{\begin{avm}\avmfont{\sc}
-      \< \textnormal{easy}, \ \[ \asort{word}
-      syn & \[ head & {\it adj} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< \@1 \>\\
-              comps & \< \@3 \> \] \\
-      stop-gap & \< \@2 \>\] \\
-      arg-st &      \< \@1 NP$_i$,  \@3 VP \[ inf & + \\ gap & \< \@2 NP$_i$ \> \], \ldots  \>   
-      \]\> \ \
-    \end{avm}}
+ \scalebox{0.8}{\avm{< \textnormal{easy}, \ [\type*{word}
+      syn & [ head & \type{adj} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < \1 >\\
+              comps & < \3 > ] \\
+      stop-gap & < \2 >] \\
+      arg-st &      < \1 NP$_i$,  \3 VP [ inf & + \\ gap & < \2 NP$_i$ > ], \ldots  >   
+      ]> \ \
+}}
 
   \end{exe}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -619,18 +612,18 @@ accounting for the interpretation of the subject as the filler.
 %\tikzset{frontier/.style={distance from root=40ex}}
 \tikzset{level 2/.style={level distance=20ex}}
 \tikzset{every tree node/.style={align=center,anchor=north}}
-\Tree [.\avn{AP}{val & \[ spr & \< \@2NP$_i$ \> \]\\ gap & \el}
+\Tree [.\avn{AP}{val & [ spr & < \tag{2NP}$_i$ > ]\\ gap & < >}
 \edge[style=double,very thick];
-         [.\avn{A}{ val & \[ spr & \< \@2 \> \\ comps & \< \@3 \> \]\\ 
-                    gap & \< ~ \> \\ 
-                    stop-gap & \< \@1 \>} easy ]
-         [.\avn{\bx{3} VP/NP}{val & \[ spr & \< NP \> \]\\ 
-                           gap & \< \@1 NP$_i$ \>} \edge[roof]; {to talk to} ] ]
+         [.\avn{A}{ val & [ spr & < \2 > \\ comps & < \3 > ]\\ 
+                    gap & < ~ > \\ 
+                    stop-gap & < \1 >} easy ]
+         [.\avn{\bx{3} VP/NP}{val & [ spr & < NP > ]\\ 
+                           gap & < \1 NP$_i$ >} \edge[roof]; {to talk to} ] ]
 
 \end{tikzpicture}
 % \begin{avmtree}\avmfont{\sc}
 
-% \br{AP \[ val & \[ spr & \< \@2NP$_i$ \> \]\\ gap & \el \]}{
+% \br{AP \[ val & \[ spr & \< \@2NP$_i$ \> \]\\ gap & < > \]}{
 %   \br{A \[ val & \[ spr & \< \@2 \> \\ comps & \< \@3 \> \]\\ 
 %     gap & \< ~ \> \\ stop-gap & \< \@1 \>\]}{\lf{easy}}
 %   \br{\@3 VP\[ val & \[ spr & \< NP \> \]\\ 
@@ -731,15 +724,14 @@ moves the contents of the SPR list into the \ft{gap} list
 
 \myslide{The Subject Extraction Lexical Rule}
 
-\scalebox{0.9}{\begin{avm}\avmfont{\sc}
-\[ \asort{pi-rule}
-input & \< X, \[ syn & \[ head & verb \\
-                          val & \[ spr & \< Z \> \] \] \\
-                 arg-st & \@{A}         \]   \>\\
-output & \<Y,  \[ syn & \[val & \[ spr & \< ~~  \>\\ 
-                          gap & \< \@1 \> \] \] \\
-                 arg-st & \@{A} \< \@1, \ldots \>        \]   \> \]
-\end{avm}}
+\scalebox{0.9}{\avm{[\type*{pi-rule}
+input & < X, [ syn & [ head & verb \\
+                          val & [ spr & < Z > ] ] \\
+                 arg-st & \tag{A}         ]   >\\
+output & <Y,  [ syn & [val & [ spr & < ~~  >\\ 
+                          gap & < \1 > ] ] \\
+                 arg-st & \tag{A} < \1, \ldots >        ]   > ]
+}}
 
 \begin{itemize}
 \item NB: This says nothing about the phonology, because the
@@ -748,18 +740,17 @@ default for pi-rules is to leave the phonology unchanged.
 
 \myslide{A Lexical Sequence This Licenses}
 
-\begin{avm}\avmfont{\sc}
-      \< \textnormal{likes}, \ \[ \asort{word}
-      syn & \[
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \<  \>\\
-              comps & \< \@2  \> \] \\
-      gap & \< \@1 NP \[ case & nom \\ agr & 3sing \] \> \\
-      stop-gap & \< ~~ \>\]\\
-      arg-st &      \< \@1, \@2 NP:acc  \>   
-      \]\>
-    \end{avm}
+\avm{< \textnormal{likes}, \ [\type*{word}
+      syn & [
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & <  >\\
+              comps & < \2  > ] \\
+      gap & < \1 NP [ case & nom \\ agr & 3sing ] > \\
+      stop-gap & < ~~ >]\\
+      arg-st &      < \1, \2 NP:acc  >   
+      ]>
+}
     
 
 \begin{itemize}
@@ -773,19 +764,19 @@ default for pi-rules is to leave the phonology unchanged.
 \tikzset{level distance=8ex}
 \tikzset{frontier/.style={distance from root=40ex}}
 \tikzset{every tree node/.style={align=center,anchor=north}}
-\Tree [.\avn{S}{gap & \el} 
-         [.\avn{NP}{gap & \el} Kim ]
+\Tree [.\avn{S}{gap & < >} 
+         [.\avn{NP}{gap & < >} Kim ]
          \edge[style=double,very thick];
-         [.\avn{S/NP}{gap & \q< NP \q>} 
-           [.\avn{NP}{gap & \el} we ]
+         [.\avn{S/NP}{gap & < NP >} 
+           [.\avn{NP}{gap & < >} we ]
            \edge[style=double,very thick];
-           [.\avn{VP/NP}{gap & \q< NP \q>} 
+           [.\avn{VP/NP}{gap & < NP >} 
            \edge[style=double,very thick];
-              [.\avn{V}{gap & \el} know ]
-              [.\avn{S/NP}{gap & \q< NP \q>} 
+              [.\avn{V}{gap & < >} know ]
+              [.\avn{S/NP}{gap & < NP >} 
               \edge[style=double,very thick];
-                [.\avn{V/NP}{gap & \q< NP \q>} likes ]
-                [.\avn{NP}{gap & \el} Bobby ]  ] ] ] ]
+                [.\avn{V/NP}{gap & < NP >} likes ]
+                [.\avn{NP}{gap & < >} Bobby ]  ] ] ] ]
 \end{tikzpicture}}
                     
 
@@ -839,16 +830,15 @@ must agree across conjuncts.
 
 \myslide{Our Coordination Rule, so far}
 
-\scalebox{0.75}{\begin{avm}\avmfont{\sc}
-    \[  val & \@0 \\ ind & $s_0$ \]
+\scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ ]
     \ \into \ 
-  \[  val & \@0 \\ ind & $s_1$  \] \ \ldots \  
-   \[  val & \@0  \\ ind & $s_{n-1}$ \]
-    \[ head & conj \\
+  [  val & \0 \\ ind & $s_1$  ] \ \ldots \  
+   [  val & \0  \\ ind & $s_{n-1}$ ]
+    [ head & conj \\
      ind  & $s_0$ \\ 
-    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
-  \[  val & \@0 \\ ind & $s_n$ \]
-  \end{avm}}
+    restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
+  [  val & \0 \\ ind & $s_n$ ]
+}}
 
 
 \begin{itemize}
@@ -860,16 +850,15 @@ conjuncts at various times.
 
 \myslide{Our Final Coordination Rule}
 
-\scalebox{0.75}{\begin{avm}\avmfont{\sc}
-    \[  val & \@0 \\ ind & $s_0$ \\ gap & \@{A} \]
+\scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ \\ gap & \tag{A} ]
     \ \into \ 
-  \[  val & \@0 \\ ind & $s_1$  \\ gap & \@{A}\] \ \ldots \  
-   \[  val & \@0  \\ ind & $s_{n-1}$ \\ gap & \@{A}\]
-    \[ head & conj \\
+  [  val & \0 \\ ind & $s_1$  \\ gap & \tag{A}] \ \ldots \  
+   [  val & \0  \\ ind & $s_{n-1}$ \\ gap & \tag{A}]
+    [ head & conj \\
      ind  & $s_0$ \\ 
-    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
-  \[  val & \@0 \\ ind & $s_n$ \\ gap & \@{A}\]
-  \end{avm}}
+    restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
+  [  val & \0 \\ ind & $s_n$ \\ gap & \tag{A}]
+}}
 
 \begin{itemize}
 \item We've just added \ft{gap} to all the conjuncts and the mother.

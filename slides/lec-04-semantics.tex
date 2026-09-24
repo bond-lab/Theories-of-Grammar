@@ -1,11 +1,9 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 
 
-\input{headx.tex}
+\input{headx-new.tex}
 
-\avmfont{\sc}
 \begin{document}
-\avmfont{\it}
 
 \header{Lecture 4}{Semantics}{}
 \maketitle
@@ -35,61 +33,56 @@
 
 \myslide{Head-Complement Rule}
 
-\begin{avm}\avmfont{\sc} 
-\[ \asort{phrase}  val & \[ comps & \<  \> \] \]
+\avm{[\type*{phrase}  val & [ comps & <  > ] ]
               \ $\rightarrow$\ \HD \ 
-             \[ \asort{word}
-             val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
-\end{avm}
+             [\type*{word}
+             val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}
+}
 \begin{itemize}
 \item The possible complements are specified lexically \\
 \begin{small}\begin{tabular}{ll}
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{devour}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ COMPS & \< NP \> \]
-      \]\>
-    \end{avm} &
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{put}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ COMPS & \< NP PP \> \]
-      \]\>
-    \end{avm} 
+    \avm{< \textnormal{devour}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ COMPS & < NP > ]
+      ]>
+} &
+    \avm{< \textnormal{put}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ COMPS & < NP PP > ]
+      ]>
+} 
   \end{tabular}
 \end{small}
 \end{itemize}
 
 \myslide{Head-Specifier Rule}
 
-\begin{avm}\[{\it phrase}\\
-             VAL & \[ COMPS & \el\\
-                      SPR & \el\]\]\ \ \
-$\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
-			                VAL & \[ COMPS & \el\\
-                                                 SPR & \q< {\@2} \q> \]\] 
-\end{avm}
+\avm{[\type*{phrase}\\
+             VAL & [ COMPS & < >\\
+                      SPR & < >]]\ \ \
+$\rightarrow$\ \ \ \ {\2}\ \ \ \ \HD[ %\type{phrase}\\
+			                VAL & [ COMPS & < >\\
+                                                 SPR & < {\2} > ]]
+}
 \begin{itemize}
 \item Combines the rules expanding S and NP (and other, \ldots).
 \item Again, restrictions on specifiers come from the lexicon.
 \end{itemize}
 \begin{small}\begin{tabular}{ll}
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{dog}, \ \[ \asort{word}
-      head & {\it noun} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< D \> \\ comps & \el \]
-      \]\>
-    \end{avm} &
-    \begin{avm}\avmfont{\sc}
-      \< \textnormal{eat}, \ \[ \asort{word}
-      head & {\it verb} \\
-      % \[ \asort{agr-cat} agr & \[ per & 3 \\ num & sg \] \]
-      val & \[ spr & \< NP \> \\  comps & \< (NP) \> \]
-      \]\>
-    \end{avm} 
+    \avm{< \textnormal{dog}, \ [\type*{word}
+      head & \type{noun} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < D > \\ comps & < > ]
+      ]>
+} &
+    \avm{< \textnormal{eat}, \ [\type*{word}
+      head & \type{verb} \\
+      % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
+      val & [ spr & < NP > \\  comps & < (NP) > ]
+      ]>
+} 
   \end{tabular}
 \end{small}
 
@@ -105,10 +98,9 @@ $\rightarrow$\ \ \ \ {\@2}\ \ \ \ \HD\[ %{\it phrase}\\
 \item \txx{The Specifier-Head Agreement Constraint (SHAC)}
 \\ Verbs and nouns must be specified as:
 \begin{center}
-  \begin{avm}\avmfont{\sc}
-    \[ head & \[ agr \@1 \] \\
-    val & \[ spr \< agr \@1 \> \] \]
-  \end{avm}
+  \avm{[ head & [ agr \1 ] \\
+    val & [ spr < agr \1 > ] ]
+}
 \end{center}
 Actually inherited from a lexical super-type
 \end{itemize}
@@ -185,9 +177,9 @@ Aspects of meaning we \emp{won't} account for (in this course)
   \begin{itemize}\addtolength{\itemsep}{2ex}
   \item \iz{life}  (or \textsf{life}$'$)
 \item
-  \begin{avm}\avmfont{\sc}%\avmvalfont{\it}
-    \[ reln & life \\ inst & i \]
-  \end{avm}
+  \avm{%\avmvalfont{\it}
+    [ reln & life \\ inst & i ]
+}
 \item Not like wordnet: 
 \iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
 
@@ -206,20 +198,19 @@ Aspects of meaning we \emp{won't} account for (in this course)
 % INST i
 
 \myslide{Our Slice of a World of Meanings}
-\begin{avm}\avmfont{\sc}
-\[mode &  prop \\
+\avm{[mode &  prop \\
  index &  $s$\\
- restr & \< \[ RELN & {\bf save}\\
+ restr & < [ RELN & {\bf save}\\
                SIT & $s$\\
               SAVER &  $i$\\
-              SAVED &  $j$ \] \ , 
-              \[RELN & {\bf name}\\
+              SAVED &  $j$ ] \ , 
+              [RELN & {\bf name}\\
               NAME &  Chris\\
-              NAMED & \ $i$\]\ , 
-              \[RELN & {\bf name}\\
+              NAMED & \ $i$]\ , 
+              [RELN & {\bf name}\\
               NAME &  Pat\\
-              NAMED & \ $j$\] \> \]
-\end{avm} 
+              NAMED & \ $j$] > ]
+} 
 \begin{quote}
   “\ldots the linguistic meaning of \eng{Chris saved Pat} is a proposition
   that will be true just in case there is an actual situation that
@@ -267,75 +258,72 @@ hold (in some possible world) for the expression to be applicable.
 \end{itemize}
 
 \myslide{Feature Geometry}
-\begin{avm}\avmfont{\sc}
-\[\asort{expression}
-syn & \[ \asort{syn-cat}
-      head & \[ \asort{pos} ... \] \\
-      val & \[ spr & \q< ... \q> \\
-               comps & \q< ... \q> \]\]\\
-      sem & \[ \asort{sem-cat}
-      mode &  \q\{ prop, ques, dir, ref, none \q\} \\
-      index &  \q\{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \q\} \\
-      restr & \q< ... \q> \]\]
- \end{avm}
+\avm{[\type*{expression}
+syn & [\type*{syn-cat}
+      head & [\type*{pos} ... ] \\
+      val & [ spr & < ... > \\
+               comps & < ... > ]]\\
+      sem & [\type*{sem-cat}
+      mode &  \{ prop, ques, dir, ref, none \} \\
+      index &  \{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \} \\
+      restr & < ... > ]]
+}
 
 
 
 \myslide{How the Pieces Fit Together}
-\begin{avm}\avmfont{\sc}
-  \< \eng{Kim}, \[syn & \[head & \[{\it noun}\\
-  agr & {\it 3sing}\]\\
-  val & \[spr & {\el}\\
-  comps & {\el}\]\]\\
-  sem & \[mode & ref\\
+\avm{< \eng{Kim}, [syn & [head & [\type*{noun}\\
+  agr & \type{3sing}]\\
+  val & [spr & {< >}\\
+  comps & {< >}]]\\
+  sem & [mode & ref\\
   index & \ \ $i$\\
-  restr & \< \[reln & {\bf name}\\
+  restr & < [reln & {\bf name}\\
   % sit & \ \ $s$\\
   name & Kim\\
-  named & \ \ $i$\] \> \]\] \>  %
-\end{avm}
+  named & \ \ $i$] > ]] >  %
+}
 \myslide{How the Pieces Fit Together}
-\begin{avm}\avmfont{\sc}
-\< \eng{sleep} ,\ \[syn & \[head & {\it verb}\\
-                                     val & \[spr & \q< NP$_i$ \q>\\
-                                     comps & \q<  \q>\]\]\\
-                            sem & \[mode & prop\\
+\avm{< \eng{sleep} ,\ [syn & [head & \type{verb}\\
+                                     val & [spr & < NP$_i$ >\\
+                                     comps & <  >]]\\
+                            sem & [mode & prop\\
                                     index & $s$\\
-                                    restr & \< \[reln & {\bf sleep}\\
+                                    restr & < [reln & {\bf sleep}\\
                                                  sit & \ \ $s$\\
-                                                 sleeper & \ \ $i$  \] \>\]\] \>
-                                        \end{avm}
+                                                 sleeper & \ \ $i$  ] >]] >
+}
 \myslide{The Pieces Together}
 
-\begin{avmtree}\avmfont{\sc}
-  \br{S}{
-    \br{\@{1} NP  \[ sem & \[ index & $i$ \] \] }{\lf{\eng{Kim}}}
-    \br{VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
-      sem & \[ mode & prop\\
+\begin{forest}
+cat
+[{S} [{\@{1} NP  \avm{[ sem & [ index & $i$ ] ]}} [{\eng{Kim}}]]
+[{VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
+      sem & [ mode & prop\\
       index & $s$\\
-      restr & \< \[reln & {\bf sleep}\\
+      restr & < [reln & {\bf sleep}\\
       sit & \ \ $s$\\
-      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
-\end{avmtree}
+      sleeper & \ \ $i$  ] > ] ]}} [{\eng{slept}}]]]
+\end{forest}
 
 
 \myslide{Another View of the Same Tree}
-\scalebox{0.8}{\begin{avmtree}\avmfont{\sc}
-  \br{S  \[ sem & \[ mode & prop \\ index & $s$\\
-      restr & \< \[reln & {\bf name}\\
-      name & \ \ Kim  \\ named & \ \ $i$ \] ,
-      \[reln & {\bf sleep}\\
+\scalebox{0.8}{\begin{forest}
+cat
+[{S  \avm{[ sem & [ mode & prop \\ index & $s$\\
+      restr & < [reln & {\bf name}\\
+      name & \ \ Kim  \\ named & \ \ $i$ ] ,
+      [reln & {\bf sleep}\\
       sit & \ \ $s$\\
-      sleeper & \ \ $i$  \]  \>  \] \] }{
-    \br{\@{1} NP  \[ sem & \[ mode & ref \\ index & $i$\\
-      restr & \< \[reln & {\bf name}\\
-      name & \ \ Kim \\ named & \ \ $i$ \] \>  \] \] }{\lf{\eng{Kim}}}
-    \br{\HD VP  \[ syn & \[ val & \[ spr & \< \@{1} \> \] \] \\
-      sem & \[  mode & prop \\ index & $s$ \\ 
-      restr & \< \[reln & {\bf sleep}\\
+      sleeper & \ \ $i$  ]  >  ] ]}} [{\@{1} NP  \avm{[ sem & [ mode & ref \\ index & $i$\\
+      restr & < [reln & {\bf name}\\
+      name & \ \ Kim \\ named & \ \ $i$ ] >  ] ]}} [{\eng{Kim}}]]
+[{\HD VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
+      sem & [  mode & prop \\ index & $s$ \\ 
+      restr & < [reln & {\bf sleep}\\
       sit & \ \ $s$\\
-      sleeper & \ \ $i$  \] \> \] \]    }{\lf{\eng{slept}}}}
-\end{avmtree}}
+      sleeper & \ \ $i$  ] > ] ]}} [{\eng{slept}}]]]
+\end{forest}}
 
 
 \myslide{How to Share Semantic Information}
@@ -367,19 +355,16 @@ $ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \ra
 
 \myslide{What Identifies Indices?}
 
-\scalebox{1.0}{\begin{avmtree}\avmfont{\sc}
-  \br{S}{
-    \br{\@{1} NP$_i$}{
-      \br{D}{\lf{\eng{The}}}
-      \br{Nom$_i$}{\lf{\eng{cat}}}
-      }
-      \br{VP \[ spr & \< \@{1} \> \]}{
-        \br{VP   \[ spr & \< \@{1} \>  \\
-          restr & \< \[reln & {\bf sleep}\\
+\scalebox{1.0}{\begin{forest}
+cat
+[{S} [{\@{1} NP$_i$} [{D} [{\eng{The}}]]
+[{Nom$_i$} [{\eng{cat}}]]]
+[{VP \avm{[ spr & < \1 > ]}} [{VP   \avm{[ spr & < \1 >  \\
+          restr & < [reln & {\bf sleep}\\
           sit & \ \ $s$\\
-          sleeper & \ \ $i$  \] \>  \]    }{\lf{\eng{slept}}}
-        \br{PP}{\tlf{\eng{on the mat}}}}}
-\end{avmtree}}
+          sleeper & \ \ $i$  ] >  ]}} [{\eng{slept}}]]
+[{PP}]]]
+\end{forest}}
 
 
 
@@ -389,16 +374,15 @@ $ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \ra
 \item contribute predications
 \item ‘expose’ one index in those predications, for use by words or phrases
 \item relate syntactic arguments to semantic arguments
- \\ \scalebox{0.8}{\begin{avm}\avmfont{\sc}
-\< \eng{sleep} ,\ \[syn & \[head & {\it verb}\\
-                                     val & \[spr & \q< NP$_i$ \q>\\
-                                     comps & \q<  \q>\]\]\\
-                            sem & \[mode & prop\\
+ \\ \scalebox{0.8}{\avm{< \eng{sleep} ,\ [syn & [head & \type{verb}\\
+                                     val & [spr & < NP$_i$ >\\
+                                     comps & <  >]]\\
+                            sem & [mode & prop\\
                                     index & $s$\\
-                                    restr & \< \[reln & {\bf sleep}\\
+                                    restr & < [reln & {\bf sleep}\\
                                                  sit & \ \ $s$\\
-                                                 sleeper & \ \ $i$  \] \>\]\] \>
-                                        \end{avm}}
+                                                 sleeper & \ \ $i$  ] >]] >
+}}
 \end{itemize}
 
 \myslide{Summary: Grammar Rules \ldots }
@@ -406,26 +390,23 @@ $ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \ra
 \item Identify feature structures (including the \ft{index} value) across daughters
   \begin{itemize}\addtolength{\itemsep}{1ex}
   \item Head Specifier Rule \\
-\scalebox{0.9}{\begin{avm}\avmfont{\sc}
-  \[ \asort{phrase} 
-  val & \[ spr & \el \] \] \ \ \
-  $\rightarrow$\ \ \ \ {\@1}\ \ \ \ \HD\[ %{\it phrase}\\
-  val & \[ spr & \q< {\@1} \q>  \\ comps & \el \]\] 
-\end{avm}}
+\scalebox{0.9}{\avm{[\type*{phrase} 
+  val & [ spr & < > ] ] \ \ \
+  $\rightarrow$\ \ \ \ {\1}\ \ \ \ \HD[ %\type{phrase}\\
+  val & [ spr & < {\1} >  \\ comps & < > ]]
+}}
 \item Head Complement Rule \\
-\scalebox{0.9}{\begin{avm}\avmfont{\sc}
-    \[ \asort{phrase}
-    val & \[ comps & \<  \> \] \]
+\scalebox{0.9}{\avm{[\type*{phrase}
+    val & [ comps & <  > ] ]
     \ $\rightarrow$\ \HD \ 
-    \[ \asort{word}
-    val & \[ comps & \< \@1, \ldots, \@{n} \> \] \]\ \ \@1, \ldots, \@{n}
-\end{avm}}
+    [\type*{word}
+    val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}
+}}
 \item Head Modifier Rule \\
-\scalebox{0.9}{\begin{avm}\avmfont{\sc}
-    \[ \asort{phrase} \]
-    \ $\rightarrow$\ \HD \ \@1  \[ val & \[ comps & \el \]  \] \ \ 
-    \[ val & \[ comps & \el \\ mod & \< \@1 \> \] \]
-\end{avm}}
+\scalebox{0.9}{\avm{[\type*{phrase} ]
+    \ $\rightarrow$\ \HD \ \1  [ val & [ comps & < > ]  ] \ \ 
+    [ val & [ comps & < > \\ mod & < \1 > ] ]
+}}
 \end{itemize}
 \end{itemize}
 
@@ -458,31 +439,27 @@ $ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \ra
 \begin{itemize}
 \item [C2] NOM \into NOM PP; VP \into VP PP
 \item [C3] 
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-    \[ \asort{phrase} val & \[ spr & - \\ comps & itr \] \] 
-    \ $\rightarrow$\ \HD \  \[ \asort{phrase}  val & \[ spr & - \]   \] \ \ 
-    PP 
-\end{avm}}
-\item [C4] 
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-    \[ \asort{phrase}  \]
-    \ $\rightarrow$\ \HD \ \[  val & \[ comps & \el \]  \] \ \ 
+\scalebox{0.8}{\avm{[\type*{phrase} val & [ spr & - \\ comps & itr ] ] 
+    \ $\rightarrow$\ \HD \  [\type*{phrase}  val & [ spr & - ]   ] \ \ 
     PP
-\end{avm}}
+}}
+\item [C4] 
+\scalebox{0.8}{\avm{[\type*{phrase}  ]
+    \ $\rightarrow$\ \HD \ [  val & [ comps & < > ]  ] \ \ 
+    PP
+}}
 \item[C5]
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-    \[ \asort{phrase} \]
+\scalebox{0.8}{\avm{[\type*{phrase} ]
     \ $\rightarrow$
-    \HD \ \@1  \[ syn &  \[ val & \[ comps & \el \]  \] \] \ \ 
-    \[ syn & \[ val & \[ comps & \el \\ mod & \< \@1 \> \] \] \]
-  \end{avm}}
+    \HD \ \1  [ syn &  [ val & [ comps & < > ]  ] ] \ \ 
+    [ syn & [ val & [ comps & < > \\ mod & < \1 > ] ] ]
+}}
 
 \item[=] 
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-     \[ \asort{phrase} \]
-     \ $\rightarrow$\ \HD \ \@1   \[ comps & \el  \] \ \ 
-      \[ comps & \el \\ mod & \< \@1 \> \] 
- \end{avm}} 
+\scalebox{0.8}{\avm{[\type*{phrase} ]
+     \ $\rightarrow$\ \HD \ \1   [ comps & < >  ] \ \ 
+      [ comps & < > \\ mod & < \1 > ]
+}} 
 
 
 \myslide{Evolution of Another Phrase Structure Rule}
@@ -490,139 +467,128 @@ $ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \ra
 \begin{itemize}
 \item [C2] X \into X+ CONJ X; 
 \item [C3] 
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-    \@1 \ \into \ \@{1}+ \ \ 
-    \[ \asort{word} head & conj \] \ \ 
-    \@1
-\end{avm}}
+\scalebox{0.8}{\avm{\1 \ \into \ \1+ \ \ 
+    [\type*{word} head & conj ] \ \ 
+    \1
+}}
 \item [C4] 
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-    \[ val & \@1 \] \ \into \ \[ val & \@1 \]+ \ \ 
-    \[ \asort{word} head & conj \] \ \ 
-    \[ val & \@1 \]
-\end{avm}}
+\scalebox{0.8}{\avm{[ val & \1 ] \ \into \ [ val & \1 ]+ \ \ 
+    [\type*{word} head & conj ] \ \ 
+    [ val & \1 ]
+}}
 \item[C5]
-\scalebox{0.8}{\begin{avm}\avmfont{\sc}
-    \[ syn & \[ val & \@0 \] \\ 
-       sem & \[ ind & $s_0$ \]  \]
-    \ \into \ 
-  \end{avm}} \\
-\scalebox{0.65}{\begin{avm}\avmfont{\sc}
-  \[ syn & \[ val & \@0 \] \\ 
-       sem & \[ ind & $s_1$ \]  \] \ \ldots \  
-   \[ syn & \[ val & \@0 \] \\ 
-     sem & \[ ind & $s_{n-1}$ \] \]
-    \[ syn & \[ head & conj \] \\
-    sem & \[ ind  & $s_0$ \\ 
-    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q> \]  \]\ \ 
-  \[ syn & \[ val & \@0 \] \\ 
-     sem & \[ ind & $s_n$ \] \]
-  \end{avm}}
+\scalebox{0.8}{\avm{[ syn & [ val & \0 ] \\ 
+       sem & [ ind & $s_0$ ]  ]
+    \ \into \
+}} \\
+\scalebox{0.65}{\avm{[ syn & [ val & \0 ] \\ 
+       sem & [ ind & $s_1$ ]  ] \ \ldots \  
+   [ syn & [ val & \0 ] \\ 
+     sem & [ ind & $s_{n-1}$ ] ]
+    [ syn & [ head & conj ] \\
+    sem & [ ind  & $s_0$ \\ 
+    restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] > ]  ]\ \ 
+  [ syn & [ val & \0 ] \\ 
+     sem & [ ind & $s_n$ ] ]
+}}
 \item[=]
-\scalebox{0.75}{\begin{avm}\avmfont{\sc}
-    \[  val & \@0 \\ ind & $s_0$ \]
+\scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ ]
     \ \into \ 
-  \[  val & \@0 \\ ind & $s_1$  \] \ \ldots \  
-   \[  val & \@0  \\ ind & $s_{n-1}$ \]
-    \[ head & conj \\
+  [  val & \0 \\ ind & $s_1$  ] \ \ldots \  
+   [  val & \0  \\ ind & $s_{n-1}$ ]
+    [ head & conj \\
      ind  & $s_0$ \\ 
-    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
-  \[  val & \@0 \\ ind & $s_n$ \]
-  \end{avm}}
+    restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
+  [  val & \0 \\ ind & $s_n$ ]
+}}
 \end{itemize}
 \end{itemize}
 % \item[=] 
 % \scalebox{0.8}{\begin{avm}\avmfont{\sc}
 %      \[ \asort{phrase} \]
-%      \ $\rightarrow$\ \HD \ \@1   \[ comps & \el  \] \ \ 
-%       \[ comps & \el \\ mod & \< \@1 \> \] 
+%      \ $\rightarrow$\ \HD \ \@1   \[ comps & < >  \] \ \ 
+%       \[ comps & < > \\ mod & \< \@1 \> \] 
 %  \end{avm}} 
 
 \myslide{Combining Constraints and Coordination}
 
 \begin{itemize}
 \item  Coordination Rule \\
-\scalebox{0.75}{\begin{avm}\avmfont{\sc}
-    \[  val & \@0 \\ ind & $s_0$ \]
+\scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ ]
     \ \into \ 
-  \[  val & \@0 \\ ind & $s_1$  \] \ \ldots \  
-   \[  val & \@0  \\ ind & $s_{n-1}$ \]
-    \[ head & conj \\
+  [  val & \0 \\ ind & $s_1$  ] \ \ldots \  
+   [  val & \0  \\ ind & $s_{n-1}$ ]
+    [ head & conj \\
      ind  & $s_0$ \\ 
-    restr & \q< \[ args & \q< $s_1, \ldots, s_{n-1}, s_n$ \q> \] \q>  \]\ \ 
-  \[  val & \@0 \\ ind & $s_n$ \]
-  \end{avm}}
+    restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
+  [  val & \0 \\ ind & $s_n$ ]
+}}
 \item Lexical Entry for \lex{and} \\
-  \scalebox{0.9}{\begin{avm}\avmfont{\sc}
-      \< \eng{and} ,\ \[ syn & \[head & {\it conj} \] \\
-                          sem & \[mode & none\\
+  \scalebox{0.9}{\avm{< \eng{and} ,\ [ syn & [head & \type{conj} ] \\
+                          sem & [mode & none\\
                                   ind & $s$\\
-                                  restr & \< \[reln & {\bf and}\\
-                                               sit & \ \ $s$\\ \] \>\]\] \>
-                                        \end{avm}}
+                                  restr & < [reln & {\bf and}\\
+                                               sit & \ \ $s$\\ ] >]] >
+}}
 \end{itemize}
 
 \myslide{Combining Constraints and Coordination}
-\noindent\scalebox{0.9}{\begin{avmtree}\avmfont{\sc}
-\br{S \[ ind & $s_0$ \\
+\noindent\scalebox{0.9}{\begin{forest}
+cat
+[{S \avm{[ ind & $s_0$ \\
 restr & 
-\< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
- \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
-\@0 \ \[reln & {\bf and}\\
+< [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
+ [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
+\0 \ [reln & {\bf and}\\
 sit & \ \ $s_0$\\ 
-args & \q< $s_1, s_2$ \q> \], 
-\[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
-\[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\] \> \]}{
-  \br{S \[ ind & $s_1$ \]}{ \tlf{\eng{Joe jokes}}}
-  \br{\[ head & {\it conj} \\
+args & < $s_1, s_2$ > ], 
+[reln & {\bf name} \\ name & Kim \\ named & $k$], 
+[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$] > ]}} [{S \avm{[ ind & $s_1$ ]}}]
+[{\avm{[ head & \type{conj} \\
          ind & $s_0$\\
-        restr & \< \@0 \[reln & {\bf and} \] \> \] }{\lf{\eng{and}}}
-  \br{S \[ ind & $s_2$ \]}{ \tlf{\eng{Kim smiles}}}
-}
-\end{avmtree}}
+        restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
+[{S \avm{[ ind & $s_2$ ]}}]]
+\end{forest}}
 
 \myslide{Ambiguity}
-\noindent\scalebox{0.7}{\begin{avmtree}\avmfont{\sc}
-\br{S \[ ind & $s_0$ \\
+\noindent\scalebox{0.7}{\begin{forest}
+cat
+[{S \avm{[ ind & $s_0$ \\
 restr & 
-\< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
- \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
-\@0 \ \[reln & {\bf and}\\
+< [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
+ [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
+\0 \ [reln & {\bf and}\\
 sit & \ \ $s_0$\\ 
-args & \q< $s_1, s_2$ \q> \], 
-\[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
-\[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\],
-\[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_0$ \]  \> \]}{
-\br{\@1 S \[ ind & $s_0$ \]}{
-  \br{S \[ ind & $s_1$ \]}{ \tlf{\eng{Joe jokes}}}
-  \br{\[ head & {\it conj} \\
+args & < $s_1, s_2$ > ], 
+[reln & {\bf name} \\ name & Kim \\ named & $k$], 
+[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
+[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_0$ ]  > ]}} [{\@1 S \avm{[ ind & $s_0$ ]}} [{S \avm{[ ind & $s_1$ ]}}]
+[{\avm{[ head & \type{conj} \\
          ind & $s_0$\\
-        restr & \< \@0 \[reln & {\bf and} \] \> \] }{\lf{\eng{and}}}
-  \br{S \[ ind & $s_2$ \]}{ \tlf{\eng{Kim smiles}}}
-}
-\br{ADV \[ mod \q< \@1 \q> \]}{\tlf{\eng{often}}}}
-\end{avmtree}}
+        restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
+[{S \avm{[ ind & $s_2$ ]}}]]
+[{ADV \avm{[ mod < \1 > ]}}]]
+\end{forest}}
 
 \myslide{Ambiguity}
-\noindent\scalebox{0.7}{\begin{avmtree}\avmfont{\sc}
-\br{S \[ ind & $s_0$ \\
+\noindent\scalebox{0.7}{\begin{forest}
+cat
+[{S \avm{[ ind & $s_0$ \\
 restr & 
-\< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
- \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
-\@0 \ \[reln & {\bf and}\\
+< [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
+ [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
+\0 \ [reln & {\bf and}\\
 sit & \ \ $s_0$\\ 
-args & \q< $s_1, s_2$ \q> \], 
-\[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
-\[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\],
-\[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_2$ \]  \> \]}{
-  \br{S \[ ind & $s_1$ \]}{ \tlf{\eng{Joe jokes}}}
-  \br{\[ head & {\it conj} \\
+args & < $s_1, s_2$ > ], 
+[reln & {\bf name} \\ name & Kim \\ named & $k$], 
+[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
+[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_2$ ]  > ]}} [{S \avm{[ ind & $s_1$ ]}}]
+[{\avm{[ head & \type{conj} \\
          ind & $s_0$\\
-        restr & \< \@0 \[reln & {\bf and} \] \> \] }{\lf{\eng{and}}}
-\br{S \[ ind & $s_2$ \]}{
-  \br{\@1 S \[ ind & $s_2$ \]}{ \tlf{\eng{Kim smiles}}}
-  \br{ADV \[ mod \q< \@1 \q> \]}{\tlf{\eng{often}}}}}
-\end{avmtree}}
+        restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
+[{S \avm{[ ind & $s_2$ ]}} [{\@1 S \avm{[ ind & $s_2$ ]}}]
+[{ADV \avm{[ mod < \1 > ]}}]]]
+\end{forest}}
 
 
 
@@ -630,19 +596,18 @@ args & \q< $s_1, s_2$ \q> \],
 Why isn’t this a possible semantic representation for
 the string \eng{Joe jokes and Kim smiles often}?
 
-\noindent\scalebox{0.6}{\begin{avm}\avmfont{\sc}
-\[ ind & $s_0$ \\
+\noindent\scalebox{0.6}{\avm{[ ind & $s_0$ \\
   mode & prop \\
   restr & 
-  \< \[reln & {\bf name} \\ name & Joe \\ named & $j$ \],
-  \[reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ \], 
-  \@0 \ \[reln & {\bf and}\\
+  < [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
+  [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
+  \0 \ [reln & {\bf and}\\
   sit & \ \ $s_0$\\ 
-  args & \q< $s_1, s_2$ \q> \], 
-  \[reln & {\bf name} \\ name & Kim \\ named & $k$\], 
-  \[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$\],
-  \[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_1$ \]  \> \]
-\end{avm}}
+  args & < $s_1, s_2$ > ], 
+  [reln & {\bf name} \\ name & Kim \\ named & $k$], 
+  [reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
+  [reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_1$ ]  > ]
+}}
 
 \myslide{Some Standard Extensions}
 
@@ -722,11 +687,10 @@ for number name words.)
 \index{number@{\it number}}
 
 \begin{itemize}
-\item[(i)] \scalebox{0.8}{\begin{avm}
-\< hundred , \[ SYN \[ HEAD & {\it number}\\
-                       VAL & \[ SPR & \q< \[ HEAD & {\it number} \] \q>\\
-                                COMPS & \q< \[ HEAD & {\it number} \] \q> \]\]\] \>
-\end{avm}}
+\item[(i)] \scalebox{0.8}{\avm{< hundred , [ SYN [ HEAD & \type{number}\\
+                       VAL & [ SPR & < [ HEAD & \type{number} ] >\\
+                                COMPS & < [ HEAD & \type{number} ] > ]]] >
+}}
 %\index{SPR}
 %\index{COMPS}
 \end{itemize}
@@ -737,11 +701,12 @@ and Head-Specifier Rules to give us the phrase structure shown in
 (ii):
 
 \begin{itemize}
-\item[(ii)] \scalebox{0.8}{\begin{tree}
-\br{NumP}{\br{NumP}{\lf{two}}
-	  \br{Num$'$}{\br{Num}{\lf{hundred}}
-		      \br{NumP}{\lf{five}}}}
-\end{tree}}
+\item[(ii)] \scalebox{0.8}{\begin{forest}
+cat, for tree={l sep=3mm}
+[{NumP} [{NumP} [{two}]]
+[{Num$'$} [{Num} [{hundred}]]
+[{NumP} [{five}]]]]
+\end{forest}}
 \end{itemize}
 
 Smith (1999) provides a compositional semantics
@@ -749,26 +714,25 @@ of number names. The semantics of this NP should be (iii):
 
 \begin{itemize}
 \item[(iii)]
-\scalebox{0.6}{\begin{avm}
-\[ INDEX & $i$\\
+\scalebox{0.5}{\avm{[ INDEX & $i$\\
    MODE & ref\\
-   RESTR & {\Huge$\langle$}\  \[\avmspan{RELN \ {\bf constant}}\\
+   RESTR & {\Huge$\langle$}\  [{RELN \ {\bf constant}}\\
 		 INST & \ \ \ $l$\\
-		 VALUE &  \ \ \ 2\]\ ,
-              \[\avmspan{RELN \ {\bf times}}\\
+		 VALUE &  \ \ \ 2]\ ,
+              [{RELN \ {\bf times}}\\
 		 RESULT & \ \ $k$\\
 		 FACTOR1 & \ \ $l$\\
-                 FACTOR2 & \ \ $m$ \]\ , 
-	     \[\avmspan{RELN \ {\bf constant}}\\
+                 FACTOR2 & \ \ $m$ ]\ , 
+	     [{RELN \ {\bf constant}}\\
 		 INST & \ \ \ $m$\\
-		 VALUE & \ \ 100 \]\ , \hspace{10pt}\[ RELN & {\bf plus}\\
+		 VALUE & \ \ 100 ]\ , \hspace{10pt}[ RELN & {\bf plus}\\
  		 RESULT & \  \ $i$\\
 	         TERM1 & \ \ $j$\\
-		 TERM2 & \ \ $k$ \]\ , 
-              \[\avmspan{RELN \ {\bf constant}}\\
+		 TERM2 & \ \ $k$ ]\ , 
+              [{RELN \ {\bf constant}}\\
 		 INST & \ \ \ $j$\\
-                 VALUE & \ \ \ 5 \]\ {\Huge$\rangle$} \]
-\end{avm}}
+                 VALUE & \ \ \ 5 ]\ {\Huge$\rangle$} ]
+}}
 \end{itemize}
 
 \noindent
@@ -790,13 +754,13 @@ indices of its specifier and complement with the value of some feature
 of a predication on its RESTR list.  Which feature of which predication
 is the \index{index}index of the specifier identified with?  What about the index
 of the complement?
+\newpage
 \item[C.] The lexical entry for {\it hundred} will identify its
 own INDEX with the value of some feature of some predication on
 its RESTR list.  Which feature of which predication must this
 be, in order for the grammar 
 to build (iii) as the SEM value of {\it two hundred five}?
 
-\newpage
 
 \item[D.] Based on your answers in parts (A)--(C), 
 give a lexical entry for {\it hundred} that includes
@@ -805,22 +769,17 @@ the constraints in (i) and a fully specified SEM value.
 as it is used in {\it two hundred five}. Don't worry about other
 valence possibilities, such as 
 {\it two hundred}, {\it two hundred and five}, or {\it a hundred}.}]
+\newpage
+
 \item[E.] The syntax and semantics of number names do
 not line up neatly: In the syntax, {\it hundred} forms a constituent
 with {\it five}, and {\it two} combines with {\it hundred five} to
 give a larger constituent.  In the semantics, the constant
-% relations 
-predications
-with the values 2 and 100 are related via the times 
-% relation
-predication.
-The result of that is related to the constant 
-% relation 
-predication
-with the value
-5, via the plus 
-predication
-% relation.  
+predications with the values 2 and 100 are related via the times 
+predication. The result of that is related to the constant 
+predication with the value
+5, via the plus predication.
+
 Why is this mismatch not a problem for the grammar?
 \end{itemize}
 
