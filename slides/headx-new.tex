@@ -111,15 +111,11 @@
 
 
 \usepackage[utf8]{inputenc}
-%%% trees: forest is what we now recommend to students, but the older
-%%% decks still draw their trees with rtrees/qtree.  Both are loaded
-%%% while the decks are being migrated one at a time.
-\usepackage{rtrees,qtree}
-%%% rtrees defines \lf inside the tree environment, not at top level,
-%%% so provide it first (cf. \val in headx.tex).
-\providecommand{\lf}[1]{}
-\renewcommand{\lf}[1]{\br{#1}{}}
+%%% trees
 \usepackage{multicol}
+%%% pst-node: one example in lec-10-control draws a connector between
+%%% two points with \rnode/\ncbar.  This used to come in with rtrees.
+\usepackage{pst-node}
 \usepackage{forest}
 \useforestlibrary{linguistics}
 \forestapplylibrarydefaults{linguistics}
@@ -142,14 +138,6 @@
 \newcommand{\step}[1]{\begin{center}\emp{#1}\end{center}}
 
 %%% AVMs (Language Science Press)
-%%% rtrees does \RequirePackage{avm}, and Manning's avm *environment*
-%%% collides with langsci-avm's \avm *command*.  We only want rtrees for
-%%% its tree macros, so retire the environment before loading langsci-avm.
-%%% This whole block goes once the trees are migrated to forest.
-\makeatletter
-\let\avm\@undefined
-\let\endavm\@undefined
-\makeatother
 \usepackage{langsci-avm}
 
 %%% Macros the decks use, carried over from headx.tex
@@ -158,13 +146,20 @@
 \newcommand{\idn}{\mtciteform}    %%% Indonesian
 \newcommand{\prd}[1]{\textbf{#1}}
 \newcommand{\typ}[1]{\textit{#1}}
-%%% \val may or may not be defined already, depending on the avm.sty
-%%% that rtrees drags in; provide it first, then set our definition.
+%%% \val: provide before renewing, in case a package defines it.
 \providecommand{\val}[1]{}
 \renewcommand{\val}[1]{\textit{#1}}
-%%% pstricks oval nodes, used to ring parts of rtrees trees
-\newcommand{\OV}[1]{\ovalnode[linestyle=dotted,linecolor=red]{A}{#1}}
-\newcommand{\OVB}[1]{\ovalnode[linestyle=dotted,linecolor=blue]{A}{#1}}
+%%% Manning's \avmbox, still used in tree labels and in maths where a
+%%% bare langsci \tag would not work.  \avm{\tag{...}} gives the same
+%%% boxed tag as the ones inside feature structures.
+\newcommand{\avmbox}[1]{\mbox{\avm{\tag{#1}}}}
+
+%%% Ring a value in a dotted oval.  These used pstricks \ovalnode,
+%%% which came in with rtrees; tikz (via forest) does the same job.
+\newcommand{\OV}[1]{\tikz[baseline]{\node[draw,dotted,red,ellipse,
+          inner sep=1pt,outer sep=0pt]{#1};}}
+\newcommand{\OVB}[1]{\tikz[baseline]{\node[draw,dotted,blue,ellipse,
+          inner sep=1pt,outer sep=0pt]{#1};}}
 
 %%% From CSLI book
 \newcommand{\mc}{\multicolumn}

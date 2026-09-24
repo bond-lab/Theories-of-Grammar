@@ -430,23 +430,26 @@ so quickly and easily.
 
 %\rule[lift]{width}{height}
 %\rule{0ex}{12ex}
-  \begin{tree}\scriptsize
-    \br{Early Transformational Grammar (1955-1964)}%
-    {\br{Standard Theory (1964-1967)}{%
-        \br{EST (1967-1977)}{%
-          \br{\gr{REST}{1977-1981}}{
-            \br{\gr{GB}{1981-1993}}{\br{\gr{MP}{1993-present}}{ }}}
-          \br{\gr{GPSG}{1979-1985}}{%
-            \br{\rnode{HPSG}{\gr{HPSG}{1986-present}}}{
-            \br{\gr{Sign-based CxG}{2001-present}}{ }}}
-          \br{\gr{Realistic TG}{1978-1980}}{%
-             \br{\rnode{LFG}{\gr{LFG}{1980-present}}}{
-            }}}} {\br {\rnode{GS}{Generative Semantics (1966-1975)}}
-        {\br{Relational Grammar (1974-present)}{\br{Arc Pair
-              Grammar (1980)}{}}}}}
-    \ncline[linestyle=dashed]{-}{LFG}{HPSG} \nccurve[linestyle=dashed,
-    angleA=0, angleB=180]{-}{LFG}{GS}
-  \end{tree}
+  \begin{forest}
+  cat, for tree={font=\scriptsize, s sep=2mm, l sep=4mm}
+  [{Early Transformational Grammar (1955-1964)}
+    [{Standard Theory (1964-1967)}
+      [{EST (1967-1977)}
+        [{\gr{REST}{1977-1981}}
+          [{\gr{GB}{1981-1993}}
+            [{\gr{MP}{1993-present}}]]]
+        [{\gr{GPSG}{1979-1985}}
+          [{\gr{HPSG}{1986-present}}, name=hpsg
+            [{\gr{Sign-based CxG}{2001-present}}]]]
+        [{\gr{Realistic TG}{1978-1980}}
+          [{\gr{LFG}{1980-present}}, name=lfg]]]]
+    [{Generative Semantics (1966-1975)}, name=gs
+      [{Relational Grammar (1974-present)}
+        [{Arc Pair Grammar (1980)}]]]
+  ]
+  \draw[dashed] (lfg) -- (hpsg);
+  \draw[dashed] (lfg) to[out=0,in=180] (gs);
+  \end{forest}
 
 \myslide{Many Other Theories}
 \begin{itemize}
