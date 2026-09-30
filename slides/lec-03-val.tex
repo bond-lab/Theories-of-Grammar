@@ -406,8 +406,10 @@ Verbs and nouns must be specified as:
 \myslide{Type Hierarchy (new Agreement!)}
 
 \begin{center}
-  \begin{forest}
-cat, for tree={font=\itshape}
+  %%% scaled: the small-caps feature names make this wider than the
+  %%% rtrees version was, and it ran off the right of the slide
+  \scalebox{0.8}{\begin{forest}
+cat, for tree={font=\itshape, s sep=3mm}
 [{feat-struc} [{expression  \avm{[ \textsc{head, val} ]}} [{word}]
 [{phrase}]]
 [{agr-cat \avm{[ \textsc{per,num} ]}} [{non-3sing} [{non-1sing} [{2sing}]
@@ -421,7 +423,7 @@ cat, for tree={font=\itshape}
 [{prep}]
 [{adj}]
 [{conj}]]]
-\end{forest}
+\end{forest}}
 \end{center}
 
 
@@ -433,10 +435,10 @@ cat
 [{\avm{[\type*{phrase}\\
        HEAD & \0\\ 
        VAL & [ SPR & < >\\
-                COMPS & < > ]]}} [{\@1\avm{[\type*{phrase}\\
+                COMPS & < > ]]}} [{\avm{\1}\avm{[\type*{phrase}\\
 		     HEAD & \4\\
 		     VAL & [ SPR & < >\\
-		              COMPS & < > ]]}} [{\@2\avm{[\type*{word}\\
+		              COMPS & < > ]]}} [{\avm{\2}\avm{[\type*{word}\\
 					HEAD & [\type*{det}\\
 						  AGR & \3\\
 						  COUNT & + ]\\

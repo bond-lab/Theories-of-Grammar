@@ -111,7 +111,7 @@ OUTPUT & < F$_{PSP}$({\1}) ,
 SYN & [HEAD & [ FORM &  pass ] ] \\
 % PRED &  +
 ARG-ST &  \tag{A}\ \ 
-$\oplus$\ \ < ([\hfil PP\\[-1ex]
+$\oplus$\ \ < ([\hfil PP\\
 [ FORM & by\\
 INDEX & $i$]] ) > ] >]]
 }
@@ -129,7 +129,7 @@ INDEX & $i$]] ) > ] >]]
     SYN & [HEAD & [ FORM &  pass ] ] \\
     % PRED & +
     ARG-ST & \tag{A}\ \
-    $\oplus$\ \ < ([\hfil PP\\[-1ex]
+    $\oplus$\ \ < ([\hfil PP\\
     [ FORM & by\\
     INDEX & $i$]] ) > ] >]]
 }
@@ -153,7 +153,7 @@ INDEX & $i$]] ) > ] >]]
     SYN & [HEAD & [ FORM &  pass ] ] \\
     % PRED & +
     ARG-ST & \tag{A}\ \
-    $\oplus$\ \ < ([\hfil PP\\[-1ex]
+    $\oplus$\ \ < ([\hfil PP\\
     [ FORM & by\\
     INDEX & $i$]] ) > ] >]]
 }
@@ -219,7 +219,7 @@ We need a separate (but related) rule for this.
   AGR& {\1}\\                                
   FORM & pass]\\
   VAL & [SPR & < [AGR& {\1}]\ >]]\\
-  ARG-ST & < NP$_j$ ( ,\ [\hfil PP\\[-1ex]
+  ARG-ST & < NP$_j$ ( ,\ [\hfil PP\\
   [FORM & by\\
   INDEX & $i$]]\ ) >\\
   SEM & [INDEX & $s$\\
@@ -243,7 +243,7 @@ Through the magic of the Passive-Lexical rule!
      FORM & pass]\\
      VAL & [SPR & < {\2}[AGR\ {\1}{\,}] >\\
      COMPS & {\tag{B}}]]\\
-     ARG-ST & < {\2}NP$_j$ >\ $\oplus$\ {\tag{B}} < ( ,\ [\hfil PP\\[-1ex]
+     ARG-ST & < {\2}NP$_j$ >\ $\oplus$\ {\tag{B}} < ( ,\ [\hfil PP\\
      [FORM & by\\
      INDEX & $i$]]\ ) >\\
      SEM & [INDEX & $s$\\
@@ -295,11 +295,11 @@ argument’s SPR value?
 \myslide{Passive tree}
 \begin{forest}
 cat
-[{S} [{\avmbox{1}NP}]
-[{VP\makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{V\tiny \makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}}]
-[{VP\makebox[0mm][l]{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{V}]
-[{PP} [{P}]
-[{NP}]]]]]
+[{S} [{\avmbox{1}NP} [{Kim}]]
+[{VP\lbox{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{V\tiny \lbox{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{is}]]
+[{VP\lbox{$[$ SPR $\langle \avmbox{1} \rangle ]$}} [{V} [{loved}]]
+[{PP} [{P} [{by}]]
+[{NP} [{everyone}]]]]]]
 \end{forest}
 
 \begin{itemize}

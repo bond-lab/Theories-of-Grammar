@@ -297,7 +297,7 @@ syn & [\type*{syn-cat}
 
 \begin{forest}
 cat
-[{S} [{\@{1} NP  \avm{[ sem & [ index & $i$ ] ]}} [{\eng{Kim}}]]
+[{S} [{\avm{\1} NP  \avm{[ sem & [ index & $i$ ] ]}} [{\eng{Kim}}]]
 [{VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
       sem & [ mode & prop\\
       index & $s$\\
@@ -315,7 +315,7 @@ cat
       name & \ \ Kim  \\ named & \ \ $i$ ] ,
       [reln & {\bf sleep}\\
       sit & \ \ $s$\\
-      sleeper & \ \ $i$  ]  >  ] ]}} [{\@{1} NP  \avm{[ sem & [ mode & ref \\ index & $i$\\
+      sleeper & \ \ $i$  ]  >  ] ]}} [{\avm{\1} NP  \avm{[ sem & [ mode & ref \\ index & $i$\\
       restr & < [reln & {\bf name}\\
       name & \ \ Kim \\ named & \ \ $i$ ] >  ] ]}} [{\eng{Kim}}]]
 [{\HD VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
@@ -357,13 +357,13 @@ $ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \ra
 
 \scalebox{1.0}{\begin{forest}
 cat
-[{S} [{\@{1} NP$_i$} [{D} [{\eng{The}}]]
+[{S} [{\avm{\1} NP$_i$} [{D} [{\eng{The}}]]
 [{Nom$_i$} [{\eng{cat}}]]]
 [{VP \avm{[ spr & < \1 > ]}} [{VP   \avm{[ spr & < \1 >  \\
           restr & < [reln & {\bf sleep}\\
           sit & \ \ $s$\\
           sleeper & \ \ $i$  ] >  ]}} [{\eng{slept}}]]
-[{PP}]]]
+[{PP} [{\eng{on the mat}}, roof]]]]
 \end{forest}}
 
 
@@ -533,7 +533,7 @@ cat
 \end{itemize}
 
 \myslide{Combining Constraints and Coordination}
-\noindent\scalebox{0.9}{\begin{forest}
+\noindent\scalebox{0.72}{\begin{forest}
 cat
 [{S \avm{[ ind & $s_0$ \\
 restr & 
@@ -543,15 +543,15 @@ restr &
 sit & \ \ $s_0$\\ 
 args & < $s_1, s_2$ > ], 
 [reln & {\bf name} \\ name & Kim \\ named & $k$], 
-[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$] > ]}} [{S \avm{[ ind & $s_1$ ]}}]
+[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$] > ]}} [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
 [{\avm{[ head & \type{conj} \\
          ind & $s_0$\\
         restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
-[{S \avm{[ ind & $s_2$ ]}}]]
+[{S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]]
 \end{forest}}
 
 \myslide{Ambiguity}
-\noindent\scalebox{0.7}{\begin{forest}
+\noindent\scalebox{0.58}{\begin{forest}
 cat
 [{S \avm{[ ind & $s_0$ \\
 restr & 
@@ -562,16 +562,16 @@ sit & \ \ $s_0$\\
 args & < $s_1, s_2$ > ], 
 [reln & {\bf name} \\ name & Kim \\ named & $k$], 
 [reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
-[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_0$ ]  > ]}} [{\@1 S \avm{[ ind & $s_0$ ]}} [{S \avm{[ ind & $s_1$ ]}}]
+[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_0$ ]  > ]}} [{\avm{\1} S \avm{[ ind & $s_0$ ]}} [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
 [{\avm{[ head & \type{conj} \\
          ind & $s_0$\\
         restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
-[{S \avm{[ ind & $s_2$ ]}}]]
-[{ADV \avm{[ mod < \1 > ]}}]]
+[{S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]]
+[{ADV \avm{[ mod < \1 > ]}} [{\eng{often}}, roof]]]
 \end{forest}}
 
 \myslide{Ambiguity}
-\noindent\scalebox{0.7}{\begin{forest}
+\noindent\scalebox{0.58}{\begin{forest}
 cat
 [{S \avm{[ ind & $s_0$ \\
 restr & 
@@ -582,12 +582,12 @@ sit & \ \ $s_0$\\
 args & < $s_1, s_2$ > ], 
 [reln & {\bf name} \\ name & Kim \\ named & $k$], 
 [reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
-[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_2$ ]  > ]}} [{S \avm{[ ind & $s_1$ ]}}]
+[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_2$ ]  > ]}} [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
 [{\avm{[ head & \type{conj} \\
          ind & $s_0$\\
         restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
-[{S \avm{[ ind & $s_2$ ]}} [{\@1 S \avm{[ ind & $s_2$ ]}}]
-[{ADV \avm{[ mod < \1 > ]}}]]]
+[{S \avm{[ ind & $s_2$ ]}} [{\avm{\1} S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]
+[{ADV \avm{[ mod < \1 > ]}} [{\eng{often}}, roof]]]]
 \end{forest}}
 
 
@@ -754,13 +754,13 @@ indices of its specifier and complement with the value of some feature
 of a predication on its RESTR list.  Which feature of which predication
 is the \index{index}index of the specifier identified with?  What about the index
 of the complement?
-\newpage
 \item[C.] The lexical entry for {\it hundred} will identify its
 own INDEX with the value of some feature of some predication on
 its RESTR list.  Which feature of which predication must this
 be, in order for the grammar 
 to build (iii) as the SEM value of {\it two hundred five}?
 
+\newpage
 
 \item[D.] Based on your answers in parts (A)--(C), 
 give a lexical entry for {\it hundred} that includes
@@ -769,17 +769,22 @@ the constraints in (i) and a fully specified SEM value.
 as it is used in {\it two hundred five}. Don't worry about other
 valence possibilities, such as 
 {\it two hundred}, {\it two hundred and five}, or {\it a hundred}.}]
-\newpage
-
 \item[E.] The syntax and semantics of number names do
 not line up neatly: In the syntax, {\it hundred} forms a constituent
 with {\it five}, and {\it two} combines with {\it hundred five} to
 give a larger constituent.  In the semantics, the constant
-predications with the values 2 and 100 are related via the times 
-predication. The result of that is related to the constant 
-predication with the value
-5, via the plus predication.
-
+% relations 
+predications
+with the values 2 and 100 are related via the times 
+% relation
+predication.
+The result of that is related to the constant 
+% relation 
+predication
+with the value
+5, via the plus 
+predication
+% relation.  
 Why is this mismatch not a problem for the grammar?
 \end{itemize}
 
