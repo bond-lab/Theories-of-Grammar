@@ -16,7 +16,7 @@ cd $sdir
 ### lec-*.tex too (lec-06-lexicon-bak, lec-06a-lexicon, ...), are not
 ### published, and some of them do not build.  If you add a new deck,
 ### git add it and it will be picked up here.
-for slide in `git ls-files 'lec-*.tex' 'presentation.tex'`
+for slide in `git ls-files 'lec-*.tex' 'presentation.tex' 'latex-intro.tex'`
 do
     base=`basename $slide .tex`
     echo Processing ${base}
@@ -32,7 +32,7 @@ popd
 ### version), ch08a-recreated.pdf, hpsg-latex.pdf, draft decks, ...
 pushd .
 cd $sdir
-pdfs=`git ls-files 'lec-*.tex' 'presentation.tex' | sed 's/\.tex$/.pdf/'`
+pdfs=`git ls-files 'lec-*.tex' 'presentation.tex' 'latex-intro.tex' | sed 's/\.tex$/.pdf/'`
 popd
 rsync -avc `for p in $pdfs; do echo $sdir/$p; done` docs/pdf
 

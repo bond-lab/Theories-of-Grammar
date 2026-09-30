@@ -1,0 +1,294 @@
+%%% ------------------------------------------------------------------
+%%% An introduction to LaTeX for linguists.
+%%%
+%%% Adapted, with permission of the licence and with thanks, from
+%%%   András Bárány, "Using LaTeX (in linguistics)", handout for the
+%%%   2026 SGSAH summer school, Glasgow, 24 June 2026.
+%%%   https://andras.barany.at/files/sgsah-latex-intro-handout.pdf
+%%% This deck covers the first four pages of that handout (sections 1-3),
+%%% with the exercises pointed at our own template instead of his.
+%%% ------------------------------------------------------------------
+
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+
+\input{headx-new.tex}
+
+%%% Hangul and IPA are not in the default font
+\newfontfamily\korfont{Noto Sans CJK KR}
+\newcommand{\ko}[1]{{\korfont #1}}
+\newfontfamily\ipafont{Noto Sans}
+\newcommand{\ipa}[1]{{\ipafont #1}}
+
+%%% code listings
+\usepackage{listings}
+\lstset{
+  language=[LaTeX]TeX,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue!60!black}\bfseries,
+  commentstyle=\color{teal}\itshape,
+  stringstyle=\color{black},
+  showstringspaces=false,
+  columns=fullflexible,
+  frame=single,
+  framerule=0pt,
+  backgroundcolor=\color{black!5},
+  xleftmargin=1em,
+  numbers=left,
+  numberstyle=\tiny\color{black!50},
+  numbersep=8pt,
+}
+
+%%% No font here has both Hangul and IPA, and listings will not let us
+%%% switch font mid-listing, so the Korean source is set with alltt --
+%%% verbatim-like, but commands still work, so \ko and \ipa can be used.
+\usepackage{alltt}
+\newfontfamily\monouni{DejaVu Sans Mono}
+%%% An environment, not a command: alltt changes catcodes, so it cannot
+%%% be passed as a macro argument -- the line breaks would be eaten.
+%%% lrbox captures the content as it is typeset, which is fine.
+\newsavebox{\srcb}
+\newenvironment{srcbox}
+  {\begin{lrbox}{\srcb}\begin{minipage}{0.93\linewidth}\monouni\footnotesize}
+  {\end{minipage}\end{lrbox}%
+   \noindent\colorbox{black!5}{\usebox{\srcb}}}
+\newcommand{\bs}{\textbackslash}
+
+\begin{document}
+\header{LaTeX}{Using LaTeX in linguistics}{}
+\maketitle
+
+\myslide{Overview}
+\begin{itemize}
+\item What LaTeX is, and what it is not
+\item Why you might want it
+\item What it is good at, for us in particular
+\item The basics: a document, commands, environments, formatting
+\item Next week we will test it, so make an account on \href{https://overleaf.com}{Overleaf}
+\end{itemize}
+
+\bigskip
+These slides follow the first part of a \href{https://andras.barany.at/files/sgsah-latex-intro-handout.pdf}{handout} by \emp{András Bárány}
+--- see the acknowledgments at the end.
+
+%%% ------------------------------------------------------------------
+\section{What is LaTeX?}
+%%% ------------------------------------------------------------------
+
+\myslide{What is LaTeX?}
+
+LaTeX is a \txx{typesetting system} for making documents.
+
+\begin{itemize}
+\item Scientific papers and presentations
+\item Your thesis
+\item Letters, reports, books, \ldots
+\end{itemize}
+
+\bigskip
+For this course: your problem sets, and your assignment.
+
+\myslide{What LaTeX is \emph{not}}
+
+LaTeX is \emp{not} \txx{what you see is what you get}, unlike Word or
+LibreOffice.
+
+\bigskip
+In a word processor, the thing you edit \emph{is} the thing you get.
+In LaTeX the document is split up:
+
+\begin{itemize}
+\item You edit a plain text file ending in \iz{.tex}
+\item That file is \txx{rendered} to give an output file
+\item The output is normally a \iz{.pdf}
+\item Other files can be pulled in: images, bibliographies, \ldots
+\item You can output  \iz{.tex} from a program, and \txx{include} it in your document
+  
+\end{itemize}
+
+\myslide{Why would you want that?}
+
+\begin{itemize}
+\item Separating the content from the output gives you \txx{flexibility}
+\item The same content can be rendered differently
+\item You can make slides \emph{and} a handout from one source
+\item Editing a text file is \txx{more precise}: you say exactly what
+  you mean, and it does not change under you
+\item It works well with version control systems (like github)
+\end{itemize}
+
+\bigskip
+It is also \txx{stable}: a file from twenty years ago still builds, and
+builds the same.
+
+%%% ------------------------------------------------------------------
+\section{What it is good at}
+%%% ------------------------------------------------------------------
+
+\myslide{What LaTeX can do for a linguist}
+
+\begin{itemize}
+\item Bibliographies that look after themselves (\iz{biblatex}, \iz{natbib})
+\item Long documents with many chapters
+\item Contents, lists of figures, lists of abbreviations
+\item Unicode: IPA, Hangul, Chinese, \ldots
+\item Numbered examples, glosses, syntax trees, AVMs
+\end{itemize}
+
+\bigskip
+The last one is why we use it in this course.
+
+\myslide{Unicode: it just works}
+\MyLogo{Although showing the code was complicated}
+
+\begin{exe}
+\ex Korean \\
+  \ko{안녕하세요} \ipa{[an̠ɲʌŋɦasʰejo]} ``hello'' [kor]
+\end{exe}
+
+\begin{srcbox}\begin{alltt}
+\bs{}begin\{exe\}
+\bs{}ex Korean \bs\bs
+  \ko{안녕하세요} \ipa{[an̠ɲʌŋɦasʰejo]} ``hello'' [kor]
+\bs{}end\{exe\}
+\end{alltt}\end{srcbox}
+
+You type the characters and they come out --- as long as you compile
+with \iz{xelatex} and pick a font that has them.
+
+\myslide{Glossed examples}
+
+\begin{exe}
+\ex Hungarian [hun] \\
+  \gll Ez  egy  komplex-ebb  példa. \\
+       \gm{dem} \gm{indf.det} complex-\gm{cmpr} example \\
+  \trans ``This is a more complex example.''
+\end{exe}
+
+\begin{lstlisting}
+\begin{exe}
+\ex Hungarian [hun] \\
+  \gll Ez  egy  komplex-ebb  példa. \\
+       \textsc{dem} \textsc{indf.det} complex-\textsc{cmpr} example \\
+  \trans ``This is a more complex example.''
+\end{exe}
+\end{lstlisting}
+
+The two lines line up by themselves, and the example is numbered for
+you --- inserting one above does not mean renumbering by hand.
+
+%%% ------------------------------------------------------------------
+\section{The basics}
+%%% ------------------------------------------------------------------
+
+\myslide{A simple document}
+
+A \iz{.tex} file needs at least two things:
+
+\begin{itemize}
+\item a \txx{preamble}, which sets up the form of the output
+\item a \txx{document} environment, which holds the content
+\end{itemize}
+
+\begin{lstlisting}
+\documentclass{article}
+
+\begin{document}
+Hello, world.
+% This is a comment.
+\end{document}
+\end{lstlisting}
+
+\myslide{Commands and environments}
+
+LaTeX has two kinds of thing.
+
+\begin{itemize}
+\item A \txx{command} starts with a backslash, then a name, then zero or
+  more arguments in braces
+  \\ \iz{\textbackslash textbf\{bold\}} gives \textbf{bold}
+\item An \txx{environment} is opened with
+  \iz{\textbackslash begin\{\ldots\}} and closed with
+  \iz{\textbackslash end\{\ldots\}}
+  \\ this list is an \iz{itemize} environment
+  \\ the content of a file sits in a \iz{document} environment
+\end{itemize}
+
+\bigskip
+Anything after a \iz{\%} is a \txx{comment} and is ignored.
+
+\myslide{Simple formatting}
+
+\begin{itemize}
+\item \iz{\textbackslash emph\{\ldots\}} for \emph{emphasis}
+\item \iz{\textbackslash textbf\{\ldots\}} for \textbf{bold}
+\item \iz{\textbackslash textsc\{\ldots\}} for \textsc{small capitals}
+\item \iz{\textbackslash texttt\{\ldots\}} for \texttt{typewritten text}
+\item \iz{\textbackslash footnote\{\ldots\}} for a footnote
+\end{itemize}
+
+\begin{lstlisting}
+\begin{itemize}
+  \item You \emph{emphasise} text with \emph{...}
+  \item Use \textbf{...} for bold text
+  \item Use \textsc{...} for small capitals
+\end{itemize}
+\end{lstlisting}
+
+\myslide{Titles and sections}
+
+\begin{itemize}
+\item Sections and subsections are \txx{numbered for you}
+\item So are examples, figures, tables and footnotes
+\item A title is made from a title, an author and a date
+\end{itemize}
+
+\begin{lstlisting}
+\title{An interesting phenomenon}
+\author{Kim Smith \and Sandy Jones}
+\date{31 January 2027}
+\maketitle
+
+\section{Introduction}
+\end{lstlisting}
+
+\myslide{Next week}
+
+You will write your first document next week.
+
+\begin{itemize}
+\item Make an account at \url{https://www.overleaf.com/}
+\item Start a new project and upload our template:
+  \\ \iz{assignment.tex} and \iz{assignment.bib} from the
+  \href{https://bond-lab.github.io/Theories-of-Grammar/assignment.html}{assignment
+    page}
+\item Press \emp{Recompile} and see what comes out
+\item Then change the title to your own and recompile again
+\end{itemize}
+
+\bigskip
+If something breaks, read the \emph{first} error message: the ones after
+it are usually only consequences of the first.
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item These slides follow the first four pages of\\
+  \emp{András Bárány} (2026) \textit{Using LaTeX (in linguistics)},
+  handout for the SGSAH summer school, Glasgow, 24 June 2026.
+  \\ \url{https://andras.barany.at/files/sgsah-latex-intro-handout.pdf}
+  \\ Used with thanks; the examples and the order of presentation are his, I have tweaked it a little and   the exercises have been pointed at our own template.
+\item For the linguistics-specific packages see my
+  \href{https://www.overleaf.com/read/hnjksbxgbhtq}{short guide to
+    formatting HPSG with LaTeX}
+\item \href{https://www.overleaf.com/learn}{Overleaf's own documentation}
+  is good, and searchable
+\end{itemize}
+
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End:
