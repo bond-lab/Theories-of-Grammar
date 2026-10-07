@@ -11,20 +11,23 @@
 
 \myslide{Overview}
 \begin{itemize}
-\item Last week: HC, HS, VP, SHAC
-\item Some notes on the linguist's stance
-\item Which aspects of semantics we’ll tackle
-\item Our formalization; Semantics Principles
-\item Building semantics of phrases
-\item Modification, coordination
+\item Review of last week: head-complement and head-specifier rules,
+  the Valence Principle, the SHAC
+\item The linguist's stance
+\item Which aspects of meaning we model
+\item Semantic features and principles: building the semantics of phrases
+\item Modification and coordination
 \item Structural ambiguity
+\item Problems: two kinds of modifiers, number names
 \end{itemize}
 
-\myslide{Overview}
+\section{Review}
+
+\myslide{Last Week}
 %\MyLogo{Chapter 4}
 
 \begin{itemize}
-\item Complex Feature Structures allow us to
+\item Complex feature structures allow us to
   \begin{itemize}
   \item Write more general rules
   \item Constrain them lexically
@@ -67,7 +70,7 @@ $\rightarrow$\ \ \ \ {\2}\ \ \ \ \HD[ %\type{phrase}\\
                                                  SPR & < {\2} > ]]
 }
 \begin{itemize}
-\item Combines the rules expanding S and NP (and other, \ldots).
+\item Combines the rules expanding S and NP (and potentially other categories).
 \item Again, restrictions on specifiers come from the lexicon.
 \end{itemize}
 \begin{small}\begin{tabular}{ll}
@@ -98,34 +101,34 @@ $\rightarrow$\ \ \ \ {\2}\ \ \ \ \HD[ %\type{phrase}\\
 \item \txx{The Specifier-Head Agreement Constraint (SHAC)}
 \\ Verbs and nouns must be specified as:
 \begin{center}
-  \avm{[ head & [ agr \1 ] \\
-    val & [ spr < agr \1 > ] ]
+  \avm{[ head & [ agr & \1 ] \\
+    val & [ spr & < [ agr & \1 ] > ] ]
 }
 \end{center}
-Actually inherited from a lexical super-type
+In fact, this is inherited from a lexical supertype
 \end{itemize}
-
-\section{Semantics}
 
 \myslide{Overview}
 \begin{itemize}
-\item Some notes on the linguist's stance
-\item Which aspects of semantics we’ll tackle
-\item Our formalization; Semantics Principles
-\item Building semantics of phrases
-\item Modification, coordination
+\item The linguist's stance
+\item Which aspects of meaning we model
+\item Semantic features and principles: building the semantics of phrases
+\item Modification and coordination
 \item Structural ambiguity
+\item Problems: two kinds of modifiers, number names
 \end{itemize}
 
 
-\myslide{The Linguist's Stance: Building a precise model}
+\section{The Linguist's Stance}
+
+\myslide{The Linguist's Stance: Building a Precise Model}
 
 \begin{itemize}
 \item Some of our statements are statements about how the model
 works:
 \begin{quote}
-  “[\val{prep}] and [\ft{agr} \val{3sing}] can’t be combined because AGR is not a
-  feature of the type prep.”
+  “[\val{prep}] and [\ft{agr} \val{3sing}] can’t be combined because \ft{agr} is not a
+  feature of the type \val{prep}.”
 \end{quote}
 \item Some of our statements are statements about how (we think)
 English or language in general works.
@@ -151,6 +154,8 @@ A Vista on the Set of Possible English Sentences
   “behave” in certain ways
 \end{itemize}
 
+
+\section{Our Slice of Meaning}
 
 \myslide{Semantics: Where's the Beef?}
 
@@ -180,7 +185,7 @@ Aspects of meaning we \emp{won't} account for (in this course)
   \avm{%\avmvalfont{\it}
     [ reln & life \\ inst & i ]
 }
-\item Not like wordnet: 
+\item Not like WordNet: 
 \iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
 
  % -- (a characteristic state or mode of living; "social life"; "city life"; "real life")
@@ -216,7 +221,7 @@ Aspects of meaning we \emp{won't} account for (in this course)
   that will be true just in case there is an actual situation that
   involves the saving of someone named Pat by someone named Chris.”
   \begin{flushright}
-    (Sag \textit{et al}, 2003, p. 140)
+    \citep[p.~140]{sag:wasow:bender:2003}
   \end{flushright}
 \end{quote}
 
@@ -256,6 +261,8 @@ hold (in some possible world) for the expression to be applicable.
     parts of the sentence.
   \end{quote}
 \end{itemize}
+
+\section{Semantic Features and Principles}
 
 \myslide{Feature Geometry}
 \avm{[\type*{expression}
@@ -339,7 +346,7 @@ We need the Semantics Principles
   \begin{quote}
     In any well-formed phrase structure, the mother's
     \ft{restr} value is the sum of the \ft{restr} values of
-    the daughter.
+    the daughters.
   \end{quote}
 \end{itemize}
 
@@ -389,20 +396,20 @@ cat
 \begin{itemize}
 \item Identify feature structures (including the \ft{index} value) across daughters
   \begin{itemize}\addtolength{\itemsep}{1ex}
-  \item Head Specifier Rule \\
+  \item Head-Specifier Rule \\
 \scalebox{0.9}{\avm{[\type*{phrase} 
   val & [ spr & < > ] ] \ \ \
   $\rightarrow$\ \ \ \ {\1}\ \ \ \ \HD[ %\type{phrase}\\
   val & [ spr & < {\1} >  \\ comps & < > ]]
 }}
-\item Head Complement Rule \\
+\item Head-Complement Rule \\
 \scalebox{0.9}{\avm{[\type*{phrase}
     val & [ comps & <  > ] ]
     \ $\rightarrow$\ \HD \ 
     [\type*{word}
     val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}
 }}
-\item Head Modifier Rule \\
+\item Head-Modifier Rule \\
 \scalebox{0.9}{\avm{[\type*{phrase} ]
     \ $\rightarrow$\ \HD \ \1  [ val & [ comps & < > ]  ] \ \ 
     [ val & [ comps & < > \\ mod & < \1 > ] ]
@@ -414,7 +421,7 @@ cat
 
 \begin{itemize}
 \item Identify feature structures (including the \ft{index} value) across daughters
-\item License trees which are subject to the semantic principles
+\item License trees that are subject to the semantic principles
   \begin{itemize}
   \item SIP: ‘passes up’ \ft{mode} and \ft{index} from head daughter
   \item SCP: ‘gathers up’ predications (\ft{restr} list) from all daughters
@@ -427,12 +434,14 @@ cat
   \end{itemize}
 \end{itemize}
 
+\section{Modification and Coordination}
+
 \myslide{Other Aspects of Semantics}
 \begin{itemize}
-\item Tense, Quantification (only touched on here)
+\item Tense, quantification (only touched on here)
 \item Modification
 \item Coordination
-\item Structural Ambiguity
+\item Structural ambiguity
 \end{itemize}
 
 \myslide{Evolution of a Phrase Structure Rule}
@@ -460,12 +469,12 @@ cat
      \ $\rightarrow$\ \HD \ \1   [ comps & < >  ] \ \ 
       [ comps & < > \\ mod & < \1 > ]
 }} 
-
+\end{itemize}
 
 \myslide{Evolution of Another Phrase Structure Rule}
 
 \begin{itemize}
-\item [C2] X \into X+ CONJ X; 
+\item [C2] X \into X+ CONJ X
 \item [C3] 
 \scalebox{0.8}{\avm{\1 \ \into \ \1+ \ \ 
     [\type*{word} head & conj ] \ \ 
@@ -501,7 +510,6 @@ cat
     restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
   [  val & \0 \\ ind & $s_n$ ]
 }}
-\end{itemize}
 \end{itemize}
 % \item[=] 
 % \scalebox{0.8}{\begin{avm}\avmfont{\sc}
@@ -549,6 +557,8 @@ args & < $s_1, s_2$ > ],
         restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
 [{S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]]
 \end{forest}}
+
+\section{Structural Ambiguity}
 
 \myslide{Ambiguity}
 \noindent\scalebox{0.58}{\begin{forest}
@@ -625,6 +635,8 @@ the string \eng{Joe jokes and Kim smiles often}?
 \end{itemize}
 \end{itemize}
 
+
+\section{Problems}
 
 \myslide{Problem: Two Kinds of Modifiers in English}
 In English, modifiers of nouns can appear either
@@ -736,7 +748,7 @@ of number names. The semantics of this NP should be (iii):
 \end{itemize}
 
 \noindent
-This  expresses ``(two times one hundred) plus five" (i.e.\ 
+This  expresses ``(two times one hundred) plus five'' (i.e.\ 
 205) as a FS.
 
 \begin{itemize} 
@@ -793,12 +805,12 @@ Why is this mismatch not a problem for the grammar?
 
 \myslide{Overview}
 \begin{itemize}
-\item Some notes on the linguist's stance
-\item Which aspects of semantics we’ll tackle
-\item Our formalization; Semantics Principles
-\item Building semantics of phrases
-\item Modification, coordination
+\item The linguist's stance
+\item Which aspects of meaning we model
+\item Semantic features and principles: building the semantics of phrases
+\item Modification and coordination
 \item Structural ambiguity
+\item Problems: two kinds of modifiers, number names
 \end{itemize}
 
 \myslide{Acknowledgments and References}
@@ -807,7 +819,7 @@ Why is this mismatch not a problem for the grammar?
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
-\item This lecture complements \citet[Chapters 5--6]{sag:wasow:bender:2003}
+\item This lecture complements \citet[Chapter 5]{sag:wasow:bender:2003}
 \end{itemize}
 
 %\input{lq-04-semantics}
