@@ -12,16 +12,20 @@
 
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 10}
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 10}
 
 \begin{itemize}
-\item Passive
+\item Arguments for a lexicalist account
+\item The Passive Lexical Rule
   \begin{itemize}
-  \item Arguments for lexicalist account
-  \item Details of our analysis
+  \item Passives of intransitives
+  \item Passive input and output
   \end{itemize}
-\item Questions
+\item Passive \lex{be}
+\item Problems: passives and binding, the dative alternation
 \end{itemize}
+
+\section{Arguments for a Lexicalist Account}
 
 \myslide{The Passive in Transformational Grammar}
 
@@ -29,40 +33,40 @@
 \item Passive was the paradigmatic transformation in early TG.
 \item Motivations
   \begin{itemize}
-  \item Near paraphrase of active/passive pairs.
-  \item Simplified statement of cooccurrence restrictions.
+  \item Near paraphrase of active/passive pairs
+  \item Simplified statement of cooccurrence restrictions
     \begin{itemize}
     \item E.g. \lex{devour} must be followed by an NP, \lex{put} by NP-PP
-    \item Such restrictions refer to pre-transformational (\txx{deep}) structure.
+    \item Such restrictions refer to pre-transformational (\txx{deep}) structure
     \end{itemize}
-  \item Intuition that active forms were more basic, in some sense. 
+  \item Intuition that active forms were more basic, in some sense
   \end{itemize}
 \item Its formulation was complex:  
   \begin{itemize}
   \item Promote object
   \item Demote subject, inserting \lex{by}
-  \item Insert appropriate form of \lex{be}, changing main verb to a participle.
+  \item Insert appropriate form of \lex{be}, changing main verb to a participle
   \end{itemize}
 \end{itemize}
 
-\myslide{But transforming whole sentences is overkill}
+\myslide{But Transforming Whole Sentences Is Overkill}
 
 
 \begin{itemize}
 \item Passive sentences look an awful lot like some actives:  
   \begin{exe}
-    \ex \eng{The cat was chased by the dog}
-    \ex \eng{The cat was lying by the door}   
+    \ex \eng{The cat was chased by the dog.}
+    \ex \eng{The cat was lying by the door.}
   \end{exe}
 \item Passives occur without \lex{be} and without the \lex{by} phrase:
   \begin{exe}
     \ex \eng{Cats chased by dogs usually get away.}
     \ex \eng{My cat was attacked.}
-\end{exe}
+  \end{exe}
 \end{itemize}
 
 
-\myslide{So a lexical analysis seems called for}
+\myslide{So a Lexical Analysis Seems Called For}
 
 
 \begin{itemize}
@@ -72,20 +76,20 @@ cooccurrence restrictions (that is, its valence).
   \begin{itemize}
   \item Negative:  
     \begin{exe}
-      \ex \eng{Pat resembles Bo} 
-      \ex  *\eng{Bo is resembled by Pat}
-      \ex \eng{That look suits you}
-      \ex *\eng{You are suited  by that look}
+      \ex \eng{Pat resembles Bo.}
+      \ex \bad{Bo is resembled by Pat.}
+      \ex \eng{That look suits you.}
+      \ex \bad{You are suited by that look.}
     \end{exe}
-  \item Positive
+  \item Positive:
     \begin{exe}
-      \ex \eng{Chris is rumored to be a spy}
-      \ex *\eng{They rumor Chris to be a spy}
+      \ex \eng{Chris is rumored to be a spy.}
+      \ex \bad{They rumor Chris to be a spy.}
     \end{exe}
   \end{itemize}
 \end{itemize}  
 
-\myslide{We posit a lexical rule}
+\myslide{We Posit a Lexical Rule}
 
 \begin{itemize}
 \item Why not just list passive participles individually?
@@ -101,9 +105,10 @@ cooccurrence restrictions (that is, its valence).
   \end{itemize}
 \end{itemize}  
 
+\section{The Passive Lexical Rule}
+
 \myslide{The Passive Lexical Rule}
-\avm{[
-[\type*{d-rule}\\
+\avm{[\type*{d-rule}\\
 INPUT & < {\1} , [\type*{tv-lxm}\\
 ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
 OUTPUT & < F$_{PSP}$({\1}) , 
@@ -113,15 +118,14 @@ SYN & [HEAD & [ FORM &  pass ] ] \\
 ARG-ST &  \tag{A}\ \ 
 $\oplus$\ \ < ([\hfil PP\\
 [ FORM & by\\
-INDEX & $i$]] ) > ] >]]
+INDEX & $i$]] ) > ] >]
 }
 
 
 \myslide{Questions}
 
 \begin{footnotesize}
-  \avm{[
-    [\type*{d-rule}\\
+  \avm{[\type*{d-rule}\\
     INPUT & < {\1} , [\type*{tv-lxm}\\
     ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
     OUTPUT & < F$_{PSP}$({\1}) ,
@@ -131,21 +135,20 @@ INDEX & $i$]] ) > ] >]]
     ARG-ST & \tag{A}\ \
     $\oplus$\ \ < ([\hfil PP\\
     [ FORM & by\\
-    INDEX & $i$]] ) > ] >]]
+    INDEX & $i$]] ) > ] >]
 }
 \end{footnotesize}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
 \item Why is the morphological function F$_{PSP}$?
-\item Why do we have a separate FORM value {\it pass}?  
-  Why not just  {\it psp}?
-\item Is the \lex{by}-phrase argument-marking  or predicational?
+\item Why do we have a separate \ft{form} value \val{pass}?
+  Why not just \val{psp}?
+\item Is the \lex{by}-phrase argument-marking or predicational?
 \end{itemize}
 
 \myslide{More Questions}
 
 \begin{footnotesize}
-  \avm{[
-    [\type*{d-rule}\\
+  \avm{[\type*{d-rule}\\
     INPUT & < {\1} , [\type*{tv-lxm}\\
     ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
     OUTPUT & < F$_{PSP}$({\1}) ,
@@ -155,21 +158,21 @@ INDEX & $i$]] ) > ] >]]
     ARG-ST & \tag{A}\ \
     $\oplus$\ \ < ([\hfil PP\\
     [ FORM & by\\
-    INDEX & $i$]] ) > ] >]]
+    INDEX & $i$]] ) > ] >]
 }
 \end{footnotesize}
 \begin{itemize}
 \item What makes the object turn into the subject? 
-\item Why is the type of the input \val{tv-lxm}?  
+\item Why is the type of the input \val{tv-lxm}?
 \item What would happen if it were just \val{verb-lxm}?
 \end{itemize}
 
-\myslide{Intransitives have passives in German}
+\myslide{Intransitives Have Passives in German}
 
 \begin{exe}
 \ex \gll In der Küche  wird nicht getanzt. \\
 in the kitchen   is     not   danced \\
-\trans ‘There is no dancing in the kitchen.’
+\trans `There is no dancing in the kitchen.'
 \end{exe}
 
 The exact analysis for such examples is debatable, but German, like
@@ -177,18 +180,18 @@ many other languages, allows passives of intransitives, as would be
 allowed by our analysis if the input type in the Passive LR is
 \val{verb-lxm} (although the linking needs more work to get right).
 
-\myslide{Intransitives have passives in Japanese}
+\myslide{Intransitives Have Passives in Japanese}
 
 Japanese also allows passives of intransitives, although with very
 different properties.
 
 \begin{exe}
-\ex \gll otoosan-ga shin-da  \\
+\ex \gll otoosan-ga shin-da. \\
          father-\textsc{nom} died \\
-\trans ‘My father died.’
-\ex \gll watashi-ha otoosan-ni shin-areta  \\
+\trans `My father died.'
+\ex \gll watashi-ha otoosan-ni shin-areta. \\
          me-\textsc{top} father-\textsc{dat} died \\
-\trans `My father died on me.' lit: `As for me, died by my father'
+\trans `My father died on me.' lit.\ `As for me, died by my father'
 \end{exe}
 
 We need a separate (but related) rule for this.
@@ -203,7 +206,7 @@ We need a separate (but related) rule for this.
   [\type*{stv-lxm}\\
   SYN & [HEAD & [\type*{verb}\\
   AGR& {\1}]\\
-  VAL & [SPR & < [AGR\ {\1}]\ >]]\\
+  VAL & [SPR & < [AGR & {\1}]\ >]]\\
   ARG-ST & < NP$_i$ , NP$_j$ >\\
   SEM & [INDEX & $s$\\
   RESTR & < [RELN & {\bf love}\\
@@ -231,9 +234,9 @@ We need a separate (but related) rule for this.
 \end{tiny}
 \end{tabular}
 
-Through the magic of the Passive-Lexical rule!
+Through the magic of the Passive Lexical Rule!
 
-\myslide{And also this}
+\myslide{And Also This}
 
 \begin{tiny}
    \avm{< \textnormal{loved}, 
@@ -241,9 +244,9 @@ Through the magic of the Passive-Lexical rule!
      SYN & [HEAD & [\type*{verb}\\
      AGR& {\1}\\                                
      FORM & pass]\\
-     VAL & [SPR & < {\2}[AGR\ {\1}{\,}] >\\
+     VAL & [SPR & < {\2}[AGR & {\1}] >\\
      COMPS & {\tag{B}}]]\\
-     ARG-ST & < {\2}NP$_j$ >\ $\oplus$\ {\tag{B}} < ( ,\ [\hfil PP\\
+     ARG-ST & < {\2}NP$_j$ >\ $\oplus$\ {\tag{B}} < ( [\hfil PP\\
      [FORM & by\\
      INDEX & $i$]]\ ) >\\
      SEM & [INDEX & $s$\\
@@ -256,14 +259,16 @@ Through the magic of the Passive-Lexical rule!
 
 Through the magic of the Constant Lexeme Lexical Rule!
 
-\myslide{The \lex{be} that Occurs with Most Passives}
+\section{Passive \lex{be}}
+
+\myslide{The \lex{be} That Occurs with Most Passives}
 
 \avm{< \textnormal{be},\ [\type*{be-lxm}\\
-  ARG-ST & < {\1} , [[SYN & [HEAD & [\type*{verb}\\
-  FORM \ pass ]\\
+  ARG-ST & < {\1} , [SYN & [HEAD & [\type*{verb}\\
+  FORM & pass ]\\
   VAL & [SPR & < {\1} >\\
   COMPS & < > ]]\\
-  SEM & [INDEX & $s$ \ ]]] > \\ %{\3}
+  SEM & [INDEX & $s$ \ ]] > \\ %{\3}
   SEM & [INDEX & \ $s$\\ %{\3}\\
   RESTR & {< >} ] ] >
 }
@@ -273,11 +278,11 @@ Through the magic of the Constant Lexeme Lexical Rule!
 
 \begin{tiny}
   \avm{< \textnormal{be},\ [\type*{be-lxm}\\
-  ARG-ST & < {\1} , [[SYN & [HEAD & [\type*{verb}\\
-  FORM \ pass ]\\
+  ARG-ST & < {\1} , [SYN & [HEAD & [\type*{verb}\\
+  FORM & pass ]\\
   VAL & [SPR & < {\1} >\\
   COMPS & < > ]]\\
-  SEM & [INDEX & $s$ \ ]]] > \\ %{\3}
+  SEM & [INDEX & $s$ \ ]] > \\ %{\3}
   SEM & [INDEX & \ $s$\\ %{\3}\\
   RESTR & {< >} ] ] >
 }
@@ -289,10 +294,11 @@ Through the magic of the Constant Lexeme Lexical Rule!
 \item What is its contribution to the semantics of the sentences it 
 appears in?
 \item Why is the first argument tagged as identical to the second 
-argument’s SPR value?
+argument’s \ft{spr} value?
 \end{itemize}
 
-\myslide{Passive tree}
+\myslide{Passive Tree}
+\begin{minipage}[t]{0.45\textwidth}
 \begin{forest}
 cat
 [{S} [{\avmbox{1}NP} [{Kim}]]
@@ -301,62 +307,70 @@ cat
 [{PP} [{P} [{by}]]
 [{NP} [{everyone}]]]]]]
 \end{forest}
-
+\end{minipage}\hfill
+\begin{minipage}[t]{0.5\textwidth}
 \begin{itemize}
 \item Which rule licenses each node?
-\item What is the SPR value of the upper VP?
-\item What is the SPR value of the  lower VP?
-\item What is the SPR value of \eng{is}?
+\item What is the \ft{spr} value of the upper VP?
+\item What is the \ft{spr} value of the lower VP?
+\item What is the \ft{spr} value of \eng{is}?
 \end{itemize}
+\end{minipage}
 
 \myslide{More Questions}
 \begin{itemize}
 \item Why do we get this?
   \begin{exe}
-    \ex \eng{They are noticed by everyone}
+    \ex \eng{They are noticed by everyone.}
   \end{exe}
-\item Why don't we get this?
- \begin{exe}
-    \ex *\eng{Them are noticed by everyone?}
+\item Why don’t we get this?
+  \begin{exe}
+    \ex \bad{Them are noticed by everyone.}
   \end{exe}
-\item Why don’t we get this? 
-\begin{exe}
-    \ex *\eng{They is noticed by everyone}
+\item Why don’t we get this?
+  \begin{exe}
+    \ex \bad{They is noticed by everyone.}
   \end{exe}
 \item What would facts like these entail for a transformational 
 analysis?
 \end{itemize}
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 10}
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 10}
 
 \begin{itemize}
-\item Passive
-\item Arguments for lexicalist account
-\item Details of our analysis
-\item Questions
+\item Arguments for a lexicalist account
+\item The Passive Lexical Rule
+  \begin{itemize}
+  \item Passives of intransitives
+  \item Passive input and output
+  \end{itemize}
+\item Passive \lex{be}
+\item Problems: passives and binding, the dative alternation
 \end{itemize}
 
+\section{Problems}
+
 \myslide{P1: Passives and Binding}
-\MyLogo{Based on  Chapter 10, Problem 1, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 10, Problem 1]{sag:wasow:bender:2003}}
 
 The analysis of passive makes some predictions about binding possibilities
 in passive sentences. Consider the following data:
 
 \begin{exe}
 \exi{(i)} \eng{She$_i$ was introduced to herself$_i$ (by the doctor).}
-\exi{(ii)} \bad \eng{She$_i$ was introduced to her$_i$ (by the doctor). }
+\exi{(ii)} \bad \eng{She$_i$ was introduced to her$_i$ (by the doctor).}
 \exi{(iii)} \eng{The barber$_i$ was shaved (only) by himself$_i$.}
-\exi{(iv)} \bad \eng{The barber$_i$ was shaved (only) by him$_i$. }
+\exi{(iv)} \bad \eng{The barber$_i$ was shaved (only) by him$_i$.}
 \exi{(v)} \eng{The students$_i$ were introduced to each other$_i$ (by Leslie).}
-\exi{(vi)} \bad \eng{The students$_i$ were introduced to them$_i$ (by Leslie). }
-\exi{(vii)} \eng{Kim was introduced to Larry$_i$ by himself$_i$. }
-\exi{(viii)} \bad \eng{Kim was introduced to himself$_i$ by Larry$_i$. }
+\exi{(vi)} \bad \eng{The students$_i$ were introduced to them$_i$ (by Leslie).}
+\exi{(vii)} \eng{Kim was introduced to Larry$_i$ by himself$_i$.}
+\exi{(viii)} \bad \eng{Kim was introduced to himself$_i$ by Larry$_i$.}
 \end{exe}
 
 \noindent
 Assuming that \lex{to} and \lex{by} in these examples are uniformly
-treated as  argument-marking prepositions, 
+treated as argument-marking prepositions, 
 % is the data 
 does the treatment of passives sketched in the text
 correctly predict the judgements in (i)--(viii)?
@@ -371,8 +385,8 @@ of Chapter 7 to make predictions. Check to see if the predictions made by our
 Binding Theory match the grammaticality judgements given. 
 %Note where our theory accurately predicts or fails to predict the data given.
 
-\myslide{P3: The Dative Alternation} 
-\MyLogo{Based on Chapter 10,  Problem 3, Sag, Wasow and Bender (2003)} 
+\myslide{P3: The Dative Alternation}
+\MyLogo{Based on \citet[Chapter 10, Problem 3]{sag:wasow:bender:2003}}
 
 The \txx{dative alternation} could also be described by a lexical
 rule: that is, a rule that produces entries for verbs that appear in
@@ -380,17 +394,17 @@ both of the valence patterns exemplified in (i) and (ii):
 
 \begin{exe}
 \exi{(i)} \eng{Dale \{gave/handed/sold/loaned/mailed\} Merle a book.}
-\exi{(ii)} \eng{Dale \{gave/handed/sold/loaned/mailed\}  a book to Merle.}
+\exi{(ii)} \eng{Dale \{gave/handed/sold/loaned/mailed\} a book to Merle.}
 \end{exe}
 
 \begin{itemize}
-\item[A.] Is this alternation productive?  Justify your answer with at
+\item[A.] Is this alternation productive? Justify your answer with at
   least two examples.
 \item[B.] Formulate a \index{lexical rule} lexical rule for the dative
   alternation. 
 \newpage
 \item[C.] Show how your rule interacts with the Passive Lexical Rule
-  to make possible the generation of both (iii) and (iv).  Your answer
+  to make possible the generation of both (iii) and (iv). Your answer
   should include ARG-ST values showing the effect of applying the
   rules. 
 \begin{exe}
