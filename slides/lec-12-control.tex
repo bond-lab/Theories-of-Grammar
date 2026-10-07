@@ -12,17 +12,19 @@
 
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 12}
-
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 12}
 \begin{itemize}
-\item Intro to topic
+\item Introduction: two kinds of NP-V-(NP)-\lex{to}-VP
 \item Infinitival \lex{to}
-\item (Subject) raising verbs
-\item (Subject) control verbs
-\item Raising/control in Transformational Grammar
+\item Subject-raising verbs
+\item Subject-control verbs
+\item Raising and control in Transformational Grammar
 \item Object raising and object control
+\item Problems 12.1, 12.2, 12.4, 12.6
 %\item If time: Problem 12.4
 \end{itemize}
+
+\section{Introduction}
 
 \myslide{Where We Are \& Where We’re Going}
 
@@ -30,10 +32,10 @@
 \item Revision
   \begin{itemize}
   \item In the last two lectures, we have seen a kind of 
-    \txx{subject sharing} -- that is, cases where one NP 
+    \txx{subject sharing} --- that is, cases where one NP 
     served as the \ft{spr} for two different verbs.  
     Examples?
-  \item Last time, we looked at \txx{dummy} NPs --  that is, 
+  \item Last time, we looked at \txx{dummy} NPs --- that is, 
     non-referential NPs.  Examples?
   \end{itemize}
 \item Today, we’re going to look at the kind of subject 
@@ -69,22 +71,24 @@ both have the form NP-V-\lex{to}-VP
   \item Whereas \lex{try} is semantically a two-place 
     predicate, expressing a relation between someone 
     who tries and a situation s/he tries to bring about.
-    \\ \prd{try(Pat, avoid(Pat, conflict)}
+    \\ \prd{try(Pat, avoid(Pat, conflict))}
   \end{itemize}
 \item This semantic difference has syntactic effects.
 \end{itemize}
+
+\section{Infinitival \lex{to}}
 
 \myslide{The Status of Infinitival \lex{to}}
 
 
 \begin{itemize}
 \item It’s not obvious what part of speech to assign to \lex{to}.  
-\item It’s not the same as the preposition to:
+\item It’s not the same as the preposition \lex{to}:
   \begin{exe}
-    \ex \eng{Pat aspires to stardom}
-    \ex \eng{Pat aspires to be a good actor}
-    \ex *?\eng{Pat aspires to stardom and to be a good actor}
-    \ex *\eng{Pat aspires to stardom and  be a good actor}
+    \ex \eng{Pat aspires to stardom.}
+    \ex \eng{Pat aspires to be a good actor.}
+    \ex *?\eng{Pat aspires to stardom and to be a good actor.}
+    \ex \bad{Pat aspires to stardom and be a good actor.}
   \end{exe}
 \item We call it an \txx{auxiliary verb}, because this will make 
 our analysis of auxiliaries a little simpler.
@@ -118,7 +122,7 @@ our analysis of auxiliaries a little simpler.
 \end{center}
 
 \begin{itemize}\addtolength{\itemsep}{-1ex}
-\item This makes it a verb, because \ft{aux} is declared on verb
+\item This makes it a verb, because \ft{aux} is declared on \val{verb}
 \item {[\ft{inf}  $+$]} uniquely identifies the infinitival \lex{to}
 \item Verbs select complements with different combinations 
   of \ft{form} and \ft{inf} values, e.g.
@@ -127,7 +131,7 @@ our analysis of auxiliaries a little simpler.
   \item complements of \lex{should} are [\ft{form} \val{base}] and [\ft{inf} $-$]
   \item complements of \lex{help} are [\ft{form} \val{base}]
   \end{itemize}
-\item The meaning of [\ft{aux} $+$] becomes clear in Chapter 13.
+\item The meaning of [\ft{aux} $+$] becomes clear in Chapter 13
 \end{itemize}
 
 \myslide{The Argument Structure}
@@ -166,6 +170,8 @@ argument is exactly like \lex{be}.
 \item What is the semantic contribution of \lex{to}?
 \end{itemize}
 
+\section{Subject-Raising Verbs}
+
 \myslide{Dummies and \lex{continue}}
 
 \begin{itemize}
@@ -174,9 +180,9 @@ argument is exactly like \lex{be}.
 \ex \eng{There continue to be seats available.}
 \ex \eng{It continues to matter that we lost.}
 \ex \eng{Advantage continues to be taken of the innocent.}
-\ex *\eng{It continues to be seats available.}
-\ex *\eng{There continues to matter that we lost.}
-\ex *\eng{Advantage continues to be kept of the innocent.}
+\ex \bad{It continues to be seats available.}
+\ex \bad{There continues to matter that we lost.}
+\ex \bad{Advantage continues to be kept of the innocent.}
 \end{exe}
 \item Generalization:  Non-referential NPs can appear as the 
 subject of \lex{continue} just in case they could be the subject 
@@ -209,8 +215,8 @@ predication introduced by the verb
 \bigskip
 \begin{center}
     \avm{< \textnormal{continue}, [{\tiny \val{srv-lxm}}\\
-      syn &  [ arg-st & < X,
-                  VP [ inf & $+$  ]  ] > \\
+      arg-st & < X,
+                  VP [ inf & $+$ ] > \\
       sem & [ index & s$_1$ \\ 
                restr & < [ reln & \textbf{continue} \\ 
                              sit & s$_1$ ] > ] ] >
@@ -229,7 +235,7 @@ predication introduced by the verb
       inf & $-$ \\
       agr & \2 ] ] \\
       arg-st & < \1 [ head & \val{nominal}\\
-                         val &  [ spr < >  & comps < > ]  ],
+                         val & [ spr & < > \\ comps & < > ]  ],
                   VP [ inf & $+$ \\ spr  & < \1 > \\ index & s$_2$ ]
       > \\
       sem & [ mode & prop \\ index & s$_1$ \\ 
@@ -250,7 +256,7 @@ predication introduced in the complement.
   \begin{small}
     \avm{< \textnormal{continue}, [{\tiny \val{srv-lxm}}\\
       arg-st & < \OV{\1} [ head & \val{nominal}\\
-                         val &  [ spr < >  & comps < > ]  ],
+                         val & [ spr & < > \\ comps & < > ]  ],
                   VP [ inf & $+$ \\ spr  & < \OV{\1} > \\ 
                         index & \OVB{s$_2$} ]
       > \\
@@ -262,7 +268,7 @@ predication introduced in the complement.
 \end{center}
 
 
-\myslide{Constraints on SRV's subjects are from their complements}
+\myslide{Constraints on SRVs' Subjects Are from Their Complements}
 
 \begin{itemize}
 \item SRVs take dummy subjects when and only when their 
@@ -272,12 +278,12 @@ complements do.
 \item Passivizing the complement of an SRV doesn’t change the 
 truth conditions of the whole sentence:
 \begin{exe}
-\ex \eng{Skeptics continue to question your hypothesis} 
-\ex \eng{Your hypothesis continues to be questioned by skeptics}
+\ex \eng{Skeptics continue to question your hypothesis.}
+\ex \eng{Your hypothesis continues to be questioned by skeptics.}
 \end{exe}
 \end{itemize}
 
-\myslide{\lex{continue} with active complement}
+\myslide{\lex{continue} with Active Complement}
 
 \begin{center} 
   \scalebox{0.7}{\begin{forest}
@@ -297,7 +303,7 @@ cat
 
 
 
-\myslide{\lex{continue} with passive complement}
+\myslide{\lex{continue} with Passive Complement}
 \begin{center} 
   \scalebox{0.55}{\begin{forest}
 cat
@@ -306,7 +312,7 @@ cat
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{to}]]
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{be}]]
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{questioned}]]
-[{NP$_i$} [{P$_i$} [{by}]]
+[{PP$_i$} [{P$_i$} [{by}]]
 [{NP$_i$} [{NOM$_i$} [{skeptics}]]]]]]]]]
 \end{forest}}
 \end{center}
@@ -316,15 +322,17 @@ cat
 }}}
 
 
+\section{Subject-Control Verbs}
+
 \myslide{Control Verbs}
 
 \begin{itemize}
 \item Control verbs, like \lex{try}, appear in contexts that 
 look just like the contexts for raising verbs:
 \begin{xlisti}
-\ex \eng{Pat tried to stay calm}
+\ex \eng{Pat tried to stay calm.}
 \trans looks superficially like
-\ex \eng{Pat continued to stay calm}
+\ex \eng{Pat continued to stay calm.}
 \end{xlisti}
 \item Control verbs also share their subjects with their 
 complements, but in a different way.
@@ -340,16 +348,16 @@ its complement.
 \item They never take dummies or idiom chunks as 
   subjects.
   \begin{xlisti}
-    \ex *\eng{There try to be bugs in my program}
-    \ex *\eng{It tries to upset me that the Giants lost}
-    \ex *\eng{Advantage tries to be taken of tourists}
+    \ex \bad{There try to be bugs in my program.}
+    \ex \bad{It tries to upset me that the Giants lost.}
+    \ex \bad{Advantage tries to be taken of tourists.}
   \end{xlisti}
 \item Passivizing the complement’s verb changes the truth 
 conditions.
 \begin{xlisti}
-    \ex \eng{The police tried to arrest disruptive demonstrators}
+    \ex \eng{The police tried to arrest disruptive demonstrators.}
     \trans $\not=$
-    \ex \eng{Disruptive demonstrators tried to be arrested by the police}
+    \ex \eng{Disruptive demonstrators tried to be arrested by the police.}
   \end{xlisti}
 \end{itemize}
 
@@ -367,20 +375,20 @@ conditions.
 
 \begin{itemize}\addtolength{\itemsep}{-2ex}
 \item This differs from \val{srv-lxm} in that the first argument and the
-   \ft{spr} of the second argument are coindexed, not tagged (re-entrant). 
+   \ft{spr} of the second argument are coindexed, not tagged (re-entrant)
 \item This means that they only need to share \ft{index} values, but may
    differ on other features
-\item And the first argument -- the subject -- must have an \ft{index}
+\item And the first argument --- the subject --- must have an \ft{index}
   value, so it cannot be non-referential
 \end{itemize}
 
-\myslide{The lexical entry for \lex{try}}
+\myslide{The Lexical Entry for \lex{try}}
 
 \bigskip
 \begin{center}
     \avm{< \textnormal{try}, [{\tiny \val{scv-lxm}}\\
-      syn &  [ arg-st & < NP$_i$,
-                  VP [ inf & $+$  ]  ] > \\
+      arg-st & < NP$_i$,
+                  VP [ inf & $+$ ] > \\
       sem & [ index & s$_1$ \\ 
                restr & < [ reln & \textbf{try} \\ 
                              sit & s$_1$ \\
@@ -433,14 +441,14 @@ subjects of \lex{try}?
 \item What accounts for the semantic non-equivalence of 
 pairs like the following?
 \begin{xlisti}
-  \ex \eng{Reporters tried to interview the candidate}
-  \ex \eng{The candidate tried to be interviewed by reporters}
+  \ex \eng{Reporters tried to interview the candidate.}
+  \ex \eng{The candidate tried to be interviewed by reporters.}
 \end{xlisti}
 \item Why does \lex{continue} behave differently in these 
 respects?
 \end{itemize}
 
-\myslide{\lex{try} with an active complement}
+\myslide{\lex{try} with an Active Complement}
 
 \begin{center} 
   \scalebox{0.8}{\begin{forest}
@@ -454,14 +462,14 @@ cat
 \end{center}
 
 \scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < 
-  [ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & i \\ tried & s$_2$ ], \\
-  [ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j]
+  [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & i \\ arg & s$_2$ ], \\
+  [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & i \\ arrested & j],
   \ldots > ]
 }}}
 
 
 
-\myslide{\lex{try} with passive complement}
+\myslide{\lex{try} with Passive Complement}
 \vspace*{-2ex}
 \begin{center} 
   \scalebox{0.6}{\begin{forest}
@@ -471,19 +479,19 @@ cat
 [{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{to}]]
 [{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{be}]]
 [{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{arrested}]]
-[{NP$_i$} [{P$_i$} [{by}]]
+[{PP$_i$} [{P$_i$} [{by}]]
 [{NP$_i$} [{NOM$_i$} [{the police}]]]]]]]]]
 \end{forest}}
 \end{center}
 
 \scalebox{0.7}{\raisebox{25ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < 
-  [ reln & \textbf{try} \\ sit  & s$_2$ \\ trier & \OV{j} \\ tried & s$_2$ ], \\
-  [ reln & \textbf{arrest} \\ sit  & s$_1$ \\ arrester & i \\ arrested & j]
+  [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & \OV{j} \\ arg & s$_2$ ], \\
+  [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & i \\ arrested & j],
   \ldots > ]
 }}}
 \vspace*{-5ex}
 
-\myslide{ARG-ST of raising vs control verbs}
+\myslide{ARG-ST of Raising vs.\ Control Verbs}
 \bigskip
 
 \begin{center}
@@ -502,6 +510,8 @@ cat
 \end{center}
 
 
+
+\section{Raising and Control in Transformational Grammar}
 
 \myslide{Raising \& Control in Transformational Grammar}
 
@@ -527,13 +537,13 @@ cat
 
 
 \begin{itemize}
-\item Details never fully worked out (e.g. where does \lex{to}
+\item Details never fully worked out (e.g.,\ where does \lex{to}
 come from?)
 
 \item What blocks 
   \begin{xlisti}
-    \ex *\eng{The cat continued (for) the dog to bark}
-    \ex *\lex{The cat tried (for) the dog to bark}?
+    \ex \bad{The cat continued (for) the dog to bark}
+    \ex \bad{The cat tried (for) the dog to bark}?
 
   \end{xlisti}
 
@@ -541,7 +551,9 @@ come from?)
 psychological reality of these transformations.
 \end{itemize}
 
-\myslide{We make another raising/control distinction}
+\section{Object Raising and Object Control}
+
+\myslide{We Make Another Raising/Control Distinction}
 
 \begin{exe}
   \ex 
@@ -575,7 +587,7 @@ psychological reality of these transformations.
   argument.
 \end{itemize}
 
-\myslide{Example \typ{orv-lxm} and \typ{ocv-lxm Entries}}
+\myslide{Example \typ{orv-lxm} and \typ{ocv-lxm} Entries}
 
 \begin{center} \small
   \begin{tabular}{cc}
@@ -592,7 +604,7 @@ psychological reality of these transformations.
 }
 & \avm{\tiny
      < \textnormal{persuade}, \ 
-     [\val{\tiny orv-lxm} \\
+     [\val{\tiny ocv-lxm} \\
      arg-st & < NP$_j$, NP$_i$, VP [ inf & $+$ ] > \\
       sem & [ index & s \\
                restr & < [ reln & \prd{persuade} \\
@@ -606,7 +618,7 @@ psychological reality of these transformations.
 
 
 \begin{itemize}
-\item Note that the \val{orv-lxm} \prd{persuade} relation has three arguments,
+\item Note that the \prd{persuade} relation has three arguments,
   but the \prd{expect} relation has only two
 \item And the object’s \ft{index} plays a role in the \prd{persuade} relation,
   but not in the \prd{expect} relation
@@ -626,8 +638,11 @@ psychological reality of these transformations.
 % they are or are not paraphrases of each other. 
 % \end{enumerate}
 
+\section{Problems}
+
 \myslide{P1: Classifying Verbs}
-\MyLogo{Based on  Chapter 12, Problem 1, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 12, Problem 1]{sag:wasow:bender:2003}}
+\small
 
 \noindent Classify the following verbs as raising or control:
 %Give as many distinct tests as you can to justify your
@@ -643,7 +658,7 @@ Justify your classification by applying each of the following four
 tests to each verb.  Show your work by providing relevant examples
 and indicating their grammaticality. 
 
-\begin{itemize} 
+\begin{itemize}
 \item[(i)] Can the verb take a  dummy \lex{there} subject if and only if its complement selects for a dummy \lex{there} subject?
 
 \item[(ii)] Can the verb take a dummy \lex{it} subject if and only if
@@ -664,14 +679,14 @@ Make sure to restrict your attention to cases of the form: \hbox{NP V
 the \lex{continue} vs.\ \lex{try} pattern.
 
 \myslide{P2: Classifying \index{adjective}Adjectives}
-\MyLogo{Based on  Chapter 12, Problem 2, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 12, Problem 2]{sag:wasow:bender:2003}}
 Classify the following adjectives as \index{raising!adjective}raising or 
 \index{control!adjective}control:
 %Justify your classifications, constructing three or four
 %interestingly different relevant examples for each adjective.
 
 \begin{itemize}
-\item \lex{ anxious, apt, bound, certain, lucky}
+\item \lex{anxious, apt, bound, certain, lucky}
 \end{itemize}
 
 \noindent
@@ -685,12 +700,12 @@ any other valence that doesn't resemble the \lex{likely} vs.\
 \lex{eager} pattern.
 
 \myslide{P3: \lex{expect} vs.\ \lex{persuade}}
-\MyLogo{Based on  Chapter 12, Problem 4, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 12, Problem 4]{sag:wasow:bender:2003}}
 
 Construct the arguments that underlie the proposed distinction between
 \typ{orv-lxm} and \typ{ocv-lxm}.
 
-Construct examples of each of the following four types which 
+Construct examples of each of the following four types that 
 show a contrast between \lex{expect} and \lex{persuade}.  Explain how
 the contrasts are accounted for by the differences in the types
 \typ{orv-lxm} and \typ{ocv-lxm} and/or the lexical entries for \lex{expect}
@@ -719,10 +734,10 @@ not paraphrases of each other.
 % so forth).
 
 \myslide{P4: A Type for Existential \lex{be}}
-\MyLogo{Based on  Chapter 12, Problem 6, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 12, Problem 6]{sag:wasow:bender:2003}}
 
 The \lex{be} that takes \lex{there} as its subject wasn't given a true
-lexical type in Chapter 11 (Sag, Wasow and Bender, 2003), because no
+lexical type in Chapter 11 \citep{sag:wasow:bender:2003}, because no
 suitable type had been introduced.  One of the types in this chapter
 will do, if we make some of its constraints defeasible.
 
@@ -732,8 +747,8 @@ closest to being consistent with the constraints on \lex{there}-taking
 \lex{be}?
 \item[B.] Rewrite that type indicating which constraints must
 be made defeasible.
-\item[C.] Give a stream-lined lexical entry for the \lex{there}-taking
-\lex{be} which stipulates only those constraints which are truly
+\item[C.] Give a streamlined lexical entry for the \lex{there}-taking
+\lex{be} that stipulates only those constraints that are truly
 idiosyncratic to the lexeme.
 \end{itemize}
 
@@ -741,14 +756,15 @@ idiosyncratic to the lexeme.
 
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 12}
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 12}
 \begin{itemize}
-\item Intro to topic
+\item Introduction: two kinds of NP-V-(NP)-\lex{to}-VP
 \item Infinitival \lex{to}
-\item (Subject) raising verbs
-\item (Subject) control verbs
-\item Raising/control in TG
+\item Subject-raising verbs
+\item Subject-control verbs
+\item Raising and control in Transformational Grammar
 \item Object raising and object control
+\item Problems 12.1, 12.2, 12.4, 12.6
 \end{itemize}
 
 
