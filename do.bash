@@ -13,7 +13,7 @@ latexopts="-gg -interaction=nonstopmode"
 pushd .
 cd $sdir
 ### Only the decks that are tracked in git.  Drafts and backups match
-### lec-*.tex too (lec-06-lexicon-bak, lec-06a-lexicon, ...), are not
+### lec-*.tex too (lec-08-lexicon-bak, lec-08a-lexicon, ...), are not
 ### published, and some of them do not build.  If you add a new deck,
 ### git add it and it will be picked up here.
 for slide in `git ls-files 'lec-*.tex' 'presentation.tex' 'latex-intro.tex'`

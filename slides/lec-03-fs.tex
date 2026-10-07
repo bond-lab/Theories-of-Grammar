@@ -12,7 +12,7 @@
 \begin{document}
 %\avmfont{\it}
 
-\header{Lecture 2}{Feature Structures}{Headed Rules, Trees}
+\header{Lecture 3}{Feature Structures}{Headed Rules, Trees}
 \maketitle
 
 
@@ -31,7 +31,7 @@
 
 \myslide{Our Goals}
 \begin{itemize}
-\item Descriptive, generative grammar
+\item A descriptive, generative grammar
   \begin{itemize}
   \item Describing English (in this case)
   \item Generating all possible well-formed
@@ -52,7 +52,7 @@ fragment) for English
 \item Potentially arbitrary rules
 \item Gets clunky quickly with cross-cutting properties
 \item Not quite powerful enough for natural languages
-\item \emp{Solution}: Replace atomic node labels with feature structures.
+\item \emp{Solution}: Replace atomic node labels (N, NP, \ldots{})  with meaningful feature structures.
 \end{itemize}
 
 \myslide{Cross-cutting Grammatical Properties}
@@ -69,19 +69,22 @@ fragment) for English
 \myslide{Language Models}
 
   \begin{itemize}
-  \item Two Kinds of Language Models
+  \item Two kinds of language models
     \begin{itemize}
     \item Speakers’ internalized knowledge (their grammar)
     \item Set of sentences in the language
     \end{itemize}
-  \item Things Involved in Modeling Language
+  \item Things involved in modelling language
     \begin{itemize}
     \item Real world entities (utterance types)
     \item Models (fully specified trees)
     \item Descriptions of the models (rules, principles, lexical entries)
     \end{itemize}
   \end{itemize}
-\myslide{Feature Structure Descriptions}
+
+\section{An delicious introduction to Typed Feature Structures}
+
+  \myslide{Feature Structure Descriptions}
 \vfill
 \begin{Large}
   \avm{[ feature$_1$ &\ \ \  value$_1$\\
@@ -134,14 +137,15 @@ cat
 
 A type hierarchy \ldots
 \begin{itemize}
-\item[\ldots]  states what kinds of objects we claim exist (the
-types)
+\item[\ldots]  states what kinds of objects we claim exist\\
+  --- the types
 
 \item[\ldots]  organizes the objects hierarchically into classes
-with shared properties (the type hierarchy)
+  with shared properties \\
+  --- the type hierarchy
 
 \item[\ldots]   states what general properties each kind of object
-has (the feature and feature value declarations).
+has \\ --- the feature and feature value declarations
 \end{itemize}
 
 \myslide{Pizza Descriptions and Pizza Models}
@@ -363,6 +367,9 @@ from lexical entries, grammar rules, and
 general principles.
 \end{itemize}
 
+\section{Describing Language with TFS}
+  
+
 \myslide{Linguistic Application of Feature Structures:}
 Making the Mnemonic Meaningful
 \begin{itemize}
@@ -486,7 +493,7 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 \ft{comps} controls how many \txx{complements} are possible.
 
 
-\myslide {Head-Complement Rules}
+\myslide {Head-Complement Rules (S  $\rightarrow$ V $|$ V NP $|$ V NP NP) }
 \begin{small}
 1 \avm{% 
 [\type*{phrase}\\
@@ -529,6 +536,7 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 \avm{%
  [ head & \type{verb}]} 
 
+This captures \textit{verbiness}!
 
 \myslide{Another Valence Feature}
 \begin{tabular}[t]{cc}
@@ -547,7 +555,14 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 
 \ft{spr} controls the \txx{specifier} (determiner and/or subject)
 
-\myslide{spr and Verbs}
+\begin{center}
+\begin{forest}
+  [ NP [ NOM [ N ]]]
+\end{forest}
+\end{center}
+
+
+\myslide{Specifier and Verbs}
 
 \begin{tabular}[t]{cc}
 \avm{\hskip 11pt\ \ \ S  =  \ [\type*{phrase}\\
@@ -561,6 +576,13 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 			 comps & itr\\
                          spr & $-$]]}
 \end{tabular}
+\begin{center}
+\begin{forest}
+  [ S [ VP [ V ]]]
+\end{forest}
+\end{center}
+
+S is actually equivalent to NP and VP to Nom, but it is too late to change this usage, \ldots
 
 \myslide{S and NP}
 
@@ -656,6 +678,14 @@ irrelevant to our current point).
 Do phrases that are not headed have
 \ft{head} features?
 
+\myslide{Question:}
+Do phrases that are not headed have
+\ft{head} features?
+
+\bigskip
+\emp{Yes}, all expressions have \ft{head}, but in a non-headed
+phrase it does not have to be identical to its mother.
+
 \myslide{Reformulating the Grammar Rules I}
 
 Which simple phrase structure rules (Ch 2) do these correspond to?
@@ -730,9 +760,9 @@ $\rightarrow$\ \ {\HD}[[\type*{phrase}\\
 \newpage
 \item Coordination Rule
 
-\avm{[ [ head \1 ] $\rightarrow$\ \ \ %
+\avm{ [ head \1 ]\ \ \ $\rightarrow$\ \ \ %
 [ head \1 ]+\ [\type*{word}\\
- head & \type{conj} ]\  [ head \1 ]]}
+ head & \type{conj} ]\  [ head \1 ]}
 \\[4ex]
 Only coordinate two similar things!
 \end{itemize}
@@ -740,12 +770,12 @@ Only coordinate two similar things!
 \myslide{Advantages of the New Formulation}
 \begin{itemize}
 \item Subject-verb agreement is stipulated only
-once (where?)
+once (where?)  %%  Head-Specifier Rule 1
 \item Common properties of verbs with different
 valences are expressed by common features
-(for example?)
+(for example?) %% agreement feature
 \item Parallelisms across phrase types are captured
-(for example?)
+(for example?)  %%% they use the same head-complement rule
 \end{itemize}
 
 \myslide{Disadvantages of the New Formulation}
@@ -762,9 +792,12 @@ empirical work
 
 
 \myslide{Which rule licenses each node?}
+\thispagestyle{empty}% full-page tree: no header/footer
+\vspace*{-8mm}
 
-\scalebox{0.5}{\begin{forest}
-cat
+\noindent\makebox[\textwidth]{\raisebox{0pt}[0pt][0pt]{\raisebox{-\height}{%
+\scalebox{0.66}{\begin{forest}
+cat, for tree={l sep=2mm}
 [{\avm{[\type*{phrase}\\
   head &[\type*{verb}\\
   agr &[\type*{agr-cat}\\
@@ -802,8 +835,7 @@ cat
  			    val  & [\type*{val-cat}\\
                                      comps & itr\\
                                      spr  & $-$ ]]}} [{swim}]]]]
-\end{forest}}
-\vspace*{-2ex}
+\end{forest}}}}}
 
 \myslide{In abbreviated form}
 
@@ -909,13 +941,15 @@ HSR2 and the Head Feature Principle) requires.
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
-\item Problems from Sag, Wasow and Bender (2003)
-
+\item This lecture complements \citet[Chapter 3]{sag:wasow:bender:2003},
+  and the problems are taken from it
 \end{itemize}
 
 
 
 
+\bibliographystyle{aclnat}
+\bibliography{abb,mtg,nlp,ling}
 \end{document}
 
 
