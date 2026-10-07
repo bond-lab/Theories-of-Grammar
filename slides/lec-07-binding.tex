@@ -9,19 +9,19 @@
 
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 7}
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 7}
 \begin{itemize}
-\item What we are trying to do
-\item Last week: Semantics
-\item Review of Chapter 1's informal binding theory
-\item What we already have that’s useful
-\item What we add in Ch 7 (ARG-ST, ARP)
-\item Formalized Binding Theory
+\item Review: what we are trying to do; last week's semantics
+\item The informal binding theory from Chapter 1
+\item Formalizing binding theory: \ft{arg-st}, the ARP and the Binding Principles
 \item Binding and PPs
 \item Imperatives
+\item Problems: possessives, imperative `subjects'
 \end{itemize}
 
 
+
+\section{Review}
 
 \myslide{What We’re Trying To Do}
 \begin{itemize}
@@ -32,9 +32,9 @@
 distinguish well-formed from ill-formed expressions
 \item Assign plausible semantic representations
 \item Be parsimonious, capturing linguistically significant
-generalizations.
+generalizations
 \end{itemize}
-\item Why Formalize?
+\item Why formalize?
 \begin{itemize}
 \item To formulate testable predictions
 \item To check for consistency
@@ -44,7 +44,7 @@ generalizations.
 
 \myslide{How We Construct Sentences}
 \begin{itemize}
-\item The Components of Our Grammar
+\item The components of our grammar
 \begin{itemize}
 \item Grammar rules
 \item Lexical entries
@@ -91,7 +91,7 @@ or
   \avm{%\avmvalfont{\it}
     [ reln & life \\ inst & i ]
 }
-\item Not like wordnet: 
+\item Not like WordNet: 
 \iz{life$_1$}  $\subset$ \iz{being$_1$} $\subset$ \iz{state$_1$} \ldots
 
  % -- (a characteristic state or mode of living; "social life"; "city life"; "real life")
@@ -102,7 +102,7 @@ or
  %                       => entity -- (that which is perceived or known or inferred to have its own distinct existence (living or nonliving))
  \end{itemize}
 \item Quantification \hfill (covered lightly in the book)
-\item Tense, Mood, Aspect \hfill (covered in the book)
+\item Tense, mood, aspect \hfill (covered in the book)
  \end{itemize}
 
 
@@ -128,7 +128,7 @@ or
   that will be true just in case there is an actual situation that
   involves the saving of someone named Pat by someone named Chris.”
   \begin{flushright}
-    (Sag \textit{et al}, 2003, p. 140)
+    \citep[p.~140]{sag:wasow:bender:2003}
   \end{flushright}
 \end{quote}
 
@@ -238,19 +238,19 @@ cat
   \end{quote}
 \end{itemize}
 
-\myslide{Where is the information}
+\myslide{Where Is the Information?}
 \MyLogo{}
 \begin{itemize}
 \item Words
   \begin{itemize}
   \item Contribute predications
-  \item ‘expose’ one index in those predications, for use by words or phrases
-  \item relate syntactic arguments to semantic arguments
+  \item ‘Expose’ one index in those predications, for use by words or phrases
+  \item Relate syntactic arguments to semantic arguments
   \end{itemize}
 \item Rules
 \begin{itemize}
 \item Identify (link) feature structures across daughters
-\item License trees which are subject to the semantic principles
+\item License trees that are subject to the semantic principles
   \begin{itemize}
   \item SIP: ‘passes up’ \ft{mode} and \ft{index} from head daughter
   \item SCP: ‘gathers up’ predications (\ft{restr} list) from all daughters
@@ -260,22 +260,22 @@ cat
   comes from the words, rules and principles.
 \end{itemize}
 
-\section{Binding}
+\section{The Informal Binding Theory}
 
 
 \myslide{Some Examples from Chapter 1}
 
 \begin{exe}
-\ix She likes herself
-\ix *She$_i$ likes her$_i$.
+\ix She likes herself.
+\ix \bad She$_i$ likes her$_i$.
 \ix We gave presents to ourselves.
-\ix *We gave presents to us.
-\ix We gave ourselves presents
-\ix *We gave us presents.
-\ix *Leslie told us about us.
+\ix \bad We gave presents to us.
+\ix We gave ourselves presents.
+\ix \bad We gave us presents.
+\ix \bad Leslie told us about us.
 \ix Leslie told us about ourselves.
-\ix *Leslie told ourselves about us.
-\ix *Leslie told ourselves about ourselves.
+\ix \bad Leslie told ourselves about us.
+\ix \bad Leslie told ourselves about ourselves.
 \end{exe}
 
 \myslide{Some Terminology}
@@ -293,21 +293,21 @@ anaphoric expression and its antecedent.
 
 \myslide{The Chapter 1 Binding Theory Reformulated}
 \begin{itemize}
-\item Old Formulation:
+\item Old formulation:
 \begin{itemize}
 \item A reflexive pronoun must be an argument of a verb that
 has another preceding argument with the same reference.
 \item A nonreflexive pronoun cannot appear as an argument of
 a verb that has a preceding coreferential argument.
 \end{itemize}
-\item New Formulation(version I):
+\item New formulation (version I):
 \begin{itemize}
 \item \txx{Principle A}: A reflexive pronoun must be
 bound by a preceding argument of the same verb.
 \item \txx{Principle B}: A nonreflexive pronoun may not
 be bound by a preceding argument of the same verb.
 \end{itemize}
-\item Opaque names come from Chomsky (1981)
+\item The (opaque) names Principle A and B come from \citet{chomsky:1981}
 \end{itemize}
 
 \myslide{Some Challenges}
@@ -329,13 +329,15 @@ they have the same \ft{index} value (“are
 coindexed”).
 \item[Q] Where in our theory do we have information
 about a verb’s arguments?
-\item[A] In the verb’s \ft{valence} features.
+\item[A] In the verb’s \ft{val} features.
 \item[Q] What determines the linear ordering of a
 verb’s arguments in a sentence?
 \item[A] The interaction of the grammar
 rules and the ordering of elements in the
 \ft{comps} list.
 \end{itemize}
+
+\section{Formalizing Binding Theory}
 
 \myslide{The Argument Realization Principle}
 \begin{itemize}
@@ -345,7 +347,7 @@ and complements.
 property: \\
 \avm{[\type*{word}  
  syn & [ val & [ spr &  \tag{A} \\comps &  \tag{B} ] ] \\
- arg-st & < \tag{A} $\oplus$ \tag{B} > ]
+ arg-st & \tag{A} $\oplus$ \tag{B} ]
 }
 
 \item This is a constraint on the type \val{word}
@@ -355,7 +357,7 @@ property: \\
 \begin{itemize}
 \item It’s neither in \ft{syn} nor \ft{sem}.
 \item It only appears on lexical heads (not
-appropriate for type phrase)
+appropriate for type \val{phrase})
 \item No principle stipulates identity
 between \ft{arg-st}s.
 \end{itemize}
@@ -385,9 +387,9 @@ and reciprocals.
 \begin{itemize}
 \item The Binding Principles by themselves don’t block:
   \begin{exe}
-    \ix * I amused yourself.
-    \ix * He amused themselves.
-    \ix * She amused himself.
+    \ix \bad I amused yourself.
+    \ix \bad He amused themselves.
+    \ix \bad She amused himself.
   \end{exe}
 \item Coindexed NPs refer to the same entity, and \ft{agr} features
 generally correlate with properties of the referent.
@@ -395,21 +397,23 @@ generally correlate with properties of the referent.
 Coindexed NPs agree.
 \end{itemize}
 
+\section{Binding and PPs}
+
 \myslide{Binding in PPs}
 \begin{itemize}
 \item What do the Binding Principles predict about the
 following?
   \begin{exe}
     \ix I brought a book with me.
-    \ix *I brought a book with myself.
-    \ix *I mailed a book to me.
+    \ix \bad I brought a book with myself.
+    \ix \bad I mailed a book to me.
     \ix I mailed a book to myself.
   \end{exe}
 \end{itemize}
 
 \myslide{Two Types of Prepositions: the Intuition}
 \begin{itemize}
-\item \txx{Argument-marking}: Function like casemarkers in other languages, indicating the
+\item \txx{Argument-marking}: Function like case markers in other languages, indicating the
 roles of NP referents in the situation denoted by the verb.
 \item \txx{Predicative}: Introduce their own predication.
 \end{itemize}
@@ -430,26 +434,25 @@ roles of NP referents in the situation denoted by the verb.
 \end{itemize}
 \end{description}
 
-\myslide{Argument-marking preposition \eng{to}}
+\myslide{Argument-Marking Preposition \eng{to}}
 \avm{< \textit{to}, [ syn & [ head & prep \\
-                     val &  [ spr < > ] ] \\
-
+                     val &  [ spr & < > ] ] \\
                    arg-st & < NP [syn & [ head & [ case & acc ]  ]\\
                                   sem & [ mode & \1 \\ index & \2 ] ] >  \\
                    sem &  [ mode & \1 \\ index & \2 ] ]    >
 }
 
-\avm{\textsc{arg-st} =  < spr $\oplus$ comps >
+\avm{\textsc{arg-st} = spr $\oplus$ comps
 }
 
-Therfore comps here is a singleton list with the NP in it, \ldots
+Therefore \ft{comps} here is a singleton list containing the NP, \ldots
 
 \myslide{Redefining Rank}
  \begin{itemize}
 \item If there is an \ft{arg-st} list on which A
 precedes B, then A outranks B.
 \item If a node is coindexed with its daughter, they
-are of equal rank -- that is, they outrank the
+are of equal rank --- that is, they outrank the
 same nodes and are outranked by the same
 nodes.
 \end{itemize}
@@ -459,7 +462,7 @@ nodes.
 \begin{forest}
 cat
 [{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
-[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+[{VP \avm{[ spr & < \1 > ]}} [{V \avm{[ spr & < \1 > \\
              comps & < \2, \3 > \\ 
              arg-st & < \1, \2, \3 > ]}} [{\eng{sent}}]]
 [{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
@@ -492,7 +495,7 @@ outranked by a coindexed element.
 \begin{forest}
 cat
 [{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
-[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+[{VP \avm{[ spr & < \1 > ]}} [{V \avm{[ spr & < \1 > \\
              comps & < \2, \3 > \\ 
              arg-st & < \1, \2, \3 > ]}} [{\eng{sent}}]]
 [{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
@@ -524,15 +527,15 @@ be outranked by a coindexed element.
 \scalebox{0.8}{\begin{forest}
 cat
 [{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
-[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+[{VP \avm{[ spr & < \1 > ]}} [{V \avm{[ spr & < \1 > \\
              comps & < \2 > \\ 
              arg-st & < \1, \2 > ]}} [{\eng{brought}}]]
 [{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
 [{N$_j$} [{\eng{pencil}}]]]
-[{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \1 > \\ 
+[{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \4 > \\ 
                    mod & < \2 > \\
-                   arg-st & < \1 > ]}} [{\eng{with}}]]
-[{NP$_l$ \avm{[ mode & ref ]}} [{\eng{me}}]]]]]
+                   arg-st & < \4 > ]}} [{\eng{with}}]]
+[{\avm{\4} NP$_l$ \avm{[ mode & ref ]}} [{\eng{me}}]]]]]
 \end{forest}}
 
 \myslide{\eng{*I brought a pencil with myself}}
@@ -541,16 +544,18 @@ cat
 \scalebox{0.8}{\begin{forest}
 cat
 [{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
-[{VP \avm{[ < \1 > ]}} [{V \avm{[ spr & < \1 > \\
+[{VP \avm{[ spr & < \1 > ]}} [{V \avm{[ spr & < \1 > \\
              comps & < \2 > \\ 
              arg-st & < \1, \2 > ]}} [{\eng{brought}}]]
 [{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
 [{N$_j$} [{\eng{pencil}}]]]
-[{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \1 > \\ 
+[{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \4 > \\ 
                    mod & < \2 > \\
-                   arg-st & < \1 > ]}} [{\eng{with}}]]
-[{NP$_l$ \avm{[ mode & ana ]}} [{\eng{myself}}]]]]]
+                   arg-st & < \4 > ]}} [{\eng{with}}]]
+[{\avm{\4} NP$_l$ \avm{[ mode & ana ]}} [{\eng{myself}}]]]]]
 \end{forest}}
+
+\section{Imperatives}
 
 \myslide{Imperatives}
 \MyLogo{}
@@ -564,13 +569,11 @@ cat
   \end{exe}
 \item Function as \txx{directives} (commands or requests)
 \item Have the verb in base form: \eng{Be careful!} not \eng{*Are careful!}
-\begin{itemize}
 \item Allow 2nd person reflexives, and no others
-\begin{exe}
+  \begin{exe}
     \ix Defend yourself!
-    \ix *Defend myself/himself!
+    \ix \bad Defend myself/himself!
   \end{exe}
-\end{itemize}
 \end{itemize}
 
 \myslide{The Imperative Rule}
@@ -582,7 +585,7 @@ cat
               \ $\rightarrow$\ \ 
 [\type*{phrase}  
    head & [\type*{verb} form & base ]\\
-   val & [ spr  & < NP [ per 2nd ]   > \\
+   val & [ spr  & < NP [ per & 2nd ]   > \\
             comps & < >  ] \\
    sem & [ index & $s$ ] ]
 }
@@ -597,14 +600,14 @@ cat
 \item[A] It would violate the HFP and the SIP.
 \end{itemize}
 
-\myslide{Imperative example}
+\myslide{Imperative Example}
 \begin{multicols}{2}
-\begin{forest}
+\scalebox{0.85}{\begin{forest}
 cat
-[{S} [{VP \avm{[ spr & < \1 NP [ per 2nd \\ num sg ] > ]}} [{V \avm{[ spr & < \1 > ]}} [{\eng{vote}}]]
+[{S} [{VP \avm{[ spr & < \1 NP [ per & 2nd \\ num & sg ] > ]}} [{V \avm{[ spr & < \1 > ]}} [{\eng{vote}}]]
 [{\avm{\3} PP$_i$} [{P$_i$} [{\eng{for}}]]
 [{NP$_i$ \avm{[ mode & ana ]}} [{\eng{yourself}}]]]]]
-\end{forest}
+\end{forest}}
 %\newpage
 
 \begin{itemize}
@@ -622,7 +625,7 @@ the licensing of \eng{yourself}?
 
 \end{multicols}
 
-\myslide{\ft{arg-st} on vote}
+\myslide{\ft{arg-st} of \eng{vote}}
 \begin{center}
   \avm{[  arg-st & < 
 NP$_i$ [ mode & ref \\ per & 2nd \\ num & sg ],
@@ -643,22 +646,22 @@ PP$_i$ [ mode & ana ]
   \begin{exe}
     \ix Screw yourself!
     \ix Go screw yourself!
-    \ix screw you!
-    \ix *Go screw you!
+    \ix Screw you!
+    \ix \bad Go screw you!
   \end{exe}
 \item \eng{Screw NP!} has two analyses
   \begin{itemize}
   \item As an imperative
-  \item As a truly subjectless fixed expression.
+  \item As a truly subjectless fixed expression
   \end{itemize}
 \item \eng{Go screw NP!} can only be analyzed as an imperative.
 \end{itemize}
 
 
 \myslide{Summary}
-\MyLogo{It turns out, binding is much, much more complicated than this}
+\MyLogo{Binding is much, much more complicated than this}
 \begin{itemize}\addtolength{\itemsep}{-2ex}
-\item Review of Chapter 1 informal binding
+\item Review of Chapter 1's informal binding
 theory
 \item Formalized Binding Theory
   \begin{itemize}
@@ -676,8 +679,10 @@ be outranked by a coindexed element.
 \end{itemize}
 
 
+\section{Problems}
+
 \myslide{P1: English Possessives I}
-\MyLogo{Based on  Chapter 6, Problem 3, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 6, Problem 3]{sag:wasow:bender:2003}}
 
 English uses {\it 's} to express possession, as in the following examples:
 
@@ -737,7 +742,7 @@ predict should be grammatical, and why?
 \end{itemize}
 
 \myslide{P2: English Possessives II}
-\MyLogo{Based on  Chapter 6, Problem 4, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 6, Problem 4]{sag:wasow:bender:2003}}
 
 An  alternative analysis of the possessive is to say that %it 
 \eng{'s}
@@ -816,14 +821,14 @@ explanation.
 % \end{itemize}
 
 \myslide{P3: Imperative `Subjects'}
-\MyLogo{Based on  Chapter 7, Problem 2, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 7, Problem 2]{sag:wasow:bender:2003}}
 \begin{itemize}
 \item Some imperatives look like they have a subject:
   \begin{itemize}
   \item[(i)] \eng{\ul{You} get out of here!}
   \item[(ii)] \eng{\ul{Everybody} take out a sheet of paper!}
   \end{itemize}
-\item But agreement is wierd:
+\item But agreement is weird:
   \begin{itemize}
   \item[(iii)] 
     \eng{Everybody found 
@@ -832,9 +837,9 @@ explanation.
     \eng{Everybody find 
       $^?$himself/yourself/$^*$themselves/$^*$myself a seat.}
   \end{itemize}
-\item What minimal modification of the Imperative Rule would allow the above to parse
+\item What minimal modification of the Imperative Rule would let these parse?
   \begin{itemize}
-  \item Don't worry about the Semantics for now (no one has solved that)
+  \item Don't worry about the semantics for now (no one has solved that)
   \item We just want an imperative rule that will license the good examples and not the bad examples shown above.
     
   \end{itemize}
