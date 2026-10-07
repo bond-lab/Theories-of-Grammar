@@ -13,12 +13,21 @@
 
 
 \myslide{Overview}
-\MyLogo{Sag, Wasow and Bender (2003) --- Chapter 16}
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 16}
 
-\begin{itemize}
-\item Chapter 16 framework (same analyses, 
+Chapter 16 framework (same analyses, 
 different underlying system)
+\begin{itemize}
+\item Construction grammar
+  \begin{itemize}
+  \item The construction grammar family
+  \item Differences between SBCG and HPSG
+  \end{itemize}
+\item Multiple inheritance: lexemes and clauses
+\item Everything is a sign: words, rules, principles and the root condition
 \end{itemize}
+
+\section{Construction Grammar}
 
 \myslide{Construction Grammar (CxG)}
 
@@ -38,13 +47,13 @@ different underlying system)
 
 \myslide{Construction Grammars}
 \begin{itemize}
-\item \txx{Sign-based-Construction Grammar} (Berkeley Construction Grammar)
+\item \txx{Sign-Based Construction Grammar} (Berkeley Construction Grammar)
   \\  unification-based framework (with computational implementation)
-\item \txx{Goldbergian/Lakovian Construction Grammar}
+\item \txx{Goldbergian/Lakoffian Construction Grammar}
   \\ psychologically plausible
 \item \txx{Radical Construction Grammar}
   \\ syntactic categories, roles, and relations are not universal: 
-  \\ they are not only language-specific, but also construction specific 
+  \\ they are not only language-specific, but also construction-specific 
 \item \txx{Embodied Construction Grammar}
   \\ relates constructions to embodiment and sensorimotor experience
 \item \txx{Fluid Construction Grammar}
@@ -52,10 +61,10 @@ different underlying system)
 \end{itemize}
 
 
-\myslide{Overview of Differences (SBCG vs HPSG)}
+\myslide{Overview of Differences (SBCG vs.\ HPSG)}
 
 \begin{itemize}
-\item Multiple Inheritance
+\item Multiple inheritance
 \item Signs
 \item Grammar rules form a hierarchy --- many more rules
 \item Every tree node has its own phonology
@@ -65,7 +74,9 @@ grammar rules
 simplified
 \end{itemize}
 
-\myslide{More Inheritance (lexemes)}
+\section{Multiple Inheritance}
+
+\myslide{More Inheritance (Lexemes)}
 \newcommand{\twoline}[2]{\shortstack{\textit{#1}\\\textbf{#2}}}
 
 \noindent\begin{tikzpicture}[
@@ -151,7 +162,7 @@ simplified
 
 \end{tikzpicture}
 
-\myslide{More Inheritance (clauses)}
+\myslide{More Inheritance (Clauses)}
 \newcommand{\nexx}[2]{#1\\\textbf{#2}}
 
 \noindent\begin{tikzpicture}[
@@ -182,14 +193,14 @@ simplified
     child[xshift=2em] {node (hdfill) {hd-fill-cx}}
   }};
 
- ------------------------------------------------------------------
+% ------------------------------------------------------------------
 % Bottom row: 5 nodes
 % ------------------------------------------------------------------
  \node[below=34ex of construction]   (ex3) {\nexx{imp-cl}{Go in!}};
-\node[left=1em of ex3]   (ex2)  {\nexx{top-cl}{Lee, we like}};
- \node[left=1em of ex2] (ex1) {\nexx{simp-decl-cl}{Kim left}};
-\node[right=1em of ex3]   (ex4) {\nexx{wh-rel-cl}{which Bo saw}};
-\node[right=1em of ex4]  (ex5) {\nexx{wh-int-cl}{Who do we see?}}; %       (ex5) {example-5\\ Some text};
+\node[left=0.5em of ex3]   (ex2)  {\nexx{top-cl}{Lee, we like.}};
+ \node[left=0.5em of ex2] (ex1) {\nexx{simp-decl-cl}{Kim left.}};
+\node[right=0.5em of ex3]   (ex4) {\nexx{wh-rel-cl}{which Bo saw}};
+\node[right=0.5em of ex4]  (ex5) {\nexx{wh-int-cl}{Who do we see?}}; %       (ex5) {example-5\\ Some text};
 
 % ------------------------------------------------------------------
 % Inheritance edges (multiple parents for ex1)
@@ -207,7 +218,9 @@ simplified
 
 \end{tikzpicture}
 
-\myslide{Words are signs}
+\section{Everything Is a Sign}
+
+\myslide{Words Are Signs}
     \avm{
       < \textnormal{dog}, \ [\type*{word}
       head & \type{noun} \\
@@ -219,13 +232,13 @@ simplified
 
     \avm{
      \ [\type*{word}
-        orth & < "\textnormal{dog}" > \\
+        orth & < ``\textnormal{dog}'' > \\
       syn &  [ head & \type{noun} \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < D > \\ comps & < > ] ]
       ]} 
 
-\myslide{Rules are signs}
+\myslide{Rules Are Signs}
     \avm{[\type*{phrase}\\
              val & [ comps & < >\\
                       spr & < >]]\ \ \
@@ -237,13 +250,13 @@ $\rightarrow$\ \ \ \ \2\ \ \ \ \HD[ %\type{phrase}\\
  
  \avm{
    [\type*{head-spr-cx}\\
-     mother & [ val.spr < > ] \\
-     hd-dtr & \2 [ val &  [ spr < \1 > \\
-                              comps < >  ] ] \\ 
+     mother & [ val.spr & < > ] \\
+     hd-dtr & \2 [ val &  [ spr & < \1 > \\
+                              comps & < >  ] ] \\ 
      dtrs & < \1, \2 >\\
      ]}
 
-\myslide{Principles are signs}
+\myslide{Principles Are Signs}
 
 \begin{itemize}
 \item Head Feature Principle   \\
@@ -262,16 +275,16 @@ $\rightarrow$\ \ \ \ \2\ \ \ \ \HD[ %\type{phrase}\\
   hd-dtr.syn.val & / \1  ]}
 \end{itemize} 
 
-\myslide{The Root Condition (Start Symbol) is a sign}
+\myslide{The Root Condition (Start Symbol) Is a Sign}
 
 \avm{
   [ syn & [ head & [\type*{verb}\\
         form & fin ] \\
       val & [ comps & < > \\
-        spr  & < > ] ]\\
-      gap & < > ]}
+        spr  & < > ] \\
+      gap & < > ] ]}
 
-\myslide{Sign-based Construction Grammar}
+\myslide{Sign-Based Construction Grammar}
 
 \begin{itemize}
 \item SBCG makes the analyses more uniform
