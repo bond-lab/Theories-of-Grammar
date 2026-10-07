@@ -12,19 +12,25 @@
 \myslide{Overview}
 \MyLogo{Chapter 4}
 \begin{itemize}
-\item Last week
-\item A problem with the Chapter 3 grammar
-\item Generalize COMPS and SPR
-\item The Valence Principle
-\item Agreement
-\item The SHAC
-\item Work through problems 4.1, 4.5, 4.6
+\item Review of last week
+\item List-valued valence features
+  \begin{itemize}
+  \item A problem with the Chapter 3 grammar
+  \item Generalize COMPS and SPR
+  \item The Valence Principle
+  \end{itemize}
+\item The heads of S and NP
+\item Complements and modifiers
+\item Agreement: the SHAC and count/mass
+\item Problems 4.1, 4.5, 4.6
 \end{itemize}
+
+\section{Review}
 
 \myslide{Pizza review}
 \MyLogo{}
 \begin{itemize}
-\item Unification is an operation for combing
+\item Unification is an operation for combining
 constraints from different sources.
 
 \item What are those sources in the pizza
@@ -42,13 +48,11 @@ from different sources in our grammars?
   \item Need to distinguish various subtypes of verbs
   \item Need to identify properties common to all verbs
   \end{itemize}
-\begin{itemize}
 \item So we broke categories down into feature structures and
   began constructing a hierarchy of types of feature
   structures.
-\item This allows us to schematize rules and state crosscategorial
+\item This allows us to schematize rules and state cross-categorial
   generalizations, while still making fine distinctions.
-\end{itemize}
 \end{itemize}
 
 \myslide{Heads}
@@ -70,7 +74,7 @@ that word
 \begin{itemize}
 \item Expressions have a feature \ft{head}
 \item \ft{head}’s values are of type \val{pos}
-\item For \ft{head} values of type \val{agr-cat}, \ft{head}’s
+\item For \ft{head} values of type \val{agr-pos}, \ft{head}’s
 value also includes the feature \ft{agr}
 \item Well-formed trees are subject to the \txx{Head
 Feature Principle}:
@@ -85,13 +89,15 @@ must be identical.
 \begin{itemize}
 \item It and each subtree are licensed by a grammar rule
 or lexical entry
-\item All general principles (like the HFP) are satisfied.
+\item All general principles (like the HFP) are satisfied
 \item NB: Trees are part of our model of the language,
 so all their features have values (even though we
 will often be \sout{lazy} compact and leave out the values
 irrelevant to our current point).
 \end{itemize}
 
+
+\section{List-Valued Valence Features}
 
 \myslide{But it’s still not quite right \ldots }
 There’s still too much redundancy: the rules and features encode the same information in different ways.
@@ -148,12 +154,13 @@ applies when there is at least one.
 complements
 \item This doesn’t apply where Head-Complement Rule 1 would. (Why?)
 \end{itemize}
-\item This can cover lots of cases not covered by the old Head-Complement Rules 1-3. (Examples?)
+\item This can cover lots of cases not covered by the old Head-Complement Rules 1--3. (Examples?)
 \end{itemize}
 
 \myslide{The valence comes from the lexicon}
 
 \begin{small}
+  \setlength{\tabcolsep}{2pt}%
   \begin{tabular}{ll}
     \avm{< \textnormal{devour}, \ [\type*{word}
       head & \type{verb} \\
@@ -173,7 +180,7 @@ complements
     \avm{< \textnormal{bet}, \ [\type*{word}
       head & \type{verb} \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
-      val & [ < NP (NP) (S) > ]
+      val & [ comps & < NP (NP) (S) > ]
       ]>} \\
     \avm{< \textnormal{dine}, \ [\type*{word}
       head & \type{verb} \\
@@ -218,8 +225,8 @@ In English, nouns can agree with their specifiers.
 \item In Countability
   \begin{exe}
 \ix Much furniture was broken.
-\ix * A furniture was broken.
-\ix * Much chair was broken.
+\ix \bad A furniture was broken.
+\ix \bad Much chair was broken.
 \ix A chair was broken. 
 \end{exe}
 \end{itemize}
@@ -278,7 +285,7 @@ cat
 \item Intuitively, the VAL features list the contextual
 requirements that haven’t yet been found.
 \item This way of thinking about it (like talk of
-“cancellation”) is bottom-up and procedural.
+``cancellation'') is bottom-up and procedural.
 \item But formally, the Valence Principle (like the rest of
 our grammar) is just a well-formedness constraint
 on trees, without inherent directionality.
@@ -293,9 +300,11 @@ ones.
 rules, to say that heads combine with whatever their
 lexical entries say they should combine with.
 \item Introduced the Valence Principle to keep the information on the
-  COMPS and SPR lists until it gets ``canceled'' by the
+  COMPS and SPR lists until it gets ``cancelled'' by the
   Head-Complement and Head-Specifier rules.
 \end{itemize}
+
+\section{The Heads of S and NP}
 
 \myslide{The Parallelism between S and NP}
 \begin{itemize}
@@ -303,13 +312,13 @@ lexical entries say they should combine with.
 \begin{itemize}
   \item pairs like 
     \begin{exe}
-      \ix Chris lectured about syntax
+      \ix Chris lectured about syntax.
       \ix Chris’s lecture about syntax
     \end{exe}
   \item both S and NP exhibit agreement
  \begin{exe}
-   \ix The bird sings/*sing
-   \ix The birds sing/*sings
+   \ix The bird sings/*sing.
+   \ix The birds sing/*sings.
    \ix this/*these bird 
    \ix these/*this birds
 \end{exe}
@@ -352,6 +361,8 @@ constituents of the complement.
     comps & < > ] ]}
 \end{center}
 
+\section{Complements and Modifiers}
+
 \myslide{Complements vs. Modifiers}
 \MyLogo{Arguments vs Adjuncts}
 \begin{itemize}
@@ -380,6 +391,8 @@ analyze questionable cases (usually PPs).
   \end{exe}
 \end{itemize}
 
+\section{Agreement}
+
 \myslide{Agreement}
 \MyLogo{}
 \begin{itemize}
@@ -395,8 +408,8 @@ the rule.
 \myslide{The Specifier-Head Agreement Constraint (SHAC)}
 Verbs and nouns must be specified as:
 \begin{center}
-  \avm{[ head & [ agr \1 ] \\
-    val & [ spr < agr \1 > ] ]}
+  \avm{[ head & [ agr & \1 ] \\
+    val & [ spr & < [ agr & \1 ] > ] ]}
 \end{center}
 
 \begin{itemize}
@@ -473,8 +486,8 @@ cookie, insult, fact})
   \begin{itemize}
   \item \lex{succotash} (mass) denotes a mix of corn \& lima beans, so
 it’s not undifferentiated.
-  \item \lex{furniture, footwear, cutlery, \ldots} refer to individuatable
-artifacts with mass terms
+  \item \lex{furniture, footwear, cutlery, \ldots} are mass nouns, although
+they refer to individual artifacts
   \item \lex{cabbage} can be either count or mass, but many speakers
 get \lex{lettuce} only as mass.
   \item borderline case: \lex{data}
@@ -486,7 +499,7 @@ get \lex{lettuce} only as mass.
 \begin{itemize}
 \item Determiners are:
 \begin{itemize}
-  \item $[\ft{count} -]$ (\lex{much} and, in some dialects, \lex{less}),
+  \item $[\ft{count} -]$ (\lex{much} and, in some dialects, \lex{less})
   \item $[\ft{count} +]$ (\lex{a, six, many, \ldots})
   \item lexically underspecified (\lex{the, all, some, no, \ldots})
   \end{itemize}
@@ -501,19 +514,26 @@ get \lex{lettuce} only as mass.
 
 \myslide{Overview}
 \begin{itemize}
-\item A problem with the Chapter 3 grammar
-\item Generalize COMPS and SPR
-\item The Valence Principle
-\item Agreement
-\item The SHAC
-\item (Work through problems 4.1, 4.5, 4.6)
+\item List-valued valence features
+  \begin{itemize}
+  \item A problem with the Chapter 3 grammar
+  \item Generalize COMPS and SPR
+  \item The Valence Principle
+  \end{itemize}
+\item The heads of S and NP
+\item Complements and modifiers
+\item Agreement: the SHAC and count/mass
+\item Problems 4.1, 4.5, 4.6
 \end{itemize}
+
+\section{Problems}
+
 \myslide{4.1 Valence Variations} Write lexical entries (including
 HEAD, SPR, and COMPS values). You may use NP, VP, etc.\ as
 abbreviations for the feature structures on COMPS lists.
 
 As you do this problem, keep the following points in mind: (1) In 
-chapter~4 COMPS became a list-valued feature,
+Chapter~4 COMPS became a list-valued feature,
 and (2) heads select for their specifier and complements (if they have
 any); the elements on the SPR and COMPS lists do not
 simultaneously select for the head.
@@ -535,7 +555,7 @@ they are used in (i).
    \end{exe}
 
 \noindent
-[{\sl Hint: Compare (i) to (7) on p97.}]
+[{\sl Hint: Compare (i) to (7) on p.~97.}]
 \newpage
 % % \item[B.] What is the COMPS value for the adjective {\it fond}?
 
@@ -624,9 +644,9 @@ limited in the same way that we handle
 agreement, i.e., without any changes to the
 grammar rules. Show how this can be done.
 Your answer should include lexical entries
-for they, us, likes, and with.
+for \lex{they}, \lex{us}, \lex{likes}, and \lex{with}.
 \item Hint: Assume that there is a feature CASE
-with the values ‘acc’ and ‘nom’, and assume
+with the values \val{acc} and \val{nom}, and assume
 that English pronouns have CASE features
 specified in their lexical entries.
 \end{itemize}
