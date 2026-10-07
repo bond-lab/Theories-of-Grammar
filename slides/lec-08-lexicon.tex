@@ -4,18 +4,814 @@
 
 \begin{document}
 
-\header{Lecture 7}{Structure of the lexicon}{}
+\header{Lecture 7}{The Structure of the Lexicon}{}
 \maketitle
 
 
-\myslide{Lexical Types and Rules}
-
-We will use slides from Emily Bender:
-
-
+\myslide{Overview}
 \begin{itemize}
-\item \href{ch08a-uw.pdf}{Lexical Types}
-\item \href{ch08a-uw.pdf}{Lexical Rules}
+\item Lexical types: the lexeme hierarchy and default inheritance
+\item Lexical rules: inflectional, derivational and post-inflectional
+\item Problem: arguments in Japanese
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Converted from Emily Bender's slides (ch08a-uw.pdf), with permission
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lexical Types}
+
+%%% p2
+\myslide{Overview}
+\begin{itemize}
+\item Motivation for lexical hierarchy
+\item Default inheritance
+\item Tour of the lexeme hierarchy
+\item The Case Constraint
+\item \val{pos} vs.\ \val{lexeme}
+\end{itemize}
+
+%%% p3
+\myslide{Motivation}
+\begin{itemize}
+\item We've streamlined our grammar rules\ldots
+  \begin{itemize}
+  \item \ldots by stating some constraints as general principles
+  \item \ldots and locating lots of information in the lexicon.
+  \item Our lexical entries currently stipulate a lot of
+    information that is common across many entries and
+    should be stated only once.
+  \end{itemize}
+\item Examples?
+\item Ideally, particular lexical entries need only give
+  phonological form, the semantic contribution,
+  and any constraints truly idiosyncratic to the
+  lexical entry.
+\end{itemize}
+
+%%% p4
+\myslide{Lexemes and Words}
+\begin{itemize}
+\item \txx{Lexeme}: An abstract proto-word which gives rise
+  to genuine words. We refer to lexemes by their
+  `dictionary form', e.g.\ `the lexeme \eng{run}' or `the
+  lexeme \eng{dog}'.
+\item \txx{Word}: A particular pairing of form and meaning.
+  \eng{Running} and \eng{ran} are different words
+\end{itemize}
+
+%%% p5
+\myslide{Lexical Types \& Lexical Rules}
+\begin{itemize}
+\item Lexemes capture the similarities among \lex{run, runs,
+    running,} and \lex{run}.
+\item The lexical type hierarchy captures the similarities among
+  \lex{run, sleep,} and \lex{laugh}, among those and other verbs like
+  \lex{devour} and \lex{hand}, and among those and other words like
+  \lex{book}.
+  \begin{itemize}
+  \item[Q] What do \lex{devour} and \lex{book} have in common?
+  \item[A] The SHAC
+  \end{itemize}
+\item Lexical rules capture the similarities among \lex{runs, sleeps,
+    devours, hands,}\ldots
+\end{itemize}
+
+%%% p6
+\myslide{Default Inheritance}
+\begin{itemize}
+\item[Q] Why do we have default inheritance?
+\item[A] Generalizations with exceptions are common:
+  \begin{itemize}
+  \item Most nouns in English aren't marked for \ft{case}, but
+    pronouns are.
+  \item Most verbs in English only distinguish two agreement
+    categories (\val{3sing} and \val{non-3sing}), but \lex{be} distinguishes
+    more.
+  \item Most prepositions in English are transitive, but \lex{here} and
+    \lex{there} are intransitive.
+  \item Most nominal words in English are 3rd person, but some
+    (all of them pronouns) are 1st or 2nd person.
+  \item Most proper nouns in English are singular, but some
+    (mountain range names, sports team names) are plural.
+  \end{itemize}
+\end{itemize}
+
+%%% p7
+\myslide{Default Inheritance, Technicalities}
+\vspace*{1em}
+\begin{tabular}{@{}p{0.28\textwidth}p{0.28\textwidth}p{0.32\textwidth}@{}}
+\raggedright If a type says \avm{[ arg-st & / < NP > ]}, &
+\raggedright and one of its subtypes says \avm{[ arg-st & < > ]}, &
+\raggedright then the \ft{arg-st} value of instances of the subtype is
+\avm{< >}.\tabularnewline[3em]
+\raggedright If a type says \avm{[ arg-st & < NP > ]}, &
+\raggedright and one of its subtypes says \avm{[ arg-st & < > ]}, &
+\raggedright then this subtype can have no instances, since they would have to
+satisfy contradictory constraints.\tabularnewline
+\end{tabular}
+
+%%% p8
+\myslide{Default Inheritance, More Technicalities}
+\begin{itemize}
+\item If a type says \avm{[ mod & / < S > ]}, and one of its subtypes says
+  \avm{[ mod & < [ spr & < NP > ] > ]}, then the \ft{arg-st} value of
+  instances of the subtype is what?
+\end{itemize}
+\begin{center}
+  \avm{[ mod & < [ head & / \type{verb} \\
+                   spr & < NP > \\
+                   comps & / < > ] > ]}
+\end{center}
+\begin{itemize}
+\item That is, default constraints are `pushed down'
+\end{itemize}
+
+%%% p9
+\myslide{Question on Default Inheritance}
+\begin{itemize}
+\item[Q] Can a grammar rule override a default
+  constraint on a word?
+\item[A] No. Defaults are all `cached out' in the
+  lexicon.
+\item Words as used to build sentences have only
+  inviolable constraints.
+\end{itemize}
+
+%%% The lexeme hierarchy is shown repeatedly, with an arrow pointing
+%%% at the type under discussion.  #1: comma-separated names of nodes
+%%% to colour red; #2: TikZ code drawn after the tree (the arrow).
+\makeatletter
+\newcommand{\lxhl}[2]{\ifcsname lexhl@#1\endcsname\textcolor{red}{#2}\else #2\fi}
+\newcommand{\lexhier}[2]{%
+\begingroup
+\@for\lx@n:=#1\do{\expandafter\def\csname lexhl@\lx@n\endcsname{}}%
+\begin{center}
+\scalebox{0.7}{\begin{forest}
+cat, for tree={font=\itshape, s sep=3mm}
+[{\lxhl{synsem}{synsem}\\\textnormal{\avm{[ \textsc{syn, sem} ]}}}, align=center, name=synsem, s sep=4mm
+  [{lexeme\\\textnormal{\avm{[ arg-st ]}}}, align=center, name=lexeme
+    [{\lxhl{infl}{infl-lxm}}, name=infl
+      [{\lxhl{verb}{verb-lxm}}, l*=3, name=verb
+        [{siv-lxm}, name=siv]
+        [{piv-lxm}, name=piv]
+        [{tv-lxm}, name=tv
+          [{stv-lxm}, name=stv]
+          [{dtv-lxm}, name=dtv]
+          [{ptv-lxm}, name=ptv]]]
+      [{\lxhl{cn}{cn-lxm}}, l*=3, name=cn
+        [{\lxhl{cntn}{cntn-lxm}}, name=cntn]
+        [{\lxhl{massn}{massn-lxm}}, name=massn]]]
+    [{const-lxm}, name=const
+      [{adj-lxm}, l*=2, name=adj]
+      [{conj-lxm}, l*=2, name=conj]
+      [{det-lxm}, l*=2, name=det]
+      [{predp-lxm}, l*=2, name=predp]
+      [{argmkp-lxm}, l*=2, name=argmkp]
+      [{\lxhl{pn}{pn-lxm}}, l*=1.4, name=pn]
+      [{\lxhl{pron}{pron-lxm}}, l*=1.4, name=pron]]]
+  [{expression}, name=expression, l*=0.8
+    [{word\\\textnormal{\avm{[ arg-st ]}}}, align=center, l*=0.6, name=word]
+    [{\lxhl{phrase}{phrase}}, l*=0.6, name=phrase]]]
+#2
+\end{forest}}
+\end{center}
+\endgroup}
+\makeatother
+%%% the orange arrow
+\tikzset{hlarrow/.style={overlay, ->, >=stealth, orange, line width=2mm}}
+
+%%% p10
+\myslide{Our Lexeme Hierarchy}
+\lexhier{}{}
+
+%%% p11
+\myslide{Functions of Types}
+\begin{itemize}
+\item Stating what features are appropriate for
+  what categories
+\item Stating generalizations
+  \begin{itemize}
+  \item Constraints that apply to (almost) all instances
+  \item Generalizations about selection --- where
+    instances of that type can appear
+  \end{itemize}
+\end{itemize}
+
+%%% p12
+\myslide{Every \val{synsem} has the Features SYN and SEM}
+\lexhier{synsem}{\draw[hlarrow] ([xshift=-25mm]synsem.west) -- ([xshift=-2mm]synsem.west);}
+
+%%% p13
+\myslide{No ARG-ST on \val{phrase}}
+\lexhier{phrase}{\draw[hlarrow] ([xshift=20mm,yshift=-12mm]phrase.south) -- ([yshift=-2mm]phrase.south);}
+
+%%% p14
+\myslide{A Constraint on \val{infl-lxm}: the SHAC}
+\lexhier{infl}{\draw[hlarrow] ([xshift=-25mm]infl.west) -- ([xshift=-2mm]infl.west);}
+
+%%% p15
+\myslide{A Constraint on \val{infl-lxm}: the SHAC}
+\vspace*{2em}
+\begin{center}
+\val{infl-lxm}: \avm{[ syn & [ val & [ spr & < [ agr & \1 ] > ] \\
+                               head & [ agr & \1 ] ] ]}
+\end{center}
+
+%%% p16
+\myslide{Constraints on \val{cn-lxm}}
+\lexhier{cn}{\draw[hlarrow] ([xshift=25mm]cn.east) -- ([xshift=2mm]cn.east);}
+
+%%% p17
+\myslide{Constraints on \val{cn-lxm}}
+\begin{center}
+\val{cn-lxm}: \avm{[ syn & [ head & [\type*{noun}
+                                     agr & [ per & 3rd ] ] \\
+                             val & [ spr & < [ head & \type{det} \\
+                                               index & \textit{i} ] > ] ] \\
+                     sem & [ mode & / ref \\
+                             index & \textit{i} ] \\
+                     arg-st & < X > $\oplus$ / < > ]}
+\end{center}
+
+%%% p18
+\myslide{Formally Distinguishing Count vs.\ Mass Nouns}
+\lexhier{cntn,massn}{%
+  \draw[hlarrow] ($(cntn.south)!0.5!(massn.south)+(11mm,-12mm)$) -- ([yshift=-2mm]cntn.south);
+  \draw[hlarrow] ($(cntn.south)!0.5!(massn.south)+(13mm,-12mm)$) -- ([yshift=-2mm]massn.south);}
+
+%%% p19
+\myslide{Formally Distinguishing Count vs.\ Mass Nouns}
+\vspace*{2em}
+\begin{center}
+\begin{tabular}{r@{\ }l}
+\val{cntn-lxm}: & \avm{[ syn & [ val & [ spr & < [ count & + ] > ] ] ]}\\[3ex]
+\val{massn-lxm}: & \avm{[ syn & [ val & [ spr & < [ count & $-$ ] > ] ] ]}
+\end{tabular}
+\end{center}
+
+%%% p20
+\myslide{Constraints on \val{verb-lxm}}
+\lexhier{verb}{\draw[hlarrow] ([xshift=-15mm,yshift=20mm]verb.north west) -- (verb.north west);}
+
+%%% p21
+\myslide{Constraints on \val{verb-lxm}}
+\vspace*{2em}
+\begin{center}
+\val{verb-lxm}: \avm{[ syn & [ head & \type{verb} ] \\
+                       sem & [ mode & prop ] \\
+                       arg-st & / < NP, \ldots > ]}
+\end{center}
+
+%%% p22
+\myslide{Subtypes of \val{verb-lxm}}
+\begin{center}
+\scalebox{0.8}{\begin{forest}
+cat, for tree={font=\itshape, s sep=3mm, l sep=3mm}
+[{verb-lxm}
+  [{siv-lxm}]
+  [{piv-lxm}]
+  [{tv-lxm}
+    [{stv-lxm}]
+    [{dtv-lxm}]
+    [{ptv-lxm}]]]
+\end{forest}}
+\end{center}
+\vspace*{-1ex}
+\begin{itemize}
+\item \val{verb-lxm}: \avm{[ arg-st & / < NP, \ldots > ]}
+  \begin{itemize}
+  \item \val{siv-lxm}: \avm{[ arg-st & / < NP > ]}
+  \item \val{piv-lxm}: \avm{[ arg-st & / < NP, PP > ]}
+  \item \val{tv-lxm}: \avm{[ arg-st & / < NP, NP, \ldots > ]}
+    \begin{itemize}
+    \item \val{stv-lxm}: \avm{[ arg-st & / < NP, NP > ]}
+    \item \val{dtv-lxm}: \avm{[ arg-st & / < NP, NP, NP > ]}
+    \item \val{ptv-lxm}: \avm{[ arg-st & / < NP, NP, PP > ]}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+%%% p23
+\myslide{Proper Nouns and Pronouns}
+\lexhier{pn,pron}{%
+  \draw[hlarrow] ([xshift=4mm,yshift=-18mm]pn.south) -- ([yshift=-2mm]pn.south);
+  \draw[hlarrow] ([xshift=12mm,yshift=-18mm]pron.south) -- ([yshift=-2mm]pron.south);}
+
+%%% p24
+\myslide{Proper Nouns and Pronouns}
+\begin{center}
+\begin{tabular}{r@{\ }l}
+\val{pn-lxm}: &
+\avm{[ syn & [ head & [\type*{noun}
+                       agr & [ per & 3rd \\
+                               num & / sg ] ] ] \\
+       sem & [ mode & ref ] \\
+       arg-st & / < > ]}\\[4ex]
+\val{pron-lxm}: &
+\avm{[ syn & [ head & \type{noun} ] \\
+       sem & [ mode & / ref ] \\
+       arg-st & < > ]}
+\end{tabular}
+\end{center}
+
+%%% p25
+%%% a green tick (no amssymb \checkmark here)
+\newcommand{\tick}{\tikz\draw[green!60!black, line width=2pt] (0,0.4em) -- (0.3em,0) -- (0.8em,0.9em);}
+\myslide{The Case Constraint}
+An outranked NP is \avm{[ case & acc ]}.
+\begin{itemize}
+\item object of verb \hfill \tick\hspace*{3.2em}
+\item second object of verb \hfill \tick\hspace*{3.2em}
+\item object of argument-marking preposition \hfill \tick\hspace*{3.2em}
+\item object of predicational preposition \hfill (\tick)\hspace*{2.8em}
+\end{itemize}
+
+%%% p26
+\myslide{The Case Constraint, Continued}
+An outranked NP is \avm{[ case & acc ]}.
+\begin{itemize}
+\item Subjects of verbs
+  \begin{itemize}
+  \item Should we add a clause to cover nominative subjects?
+    \begin{itemize}
+    \item No.\\
+      \eng{We expect them to leave.} (Chapter 12)
+    \item Lexical rules for finite verbs will handle nominative subjects.
+    \end{itemize}
+  \end{itemize}
+\item Any other instances of case marking in English?
+\item Does it apply to case systems in other languages?\\
+  No: The Case Constraint is an English-specific constraint.
+\end{itemize}
+
+%%% p27
+\myslide{Apparent Redundancy}
+\begin{itemize}
+\item Why do we need both the \val{pos} subhierarchy
+  and lexeme types?
+\item \val{pos}:
+  \begin{itemize}
+  \item Applies to words and phrases; models
+    relationship between them
+  \item Constrains which features are appropriate
+    (no \ft{aux} on \val{noun})
+  \end{itemize}
+\item \val{lexeme}:
+  \begin{itemize}
+  \item Generalizations about combinations of
+    constraints
+  \end{itemize}
+\end{itemize}
+
+%%% p28
+\myslide{Lexical Types \& Lexical Rules}
+\begin{itemize}
+\item Lexemes capture the similarities among \lex{run, runs,
+    running,} and \lex{run}.
+\item The lexical type hierarchy captures the similarities among
+  \lex{run, sleep,} and \lex{laugh}, among those and other verbs like
+  \lex{devour} and \lex{hand}, and among those and other words like
+  \lex{book}.
+\item Lexical rules capture the similarities among \lex{runs, sleeps,
+    devours, hands,}\ldots
+\end{itemize}
+
+%%% p29
+\myslide{Overview}
+\begin{itemize}
+\item Motivation for lexical hierarchy
+\item Default inheritance
+\item Tour of the lexeme hierarchy
+\item The Case Constraint
+\item \val{pos} vs.\ \val{lexeme}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Converted from Emily Bender's slides (ch08b-uw.pdf), with permission
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lexical Rules}
+
+%%% Grey box over a part of an AVM that is not yet revealed (her
+%%% build-up slides cover parts of the AVM with grey rectangles).
+\providecommand{\gry}[1]{{\setlength{\fboxsep}{0pt}\colorbox{lightgray}{\phantom{#1}}}}
+%%% Boxes holding hidden AVM parts that contain & (these cannot be
+%%% passed through \gry inside an \avm directly).
+\ifdefined\gryA\else\newsavebox{\gryA}\fi
+\ifdefined\gryB\else\newsavebox{\gryB}\fi
+\ifdefined\gryC\else\newsavebox{\gryC}\fi
+
+\myslide{Overview}
+\begin{itemize}
+\item How lexical rules fit in
+\item Three types of lexical rules, constraints
+\item Example: Plural noun lexical rule
+\item Advice on writing lexical rules
+\item Constant lexemes
+\item \ft{arg-st} \& ARP
+\item The feature \ft{form}
+\end{itemize}
+
+\myslide{Lexical Types \& Lexical Rules}
+\begin{itemize}
+\item Lexemes capture the similarities among
+  \eng{run}, \eng{runs}, \eng{running}, and \eng{ran}
+\item The lexical type hierarchy captures the
+  similarities among \eng{run}, \eng{sleep}, and \eng{laugh},
+  among those and other verbs like \eng{devour}
+  and \eng{hand}, and among those and other words
+  like \eng{book}.
+\item Lexical rules capture the similarities among
+  \eng{runs}, \eng{sleeps}, \eng{devours}, \eng{hands}, \ldots
+\end{itemize}
+
+\myslide{Parsimony \& Plausibility}
+\begin{itemize}
+\item Lexical rules capture \textbf{productive}
+  generalizations.
+\item There may be some `precompiling'
+  going on as well.
+\end{itemize}
+
+\myslide{Three Kinds of Lexical Rules}
+\begin{itemize}
+\item \txx{Inflectional}: \val{lexeme} to \val{word}
+  \\[1ex] Examples?
+\item \txx{Derivational}: \val{lexeme} to \val{lexeme}
+  \\[1ex] Examples?
+\item \txx{Post-Inflectional}: \val{word} to \val{word}
+  \\ (Chapters 11, 13, 14)
+\end{itemize}
+
+\myslide{Three Subtypes of \textit{l-rule}}
+\begin{center}
+\begin{small}
+  \begin{forest}
+    cat, for tree={font=\itshape, l sep=3mm}
+    [{l-rule} [{i-rule}] [{d-rule}] [{pi-rule}]]
+  \end{forest}
+
+  \medskip
+  \val{l-rule} :
+  \avm{[ input & \type{l-sequence} < X , [ sem & / \2 ] > \\
+         output & \type{l-sequence} < Y , [ sem & / \2 ] > ]}
+
+  \medskip
+  \val{i-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & \3 \\
+                         arg-st & \tag{A} ] > \\
+         output & < Y , [\type*{word}
+                          syn & \3 \\
+                          arg-st & \tag{A} ] > ]}
+  \qquad
+  \val{d-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & / \3 ] > \\
+         output & < Y , [\type*{lexeme}
+                          syn & / \3 ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Plural Noun LR}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{cntn-lxm} > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+                syn & [ head & [ agr & [ num & pl ] ] ] ] > ]}
+\end{center}
+
+\myslide{Plural Noun LR with Inherited Constraints}
+\begin{center}
+\begin{small}
+\sbox{\gryA}{\avm{[ head & [\type*{noun} agr & \4 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \4 ] > ] ]}}
+\sbox{\gryB}{\avm{[ mode & / ref ]}}
+\sbox{\gryC}{\avm{[ spr & \tag{B} \\ comps & \tag{C} ]}}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{cntn-lxm}
+       \gry{syn} & \gry{\avm{\3}} \gry{\usebox{\gryA}} \\
+       \gry{sem} & \gry{\avm{\2}} \gry{\usebox{\gryB}} \\
+       \gry{arg-st} & \gry{\avm{\tag{B} $\oplus$ \tag{C}}} ] > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+       \gry{syn} & \gry{\avm{\3}} [ head & [ agr & [ num & pl ] ] \\
+                  \gry{val} & \gry{\usebox{\gryC}} ] \\
+       \gry{sem} & \gry{\avm{\2}} \\
+       \gry{arg-st} & \gry{\avm{\tag{B} $\oplus$ \tag{C}}} ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Plural Noun LR with Inherited Constraints}
+\begin{center}
+\begin{small}
+\sbox{\gryA}{\avm{[ head & [\type*{noun} agr & \4 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \4 ] > ] ]}}
+\sbox{\gryB}{\avm{[ mode & / ref ]}}
+\sbox{\gryC}{\avm{[ spr & \tag{B} \\ comps & \tag{C} ]}}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{cntn-lxm}
+       \gry{syn} & \gry{\avm{\3}} \gry{\usebox{\gryA}} \\
+       sem & \avm{\2} \gry{\usebox{\gryB}} \\
+       \gry{arg-st} & \gry{\avm{\tag{B} $\oplus$ \tag{C}}} ] > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+       \gry{syn} & \gry{\avm{\3}} [ head & [ agr & [ num & pl ] ] \\
+                  \gry{val} & \gry{\usebox{\gryC}} ] \\
+       sem & \2 \\
+       \gry{arg-st} & \gry{\avm{\tag{B} $\oplus$ \tag{C}}} ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Plural Noun LR with Inherited Constraints}
+\begin{center}
+\begin{small}
+\sbox{\gryA}{\avm{[ head & [\type*{noun} agr & \4 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \4 ] > ] ]}}
+\sbox{\gryB}{\avm{[ mode & / ref ]}}
+\sbox{\gryC}{\avm{[ spr & \tag{B} \\ comps & \tag{C} ]}}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{cntn-lxm}
+       \gry{syn} & \gry{\avm{\3}} \gry{\usebox{\gryA}} \\
+       sem & \avm{\2} \gry{\usebox{\gryB}} \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+       \gry{syn} & \gry{\avm{\3}} [ head & [ agr & [ num & pl ] ] \\
+                  \gry{val} & \gry{\usebox{\gryC}} ] \\
+       sem & \2 \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Plural Noun LR with Inherited Constraints}
+\begin{center}
+\begin{small}
+\sbox{\gryA}{\avm{[ head & [\type*{noun} agr & \4 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \4 ] > ] ]}}
+\sbox{\gryB}{\avm{[ mode & / ref ]}}
+\sbox{\gryC}{\avm{[ spr & \tag{B} \\ comps & \tag{C} ]}}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{cntn-lxm}
+       syn & \avm{\3} \gry{\usebox{\gryA}} \\
+       sem & \avm{\2} \gry{\usebox{\gryB}} \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+       syn & \avm{\3} [ head & [ agr & [ num & pl ] ] \\
+                  \gry{val} & \gry{\usebox{\gryC}} ] \\
+       sem & \2 \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Plural Noun LR with Inherited Constraints}
+\begin{center}
+\begin{small}
+\sbox{\gryC}{\avm{[ spr & \tag{B} \\ comps & \tag{C} ]}}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{cntn-lxm}
+       syn & \avm{\3} [ head & [\type*{noun} agr & \4 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \4 ] > ] ] \\
+       sem & \avm{\2} [ mode & / ref ] \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+       syn & \avm{\3} [ head & [ agr & [ num & pl ] ] \\
+                  \gry{val} & \gry{\usebox{\gryC}} ] \\
+       sem & \2 \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Plural Noun LR with Inherited Constraints}
+\begin{center}
+\begin{small}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{cntn-lxm}
+       syn & \avm{\3} [ head & [\type*{noun} agr & \4 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \4 ] > ] ] \\
+       sem & \avm{\2} [ mode & / ref ] \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+       syn & \avm{\3} [ head & [ agr & [ num & pl ] ] \\
+                  val & [ spr & \OV{\avm{\tag{B}}} \\ comps & \OV{\avm{\tag{C}}} ] ] \\
+       sem & \2 \\
+       arg-st & \OV{\avm{\tag{B} $\oplus$ \tag{C}}} ] > ]}
+\end{small}
+\end{center}
+
+\myslide{Practicalities --- Applying Lexical Rules}
+\begin{itemize}
+\item \ft{input} is a family of lexical sequences.
+\item \ft{output} is another family of lexical sequences.
+  \begin{itemize}
+  \item \ldots usually a smaller family
+  \item \ldots usually a disjoint one
+  \end{itemize}
+\item The only differences between the families are those
+  stipulated in the rule (or the rule's type).
+\item Similarities are handled by the constraints on \val{l-rule}
+  and its subtypes.
+\item If we've written the LRs correctly, nothing is left
+  underconstrained.
+\end{itemize}
+
+\myslide{Example: Lexical Entry for \textit{cat}}
+\begin{center}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    sem & [ index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] ] >}
+\end{center}
+
+\myslide{Example: \textit{cat}, with Inheritance}
+\begin{center}
+\sbox{\gryA}{\avm{[\type*{noun} agr & \7 [ per & 3rd ] ]}}
+\sbox{\gryB}{\avm{< DP[ count & + \\ agr & \7 ] >}}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ \gry{head} & \gry{\usebox{\gryA}} \\
+            val & [ \gry{spr} & \gry{\usebox{\gryB}} ] ] \\
+    sem & [ \gry{mode} & \gry{ref} \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    \gry{arg-st} & \gry{\avm{< X >}} ] >}
+\end{center}
+
+\myslide{Example: \textit{cat}, with Inheritance}
+\begin{center}
+\sbox{\gryA}{\avm{[\type*{noun} agr & \7 [ per & 3rd ] ]}}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ \gry{head} & \gry{\usebox{\gryA}} \\
+            val & [ spr & < \gry{DP}[ count & + \\ \gry{agr} & \gry{\avm{\7}} ] > ] ] \\
+    sem & [ \gry{mode} & \gry{ref} \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    \gry{arg-st} & \gry{\avm{< X >}} ] >}
+\end{center}
+
+\myslide{Example: \textit{cat}, with Inheritance}
+\begin{center}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ head & [\type*{noun} agr & \gry{\avm{\7}} [ per & 3rd ] ] \\
+            val & [ spr & < DP[ count & + \\ \gry{agr} & \gry{\avm{\7}} ] > ] ] \\
+    sem & [ mode & ref \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    arg-st & < X > ] >}
+\end{center}
+
+\myslide{Example: \textit{cat}, with Inheritance}
+\begin{center}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ head & [\type*{noun} agr & \7 [ per & 3rd ] ] \\
+            val & [ spr & < DP[ count & + \\ agr & \7 ] > ] ] \\
+    sem & [ mode & ref \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    arg-st & < X > ] >}
+\end{center}
+
+\myslide{Plural Noun LR}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{cntn-lxm} > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+                syn & [ head & [ agr & [ num & pl ] ] ] ] > ]}
+\end{center}
+
+\myslide{Licensing \textit{cats}}
+\begin{center}
+\scalebox{0.75}{%
+  \avm{[\type*{i-rule}
+    input & < \1\textnormal{cat} , [\type*{cntn-lxm}
+       syn & \3 [ head & [\type*{noun} agr & \7 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \7 ] > ] ] \\
+       sem & \2 [ mode & ref \\
+                  index & $k$ \\
+                  restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+       arg-st & \emp{\avm{\tag{B}}} < X > $\oplus$ \tag{C} < > ] > \\
+    output & < \emp{F$_{NPL}$(\avm{\1})} , [\type*{\emp{word}}
+       syn & \3 [ head & [ agr & \emp{[num & pl]} ] \\
+                  val & [ spr & \emp{\avm{\tag{B}}} \\ comps & \tag{C} ] ] \\
+       sem & \2 \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > ]}}
+\end{center}
+
+\myslide{Three Subtypes of \textit{l-rule}}
+\begin{center}
+\begin{small}
+  \begin{forest}
+    cat, for tree={font=\itshape, l sep=3mm}
+    [{l-rule} [{i-rule}] [{d-rule}] [{pi-rule}]]
+  \end{forest}
+
+  \medskip
+  \val{l-rule} :
+  \avm{[ input & \type{l-sequence} < X , [ sem & / \2 ] > \\
+         output & \type{l-sequence} < Y , [ sem & / \2 ] > ]}
+
+  \medskip
+  \val{i-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & \3 \\
+                         arg-st & \tag{A} ] > \\
+         output & < Y , [\type*{word}
+                          syn & \3 \\
+                          arg-st & \tag{A} ] > ]}
+  \qquad
+  \val{d-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & / \3 ] > \\
+         output & < Y , [\type*{lexeme}
+                          syn & / \3 ] > ]}
+\end{small}
+\end{center}
+
+\myslide{\textit{cats}: The Lexical Sequence}
+\begin{center}
+  \avm{< \textnormal{cats} , [\type*{word}
+    syn & [ head & [\type*{noun} agr & \type{3pl} ] \\
+            val & [ spr & \tag{B} < DP[ count & + \\ agr & \7 ] > \\
+                    comps & < > ] ] \\
+    sem & [ mode & ref \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    arg-st & \tag{B} ] >}
+\end{center}
+
+\myslide{Practicalities --- Writing Lexical Rules}
+\begin{itemize}
+\item Determine the type of the LR.
+\item Determine the class of possible inputs.
+\item Determine what should change.
+  \begin{small}
+  \begin{itemize}
+  \item If \ft{input} and \ft{output} values are identified (by default or otherwise) and
+    only \ft{output} value is mentioned, then\ldots
+    \\ \emp{information is added.}
+    \\[1ex] (Lexical sequences incompatible with that value are not possible inputs)
+  \item If \ft{input} and \ft{output} values are identified by default, but different values
+    are given on the \ft{input} and \ft{output} of the rule, then\ldots
+    \\ \emp{information is changed.}
+  \item If \ft{input} and \ft{output} values are identified by an inviolable constraint, but
+    different values are given on the \ft{input} and \ft{output} of the rule, then\ldots
+    \\ \emp{there is no well-formed output}
+  \end{itemize}
+  \end{small}
+\end{itemize}
+
+\myslide{Constant Lexemes}
+\begin{itemize}
+\item What kinds of words are constant lexemes
+  in our grammar?
+\item Why do we need a rule for these words?
+\item What would be an alternative analysis?
+\end{itemize}
+
+\myslide{Constant Lexeme LR}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{const-lxm} > \\
+    output & [ first & \1 ] ]}
+\end{center}
+\begin{itemize}
+\item What keeps this from applying to, say, verb
+  lexemes?
+\item Why is this an \val{i-rule}?
+\end{itemize}
+
+\myslide{\ft{arg-st} \& ARP}
+\begin{itemize}
+\item Given the ARP, what do we need to specify
+  about the valence properties of words?
+\item Why isn't the ARP a constraint on the type
+  \val{lexeme}?
+\end{itemize}
+
+\myslide{The Feature \ft{form}}
+\begin{itemize}
+\item Different inflected forms of verbs show
+  up in different syntactic environments.
+  \\ Examples?
+\item These different forms are syntactically
+  distinguished by the feature \ft{form}, as
+  assigned by lexical rules.
+\item \ft{form} is also useful in our analyses of
+  coordination and PP selection.
+\end{itemize}
+
+\myslide{What Rules These Out?}
+\begin{exe}
+\ix \bad{Kim eat pizza.}
+\ix \bad{Kim seems to eats pizza.}
+\ix \bad{Dana helped Leslie pack and moved.}
+\ix \bad{Kim relies for Sandy.}
+\ix \bad{Dana walked and Kim.}
+\end{exe}
+
+\myslide{Overview}
+\begin{itemize}
+\item How lexical rules fit in
+\item Three types of lexical rules, constraints
+\item Example: Plural noun lexical rule
+\item Advice on writing lexical rules
+\item Constant lexemes
+\item \ft{arg-st} \& ARP
+\item The feature \ft{form}
 \end{itemize}
 
 
@@ -138,116 +934,102 @@ We will use slides from Emily Bender:
 % \end{itemize}
 
 
-\myslide{13: Arguments in Japanese}
-\MyLogo{Based on  Chapter 8, Problem 6, Sag, Wasow and Bender (2003)}
-As noted \index{Japanese|(}
-in Chapter 2, Japanese word order differs from English in a number of ways,
-including the fact that it is a \index{Subject Object Verb (SOV)@Subject-Object-Verb (SOV)} `Subject-Object-Verb' (SOV) language.  Here
-are a few relevant examples. In the glosses, `{\sc nom}', `{\sc acc}', and 
-`{\sc dat}' stand for \index{nominative case} nominative,
-\index{accusative case} accusative, and \index{dative case} dative 
-case, respectively.  (Note that Japanese has one more case -- dative -- than
-English does.  This doesn't have any important effects on the analysis; it
-merely requires that we posit one more possible value of \index{CASE}CASE for Japanese
-than for English).\footnote{The examples
-marked with `*' here
-are unacceptable with the indicated meanings.  Some of these might be
-well-formed with some other meaning of no direct relevance; others might be
-well-formed with special \index{intonation} intonation that we will ignore for present
-purposes.}
+\section{Problem}
 
+\myslide{P1: Arguments in Japanese}
+\MyLogo{Based on \citet[Chapter 8, Problem 6]{sag:wasow:bender:2003}}
+As noted in Chapter 2, Japanese word order differs from English in a
+number of ways, including the fact that it is a `Subject-Object-Verb'
+(SOV) language.  The next two slides give some relevant examples. In
+the glosses, `{\sc nom}', `{\sc acc}', and `{\sc dat}' stand for
+nominative, accusative, and dative case, respectively.  (Note that
+Japanese has one more case --- dative --- than English does.  This
+doesn't have any important effects on the analysis; it merely requires
+that we posit one more possible value of CASE for Japanese than for
+English.)\footnote{The examples marked with `*' here are unacceptable
+  with the indicated meanings.  Some of these might be well-formed
+  with some other meaning of no direct relevance; others might be
+  well-formed with special intonation that we will ignore for present
+  purposes.}
+
+\myslide{P1: Arguments in Japanese --- Data}
 \begin{exe}
-  \ex %一人 の 男 が その 本 を 読んだ 。
+  \ex\label{jp:first} %一人 の 男 が その 本 を 読んだ 。
   \gll Hitorino  otoko-ga sono  hon-o yonda. \\
- one  man-{\sc nom} that  book-{\sc acc} read.{\sc past} \\
+ one  man-{\sc nom} that  book-{\sc acc} read.{\sc pst} \\
 \trans {`One man read that book.'}
 
 [cf.\ *Yonda hitorino otoko-ga sono hon-o. \\ {*}Hitorino otoko-ga yonda
 sono hon-o. \\ {*}Otoko-ga hitorino sono hon-o yonda. \\ {*}Hitorino
 otoko-ga hon-o sono yonda. \\ {*}Hitorino otoko-ni/-o sono hon-o
-yonda. \\ {*}Hitorino otoko-ga sono hon-ga/-ni yonda.]  
+yonda. \\ {*}Hitorino otoko-ga sono hon-ga/-ni yonda.]
+\end{exe}
 
+\myslide{P1: Arguments in Japanese --- Data (continued)}
+\begin{exe}
 \ex 
-\gll  Hanako-ga  hon-o  yonda \\
- Hanako-{\sc nom}  book-{\sc acc}  read.{\sc past} \\
-\trans {`Hanako read the book(s)'}
+\gll  Hanako-ga  hon-o  yonda. \\
+ Hanako-{\sc nom}  book-{\sc acc}  read.{\sc pst} \\
+\trans {`Hanako read the book(s).'}
 
 [cf.\ *Yonda Hanako-ga hon-o. \\ {*}Hanako-ga yonda hon-o. \\
 {*}Hanako-ni/-o hon-o yonda. \\ {*}Hanako-ga hon-ni/-ga yonda.]
+\end{exe}
 
-\ex \label{5}
-\gll   sensei-ga  Taroo-ni  sono   hon-o  ageta \\
- teacher-{\sc nom} Taroo-{\sc dat} that   book-{\sc acc} gave.{\sc past} \\
- \trans {`The teacher(s) gave that book to Taroo'}
+\myslide{P1: Arguments in Japanese --- More Data}
+\begin{exe}
+\ex
+\gll   Sensei-ga  Taroo-ni  sono   hon-o  ageta. \\
+ teacher-{\sc nom} Taroo-{\sc dat} that   book-{\sc acc} give.{\sc pst} \\
+ \trans {`The teacher(s) gave that book to Taroo.'}
 
 [cf.\ *Ageta sensei-ga Taroo-ni sono hon-o. \\ {*}Sensei-ga ageta Taroo-ni
 sono hon-o. \\ {*}Sensei-ga Taroo-ni ageta sono hon-o. \\ {*}Sensei-o/-ni
 Taroo-ni sono hon-o ageta. \\ {*}Sensei-ga Taroo-ga/-o sono hon-o ageta.\\
 {*}Sensei-ga Taroo-ni sono hon-ga/-ni ageta.]
 
-%\item[(iv)]{\shortex{2}
-%\eng{Sono hon-ga \it akai}
-%{that book-nom  be.red}
-%{`That book is red'}
-%
-%[cf. \ *Akai sono hon-ga.]}
-
-\ex\label{2}
-\gll Hanako-ga   kita \\
- Hanako-{\sc nom}   arrive.{\sc past} \\
+\ex\label{jp:last}
+\gll Hanako-ga   kita. \\
+ Hanako-{\sc nom}   arrive.{\sc pst} \\
 \trans {`Hanako arrived.'}
 
-[cf. \ *Kita Hanako-ga.]
-
+[cf.\ *Kita Hanako-ga.]
 \end{exe}
 
-
-									
-\noindent
+\myslide{P1: Arguments in Japanese --- Tasks}
 As the contrasting ungrammatical examples show, the verb must appear
-in final position in \index{Japanese} Japanese. In addition, we see
-that \index{verb (V)} verbs select for NPs of a particular
-\index{case} case, much as in English. In the following tasks, assume
-that the nouns and verbs of Japanese are \index{inflection!inflected word} inflected words, derived by lexical rule from the appropriate
-lexemes.
+in final position in Japanese. In addition, we see that verbs select
+for NPs of a particular case, much as in English. In the following
+tasks, assume that the nouns and verbs of Japanese are inflected
+words, derived by lexical rule from the appropriate lexemes.
 
 \begin{itemize}\addtolength{\itemsep}{1ex}
-
-\item[A.] Write \index{Head Specifier Rule@Head-Specifier Rule}Head-Specifier and 
-\index{Head Complement Rule@Head-Complement Rule}Head-Complement Rules for
+\item[A.] Write Head-Specifier and Head-Complement Rules for
 Japanese that account for the data illustrated here.  How are
 they different (if at all) from the Head-Specifier and Head-Complement 
 Rules for English?
-%Given the data illustrated here, how could the 
-%Head-Specifier and Head-Complement rules be revised to deal
-%with Japanese? Explain the effect of the difference(s) you have posited.
+\end{itemize}
 
+\myslide{P1: Arguments in Japanese --- Tasks (continued)}
+\begin{itemize}\addtolength{\itemsep}{1ex}
 \item[B.] Give the lexical entry for each of the verbs
-illustrated in (i)--(iv). 
+illustrated in (\ref{jp:first})--(\ref{jp:last}). 
 
 [{\sl Make sure your entries interact with the rules you
 formulated in part (A) to account for the above data.  The data given
 permit you to specify only some features; leave others unspecified.
 Assume that there is a Past-Tense Verb Lexical Rule (an \val{i-rule})
-that relates your lexical entries to the words shown in (i)--(iv).  We
+that relates your lexical entries to the words shown in (\ref{jp:first})--(\ref{jp:last}).  We
 have not provided a hierarchy of lexeme types for Japanese.  You may
 either give all relevant constraints directly on the lexical entries,
 or posit and use subtypes of \val{lexeme}.  In the latter case, you
 must also provide those types.}]
-\newpage
 
 \item[C.] Give the lexical entries for the nouns \eng{Taroo} and
 \eng{hon}. [{\sl See notes on part (B).}]
 
 \item[D.] Formulate the lexical rule for deriving the inflected
-forms ending in \eng{-o} from
-the nominal lexemes.
-
-% EB -- they've been doing this over and over again.  Enough already.
-%\item[E.] Explain the role of the \index{Head Feature Principle (HFP)} Head Feature Principle 
-%in accounting for the case-selecting properties of verbs in
-%(i)--(iv).
-
+forms ending in \eng{-o} from the nominal lexemes.
 \end{itemize}
 
 
@@ -257,6 +1039,9 @@ the nominal lexemes.
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
+\item The slides on lexical types and lexical rules are adapted from
+  Emily Bender's, with her permission; the feature structures follow
+  \citet{sag:wasow:bender:2003}, \copyright{} 2003 CSLI Publications
 \item This lecture complements \citet[Chapter 8]{sag:wasow:bender:2003}
 \end{itemize}
 
