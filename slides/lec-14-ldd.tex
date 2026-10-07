@@ -17,15 +17,17 @@
 
 
 \myslide{Overview}
-\MyLogo{\citet*{sag:wasow:bender:2003} --- Chapter 14}
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 14}
 \begin{itemize}
-\item Some examples of long-distance dependencies
-\item What is new and different about it
+\item Long-distance dependencies: some examples, and what is new and
+  different about them
 %\item Brief sketch of the TG approach
-\item Broad outlines of our approach
-\item Details of our approach
-\item Subject extraction
+\item Our approach: the feature \ft{gap}
+\item Filling gaps: \ft{stop-gap}, the Head-Filler Rule and
+  \lex{easy}-adjectives
+\item Subject gaps
 \item Coordinate Structure Constraint
+\item Problems
 %\item Wrap up HPSG
 \end{itemize}
 
@@ -207,7 +209,7 @@
 
 \begin{itemize}
  \item Attributive adjectives are related to predicative adjectives by
-   a lexical rule that co-indexes the first element of \ft{arg-st} with
+   a lexical rule that coindexes the first element of \ft{arg-st} with
    \ft{mod} and sets \ft{spr} to an empty list: 
 \\   \eng{The dog is red}  \into \eng{The red dog}
    \\    \scalebox{0.8}{\avm{< \textnormal{red}, \ [\type*{word}
@@ -228,13 +230,13 @@
   arg-st &      < \1  >   
      ]>
 }}
- \item We can't just co-index \ft{spr} and \ft{mod}.  Why?
+ \item We can't just coindex \ft{spr} and \ft{mod}.  Why?
  \item The \ft{spr} adjectives need a
    subject-raising \eng{be} to form a sentence. Why?
  \end{itemize}
 
 
-\section{Long Distance Dependencies}
+\section{Long-Distance Dependencies}
 
 
 \myslide{Examples}
@@ -248,7 +250,7 @@
 \item \txx{wh-questions}:
   \begin{exe}
     \ex \eng{What did you find? } 
-    \ex \eng{Tell me who you talked to}
+    \ex \eng{Tell me who you talked to.}
   \end{exe}
 \item  \txx{relative clauses}:
   \begin{exe}
@@ -257,8 +259,8 @@
   \end{exe}
 \item \emp{Ungrammatical}:
   \begin{exe}
-    \ex *\eng{did you find}
-    \ex *\eng{you talked to}
+    \ex \bad{did you find}
+    \ex \bad{you talked to}
   \end{exe}
 \item  \txx{topicalization}:
   \begin{exe}
@@ -273,7 +275,7 @@
 \end{itemize}
 \end{multicols}
 
-\myslide{What these have in common}
+\myslide{What These Have in Common}
 \begin{itemize}
 \item There is a \txx{gap}: nothing following \lex{find} and \lex{to},
 even though both normally require objects.
@@ -283,17 +285,17 @@ the clause.
 \item We use topicalization and \lex{easy}-adjectives to
 illustrate the phenomenon:
 \begin{exe}
-  \ex \eng{The manual$_g$, I can't find \blank$_g$}
-  \ex \eng{Chris$_g$ is easy to talk to \blank$_g$}
+  \ex \eng{The manual$_g$, I can't find \blank$_g$.}
+  \ex \eng{Chris$_g$ is easy to talk to \blank$_g$.}
 \end{exe}
 \end{itemize}
 
-\myslide{Gaps and their fillers can be far apart}
+\myslide{Gaps and Their Fillers Can Be Far Apart}
 \begin{exe}
   \ex \eng{\ul{The solution to this problem}$_g$, Pat said that
   someone claimed you thought I would never
   find \blank$_g$.}
-  \ex \eng{Chri$_g$s is easy to consider it impossible for anyone
+  \ex \eng{Chris$_g$ is easy to consider it impossible for anyone
   but a genius to try to talk to \blank$_g$.}
 \end{exe}
 \vspace*{-2ex}
@@ -305,21 +307,22 @@ illustrate the phenomenon:
 \ex
 \begin{xlist}
   \ex \eng{Him$_g$, I haven’t met \blank$_g$.}
-  \ex \eng{*He$_g$, I haven’t met \blank$_g$.}
+  \ex \bad{He$_g$, I haven’t met \blank$_g$.}
 \end{xlist}
 \ex
 \begin{xlist}
-  \ex \eng{The scissors$_g$, Pat told us  \blank were missing$_g$.}
-  \ex \eng{*The scissors$_g$, Pat told us  \blank was missing$_g$.}
+  \ex \eng{The scissors$_g$, Pat told us \blank$_g$ were missing.}
+  \ex \bad{The scissors$_g$, Pat told us \blank$_g$ was missing.}
 \end{xlist}
 \ex
 \begin{xlist}
-  \ex \eng{\ul{On Pat}$_g$, you can rely \blank$_g$}.
-  \ex \eng{*\ul{To Pat}$_g$, you can rely \blank$_g$.}
+  \ex \eng{\ul{On Pat}$_g$, you can rely \blank$_g$.}
+  \ex \bad{\ul{To Pat}$_g$, you can rely \blank$_g$.}
 \end{xlist}
 \end{exe}
+\vspace*{-3ex}
 \begin{itemize}
-\item That’s why we call them \txx{long distance \ul{dependencies}}
+\item That’s why we call them \txx{long-distance \ul{dependencies}}
 \end{itemize}
 
 
@@ -350,7 +353,7 @@ illustrate the phenomenon:
 % Looping
 
 
-\myslide{Other relevant facts}
+\myslide{Other Relevant Facts}
 
 \begin{itemize}
 \item Various languages show morphological marking
@@ -364,6 +367,8 @@ gap.
 % mediated by local information passing.
 \end{itemize}
 
+\section{Our Approach: The Feature \ft{gap}}
+
 \myslide{A Rough Sketch of Our Approach}
 \begin{itemize}
 \item A feature \ft{gap} records information about a
@@ -375,7 +380,7 @@ followed by another S whose \ft{gap} value
 matches the filler.
 \item Caveat: Making the details of this general
 idea work involves several complications.
-\item The core idea comes from \citet{Gazdar:1981} 
+\item The core idea comes from \citet{Gazdar:1981}.
 \end{itemize}
 
 
@@ -395,13 +400,13 @@ the Argument Realization Principle.
 \avm{[\type*{word}  
  syn & [ val & [ spr &  \tag{A} \\comps &  \tag{B} $\ominus$ \tag{C} ] \\
           gap & \tag{C} ] \\
- arg-st & < \tag{A} $\oplus$ \tag{B}> ]
+ arg-st & \tag{A} $\oplus$ \tag{B} ]
 }
 \begin{itemize}
 \item $\ominus$ is a kind of list subtraction 
   \begin{itemize}
-  \item it's not always defined (the sublist must exist on the main list)
-  \item when defined, it's not always unique 
+  \item It's not always defined (the sublist must exist on the main list)
+  \item When defined, it's not always unique 
   \end{itemize}
 \item The ARP now says the non-\ft{spr} arguments are
 distributed between \ft{comps} and \ft{gap}.
@@ -414,31 +419,31 @@ distributed between \ft{comps} and \ft{gap}.
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
       comps & < \3 PP:to > ] \\
-      gap &  < \tag{2NP} [ acc ] > ] \\
+      gap &  < \tag{2NP} [ case & acc ] > ] \\
       arg-st & < \1, \2, \3 >
       ]>
 }
 
-    \myslide{A Word with another Non-Empty \ft{gap} Value}
+    \myslide{A Word with Another Non-Empty \ft{gap} Value}
 
     \avm{< \textnormal{hand}, \ [\type*{word}
       syn & [ head & \type{verb} \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
-      comps & < \tag{2NP} [ acc ] > ] \\
+      comps & < \tag{2NP} [ case & acc ] > ] \\
       gap &  <  \3 PP:to > ] \\
       arg-st & < \1, \2, \3 >
       ]>
 }
 
-\myslide{The same word with an Empty \ft{gap} Value}
+\myslide{The Same Word with an Empty \ft{gap} Value}
 \MyLogo{The ARP gives rise to multiple lexemes}
 
     \avm{< \textnormal{hand}, \ [\type*{word}
       syn & [ head & \type{verb} \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
-      comps & < \tag{2NP} [ acc ], \3 PP:to > ] \\
+      comps & < \tag{2NP} [ case & acc ], \3 PP:to > ] \\
       gap &  <  > ] \\
       arg-st & < \1, \2, \3 >
       ]>
@@ -456,7 +461,7 @@ distributed between \ft{comps} and \ft{gap}.
 % \end{avmtree}
 
 
-\myslide{How We Want GAP to Propagate}
+\myslide{How We Want \ft{gap} to Propagate}
 \MyLogo{Traditionally called \ft{slash}: VP/NP
   (think of it as a VP missing an NP)}
 % Kim we know bobby likes
@@ -487,14 +492,16 @@ distributed between \ft{comps} and \ft{gap}.
 \end{tikzpicture}}
                               
 
-\myslide{What GAP Propagation should doing}
+\section{Filling Gaps}
+
+\myslide{What \ft{gap} Propagation Should Be Doing}
 \MyLogo{}
 \begin{itemize}
 \item Pass any \ft{gap} values from daughters up to their
 mothers,
 \item[\ldots] \emp{except} when the filler is found.
 \item For topicalization, we can write the exception into
-the grammar rule
+the grammar rule.
 \item For \lex{easy}-adjectives, the NP that corresponds to the
 gap is the subject, which is introduced by the
 Head-Specifier Rule.
@@ -502,7 +509,7 @@ Head-Specifier Rule.
 can't write the gap-filling into the HSR.
 \end{itemize}
 
-\myslide{Our Solution to this Problem}
+\myslide{Our Solution to This Problem}
 \begin{itemize}
 \item For \lex{easy}-adjectives, we treat the adjective formally
 as the filler, marking its \ft{spr} value as coindexed
@@ -512,12 +519,12 @@ with its \ft{gap} value.
   \begin{itemize}
   \item \ft{stop-gap} stops gap propagation
   \item \lex{easy}-adjectives mark \ft{stop-gap} lexically
-  \item a new grammar rule, the \txx{Head-Filler Rule}
+  \item A new grammar rule, the \txx{Head-Filler Rule},
     contains \ft{stop-gap}
   \end{itemize}
 \end{itemize}
 
-\myslide{The GAP Principle}
+\myslide{The \ft{gap} Principle}
 A local subtree $\Phi$ satisfies the \ft{gap} Principle with respect to a
 headed rule  if and only if $\Phi$ satisfies:
 
@@ -545,13 +552,13 @@ headed rule  if and only if $\Phi$ satisfies:
 \end{tikzpicture}
 
 \begin{itemize}
-\item The \ft{gap} of the mother is the append of the GAPs of the daughters
+\item The \ft{gap} of the mother is the append of the \ft{gap}s of the daughters
 \item [\ldots{}] minus \ft{stop-gap} on the head daughter
  
 \end{itemize}
 
 
-\myslide{How does \ft{stop-gap} work?}
+\myslide{How Does \ft{stop-gap} Work?}
 \begin{itemize}
 \item \ft{stop-gap} is empty almost everywhere
 \item When a gap is filled, \ft{stop-gap} is nonempty,
@@ -561,8 +568,8 @@ gaps are only filled once.
 \item The nonempty \ft{stop-gap} values come from two
   sources:
   \begin{itemize}
-  \item a stipulation in the Head-Filler Rule
-  \item lexical entries for \lex{easy}-adjectives
+  \item A stipulation in the Head-Filler Rule
+  \item Lexical entries for \lex{easy}-adjectives
   \end{itemize}
 \item No principle propagates \ft{stop-gap}
 \end{itemize}
@@ -636,8 +643,8 @@ accounting for the interpretation of the subject as the filler.
 \item Lexical entries with nonempty \ft{stop-gap}
 values (like \lex{easy}) are rare, so \ft{stop-gap} is by
 default empty in the lexicon.
-\item Head-Specifier and Head-Modifier rules need to
-say [\ft{stop-gap} $<$ $>$]
+\item Head-Specifier and Head-Modifier Rules need to
+say [\ft{stop-gap} $<$ $>$].
 \item Lexical rules preserve \ft{stop-gap} values.
 \end{itemize}
 
@@ -645,14 +652,14 @@ say [\ft{stop-gap} $<$ $>$]
 \begin{itemize}
 \item[Q] The initial symbol must say [\ft{gap} $< >$ ]. Why?
   \begin{itemize}
-  \item[A] To block \eng{*Pat found} and \eng{*Chris talked to} as
+  \item[A] To block \bad{Pat found} and \bad{Chris talked to} as
     stand-alone sentences.
   \end{itemize}
 \item[Q] The Imperative Rule must propagate \ft{gap} values.
   Why?
   \begin{itemize}
   \item[A] It's not a headed rule, so the effect of the \ft{gap}
-    Principle must be replicated
+    Principle must be replicated.
   \item [A] Imperatives can have gaps:
     \\ \eng{This book, put on the top shelf!}
   \end{itemize}
@@ -663,13 +670,13 @@ say [\ft{stop-gap} $<$ $>$]
 \item Famous examples:
   \begin{exe}
     \ex \eng{This violin$_i$, sonatas$_j$ are easy to play \blank$_j$ on \blank$_i$.}
-    \ex \eng{*Sonatas$_j$, this violin$_i$ is easy to play \blank$_j$ on \blank$_i$.}
+    \ex \bad{Sonatas$_j$, this violin$_i$ is easy to play \blank$_j$ on \blank$_i$.}
   \end{exe}
 \item Our analysis gets this:
   \begin{itemize}
   \item The subject of \lex{easy} is coindexed with the first
     element of the \ft{gap} list.
-  \item The Head-Filler rule only allows one \ft{gap}
+  \item The Head-Filler Rule only allows one \ft{gap}
     remaining.
   \end{itemize}
 \item There are languages that allow multiple gaps more
@@ -682,8 +689,8 @@ generally.
 \item \txx{filler-gap} structures:
   \begin{exe}
    \ex \eng{\ul{The solution to this problem}, nobody
-   understood \blank}
-   \ex \eng{\ul{That problem} is easy to understand \blank}
+   understood \blank.}
+   \ex \eng{\ul{That problem} is easy to understand \blank.}
  \end{exe}
 \item The feature \ft{gap} encodes information about
 missing constituents
@@ -691,9 +698,10 @@ missing constituents
 the \ft{comps} list to show up in the \ft{gap} list
 \item \ft{gap} values are passed up the tree by the \ft{gap}
 Principle
-% \end{itemize}
-\newpage
-% \myslide{Where We Are (continued)}
+\end{itemize}
+
+\myslide{Where We Are (Continued)}
+\begin{itemize}
 \item The feature \ft{stop-gap} signals where \ft{gap} passing
 should stop
 \item The Head-Filler Rule matches a filler to a \ft{gap} and
@@ -703,12 +711,14 @@ the complement, coindex the subject with the gap,
 and (via \ft{stop-gap}) empty \ft{gap} on the mother
 \end{itemize}
 
-\myslide{More Phenomena filler \ldots}
+\myslide{More Filler-Gap Phenomena}
 
 \begin{itemize}
 \item Sentences with subject gaps
 \item Gaps in coordinate constructions
 \end{itemize}
+
+\section{Subject Gaps}
 
 \myslide{Subject Gaps}
 \begin{itemize}
@@ -719,7 +729,7 @@ complements.
     \ex \eng{\ul{This problem}, everyone thought  \blank was too easy.}
   \end{exe}
 \item We handle these via a lexical rule that, in effect,
-moves the contents of the SPR list into the \ft{gap} list
+moves the contents of the \ft{spr} list into the \ft{gap} list.
 \end{itemize}
 
 \myslide{The Subject Extraction Lexical Rule}
@@ -728,14 +738,14 @@ moves the contents of the SPR list into the \ft{gap} list
 input & < X, [ syn & [ head & verb \\
                           val & [ spr & < Z > ] ] \\
                  arg-st & \tag{A}         ]   >\\
-output & <Y,  [ syn & [val & [ spr & < ~~  >\\ 
-                          gap & < \1 > ] ] \\
+output & <Y,  [ syn & [val & [ spr & < ~~  > ] \\ 
+                          gap & < \1 > ] \\
                  arg-st & \tag{A} < \1, \ldots >        ]   > ]
 }}
 
 \begin{itemize}
 \item NB: This says nothing about the phonology, because the
-default for pi-rules is to leave the phonology unchanged.
+default for \val{pi-rule}s is to leave the phonology unchanged.
 \end{itemize}
 
 \myslide{A Lexical Sequence This Licenses}
@@ -780,55 +790,57 @@ default for pi-rules is to leave the phonology unchanged.
 \end{tikzpicture}}
                     
 
+\section{Coordinate Structure Constraint}
+
 \myslide{Island Constraints}
 \begin{itemize}
 \item There are configurations that block filler-gap
 dependencies, sometimes called \txx{islands}
 \item Trying to explain them has been a central topic of
-syntactic research since the mid 1960s
+syntactic research since the mid-1960s
 \item We'll look at just one, Ross's so-called
 \txx{Coordinate Structure Constraint}
 \item Loose statement of the constraint: a constituent
 outside a coordinate structure cannot be the filler
-for a gap inside the coordinate structure.
+for a gap inside the coordinate structure
 \end{itemize}
 
 \myslide{Coordinate Structure Constraint Examples}
 
 \begin{exe}
-  \ex \eng{*This problem, nobody finished the extra credit and \blank}
-  \ex \eng{*This problem, nobody finished \blank and the extra credit.}
-  \ex \eng{*This problem, nobody finished  \blank and started the extra credit.}
-  \ex \eng{*This problem, nobody started the extra credit and finished \blank}
-  \ex \eng{This problem, everybody started \blank and nobody finished  \blank}
+  \ex \bad{This problem, nobody finished the extra credit and \blank.}
+  \ex \bad{This problem, nobody finished \blank and the extra credit.}
+  \ex \bad{This problem, nobody finished \blank and started the extra credit.}
+  \ex \bad{This problem, nobody started the extra credit and finished \blank.}
+  \ex \eng{This problem, everybody started \blank and nobody finished \blank.}
 \end{exe}
 
 \begin{itemize}
 \item In a coordinate structure,
   \begin{itemize}
-  \item no conjunct can be a gap (\txx{conjunct constraint})
-  \item no gap can be contained in a conjunct if its filler is
-    outside of that conjunct (element constraint)
+  \item No conjunct can be a gap (\txx{conjunct constraint})
+  \item No gap can be contained in a conjunct if its filler is
+    outside of that conjunct (\txx{element constraint})
   \item[\ldots] unless each conjunct has a gap that is paired
 with the same filler (\txx{across-the-board exception})
 \end{itemize}
 \end{itemize}
 
-\myslide{These observations cry out for explanation}
+\myslide{These Observations Cry Out for Explanation}
 \begin{itemize}
 \item In our analysis, the conjunct constraint is an immediate
 consequence: individual conjuncts are not on the \ft{arg-st} list
-of any word, so they can't be put on the \ft{gap} list
+of any word, so they can't be put on the \ft{gap} list.
 \item The element constraint and ATB exception suggest that \ft{gap}
 is one of those features (along with \ft{val} and \ft{form}) that
 must agree across conjuncts.
 \item Note: There is no ATB exception to the conjunct constraint.
   \begin{exe}
-    \ex \eng{*This problem, you can compare only \blank and \blank.}
+    \ex \bad{This problem, you can compare only \blank and \blank.}
   \end{exe}
 \end{itemize}
 
-\myslide{Our Coordination Rule, so far}
+\myslide{Our Coordination Rule, So Far}
 
 \scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ ]
     \ \into \ 
@@ -844,7 +856,7 @@ must agree across conjuncts.
 \begin{itemize}
 \item Recall that we have tinkered with what must agree across
 conjuncts at various times.
-\item Now we'll add \ft{gap} to the things that conjuncts must share
+\item Now we'll add \ft{gap} to the things that conjuncts must share.
 \end{itemize}
 
 
@@ -862,7 +874,7 @@ conjuncts at various times.
 
 \begin{itemize}
 \item We've just added \ft{gap} to all the conjuncts and the mother.
-\item This makes the conjuncts all have the same gap (if any)
+\item This makes the conjuncts all have the same gap (if any).
 \item Why do we need it on the mother?
 \end{itemize}
 
@@ -878,25 +890,29 @@ need to be explained
 \item Our account of the coordinate structure constraint
 (based on ideas of Gazdar) is a step in the right
 direction, but it would be even better to explain why certain
-features must agree across conjuncts.
+features must agree across conjuncts
 \end{itemize}
 
 
 \myslide{Overview of LDD}
 \begin{itemize}
-\item Some examples of the phenomenon
-\item What is new and different about it
-\item Broad outlines of our approach
-\item Details of our approach
-\item Subject extraction
+\item Long-distance dependencies: some examples, and what is new and
+  different about them
+\item Our approach: the feature \ft{gap}
+\item Filling gaps: \ft{stop-gap}, the Head-Filler Rule and
+  \lex{easy}-adjectives
+\item Subject gaps
 \item Coordinate Structure Constraint
+\item Problems
 \end{itemize}
 
-\myslide{P0: Semantics are \lex{easy}}
+\section{Problems}
+
+\myslide{P0: Semantics Are \lex{easy}}
 
 Add the semantics to the lexeme \lex{easy} given on slide \pageref{l:easy}.
 
-Then give the full rels list for the top node (i.e. the whole
+Then give the full \ft{restr} list for the top node (i.e. the whole
 sentence) for (\ref{s:easyi}) and (\ref{s:easyii}).  What is the deep
 subject of \lex{easy} in each sentence?  
 
@@ -906,7 +922,7 @@ subject of \lex{easy} in each sentence?
   \end{exe}
 
 \myslide{P1: A Tree with a Gap}
-\MyLogo{Based on  Chapter 14, Problem 1, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 14, Problem 1]{sag:wasow:bender:2003}}
 Draw a tree for (\ref{s:toy-exxb}).  
 %You should provide about the same
 %level of formal detail as in (\ref{gapbb-tree}).
@@ -915,11 +931,11 @@ on all nodes.  Show the value of \ft{stop-gap} on any node where it is
 non-empty.
 
 \begin{exe}
-  \ex \label{s:toy-exxb} \eng{This baby, I know that they handed a toy to {\blank}}
+  \ex \label{s:toy-exxb} \eng{This baby, I know that they handed a toy to {\blank}.}
 \end{exe}
 
 \myslide{P2: Blocking Filled Gaps}
-\MyLogo{Based on  Chapter 14, Problem 2, Sag, Wasow and Bender (2003)}
+\MyLogo{Based on \citet[Chapter 14, Problem 2]{sag:wasow:bender:2003}}
 
 Examples (i) and (ii) are well-formed, but example (iii) is
 ungrammatical:
@@ -927,13 +943,13 @@ ungrammatical:
 \begin{exe}
 \exi{(i)}  \eng{Pat thinks that I rely on some sort of trick.}
 \exi{(ii)} \eng{This mnemonic, Pat thinks that I rely on.}
-\exi{(iii)} *\eng{This mnemonic, Pat thinks that I rely on some sort of trick.}
+\exi{(iii)} \bad{This mnemonic, Pat thinks that I rely on some sort of trick.}
 \end{exe}
 Explain in detail why the mechanisms that license (i) and (ii) do not
 also permit (iii).
 
 \myslide{P3: Subject Gaps} 
-\MyLogo{Based on Chapter 14, Problem 3, Sag, Wasow and Bender (2003)} 
+\MyLogo{Based on \citet[Chapter 14, Problem 3]{sag:wasow:bender:2003}} 
 
 This problem is to make sure you understand how our
 analysis accounts for examples like (\ref{se-s}).
@@ -969,9 +985,9 @@ half-shell} with a triangle.
 %specifications are as they are in your sketch.
 
 \item[D.] Does our analysis correctly predict the contrast between
-(\ref{se-sb}) and \ref{onew}?\\
+(\ref{se-sb}) and (\ref{onew})?\\
 \begin{exe}
-  \ex \label{onew} *\eng{Those candidates, I think likes %raw oysters.
+  \ex \label{onew} \bad{Those candidates, I think likes %raw oysters.
     oysters on the half-shell.}
 \end{exe}
 Explain why or why not.
