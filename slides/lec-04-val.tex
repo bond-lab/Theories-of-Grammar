@@ -186,8 +186,8 @@ complements
     the head of the Head-Specifier Rule directly.}}
 \end{itemize}
 \item This can cover lots of cases not covered by the old Head-Complement Rules 1--3. (Examples?)
-  \answer{\\ \emp{\lex{put} (NP PP), \lex{fond} (PP), \lex{bet} (NP NP S),
-    \lex{tell} (NP S) \ldots}}
+  \answer{\\ \emp{\lex{put} \avm{< NP PP >}, \lex{fond} \avm{< PP >}, \lex{bet} \avm{< NP NP S >},
+    \lex{tell} \avm{< NP S >} \ldots}}
 \end{itemize}
 }
 
@@ -256,17 +256,17 @@ In English, nouns place constraints on their specifiers.
 \begin{itemize}
 \item In Number:
   \begin{exe}
-    \ix This dog barked.
-    \ix \bad This dogs barked.
-    \ix \bad These dog barked.
-    \ix These dogs barked.
+    \ix \eng{This dog barked.}
+    \ix \bad{This dogs barked.}
+    \ix \bad{These dog barked.}
+    \ix \eng{These dogs barked.}
   \end{exe}
 \item In Countability
   \begin{exe}
-\ix Much furniture was broken.
-\ix \bad A furniture was broken.
-\ix \bad Much chair was broken.
-\ix A chair was broken. 
+\ix \eng{Much furniture was broken.}
+\ix \bad{A furniture was broken.}
+\ix \bad{Much chair was broken.}
+\ix \eng{A chair was broken.}
 \end{exe}
 \end{itemize}
 
@@ -419,15 +419,15 @@ NP, VP, S \ldots\ are now just short names for feature structures:
 \begin{center}\small
   \begin{tabular}{lll}
     & \multicolumn{1}{c}{\val{noun}} & \multicolumn{1}{c}{\val{verb}} \\[2mm]
+    a single word &
+    N = \avm{[\type*{word} head & \val{noun} ]} &
+    V = \avm{[\type*{word} head & \val{verb} ]} \\
     needs a specifier &
     NOM = \avm{[ head & \val{noun} \\ val & [ comps & < > \\ spr & < X > ] ]} &
     VP = \avm{[ head & \val{verb} \\ val & [ comps & < > \\ spr & < X > ] ]} \\[14mm]
     saturated &
     NP = \avm{[ head & \val{noun} \\ val & [ comps & < > \\ spr & < > ] ]} &
     S = \avm{[ head & \val{verb} \\ val & [ comps & < > \\ spr & < > ] ]} \\[14mm]
-    a single word &
-    N = \avm{[\type*{word} head & \val{noun} ]} &
-    V = \avm{[\type*{word} head & \val{verb} ]} \\
   \end{tabular}
 \end{center}
 X is any feature structure.  None of these say \val{phrase}:
@@ -717,6 +717,7 @@ get \lex{lettuce} only as mass.
 \item Repeat 4--5 until you reach the S node
 \item Check: every feature you left blank should now have a value
 \end{enumerate}
+\normalsize
 
 \myslide{Build a Tree!}
 \MyLogo{Use the Chapter 4 type hierarchy, the HFP, the Valence Principle and the SHAC}
@@ -826,15 +827,15 @@ the lexical entries for the
 \index{preposition (P)}prepositions {\it out}, {\it from} and {\it of}:
 
    \begin{itemize}
-   \item[(i)] Kim jumped out of the bushes.
-   \item[(ii)] Bo jumped out from the bushes.
-   \item[(iii)] Lee moved from under the bushes.   
-   \item[(iv)] Leslie jumped out from under the bushes.
-   \item[(v)] Dana jumped from the bushes.
-   \item[(vi)] Chris ran out the door.
-   \item[(vii)] \bad Kim jumped out of from the bushes.
-   \item[(viii)] Kim jumped out.
-   \item[(ix)] \bad Kim jumped from.
+   \item[(i)] \eng{Kim jumped out of the bushes.}
+   \item[(ii)] \eng{Bo jumped out from the bushes.}
+   \item[(iii)] \eng{Lee moved from under the bushes.}
+   \item[(iv)] \eng{Leslie jumped out from under the bushes.}
+   \item[(v)] \eng{Dana jumped from the bushes.}
+   \item[(vi)] \eng{Chris ran out the door.}
+   \item[(vii)] \bad{Kim jumped out of from the bushes.}
+   \item[(viii)] \eng{Kim jumped out.}
+   \item[(ix)] \bad{Kim jumped from.}
    \end{itemize}
 \newpage
 \item[D.] Based on the following data, 
@@ -845,14 +846,14 @@ the words {\it grew} (in the `become' sense, not the `cultivate'
 sense), {\it seemed}, {\it happy}, and {\it close}. 
 
    \begin{itemize}
-   \item[(i)] They seemed happy (to me).
-   \item[(ii)] Lee seemed an excellent choice (to me).
-   \item[(iii)] \bad They seemed (to me).
-   \item[(iv)] They grew happy.
-   \item[(v)] \bad They grew a monster (to me).
-   \item[(vi)] \bad They grew happy to me.
-   \item[(vii)] They grew close to me.
-   \item[(viii)] They seemed close to me to Sandy.
+   \item[(i)] \eng{They seemed happy (to me).}
+   \item[(ii)] \eng{Lee seemed an excellent choice (to me).}
+   \item[(iii)] \bad{They seemed (to me).}
+   \item[(iv)] \eng{They grew happy.}
+   \item[(v)] \bad{They grew a monster (to me).}
+   \item[(vi)] \bad{They grew happy to me.}
+   \item[(vii)] \eng{They grew close to me.}
+   \item[(viii)] \eng{They seemed close to me to Sandy.}
    \end{itemize}
 
 \noindent
