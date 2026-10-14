@@ -26,6 +26,7 @@
 \item Reformulate grammar rules
 \item Notion of head/headedness
 \item Licensing of trees
+\item Reading the grammar fragment
 \end{itemize}
 
 
@@ -73,6 +74,9 @@ fragment) for English
     \begin{itemize}
     \item Speakers’ internalized knowledge (their grammar)
     \item Set of sentences in the language
+    \item Probability distribution over strings \\ (what ``language
+      model'' usually means today: it scores sentences, but doesn't
+      license or rule them out)
     \end{itemize}
   \item Things involved in modelling language
     \begin{itemize}
@@ -82,7 +86,7 @@ fragment) for English
     \end{itemize}
   \end{itemize}
 
-\section{An delicious introduction to Typed Feature Structures}
+\section{A delicious introduction to Typed Feature Structures}
 
   \myslide{Feature Structure Descriptions}
 \vfill
@@ -97,7 +101,9 @@ fragment) for English
 \bigskip
 \bigskip
 
-Like a dictionary in python (feature=key, value=value).
+Like a form: each field (feature) has an entry (value).
+
+Or, if you program: like a dictionary in Python (feature = key).
 
 \myslide{A Pizza Type Hierarchy}
 %\vspace*{-.5ex}
@@ -148,8 +154,7 @@ A type hierarchy \ldots
 has \\ --- the feature and feature value declarations
 \end{itemize}
 
-\myslide{Pizza Descriptions and Pizza Models}
-
+\qaslide{Pizza Descriptions and Pizza Models}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -158,10 +163,8 @@ has \\ --- the feature and feature value declarations
     [\type*{vegetarian} olives & + \\ onions & + ] ]}
 \end{center}
 How many pizza models (by definition, fully resolved) satisfy this description?
-
-
-\myslide{Answer: 2}
-
+\answer{\par
+\emp{Two}: MUSHROOMS must have a value, and it can be $+$ or $-$.
 
 \begin{center}
   \avm{%
@@ -174,9 +177,10 @@ How many pizza models (by definition, fully resolved) satisfy this description?
   crust & thick \\
   toppings &
   [\type*{vegetarian} olives & + \\ onions & + \\ mushrooms & + ] ]}
+\end{center}}
+}
 
-\end{center}
-\myslide{Pizza Descriptions and Pizza Models}
+\qaslide{Pizzas in the World}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -187,12 +191,12 @@ How many pizza models (by definition, fully resolved) satisfy this description?
 \begin{itemize}
 \item How many pizzas-in-the-world do the pizza
 models correspond to?
-\item [A]: A large, constantly-changing number.
-\item the ‘type’/‘token’ distinction applies to sentences as well
+\answer{\\ \emp{A large, constantly-changing number.}
+\item The ‘type’/‘token’ distinction applies to sentences as well}
 \end{itemize}
+}
 
-\myslide{Combining Constraints}
-
+\qaslide{Combining Constraints}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -202,24 +206,22 @@ models correspond to?
     \& 
    [\type*{pizza}
     toppings &
-    [ olives & + \\ onions & + ] ]} 
-\end{center}
-
-Unification is also written as: $\sqcap$.
-
-\myslide{Combining Constraints}
-
-\begin{center}
+    [ olives & + \\ onions & + ] ]}
+  \answer{\\[2ex] = \
   \avm{%
     [\type*{pizza}
     crust & thick \\
     toppings &
-    [ olives & + \\ ham & $-$ \\ onions & + ] ]}
+    [ olives & + \\ ham & $-$ \\ onions & + ] ]}}
 \end{center}
 
+Combining constraints is called \txx{unification}, also written
+$\sqcap$.  Information is added, never lost.
+}
 
 
-\myslide{Combining Constraints}
+
+\qaslide{Combining Constraints}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -231,16 +233,18 @@ Unification is also written as: $\sqcap$.
    crust & thin \\
     toppings &
     [ olives & + \\ onions & + ] ]} 
-\begin{huge}
+\answer{\begin{huge}
 \\[2ex]   = $\varphi$
-\end{huge}
+\end{huge}}
 \end{center}
 
-NULL is also written as:  $\perp,  \emptyset, \phi$.
+\answer{\emp{A crust can't be both thick and thin}, so unification
+fails.  Failure (NULL) is also written as:  $\perp,  \emptyset, \phi$.}
+}
 
 %\myslide{Combining Constraints}
 
-\myslide{Combining Constraints}
+\qaslide{Combining Constraints}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -252,12 +256,14 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
    crust & thin \\
     toppings &
     [\type*{vegetarian} ] ]} 
-\begin{huge}
+\answer{\begin{huge}
 \\[2ex]   = $\varphi$
-\end{huge}
+\end{huge}}
 \end{center}
 
-\textit{vegetarian} has no feature \ft{ham}!
+\answer{\emp{\textit{vegetarian} has no feature \ft{ham}!}  (Even
+though the value is $-$.)}
+}
 
 \myslide{A New Theory of Pizzas}
 \begin{center}
@@ -269,7 +275,7 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
 \end{center}
 
 
-\myslide{Combining Constraints}
+\qaslide{Combining Constraints}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -280,14 +286,15 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
     other-half &
     [  olives & $-$ \\ 
          ham & + ] ]}
-  \\ = 
+  \answer{\\ = 
   \avm{%
  [\type*{pizza}
    one-half &
    [ olives & + \\ ham & $-$ ] \\
    other-half &
-   [  olives & $-$ \\ ham & + ] ]} 
+   [  olives & $-$ \\ ham & + ] ]}}
 \end{center}
+}
 
 
 \myslide{Identity Constraints (tags)}
@@ -300,7 +307,10 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
    [  olives & \1 \\ ham & \2 ] ]} 
 \end{center}
 
-\myslide{Combining Constraints}
+A boxed number (a \txx{tag}) means \emp{the very same value}:
+whatever \ft{olives} is on one half, it is on the other half too.
+
+\qaslide{Combining Constraints}{
 \begin{center}
   \avm{%
     [\type*{pizza}
@@ -310,14 +320,17 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
     \& 
    [\type*{pizza}
     other-half &
-    [  olives & + \\ mushroom & + ] ]}
-  \\ = 
+    [  olives & + \\ mushrooms & + ] ]}
+  \answer{\\ = 
   \avm{%
  [\type*{pizza}
    one-half &
-    \1 [ olives & + \\ ham & $-$ \\ mushroom & + ] \\
-   other-half & \1 ]} 
+    \1 [ olives & + \\ ham & $-$ \\ mushrooms & + ] \\
+   other-half & \1 ]}}
 \end{center}
+
+\answer{\emp{Mushrooms on the other half means mushrooms on both halves.}}
+}
 
 
 \myslide{Note}
@@ -325,24 +338,26 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
  \avm{%
  [\type*{pizza}
    one-half &
-    \1 [ olives & + \\ ham & $-$ \\ mushroom & + ] \\
+    \1 [ olives & + \\ ham & $-$ \\ mushrooms & + ] \\
    other-half & \1 ]} 
 \\ =
   \avm{%
  [\type*{pizza}
    one-half &
     \1 \\
-   other-half & \1 [ olives & + \\ ham & $-$ \\ mushroom & + ] ]} 
+   other-half & \1 [ olives & + \\ ham & $-$ \\ mushrooms & + ] ]} 
 \end{center}
 
-\myslide{Combining Constraints}
+It doesn't matter where we write the value: both paths lead to the
+same thing.
 
+\qaslide{Combining Constraints}{
 \begin{center}
   \avm{%
     [\type*{pizza}
     crust & thick \\
     one-half &
-    \1 [ olives & + \\ onion & $-$ ] 
+    \1 [ olives & + \\ onions & $-$ ] 
     \\ other-half & \1  \textit{vegetarian} ]
     \& 
    [\type*{pizza}
@@ -354,9 +369,16 @@ NULL is also written as:  $\perp,  \emptyset, \phi$.
 \end{huge}
 \end{center}
 
+Why does this fail?  (Two reasons.)
+\answer{\par
+\emp{(1) the crust can't be both thick and thin; (2) one half is the
+same as the other half, which is \textit{vegetarian}, and
+\textit{vegetarian} has no \ft{pepperoni}.}}
+}
 
 
-\myslide{Why combine constraints?}
+
+\qaslide{Why combine constraints?}{
 \begin{itemize}
 \item The pizza example illustrates how
 unification can be used to combine
@@ -365,7 +387,11 @@ information from different sources.
 \item In our grammar, information will come
 from lexical entries, grammar rules, and
 general principles.
+\item What makes us put the information together?
+\answer{\\ \emp{The definition of a well-formed tree: every node must
+    satisfy all of them at once.}}
 \end{itemize}
+}
 
 \section{Describing Language with TFS}
   
@@ -409,14 +435,12 @@ NP &  \avm{%
 [\type*{phrase}
    head & \type{verb} ]} \\
 N &
-    \label{bird-ex}
 \avm{%
-< fly , \ [\type*{word}
+< \textnormal{fly} , \ [\type*{word}
                head & \type{noun} ]>}
 & V &
-    \label{bird-ex}
 \avm{%
-< fly , \ [\type*{word}
+< \textnormal{fly} , \ [\type*{word}
                head & \type{verb} ]>}
   \end{tabular}
 
@@ -446,14 +470,13 @@ We need more information to make words agree.
 
 \avm{%
 < \textnormal{fly}, \ [\type*{word}
-               head & \type{noun} [\type*{agr-cat} agr 
-               & [ per & 3 \\ num & sg ] ] ]>}
+               head & [\type*{noun}
+                       agr & [\type*{agr-cat} per & 3rd \\ num & sg ] ] ]>}
 
 \avm{%
 < \textnormal{flies}, \ [\type*{word}
-               head & \type{verb}
-               [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
-               ]>}
+               head & [\type*{verb}
+                       agr & [\type*{agr-cat} per & 3rd \\ num & sg ] ] ]>}
 
 \myslide{Agreement (S  $\rightarrow$  NP VP)}
 
@@ -493,7 +516,7 @@ The values on \ft{agr} for the subject NP and verb phrase must be identical.
 \ft{comps} controls how many \txx{complements} are possible.
 
 
-\myslide {Head-Complement Rules (S  $\rightarrow$ V $|$ V NP $|$ V NP NP) }
+\myslide{Head-Complement Rules (VP $\rightarrow$ V $|$ V NP $|$ V NP NP)}
 \begin{small}
 1 \avm{% 
 [\type*{phrase}\\
@@ -582,7 +605,7 @@ This captures \textit{verbiness}!
 \end{forest}
 \end{center}
 
-S is actually equivalent to NP and VP to Nom, but it is too late to change this usage, \ldots
+S is the verbal counterpart of NP, and VP the verbal counterpart of NOM.
 
 \myslide{S and NP}
 
@@ -601,7 +624,7 @@ S is actually equivalent to NP and VP to Nom, but it is too late to change this 
 \myslide{Type Hierarchy So Far}
 
 \begin{center}\small
-  \begin{forest}
+  \scalebox{0.9}{\begin{forest}
 cat, for tree={font=\itshape}
 [{feat-struc} [{expression  \avm{[ \textsc{head, val} ]}} [{word}]
 [{phrase}]]
@@ -613,11 +636,11 @@ cat, for tree={font=\itshape}
 [{conj}]]
 [{val-cat \avm{[ \textsc{spr, comps} ]}}]
 [{agr-cat \avm{[ \textsc{per, num} ]}}]]
-\end{forest}
+\end{forest}}
 \end{center}
 
 
-\myslide{Heads}
+\qaslide{Heads}{
 \begin{itemize}
 \item Intuitive idea: A phrase typically contains a word that
   determines its most essential properties, including
@@ -631,13 +654,15 @@ cat, for tree={font=\itshape}
   that word
 \item NB: Not all phrases have heads
 \\ can you think of a phrase that doesn't?
+\answer{\\ \emp{Coordination: \lex{Kim and Sandy}}}
 \end{itemize}
+}
 
 \myslide{Formalizing the Notion of Head}
 \begin{itemize}
 \item Expressions have a feature \ft{head}
 \item \ft{head}’s values are of type \val{pos} (part-of-speech)
-\item For \ft{head} values of type \val{agr-cat}, \ft{head}’s
+\item For \ft{head} values of type \val{agr-pos}, \ft{head}’s
   value also includes the feature \ft{agr}
 \item Well-formed trees are subject to the \txx{Head Feature Principle}
 \end{itemize}
@@ -674,17 +699,14 @@ will often be economical and leave out the values
 irrelevant to our current point).
 \end{itemize}
 
-\myslide{Question:}
+\qaslide{Question: Unheaded Phrases}{
 Do phrases that are not headed have
 \ft{head} features?
-
-\myslide{Question:}
-Do phrases that are not headed have
-\ft{head} features?
-
+\answer{\par
 \bigskip
 \emp{Yes}, all expressions have \ft{head}, but in a non-headed
-phrase it does not have to be identical to its mother.
+phrase it does not have to be identical to any daughter's.}
+}
 
 \myslide{Reformulating the Grammar Rules I}
 
@@ -705,13 +727,15 @@ Which simple phrase structure rules (Ch 2) do these correspond to?
            spr & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
                                                val & [ comps & str\\
                                                         spr & $-$]]\ \ NP}
-\newpage
+\end{itemize}
+
+\myslide{Reformulating the Grammar Rules I (cont.)}
+\begin{itemize}
 \item  Head-Complement Rule 3:
 
 \avm{[\type*{phrase}\\
   val & [ comps & itr\\
            spr & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
-                                               head & {\1}\\
                                                val & [ comps & dtr\\
                                                         spr & $-$]]\ \ NP\ \ NP}
 \end{itemize}
@@ -751,13 +775,16 @@ val & [ comps & itr\\
 
 \item Head-Modifier Rule
 
-\avm{[ [\type*{phrase}\\
+\avm{[\type*{phrase}\\
 		    val & [ comps & itr\\
-		             spr & $-$ ]]] \ 
-$\rightarrow$\ \ {\HD}[[\type*{phrase}\\
-			     val & [ spr & $-$]]] \
+		             spr & $-$ ]] \ 
+$\rightarrow$\ \ {\HD}[\type*{phrase}\\
+			     val & [ spr & $-$]] \
                  PP}
-\newpage
+\end{itemize}
+
+\myslide{Reformulating the Grammar Rules III (cont.)}
+\begin{itemize}
 \item Coordination Rule
 
 \avm{ [ head \1 ]\ \ \ $\rightarrow$\ \ \ %
@@ -767,75 +794,144 @@ $\rightarrow$\ \ {\HD}[[\type*{phrase}\\
 Only coordinate two similar things!
 \end{itemize}
 
-\myslide{Advantages of the New Formulation}
+\qaslide{Which Chapter 2 Rules Do the New Rules Replace?}{
+\begin{center}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{ll}
+    New rule & Chapter 2 rules \\ \hline
+    Head-Complement Rule 1 & \answer{VP $\rightarrow$ V \quad NOM $\rightarrow$ N} \\
+    Head-Complement Rule 2 & \answer{VP $\rightarrow$ V NP \quad \emp{and} PP $\rightarrow$ P NP} \\
+    Head-Complement Rule 3 & \answer{VP $\rightarrow$ V NP NP} \\
+    Head-Specifier Rule 1 & \answer{S $\rightarrow$ NP VP} \\
+    Head-Specifier Rule 2 & \answer{NP $\rightarrow$ D NOM \quad (D now \emp{required})} \\
+    Non-Branching NP Rule & \answer{NP $\rightarrow$ NOM, with \emp{no} D (pronouns, names)} \\
+    Head-Modifier Rule & \answer{VP $\rightarrow$ VP PP \quad NOM $\rightarrow$ NOM PP} \\
+    Coordination Rule & \answer{X $\rightarrow$ X$^+$ CONJ X} \\
+  \end{tabular}
+\end{center}
+\answer{It is not one-to-one: one new rule can do the work of several old ones.}
+}
+
+\qaslide{Advantages of the New Formulation}{
 \begin{itemize}
 \item Subject-verb agreement is stipulated only
-once (where?)  %%  Head-Specifier Rule 1
+once (where?)
+\answer{\\ \emp{in Head-Specifier Rule 1}}
 \item Common properties of verbs with different
 valences are expressed by common features
-(for example?) %% agreement feature
+(for example?)
+\answer{\\ \emp{\ft{agr} (\ft{per}, \ft{num}): \lex{denies} and
+    \lex{disappears} are both [\ft{per} 3rd, \ft{num} sg]}}
 \item Parallelisms across phrase types are captured
-(for example?)  %%% they use the same head-complement rule
+(for example?)
+\answer{\\ \emp{Head-Complement Rule 2 builds both VPs and PPs}}
 \end{itemize}
+}
 
-\myslide{Disadvantages of the New Formulation}
+\qaslide{Disadvantages of the New Formulation}{
 \begin{itemize}
 \item We still have three head complement rules
 \item We still have two head specifier rules
 \item We only deal with three verb valences
 \\ (Which ones? What are some others?)
+\answer{\\ \emp{intransitive, transitive, ditransitive; but also
+    \lex{put} (NP PP), \lex{think} (S), \lex{tell} (NP S), \ldots}}
 \item The non-branching rule doesn’t really do any
 empirical work
 \item Anything else?
 \end{itemize}
+}
 
 
 
-\myslide{Which rule licenses each node?}
-\thispagestyle{empty}% full-page tree: no header/footer
-\vspace*{-8mm}
-
-\noindent\makebox[\textwidth]{\raisebox{0pt}[0pt][0pt]{\raisebox{-\height}{%
-\scalebox{0.66}{\begin{forest}
-cat, for tree={l sep=2mm}
-[{\avm{[\type*{phrase}\\
+%%% They swim, built up step by step.  \theytree's five arguments are
+%%% the frame colours of the S, NP, they, VP and swim nodes (white =
+%%% invisible), so every page has the same layout.  #6 is the text on
+%%% the right.
+\newcommand{\nd}[2]{{\setlength{\fboxsep}{1pt}\fcolorbox{#1}{white}{#2}}}
+\newcommand{\theytree}[6]{%
+\noindent\begin{minipage}[t]{0.6\textwidth}\vspace{0pt}
+\scalebox{0.6}{\begin{forest}
+cat, for tree={l sep=4mm}
+[{\nd{#1}{\avm{[\type*{phrase}\\
   head &[\type*{verb}\\
-  agr &[\type*{agr-cat}\\
-  per & 3rd\\ 
+  agr &[  per & 3rd\\
   num & pl]]\\
-  val & [\type*{val-cat}\\
-  comps & itr\\
-  spr & $+$ ]]}} [{\avm{[\type*{phrase}\\
-                                head & [\type*{noun}\\
-                                        agr & [\type*{agr-cat}\\
-   					       per & 3rd\\
-                                                num & pl]]\\
- 	 		       val & [\type*{val-cat}\\
- 			               comps & itr\\
- 			               spr & $+$ ]]}} [{\avm{[\type*{word}\\
+  val & [  comps & itr\\
+  spr & $+$ ]]}}}
+ [{\nd{#2}{\avm{[\type*{phrase}\\
+  head & [\type*{noun}\\
+  agr & [  per & 3rd\\
+  num & pl]]\\
+  val & [  comps & itr\\
+  spr & $+$ ]]}}}
+  [{\nd{#3}{\avm{[\type*{word}\\
   head &[\type*{noun}\\
-  agr & [\type*{agr-cat}\\
-  per & 3rd\\
+  agr & [  per & 3rd\\
   num & pl]]\\
-  val & [\type*{val-cat}\\
-  comps & itr\\
-  spr & $+$ ]]}} [{they}]]]
-[{\avm{[\type*{phrase}\\
-                                head &[\type*{verb}\\
-                                        agr &[\type*{agr-cat}\\
- 					      per & 3rd\\ 
- 					      num & pl]]\\
- 	 		       val & [\type*{val-cat}\\
-                                        comps & itr\\
-                                        spr & $-$ ]]}} [{\avm{[\type*{word}\\
-                             head  &[\type*{verb}\\
-                                     agr &[\type*{agr-cat}\\
- 					   per & 3rd\\
-      				           num & pl]]\\
- 			    val  & [\type*{val-cat}\\
-                                     comps & itr\\
-                                     spr  & $-$ ]]}} [{swim}]]]]
-\end{forest}}}}}
+  val & [  comps & itr\\
+  spr & $+$ ]]}}} [{they}]]]
+ [{\nd{#4}{\avm{[\type*{phrase}\\
+  head &[\type*{verb}\\
+  agr &[  per & 3rd\\
+  num & pl]]\\
+  val & [  comps & itr\\
+  spr & $-$ ]]}}}
+  [{\nd{#5}{\avm{[\type*{word}\\
+  head &[\type*{verb}\\
+  agr &[  per & 3rd\\
+  num & pl]]\\
+  val & [  comps & itr\\
+  spr & $-$ ]]}}} [{swim}]]]]
+\end{forest}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\textwidth}\vspace{0pt}\small
+#6
+\end{minipage}}
+
+\myslide{Which Rule Licenses Each Node?}
+\theytree{white}{white}{white}{white}{white}{%
+  \textbf{Which rule or lexical entry licenses each node?}}
+
+\myslide{Which Rule Licenses Each Node?}
+\theytree{white}{white}{red}{white}{red}{%
+  \textbf{Which rule or lexical entry licenses each node?}
+  \begin{itemize}
+  \item \lex{they}, \lex{swim}: their \emp{lexical entries}
+  \end{itemize}}
+
+\myslide{Which Rule Licenses Each Node?}
+\theytree{white}{red}{white}{white}{white}{%
+  \textbf{Which rule or lexical entry licenses each node?}
+  \begin{itemize}
+  \item \lex{they}, \lex{swim}: their lexical entries
+  \item NP: the \emp{Non-Branching NP Rule} (\lex{they} is
+    [\ft{spr} $+$]); HFP
+  \end{itemize}}
+
+\myslide{Which Rule Licenses Each Node?}
+\theytree{white}{white}{white}{red}{white}{%
+  \textbf{Which rule or lexical entry licenses each node?}
+  \begin{itemize}
+  \item \lex{they}, \lex{swim}: their lexical entries
+  \item NP: the Non-Branching NP Rule (\lex{they} is
+    [\ft{spr} $+$]); HFP
+  \item VP: \emp{Head-Complement Rule 1} (\lex{swim} is
+    [\ft{comps} \val{itr}]); HFP
+  \end{itemize}}
+
+\myslide{Which Rule Licenses Each Node?}
+\theytree{red}{white}{white}{white}{white}{%
+  \textbf{Which rule or lexical entry licenses each node?}
+  \begin{itemize}
+  \item \lex{they}, \lex{swim}: their lexical entries
+  \item NP: the Non-Branching NP Rule (\lex{they} is
+    [\ft{spr} $+$]); HFP
+  \item VP: Head-Complement Rule 1 (\lex{swim} is
+    [\ft{comps} \val{itr}]); HFP
+  \item S: \emp{Head-Specifier Rule 1}, which also makes the NP's
+    and VP's \ft{agr} the same; HFP
+  \end{itemize}}
 
 \myslide{In abbreviated form}
 
@@ -848,10 +944,10 @@ cat
 \vspace*{-2ex}
 \begin{flushleft}
   % HFP $\Rightarrow$ head the same for mother and daughter; \\
-  S $\Rightarrow$ \val{phrase}, \ft{head} \val{verb}, \ft{val}
-  \val{itr}, \ft{spr} val{+};  \\
+  S $\Rightarrow$ \val{phrase}, \ft{head} \val{verb}, \ft{comps}
+  \val{itr}, \ft{spr} \val{+};  \\
   VP $\Rightarrow$ \val{phrase}, \ft{head}
-  \val{verb}, \ft{val} \val{itr}, \ft{spr} val{-};   \ldots
+  \val{verb}, \ft{comps} \val{itr}, \ft{spr} \val{$-$};   \ldots
 \end{flushleft}
 \myslide{A Question:}
 Since the lexical entry for swim below has only [NUM pl] as
@@ -866,15 +962,71 @@ the value of \ft{agr}, how did the tree on the previous slide get
  >}
 
 
-\myslide{Overview}
+\myslide{Answer: A Chain of Identities}
+\begin{center}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{lll}
+    This \ft{agr} value \ldots & is identical to \ldots & because of \ldots \\ \hline
+    \lex{they}'s lexical entry & \lex{they}'s word node & the lexical entry \\
+    \lex{they}'s word node & the NP & the HFP \\
+    the NP & the VP & Head-Specifier Rule 1 \\
+    the VP & \lex{swim}'s word node & the HFP \\
+  \end{tabular}
+\end{center}
+So \lex{swim}'s \ft{agr} is the very same value as \lex{they}'s, which
+is [\ft{per} 3rd, \ft{num} pl].  \emp{Constraints from different
+places combine}, just like the pizza.
+
+\section{Reading the Grammar Fragment}
+
+\myslide{Components of the Grammar}
+The grammar summary at the end of each chapter (and in the Appendix)
+has four parts:
+\begin{enumerate}
+\item The \txx{type hierarchy}, with the features and values
+  appropriate for each type
+\item The \txx{phrase structure rules}
+\item The \txx{well-formedness conditions} / general principles
+  (e.g.\ the HFP)
+\item The \txx{lexical entries}
+\end{enumerate}
+A tree is well-formed if it satisfies all of them.
+
+\myslide{What about the Abbreviations?}
 \begin{itemize}
-\item Review: problems with CFG
-\item Modeling
+\item NP, VP, S, N, V \ldots\ are just for convenience
+\item Each abbreviation is defined as an underspecified feature
+  structure, e.g.
+  \begin{center}
+    \avm{NP = [\type*{phrase}
+      head & \type{noun} \\
+      val & [ comps & itr \\ spr & $+$ ] ]}
+  \end{center}
+\item We use them in trees as shorthand, but they do no work in the
+  grammar
+\end{itemize}
+
+\myslide{Building Trees}
+\begin{itemize}
+\item You should always be able to check your trees against the grammar
+\item The grammar should give you enough information to fill in every
+  feature on every node
+\item The book only lists a few lexical entries: find the closest one
+  to your word and use it as a guide
+\item Sometimes there is a ``bug'' in the grammar in the book: if you
+  can't work out a value from the grammar summary and the principles,
+  \emp{ask}!
+\end{itemize}
+
+\myslide{Summary}
+\begin{itemize}
+\item Review: problems with CFG; modeling
 \item Feature structures, unification (pizza)
 \item Features for linguistic description
 \item Reformulate grammar rules
 \item Notion of head/headedness
 \item Licensing of trees
+\item Reading the grammar fragment
 \item Next time: Valence and agreement: complex feature values
 \end{itemize}
 
@@ -894,7 +1046,7 @@ Your explanation should make reference to grammar rules, lexical
 entries and the \index{Head Feature Principle (HFP)}HFP. \index{agreement|)}
 \end{itemize}
 
-\myslide{Determiner-Noun Agreement}
+\myslide{3.3 Determiner-Noun Agreement}
 
 The Chapter 3 grammar declares AGR to be a feature
 appropriate for the types {\it noun}, {\it verb}, and {\it det}, but

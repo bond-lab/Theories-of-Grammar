@@ -12,7 +12,6 @@
 \myslide{Overview}
 \MyLogo{Chapter 4}
 \begin{itemize}
-\item Review of last week
 \item List-valued valence features
   \begin{itemize}
   \item A problem with the Chapter 3 grammar
@@ -22,12 +21,13 @@
 \item The heads of S and NP
 \item Complements and modifiers
 \item Agreement: the SHAC and count/mass
+\item Building a tree, step by step
 \item Problems 4.1, 4.5, 4.6
 \end{itemize}
 
 \section{Review}
 
-\myslide{Pizza review}
+\qaslide{Pizza review}{
 \MyLogo{}
 \begin{itemize}
 \item Unification is an operation for combining
@@ -35,10 +35,15 @@ constraints from different sources.
 
 \item What are those sources in the pizza
 example?
+\answer{\\ \emp{The preferences of the different people sharing the pizza.}}
 
 \item Why do we need to combine information
 from different sources in our grammars?
+\answer{\\ \emp{A tree has to satisfy the lexical entries, the grammar
+  rules \emph{and} the general principles (like the HFP) all at
+  once.  None of them builds the tree on its own.}}
 \end{itemize}
+}
 
 \myslide{Reminder: Where We Are}
 \begin{itemize}
@@ -68,6 +73,7 @@ determines its most essential properties, including
 phrase and for all the intermediate phrases containing
 that word
 \item NB: Not all phrases have heads
+  (e.g.\ coordination: \lex{Kim and Sandy})
 \end{itemize}
 
 \myslide{Formalizing the Notion of Head}
@@ -103,24 +109,32 @@ irrelevant to our current point).
 There’s still too much redundancy: the rules and features encode the same information in different ways.
 
 \begin{small}
+\lbox{Rule 1:}\hspace{22mm}%
 \avm{[\type*{phrase}\\
   VAL & [ COMPS & itr\\
            SPR & $-$]] \ $\rightarrow$\ \HD \ [\type*{word}\\
                                                VAL & [ COMPS & itr\\
                                                         SPR & $-$]]}
 
+\lbox{Rule 2:}\hspace{22mm}%
 \avm{[\type*{phrase}\\
   VAL & [ COMPS & itr\\
            SPR & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
                                                VAL & [ COMPS & str\\
                                                         SPR & $-$]]\ \ NP}
 
+\lbox{Rule 3:}\hspace{22mm}%
 \avm{[\type*{phrase}\\
   VAL & [ COMPS & itr\\
            SPR & $-$ ]] \ $\rightarrow$\ \HD \ [\type*{word}\\
                                                VAL & [ COMPS & dtr\\
                                                         SPR & $-$]]\ \ NP\ \ NP}
 \end{small}
+
+\medskip
+The value \val{str} and the single NP in Rule~2 say the same thing
+twice: ``this verb takes one object''.  Likewise \val{dtr} and the two
+NPs in Rule~3.
 
 
 \myslide{Solution: More Elaborate Valence Feature Values}
@@ -138,11 +152,26 @@ combine with their complements and specifiers.
 \end{itemize}
 \end{itemize}
 
-\myslide{Complements}
-Head-Complement Rule:
-
+\myslide{How to Read a Rule}
 \avm{[\type*{phrase}  val & [ comps & <  > ] ]
-              \ $\rightarrow$\ \HD \ 
+              \ $\rightarrow$\ \HD \
+             [\type*{word}
+             val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}}
+\begin{itemize}
+\item Left of the arrow is the mother; on the right are the
+  daughters, in the order they are pronounced
+\item \HD marks the \txx{head daughter}
+\item A boxed number (a \txx{tag}) means \emp{the very same thing}:
+  \avm{\1} on the COMPS list and the daughter \avm{\1} are one object
+\item \avm{< >} is the empty list: \emp{nothing left to find}
+\item Out loud: ``A word that needs complements \avm{\1} to \avm{\tag{n}},
+  followed by \avm{\1} to \avm{\tag{n}}, makes a phrase that needs no more
+  complements''
+\end{itemize}
+
+\qaslide{Head-Complement Rule (Final Version)}{
+\avm{[\type*{phrase}  val & [ comps & <  > ] ]
+              \ $\rightarrow$\ \HD \
              [\type*{word}
              val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}}
 \begin{itemize}
@@ -153,9 +182,14 @@ applies when there is at least one.
 \item Heads in English probably never have more than 3 or 4
 complements
 \item This doesn’t apply where Head-Complement Rule 1 would. (Why?)
+  \answer{\\ \emp{We don't need it: a word with an empty COMPS list can be
+    the head of the Head-Specifier Rule directly.}}
 \end{itemize}
 \item This can cover lots of cases not covered by the old Head-Complement Rules 1--3. (Examples?)
+  \answer{\\ \emp{\lex{put} (NP PP), \lex{fond} (PP), \lex{bet} (NP NP S),
+    \lex{tell} (NP S) \ldots}}
 \end{itemize}
+}
 
 \myslide{The valence comes from the lexicon}
 
@@ -196,24 +230,29 @@ complements
 \end{small}
 
 
-\myslide{Question: What if English had postpositions?}
+\qaslide{Question: What if English had postpositions?}{
+How would the grammar change if English had postpositions
+(\lex{the bushes from}) instead of prepositions?
+\answer{\par
+\bigskip
+\emp{Split the Head-Complement Rule into a head-first and a head-last version:}
 
 \avm{[\type*{phrase}  val & [ comps & <  > ] ]
-              \ $\rightarrow$\ \HD \ 
+              \ $\rightarrow$\ \HD \
              [\type*{word}  head & \val{verb $|$ adj $|$ noun} \\
              val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}}
 
 \avm{[\type*{phrase}  val & [ comps & <  > ] ]
-              \ $\rightarrow$\ \ \ \1, \ldots, \tag{n}\ \ \HD \ 
-             [\type*{word} head & \val{preposition} \\
+              \ $\rightarrow$\ \ \ \1, \ldots, \tag{n}\ \ \HD \
+             [\type*{word} head & \val{prep} \\
              val & [ comps & < \1, \ldots, \tag{n} > ] ]}
 
-
-
+\emp{The lexical entries stay the same: only word order is in the rules.}}
+}
 
 \myslide{Specifiers}
 
-In English, nouns can agree with their specifiers.
+In English, nouns place constraints on their specifiers.
 \begin{itemize}
 \item In Number:
   \begin{exe}
@@ -231,7 +270,7 @@ In English, nouns can agree with their specifiers.
 \end{exe}
 \end{itemize}
 
-\myslide{Head-Specifier Rule (Version I)}
+\qaslide{Head-Specifier Rule (Version I)}{
 
 \avm{[\type*{phrase}\\
     val & [ comps & < >\\
@@ -243,9 +282,13 @@ In English, nouns can agree with their specifiers.
 \item Combines the rules expanding S and NP.
 \item In principle also generalizes to other categories.
 \item Question: Why is SPR list-valued?
+  \answer{\\ \emp{For consistency with COMPS: an empty list always means
+    ``satisfied'' (\txx{saturated}).  It is a design choice, not a
+    deep fact about language.}}
 \end{itemize}
+}
 
-\myslide{Question:}
+\qaslide{Question: Why Right-Branching?}{
 
 
 Why are these right-branching? That is, what formal property of our
@@ -265,7 +308,15 @@ cat
 [{PP}]]]
 \end{forest}
 \end{center}
-
+\answer{
+\begin{enumerate}
+\item \emp{The head daughter of the Head-Complement Rule must be a
+    \val{word}}, so complements attach first, right next to the head
+\item \emp{The head daughter of the Head-Specifier Rule must be
+    \ft{comps} \avm{< >}}, so the specifier can only attach once
+  all the complements are found
+\end{enumerate}}
+}
 
 \myslide{Another Question \ldots}
 \begin{itemize}
@@ -290,6 +341,40 @@ requirements that haven’t yet been found.
 our grammar) is just a well-formedness constraint
 on trees, without inherent directionality.
 
+\end{itemize}
+
+\myslide{The Valence Principle in Action}
+\avm{[\type*{phrase}  val & [ comps & <  > ] ]
+              \ $\rightarrow$\ \HD \
+             [\type*{word}
+             val & [ comps & < \1, \ldots, \tag{n} > ] ]\ \ \1, \ldots, \tag{n}}
+\begin{itemize}
+\item The Head-Complement Rule says nothing about \ft{spr}
+  \begin{itemize}
+  \item so the mother's \ft{spr} is the same as the head daughter's
+  \item \lex{devour} has \ft{spr} \avm{< NP >}, so
+    \lex{devour the pizza} does too
+  \end{itemize}
+\item It \emph{does} give \ft{comps} for both mother and head daughter
+  \begin{itemize}
+  \item so here they can differ:
+    this is what ``unless the rule says otherwise'' means
+  \end{itemize}
+\end{itemize}
+
+\myslide{Why Do We Want VAL on All Nodes?}
+\begin{itemize}
+\item Why not leave \ft{spr} out for prepositions, say?
+\item Then a preposition's \ft{spr} would be unspecified, which is
+  compatible with anything: it could go through the Head-Specifier
+  Rule and pick up a specifier
+\item We would license lots of trees we don't want
+\item There is \emp{no magic in syntax}:
+  \begin{itemize}
+  \item a rule doesn't fail to apply because we can see it is
+    irrelevant
+  \item we have to enforce the right behaviour with constraints
+  \end{itemize}
 \end{itemize}
 
 \myslide{So far, we have:}
@@ -325,7 +410,28 @@ lexical entries say they should combine with.
 \end{itemize}
 \item So we treat NP as the saturated category of type \val{noun}
 and S as the saturated category of type \val{verb}.
+\\ (\txx{saturated} = both \ft{spr} and \ft{comps} are empty)
 \end{itemize}
+
+\myslide{Abbreviations}
+NP, VP, S \ldots\ are now just short names for feature structures:
+
+\begin{center}\small
+  \begin{tabular}{lll}
+    & \multicolumn{1}{c}{\val{noun}} & \multicolumn{1}{c}{\val{verb}} \\[2mm]
+    needs a specifier &
+    NOM = \avm{[ head & \val{noun} \\ val & [ comps & < > \\ spr & < X > ] ]} &
+    VP = \avm{[ head & \val{verb} \\ val & [ comps & < > \\ spr & < X > ] ]} \\[14mm]
+    saturated &
+    NP = \avm{[ head & \val{noun} \\ val & [ comps & < > \\ spr & < > ] ]} &
+    S = \avm{[ head & \val{verb} \\ val & [ comps & < > \\ spr & < > ] ]} \\[14mm]
+    a single word &
+    N = \avm{[\type*{word} head & \val{noun} ]} &
+    V = \avm{[\type*{word} head & \val{verb} ]} \\
+  \end{tabular}
+\end{center}
+X is any feature structure.  None of these say \val{phrase}:
+\lex{walks} is a VP \emph{and} a V.
 
 \myslide{Any other reason to treat V as the head of S?}
 \begin{itemize}
@@ -356,7 +462,7 @@ complement. We don’t have access to the features of the other
 constituents of the complement.
 
 \begin{center}\small
-  \avm{S =  [ head & \textit{verb}\\
+  Recall: \avm{S =  [ head & \textit{verb}\\
     val & [ spr & <  > \\
     comps & < > ] ]}
 \end{center}
@@ -366,7 +472,7 @@ constituents of the complement.
 \myslide{Complements vs. Modifiers}
 \MyLogo{Arguments vs Adjuncts}
 \begin{itemize}
-\item Intuitive idea: Complements introduce
+\item Intuitive idea: \txx{Arguments} (specifiers and complements) introduce
 essential participants in the situation denoted;
 modifiers refine the description.
 \item Generally accepted distinction, but disputes
@@ -387,16 +493,18 @@ analyze questionable cases (usually PPs).
   \ix Pat relied on Chris    \ngv Pat did something on Chris
   \ix Pat put nuts in a cup  \ngv Pat did something in a cup
   \ix Pat slept until noon   \ent Pat did something until noon
-  \ix Pat ate lunch at Bytes \ent Pat did something at Bytes
+  \ix Pat ate lunch at the canteen \ent Pat did something at the canteen
   \end{exe}
 \end{itemize}
 
 \section{Agreement}
 
-\myslide{Agreement}
+\qaslide{Agreement}{
 \MyLogo{}
 \begin{itemize}
 \item Two kinds so far (namely?)
+  \answer{\\ \emp{subject--verb (\lex{the birds sing}) and
+    determiner--noun (\lex{these birds})}}
 \item Both initially handled via stipulation in the
 Head-Specifier Rule
 \item But if we want to use this rule for categories
@@ -404,19 +512,25 @@ that don’t have the AGR feature (such as PPs
 and APs, in English), we can’t build it into
 the rule.
 \end{itemize}
+}
 
-\myslide{The Specifier-Head Agreement Constraint (SHAC)}
-Verbs and nouns must be specified as:
+\qaslide{The Specifier-Head Agreement Constraint (SHAC)}{
+Verbs and common nouns must be specified as:
 \begin{center}
   \avm{[ head & [ agr & \1 ] \\
-    val & [ spr & < [ agr & \1 ] > ] ]}
+    val & [ spr & < [ head & [ agr & \1 ] ] > ] ]}
 \end{center}
 
 \begin{itemize}
 \item Why is this lexical?
+  \answer{\\ \emp{So the Head-Specifier Rule can stay general.  Prepositions
+    and adjectives also take specifiers (\lex{With [them on our team]
+      \ldots}), but they have no \ft{agr}, so agreement can't be
+    stated in the rule.}}
 \end{itemize}
+}
 
-\myslide{Type Hierarchy (new Agreement!)}
+\myslide{Chapter 4 Type Hierarchy}
 
 \begin{center}
   %%% scaled: the small-caps feature names make this wider than the
@@ -441,36 +555,109 @@ cat, for tree={font=\itshape, s sep=3mm}
 
 
 
-\myslide{An example}
-\scalebox{0.6}{
+%%% The dog walks, built up step by step.  \dogtree's five arguments
+%%% are the frame colours of the S, NP, D, N and V nodes (white =
+%%% invisible), so every page has the same layout.  #6 is the text on
+%%% the right.
+\newcommand{\nd}[2]{{\setlength{\fboxsep}{1pt}\fcolorbox{#1}{white}{#2}}}
+\newcommand{\dogtree}[6]{%
+\noindent\begin{minipage}[t]{0.69\textwidth}\vspace{0pt}
+\scalebox{0.5}{%
 \begin{forest}
 cat
-[{\avm{[\type*{phrase}\\
-       HEAD & \0\\ 
+[{\nd{#1}{\avm{[\type*{phrase}\\
+       HEAD & \5\\
        VAL & [ SPR & < >\\
-                COMPS & < > ]]}} [{\avm{\1}\avm{[\type*{phrase}\\
-		     HEAD & \4\\
-		     VAL & [ SPR & < >\\
-		              COMPS & < > ]]}} [{\avm{\2}\avm{[\type*{word}\\
-					HEAD & [\type*{det}\\
-						  AGR & \3\\
-						  COUNT & + ]\\
-					VAL & [ SPR & < >\\
-					         COMPS & < > ]]}} [{The}]]
-[{\avm{[\type*{word}\\
-				     HEAD & \4[\type*{noun}\\
-						  AGR & \3[\type*{3sing}\\
-							      PER & 3rd\\
-							      NUM & sg ] ]\\
-				     VAL & [ SPR & < {\2} >\\
-				              COMPS & < > ]]}} [{dog}]]]
-[{\avm{[\type*{word}\\
-		       HEAD & {\0}[\type*{verb}\\
-                                     AGR\ \ {\3}]\\
-		       VAL & [ SPR & < {\1} >\\
-		                COMPS & < > ]]}} [{walks}]]]
+                COMPS & < > ]]}}}
+  [{\nd{#2}{\avm{\1[\type*{phrase}\\
+         HEAD & \4\\
+         VAL & [ SPR & < >\\
+                  COMPS & < > ]]}}}
+    [{\nd{#3}{\avm{\2[\type*{word}\\
+           HEAD & [\type*{det}\\
+                    AGR & \3\\
+                    COUNT & + ]\\
+           VAL & [ SPR & < >\\
+                    COMPS & < > ]]}}} [{The}]]
+    [{\nd{#4}{\avm{[\type*{word}\\
+           HEAD & \4[\type*{noun}\\
+                    AGR & \3[\type*{3sing}\\
+                             PER & 3rd\\
+                             NUM & sg\\
+                             GEND & neut ] ]\\
+           VAL & [ SPR & < \2 >\\
+                    COMPS & < > ]]}}} [{dog}]]]
+  [{\nd{#5}{\avm{[\type*{word}\\
+         HEAD & \5[\type*{verb}\\
+                  AGR & \3]\\
+         VAL & [ SPR & < \1 >\\
+                  COMPS & < > ]]}}} [{walks}]]]
 \end{forest}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.29\textwidth}\vspace{0pt}\small
+#6
+\end{minipage}}
 
+\myslide{\textit{The dog walks}: The Big Picture}
+\begin{center}
+  \begin{forest}
+    cat
+    [{S} [{NP} [{D} [{The}]] [{N} [{dog}]]] [{V} [{walks}]]]
+  \end{forest}
+\end{center}
+\begin{itemize}
+\item Each label is an abbreviation for a feature structure
+\item There is \emp{no VP node}: \lex{walks} is a word with
+  \ft{comps} \avm{< >}, so it can be the head of the Head-Specifier
+  Rule directly
+\item Next: the same tree with all the features filled in
+\end{itemize}
+
+\myslide{\textit{The dog walks}: The Full Tree}
+\dogtree{white}{white}{white}{white}{white}{%
+  \textbf{What licenses each node?}}
+
+\myslide{\textit{The dog walks}: The Full Tree}
+\dogtree{white}{white}{red}{red}{red}{%
+  \textbf{What licenses each node?}
+  \begin{itemize}
+  \item The three words: their \emp{lexical entries},
+    plus the SHAC for \lex{dog} and \lex{walks}
+  \end{itemize}}
+
+\myslide{\textit{The dog walks}: The Full Tree}
+\dogtree{white}{red}{white}{white}{white}{%
+  \textbf{What licenses each node?}
+  \begin{itemize}
+  \item The three words: their lexical entries,
+    plus the SHAC for \lex{dog} and \lex{walks}
+  \item \lex{the dog}: the \emp{Head-Specifier Rule}, with
+    \lex{dog} as head; HFP and Valence Principle
+  \end{itemize}}
+
+\myslide{\textit{The dog walks}: The Full Tree}
+\dogtree{red}{white}{white}{white}{white}{%
+  \textbf{What licenses each node?}
+  \begin{itemize}
+  \item The three words: their lexical entries,
+    plus the SHAC for \lex{dog} and \lex{walks}
+  \item \lex{the dog}: the Head-Specifier Rule, with
+    \lex{dog} as head; HFP and Valence Principle
+  \item The S: the \emp{Head-Specifier Rule} again,
+    with the \emph{word} \lex{walks} as head
+  \end{itemize}}
+
+\myslide{\textit{The dog walks}: What Do the Tags Mean?}
+\dogtree{white}{white}{white}{white}{white}{%
+  \begin{itemize}
+  \item[\avm{\1}] \lex{the dog} is the specifier \lex{walks} is looking for
+  \item[\avm{\2}] \lex{the} is the specifier \lex{dog} is looking for
+  \item[\avm{\3}] one AGR value shared by all three words (the SHAC, twice)
+  \item[\avm{\4}] NP and \lex{dog} share HEAD (HFP)
+  \item[\avm{\5}] S and \lex{walks} share HEAD (HFP)
+  \end{itemize}
+  The phrases' empty COMPS lists come from the Valence Principle,
+  but we don't usually tag empty lists.}
 
 
 \myslide{The Count/Mass Distinction}
@@ -484,7 +671,7 @@ cookie, insult, fact})
 \end{itemize}
 \item But there are exceptions:
   \begin{itemize}
-  \item \lex{succotash} (mass) denotes a mix of corn \& lima beans, so
+  \item \lex{muesli} (mass) denotes a mix of oats, nuts \& fruit, so
 it’s not undifferentiated.
   \item \lex{furniture, footwear, cutlery, \ldots} are mass nouns, although
 they refer to individual artifacts
@@ -512,7 +699,66 @@ get \lex{lettuce} only as mass.
 \item So the SHAC plays no role in count/mass marking.
 \end{itemize}
 
-\myslide{Overview}
+\section{Building a Tree}
+
+\myslide{Algorithm for Building a Tree}
+\small
+\textbf{Create the words (leaf nodes)}
+\begin{enumerate}
+\item Copy all the information from each word's lexical entry
+\item Enforce the SHAC (on verbs and common nouns)
+\item Check the type hierarchy and add every appropriate feature
+  (leave the value blank if it is underspecified)
+\end{enumerate}
+\textbf{Create the phrases}
+\begin{enumerate}\setcounter{enumi}{3}
+\item Find a rule that fits; add everything it says
+\item Apply the principles (HFP, Valence Principle) to update features
+\item Repeat 4--5 until you reach the S node
+\item Check: every feature you left blank should now have a value
+\end{enumerate}
+
+\myslide{Build a Tree!}
+\MyLogo{Use the Chapter 4 type hierarchy, the HFP, the Valence Principle and the SHAC}
+\lex{The cat sleeps in the park.}
+
+\begin{footnotesize}
+  \noindent
+    \parbox[c]{0.48\textwidth}{\avm{< \textnormal{the}, \ [\type*{word}
+      head & [\type*{det} agr & \val{3sing} ] \\
+      val & [ spr & < > \\ comps & < > ]
+      ]>}}%
+    \parbox[c]{0.48\textwidth}{\avm{< \textnormal{sleeps}, \ [\type*{word}
+      head & [\type*{verb} agr & \val{3sing} ] \\
+      val & [ spr & < NP > \\ comps & < > ]
+      ]>}}\par\vspace{1mm}\noindent
+    \parbox[c]{0.48\textwidth}{\avm{< \textnormal{cat}, \ [\type*{word}
+      head & [\type*{noun} agr & [\type*{3sing} gend & \val{neut} ] ] \\
+      val & [ spr & < D[ count & + ] > \\ comps & < > ]
+      ]>}}%
+    \parbox[c]{0.48\textwidth}{\avm{< \textnormal{park}, \ [\type*{word}
+      head & [\type*{noun} agr & [\type*{3sing} gend & \val{neut} ] ] \\
+      val & [ spr & < D[ count & + ] > \\ comps & < > ]
+      ]>}}\par\vspace{1mm}\noindent
+    \parbox[c]{0.48\textwidth}{\avm{< \textnormal{in}, \ [\type*{word}
+      head & \val{prep} \\
+      val & [ spr & < > \\ comps & < NP > ]
+      ]>}}%
+    \parbox[c]{0.45\textwidth}{\small Head-Modifier Rule:\\[2mm]
+      \avm{[\type*{phrase}] \ $\rightarrow$\ \HD [ val & [ comps & < > ] ] \ \ PP}}
+\end{footnotesize}
+
+\qaslide{Build a Tree: One More Question}{
+One feature in the Chapter 4 type hierarchy isn't constrained by
+anything yet.  Which one?  What does that mean for our trees?
+\answer{\par
+\bigskip
+\emp{\ft{case} on nouns (\ft{aux} on verbs is the same so far).  No rule or lexical entry mentions it, so a
+  tree is licensed whatever value it has: nothing yet rules out
+  \bad{Him sleeps}.  Problems 4.5 and 4.6 fix this.}}
+}
+
+\myslide{Summary}
 \begin{itemize}
 \item List-valued valence features
   \begin{itemize}
@@ -523,6 +769,7 @@ get \lex{lettuce} only as mass.
 \item The heads of S and NP
 \item Complements and modifiers
 \item Agreement: the SHAC and count/mass
+\item Building a tree, step by step
 \item Problems 4.1, 4.5, 4.6
 \end{itemize}
 
@@ -566,7 +813,8 @@ they are used in (i).
 % %Cite positive and negative examples supporting the COMPS value you
 % %assign to this lexical item.
 
-\item[C.] Assume that motion verbs like {\it jump}, {\it move}, etc.\
+\item[C.] (Part B of the book's problem is not set.)
+Assume that motion verbs like {\it jump}, {\it move}, etc.\
 take an \index{optionality!optional PP complement}\index{prepositional phrase (PP)!complement!optional}optional PP complement:
 
 \begin{quote}

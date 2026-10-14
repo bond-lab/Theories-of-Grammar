@@ -168,5 +168,20 @@
 
 \newcommand{\A}{\noindent\textbf{A}: }
 \newcommand{\Q}{\noindent\textbf{Q}: }
+
+%%% Question and answer on two pages, written once:
+%%%   \qaslide{Title}{... question ... \answer{... answer ...}}
+%%% prints the slide twice, first without the \answer parts and then
+%%% with them, so the answer appears "on click".  The example counter
+%%% is reset so both pages show the same example numbers.
+\newif\ifshowanswer
+\newcommand{\answer}[1]{\ifshowanswer#1\fi}
+\newcounter{qaxnumi}
+\newcommand{\qaslide}[2]{%
+  \setcounter{qaxnumi}{\value{xnumi}}%
+  \showanswerfalse\myslide{#1}#2%
+  \setcounter{xnumi}{\value{qaxnumi}}%
+  \showanswertrue\myslide{#1}#2%
+  \showanswerfalse}
 %\newcommand{\C}{\noindent\textbf{C}: }
 
