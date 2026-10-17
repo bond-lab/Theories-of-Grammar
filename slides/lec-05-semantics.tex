@@ -11,13 +11,12 @@
 
 \myslide{Overview}
 \begin{itemize}
-\item Review of last week: head-complement and head-specifier rules,
-  the Valence Principle, the SHAC
 \item The linguist's stance
 \item Which aspects of meaning we model
 \item Semantic features and principles: building the semantics of phrases
 \item Modification and coordination
 \item Structural ambiguity
+\item Building a tree (updated)
 \item Problems: two kinds of modifiers, number names
 \end{itemize}
 
@@ -43,7 +42,7 @@
 }
 \begin{itemize}
 \item The possible complements are specified lexically \\
-\begin{small}\begin{tabular}{ll}
+\begin{small}\begin{tabular}{@{}ll}
     \avm{< \textnormal{devour}, \ [\type*{word}
       head & \type{verb} \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
@@ -99,13 +98,13 @@ $\rightarrow$\ \ \ \ {\2}\ \ \ \ \HD[ %\type{phrase}\\
     daughter.
   \end{quote}
 \item \txx{The Specifier-Head Agreement Constraint (SHAC)}
-\\ Verbs and nouns must be specified as:
+\\ Verbs and common nouns must be specified as:
 \begin{center}
   \avm{[ head & [ agr & \1 ] \\
-    val & [ spr & < [ agr & \1 ] > ] ]
+    val & [ spr & < [ head & [ agr & \1 ] ] > ] ]
 }
 \end{center}
-In fact, this is inherited from a lexical supertype
+In plain English: a verb or noun agrees with its specifier
 \end{itemize}
 
 \myslide{Overview}
@@ -115,6 +114,7 @@ In fact, this is inherited from a lexical supertype
 \item Semantic features and principles: building the semantics of phrases
 \item Modification and coordination
 \item Structural ambiguity
+\item Building a tree (updated)
 \item Problems: two kinds of modifiers, number names
 \end{itemize}
 
@@ -144,9 +144,9 @@ linguistic fact within the model.
 \end{quote}
 \end{itemize}
 
-\myslide{The Linguist's Stance:}
+\myslide{The Linguist's Stance: A Vista on Possible Sentences}
 
-A Vista on the Set of Possible English Sentences
+We look at the set of possible English sentences
 \begin{itemize}
 \item \ldots  as a background against which linguistic
   elements (words, phrases) have a distribution
@@ -154,23 +154,29 @@ A Vista on the Set of Possible English Sentences
   “behave” in certain ways
 \end{itemize}
 
+\emp{In plain English: we learn what a word is by looking at where it
+  can and can't appear.}
+
 
 \section{Our Slice of Meaning}
 
-\myslide{Semantics: Where's the Beef?}
+\qaslide{Semantics: Where's the Beef?}{
 
 So far, our grammar has no semantic representations. We
 have, however, been relying on semantic intuitions in our
 argumentation, and discussing semantic contrasts where
 they line up (or don't) with syntactic ones.
 
+\medskip
+Examples?
+\answer{
 \begin{itemize}
-
-\item structural ambiguity
-\item S/NP parallelism
-\item count/mass distinction
-\item complements vs. modifiers
-\end{itemize}
+\item \emp{structural ambiguity}
+\item \emp{S/NP parallelism}
+\item \emp{count/mass distinction}
+\item \emp{complements vs.\ modifiers}
+\end{itemize}}
+}
 
 \myslide{Our Slice of a World of Meanings}
 
@@ -197,13 +203,15 @@ Aspects of meaning we \emp{won't} account for (in this course)
  \end{itemize}
 
  \end{itemize}
+\emp{We use the word itself as the name of its meaning: we don't try
+  to define what \eng{life} is.}
 
 
 % RELN life
 % INST i
 
 \myslide{Our Slice of a World of Meanings}
-\avm{[mode &  prop \\
+\noindent\avm{[mode &  prop \\
  index &  $s$\\
  restr & < [ RELN & {\bf save}\\
                SIT & $s$\\
@@ -220,10 +228,10 @@ Aspects of meaning we \emp{won't} account for (in this course)
   “\ldots the linguistic meaning of \eng{Chris saved Pat} is a proposition
   that will be true just in case there is an actual situation that
   involves the saving of someone named Pat by someone named Chris.”
-  \begin{flushright}
-    \citep[p.~140]{sag:wasow:bender:2003}
-  \end{flushright}
+  \hfill \citep[p.~140]{sag:wasow:bender:2003}
 \end{quote}
+\emp{Read it as: there is a situation $s$ that is a saving; the saver
+  $i$ is named Chris; the saved $j$ is named Pat.}
 
 \myslide{Our Slice of a World of Meanings}
 
@@ -250,9 +258,13 @@ hold (in some possible world) for the expression to be applicable.
 \item Constraints as (generalized) truth conditions
   \begin{itemize}
 \item \txx{proposition}: what must be the case for a proposition to be true
+  \hfill (\eng{Kim slept.})
 \item \txx{directive}: what must happen for a directive to be fulfilled
+  \hfill (\eng{Sleep!})
 \item \txx{question}: the kind of situation the asker is asking about
+  \hfill (\eng{Did Kim sleep?})
 \item \txx{reference}: the kind of entity the speaker is referring to
+  \hfill (\eng{the cat})
 \end{itemize}
 \item \txx{Syntax/semantics interface}: 
   \begin{quote}
@@ -271,35 +283,68 @@ syn & [\type*{syn-cat}
       val & [ spr & < ... > \\
                comps & < ... > ]]\\
       sem & [\type*{sem-cat}
-      mode &  \{ prop, ques, dir, ref, none \} \\
-      index &  \{ i, j, k, \ldots, s$_1$, s$_2$, \ldots \} \\
+      mode &  \{ \val{prop}, \val{ques}, \val{dir}, \val{ref}, \val{none} \} \\
+      index &  \{ $i, j, k, \ldots, s_1, s_2, \ldots$ \} \\
       restr & < ... > ]]
 }
 
 
 
-\myslide{How the Pieces Fit Together}
+\myslide{SEM in Plain English}
+\begin{tabular}{@{}lp{0.72\textwidth}}
+  \ft{mode} & What kind of meaning: \val{prop} (a statement),
+              \val{ques} (a question), \val{dir} (a command),
+              \val{ref} (something referred to), or \val{none} \\[2ex]
+  \ft{index} & A label for the thing or situation the expression is
+               about: $i, j, k, \ldots$ for individuals, $s$ for
+               situations \\[2ex]
+  \ft{restr} & A list of facts (\txx{predications}) that must be true
+               of it \\
+\end{tabular}
+
+\bigskip
+Each predication has a \ft{reln} (what kind of fact) and
+\txx{roles} that say who is involved, e.g.\
+\avm{[ reln & {\bf sleep} \\ sit & $s$ \\ sleeper & $i$ ]}: in
+situation $s$, $i$ sleeps
+
+%%% Frame a value: used to pick out the parts of a tree under discussion.
+\newcommand{\nd}[2]{{\setlength{\fboxsep}{1pt}\fcolorbox{#1}{white}{#2}}}
+
+\myslide{How the Pieces Fit Together: A Name}
 \avm{< \eng{Kim}, [syn & [head & [\type*{noun}\\
   agr & \type{3sing}]\\
   val & [spr & {< >}\\
   comps & {< >}]]\\
   sem & [mode & ref\\
-  index & \ \ $i$\\
+  index & \ \ \nd{red}{$i$}\\
   restr & < [reln & {\bf name}\\
-  % sit & \ \ $s$\\
   name & Kim\\
-  named & \ \ $i$] > ]] >  %
+  named & \ \ \nd{red}{$i$}] > ]] >
 }
-\myslide{How the Pieces Fit Together}
-\avm{< \eng{sleep} ,\ [syn & [head & \type{verb}\\
-                                     val & [spr & < NP$_i$ >\\
+
+\begin{itemize}
+\item \ft{index} $i$: the person this word is about
+\item \ft{named} $i$: that same person is called Kim
+\end{itemize}
+
+\myslide{How the Pieces Fit Together: A Verb}
+\avm{< \eng{slept} ,\ [syn & [head & \type{verb}\\
+                                     val & [spr & < NP$_{\nd{red}{$i$}}$ >\\
                                      comps & <  >]]\\
                             sem & [mode & prop\\
-                                    index & $s$\\
+                                    index & \nd{blue}{$s$}\\
                                     restr & < [reln & {\bf sleep}\\
-                                                 sit & \ \ $s$\\
-                                                 sleeper & \ \ $i$  ] >]] >
+                                                 sit & \ \ \nd{blue}{$s$}\\
+                                                 sleeper & \ \ \nd{red}{$i$}  ] >]] >
 }
+
+\begin{itemize}
+\item \ft{index} $s$: the sleeping situation
+\item NP$_i$ is short for an NP whose \ft{index} is $i$
+\item So whoever is the specifier (the subject) is the \ft{sleeper}
+\end{itemize}
+
 \myslide{The Pieces Together}
 
 \begin{forest}
@@ -313,82 +358,181 @@ cat
       sleeper & \ \ $i$  ] > ] ]}} [{\eng{slept}}]]]
 \end{forest}
 
-
-\myslide{Another View of the Same Tree}
-\scalebox{0.8}{\begin{forest}
-cat
-[{S  \avm{[ sem & [ mode & prop \\ index & $s$\\
-      restr & < [reln & {\bf name}\\
-      name & \ \ Kim  \\ named & \ \ $i$ ] ,
-      [reln & {\bf sleep}\\
-      sit & \ \ $s$\\
-      sleeper & \ \ $i$  ]  >  ] ]}} [{\avm{\1} NP  \avm{[ sem & [ mode & ref \\ index & $i$\\
-      restr & < [reln & {\bf name}\\
-      name & \ \ Kim \\ named & \ \ $i$ ] >  ] ]}} [{\eng{Kim}}]]
-[{\HD VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
-      sem & [  mode & prop \\ index & $s$ \\ 
-      restr & < [reln & {\bf sleep}\\
-      sit & \ \ $s$\\
-      sleeper & \ \ $i$  ] > ] ]}} [{\eng{slept}}]]]
-\end{forest}}
-
+\begin{itemize}
+\item The Head-Specifier Rule makes the NP the VP's specifier \avm{\1}
+\item So \lex{Kim}'s index $i$ is the \ft{sleeper}
+\end{itemize}
 
 \myslide{How to Share Semantic Information}
 
-We need the Semantics Principles
+We need two more principles
 \begin{itemize}
-\item \txx{The Semantic Inheritance Principle}
+\item \txx{The Semantic Inheritance Principle (SIP)}
   \begin{quote}
     In any headed phrase, the mother's \ft{mode} and
-    \ft{index} are identical to those of the head daughter.    
+    \ft{index} are identical to those of the head daughter.
   \end{quote}
-\item \txx{The Semantic Compositionality Principle}
+  \emp{A phrase is about what its head is about.}
+\item \txx{The Semantic Compositionality Principle (SCP)}
   \begin{quote}
     In any well-formed phrase structure, the mother's
     \ft{restr} value is the sum of the \ft{restr} values of
     the daughters.
   \end{quote}
+  \emp{A phrase means everything its parts mean.}
 \end{itemize}
 
-List summation: $\oplus$ (technically concatenation) 
-$\langle A \rangle \oplus \langle B \rangle \ne 
-\langle B \rangle \oplus \langle A \rangle$
+\myslide{List Sum}
 
-$\langle a_1, a_2, \ldots, a_n \rangle \oplus \langle b_1, b_2, \ldots, b_m \rangle = 
-\langle a_1, a_2, \ldots, a_n,  b_1, b_2, \ldots, b_m \rangle $
+The SCP adds lists together with $\oplus$ (technically, concatenation):
+just join the lists, in order
 
-$ \langle b_1, b_2, \ldots, b_m \rangle \oplus \langle a_1, a_2, \ldots, a_n \rangle = 
-\langle b_1, b_2, \ldots, b_m,   a_1, a_2, \ldots, a_n \rangle $
+\begin{center}
+  \avm{< a, b > } $\oplus$ \avm{< c > } $=$ \avm{< a, b, c >}
+\end{center}
 
-\myslide{What Identifies Indices?}
+Order matters:
+\begin{center}
+  \avm{< c > } $\oplus$ \avm{< a, b > } $=$ \avm{< c, a, b >}
+\end{center}
 
-\scalebox{1.0}{\begin{forest}
+In general:
+$\langle a_1, \ldots, a_n \rangle \oplus \langle b_1, \ldots, b_m \rangle =
+\langle a_1, \ldots, a_n,  b_1, \ldots, b_m \rangle $
+
+%%% Kim slept, with the S node filled in step by step.  #1, #2 and #3
+%%% are the S node's MODE, INDEX and RESTR values; #4 is the text below.
+\newcommand{\kimtree}[4]{%
+\begin{center}\scalebox{0.75}{\begin{forest}
 cat
-[{S} [{\avm{\1} NP$_i$} [{D} [{\eng{The}}]]
-[{Nom$_i$} [{\eng{cat}}]]]
-[{VP \avm{[ spr & < \1 > ]}} [{VP   \avm{[ spr & < \1 >  \\
+[{S  \avm{[ sem & [ mode & #1 \\ index & #2 \\ restr & #3 ] ]}}
+  [{\avm{\1} NP  \avm{[ sem & [ mode & ref \\ index & $i$\\
+      restr & < [reln & {\bf name}\\
+      name & \ \ Kim \\ named & \ \ $i$ ] >  ] ]}} [{\eng{Kim}}]]
+  [{\HD VP  \avm{[ syn & [ val & [ spr & < \1 > ] ] \\
+      sem & [  mode & prop \\ index & $s$ \\
+      restr & < [reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  ] > ] ]}} [{\eng{slept}}]]]
+\end{forest}}\end{center}
+#4}
+
+\myslide{Filling in the S Node}
+\kimtree{\blank}{\blank}{\blank}{%
+  \lex{Kim} and \lex{slept} get their \ft{sem} from their lexical
+  entries.  S has no lexical entry: where do its \ft{mode}, \ft{index}
+  and \ft{restr} come from?}
+
+\myslide{Filling in the S Node: SIP}
+\kimtree{\nd{red}{prop}}{\nd{red}{$s$}}{\blank}{%
+  \emp{SIP}: VP is the head daughter, so S has the same \ft{mode} and
+  \ft{index} as the VP}
+
+%%% An AVM can't be nested inside another one's value, so typeset the
+%%% framed RESTR list first.
+\newsavebox{\scpbox}
+\sbox{\scpbox}{\nd{red}{\avm{< [reln & {\bf name}\\
+      name & \ \ Kim  \\ named & \ \ $i$ ] ,
+      [reln & {\bf sleep}\\
+      sit & \ \ $s$\\
+      sleeper & \ \ $i$  ]  >}}}
+
+\myslide{Filling in the S Node: SCP}
+\kimtree{prop}{$s$}{\usebox{\scpbox}}{%
+  \emp{SCP}: S's \ft{restr} is the NP's \ft{restr} $\oplus$ the VP's
+  \ft{restr}}
+
+%%% The cat slept on the mat, following the index i.  #1--#4 are the
+%%% frame colours of the links in the chain (white = invisible), so
+%%% every page has the same layout.  #5 is the text on the right.
+\newcommand{\cattree}[5]{%
+\noindent\begin{minipage}[t]{0.64\textwidth}\vspace{0pt}
+\scalebox{0.7}{\begin{forest}
+cat
+[{S} [{\avm{\1} \nd{#3}{NP$_i$}} [{D} [{\eng{the}}]]
+  [{\nd{#4}{Nom$_i$}} [{\eng{cat}}]]]
+[{VP \nd{#2}{\avm{[ spr & < \1 > ]}}}
+  [{VP \avm{[ spr & < \nd{#1}{\avm{\1}NP$_i$} > \\
           restr & < [reln & {\bf sleep}\\
           sit & \ \ $s$\\
-          sleeper & \ \ $i$  ] >  ]}} [{\eng{slept}}]]
-[{PP} [{\eng{on the mat}}, roof]]]]
+          sleeper & \ \ \nd{#1}{$i$}  ] >  ]}} [{\eng{slept}}]]
+  [{PP} [{\eng{on the mat}}, roof]]]]
 \end{forest}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\textwidth}\vspace{0pt}\small\raggedright
+\textbf{Why is \lex{cat}'s index the \ft{sleeper}?}
+#5
+\end{minipage}}
 
+\myslide{What Identifies Indices?}
+\cattree{white}{white}{white}{white}{}
 
+\myslide{What Identifies Indices?}
+\cattree{red}{white}{white}{white}{%
+  \begin{enumerate}
+  \item \emp{\lex{slept}'s lexical entry}: its specifier's index
+    is the \ft{sleeper}
+  \end{enumerate}}
 
+\myslide{What Identifies Indices?}
+\cattree{white}{red}{white}{white}{%
+  \begin{enumerate}
+  \item \lex{slept}'s lexical entry: its specifier's index
+    is the \ft{sleeper}
+  \item \emp{Valence Principle}: the Head-Modifier Rule doesn't
+    change \ft{spr}, so the upper VP has the same \ft{spr}
+    \avm{< \1 >}
+  \end{enumerate}}
+
+\myslide{What Identifies Indices?}
+\cattree{white}{white}{red}{white}{%
+  \begin{enumerate}
+  \item \lex{slept}'s lexical entry: its specifier's index
+    is the \ft{sleeper}
+  \item Valence Principle: the upper VP has the same \ft{spr}
+    \avm{< \1 >}
+  \item \emp{Head-Specifier Rule}: the NP is that specifier
+    \avm{\1}, so its index is $i$
+  \end{enumerate}}
+
+\myslide{What Identifies Indices?}
+\cattree{white}{white}{white}{red}{%
+  \begin{enumerate}
+  \item \lex{slept}'s lexical entry: its specifier's index
+    is the \ft{sleeper}
+  \item Valence Principle: the upper VP has the same \ft{spr}
+    \avm{< \1 >}
+  \item Head-Specifier Rule: the NP is that specifier
+    \avm{\1}, so its index is $i$
+  \item \emp{SIP}: the NP gets its \ft{index} from its head, the
+    Nom \lex{cat}
+  \end{enumerate}}
+
+\myslide{Answer: A Chain of Identities}
+\cattree{red}{red}{red}{red}{%
+
+  \medskip
+  A chain of identities makes the \ft{index} of \lex{cat} the
+  \ft{sleeper} in the \textbf{sleep} predication of \lex{slept}.
+
+  \medskip
+  \emp{The cat is the one who slept.}}
 
 \myslide{Summary: Words \ldots }
 \begin{itemize}
-\item contribute predications
+\item contribute predications \hfill (\textbf{sleep})
 \item ‘expose’ one index in those predications, for use by words or phrases
+  \hfill (\emp{\ft{index} $s$ = \ft{sit} $s$})
 \item relate syntactic arguments to semantic arguments
- \\ \scalebox{0.8}{\avm{< \eng{sleep} ,\ [syn & [head & \type{verb}\\
-                                     val & [spr & < NP$_i$ >\\
+  \hfill (\blu{NP$_i$ = \ft{sleeper} $i$})
+ \\ \scalebox{0.8}{\avm{< \eng{slept} ,\ [syn & [head & \type{verb}\\
+                                     val & [spr & < NP$_{\nd{blue}{$i$}}$ >\\
                                      comps & <  >]]\\
                             sem & [mode & prop\\
-                                    index & $s$\\
+                                    index & \nd{red}{$s$}\\
                                     restr & < [reln & {\bf sleep}\\
-                                                 sit & \ \ $s$\\
-                                                 sleeper & \ \ $i$  ] >]] >
+                                                 sit & \ \ \nd{red}{$s$}\\
+                                                 sleeper & \ \ \nd{blue}{$i$}  ] >]] >
 }}
 \end{itemize}
 
@@ -541,7 +685,7 @@ cat
 \end{itemize}
 
 \myslide{Combining Constraints and Coordination}
-\noindent\scalebox{0.72}{\begin{forest}
+\noindent\scalebox{0.68}{\begin{forest}
 cat
 [{S \avm{[ ind & $s_0$ \\
 restr & 
@@ -558,66 +702,109 @@ args & < $s_1, s_2$ > ],
 [{S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]]
 \end{forest}}
 
+\myslide{How to Read the Coordination Rule}
+\begin{itemize}
+\item The rule is \emp{not headed}, so the SIP doesn't apply: the rule
+  itself has to say what the mother's \ft{ind} is
+  \begin{itemize}
+  \item The SCP still applies: the mother's \ft{restr} is all the
+    daughters' \ft{restr}s added together
+  \end{itemize}
+\item \avm{\0}: the mother and all the conjuncts have the same
+  \ft{val} --- you can only coordinate things that need the same
+  things
+\item The mother's \ft{ind} $s_0$ is the conjunction's \ft{ind}
+\item The conjunction's predication links the conjuncts: its \ft{args}
+  are their indices $\langle s_1, \ldots, s_n \rangle$
+\end{itemize}
+
+\qaslide{Where Does Each Index Come From?}{
+In \eng{Joe jokes and Kim smiles}:
+\begin{itemize}
+\item $s_1$ and $s_2$? \answer{\emp{From \lex{jokes} and \lex{smiles},
+    passed up to each S by the SIP}}
+\item $s_0$? \answer{\emp{From the lexical entry for \lex{and}; the
+    Coordination Rule makes it the mother's \ft{ind}}}
+\item \ft{args} $\langle s_1, s_2 \rangle$? \answer{\emp{The
+    Coordination Rule: the indices of the two conjuncts}}
+\item The whole \ft{restr} list? \answer{\emp{The SCP: everything the
+    daughters' \ft{restr}s contain, in order}}
+\end{itemize}
+}
+
 \section{Structural Ambiguity}
 
-\myslide{Ambiguity}
-\noindent\scalebox{0.58}{\begin{forest}
-cat
-[{S \avm{[ ind & $s_0$ \\
-restr & 
+\myslide{Structural Ambiguity}
+\eng{Joe jokes and Kim smiles often} has two readings:
+\begin{itemize}
+\item[I] \lex{often} modifies the whole coordination \\
+  \emp{It is often the case that Joe jokes and Kim smiles}
+\item[II] \lex{often} modifies only \eng{Kim smiles} \\
+  \emp{Joe jokes, and Kim often smiles}
+\end{itemize}
+
+\bigskip
+Our grammar gives each reading its own tree, and the two trees
+build different \ft{restr} lists
+
+%%% The RESTR list of the top S of both trees; #1 is often's ARG.
+\newcommand{\jokerestr}[1]{%
+\noindent\scalebox{0.6}{\avm{[ ind & $s_0$ \\
+mode & prop \\
+restr &
 < [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
- [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
-\0 \ [reln & {\bf and}\\
-sit & \ \ $s_0$\\ 
-args & < $s_1, s_2$ > ], 
-[reln & {\bf name} \\ name & Kim \\ named & $k$], 
+ [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ],
+ [reln & {\bf and}\\
+sit & \ \ $s_0$\\
+args & < $s_1, s_2$ > ],
+[reln & {\bf name} \\ name & Kim \\ named & $k$],
 [reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
-[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_0$ ]  > ]}} [{\avm{\1} S \avm{[ ind & $s_0$ ]}} [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
-[{\avm{[ head & \type{conj} \\
-         ind & $s_0$\\
-        restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
-[{S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]]
-[{ADV \avm{[ mod < \1 > ]}} [{\eng{often}}, roof]]]
-\end{forest}}
+[reln & {\bf often} \\ sit & $s_3 $ \\ arg & \nd{red}{#1} ]  > ]}}}
 
-\myslide{Ambiguity}
-\noindent\scalebox{0.58}{\begin{forest}
+\myslide{Tree I: \textit{often} Modifies the Coordination}
+\begin{center}
+\scalebox{0.85}{\begin{forest}
 cat
-[{S \avm{[ ind & $s_0$ \\
-restr & 
-< [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
- [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
-\0 \ [reln & {\bf and}\\
-sit & \ \ $s_0$\\ 
-args & < $s_1, s_2$ > ], 
-[reln & {\bf name} \\ name & Kim \\ named & $k$], 
-[reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
-[reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_2$ ]  > ]}} [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
-[{\avm{[ head & \type{conj} \\
-         ind & $s_0$\\
-        restr & < \0 [reln & {\bf and} ] > ]}} [{\eng{and}}]]
-[{S \avm{[ ind & $s_2$ ]}} [{\avm{\1} S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]
-[{ADV \avm{[ mod < \1 > ]}} [{\eng{often}}, roof]]]]
+[{S \avm{[ ind & $s_0$ ]}}
+  [{\avm{\1} S \avm{[ ind & \nd{red}{$s_0$} ]}}
+    [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
+    [{\avm{[ head & \type{conj} \\ ind & $s_0$ ]}} [{\eng{and}}]]
+    [{S \avm{[ ind & $s_2$ ]}} [{\eng{Kim smiles}}, roof]]]
+  [{ADV \avm{[ mod & < \1 > ]}} [{\eng{often}}, roof]]]
 \end{forest}}
+\end{center}
+The top S:\\
+\jokerestr{$s_0$}
 
+\myslide{Tree II: \textit{often} Modifies \textit{Kim smiles}}
+\begin{center}
+\scalebox{0.85}{\begin{forest}
+cat
+[{S \avm{[ ind & $s_0$ ]}}
+  [{S \avm{[ ind & $s_1$ ]}} [{\eng{Joe jokes}}, roof]]
+  [{\avm{[ head & \type{conj} \\ ind & $s_0$ ]}} [{\eng{and}}]]
+  [{S \avm{[ ind & $s_2$ ]}}
+    [{\avm{\1} S \avm{[ ind & \nd{red}{$s_2$} ]}} [{\eng{Kim smiles}}, roof]]
+    [{ADV \avm{[ mod & < \1 > ]}} [{\eng{often}}, roof]]]]
+\end{forest}}
+\end{center}
+The top S:\\
+\jokerestr{$s_2$}
 
-
-\myslide{Question About Structural Ambiguity}
+\qaslide{Question About Structural Ambiguity}{
 Why isn’t this a possible semantic representation for
 the string \eng{Joe jokes and Kim smiles often}?
 
-\noindent\scalebox{0.6}{\avm{[ ind & $s_0$ \\
-  mode & prop \\
-  restr & 
-  < [reln & {\bf name} \\ name & Joe \\ named & $j$ ],
-  [reln & {\bf joke} \\ sit & $s_1 $ \\ joker & $j$ ], 
-  \0 \ [reln & {\bf and}\\
-  sit & \ \ $s_0$\\ 
-  args & < $s_1, s_2$ > ], 
-  [reln & {\bf name} \\ name & Kim \\ named & $k$], 
-  [reln & {\bf smile} \\ sit & $s_2 $ \\ smiler & $k$],
-  [reln & {\bf often} \\ sit & $s_3 $ \\ arg & $s_1$ ]  > ]
-}}
+\medskip
+\jokerestr{$s_1$}
+
+\answer{\par\medskip
+\emp{\lex{often}'s \ft{arg} is $s_1$, the index of \eng{Joe jokes}.
+  But \lex{often} can only modify a phrase it combines with, and the
+  only ones next to it are \eng{Kim smiles} ($s_2$) and the whole
+  coordination ($s_0$). No tree puts \lex{often} with \eng{Joe jokes}
+  alone.}}
+}
 
 \myslide{Some Standard Extensions}
 
@@ -635,40 +822,109 @@ the string \eng{Joe jokes and Kim smiles often}?
 \end{itemize}
 \end{itemize}
 
+\myslide{What About Scope?}
+\eng{Every dog chases a cat} has two readings:
+\begin{itemize}
+\item Each dog chases a cat, maybe a different cat for each dog
+\item There is one particular cat, and every dog chases it
+\end{itemize}
+The difference is which quantifier is ``on top'' (has \txx{wide scope})
+
+\begin{itemize}
+\item We won't deal with scope in this course
+\item Implemented HPSG grammars (with Minimal Recursion Semantics)
+  leave it \txx{underspecified}: one representation that covers both
+  readings
+\item Usually we don't need to decide which reading is meant
+\end{itemize}
+
+
+\section{Building a Tree (Updated)}
+
+%%% A type name with its features underneath.  The features are a
+%%% bracketed column: langsci-avm mismeasures a column of bare features.
+\newcommand{\tn}[2]{\begin{tabular}{@{}c@{}}#1\\
+  $\left[\mbox{\scshape\begin{tabular}{@{}l@{}}#2\end{tabular}}\right]$\end{tabular}}
+
+\myslide{Chapter 5 Type Hierarchy}
+\MyLogo{New in Chapter 5 in red}
+\begin{center}
+  \scalebox{0.68}{\begin{forest}
+cat, for tree={font=\itshape, s sep=3mm}
+[{feat-struc} [{\tn{expression}{\emp{syn, sem}}} [{word}]
+[{phrase}]]
+[{\tn{\emp{syn-cat}}{\emp{head} \\ \emp{val}}}]
+[{\tn{\emp{sem-cat}}{\emp{mode} \\ \emp{index} \\ \emp{restr}}}]
+[{\emp{predication}}]
+[{\tn{agr-cat}{per, num}} [{non-3sing} [{non-1sing} [{2sing}]
+[{pl}]]
+[{1sing}]]
+[{\tn{3sing}{gend}}]]
+[{\tn{val-cat}{spr \\ comps \\ \emp{mod}}}]
+[{pos} [{\tn{agr-pos}{agr}} [{\tn{noun}{case}}]
+[{\tn{verb}{aux}}]
+[{\tn{det}{count}}]]
+[{prep}]
+[{adj}]
+[{\emp{adv}}]
+[{conj}]]]
+\end{forest}}
+\end{center}
+
+\myslide{Algorithm for Building a Tree (Updated)}
+\small
+\textbf{Create the words (leaf nodes)}
+\begin{enumerate}
+\item Copy all the information from each word's lexical entry,
+  \emp{including its \ft{sem}}
+\item Enforce the SHAC (on verbs and common nouns)
+\item Check the type hierarchy and add every appropriate feature
+  (leave the value blank if it is underspecified)
+\end{enumerate}
+\textbf{Create the phrases}
+\begin{enumerate}\setcounter{enumi}{3}
+\item Find a rule that fits; add everything it says
+\item Apply the principles (HFP, Valence Principle, \emp{SIP, SCP}) to
+  update features
+\item Repeat 4--5 until you reach the S node
+\item Check: every feature you left blank should now have a value
+\end{enumerate}
+\normalsize
 
 \section{Problems}
 
-\myslide{Problem: Two Kinds of Modifiers in English}
+\myslide{Problem 5.1: Two Kinds of Modifiers in English}
 In English, modifiers of nouns can appear either
 before or after the noun, although any given modifier is usually
 restricted to one position or the other.
 
 \begin{itemize}
-\item[(i)] \textit{The red dog on the roof}
-\item[(ii)]  \bad{\it The on the roof dog}
-\item[(iii)]  \bad{\it The dog red}
+\item[(i)] \eng{The red dog on the roof}
+\item[(ii)]  \bad{The on the roof dog}
+\item[(iii)]  \bad{The dog red}
 \end{itemize}
 %
 Our current Head-Modifier Rule only licenses post-head modifiers
-(like {\it on the roof} in (i)).
+(like \eng{on the roof} in (i)).
 
-\newpage 
+\myslide{Problem 5.1: Two Kinds of Modifiers (cont.)}
 \begin{itemize}
 \item[A.] Write a second Head-Modifier Rule that licenses
 \index{pre head modifier@pre-head modifier}pre-head modifiers
-(e.g., {\it red} in (i)).
+(e.g., \eng{red} in (i)).
 \item[B.] Modify the Head-Modifier 1 and Head-Modifier 2 Rules so that
 they are sensitive to which kind of modifier is present and don't
 generate (ii) or (iii).  [\textsl{Hint: Use a feature
-{\rm [}POST-HEAD \{+,$-$\}{\rm ]} to distinguish {\it red} and {\it on the roof}.}]
-\item[C.] Is POST-HEAD a \index{HEAD}HEAD feature? Why or why not? 
-\item[D.] Give lexical entries for {\it red} and {\it on} that show
+{\rm [}POST-HEAD \{+,$-$\}{\rm ]} to distinguish \eng{red} and \eng{on the roof}.}]
+\item[C.] Is POST-HEAD a \index{HEAD}HEAD feature? Why or why not?
+\item[D.] Give lexical entries for \eng{red} and \eng{on} that show
 the value of POST-HEAD. (You may omit the SEM features in these entries.)
-\item[E.] Is (i) ambiguous according to your grammar (i.e.\ 
+\item[E.] Is (i) ambiguous according to your grammar (i.e.\
 the Chapter 5 grammar modified to include the two Head-Modifier Rules,
-instead of just one)? Explain your answer.  
+instead of just one)? Explain your answer.
 \end{itemize}
 
+\myslide{Problem 5.1: Two Kinds of Modifiers (cont.)}
 This problem assumed that we don't want to make the two Head-Modifier
 Rules sensitive to the part of speech of the modifier.  One reason for
 this is that modifiers of the same part of speech can occur before and
@@ -677,8 +933,8 @@ to one position or the other.
 
 \begin{itemize}
 \item[F.] Provide three examples of English NPs with
-\index{adjective}adjectives or APs after the noun. 
-\item[G.] Provide three examples of \index{adverb (ADV)}adverbs that can come before 
+\index{adjective}adjectives or APs after the noun.
+\item[G.] Provide three examples of \index{adverb (ADV)}adverbs that can come before
 the verbs they modify.
 \item[H.] Provide three examples of adverbs that can come after
 the verbs they modify.
@@ -686,28 +942,26 @@ the verbs they modify.
 \end{itemize}
 
 
-\myslide{Problem: Semantics of Number Names}
+\myslide{Problem 5.3: Semantics of Number Names}
 In  Chapter 3, we considered the
 syntax of English number names, and in particular how
 to find the head of a number name expression. Based on the
 results of that problem, the lexical entry for
-{\it hundred} in a number name like {\it two hundred five}
-should include the constraints in (i): (Here we are assuming
-a new subtype of {\it pos}, {\it number}, which is appropriate
+\eng{hundred} in a number name like \eng{two hundred five}
+should include the constraints in (i). (Here we are assuming
+a new subtype of \val{pos}, \val{number}, which is appropriate
 for number name words.)
 \index{pos@{\it pos}}
 \index{number@{\it number}}
 
 \begin{itemize}
-\item[(i)] \scalebox{0.8}{\avm{< hundred , [ SYN [ HEAD & \type{number}\\
+\item[(i)] \scalebox{0.85}{\avm{< \textnormal{\eng{hundred}} , [ SYN [ HEAD & \type{number}\\
                        VAL & [ SPR & < [ HEAD & \type{number} ] >\\
                                 COMPS & < [ HEAD & \type{number} ] > ]]] >
 }}
-%\index{SPR}
-%\index{COMPS}
 \end{itemize}
 
-\noindent
+\myslide{Problem 5.3: Semantics of Number Names (cont.)}
 This lexical entry interacts with our ordinary Head-Complement
 and Head-Specifier Rules to give us the phrase structure shown in
 (ii):
@@ -715,102 +969,100 @@ and Head-Specifier Rules to give us the phrase structure shown in
 \begin{itemize}
 \item[(ii)] \scalebox{0.8}{\begin{forest}
 cat, for tree={l sep=3mm}
-[{NumP} [{NumP} [{two}]]
-[{Num$'$} [{Num} [{hundred}]]
-[{NumP} [{five}]]]]
+[{NumP} [{NumP} [{\eng{two}}]]
+[{Num$'$} [{Num} [{\eng{hundred}}]]
+[{NumP} [{\eng{five}}]]]]
 \end{forest}}
 \end{itemize}
 
+\myslide{Problem 5.3: Semantics of Number Names (cont.)}
 Smith (1999) provides a compositional semantics
 of number names. The semantics of this NP should be (iii):
 
 \begin{itemize}
 \item[(iii)]
-\scalebox{0.5}{\avm{[ INDEX & $i$\\
+\scalebox{0.55}{\avm{[ INDEX & $i$\\
    MODE & ref\\
-   RESTR & {\Huge$\langle$}\  [{RELN \ {\bf constant}}\\
-		 INST & \ \ \ $l$\\
-		 VALUE &  \ \ \ 2]\ ,
-              [{RELN \ {\bf times}}\\
-		 RESULT & \ \ $k$\\
-		 FACTOR1 & \ \ $l$\\
-                 FACTOR2 & \ \ $m$ ]\ , 
-	     [{RELN \ {\bf constant}}\\
-		 INST & \ \ \ $m$\\
-		 VALUE & \ \ 100 ]\ , \hspace{10pt}[ RELN & {\bf plus}\\
- 		 RESULT & \  \ $i$\\
-	         TERM1 & \ \ $j$\\
-		 TERM2 & \ \ $k$ ]\ , 
-              [{RELN \ {\bf constant}}\\
-		 INST & \ \ \ $j$\\
-                 VALUE & \ \ \ 5 ]\ {\Huge$\rangle$} ]
+   RESTR & < [ RELN & {\bf constant}\\
+		 INST & $l$\\
+		 VALUE & 2],
+              [ RELN & {\bf times}\\
+		 RESULT & $k$\\
+		 FACTOR1 & $l$\\
+                 FACTOR2 & $m$ ],
+	     [ RELN & {\bf constant}\\
+		 INST & $m$\\
+		 VALUE & 100 ],
+              [ RELN & {\bf plus}\\
+ 		 RESULT & $i$\\
+	         TERM1 & $j$\\
+		 TERM2 & $k$ ],
+              [ RELN & {\bf constant}\\
+		 INST & $j$\\
+                 VALUE & 5 ] > ]
 }}
 \end{itemize}
 
 \noindent
-This  expresses ``(two times one hundred) plus five'' (i.e.\ 
+This  expresses ``(two times one hundred) plus five'' (i.e.\
 205) as a FS.
 
-\begin{itemize} 
-
-\item[A.] Assume that the two constant 
-% relations 
-predications
+\myslide{Problem 5.3: Semantics of Number Names (cont.)}
+\begin{itemize}
+\item[A.] Assume that the two constant predications
 with the values 2 and
-5 are contributed by the lexical entries for {\it two} and {\it five}.
+5 are contributed by the lexical entries for \eng{two} and \eng{five}.
 What predications must be on the \index{RESTR}RESTR list of the lexical entry for
-{\it hundred} in order to build (iii) as the SEM value of {\it two
+\eng{hundred} in order to build (iii) as the SEM value of \eng{two
 hundred five}?
-\item[B.] The lexical entry for {\it hundred} will identify the
+\item[B.] The lexical entry for \eng{hundred} will identify the
 indices of its specifier and complement with the value of some feature
 of a predication on its RESTR list.  Which feature of which predication
 is the \index{index}index of the specifier identified with?  What about the index
 of the complement?
-\item[C.] The lexical entry for {\it hundred} will identify its
+\item[C.] The lexical entry for \eng{hundred} will identify its
 own INDEX with the value of some feature of some predication on
 its RESTR list.  Which feature of which predication must this
-be, in order for the grammar 
-to build (iii) as the SEM value of {\it two hundred five}?
+be, in order for the grammar
+to build (iii) as the SEM value of \eng{two hundred five}?
+\end{itemize}
 
-\newpage
-
-\item[D.] Based on your answers in parts (A)--(C), 
-give a lexical entry for {\it hundred} that includes
-the constraints in (i) and a fully specified SEM value.  
-[{\sl Note: Your lexical entry need only account for {\it hundred}
-as it is used in {\it two hundred five}. Don't worry about other
-valence possibilities, such as 
-{\it two hundred}, {\it two hundred and five}, or {\it a hundred}.}]
+\myslide{Problem 5.3: Semantics of Number Names (cont.)}
+\begin{itemize}
+\item[D.] Based on your answers in parts (A)--(C),
+give a lexical entry for \eng{hundred} that includes
+the constraints in (i) and a fully specified SEM value.
+[{\sl Note: Your lexical entry need only account for \eng{hundred}
+as it is used in \eng{two hundred five}. Don't worry about other
+valence possibilities, such as
+\eng{two hundred}, \eng{two hundred and five}, or \eng{a hundred}.}]
 \item[E.] The syntax and semantics of number names do
-not line up neatly: In the syntax, {\it hundred} forms a constituent
-with {\it five}, and {\it two} combines with {\it hundred five} to
+not line up neatly: In the syntax, \eng{hundred} forms a constituent
+with \eng{five}, and \eng{two} combines with \eng{hundred five} to
 give a larger constituent.  In the semantics, the constant
-% relations 
 predications
-with the values 2 and 100 are related via the times 
-% relation
+with the values 2 and 100 are related via the times
 predication.
-The result of that is related to the constant 
-% relation 
+The result of that is related to the constant
 predication
 with the value
-5, via the plus 
-predication
-% relation.  
+5, via the plus
+predication.
 Why is this mismatch not a problem for the grammar?
 \end{itemize}
 
-
-
-
-\myslide{Overview}
+\myslide{Summary}
 \begin{itemize}
-\item The linguist's stance
-\item Which aspects of meaning we model
-\item Semantic features and principles: building the semantics of phrases
-\item Modification and coordination
-\item Structural ambiguity
-\item Problems: two kinds of modifiers, number names
+\item We model how the meanings of the parts add up
+  (\txx{compositionality}), not pragmatics or fine word meanings
+\item \ft{sem}: \ft{mode} (what kind of meaning), \ft{index} (what it
+  is about) and \ft{restr} (the facts that must hold)
+\item Words link their syntactic arguments to semantic roles
+  (NP$_i$ = \ft{sleeper} $i$)
+\item SIP: a phrase is about what its head is about \\
+  SCP: a phrase means everything its parts mean
+\item Coordination has no head, so its rule states the semantics
+\item Structurally ambiguous strings get different \ft{restr} lists
 \end{itemize}
 
 \myslide{Acknowledgments and References}
