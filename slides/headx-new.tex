@@ -9,7 +9,7 @@
 \newcommand{\logo}{~}
 \newcommand{\header}[3]{%
 \title{\vspace*{-2ex} \large JMORF/MORS --- Morpho-Syntax
-\\[2ex] \Large  \emp{#2} \\ \emp{#3}}
+\\[2ex] \Large  \red{#2} \\ \red{#3}}
 \author{\blu{Francis Bond}   \\ 
 \normalsize  \textbf{Palacký University}\\
 \normalsize  \url{https://fcbond.github.io/}\\
@@ -42,9 +42,10 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \newcommand{\blu}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\grn}[1]{\textcolor{green}{#1}}
 \newcommand{\hide}[1]{\textcolor{white}{#1}}
-\newcommand{\emp}[1]{\textcolor{red}{#1}}
+\newcommand{\emp}[1]{\textcolor{blue}{#1}}
 \newcommand{\txx}[1]{\textbf{\textcolor{blue}{#1}}}
 \newcommand{\lex}[1]{\textbf{\mtcitestyle{#1}}}
 
@@ -82,11 +83,11 @@
 \newcommand{\ngv}{\ensuremath{\not\Rightarrow}\xspace}
 %\usepackage{times}
 %\usepackage{nttfoilhead}
-\newcommand{\myslide}[1]{\foilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}\MyLogo{\logo}}
-\newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\emp{#1}}}}
+\newcommand{\myslide}[1]{\foilhead[-25mm]{\raisebox{12mm}[0mm]{\red{#1}}}\MyLogo{\logo}}
+\newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\red{#1}}}}
 %\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
 
-\newcommand{\section}[1]{\myslide{}{\begin{center}\Huge \emp{#1}\end{center}}}
+\newcommand{\section}[1]{\myslide{}{\begin{center}\Huge \red{#1}\end{center}}}
 
 
 
