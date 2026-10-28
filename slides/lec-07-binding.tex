@@ -16,6 +16,7 @@
 \item Formalizing binding theory: \ft{arg-st}, the ARP and the Binding Principles
 \item Binding and PPs
 \item Imperatives
+\item Review exercise: semantic identity tables
 \item Problems: possessives, imperative `subjects'
 \end{itemize}
 
@@ -202,7 +203,7 @@ syn & [\type*{syn-cat}
 
 
 \myslide{An Example}
-\scalebox{0.8}{\begin{forest}
+\noindent\scalebox{0.7}{\begin{forest}
 cat
 [{S  \avm{[ sem & [ mode & prop \\ index & $s$\\
       restr & < [reln & {\bf name}\\
@@ -320,22 +321,29 @@ better coverage.
 \end{itemize}
 
 
-\myslide{How can we do this?}
-\begin{itemize}
+\qaslide{Mapping the Concepts to Our Formalism}{
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
 \item[Q]  What would be a natural way to formalize
 the notion of “bound” in our theory?
-\item[A] Two expressions are bound if
+\answer{\item[A] Two expressions are bound if
 they have the same \ft{index} value (“are
-coindexed”).
+\emp{coindexed}”).}
 \item[Q] Where in our theory do we have information
 about a verb’s arguments?
-\item[A] In the verb’s \ft{val} features.
+\answer{\item[A] In the verb’s \ft{val} features --- specifically
+  \ft{spr} (the subject) and \ft{comps} (the complements).}
 \item[Q] What determines the linear ordering of a
 verb’s arguments in a sentence?
-\item[A] The interaction of the grammar
+\answer{\item[A] The interaction of the grammar
 rules and the ordering of elements in the
-\ft{comps} list.
+\ft{comps} list:
+\begin{itemize}
+\item the Head-Specifier Rule puts the \ft{spr} \emp{before} the verb
+\item the Head-Complement Rule puts the \ft{comps} \emp{after} the
+  verb, \emp{in the order they are listed}
+\end{itemize}}
 \end{itemize}
+}
 
 \section{Formalizing Binding Theory}
 
@@ -343,45 +351,76 @@ rules and the ordering of elements in the
 \begin{itemize}
 \item For Binding Theory, we need a single list with both subject
 and complements.
-\item We introduce a feature \ft{arg-st}, with the following
-property: \\
+\item We introduce a feature \ft{arg-st} (\emp{argument structure}),
+  with the following property (to be revised later): \\
 \avm{[\type*{word}  
  syn & [ val & [ spr &  \tag{A} \\comps &  \tag{B} ] ] \\
  arg-st & \tag{A} $\oplus$ \tag{B} ]
 }
 
-\item This is a constraint on the type \val{word}
+\item In plain English: \emp{a word's \ft{arg-st} list is its \ft{spr}
+    list followed by its \ft{comps} list}
+  \begin{itemize}
+  \item \eng{sent}: \ft{spr} $\langle$NP$\rangle$, \ft{comps}
+    $\langle$NP, PP$\rangle$, so \ft{arg-st} $\langle$NP, NP, PP$\rangle$
+  \end{itemize}
+\item This is a constraint on the type \val{word}: every word has
+  an \ft{arg-st}, and it is always built this way
 \end{itemize}
 
 \myslide{Notes on ARG-ST}
 \begin{itemize}
-\item It’s neither in \ft{syn} nor \ft{sem}.
-\item It only appears on lexical heads (not
-appropriate for type \val{phrase})
+\item It’s neither in \ft{syn} nor \ft{sem}
+  \begin{itemize}
+  \item ``but rather serves to express certain relations at the
+    interface of syntax and semantics''
+    \citep[p.~207]{sag:wasow:bender:2003}
+  \end{itemize}
+\item It only appears on lexical items --- words (it is not
+  appropriate for type \val{phrase})
 \item No principle stipulates identity
-between \ft{arg-st}s.
+between \ft{arg-st}s: each word has its own, and nothing passes
+them up the tree
+\end{itemize}
+
+\myslide{Two Bits of Technical Machinery}
+\begin{itemize}
+\item Definition of \txx{outranks}: \\
+  If A precedes B on some \ft{arg-st} list,
+  then A \txx{outranks} B.
+  \begin{itemize}
+  \item So the subject outranks all the complements, and the first
+    complement outranks the second, \ldots
+  \end{itemize}
+\item Elements that must be \txx{anaphoric} --- that is, that
+require an antecedent --- are lexically marked
+[\ft{mode} \val{ana}]. 
+\begin{itemize}
+\item These include reflexive pronouns (\eng{myself, yourself,
+    themselves, \ldots}) and reciprocals (\eng{each other, one another}).
+\end{itemize}
+\item Normal \txx{referential} NPs, including non-reflexive pronouns
+  (\eng{I, me, them, \ldots}),  are marked [\ft{mode} \val{ref}].
 \end{itemize}
 
 \myslide{The Binding Principles}
 \begin{itemize}
 \item \txx{Principle A}: A [\ft{mode} \val{ana}] element must be
 outranked by a coindexed element.
+\begin{itemize}
+\item In plain English: \emp{a reflexive needs an antecedent with the
+    same index that comes earlier on an \ft{arg-st} list}
+\end{itemize}
 \item \txx{Principle B}: A [\ft{mode} \val{ref}] element must not
 be outranked by a coindexed element.
-\end{itemize}
-
-\begin{description}
-\item [Formalization] ~\\[-2ex]
 \begin{itemize}
-\item Definition: If A precedes B on some \ft{arg-st} list,
-then A \txx{outranks} B.
-\item Elements that must be \txx{anaphoric} --- that is, that
-require an antecedent --- are lexically marked
-[\ft{mode} \val{ana}]. These include reflexive pronouns
-and reciprocals.  
-\item Normal \txx{referential} NPs, including pronouns,  are marked [\ft{mode} \val{ref}].
+\item In plain English: \emp{an ordinary NP or pronoun must not have
+    an antecedent with the same index earlier on an \ft{arg-st} list}
 \end{itemize}
-\end{description}
+\item[Q] Compare these with version I: what has changed?
+\item[A] ``bound'' is now \emp{coindexed} and ``preceding argument of
+  the same verb'' is now \emp{outranks} --- both defined in our theory
+\end{itemize}
 
 \myslide{Pronoun-Antecedent Agreement}
 \begin{itemize}
@@ -399,27 +438,44 @@ Coindexed NPs agree.
 
 \section{Binding and PPs}
 
-\myslide{Binding in PPs}
+\qaslide{Binding in PPs}{
 \begin{itemize}
 \item What do the Binding Principles predict about the
-following?
+following (so far)?
   \begin{exe}
     \ix \eng{I brought a book with me.}
     \ix \bad{I brought a book with myself.}
     \ix \bad{I mailed a book to me.}
     \ix \eng{I mailed a book to myself.}
   \end{exe}
+\answer{\item[A] So far, the same thing for both pairs:
+  \begin{itemize}
+  \item the pronoun is only on the \ft{arg-st} of the preposition,
+    where nothing outranks it
+  \item so Principle A rules out \emp{both} reflexives, and Principle B
+    allows \emp{both} plain pronouns
+  \item That gets \eng{with} right and \eng{to} wrong: \emp{we need to tell
+    the two prepositions apart}
+  \end{itemize}}
 \end{itemize}
+}
 
 \myslide{Two Types of Prepositions: the Intuition}
 \begin{itemize}
 \item \txx{Argument-marking}: Function like case markers in other languages, indicating the
 roles of NP referents in the situation denoted by the verb.
+\begin{itemize}
+\item \eng{I mailed a book \ul{to} Kim}: \eng{to} just marks Kim as
+  the recipient of the mailing; Japanese \mtciteform{ni}, Czech dative
+\end{itemize}
 \item \txx{Predicative}: Introduce their own predication.
+\begin{itemize}
+\item \eng{I brought a book \ul{with} me}: \eng{with} adds its own
+  meaning --- a \textbf{with} relation between the book and me
+\end{itemize}
 \end{itemize}
 
-\begin{description}
-\item [Formalization] ~\\[-2ex]
+\myslide{Two Types of Prepositions: a Formalization}
   \begin{itemize}
   \item Argument-marking prepositions share their
     objects' \ft{mode} and \ft{index} values.
@@ -428,24 +484,34 @@ roles of NP referents in the situation denoted by the verb.
       entries of such prepositions.
     \item These features are also shared with the PP
       node, by the Semantic Inheritance Principle.
+    \item So the PP has the \emp{same index as the NP inside it}
     \end{itemize}
   \item Predicative prepositions introduce their own
 \ft{mode} and \ft{index} values.
+\begin{itemize}
+\item So the PP has an index of its own (a situation), \emp{different
+    from its object's}
 \end{itemize}
-\end{description}
+\end{itemize}
 
 \myslide{Argument-Marking Preposition \eng{to}}
-\avm{< \textit{to}, [ syn & [ head & prep \\
+\scalebox{0.9}{\avm{< \textit{to}, [ syn & [ head & prep \\
                      val &  [ spr & < > ] ] \\
                    arg-st & < NP [syn & [ head & [ case & acc ]  ]\\
                                   sem & [ mode & \1 \\ index & \2 ] ] >  \\
                    sem &  [ mode & \1 \\ index & \2 ] ]    >
-}
-
+}}
+\hfill
 \avm{\textsc{arg-st} = spr $\oplus$ comps
 }
 
 Therefore \ft{comps} here is a singleton list containing the NP, \ldots
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item \avm{\1} and \avm{\2}: \eng{to} has \emp{the same \ft{mode} and
+    \ft{index} as its object}; it has no predication of its own
+\item By the SIP, the PP \eng{to myself} then also has \eng{myself}'s
+  \ft{mode} and \ft{index}: it is PP$_i$[\ft{mode} \val{ana}]
+\end{itemize}
 
 \myslide{Redefining Rank}
  \begin{itemize}
@@ -455,6 +521,13 @@ precedes B, then A outranks B.
 are of equal rank --- that is, they outrank the
 same nodes and are outranked by the same
 nodes.
+\begin{itemize}
+\item In plain English: \emp{for ranking, a PP headed by an
+    argument-marking preposition counts as its object NP}
+\item The verb's \ft{arg-st} only sees the PP, but the PP and the
+  pronoun inside it share an index, so the pronoun inherits the PP's
+  rank
+\end{itemize}
 \end{itemize}
 
 \myslide{\eng{I sent a letter to myself}}
@@ -474,7 +547,7 @@ cat
 
 
 
-\myslide{The ARG-ST}
+\qaslide{The ARG-ST of \eng{sent} in This Tree}{
 \begin{center}
   \avm{[  arg-st & < 
 NP$_i$ [ mode & ref ],
@@ -485,11 +558,20 @@ PP$_i$ [ mode & ana ]
 \end{center}
 \begin{itemize}
 \item The PP is outranked by the first NP. (Why?)
+  \answer{\\ \emp{Both are on \eng{sent}'s \ft{arg-st}, and the NP
+      comes first}}
 \item \eng{myself} has the same rank as the PP. (Why?)
+  \answer{\\ \emp{\eng{to} is argument-marking, so the PP is coindexed
+      with its daughter \eng{myself} (both $i$)}}
 \item So, \eng{myself} is outranked by the first NP. (Why?)
+  \answer{\\ \emp{Equal rank means outranked by the same things as
+      the PP}}
 \item Therefore, Principle A is satisfied:  A [\ft{mode} \val{ana}] element must be
 outranked by a coindexed element.
+  \answer{\\ \emp{\eng{myself} is [\ft{mode} \val{ana}], and it is
+      outranked by NP$_i$ \eng{I}, which has the same index}}
 \end{itemize}
+}
 
 \myslide{\eng{*I sent a letter to me}}
 \begin{forest}
@@ -504,7 +586,7 @@ cat
 [{NP$_i$ \avm{[ mode & ref ]}} [{\eng{me}}]]]]]
 \end{forest}
 
-\myslide{The ARG-ST}
+\myslide{The ARG-ST of \eng{sent} in This Tree}
 \begin{center}
   \avm{[  arg-st & < 
 NP$_i$ [ mode & ref ],
@@ -514,46 +596,79 @@ PP$_i$ [ mode & ref ]
 }
 \end{center}
 \begin{itemize}
-\item The PP is outranked by the first NP.
-\item \eng{me} has the same rank as the PP.
+\item The PP is outranked by the first NP (same \ft{arg-st}, NP first)
+\item \eng{me} has the same rank as the PP (\eng{to} is
+  argument-marking, so they are coindexed)
 \item So, \eng{me} is outranked by the first NP.
 \item Therefore, Principle B is violated: A [\ft{mode} \val{ref}] element must not
 be outranked by a coindexed element.
+  \begin{itemize}
+  \item \eng{me} is [\ft{mode} \val{ref}], and NP$_i$ \eng{I}, with the
+    same index, outranks it
+  \end{itemize}
 \end{itemize} 
 
 \myslide{\eng{I brought a pencil with me}}
 \MyLogo{Here \eng{I} does not outrank \eng{me}, so Principle B is satisfied}
+\medskip
 
 \scalebox{0.8}{\begin{forest}
 cat
 [{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
 [{VP \avm{[ spr & < \1 > ]}} [{V \avm{[ spr & < \1 > \\
-             comps & < \2 > \\ 
-             arg-st & < \1, \2 > ]}} [{\eng{brought}}]]
+             comps & < \2, \3 > \\ 
+             arg-st & < \1, \2, \3 > ]}} [{\eng{brought}}]]
 [{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
 [{N$_j$} [{\eng{pencil}}]]]
 [{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \4 > \\ 
-                   mod & < \2 > \\
                    arg-st & < \4 > ]}} [{\eng{with}}]]
 [{\avm{\4} NP$_l$ \avm{[ mode & ref ]}} [{\eng{me}}]]]]]
 \end{forest}}
 
 \myslide{\eng{*I brought a pencil with myself}}
 \MyLogo{Here \eng{I} does not outrank \eng{myself}, so Principle A is violated}
+\medskip
 
 \scalebox{0.8}{\begin{forest}
 cat
 [{S} [{\avm{\1} NP$_i$} [{\eng{I}}]]
 [{VP \avm{[ spr & < \1 > ]}} [{V \avm{[ spr & < \1 > \\
-             comps & < \2 > \\ 
-             arg-st & < \1, \2 > ]}} [{\eng{brought}}]]
+             comps & < \2, \3 > \\ 
+             arg-st & < \1, \2, \3 > ]}} [{\eng{brought}}]]
 [{\avm{\2} NP$_j$} [{D} [{\eng{a}}]]
 [{N$_j$} [{\eng{pencil}}]]]
 [{\avm{\3} PP$_k$} [{P$_k$ \avm{[ comps & < \4 > \\ 
-                   mod & < \2 > \\
                    arg-st & < \4 > ]}} [{\eng{with}}]]
 [{\avm{\4} NP$_l$ \avm{[ mode & ana ]}} [{\eng{myself}}]]]]]
 \end{forest}}
+
+\qaslide{The ARG-STs of \eng{brought} and \eng{with}}{
+\MyLogo{}
+\begin{center}
+  \avm{[  arg-st & < 
+NP$_i$ [ mode & ref ],
+NP$_j$ [ mode & ref ],
+PP$_k$ 
+> ]}
+\hspace{3em}
+  \avm{[  arg-st & < 
+NP$_l$ [ mode & ref / ana ]
+> ]}
+\end{center}
+\begin{itemize}
+\item The PP is outranked by the first NP. (Why?)
+  \answer{\\ \emp{Both are on \eng{brought}'s \ft{arg-st}, and the NP comes
+      first}}
+\item But \eng{me}/\eng{myself} does \emp{not} have the same rank as
+  the PP.  (Why?)
+  \answer{\\ \emp{\eng{with} is predicative: PP$_k$ has its own index,
+      so it is not coindexed with its daughter NP$_l$}}
+\item \eng{me}/\eng{myself} is only on \eng{with}'s \ft{arg-st}, where
+  nothing precedes it: \emp{nothing outranks it}
+\item So Principle B is satisfied by \eng{me}, and Principle A is
+  violated by \eng{myself}
+\end{itemize}
+}
 
 \section{Imperatives}
 
@@ -600,32 +715,38 @@ cat
 \item[A] It would violate the HFP and the SIP.
 \end{itemize}
 
-\myslide{Imperative Example}
-\begin{multicols}{2}
-\scalebox{0.85}{\begin{forest}
+\qaslide{Imperative Example (Combining Constraints)}{
+\noindent\begin{minipage}[t]{0.5\textwidth}\vspace{0pt}
+\scalebox{0.8}{\begin{forest}
 cat
-[{S} [{VP \avm{[ spr & < \1 NP [ per & 2nd \\ num & sg ] > ]}} [{V \avm{[ spr & < \1 > ]}} [{\eng{vote}}]]
+[{S \avm{[ spr & < > ]}} [{VP \avm{[ spr & < \1 NP$_i$ [ per & 2nd \\ num & sg ] > ]}} [{V \avm{[ spr & < \1 > \\ comps & < \3 > \\ arg-st & < \1, \3 > ]}} [{\eng{vote}}]]
 [{\avm{\3} PP$_i$} [{P$_i$} [{\eng{for}}]]
 [{NP$_i$ \avm{[ mode & ana ]}} [{\eng{yourself}}]]]]]
 \end{forest}}
-%\newpage
-
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\vspace{0pt}
+\begin{small}
 \begin{itemize}
-\item What's the SPR value on S?
-%Why?
-\item What's the SPR value on VP?
-%Why?
-\item What's the SPR value on V?
-%Why?
-\item Which nodes have ARG-ST?
-\item Which ARG-ST matters for
+\item What's the \ft{spr} value on S?
+  \answer{\\ \emp{$\langle\ \rangle$: the Imperative Rule says so}}
+\item What's the \ft{spr} value on VP?
+  \answer{\\ \emp{$\langle$NP[2nd]$\rangle$: \eng{vote}'s \ft{spr},
+      passed up by the Valence Principle; the Imperative Rule
+      adds [\ft{per} \val{2nd}]}}
+\item What's the \ft{spr} value on V?
+  \answer{\\ \emp{The same \avm{\1}: from \eng{vote}'s lexical entry}}
+\item Which nodes have \ft{arg-st}?
+  \answer{\\ \emp{Only the words: \eng{vote}, \eng{for}, \eng{yourself}}}
+\item Which \ft{arg-st} matters for
 the licensing of \eng{yourself}?
+  \answer{\\ \emp{\eng{vote}'s: $\langle$NP$_i$, PP$_i$$\rangle$}}
 \end{itemize}
-%\newpage
+\end{small}
+\end{minipage}
+}
 
-\end{multicols}
-
-\myslide{\ft{arg-st} of \eng{vote}}
+\qaslide{\ft{arg-st} of \eng{vote}}{
+\MyLogo{}
 \begin{center}
   \avm{[  arg-st & < 
 NP$_i$ [ mode & ref \\ per & 2nd \\ num & sg ],
@@ -634,11 +755,20 @@ PP$_i$ [ mode & ana ]
 }
 \end{center}
 \begin{itemize}
-\item Is Principle A satisfied?
-\item How?
-\item Is Principle B satisfied?
-\item How?
+\item Is Principle A satisfied?  How?
+  \answer{\\ \emp{Yes: \eng{yourself} has the same rank as PP$_i$
+      (\eng{for} is argument-marking), and PP$_i$ is outranked by the
+      coindexed NP$_i$}}
+\item Is Principle B satisfied?  How?
+  \answer{\\ \emp{Yes: the only [\ft{mode} \val{ref}] element is the
+      NP, and nothing outranks it}}
+\item But NP$_i$ is never realised in the tree!  How can it be an
+  antecedent?
+  \answer{\\ \emp{Binding looks at \ft{arg-st}, not the tree: the
+      subject is on \eng{vote}'s \ft{arg-st} even if unrealised.
+      The AAP then makes \eng{yourself} 2nd person: \bad{Vote for myself!}}}
 \end{itemize}
+}
 
 \myslide{Day 1 Revisited}
 \begin{itemize}
@@ -680,6 +810,91 @@ be outranked by a coindexed element.
 
 
 \section{Problems}
+
+%%% Review exercise: semantic identity tables, after Emily Bender's
+%%% 2026 in-class activity.  The tree is the one from lec-05.
+\newcommand{\nd}[2]{{\setlength{\fboxsep}{1pt}\fcolorbox{#1}{white}{#2}}}
+\newcommand{\matsem}{%
+\scalebox{0.65}{\avm{[ mode & prop \\ index & $s_1$ \\
+ restr & < [reln & {\bf the} \\ bv & $i$ ],
+           [reln & {\bf cat} \\ inst & $i$ ],
+           [reln & {\bf sleep} \\ sit & $s_1$ \\ sleeper & $i$ ],
+           [reln & {\bf on} \\ sit & $s_2$ \\ located & $s_1$ \\ location & $j$ ],
+           [reln & {\bf the} \\ bv & $j$ ],
+           [reln & {\bf mat} \\ inst & $j$ ] > ]}}}
+\newcommand{\mattree}{%
+\scalebox{0.6}{\begin{forest}
+cat
+[{S} [{\avm{\1} NP$_i$} [{D$_i$} [{\eng{the}}]]
+  [{Nom$_i$ \avm{[ spr & < \1 > ]}} [{\eng{cat}}]]]
+[{VP \avm{[ spr & < \1 > ]}}
+  [{\avm{\5} VP$_{s_1}$ \avm{[ spr & < \1 > ]}} [{\eng{slept}}]]
+  [{PP$_{s_2}$ \avm{[ mod & < \5 > ]}} [{P$_{s_2}$ \avm{[ comps & < \6 > ]}} [{\eng{on}}]]
+    [{\avm{\6} NP$_j$} [{D$_j$} [{\eng{the}}]] [{Nom$_j$} [{\eng{mat}}]]]]]]
+\end{forest}}}
+
+\myslide{P0: Semantic Identity Tables (Review)}
+\MyLogo{After Emily Bender's 2026 in-class activity}
+The \ft{sem} of \eng{The cat slept on the mat} (the tree from last week):
+\begin{center}
+\matsem
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Every index that appears twice in \ft{restr} got there by
+  a \emp{chain of identities}: each link is required by a lexical
+  entry, a grammar rule, or a principle
+\item A \emp{semantic identity table} lists the links: what required
+  the identity, and which two things it identifies
+\item Let's trace \textbf{the}.\ft{bv} \& \textbf{cat}.\ft{inst} together
+\end{itemize}
+
+\qaslide{P0: \textbf{the}.\ft{bv} \& \textbf{cat}.\ft{inst}}{
+\MyLogo{}
+\begin{center}
+\mattree
+\end{center}
+\answer{\par
+\begin{footnotesize}
+\begin{tabular}{@{}lll@{}}
+\textbf{Grammar entity} & \textbf{First member} & \textbf{Second member} \\
+\hline
+lexical entry for \lex{cat} & \ft{inst} role of \textbf{cat} & \ft{index} of the word \lex{cat} ($i$) \\
+lexical entry for \lex{cat} & \ft{index} of \lex{cat} & \ft{index} of the sole element of its \ft{spr} \\
+Valence Principle & \lex{cat}'s \ft{spr} & Nom's \ft{spr} \avm{< \1 >} \\
+Head-Specifier Rule & sole element of Nom's \ft{spr} \avm{\1} & the D node \lex{the} (and so its \ft{index}) \\
+lexical entry for \lex{the} & \ft{index} of the word \lex{the} & \ft{bv} role of \textbf{the} \\
+\end{tabular}
+\end{footnotesize}}
+}
+
+\qaslide{P0: Three More Chains}{
+\MyLogo{}
+Now make a table for each of these pairs (links in order):
+\begin{small}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \textbf{mat}.\ft{inst} \& \textbf{on}.\ft{location}
+  \answer{\\ \emp{entry for \lex{mat}: \ft{inst} = its \ft{index} ($j$)
+      $\cdot$ SIP: Nom and NP get \lex{mat}'s \ft{index}
+      $\cdot$ Head-Complement Rule: that NP is \eng{on}'s \ft{comps}
+      element \avm{\6}
+      $\cdot$ entry for \lex{on}: its complement's \ft{index} is the
+      \ft{location}}}
+\item \textbf{sleep}.\ft{sit} \& \textbf{on}.\ft{located}
+  \answer{\\ \emp{entry for \lex{slept}: \ft{sit} = its \ft{index} ($s_1$)
+      $\cdot$ SIP: the lower VP gets \lex{slept}'s \ft{index}
+      $\cdot$ Head-Modifier Rule: that VP is \eng{on}'s \ft{mod}
+      element \avm{\5}
+      $\cdot$ entry for \lex{on}: its \ft{mod} element's \ft{index} is
+      the \ft{located}}}
+\item \textbf{cat}.\ft{inst} \& \textbf{sleep}.\ft{sleeper} \quad (last week's chain)
+  \answer{\\ \emp{entry for \lex{slept}: \ft{sleeper} = its \ft{spr}'s
+      \ft{index} $\cdot$ Valence Principle: upper VP has the same
+      \ft{spr} $\cdot$ Head-Specifier Rule: \avm{\1} is that \ft{spr}
+      $\cdot$ SIP: NP's \ft{index} is Nom's is \lex{cat}'s
+      $\cdot$ entry for \lex{cat}: \ft{index} = \ft{inst}}}
+\end{itemize}
+\end{small}
+}
 
 \myslide{P1: English Possessives I}
 \MyLogo{Based on \citet[Chapter 6, Problem 3]{sag:wasow:bender:2003}}
@@ -856,6 +1071,8 @@ explanation.
 \item Course design and slides borrow heavily from Emily Bender's course:
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
+\item The worked examples, the imperative questions and the review
+  exercise follow her Autumn 2026 slides (Binding \& Imperatives)
 \item This lecture complements \citet[Chapter 7]{sag:wasow:bender:2003}
 \end{itemize}
 
