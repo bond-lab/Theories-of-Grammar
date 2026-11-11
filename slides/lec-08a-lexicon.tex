@@ -1,0 +1,947 @@
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+
+\input{headx-new.tex}
+
+\begin{document}
+
+\header{Lecture 7}{The Structure of the Lexicon I}{Lexical Types}
+\maketitle
+
+
+
+\myslide{Overview}
+\begin{enumerate}
+\item \txx{Lexical Types}: why a lexical hierarchy, the seven lexical
+  terms, defaults, a tour of the lexeme hierarchy, the Case Constraint
+  \\ Activity: all the constraints on \lex{give}
+\item \txx{Lexical Rules: A First Look}: how lexical rules fit into the
+  grammar, the three kinds of rule, and two examples
+\end{enumerate}
+\bigskip
+Next week: lexical rules in detail, and the passive. \\
+No problem set this week: the mid-term is due instead.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Converted from Emily Bender's slides (ch08a-uw.pdf), with permission,
+%%% and updated to follow her 2026 deck (1026_lexicaltypes.pdf); the
+%%% %%% pN comments give the page in that deck.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lexical Types}
+
+%%% p4
+\myslide{Overview}
+\begin{itemize}
+\item Motivation for lexical hierarchy
+\item Lexical terminology
+\item Defaults: the `\,/\,' notation
+\item Tour of the lexeme hierarchy
+\item The Case Constraint
+\item \val{pos} vs.\ \val{lexeme}
+\item In-class activity: all the constraints on \lex{give}
+\end{itemize}
+
+%%% p6
+\qaslide{Motivation for the Lexical Hierarchy}{
+\begin{itemize}
+\item We've streamlined our grammar rules\ldots
+  \begin{itemize}
+  \item \ldots by stating some constraints as general principles
+  \item \ldots and locating lots of information in the lexicon.
+  \end{itemize}
+\item Our lexical entries currently stipulate a lot of
+  information that is common across many entries and
+  should be stated only once.  Examples?
+  \answer{%
+  \begin{itemize}
+  \item \emp{Every common noun: \avm{[ head & [\type*{noun} agr & [ per & 3rd ] ] ]},
+      \avm{[ spr & < DP > ]}, \avm{[ mode & ref ]}}
+  \item \emp{Every verb: \avm{[ head & \type{verb} ]}, \avm{[ mode & prop ]},
+      an NP subject first on \ft{arg-st}}
+  \item \emp{Every noun and verb: the SHAC}
+  \end{itemize}}
+\end{itemize}
+}
+
+\myslide{The Ideal Lexical Entry}
+\begin{itemize}
+\item Ideally, particular lexical entries need only give
+  phonological form, the semantic contribution,
+  and any constraints truly idiosyncratic to the
+  lexical entry.
+  \begin{itemize}
+  \item We don't get quite that far in this book, because of our
+    `cutesy' role names (\ft{lover}, \ft{giver}, \ldots): the entry
+    still has to say which argument plays which role
+  \item Implemented grammars such as the ERG use generic role labels
+    (\ft{arg1}, \ft{arg2}), so the mapping from arguments to roles can
+    live in the lexical type
+  \end{itemize}
+\end{itemize}
+
+%%% p7
+\myslide{Lexemes and Words (in a General Linguistic Sense)}
+\begin{itemize}
+\item \txx{Lexeme}: An abstract proto-word which gives rise
+  to genuine words. We refer to lexemes by their
+  `dictionary form', e.g.\ `the lexeme \eng{run}' or `the
+  lexeme \eng{dog}'.
+\item \txx{Word}: A particular pairing of form and meaning.
+  \eng{Running} and \eng{ran} are different words
+\end{itemize}
+
+%%% p8
+\qaslide{Lexical Entries, Lexical Types \& Lexical Rules}{
+\begin{itemize}
+\item \txx{Lexical entries} capture the similarities among \lex{run, runs,
+    running,} and \lex{ran}.
+\item The \txx{lexical type hierarchy} captures the similarities among
+  \lex{run, sleep,} and \lex{laugh}, among those and other verbs like
+  \lex{devour} and \lex{hand}, and among those and other words like
+  \lex{book}.
+  \begin{itemize}
+  \item[Q] What do \lex{devour} and \lex{book} have in common?
+  \answer{\item[A] \emp{The SHAC: each agrees with its specifier}}
+  \end{itemize}
+\item \txx{Lexical rules} capture the similarities among \lex{runs, sleeps,
+    devours, hands,}\ldots
+\end{itemize}
+}
+
+%%% The seven terms, with #1--#2 in bold and the rest in grey; all
+%%% plain when the range is 1--7.
+\makeatletter
+\newcommand{\lexterm}[4]{%
+  \ifnum#2=1 \ifnum#3=7 #4\else\lexterm@hl{#1}{#2}{#3}{#4}\fi
+  \else\lexterm@hl{#1}{#2}{#3}{#4}\fi}
+\newcommand{\lexterm@hl}[4]{%
+  \ifnum#1<#2 \textcolor{gray}{#4}\else
+  \ifnum#1>#3 \textcolor{gray}{#4}\else\textbf{#4}\fi\fi}
+\makeatother
+\newcommand{\lexterms}[2]{%
+\begin{itemize}
+\item \lexterm{1}{#1}{#2}{Lexeme}
+\item \lexterm{2}{#1}{#2}{Lexical entry}
+\item \lexterm{3}{#1}{#2}{Lexical sequence}
+\item \lexterm{4}{#1}{#2}{`Family of lexical sequences'}
+\item \lexterm{5}{#1}{#2}{Lexical rule}
+\item \lexterm{6}{#1}{#2}{Lexical rule instantiation}
+\item \lexterm{7}{#1}{#2}{Word structure}
+\end{itemize}}
+
+%%% p9
+\myslide{Lexical Terminology}
+The book uses seven related terms
+\lexterms{1}{7}
+
+%%% p10
+\myslide{Lexical Terminology}
+\lexterms{1}{4}
+
+%%% p11
+\myslide{\val{lexeme}}
+\begin{itemize}
+\item A \emp{type} in our grammar
+\item The root of the sub-hierarchy of all the lexeme types we use in
+  defining lexical entries
+\item So `a lexeme' loosely refers to the type \val{lexeme} or one of
+  its subtypes
+\item These types are generalizations about combinations of
+  constraints
+  \begin{itemize}
+  \item e.g.\ the lexeme type \val{pn-lxm} encodes the generalization
+    that proper nouns are (usually) singular
+  \item the lexeme type \val{stv-lxm} encodes the generalization that
+    a transitive verb takes two arguments
+  \end{itemize}
+\end{itemize}
+
+%%% p12
+\myslide{Lexical Entry}
+\begin{itemize}
+\item A piece of the grammar that we write in the lexicon
+  \begin{itemize}
+  \item e.g.\ `look, we have \lex{book}, it's of type \val{cntn-lxm},
+    and we have \lex{give}, it's of type \val{dtv-lxm}'
+  \end{itemize}
+\end{itemize}
+\begin{center}
+\scalebox{0.72}{%
+\begin{tabular}{@{}l@{\qquad}l@{}}
+\avm{< \textnormal{book} , [\type*{cntn-lxm}
+    sem & [ index & $i$ \\
+            restr & < [ reln & book \\ inst & $i$ ] > ] ] >}
+&
+\avm{< \textnormal{give} , [\type*{dtv-lxm}
+    sem & [ index & $s$ \\
+            restr & < [ reln & give \\ sit & $s$ \\
+                        giver & $i$ \\ recipient & $j$ \\ gift & $k$ ] > ] \\
+    arg-st & < X$_i$, Y$_j$, Z$_k$ > ] >}
+\end{tabular}}
+\end{center}
+
+%%% p13
+\myslide{Lexical Sequence}
+\begin{itemize}
+\item A \emp{fully resolved feature structure} that is a pair of some
+  orthographic or phonological string with some feature structure of
+  type \val{lexeme} or \val{word}
+\item There is a type \val{l-sequence} to encode this
+  \begin{itemize}
+  \item the \ft{input} and \ft{output} features of lexical rules have
+    values of type \val{l-sequence}
+  \end{itemize}
+\end{itemize}
+\begin{center}
+\begin{small}
+\begin{tabular}{|l|l|l|}\hline
+\textsc{type} & \textsc{features/constraints} & \textsc{ist} \\ \hline
+\val{list} & & \val{feat-struc} \\ \hline
+\val{list($\tau$)} & \avm{[ first & $\tau$ \\ rest & \type{list($\tau$)} ]}
+  & \val{list} \\ \hline
+\val{l-sequence} & \avm{[ first & \type{atom} \\
+                         rest & < \type{word} > $|$ < \type{lexeme} > ]}
+  & \val{list} \\ \hline
+\end{tabular}
+\end{small}
+\end{center}
+\emp{In plain English: an \val{l-sequence} is a two-element list,
+  a string followed by one \val{word} or \val{lexeme}.}
+
+%%% p14
+\qaslide{Lexical Sequences?}{
+\begin{center}
+\scalebox{0.62}{%
+\avm{< \textnormal{book} , [\type*{cntn-lxm}
+  syn & [ head & [\type*{noun}
+                  agr & \1 [\type*{3sing} per & 3rd \\ num & sg \\ gend & neut ] \\
+                  case & nom ] \\
+          val & [ spr & < [ agr & \1 ] > \\ comps & < > \\ mod & < > ] ] \\
+  sem & [ mode & ref \\ index & $i$ \\
+          restr & < [ reln & book \\ inst & $i$ ] > ] \\
+  arg-st & < DP$_i$[ count & + ] > ] >}
+\qquad
+\avm{< \textnormal{book} , [\type*{cntn-lxm}
+  syn & [ head & [\type*{noun}
+                  agr & \1 [\type*{plural} per & 3rd \\ num & pl ] \\
+                  case & acc ] \\
+          val & [ spr & < [ agr & \1 ] > \\ comps & < > \\ mod & < > ] ] \\
+  sem & [ mode & ref \\ index & $i$ \\
+          restr & < [ reln & book \\ inst & $i$ ] > ] \\
+  arg-st & < DP$_i$[ count & + ] > ] >}}
+\end{center}
+\begin{itemize}
+\item[Q] Technically, neither of these is a lexical sequence.  Why?
+\answer{\item[A] \emp{Lexical sequences must be \textbf{fully
+      resolved}, and these don't fully resolve the DP on the
+      \ft{arg-st} and \ft{spr} lists.}}
+\end{itemize}
+}
+
+%%% p15
+\myslide{`Family of Lexical Sequences'}
+\begin{itemize}
+\item A pairing of orthographic form with some \emp{underspecified}
+  feature structure of type \val{lexeme} or \val{word}, which can be
+  fully resolved to a number of different lexical sequences
+\item The book often refers to lexical entries, for example, as being
+  `families of lexical sequences', because they license infinitely
+  many fully resolved lexical sequences
+\item So the examples on the previous slide are technically all
+  families of lexical sequences, because the \ft{arg-st} and \ft{val}
+  constituents are not fully specified
+\end{itemize}
+
+%%% p16
+\myslide{Lexical Terminology}
+\lexterms{5}{7}
+
+%%% p17
+\myslide{Lexical Rule}
+\begin{itemize}
+\item A part of the grammar that we write that allows us to derive\ldots
+  \begin{itemize}
+  \item inflected forms of words, given lexical entries
+  \item or additional lexical sequences where the feature structure is
+    some subtype of \val{lexeme}
+    \begin{itemize}
+    \item \ldots which can unify with the \ft{input} feature of
+      additional lexical rules until we arrive at a lexical sequence
+      pairing a word-form with a feature structure of type \val{word}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\myslide{Lexical Rule: An Example}
+\begin{center}
+3rd-Singular Verb Lexical Rule
+
+\medskip
+\avm{[\type*{i-rule}
+  input & < \3 , [\type*{verb-lxm} sem & [ restr & \tag{A} ] ] > \\
+  output & < F$_{3SG}$(\3) ,
+            [ syn & [ head & [ form & fin \\ agr & \type{3sing} ] ] \\
+              sem & [ restr & \tag{A} $\oplus$ \ldots ] \\
+              arg-st & < [ case & nom ], \ldots > ] > ]}
+\end{center}
+\emp{In plain English: take a verb lexeme, add the 3rd singular
+  ending, and make it a finite word with a nominative subject that
+  agrees with it.}
+
+%%% p18
+\myslide{Lexical Rule Instantiation}
+\begin{itemize}
+\item A \emp{fully resolved} feature structure that corresponds to
+  one of those rules in the grammar
+\item That is, the rule with a particular lexical sequence as its
+  \ft{input} and the corresponding lexical sequence as its \ft{output}
+  \begin{itemize}
+  \item e.g.\ the 3rd-Singular Verb Lexical Rule with
+    $\langle$\textnormal{sleep}, \ldots$\rangle$ as \ft{input} and
+    $\langle$\textnormal{sleeps}, \ldots$\rangle$ as \ft{output}
+  \item one rule in the grammar; one instantiation per word it licenses
+  \end{itemize}
+\end{itemize}
+
+%%% p19
+\myslide{Word Structure}
+\begin{minipage}[c]{0.5\textwidth}
+\begin{itemize}
+\item The bottom part of the tree
+\item A fully resolved feature structure of type \val{word} over some
+  string which is the spelling or pronunciation of the word
+\item e.g.\ \eng{park} in \eng{the cat sleeps in the park}
+\end{itemize}
+\end{minipage}%
+\begin{minipage}[c]{0.45\textwidth}
+\begin{center}
+\scalebox{0.6}{%
+\ctree{[{\avm{[\type*{word}
+  syn & [ head & [\type*{noun}
+                  agr & \1 [\type*{3sing} per & 3rd \\ num & sg \\ gend & neut ] \\
+                  case & acc ] \\
+          val & [ spr & < \2 > \\ comps & < > \\ mod & < > ] ] \\
+  sem & [ mode & ref \\ index & $j$ \\
+          restr & < [ reln & park \\ inst & $j$ ] > ] \\
+  arg-st & < \2 > ]}}
+  [{\eng{park}}]]}}
+\end{center}
+\end{minipage}
+
+
+%%% p22--30 in Emily's deck: the full discussion of default
+%%% inheritance is in lec-08b.  Here just enough to read the hierarchy.
+\myslide{Defaults: the `\,/\,' Notation}
+\begin{itemize}
+\item Generalizations with exceptions are common:
+  \begin{itemize}
+  \item Most nouns in English aren't marked for \ft{case}, but
+    pronouns are.
+  \item Most proper nouns are singular, but some (\lex{the Alps},
+    sports teams) are plural.
+  \item Most verbs take an NP subject first on \ft{arg-st}, but a few
+    (Chapter 11) do not.
+  \end{itemize}
+\item A constraint written with a slash, e.g.\ \avm{[ num & / sg ]},
+  is a \txx{default}: it holds unless a subtype or a lexical entry
+  says otherwise.
+\item A constraint without a slash is \txx{inviolable}: a subtype
+  that contradicts it can have no instances.
+\item Defaults are all resolved in the lexicon: a \val{word} in a
+  tree never has a `\,/\,' in it.
+\item More on how defaults combine next week.
+\end{itemize}
+
+%%% The lexeme hierarchy is shown repeatedly, with an arrow pointing
+%%% at the type under discussion.  #1: comma-separated names of nodes
+%%% to colour red; #2: TikZ code drawn after the tree (the arrow).
+\makeatletter
+\newcommand{\lxhl}[2]{\ifcsname lexhl@#1\endcsname\textcolor{red}{#2}\else #2\fi}
+\newcommand{\lexhier}[2]{%
+\begingroup
+\@for\lx@n:=#1\do{\expandafter\def\csname lexhl@\lx@n\endcsname{}}%
+\begin{center}
+\scalebox{0.7}{\begin{forest}
+cat, for tree={font=\itshape, s sep=3mm}
+[{\lxhl{synsem}{synsem}\\\textnormal{\avm{[ \textsc{syn, sem} ]}}}, align=center, name=synsem, s sep=4mm
+  [{lexeme\\\textnormal{\avm{[ arg-st ]}}}, align=center, name=lexeme
+    [{\lxhl{infl}{infl-lxm}}, name=infl
+      [{\lxhl{verb}{verb-lxm}}, l*=3, name=verb
+        [{siv-lxm}, name=siv]
+        [{piv-lxm}, name=piv]
+        [{tv-lxm}, name=tv
+          [{stv-lxm}, name=stv]
+          [{dtv-lxm}, name=dtv]
+          [{ptv-lxm}, name=ptv]]]
+      [{\lxhl{cn}{cn-lxm}}, l*=3, name=cn
+        [{\lxhl{cntn}{cntn-lxm}}, name=cntn]
+        [{\lxhl{massn}{massn-lxm}}, name=massn]]]
+    [{const-lxm}, name=const
+      [{adj-lxm}, l*=2, name=adj]
+      [{conj-lxm}, l*=2, name=conj]
+      [{det-lxm}, l*=2, name=det]
+      [{predp-lxm}, l*=2, name=predp]
+      [{argmkp-lxm}, l*=2, name=argmkp]
+      [{\lxhl{pn}{pn-lxm}}, l*=1.4, name=pn]
+      [{\lxhl{pron}{pron-lxm}}, l*=1.4, name=pron]]]
+  [{expression}, name=expression, l*=0.8
+    [{word\\\textnormal{\avm{[ arg-st ]}}}, align=center, l*=0.6, name=word]
+    [{\lxhl{phrase}{phrase}}, l*=0.6, name=phrase]]]
+#2
+\end{forest}}
+\end{center}
+\endgroup}
+\makeatother
+%%% the orange arrow
+\tikzset{hlarrow/.style={overlay, ->, >=stealth, orange, line width=2mm}}
+
+%%% p31
+\myslide{Our Lexeme Hierarchy}
+\lexhier{}{}
+
+%%% p33
+\myslide{Functions of Types}
+\begin{itemize}
+\item Stating what features are appropriate for
+  what categories
+\item Stating generalizations
+  \begin{itemize}
+  \item Constraints that apply to (almost) all instances
+  \item Generalizations about selection --- where
+    instances of that type can appear
+  \end{itemize}
+\end{itemize}
+
+%%% p34
+\myslide{Every \val{synsem} has the Features SYN and SEM}
+\lexhier{synsem}{\draw[hlarrow] ([xshift=-25mm]synsem.west) -- ([xshift=-2mm]synsem.west);}
+
+%%% p35
+\myslide{No ARG-ST on \val{phrase}}
+\lexhier{phrase}{\draw[hlarrow] ([xshift=20mm,yshift=-12mm]phrase.south) -- ([yshift=-2mm]phrase.south);}
+\vspace*{-2ex}
+\emp{\ft{arg-st} is declared on \val{lexeme} and on \val{word}, so
+  only lexical items have it; a phrase never does.}
+
+%%% p36
+\myslide{A Constraint on \val{infl-lxm}: the SHAC}
+\lexhier{infl}{\draw[hlarrow] ([xshift=-25mm]infl.west) -- ([xshift=-2mm]infl.west);}
+
+%%% p37
+\myslide{A Constraint on \val{infl-lxm}: the SHAC}
+\vspace*{2em}
+\begin{center}
+\val{infl-lxm}: \avm{[ syn & [ val & [ spr & < [ agr & \1 ] > ] \\
+                               head & [ agr & \1 ] ] ]}
+\end{center}
+\bigskip
+\emp{In plain English: every inflecting lexeme (nouns and verbs)
+  has the same \ft{agr} value as its specifier.  Stated once here, it
+  is inherited by every noun and verb in the lexicon.}
+
+%%% p38
+\myslide{Constraints on \val{cn-lxm}}
+\lexhier{cn}{\draw[hlarrow] ([xshift=25mm]cn.east) -- ([xshift=2mm]cn.east);}
+
+%%% p39
+\myslide{Constraints on \val{cn-lxm}}
+\begin{center}
+\val{cn-lxm}: \avm{[ syn & [ head & [\type*{noun}
+                                     agr & [ per & 3rd ] ] \\
+                             val & [ spr & < [ head & \type{det} \\
+                                               index & \textit{i} ] > ] ] \\
+                     sem & [ mode & / ref \\
+                             index & \textit{i} ] \\
+                     arg-st & < X > $\oplus$ / < > ]}
+\end{center}
+\emp{In plain English: a common noun is 3rd person, takes a determiner
+  as its specifier, shares its index with that determiner, is
+  normally referential, and normally has no arguments beyond the
+  specifier.}
+
+%%% p40
+\myslide{Formally Distinguishing Count vs.\ Mass Nouns}
+\lexhier{cntn,massn}{%
+  \draw[hlarrow] ($(cntn.south)!0.5!(massn.south)+(11mm,-12mm)$) -- ([yshift=-2mm]cntn.south);
+  \draw[hlarrow] ($(cntn.south)!0.5!(massn.south)+(13mm,-12mm)$) -- ([yshift=-2mm]massn.south);}
+
+%%% p41
+\myslide{Formally Distinguishing Count vs.\ Mass Nouns}
+\vspace*{2em}
+\begin{center}
+\begin{tabular}{r@{\ }l}
+\val{cntn-lxm}: & \avm{[ syn & [ val & [ spr & < [ count & + ] > ] ] ]}\\[3ex]
+\val{massn-lxm}: & \avm{[ syn & [ val & [ spr & < [ count & $-$ ] > ] ] ]}
+\end{tabular}
+\end{center}
+\bigskip
+\emp{The only difference is which determiners they take
+  (\eng{a book}, \eng{much furniture})}
+
+%%% p42
+\myslide{Constraints on \val{verb-lxm}}
+\lexhier{verb}{\draw[hlarrow] ([xshift=-15mm,yshift=20mm]verb.north west) -- (verb.north west);}
+
+%%% p43
+\myslide{Constraints on \val{verb-lxm}}
+\vspace*{2em}
+\begin{center}
+\val{verb-lxm}: \avm{[ syn & [ head & \type{verb} ] \\
+                       sem & [ mode & prop ] \\
+                       arg-st & / < NP, \ldots > ]}
+\end{center}
+\bigskip
+\emp{In plain English: a verb lexeme has \ft{head} \val{verb}, expresses a proposition, and
+  by default its first argument (its subject) is an NP.  The default
+  lets a few verbs take other subjects (\eng{That Kim left surprised
+    me}).}
+
+%%% p44
+\myslide{Subtypes of \val{verb-lxm}}
+\begin{center}
+\scalebox{0.8}{\begin{forest}
+cat, for tree={font=\itshape, s sep=3mm, l sep=3mm}
+[{verb-lxm}
+  [{siv-lxm}]
+  [{piv-lxm}]
+  [{tv-lxm}
+    [{stv-lxm}]
+    [{dtv-lxm}]
+    [{ptv-lxm}]]]
+\end{forest}}
+\end{center}
+\vspace*{-1ex}
+\begin{itemize}
+\item \val{verb-lxm}: \avm{[ arg-st & / < NP, \ldots > ]}
+  \begin{itemize}
+  \item \val{siv-lxm}: \avm{[ arg-st & < NP > ]} \com{strict intransitive: \eng{sleep}}
+  \item \val{piv-lxm}: \avm{[ arg-st & < NP, PP > ]} \com{prepositional intransitive: \eng{rely}}
+  \item \val{tv-lxm}: \avm{[ arg-st & < NP, NP, \ldots > ]} \com{transitive}
+    \begin{itemize}
+    \item \val{stv-lxm}: \avm{[ arg-st & < NP, NP > ]} \com{strict transitive: \eng{devour}}
+    \item \val{dtv-lxm}: \avm{[ arg-st & < NP, NP, NP > ]} \com{ditransitive: \eng{hand}}
+    \item \val{ptv-lxm}: \avm{[ arg-st & < NP, NP, PP > ]} \com{prepositional transitive: \eng{put}}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+%%% p45
+\myslide{Proper Nouns and Pronouns}
+\lexhier{pn,pron}{%
+  \draw[hlarrow] ([xshift=4mm,yshift=-18mm]pn.south) -- ([yshift=-2mm]pn.south);
+  \draw[hlarrow] ([xshift=12mm,yshift=-18mm]pron.south) -- ([yshift=-2mm]pron.south);}
+
+%%% p46
+\myslide{Proper Nouns and Pronouns}
+\begin{center}
+\begin{tabular}{r@{\ }l}
+\val{pn-lxm}: &
+\avm{[ syn & [ head & [\type*{noun}
+                       agr & [ per & 3rd \\
+                               num & / sg ] ] ] \\
+       sem & [ mode & ref ] \\
+       arg-st & / < > ]}\\[4ex]
+\val{pron-lxm}: &
+\avm{[ syn & [ head & \type{noun} ] \\
+       sem & [ mode & / ref ] \\
+       arg-st & < > ]}
+\end{tabular}
+\end{center}
+\emp{In plain English: proper nouns are 3rd person, usually singular
+  (but \eng{the Alps}) and usually take no specifier (but \eng{the
+    Kim I know}).  Pronouns are nouns with no arguments, usually
+  referential (but \eng{itself} is \avm{[ mode & ana ]}).}
+
+%%% p47
+%%% a green tick (no amssymb \checkmark here)
+\newcommand{\tick}{\tikz\draw[green!60!black, line width=2pt] (0,0.4em) -- (0.3em,0) -- (0.8em,0.9em);}
+\qaslide{The Case Constraint}{
+An outranked NP is \avm{[ case & acc ]}.
+
+\medskip
+Which of these NPs does it make accusative?
+\begin{itemize}
+\item object of verb \hfill \answer{\tick}\hspace*{3.2em}
+\item second object of verb \hfill \answer{\tick}\hspace*{3.2em}
+\item object of argument-marking preposition \hfill \answer{\tick}\hspace*{3.2em}
+\item object of predicational preposition \hfill \answer{(\tick)}\hspace*{2.8em}
+\end{itemize}
+\answer{\par\medskip
+  \emp{Everything after the first element of an
+    \ft{arg-st} list is outranked.  The object of an argument-marking
+    preposition has the same rank as its PP, so it is outranked by the
+    verb's subject too; the object of a predicational preposition is
+    outranked within the preposition's own \ft{arg-st}.}}
+}
+
+%%% p49
+\qaslide{The Case Constraint, Continued}{
+An outranked NP is \avm{[ case & acc ]}.
+\begin{itemize}
+\item Subjects of verbs
+  \begin{itemize}
+  \item Should we add a clause to cover nominative subjects, e.g.\
+    un-outranked NPs are \avm{[ case & nom ]}?
+    \answer{%
+    \begin{itemize}
+    \item \emp{No.}  \eng{We expect them to leave.} (Chapter 12)
+      \\ \eng{them} is the \ft{spr} of \lex{leave} and a \ft{comps}
+      member of \lex{expect}, so this would conflict
+    \item Lexical rules for finite verbs will handle nominative subjects.
+    \end{itemize}}
+  \end{itemize}
+\item Any other instances of case marking in English?
+  \answer{\\ \emp{Possessives: \eng{my}, \eng{Kim's} (Chapter 6, Problem 4).}}
+\item Does it apply to case systems in other languages?
+  \answer{\\ \emp{No: the Case Constraint is an English-specific constraint.}}
+\end{itemize}
+}
+
+%%% p50
+\myslide{Apparent Redundancy of \val{pos} and \val{lexeme}}
+\begin{itemize}
+\item Why do we need both the \val{pos} subhierarchy
+  and lexeme types?
+\item \val{pos}:
+  \begin{itemize}
+  \item Applies to words and phrases; models the
+    relationship between them
+    \\ e.g.\ `verbs head VPs', `nouns head NPs'
+  \item Constrains which features are appropriate
+    (no \ft{aux} on \val{noun})
+  \end{itemize}
+\item \val{lexeme}:
+  \begin{itemize}
+  \item Generalizations about combinations of
+    constraints
+  \end{itemize}
+\end{itemize}
+
+%%% p51
+\myslide{Lexical Types \& Lexical Rules}
+\begin{itemize}
+\item Lexical entries capture the similarities among \lex{run, runs,
+    running,} and \lex{ran}.
+\item The lexical type hierarchy captures the similarities among
+  \lex{run, sleep,} and \lex{laugh}, among those and other verbs like
+  \lex{devour} and \lex{hand}, and among those and other words like
+  \lex{book}.
+  \begin{itemize}
+  \item What do \lex{devour} and \lex{book} have in common?  The SHAC
+  \end{itemize}
+\item Lexical rules capture the similarities among \lex{runs, sleeps,
+    devours, hands,}\ldots
+\end{itemize}
+
+%%% p53--54: in-class activity
+\qaslide{Activity: All the Constraints on \lex{give}}{
+Here is the lexical entry for \lex{give}.  Which types does it
+inherit from, and what does each one add?
+\begin{center}
+\scalebox{0.8}{\avm{< \textnormal{give} , [\type*{dtv-lxm}
+    sem & [ index & $s$ \\
+            restr & < [ reln & give \\ sit & $s$ \\
+                        giver & $i$ \\ recipient & $j$ \\ gift & $k$ ] > ] \\
+    arg-st & < X$_i$, Y$_j$, Z$_k$ > ] >}}
+\end{center}
+\answer{%
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item \emp{\val{dtv-lxm} $\subset$ \val{tv-lxm}: \avm{[ arg-st & < NP, NP, NP > ]}}
+\item \emp{\val{verb-lxm}: \avm{[ head & \type{verb} ]}, \avm{[ mode & prop ]},
+    \avm{[ arg-st & / < NP, \ldots > ]}}
+\item \emp{\val{infl-lxm}: the SHAC}
+\item \emp{\val{lexeme}, \val{synsem}: the features \ft{arg-st}, \ft{syn}
+    and \ft{sem} are appropriate}
+\end{itemize}}
+}
+
+\myslide{Step 1: \val{dtv-lxm} and \val{tv-lxm}}
+\begin{center}
+\avm{< \textnormal{give} , [\type*{dtv-lxm}
+    sem & [ index & $s$ \\
+            restr & < [ reln & give \\ sit & $s$ \\
+                        giver & $i$ \\ recipient & $j$ \\ gift & $k$ ] > ] \\
+    arg-st & < \emp{NP}$_i$, \emp{NP}$_j$, \emp{NP}$_k$ > ] >}
+\end{center}
+\emp{\val{dtv-lxm} says the three arguments are all NPs: the three
+  variables X, Y, Z are resolved to NP.}
+
+\myslide{Step 2: \val{verb-lxm}}
+\begin{center}
+\avm{< \textnormal{give} , [\type*{dtv-lxm}
+    syn & [ head & \emp{\type{verb}} ] \\
+    sem & [ mode & \emp{prop} \\
+            index & $s$ \\
+            restr & < [ reln & give \\ sit & $s$ \\
+                        giver & $i$ \\ recipient & $j$ \\ gift & $k$ ] > ] \\
+    arg-st & < NP$_i$, NP$_j$, NP$_k$ > ] >}
+\end{center}
+\emp{\val{verb-lxm} adds \avm{[ head & \type{verb} ]} and
+  \avm{[ mode & prop ]}.  Its default \avm{[ arg-st & / < NP, \ldots > ]}
+  is already satisfied, so it adds nothing new.}
+
+\myslide{Step 3: \val{infl-lxm} (the SHAC)}
+\begin{center}
+\avm{< \textnormal{give} , [\type*{dtv-lxm}
+    syn & [ head & [\type*{verb} agr & \emp{\avm{\1}} ] \\
+            val & [ spr & < [ agr & \emp{\avm{\1}} ] > ] ] \\
+    sem & [ mode & prop \\
+            index & $s$ \\
+            restr & < [ reln & give \\ sit & $s$ \\
+                        giver & $i$ \\ recipient & $j$ \\ gift & $k$ ] > ] \\
+    arg-st & < NP$_i$, NP$_j$, NP$_k$ > ] >}
+\end{center}
+\emp{The SHAC identifies the verb's \ft{agr} with its specifier's.
+  Nothing yet links \ft{spr} to \ft{arg-st}: the ARP is a constraint
+  on \val{word}, so it applies only after a lexical rule.}
+
+\myslide{Activity: All the Constraints on \lex{give}}
+\begin{center}
+\avm{< \textnormal{give} , [\type*{dtv-lxm}
+    syn & [ head & [\type*{verb} agr & \1 ] \\
+            val & [ spr & < [ agr & \1 ] > ] ] \\
+    sem & [ mode & prop \\
+            index & $s$ \\
+            restr & < [ reln & give \\ sit & $s$ \\
+                        giver & $i$ \\ recipient & $j$ \\ gift & $k$ ] > ] \\
+    arg-st & < NP$_i$, NP$_j$, NP$_k$ > ] >}
+\end{center}
+\emp{Compare the entry we started from: \ft{head}, \ft{val},
+  \ft{mode} and the NP types all came from the hierarchy.  The entry
+  itself only had to say the form, the meaning and the type.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Converted from Emily Bender's slides (ch08b-uw.pdf), with permission,
+%%% and updated to follow her 2026 deck (1028_lexicalrules.pdf); the
+%%% %%% pN comments give the page in that deck.  The detailed treatment
+%%% is in lec-08b-lexrules.tex.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lexical Rules: A First Look}
+
+\myslide{Overview}
+\begin{itemize}
+\item How lexical rules fit in: tree structures, lexical sequences,
+  lexical licensing
+\item Three kinds of lexical rule: inflectional, derivational,
+  post-inflectional
+\item Two examples: the Plural Noun LR and the Agent Nominalization LR
+\item Advice on writing lexical rules
+\end{itemize}
+
+%%% p11--13: the definitions from SWB Chapter 9, (37)--(39)
+\myslide{How Lexical Rules Fit In: Well-Formed Tree Structure}
+$\Phi$ is a well-formed tree structure according to grammar G
+if and only if:
+\begin{enumerate}
+\item $\Phi$ is a tree structure,
+\item the label of $\Phi$'s root node satisfies the constraint
+  \avm{[ syn & [ head & [\type*{verb} form & fin ] \\
+                 val & [ comps & < > \\ spr & < > ] ] ]} and
+\item each local subtree within $\Phi$ is either phrasally licensed
+  or lexically licensed.
+\end{enumerate}
+\emp{A sentence is a finite clause with nothing missing, where every
+  branching is licensed by a rule and every leaf by the lexicon.}
+
+\myslide{How Lexical Rules Fit In: Lexical Sequences}
+$\langle\omega, \phi\rangle$ is a lexical sequence if and only if
+$\omega$ is a phonological form (an atom), $\phi$ is a feature
+structure, and either:
+\begin{enumerate}
+\item G contains some lexical entry $\langle d_1, d_2\rangle$
+  such that $\omega$ satisfies $d_1$ and $\phi$ satisfies $d_2$, or
+\item there is some lexical rule instantiation licensed by G
+  (a feature structure of type \val{l-rule}) whose \ft{output}
+  value is $\langle\omega, \phi\rangle$.
+\end{enumerate}
+\emp{A form paired with a feature structure is a lexical sequence if
+  it comes straight from a lexical entry, or is the output of a
+  lexical rule.  The second clause is recursive: the rule's input
+  must itself be a lexical sequence, so rules can feed each other.}
+
+\myslide{How Lexical Rules Fit In: Lexical Licensing}
+\begin{minipage}[c]{0.7\textwidth}
+A word structure of the form on the right is licensed if and only if:
+\begin{enumerate}
+\item $\langle\omega, \phi\rangle$ is a lexical sequence, where
+  $\phi$ is of type \val{word},
+\item (Case Constraint:) an outranked NP is [\ft{case} acc], and
+\item $\phi$ satisfies the Binding Theory.
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[c]{0.25\textwidth}
+\begin{center}
+\ctree{[{$\phi$} [{$\omega$}]]}
+\end{center}
+\end{minipage}
+
+\medskip
+\emp{Only lexical sequences of type \val{word} can appear in trees.
+  Lexemes have to pass through at least one lexical rule to become
+  words: that is what the inflectional rules are for.}
+
+%%% p8
+\myslide{Parsimony \& Plausibility}
+\begin{itemize}
+\item Lexical rules capture \textbf{productive}
+  generalizations.
+  \begin{itemize}
+  \item When a new word enters the lexicon, it is assigned a lexical
+    type, and we expect every lexical rule that applies to that type
+    to apply to the new word too.
+  \end{itemize}
+\item There may be some `precompiling'
+  going on as well.
+  \begin{itemize}
+  \item Psycholinguistically, very frequent words may just be stored
+    ready-made rather than derived each time.
+  \end{itemize}
+\end{itemize}
+
+%%% p9
+\qaslide{Three Kinds of Lexical Rules (very English-specific!)}{
+\begin{itemize}
+\item \txx{Inflectional}: \val{lexeme} to \val{word}
+  (takes us `over the boundary' from lexeme to word)
+  \\[1ex] Examples?
+  \answer{\\ \emp{Singular Noun LR, Plural Noun LR,
+      3rd-Singular Verb LR, Non-3rd-Singular Verb LR, Past-Tense Verb
+      LR, Base Form LR, Constant Lexeme LR}}
+\item \txx{Derivational}: \val{lexeme} to \val{lexeme}
+  \\[1ex] Examples?
+  \answer{\\ \emp{Present Participle LR, Past Participle LR, Agent
+      Nominalization LR}}
+\item \txx{Post-Inflectional}: \val{word} to \val{word}
+  \\ (Chapters 11, 13, 14)
+\end{itemize}
+}
+
+%%% p14
+\myslide{Three Subtypes of \textit{l-rule}}
+\begin{center}
+\begin{small}
+  \begin{forest}
+    cat, for tree={font=\itshape, l sep=3mm}
+    [{l-rule} [{i-rule}] [{d-rule}] [{pi-rule}]]
+  \end{forest}
+
+  \medskip
+  \val{l-rule} :
+  \avm{[ input & \type{l-sequence} < X , [ sem & / \2 ] > \\
+         output & \type{l-sequence} < Y , [ sem & / \2 ] > ]}
+
+  \medskip
+  \val{i-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & \3 \\
+                         arg-st & \tag{A} ] > \\
+         output & < Y , [\type*{word}
+                          syn & \3 \\
+                          arg-st & \tag{A} ] > ]}
+  \qquad
+  \val{d-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & / \3 ] > \\
+         output & < Y , [\type*{lexeme}
+                          syn & / \3 ] > ]}
+\end{small}
+\end{center}
+\begin{small}
+\emp{\val{l-rule}: the output keeps the input's meaning, by default.
+  \val{i-rule}: the output is a \val{word} with the same \ft{syn} and
+  \ft{arg-st}, no exceptions.
+  \val{d-rule}: the output is another \val{lexeme} with the same
+  \ft{syn}, by default.}
+\end{small}
+
+%%% p15
+\myslide{Plural Noun LR}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{cntn-lxm} > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+                syn & [ head & [ agr & [ num & pl ] ] ] ] > ]}
+\end{center}
+\emp{Take any count noun lexeme \avm{\1}, add the plural ending to
+  its form, and make it a word whose number is plural.  That is all
+  the rule itself says; everything else comes from the types.}
+
+
+\myslide{A Derivational Rule: Agent Nominalization}
+\begin{center}
+  \avm{[\type*{d-rule}
+    input & < \2 , [\type*{verb-lxm} sem & [ index & $s$ ] \\
+                                    arg-st & < X$_i$ , NP$_j$ > ] > \\
+    output & < F$_{\textit{-er}}$(\2) ,
+              [\type*{cntn-lxm}
+                sem & [ index & $i$ ] \\
+                arg-st & < Y ( , PP$_j$[ form & of ] ) > ] > ]}
+\end{center}
+\emp{Add \textit{-er} to a strictly transitive verb lexeme.  The
+  result is a count noun lexeme whose index is the verb's subject
+  index $i$: a \lex{driver} is the one who drives.  The verb's object
+  $j$ can only appear as an \eng{of}-PP: \eng{a builder of bridges}.}
+
+%%% p36
+\myslide{Practicalities --- Writing Lexical Rules}
+\begin{itemize}
+\item Determine the type of the LR.
+\item Determine the class of possible inputs.
+\item Determine what should change.
+  \begin{small}
+  \begin{itemize}
+  \item If \ft{input} and \ft{output} values are identified (by default or otherwise) and
+    only \ft{output} value is mentioned, then\ldots
+    \\ \emp{information is added.}  e.g.\ Plural Noun LR
+    \\[1ex] (Lexical sequences incompatible with that value are not possible inputs)
+  \item If \ft{input} and \ft{output} values are identified by default, but different values
+    are given on the \ft{input} and \ft{output} of the rule, then\ldots
+    \\ \emp{information is changed.}  e.g.\ Agent Nominalization LR
+  \item If \ft{input} and \ft{output} values are identified by an inviolable constraint, but
+    different values are given on the \ft{input} and \ft{output} of the rule, then\ldots
+    \\ \emp{there is no well-formed input: the rule can never apply.}
+  \end{itemize}
+  \end{small}
+\end{itemize}
+
+
+\myslide{Summary}
+\begin{itemize}
+\item Lexical entries say only what is idiosyncratic; the
+  \txx{lexeme hierarchy} supplies the rest through inheritance
+\item A `\,/\,' marks a \txx{default} that a subtype may override
+\item \txx{Lexical rules} relate families of lexical sequences:
+  \val{i-rule}s make words from lexemes, \val{d-rule}s make new
+  lexemes, \val{pi-rule}s make words from words
+\item A rule states only what changes; the rule's type and the
+  input's type supply everything else
+\item Next week: how the inherited constraints fill in a lexical rule,
+  constant lexemes, \ft{arg-st} and \ft{form}, and the passive
+\end{itemize}
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\item The slides on lexical types and lexical rules are adapted from
+  Emily Bender's, with her permission; the feature structures follow
+  \citet{sag:wasow:bender:2003}, \copyright{} 2003 CSLI Publications
+\item This lecture complements \citet[Chapter 8]{sag:wasow:bender:2003}
+\end{itemize}
+
+
+%\input{lec-05-questions}
+
+\bibliographystyle{aclnat}
+\bibliography{abb,mtg,nlp,ling}
+\end{document}
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End: 

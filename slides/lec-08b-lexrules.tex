@@ -1,0 +1,693 @@
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+
+\input{headx-new.tex}
+
+\begin{document}
+
+\header{Lecture 8}{The Structure of the Lexicon II}{Lexical Rules}
+\maketitle
+
+
+
+\myslide{Overview}
+\begin{enumerate}
+\item \txx{Default Inheritance}: how `\,/\,' constraints combine
+\item \txx{Lexical Rules}: the Plural Noun LR with everything it
+  inherits, licensing \lex{cats}, constant lexemes, \ft{arg-st} and the
+  ARP, the feature \ft{form}
+  \\ Activity: the word structure for \lex{writers}
+\item \txx{Appendix}: the other lexical rules so far, for reference
+\end{enumerate}
+\bigskip
+Then: the passive (a lexical rule at work).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Converted from Emily Bender's slides (ch08a-uw.pdf, ch08b-uw.pdf),
+%%% with permission, and updated to follow her 2026 decks
+%%% (1026_lexicaltypes.pdf, 1028_lexicalrules.pdf); the %%% pN comments
+%%% give the page in those decks.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Default Inheritance}
+
+%%% p22
+\qaslide{Default Inheritance}{
+Why do we have default inheritance?
+\answer{%
+\begin{itemize}
+\item[A] \emp{Generalizations with exceptions are common:}
+  \begin{itemize}
+  \item Most nouns in English aren't marked for \ft{case}, but
+    pronouns are.
+  \item Most verbs in English only distinguish two agreement
+    categories (\val{3sing} and \val{non-3sing}), but \lex{be} distinguishes
+    more.
+  \item Most prepositions in English are transitive, but \lex{here} and
+    \lex{there} are intransitive.
+  \item Most nominal words in English are 3rd person, but some
+    (all of them pronouns) are 1st or 2nd person.
+  \item Most proper nouns in English are singular, but some
+    (mountain range names, sports team names) are plural.
+  \end{itemize}
+\end{itemize}
+\begin{small}
+  Note: defaults are not necessary, and currently implemented grammars
+  do not use default inheritance, though some work is looking into
+  adding it.
+\end{small}}
+}
+
+%%% p23--28
+\newcommand{\dftrow}[3]{%
+\raggedright #1 &
+\raggedright #2 &
+\raggedright #3\tabularnewline}
+\qaslide{Default Inheritance, Technicalities}{
+\vspace*{1em}
+\begin{tabular}{@{}p{0.28\textwidth}p{0.28\textwidth}p{0.32\textwidth}@{}}
+\dftrow{If a type says \avm{[ arg-st & / < NP > ]},}%
+       {and one of its subtypes says \avm{[ arg-st & < > ]},}%
+       {then the \ft{arg-st} value of instances of the subtype is
+         \avm{< >}.}
+\dftrow{\vspace*{3em}If a type says \avm{[ arg-st & < NP > ]},}%
+       {\vspace*{3em}and one of its subtypes says \avm{[ arg-st & < > ]},}%
+       {\vspace*{3em}\answer{then this subtype can have no instances,
+           since they would have to satisfy contradictory constraints.}}
+\end{tabular}
+\answer{\par\bigskip
+  \emp{In plain English: without the `\,/\,' the constraint is
+    inviolable.  Nothing can be both \avm{< NP >} and \avm{< >}, so
+    the subtype is empty.}}
+}
+
+%%% p29
+\qaslide{Default Inheritance, More Technicalities}{
+\begin{itemize}
+\item If a type says \avm{[ mod & / < S > ]}, and one of its subtypes says
+  \avm{[ mod & < [ spr & < NP > ] > ]}, then the \ft{mod} value of
+  instances of the subtype is what?
+\end{itemize}
+\answer{%
+\begin{center}
+  \avm{[ mod & < [ head & / \type{verb} \\
+                   spr & < NP > \\
+                   comps & / < > ] > ]}
+\end{center}
+\begin{itemize}
+\item That is, default constraints are `pushed down'
+\item \emp{S abbreviates
+    \avm{[ head & \type{verb} \\ spr & < > \\ comps & < > ]}, so the
+    subtype only overrides the part it mentions (\ft{spr}).  The rest
+    of the default survives, still as a default.}
+\end{itemize}}
+}
+
+%%% p30
+\qaslide{Question on Default Inheritance}{
+\begin{itemize}
+\item[Q] Can a grammar rule override a default
+  constraint on a word?
+\answer{\item[A] \emp{No. Defaults are all `cached out' in the
+  lexicon.}
+\item Words as used to build sentences have only
+  inviolable constraints.
+  \begin{itemize}
+  \item i.e.\ nodes of type \val{word} in your tree should never be
+    shown with a defeasible constraint (no `\,/\,' in a tree)
+  \end{itemize}}
+\end{itemize}
+}
+
+\section{Lexical Rules}
+
+%%% Grey box over a part of an AVM that is not yet revealed (her
+%%% build-up slides cover parts of the AVM with grey rectangles).
+\providecommand{\gry}[1]{{\setlength{\fboxsep}{0pt}\colorbox{lightgray}{\phantom{#1}}}}
+%%% Boxes holding hidden AVM parts that contain & (these cannot be
+%%% passed through \gry inside an \avm directly).
+\ifdefined\gryA\else\newsavebox{\gryA}\fi
+\ifdefined\gryB\else\newsavebox{\gryB}\fi
+\ifdefined\gryC\else\newsavebox{\gryC}\fi
+
+
+%%% p4
+\myslide{Overview}
+\begin{itemize}
+\item Recap: the three subtypes of \val{l-rule}
+\item The Plural Noun LR, and what it inherits
+\item Example: licensing \lex{cats}
+\item Advice on writing lexical rules
+\item Constant lexemes
+\item \ft{arg-st} \& ARP; the feature \ft{form}
+\item Activity: the word structure for \lex{writers}
+\end{itemize}
+
+%%% p14
+\myslide{Recap: Three Subtypes of \textit{l-rule}}
+\begin{center}
+\begin{small}
+  \begin{forest}
+    cat, for tree={font=\itshape, l sep=3mm}
+    [{l-rule} [{i-rule}] [{d-rule}] [{pi-rule}]]
+  \end{forest}
+
+  \medskip
+  \val{l-rule} :
+  \avm{[ input & \type{l-sequence} < X , [ sem & / \2 ] > \\
+         output & \type{l-sequence} < Y , [ sem & / \2 ] > ]}
+
+  \medskip
+  \val{i-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & \3 \\
+                         arg-st & \tag{A} ] > \\
+         output & < Y , [\type*{word}
+                          syn & \3 \\
+                          arg-st & \tag{A} ] > ]}
+  \qquad
+  \val{d-rule} :
+  \avm{[ input & < X , [\type*{lexeme}
+                         syn & / \3 ] > \\
+         output & < Y , [\type*{lexeme}
+                          syn & / \3 ] > ]}
+\end{small}
+\end{center}
+\begin{small}
+\emp{\val{l-rule}: the output keeps the input's meaning, by default.
+  \val{i-rule}: the output is a \val{word} with the same \ft{syn} and
+  \ft{arg-st}, no exceptions.
+  \val{d-rule}: the output is another \val{lexeme} with the same
+  \ft{syn}, by default.}
+\end{small}
+
+%%% p15
+\myslide{Plural Noun LR}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{cntn-lxm} > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+                syn & [ head & [ agr & [ num & pl ] ] ] ] > ]}
+\end{center}
+\emp{Take any count noun lexeme \avm{\1}, add the plural ending to
+  its form, and make it a word whose number is plural.  That is all
+  the rule itself says; everything else comes from the types.}
+
+%%% p25
+\myslide{Practicalities --- Applying Lexical Rules}
+\begin{itemize}
+\item \ft{input} is a family of lexical sequences.
+\item \ft{output} is another family of lexical sequences.
+  \begin{itemize}
+  \item \ldots usually a smaller family
+  \item \ldots usually a disjoint one
+  \end{itemize}
+\item The only differences between the families are those
+  stipulated in the rule (or the rule's type).
+\item Similarities are handled by the constraints on \val{l-rule}
+  and its subtypes.
+\item If we've written the LRs correctly, nothing is left
+  underconstrained.
+\end{itemize}
+
+%%% p26
+\myslide{Example: Lexical Entry for \textit{cat}}
+\begin{center}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    sem & [ index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] ] >}
+\end{center}
+\emp{The entry gives only the form, the type and the meaning.}
+
+%%% p27--30
+\myslide{Example: \textit{cat}, with Inheritance}
+\begin{center}
+\sbox{\gryA}{\avm{[\type*{noun} agr & \7 [ per & 3rd ] ]}}
+\sbox{\gryB}{\avm{< DP[ count & + \\ agr & \7 ] >}}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ \gry{head} & \gry{\usebox{\gryA}} \\
+            val & [ \gry{spr} & \gry{\usebox{\gryB}} ] ] \\
+    sem & [ \gry{mode} & \gry{ref} \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    \gry{arg-st} & \gry{\avm{< X >}} ] >}
+\end{center}
+\emp{The types fill in the rest.  Which type adds what?}
+
+\myslide{Example: \textit{cat}, with Inheritance --- \val{cntn-lxm}}
+\begin{center}
+\sbox{\gryA}{\avm{[\type*{noun} agr & \7 [ per & 3rd ] ]}}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ \gry{head} & \gry{\usebox{\gryA}} \\
+            val & [ spr & < \gry{DP}[ count & + \\ \gry{agr} & \gry{\avm{\7}} ] > ] ] \\
+    sem & [ \gry{mode} & \gry{ref} \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    \gry{arg-st} & \gry{\avm{< X >}} ] >}
+\end{center}
+\emp{\val{cntn-lxm}: the specifier is [\ft{count} +].}
+
+\myslide{Example: \textit{cat}, with Inheritance --- \val{cn-lxm}}
+\begin{center}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ head & [\type*{noun} agr & \gry{\avm{\7}} [ per & 3rd ] ] \\
+            val & [ spr & < DP[ count & + \\ \gry{agr} & \gry{\avm{\7}} ] > ] ] \\
+    sem & [ mode & ref \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    arg-st & < X > ] >}
+\end{center}
+\emp{\val{cn-lxm}: \val{noun}, [\ft{per} 3rd], a DP specifier,
+  [\ft{mode} ref] and one argument.  \txx{Defeasible constraints are
+    inviolable in lexical entries!}  The type says [\ft{mode} / ref];
+  nothing in the entry overrides it, so for \lex{cat} it is simply
+  [\ft{mode} ref].}
+
+\myslide{Example: \textit{cat}, with Inheritance --- \val{infl-lxm}}
+\begin{center}
+  \avm{< \textnormal{cat} , [\type*{cntn-lxm}
+    syn & [ head & [\type*{noun} agr & \7 [ per & 3rd ] ] \\
+            val & [ spr & < DP[ count & + \\ agr & \7 ] > ] ] \\
+    sem & [ mode & ref \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    arg-st & < X > ] >}
+\end{center}
+\emp{\val{infl-lxm}: the SHAC identifies the noun's \ft{agr} with
+  its specifier's, \avm{\7}.}
+
+%%% p31
+\myslide{Plural Noun LR}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{cntn-lxm} > \\
+    output & < F$_{NPL}$(\1) , [\type*{word}
+                syn & [ head & [ agr & [ num & pl ] ] ] ] > ]}
+\end{center}
+\emp{Now feed \lex{cat} to the rule.}
+
+%%% p32--34
+\myslide{Licensing \textit{cats}: the Plural Noun LR's Own Contributions}
+\begin{center}
+\scalebox{0.7}{%
+  \avm{[\type*{i-rule}
+    input & < \1\textnormal{cat} , [\type*{cntn-lxm}
+       syn & \3 [ head & [\type*{noun} agr & \7 [ per & 3rd ] ] \\
+                  val & [ spr & < DP[ count & + \\ agr & \7 ] > ] ] \\
+       sem & \2 [ mode & ref \\
+                  index & $k$ \\
+                  restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+       arg-st & \emp{\avm{\tag{B}}} < X > $\oplus$ \tag{C} < > ] > \\
+    output & < \emp{F$_{NPL}$(\avm{\1})} , [\type*{\emp{word}}
+       syn & \3 [ head & [ agr & \emp{[num & pl]} ] \\
+                  val & [ spr & \emp{\avm{\tag{B}}} \\ comps & \tag{C} ] ] \\
+       sem & \2 \\
+       arg-st & \tag{B} $\oplus$ \tag{C} ] > ]}}
+\end{center}
+\vspace{-1ex}
+\emp{In blue: what the rule and its output type add; the rest is copied or inherited.}
+
+%%% p35
+\myslide{\textit{cats}: The (Family of) Lexical Sequence(s)}
+\begin{center}
+  \avm{< \textnormal{cats} , [\type*{word}
+    syn & [ head & [\type*{noun} agr & \7 \type{3pl} ] \\
+            val & [ spr & \tag{B} < DP[ count & + \\ agr & \7 ] > \\
+                    comps & < > ] ] \\
+    sem & [ mode & ref \\
+            index & $k$ \\
+            restr & < [ reln & cat \\ inst & $k$ ] > ] \\
+    arg-st & \tag{B} ] >}
+\end{center}
+\emp{Strictly a family: the DP in \ft{spr} is not fully resolved, so
+  this stands for every lexical sequence that fills it in.}
+
+%%% p36
+\myslide{Practicalities --- Writing Lexical Rules}
+\begin{itemize}
+\item Determine the type of the LR.
+\item Determine the class of possible inputs.
+\item Determine what should change.
+  \begin{small}
+  \begin{itemize}
+  \item If \ft{input} and \ft{output} values are identified (by default or otherwise) and
+    only \ft{output} value is mentioned, then\ldots
+    \\ \emp{information is added.}  e.g.\ Plural Noun LR
+    \\[1ex] (Lexical sequences incompatible with that value are not possible inputs)
+  \item If \ft{input} and \ft{output} values are identified by default, but different values
+    are given on the \ft{input} and \ft{output} of the rule, then\ldots
+    \\ \emp{information is changed.}  e.g.\ Agent Nominalization LR
+  \item If \ft{input} and \ft{output} values are identified by an inviolable constraint, but
+    different values are given on the \ft{input} and \ft{output} of the rule, then\ldots
+    \\ \emp{there is no well-formed input: the rule can never apply.}
+  \end{itemize}
+  \end{small}
+\end{itemize}
+
+%%% p37
+\qaslide{Constant Lexemes}{
+\begin{itemize}
+\item What kinds of words are constant lexemes
+  in our grammar?
+  \answer{\\ \emp{Adjectives, adverbs, prepositions, determiners,
+      conjunctions: words that do not inflect in English.}}
+\item Why do we need a rule for these words?
+  \answer{\\ \emp{They need to go `from' \val{lexeme} to \val{word},
+      and only words appear in trees.}}
+\item What would be an alternative analysis?
+  \answer{\\ \emp{Put the sub-hierarchy for constant lexemes under
+      \val{word} instead of under \val{lexeme}.}}
+\end{itemize}
+}
+
+%%% p38--39
+\qaslide{Constant Lexeme LR}{
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{const-lxm} > \\
+    output & [ first & \1 ] ]}
+  \qquad i.e.\qquad
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{const-lxm} > \\
+    output & < \1 , [ ] > ]}
+\end{center}
+\emp{The form does not change, and the rule says nothing else.  The
+  type \val{i-rule} does the work: it copies \ft{syn} and \ft{arg-st}
+  and makes the output a \val{word}.}
+\begin{itemize}
+\item What keeps this from applying to, say, verb
+  lexemes?
+  \answer{\\ \emp{The input must be a \val{const-lxm}.  Verb lexemes
+      are \val{infl-lxm}s, a different branch of the hierarchy.}}
+\item Why is this an \val{i-rule}?
+  \answer{\\ \emp{It takes a \val{lexeme} to a \val{word}, which is
+      what inflectional rules do, even though nothing is inflected.}}
+\end{itemize}
+}
+
+%%% p49
+\qaslide{\ft{arg-st} \& ARP}{
+\begin{itemize}
+\item Given the ARP, what do we need to specify
+  about the valence properties of words?
+  \answer{\\ \emp{Only the length of the \ft{spr} list, and the SHAC
+      already does that: nouns and verbs have exactly one specifier.
+      The ARP then fills \ft{spr} and \ft{comps} from \ft{arg-st}.}}
+\item Why isn't the ARP a constraint on the type
+  \val{lexeme}?
+  \answer{\\ \emp{Some derivational rules change the argument
+      structure (e.g.\ Agent Nominalization).  If \ft{spr} and
+      \ft{comps} were already linked to \ft{arg-st} in the lexeme,
+      those rules would have to change all three.}}
+\end{itemize}
+}
+
+%%% p50
+\qaslide{The Feature \ft{form}}{
+\begin{itemize}
+\item Different inflected forms of verbs show
+  up in different syntactic environments.
+  \\ Examples?
+  \answer{\\ \emp{\eng{I eat}; \eng{Eat!}; \eng{I was eating};
+      \eng{I have eaten}}}
+\item These different forms are syntactically
+  distinguished by the feature \ft{form}, as
+  assigned by lexical rules.
+\item \ft{form} is also useful in our analyses of
+  coordination and PP selection.
+\end{itemize}
+}
+
+%%% p51--52
+\qaslide{What Rules These Out?}{
+\begin{exe}
+\ix \bad{Kim eat pizza.}
+  \answer{\\ \emp{\eng{eat} is either Non-3rd-Singular (does not
+      agree with \eng{Kim}) or Base Form (not finite, so it cannot
+      head a sentence)}}
+\ix \bad{Kim seems to eats pizza.}
+  \answer{\\ \emp{Spoiler: \eng{to} will be an auxiliary verb that
+      takes a [\ft{form} base] complement (Chapter 12), so \eng{eats}
+      does not fit}}
+\ix \bad{Dana helped Leslie pack and moved.}
+  \answer{\\ \emp{\eng{helped} selects a [\ft{form} base] complement;
+      the Coordination Rule makes the conjuncts and the mother share
+      \ft{form}, so \eng{moved} cannot join \eng{pack}}}
+\ix \bad{Kim relies for Sandy.}
+  \answer{\\ \emp{\eng{relies} requires a PP complement headed by a
+      preposition with [\ft{form} on]}}
+\ix \bad{Dana walked and Kim.}
+  \answer{\\ \emp{Used to be fine, since the \ft{val} values match;
+      now the Coordination Rule requires the conjuncts to share
+      \ft{form}, and \eng{Kim} has none}}
+\end{exe}
+}
+
+%%% p53
+\myslide{Review: Lexical Terminology}
+\begin{small}
+\begin{itemize}
+\item \txx{Lexeme}: a type in our grammar; its subtypes state
+  generalizations about combinations of constraints
+\item \txx{Lexical entry}: what we write in the lexicon; it licenses
+  a family of lexical sequences
+\item \txx{Lexical sequence}: a form paired with a fully resolved
+  feature structure of type \val{lexeme} or \val{word}
+\item \txx{Family of lexical sequences}: a form paired with an
+  underspecified feature structure, resolvable in many ways
+\item \txx{Lexical rule}: what we write to derive new lexical
+  sequences from old ones
+\item \txx{Lexical rule instantiation}: a fully resolved \val{l-rule}:
+  one rule, one input, one output
+\item \txx{Word structure}: the bottom of the tree: a form with a
+  fully resolved \val{word} feature structure over it
+\end{itemize}
+\end{small}
+
+%%% p54--56: in-class activity
+\qaslide{Activity: Arriving at a Word Structure}{
+Write the word structure for \lex{writers} as it appears in the tree
+for the sentence
+\begin{exe}
+\ix Those writers need inspiration.
+\end{exe}
+starting from the lexical entry for \lex{write}:
+\begin{center}
+  \avm{< \textnormal{write} , [\type*{stv-lxm}
+    sem & [ index & $s$ \\
+            restr & < [ reln & write \\ sit & $s$ \\
+                        writer & $i$ \\ written & $j$ ] > ] \\
+    arg-st & < X$_i$, Y$_j$ > ] >}
+\end{center}
+\answer{\emp{Which lexical rules do we need, and in which order?
+    Agent Nominalization LR (\lex{write} $\to$ \lex{writer}, a
+    \val{d-rule}), then Plural Noun LR (\lex{writer} $\to$
+    \lex{writers}, an \val{i-rule}).}}
+}
+
+\myslide{Step 1: Agent Nominalization LR}
+\begin{center}
+\scalebox{0.8}{%
+  \avm{< \textnormal{writer} , [\type*{cntn-lxm}
+    syn & [ head & [\type*{noun} agr & \1 [ per & 3rd ] ] \\
+            val & [ spr & < DP[ count & + \\ agr & \1 ] > ] ] \\
+    sem & [ mode & ref \\
+            index & \emp{$i$} \\
+            restr & < [ reln & write \\ sit & $s$ \\
+                        writer & $i$ \\ written & $j$ ] > ] \\
+    arg-st & < DP ( , PP$_j$[ form & of ] ) > ] >}}
+\end{center}
+\emp{The rule adds \textit{-er}, changes the type to \val{cntn-lxm}
+  and makes the index the writer, $i$; the \ft{restr} is unchanged.
+  The noun types add the rest.  The verb's object $j$ survives only
+  as an optional \eng{of}-PP.}
+
+\myslide{Step 2: Plural Noun LR}
+\begin{center}
+\scalebox{0.8}{%
+  \avm{< \textnormal{writers} , [\type*{word}
+    syn & [ head & [\type*{noun} agr & \1 \type{3pl} ] \\
+            val & [ spr & \tag{B} < DP[ count & + \\ agr & \1 ] > \\
+                    comps & \tag{C} < > ] ] \\
+    sem & [ mode & ref \\
+            index & $i$ \\
+            restr & < [ reln & write \\ sit & $s$ \\
+                        writer & $i$ \\ written & $j$ ] > ] \\
+    arg-st & \tag{B} $\oplus$ \tag{C} ] >}}
+\end{center}
+\emp{Add \textit{-s} and make it a \val{word} with [\ft{num} pl].
+  Now the ARP applies: \ft{spr} is the DP and \ft{comps} is empty,
+  since here \lex{writers} has no \eng{of}-PP.}
+
+\myslide{Activity: The Word Structure for \lex{writers}}
+\begin{center}
+\scalebox{0.7}{%
+\ctree{[{\avm{[\type*{word}
+    syn & [ head & [\type*{noun} agr & \1 \type{3pl} ] \\
+            val & [ spr & < \2 DP[ count & + \\ agr & \1 ] > \\
+                    comps & < > ] ] \\
+    sem & [ mode & ref \\
+            index & $i$ \\
+            restr & < [ reln & write \\ sit & $s$ \\
+                        writer & $i$ \\ written & $j$ ] > ] \\
+    arg-st & < \2 > ]}}
+  [{\eng{writers}}]]}}
+\end{center}
+\emp{The form \eng{writers} under a feature structure of type
+  \val{word}, licensed by two lexical rules from the entry for
+  \lex{write}.}
+
+
+\myslide{Summary}
+\begin{itemize}
+\item A lexical rule says only what changes; its type (\val{i-rule},
+  \val{d-rule}, \val{pi-rule}) and the input's lexeme type supply the
+  rest, and defaults let a rule override what it needs to
+\item Licensing a word: lexical entry $\rightarrow$ lexical rule(s)
+  $\rightarrow$ word structure at the bottom of the tree
+\item Constant lexemes still pass through an \val{i-rule} to become
+  words
+\item The ARP links \ft{arg-st} to \ft{spr} and \ft{comps} on words;
+  \ft{form} records which inflected form a word is
+\item Next: the passive, a derivational rule that rearranges
+  \ft{arg-st}
+\end{itemize}
+
+\section{Appendix: The Lexical Rules So Far}
+
+%%% p40--48: the other lexical rules, from SWB Chapter 9
+\myslide{Other Lexical Rules (So Far)}
+\begin{itemize}
+\item Inflectional (\val{i-rule}): Singular Noun, 3rd-Singular Verb,
+  Non-3rd-Singular Verb, Past-Tense Verb, Base Form
+\item Derivational (\val{d-rule}): Present Participle, Past
+  Participle, Agent Nominalization
+\item Each one is in the grammar summary in Chapter 9.  For reference, on the next
+  slides, read each rule and ask: what is the input, what changes, and
+  where does the rest come from?
+\end{itemize}
+
+\myslide{Singular Noun Lexical Rule}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{cn-lxm} > \\
+    output & < \1 , [ syn & [ head & [ agr & [ num & sg ] ] ] ] > ]}
+\end{center}
+\emp{Any common noun lexeme, count or mass, gives a singular word
+  with the same form.  Compare the Plural Noun LR, whose input is
+  only \val{cntn-lxm}: mass nouns have no plural.}
+
+\myslide{3rd-Singular Verb Lexical Rule}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \3 , [\type*{verb-lxm} sem & [ restr & \tag{A} ] ] > \\
+    output & < F$_{3SG}$(\3) ,
+              [ syn & [ head & [ form & fin \\ agr & \type{3sing} ] ] \\
+                sem & [ restr & \tag{A} $\oplus$ \ldots ] \\
+                arg-st & < [ case & nom ], \ldots > ] > ]}
+\end{center}
+\emp{Add \textit{-s}; the word is finite and 3rd singular, its
+  subject (the first argument) is nominative, and the \ft{restr}
+  gets something extra (the tense).}
+
+\myslide{Non-3rd-Singular Verb Lexical Rule}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , [\type*{verb-lxm} sem & [ restr & \tag{A} ] ] > \\
+    output & < \1 ,
+              [ syn & [ head & [ form & fin \\ agr & \type{non-3sing} ] ] \\
+                sem & [ restr & \tag{A} $\oplus$ \ldots ] \\
+                arg-st & < [ case & nom ], \ldots > ] > ]}
+\end{center}
+\emp{The same, but the form stays as it is and the agreement is
+  anything but 3rd singular: \eng{I/you/we/they walk}.}
+
+\myslide{Past-Tense Verb Lexical Rule}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \3 , [\type*{verb-lxm} sem & [ restr & \tag{A} ] ] > \\
+    output & < F$_{PAST}$(\3) ,
+              [ syn & [ head & [ form & fin ] ] \\
+                sem & [ restr & \tag{A} $\oplus$ \ldots ] \\
+                arg-st & < [ case & nom ], \ldots > ] > ]}
+\end{center}
+\emp{Add \textit{-ed}; finite, nominative subject, but no agreement
+  constraint at all: \eng{I/you/she/they walked}.}
+
+\myslide{Base Form Lexical Rule}
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{verb-lxm} > \\
+    output & < \1 , [ syn & [ head & [ form & base ] ] ] > ]}
+\end{center}
+\emp{Same form, [\ft{form} base]: not finite, so no nominative
+  subject and no agreement.  This is the verb in \eng{Eat!}, \eng{to
+    eat} and \eng{will eat}.}
+
+\myslide{Present Participle Lexical Rule}
+\begin{center}
+  \avm{[\type*{d-rule}
+    input & < \3 , [\type*{verb-lxm} sem & [ restr & \tag{A} ] \\
+                                    arg-st & \tag{B} ] > \\
+    output & < F$_{PRP}$(\3) ,
+              [\type*{part-lxm}
+                syn & [ head & [ form & prp ] ] \\
+                sem & [ restr & \tag{A} $\oplus$ \ldots ] \\
+                arg-st & \tag{B} ] > ]}
+\end{center}
+\emp{A \val{d-rule}: \lex{eat} gives the lexeme \lex{eating}, of
+  type \val{part-lxm}, with the same arguments.  \val{part-lxm} is a
+  \val{const-lxm}, so the Constant Lexeme LR then makes it a word.}
+
+\myslide{Past Participle Lexical Rule}
+\begin{center}
+  \avm{[\type*{d-rule}
+    input & < \3 , [\type*{verb-lxm} sem & [ restr & \tag{A} ] \\
+                                    arg-st & \tag{B} ] > \\
+    output & < F$_{PSP}$(\3) ,
+              [\type*{part-lxm}
+                syn & [ head & [ form & psp ] ] \\
+                sem & [ restr & \tag{A} $\oplus$ \ldots ] \\
+                arg-st & \tag{B} ] > ]}
+\end{center}
+\emp{The same, with [\ft{form} psp]: \lex{eat} gives \lex{eaten}, as
+  in \eng{I have eaten}.}
+
+\myslide{Agent Nominalization Lexical Rule}
+\begin{center}
+  \avm{[\type*{d-rule}
+    input & < \2 , [\type*{verb-lxm} sem & [ index & $s$ ] \\
+                                    arg-st & < X$_i$ , NP$_j$ > ] > \\
+    output & < F$_{\textit{-er}}$(\2) ,
+              [\type*{cntn-lxm}
+                sem & [ index & $i$ ] \\
+                arg-st & < Y ( , PP$_j$[ form & of ] ) > ] > ]}
+\end{center}
+\emp{Add \textit{-er} to a strictly transitive verb lexeme.  The
+  result is a count noun lexeme whose index is the verb's subject
+  index $i$: a \lex{driver} is the one who drives.  The verb's object
+  $j$ can only appear as an \eng{of}-PP: \eng{a builder of bridges}.}
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\item The slides on lexical types and lexical rules are adapted from
+  Emily Bender's, with her permission; the feature structures follow
+  \citet{sag:wasow:bender:2003}, \copyright{} 2003 CSLI Publications
+\item This lecture complements \citet[Chapter 8]{sag:wasow:bender:2003}
+\end{itemize}
+
+
+%\input{lec-05-questions}
+
+\bibliographystyle{aclnat}
+\bibliography{abb,mtg,nlp,ling}
+\end{document}
+
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End: 
