@@ -2,6 +2,8 @@
 
 \input{headx-new.tex}
 
+\input{lec-08-lexhier.tex}
+
 \begin{document}
 
 \header{Lecture 8}{The Structure of the Lexicon II}{Lexical Rules}
@@ -348,7 +350,8 @@ Why do we have default inheritance?
 \item What kinds of words are constant lexemes
   in our grammar?
   \answer{\\ \emp{Adjectives, adverbs, prepositions, determiners,
-      conjunctions: words that do not inflect in English.}}
+      conjunctions, proper nouns and pronouns: words that do not inflect
+      in English.}}
 \item Why do we need a rule for these words?
   \answer{\\ \emp{They need to go `from' \val{lexeme} to \val{word},
       and only words appear in trees.}}
@@ -357,6 +360,13 @@ Why do we have default inheritance?
       \val{word} instead of under \val{lexeme}.}}
 \end{itemize}
 }
+
+%%% the hierarchy from lec-08a, with the constant lexemes in red
+\myslide{Our Lexeme Hierarchy (for English)}
+\lexhier{const,adj,conj,det,predp,argmkp,pn,pron}{}
+\vspace*{-2ex}
+\emp{The constant lexemes (in red) sit under \val{lexeme}, so they
+  need a rule to become \val{word}s.}
 
 %%% p38--39
 \qaslide{Constant Lexeme LR}{

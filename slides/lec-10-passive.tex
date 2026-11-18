@@ -122,9 +122,9 @@ INDEX & $i$]] ) > ] >]
 }
 
 
-\myslide{Questions}
+\qaslide{Questions}{
 
-\begin{footnotesize}
+\begin{footnotesize}\answer{\scriptsize}
   \avm{[\type*{d-rule}\\
     INPUT & < {\1} , [\type*{tv-lxm}\\
     ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
@@ -140,14 +140,22 @@ INDEX & $i$]] ) > ] >]
 \end{footnotesize}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
 \item Why is the morphological function F$_{PSP}$?
+  \answer{\\ {\small\emp{Passive participles have the same form as
+      past participles (\lex{eaten}, \lex{loved}).}}}
 \item Why do we have a separate \ft{form} value \val{pass}?
   Why not just \val{psp}?
+  \answer{\\ {\small\emp{Different distribution: \lex{have} selects
+      \val{psp}, \lex{be} selects \val{pass}; one value would allow
+      \bad{The cake has eaten by Pat}.}}}
 \item Is the \lex{by}-phrase argument-marking or predicational?
+  \answer{\\ {\small\emp{Argument-marking: \lex{by} adds no meaning
+      of its own; the PP's \ft{index} $i$ fills the verb's agent role.}}}
 \end{itemize}
+}
 
-\myslide{More Questions}
+\qaslide{More Questions}{
 
-\begin{footnotesize}
+\begin{footnotesize}\answer{\scriptsize}
   \avm{[\type*{d-rule}\\
     INPUT & < {\1} , [\type*{tv-lxm}\\
     ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
@@ -161,11 +169,19 @@ INDEX & $i$]] ) > ] >]
     INDEX & $i$]] ) > ] >]
 }
 \end{footnotesize}
-\begin{itemize}
-\item What makes the object turn into the subject? 
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item What makes the object turn into the subject?
+  \answer{\\ {\small\emp{Removing the first \ft{arg-st} element
+      leaves the object first, and the ARP puts it on \ft{spr}.}}}
 \item Why is the type of the input \val{tv-lxm}?
+  \answer{\\ {\small\emp{Only transitive verbs have an object (a
+      second \ft{arg-st} element) to promote.}}}
 \item What would happen if it were just \val{verb-lxm}?
+  \answer{\\ {\small\emp{Intransitives would passivize too, with an
+      empty \avmbox{A} and no subject: \bad{Was slept (by Kim)}.
+      English doesn't allow this; German does (next slide).}}}
 \end{itemize}
+}
 
 \myslide{Intransitives Have Passives in German}
 
@@ -274,8 +290,7 @@ Through the magic of the Constant Lexeme Lexical Rule!
 }
 
 
-\myslide{Questions About the Entry for \lex{be}}
-
+\qaslide{Questions About the Entry for \lex{be}}{
 \begin{tiny}
   \avm{< \textnormal{be},\ [\type*{be-lxm}\\
   ARG-ST & < {\1} , [SYN & [HEAD & [\type*{verb}\\
@@ -288,14 +303,37 @@ Through the magic of the Constant Lexeme Lexical Rule!
 }
 \end{tiny}
 
-\begin{itemize}\addtolength{\itemsep}{-1ex}
+\begin{itemize}
 \item Why doesn’t it include valence features?
-\item What is the category of its complement (i.e. its 2nd argument)?
-\item What is its contribution to the semantics of the sentences it 
-appears in?
-\item Why is the first argument tagged as identical to the second 
-argument’s \ft{spr} value?
+  \answer{\\ {\small\emp{The ARP gives them, from its \ft{arg-st}, as for any verb.}}}
+\item What is the category of its complement (i.e.\ its 2nd argument)?
+  \answer{\\ {\small\emp{A passive VP: \ft{head} \val{verb}, \ft{form} \val{pass}, \ft{comps} \avm{< >}.}}}
 \end{itemize}
+}
+
+\qaslide{More Questions About the Entry for \lex{be}}{
+\begin{tiny}
+  \avm{< \textnormal{be},\ [\type*{be-lxm}\\
+  ARG-ST & < {\1} , [SYN & [HEAD & [\type*{verb}\\
+  FORM & pass ]\\
+  VAL & [SPR & < {\1} >\\
+  COMPS & < > ]]\\
+  SEM & [INDEX & $s$ \ ]] > \\ %{\3}
+  SEM & [INDEX & \ $s$\\ %{\3}\\
+  RESTR & {< >} ] ] >
+}
+\end{tiny}
+
+\begin{itemize}
+\item What is its contribution to the semantics of the sentences it
+  appears in?
+  \answer{\\ {\small\emp{None: its \ft{restr} is empty, and its \ft{index} is the complement's, so the situation is the participle's.}}}
+\item Why is the first argument tagged as identical to the second
+  argument’s \ft{spr} value?
+  \answer{\\ {\small\emp{So \lex{be}'s subject is also the passive VP's subject: in \eng{Kim is loved}, Kim gets the role \lex{loved} gives its subject.}}}
+\end{itemize}
+}
+
 
 \myslide{Passive Tree}
 \begin{minipage}[t]{0.45\textwidth}
@@ -317,23 +355,34 @@ cat
 \end{itemize}
 \end{minipage}
 
-\myslide{More Questions}
+\qaslide{More Questions}{
 \begin{itemize}
 \item Why do we get this?
   \begin{exe}
     \ex \eng{They are noticed by everyone.}
   \end{exe}
+  \answer{{\small\emp{\lex{they} is \lex{be}'s subject, and so also \lex{noticed}'s: it is nominative and plural, as finite \lex{are} needs.}}}
 \item Why don’t we get this?
   \begin{exe}
     \ex \bad{Them are noticed by everyone.}
   \end{exe}
+  \answer{{\small\emp{The subject of a finite verb must be nominative; \lex{them} is accusative.}}}
+\end{itemize}
+}
+
+\qaslide{Still More Questions}{
+\begin{itemize}
 \item Why don’t we get this?
   \begin{exe}
     \ex \bad{They is noticed by everyone.}
   \end{exe}
-\item What would facts like these entail for a transformational 
-analysis?
+  \answer{{\small\emp{\lex{is} needs a 3rd singular subject; \lex{they} is plural.}}}
+\item What would facts like these entail for a transformational
+  analysis?
+  \answer{\\ {\small\emp{Case and agreement follow the surface subject, not the underlying object, so they must be assigned after the passive transformation: the rules need an order.  We have no order: the constraints all hold at once.}}}
 \end{itemize}
+}
+
 
 \myslide{Overview}
 \MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 10}

@@ -352,48 +352,7 @@ The book uses seven related terms
 \item More on how defaults combine next week.
 \end{itemize}
 
-%%% The lexeme hierarchy is shown repeatedly, with an arrow pointing
-%%% at the type under discussion.  #1: comma-separated names of nodes
-%%% to colour red; #2: TikZ code drawn after the tree (the arrow).
-\makeatletter
-\newcommand{\lxhl}[2]{\ifcsname lexhl@#1\endcsname\textcolor{red}{#2}\else #2\fi}
-\newcommand{\lexhier}[2]{%
-\begingroup
-\@for\lx@n:=#1\do{\expandafter\def\csname lexhl@\lx@n\endcsname{}}%
-\begin{center}
-\scalebox{0.7}{\begin{forest}
-cat, for tree={font=\itshape, s sep=3mm}
-[{\lxhl{synsem}{synsem}\\\textnormal{\avm{[ \textsc{syn, sem} ]}}}, align=center, name=synsem, s sep=4mm
-  [{lexeme\\\textnormal{\avm{[ arg-st ]}}}, align=center, name=lexeme
-    [{\lxhl{infl}{infl-lxm}}, name=infl
-      [{\lxhl{verb}{verb-lxm}}, l*=3, name=verb
-        [{siv-lxm}, name=siv]
-        [{piv-lxm}, name=piv]
-        [{tv-lxm}, name=tv
-          [{stv-lxm}, name=stv]
-          [{dtv-lxm}, name=dtv]
-          [{ptv-lxm}, name=ptv]]]
-      [{\lxhl{cn}{cn-lxm}}, l*=3, name=cn
-        [{\lxhl{cntn}{cntn-lxm}}, name=cntn]
-        [{\lxhl{massn}{massn-lxm}}, name=massn]]]
-    [{const-lxm}, name=const
-      [{adj-lxm}, l*=2, name=adj]
-      [{conj-lxm}, l*=2, name=conj]
-      [{det-lxm}, l*=2, name=det]
-      [{predp-lxm}, l*=2, name=predp]
-      [{argmkp-lxm}, l*=2, name=argmkp]
-      [{\lxhl{pn}{pn-lxm}}, l*=1.4, name=pn]
-      [{\lxhl{pron}{pron-lxm}}, l*=1.4, name=pron]]]
-  [{expression}, name=expression, l*=0.8
-    [{word\\\textnormal{\avm{[ arg-st ]}}}, align=center, l*=0.6, name=word]
-    [{\lxhl{phrase}{phrase}}, l*=0.6, name=phrase]]]
-#2
-\end{forest}}
-\end{center}
-\endgroup}
-\makeatother
-%%% the orange arrow
-\tikzset{hlarrow/.style={overlay, ->, >=stealth, orange, line width=2mm}}
+\input{lec-08-lexhier.tex}
 
 %%% p31
 \myslide{Our Lexeme Hierarchy (for English)}
