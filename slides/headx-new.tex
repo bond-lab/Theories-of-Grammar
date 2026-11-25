@@ -164,10 +164,10 @@
 
 %%% Ring a value in a dotted oval.  These used pstricks \ovalnode,
 %%% which came in with rtrees; tikz (via forest) does the same job.
-\newcommand{\OV}[1]{\tikz[baseline]{\node[draw,dotted,red,ellipse,
-          inner sep=1pt,outer sep=0pt]{#1};}}
-\newcommand{\OVB}[1]{\tikz[baseline]{\node[draw,dotted,blue,ellipse,
-          inner sep=1pt,outer sep=0pt]{#1};}}
+\newcommand{\OV}[1]{\tikz[baseline=(ov.base)]{\node[draw,dotted,red,ellipse,
+          inner sep=1pt,outer sep=0pt] (ov) {#1};}}
+\newcommand{\OVB}[1]{\tikz[baseline=(ov.base)]{\node[draw,dotted,blue,ellipse,
+          inner sep=1pt,outer sep=0pt] (ov) {#1};}}
 
 %%% From CSLI book
 \newcommand{\mc}{\multicolumn}
