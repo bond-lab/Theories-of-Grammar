@@ -290,43 +290,48 @@ truth conditions of the whole sentence:
 \end{itemize}
 
 \myslide{\lex{continue} with Active Complement}
-
-\begin{center} 
-  \scalebox{0.7}{\begin{forest}
+\begin{minipage}[c]{0.58\textwidth}
+\scalebox{0.72}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_i$} [{Skeptics}]]
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{continue}]]
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{to}]]
-[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{question}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \red{\avmbox{1}} > ]}} [{question}]]
 [{NP$_j$} [{your hypothesis}, roof]]]]]]
 \end{forest}}
-\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\scalebox{0.8}{\avm{[ restr & \avmbox{A} < [ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
+        [ reln & \textbf{question} \\  sit  & s$_2$ \\ doubter & \OV{i} \\ doubted & j],
+  \ldots > ]}}
+\end{minipage}
 
-\scalebox{0.7}{\raisebox{16ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < [ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
-        [ reln & \textbf{question} \\  sit  & s$_2$ \\ doubter & i \\ doubted & j], 
-  \ldots > ]
-}}}
-
-
+\emp{The subject \avmbox{1} is passed down unchanged to \lex{question},
+  whose \ft{spr} gives it the \ft{doubter} role.  \lex{continue} itself
+  gives it no role.}
 
 \myslide{\lex{continue} with Passive Complement}
-\begin{center} 
-  \scalebox{0.55}{\begin{forest}
+\begin{minipage}[c]{0.58\textwidth}
+\scalebox{0.6}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_j$} [{Your hypothesis}, roof]]
-[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{continue}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{continues}]]
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{to}]]
 [{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{be}]]
-[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1} > ]}} [{questioned}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \red{\avmbox{1}} > ]}} [{questioned}]]
 [{PP$_i$} [{P$_i$} [{by}]]
-[{NP$_i$} [{NOM$_i$} [{skeptics}]]]]]]]]]
+[{NP$_i$} [{skeptics}]]]]]]]]
 \end{forest}}
-\end{center}
-\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} <[ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
-        [ reln & \textbf{question} \\ sit  & s$_2$ \\ doubter & i \\ doubted & j], 
-  \ldots > ]
-}}}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\scalebox{0.8}{\avm{[ restr & \avmbox{A} <[ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
+        [ reln & \textbf{question} \\ sit  & s$_2$ \\ doubter & i \\ doubted & \OV{j}],
+  \ldots > ]}}
+\end{minipage}
 
+\emp{Now the passive participle gives the subject the \ft{doubted}
+  role.  Same \textbf{question} predication, same truth conditions:
+  skeptics doubt, the hypothesis is doubted.}
 
 \section{Subject-Control Verbs}
 
@@ -451,6 +456,7 @@ pairs like the following?
   \ex \eng{Reporters tried to interview the candidate.}
   \ex \eng{The candidate tried to be interviewed by reporters.}
 \end{xlisti}
+  \answer{{\small\emp{The \ft{trier} role is filled by a different index in each: the reporters in (i), the candidate in (ii).  The \textbf{interview} predication is the same in both.}}}
 \item Why does \lex{continue} behave differently in these 
 respects?
   \answer{\\ {\small\emp{It is a raising verb: its subject is just its complement's \ft{spr}, with no role of its own, so whatever the complement allows is fine, and active and passive mean the same.}}}
@@ -458,51 +464,51 @@ respects?
 }
 
 \myslide{\lex{try} with an Active Complement}
-
-\begin{center} 
-  \scalebox{0.8}{\begin{forest}
+\begin{minipage}[c]{0.58\textwidth}
+\scalebox{0.72}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_i$} [{The police}, roof]]
-[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1}$_i$ > ]}} [{tried}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1}$_i$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{1}$_i$ > ]}} [{tried}]]
 [{VP \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{to}]]
-[{VP \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{arrest}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_i$ > ]}} [{V \avm{[ \ft{spr} < \red{\avmbox{2}$_i$} > ]}} [{arrest}]]
 [{NP$_j$} [{the suspects}, roof]]]]]]
 \end{forest}}
-\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\scalebox{0.8}{\avm{[ restr & \avmbox{A} <
+  [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & \OV{i} \\ arg & s$_2$ ], \\
+  [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & \OV{i} \\ arrested & j],
+  \ldots > ]}}
+\end{minipage}
 
-\scalebox{0.7}{\raisebox{20ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < 
-  [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & i \\ arg & s$_2$ ], \\
-  [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & i \\ arrested & j],
-  \ldots > ]
-}}}
-
-
+\emp{Two different NPs, \avmbox{1} and \avmbox{2}, sharing one index $i$:
+  the police are the \ft{trier} and the \ft{arrester}.}
 
 \myslide{\lex{try} with Passive Complement}
-\vspace*{-2ex}
-\begin{center} 
-  \scalebox{0.6}{\begin{forest}
+\begin{minipage}[c]{0.58\textwidth}
+\scalebox{0.6}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_j$} [{The suspects}, roof]]
-[{VP \avm{[ \ft{spr} < \avmbox{1} > ]}} [{V \avm{[ \ft{spr} < \avmbox{1}$_j$ > ]}} [{tried}]]
+[{VP \avm{[ \ft{spr} < \avmbox{1}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{1}$_j$ > ]}} [{tried}]]
 [{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{to}]]
 [{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{be}]]
-[{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{arrested}]]
+[{VP \avm{[ \ft{spr} < \avmbox{2}$_j$ > ]}} [{V \avm{[ \ft{spr} < \red{\avmbox{2}$_j$} > ]}} [{arrested}]]
 [{PP$_i$} [{P$_i$} [{by}]]
-[{NP$_i$} [{NOM$_i$} [{the police}]]]]]]]]]
+[{NP$_i$} [{the police}, roof]]]]]]]]
 \end{forest}}
-\end{center}
-
-\scalebox{0.7}{\raisebox{25ex}[0ex][0ex]{\small \avm{[ restr & \avmbox{A} < 
+\end{minipage}\hfill
+\begin{minipage}[c]{0.4\textwidth}
+\scalebox{0.8}{\avm{[ restr & \avmbox{A} <
   [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & \OV{j} \\ arg & s$_2$ ], \\
-  [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & i \\ arrested & j],
-  \ldots > ]
-}}}
-\vspace*{-5ex}
+  [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & i \\ arrested & \OV{j}],
+  \ldots > ]}}
+\end{minipage}
 
-\myslide{ARG-ST of Raising vs.\ Control Verbs}
+\emp{Now the \ft{trier} is $j$, the suspects: a different
+  \textbf{try} predication, so a different meaning from the active.}
+
+\qaslide{ARG-ST of Raising vs.\ Control Verbs}{
 \bigskip
-
 \begin{center}
 \begin{tabular}{cc}
   \avm{< NP$_i$,\ \ 
@@ -514,11 +520,15 @@ cat
     >
 } \\
   \\[2ex]
-  \txx{Control} & \txx{Raising}
+  \answer{\txx{Control}} & \answer{\txx{Raising}}
 \end{tabular}
 \end{center}
-
-
+\bigskip
+\begin{itemize}
+\item Which is which?  Why?
+  \answer{\\ {\small\emp{Left: control.  Two NPs that merely share an index $i$, so the subject must have one (no dummies), and it can fill a role of the verb's own.  Right: raising.  One NP, \avmbox{1}, that is both the verb's subject and its complement's: whatever the complement wants, dummies included, is passed straight through.}}}
+\end{itemize}
+}
 
 \section{Raising and Control in Transformational Grammar}
 
@@ -633,6 +643,30 @@ psychological reality of these transformations.
   but the \prd{expect} relation has only two
 \item And the object’s \ft{index} plays a role in the \prd{persuade} relation,
   but not in the \prd{expect} relation
+\end{itemize}
+
+\myslide{Aside: In a Big Grammar}
+\MyLogo{English Resource Grammar (ERG), lexical types for \lex{to}-VP complements}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The same two ingredients, a shared tag or a shared index, give
+  dozens of lexical types in a broad-coverage grammar of English:
+\end{itemize}
+\begin{center}\small
+\begin{tabular}{lll}
+  subject raising & \iz{v\_vp\_ssr\_le} & \eng{There failed to be a link.} \\
+  subject control & \iz{v\_vp\_seq\_le} & \eng{Kim intended to win.} \\
+  object raising & \iz{v\_np-vp\_sor\_le} & \eng{Kim expected Sandy to win.} \\
+  object control & \iz{v\_np-vp\_oeq\_le} & \eng{Kim invited Sandy to stay.} \\
+  subject control, with object & \iz{v\_np-vp\_aeq\_le} & \eng{Kim promised Sandy to stay.} \\
+  raising adjective & \iz{aj\_vp\_i-ssr\_le} & \eng{There are bound to be problems.} \\
+  control adjective & \iz{aj\_pp-vp\_i-it\_le} & \eng{It is easy for Kim to win.} \\
+  control noun & \iz{n\_vp\_c\_le} & \eng{Kim has the ability to win.} \\
+\end{tabular}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \iz{ssr} = subject-to-subject raising, \iz{sor} = subject-to-object raising,
+  \iz{seq}/\iz{oeq} = subject/object ``equi'' (the old name for control).
+\item Problem Set 10 asks you to classify a few of these yourself.
 \end{itemize}
 
 % \myslide{Justifying the difference between expect and persuade (Prob. 12.4)}

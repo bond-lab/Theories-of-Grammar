@@ -87,7 +87,14 @@
 \newcommand{\myslider}[1]{\rotatefoilhead[-25mm]{\raisebox{12mm}[0mm]{\red{#1}}}}
 %\newcommand{\myslider}[1]{\rotatefoilhead{\raisebox{-8mm}{\emp{#1}}}}
 
-\newcommand{\section}[1]{\myslide{}{\begin{center}\Huge \red{#1}\end{center}}}
+%%% \section{Title} is a divider page.  The starred form is what natbib's
+%%% thebibliography uses (\section*{References}); without this it printed a
+%%% divider page titled "*" followed by the word References.
+\makeatletter
+\newcommand{\section}{\@ifstar{\sectionstar}{\sectionplain}}
+\makeatother
+\newcommand{\sectionplain}[1]{\myslide{}{\begin{center}\Huge \red{#1}\end{center}}}
+\newcommand{\sectionstar}[1]{\par\medskip\noindent\textbf{#1}\par\smallskip}
 
 
 
