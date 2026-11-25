@@ -5,7 +5,7 @@
 
 \usepackage{bchart}
 \begin{document}
-\header{Lecture 12}{Grammar and Processing}{}
+\header{Lecture 9}{Grammar and Processing}{}
 \maketitle
 
 %\
@@ -29,15 +29,24 @@ produce utterances.
 understand utterances. 
 \end{itemize}
 
-\myslide{Our Model: Key Characteristics}
-
-\vfill
-\begin{center}\Large
- \txx{Surface-oriented} \\[3ex]
- \txx{Constraint-based} \\[3ex]
- \txx{Lexicalist}
-\end{center}
-\vfill
+\qaslide{Our Model: Key Characteristics}{
+\begin{itemize}
+\item \txx{Surface-oriented}
+  \answer{\\ \emp{The structure we give a sentence is the one you can see:
+      the words in their order, grouped into phrases.  No hidden levels,
+      nothing moves.}}
+\item \txx{Constraint-based}
+  \answer{\\ \emp{A sentence is good if it satisfies all the constraints
+      at once: lexical entries, rules and principles.  They apply
+      together, in no particular order, so partial information can be
+      used as soon as it is available.}}
+\item \txx{Lexicalist}
+  \answer{\\ \emp{Most of the information is in the words: lexical
+      entries, lexical types and lexical rules.  The phrase structure
+      rules are few and general.}}
+\end{itemize}
+\emp{Keep these three in mind: each experiment below bears on one of them.}
+}
 \myslide{Chomsky’s Position}
 
 
@@ -85,21 +94,36 @@ theory of competence.
 
 \myslide{Disfluencies Are Sensitive to Structure}
 
-Repeat rate of \eng{the} varies with position and complexity of the NP it
-introduces:
+How often is \eng{the} repeated (\eng{the the book \ldots})?  It depends
+on the position and the complexity of the NP it introduces:
+\vspace{-1ex}
 
-
-\begin{itemize}
-\item More common in front of complex NPs
-\item More common with prominent NPs
-  \\ Topic $>$ Subject $>$ Direct Object $>$ Preposition Object
+\begin{center}
+  \scalebox{0.6}{\begin{bchart}[max=100,step=25,scale=2.2]
+    \bcbar[plain, text=complex NP]{97}
+    \bclabel{Topic}
+    \bcbar[plain, text=simple NP, color=red!20]{60}
+    \smallskip
+    \bcbar[plain, text=complex NP]{65}
+    \bclabel{Subject}
+    \bcbar[plain, text=simple NP, color=red!20]{45}
+    \smallskip
+    \bcbar[plain, text=complex NP]{55}
+    \bclabel{Direct object}
+    \bcbar[plain, text=simple NP, color=red!20]{30}
+    \smallskip
+    \bcbar[plain, text=complex NP]{31}
+    \bclabel{Object of P}
+    \bcbar[plain, text=simple NP, color=red!20]{14}
+    \bcxlabel{repeats of \textsl{the} per thousand}
+  \end{bchart}}
+\end{center}
+\vspace{-1ex}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item More repeats before complex NPs and before prominent ones
+  (Topic $>$ Subject $>$ Object $>$ Object of P): the speaker already
+  ``knows'' something about the phrase to come.
 \end{itemize}
-
-\begin{exe}
-  \ex \eng{\ul{The the} book I told the student about on the train}
-  \ex $>$ \eng{The book I told \ul{the the} student about on the train}
-  \ex $>$ \eng{The book I told the student about on \ul{the the} train}
-\end{exe}
 
 \myslide{Production Errors Are Sensitive to Syntactic Structure}
 
@@ -223,6 +247,22 @@ effective in prompting people to remember (\ref{s:g2}) than (\ref{s:g1}).
 \item In fact, subjects responded more slowly to (\ref{s:g11}) than to 
 either (\ref{s:g12}) or (\ref{s:g13}).
 \end{itemize}
+
+\qaslide{Why Does the DTC Get This Wrong?}{
+\begin{itemize}
+\item Why does the DTC predict \eng{Pat swam faster than Chris swam}
+  to be the easiest of the three?
+  \answer{\\ \emp{Its derivation has the fewest steps: the other two
+      need a deletion transformation to remove \eng{swam} (and
+      \eng{did}).  Complexity was supposed to be a count of
+      transformations.}}
+\item What might really make it the hardest?
+  \answer{\\ \emp{It is the longest, and it repeats \eng{swam} for no
+      reason.  What the listener has to process is the surface string
+      and its structure, not a derivation.  A surface-oriented grammar
+      has nothing to apologise for here.}}
+\end{itemize}
+}
 
 \myslide{\scalebox{0.92}{What Should a Psychologically Real Theory of Grammar Be Like?}}
 
@@ -366,13 +406,13 @@ a list (from two choices).
 
 \begin{center}
   \begin{bchart}[max=100,step=25,unit=\%,scale=2.2]
-    \bcbar[plain, text=V-NP-PP~bias, color=red!20]{70}
+    \bcbar[plain, text=V-NP-PP~bias, color=red!20]{69}
     \bclabel{\shortstack{No potential \\ local ambiguity}}
-    \bcbar[plain, text=V-NP-NP~bias]{78}
+    \bcbar[plain, text=V-NP-NP~bias]{74}
     \smallskip
-    \bcbar[plain, text=V-NP-PP~bias, color=red!20]{48}
+    \bcbar[plain, text=V-NP-PP~bias, color=red!20]{49}
     \bclabel{\shortstack{Potential\\ local ambiguity}}
-    \bcbar[plain, text=V-NP-NP~bias]{68}
+    \bcbar[plain, text=V-NP-NP~bias]{62}
     \bcxlabel{\% V-NP-NP vs V-NP-PP}
   \end{bchart}
 \end{center}
@@ -412,6 +452,24 @@ by psycholinguistic experimentation.
 \item Existing psycholinguistic evidence favors a 
 constraint-based, lexicalist approach (like HPSG, LFG, construction grammar).
 \end{itemize}
+
+\qaslide{Which Characteristic Does Each Finding Support?}{
+\begin{center}\small
+\begin{tabular}{p{0.38\textwidth}p{0.52\textwidth}}
+\textbf{Finding} & \textbf{Supports} \\ \hline
+Disfluencies and agreement errors follow structure &
+  \answer{\emp{surface-oriented: the structure in use is the one we draw}} \\[1ex]
+German \eng{dem}/\eng{den} chosen before the verb &
+  \answer{\emp{constraint-based: top-down and left-to-right information combine freely}} \\[1ex]
+The DTC failed &
+  \answer{\emp{surface-oriented: no transformations to count}} \\[1ex]
+Eye-tracking: visual context used at once &
+  \answer{\emp{constraint-based: all information available at every point, no modules}} \\[1ex]
+Verb bias predicts the dative choice &
+  \answer{\emp{lexicalist: the facts are about individual words}} \\
+\end{tabular}
+\end{center}
+}
 
 \section{Universals}
 

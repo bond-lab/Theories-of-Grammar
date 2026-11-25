@@ -1,0 +1,1064 @@
+\documentclass[a4paper,landscape,headrule,footrule]{foils}
+\input{headx-new.tex}
+
+%%% Extra lecture: students may read this on their own, so every
+%%% question slide carries its answer (\qaslide ... \answer).
+\begin{document}
+\header{Lecture 13}{Auxiliaries}{}
+\maketitle
+
+\overview
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 13}
+
+\section[Introduction: what auxiliaries are and how they behave]{Introduction}
+
+\qaslide{Where We Are \& Where We’re Going}{
+\begin{itemize}
+\item Revision
+  \begin{itemize}
+  \item Last time we met \txx{subject-raising verbs} (\val{srv-lxm}).
+    What is special about their subject?
+    \answer{\\ {\small\emp{It is also the subject of the complement VP
+      (tag \avmbox{1}), and the verb gives it no semantic role of its
+      own: \eng{There continues to be trouble}.}}}
+  \item We also called infinitival \lex{to} an \txx{auxiliary verb},
+    [\ft{aux} $+$], and promised the reason would come later.
+  \end{itemize}
+\item Today: the real auxiliaries, \lex{be}, \lex{have}, \lex{do} and
+  the modals (\lex{can}, \lex{will}, \lex{must}, \ldots).
+\item They turn out to be subject-raising verbs with a few extra
+  features and four lexical rules.
+\item This is an extra lecture: read it at your own pace, and try each
+  question before turning the page.
+\end{itemize}
+}
+
+\myslide{What Auxiliaries Are}
+\begin{itemize}
+\item Sometimes called ``helping verbs'', auxiliaries are little words
+  that come before the main verb of a sentence, including forms of
+  \lex{be}, \lex{have}, \lex{do}, \lex{can}, \lex{could}, \lex{may},
+  \lex{might}, \lex{must}, \lex{shall}, \lex{should}, \lex{will} and
+  \lex{would}.
+\item They tend to be involved in the expression of time, necessity,
+  possibility, permission and obligation, as well as such things as
+  negation, affirmation and questioning.
+\end{itemize}
+
+\myslide{Some Basic Facts about Auxiliaries}
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item They are optional \\
+  \eng{Pat tapdanced.} \eng{Pat can tapdance.} \eng{Pat is tapdancing.}
+\item They precede any non-auxiliary verbs \\
+  \bad{Pat tapdance can.} \bad{Pat tapdancing is.}
+\item They determine the form of the following verb \\
+  \bad{Pat can tapdancing.} \bad{Pat is tapdance.}
+\item When they co-occur, their order is fixed \\
+  \eng{Pat must be tapdancing.} \bad{Pat is musting tapdance.}
+\item Auxiliaries of any given type cannot iterate \\
+  \bad{Pat could should tapdance.}
+\end{itemize}
+
+\myslide{A Little History}
+\begin{itemize}
+\item Chomsky’s first book, \textit{Syntactic Structures} (1957),
+  contained a detailed analysis of the English system of auxiliary
+  verbs.
+\item It showed how formal analysis could reveal subtle
+  generalizations.
+\item The power of Chomsky’s analysis of auxiliaries was one of the
+  early selling points for transformational grammar
+  \begin{itemize}
+  \item especially his unified treatment of auxiliary \lex{do}.
+  \end{itemize}
+\item So it’s a challenge to any theory of grammar to deal with the
+  same phenomena.
+\end{itemize}
+
+\myslide{Two Approaches to Analyzing Auxiliaries}
+\begin{itemize}
+\item Treat auxiliaries as a special category, and formulate
+  specialized transformations sensitive to their presence.
+\item Assimilate their properties to existing types as much as
+  possible, and elaborate the lexicon to handle what is special about
+  them.
+\item We adopt the latter, treating auxiliaries as a subtype of
+  \val{srv-lxm}.
+\end{itemize}
+
+\qaslide{Consequences of Making \typ{auxv-lxm} a Subtype of \typ{srv-lxm}}{
+\begin{itemize}
+\item Auxiliaries should express one-place predicates.
+\item Auxiliaries should allow non-referential subjects (dummy
+  \lex{there}, \lex{it}, and idiom chunks).
+\item Passivization of the main verb (the auxiliary’s complement)
+  should preserve truth conditions.
+\item Are these borne out?
+  \answer{\\ {\small\emp{Yes:
+    \eng{There might be a unicorn in the garden},
+    \eng{It will annoy people that dogs are barking},
+    \eng{Close tabs have been kept on Pat by the FBI};
+    and \eng{A doctor must have been examining Pat} describes the same
+    situations as \eng{Pat must have been being examined by a doctor}.}}}
+\end{itemize}
+}
+
+\myslide{Why Call Auxiliaries Verbs?}
+\begin{itemize}
+\item \lex{be}, \lex{have} and \lex{do} exhibit verbal inflections
+  (tense, agreement).
+\item \lex{be}, \lex{have} and \lex{do} can all appear as main verbs
+  (that is, as the only verb in a sentence).
+\item Their inflections are the same in main and auxiliary uses.
+\item \lex{be} exhibits auxiliary behaviour even in its main verb
+  uses: \eng{Kim is not tall}, \eng{Is Kim tall?}
+\item Modals (\lex{can}, \lex{might}, \lex{will}, \ldots) don’t
+  inflect, but they occur in environments requiring a finite verb with
+  no (other) finite verb around.
+\end{itemize}
+
+\myslide{What’s Special about Auxiliaries?}
+\begin{itemize}
+\item Unlike other subject-raising verbs we have looked at, their
+  complements aren’t introduced by \lex{to}.
+\item The modals and \lex{do} have defective paradigms (no
+  \bad{to can}, \bad{musting}).
+\item There are restrictions on the ordering and iterability of
+  auxiliaries.
+\item They have a set of special characteristics known as the
+  \txx{NICE} properties (Negation, Inversion, Contraction, Ellipsis).
+\end{itemize}
+
+\section[Lexical types and entries: \typ{auxv-lxm}, \lex{be}, \lex{have}, the modals]{Lexical Types and Entries}
+
+\myslide{Where \typ{auxv-lxm} Sits}
+\begin{center}
+\begin{forest}
+cat, for tree={font=\itshape, l sep=6mm, s sep=4mm}
+[{verb-lxm}
+  [{srv-lxm} [{ic-srv-lxm}] [{auxv-lxm}]]
+  [{scv-lxm}] [{piv-lxm}] [{siv-lxm}]
+  [{tv-lxm} [{\ldots}]]
+  [{dervv-lxm}]]
+\end{forest}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \val{srv-lxm} splits in two: \val{ic-srv-lxm} is the
+  \lex{continue} type from last week (infinitival complement),
+  \val{auxv-lxm} is new.
+\item \val{dervv-lxm} is for the outputs of the Ellipsis LR: we get
+  to it at the end.
+\end{itemize}
+
+\myslide{Some Type Constraints (1)}
+\begin{center}\small
+\begin{tabular}{|l|l|l|}
+\hline
+\textsc{type} & \textsc{features/constraints} & \textsc{ist} \\ \hline
+\val{verb-lxm} &
+  \avm{[ syn & [ head & [\type*{verb} aux & / $-$ ] ] \\
+         arg-st & < [ head & nominal ], \ldots > \\
+         sem & [ mode & prop ] ]} & \val{infl-lxm} \\ \hline
+\val{srv-lxm} &
+  \avm{[ arg-st & < \1, [ spr & < \1 > \\ comps & < > ] > ]} &
+  \val{verb-lxm} \\ \hline
+\end{tabular}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Nothing new here except the default [\ft{aux} $/-$] on every verb.
+\end{itemize}
+
+\myslide{Some Type Constraints (2)}
+\begin{center}\small
+\begin{tabular}{|l|l|l|}
+\hline
+\textsc{type} & \textsc{features/constraints} & \textsc{ist} \\ \hline
+\val{ic-srv-lxm} &
+  \avm{[ arg-st & < X, VP [ inf & $+$ \\ index & s ] > \\
+         sem & [ restr & < [ arg & s ] > ] ]} & \val{srv-lxm} \\ \hline
+\val{auxv-lxm} &
+  \avm{[ syn & [ head & [ aux & $+$ ] ] ]} & \val{srv-lxm} \\ \hline
+\end{tabular}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \val{ic-srv-lxm}: last week's \lex{continue}, \lex{tend},
+  \lex{seem} (``infinitival-complement'').
+\item \val{auxv-lxm} adds just one thing: it overrides the default and
+  makes the verb [\ft{aux} $+$].  Everything else comes from
+  \val{srv-lxm}.
+\end{itemize}
+
+\myslide{A Lexical Entry for \lex{be}}
+\begin{center}
+  \avm{< \textnormal{be}, [\type*{auxv-lxm}
+    arg-st & < X, [ syn & [ head & [ pred & $+$ ] ] \\
+                    sem & [ index & \2 ] ] > \\
+    sem & [ index & \2 \\ restr & < > ] ] >}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The same \lex{be} as in Chapter 11: a [\ft{pred} $+$]
+  complement, no meaning of its own.
+\item Now it has a proper type.  Compare the entry with inherited
+  information on the next slide.
+\end{itemize}
+
+\qaslide{The Entry for \lex{be}, with Inherited Information}{
+\begin{center}\footnotesize
+  \avm{< \textnormal{be}, [\type*{auxv-lxm}
+    syn & [ head & [\type*{verb} aux & $+$ \\ agr & \tag{0} ] \\
+            val & [ spr & < [ agr & \tag{0} ] > ] ] \\
+    arg-st & < \3, [ syn & [ head & [ pred & $+$ ] \\
+                              val & [ spr & < \3 > \\ comps & < > ] ] \\
+                     sem & [ index & \2 ] ] > \\
+    sem & [ mode & prop \\ index & \2 \\ restr & < > ] ] >}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Where does each piece come from?
+  \answer{\\ {\small\emp{[\ft{aux} $+$]: \val{auxv-lxm}.  The shared
+    subject \avmbox{3} and empty \ft{comps}: \val{srv-lxm}.
+    [\ft{mode} prop] and the \ft{agr} sharing with the \ft{spr}:
+    \val{verb-lxm} and the SHAC.  Only [\ft{pred} $+$] and the
+    \ft{index} sharing are \lex{be}'s own.}}}
+\end{itemize}
+}
+
+\qaslide{Entry for \lex{have}}{
+\begin{center}\small
+  \avm{< \textnormal{have}, [\type*{auxv-lxm}
+    arg-st & < X, [ syn & [ head & [\type*{verb} form & psp ] ] \\
+                    sem & [ index & \3 ] ] > \\
+    sem & [ index & s \\
+            restr & < [ reln & \textbf{have} \\ sit & s \\ arg & \3 ] > ] ] >}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Note the \ft{form} restriction on the complement VP: a past
+  participle, \eng{has \ul{eaten}}.
+\item What accounts for the analogous \ft{form} restriction on verbs
+  following \lex{be}?
+  \answer{\\ {\small\emp{\lex{be} asks for [\ft{pred} $+$].  Verbs are
+    [\ft{pred} $-$] by default; only the Present Participle LR and the
+    Passive LR make a verb [\ft{pred} $+$].  So after \lex{be} we get
+    \eng{eating} or \eng{eaten} (passive) but not \bad{is eat}.}}}
+\end{itemize}
+}
+
+\qaslide{Lexical Entry for a Modal}{
+\begin{center}\footnotesize
+  \avm{< \textnormal{would}, [\type*{auxv-lxm}
+    syn & [ head & [ form & fin ] ] \\
+    arg-st & < X, [ syn & [ head & [\type*{verb} inf & $-$ \\ form & base ] ] \\
+                    sem & [ index & s$_2$ ] ] > \\
+    sem & [ index & s$_1$ \\
+            restr & < [ reln & \textbf{would} \\ sit & s$_1$ \\ arg & s$_2$ ] > ] ] >}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Note the restriction on the form of the complement VP: base
+  form, not \lex{to} ([\ft{inf} $-$]).
+\item What inflectional lexical rules apply to this lexeme?
+  \answer{\\ {\small\emp{Only ones that keep [\ft{form} fin]: the
+    3rd-Singular and Non-3rd-Singular Verb LRs (F$_{3SG}$ leaves modals
+    alone: \lex{would}, not \bad{woulds}).  Not the participle or Base
+    Form LRs, whose outputs have another \ft{form} value.}}}
+\end{itemize}
+}
+
+\myslide{Accounting for the Basic Facts Cited Earlier}
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item \txx{Optionality of auxiliaries:} as raising verbs, their
+  subjects and complements go together.
+\item \txx{Auxiliaries precede non-auxiliary verbs:} auxiliaries are
+  heads, and complements follow heads in English.
+\item \txx{Auxiliaries determine the form of the following verb:}
+  this is built into their lexical entries.
+\item \txx{When auxiliaries co-occur, their order is fixed:}
+  different explanations for different combinations; see next slide.
+\item \txx{Non-iterability of auxiliaries:} ditto.
+\end{itemize}
+
+\myslide{Accounting for Restrictions on Order and Iterability}
+\begin{itemize}
+\item Order
+  \begin{itemize}
+  \item Modals are finite, and all auxiliaries take non-finite
+    complements.  Hence modals must come first.
+  \item Stative verbs (like \lex{own}) don’t have present participles,
+    and auxiliary \lex{have} is stative.  Hence \bad{Pat is having
+      tapdanced}.
+  \end{itemize}
+\item Iterability
+  \begin{itemize}
+  \item Auxiliary \lex{be} is also stative, so \bad{Pat is being
+      tapdancing}.
+  \item Modals must be finite, and their complements must be base, so
+    \bad{Pat can should tapdance}.
+  \item \bad{Pat has had tapdanced} can be ruled out in various ways,
+    e.g.\ stipulating that auxiliary \lex{have} has no past participle.
+  \end{itemize}
+\end{itemize}
+
+\section[The old transformational analysis, and a constituency argument against it]{Comparison: The Old Transformational Analysis}
+
+\myslide{Sketch of Chomsky’s Old Analysis}
+\begin{center}
+S \into\ NP AUX VP \qquad AUX \into\ T (M) (PERF) (PROG)
+
+\medskip
+\begin{forest}
+cat, for tree={s sep=5mm}
+[{S} [{NP} [{Chris}]]
+  [{AUX} [{T} [{\red{past}}]] [{M} [{could}]] [{PERF} [{have+\red{en}}]] [{PROG} [{be+\red{ing}}]]]
+  [{VP} [{V} [{eat}]]]]
+\end{forest}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item A flat AUX node holds tense and the auxiliaries; each red
+  affix then hops onto the verb to its right: \eng{Chris could have
+    been eating}.
+\end{itemize}
+
+\myslide{How This Analysis Handles the Basic Facts}
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item \txx{Optionality of auxiliaries:} stipulated in the phrase
+  structure rule (with parentheses).
+\item \txx{Auxiliaries precede non-auxiliary verbs:} built into the
+  phrase structure rule, with AUX before VP.
+\item \txx{Auxiliaries determine the form of the following verb:}
+  inflections are inserted with the auxiliaries and moved onto the
+  following verb transformationally.
+\item \txx{When auxiliaries co-occur, their order is fixed:}
+  stipulated in the phrase structure rule for AUX.
+\item \txx{Non-iterability of auxiliaries:} ditto.
+\end{itemize}
+
+\myslide{The Two Analyses Assign Very Different Trees}
+\begin{minipage}[t]{0.48\textwidth}\vspace{0pt}\centering
+\scalebox{0.8}{\begin{forest}
+cat
+[{S} [{NP}] [{VP} [{V} [{could}]] [{VP} [{V} [{have}]] [{VP} [{V} [{been}]] [{VP}]]]]]
+\end{forest}}
+
+\small
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \eng{could have been} VP, \eng{have been} VP and \eng{been} VP
+  are all constituents
+\item \eng{could have been} is not a constituent
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}\vspace{0pt}\centering
+\scalebox{0.8}{\begin{forest}
+cat
+[{S} [{NP}] [{AUX} [{M} [{could}]] [{PERF} [{have}]] [{PROG} [{been}]]] [{VP}]]
+\end{forest}}
+
+\small
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \eng{could have been} VP, \eng{have been} VP and \eng{been} VP
+  are not constituents
+\item \eng{could have been} is a constituent
+\end{itemize}
+\end{minipage}
+
+\qaslide{Ellipsis and Constituency}{
+\begin{itemize}
+\item Consider:
+  \begin{exe}
+  \ex \eng{Pat couldn’t have been eating garlic, but Chris could have been.}
+  \ex \eng{Pat couldn’t have been eating garlic, but Chris could have.}
+  \ex \eng{Pat couldn’t have been eating garlic, but Chris could.}
+  \end{exe}
+\item What is missing in each case, and which analysis makes it a
+  constituent?
+  \answer{\\ {\small\emp{\eng{eating garlic}, \eng{been eating garlic},
+    \eng{have been eating garlic}.  On the nested analysis each is a
+    VP; on the flat analysis none of them is a constituent.  Ellipsis
+    normally removes constituents, so this argues for our analysis over
+    the old transformational one.}}}
+\end{itemize}
+}
+
+\myslide{Our Analysis of Auxiliaries So Far}
+\begin{itemize}
+\item Auxiliaries are subject-raising verbs.
+\item Most basic distributional facts about them can be handled
+  through selectional restrictions between auxiliaries and their
+  complements (that is, as \ft{arg-st} constraints).
+\item Auxiliaries are identified via a \ft{head} feature \ft{aux},
+  which we have not yet put to use.
+\end{itemize}
+
+\section[The NICE properties: negation, inversion, contraction and ellipsis as four lexical rules]{The NICE Properties}
+
+\myslide{Descriptive Summary of the NICE Properties}
+\begin{center}
+\begin{tabular}{lp{0.7\textwidth}}
+\txx{Negation} & Sentences are negated by putting \lex{not} after the
+  first auxiliary verb; they can be reaffirmed by putting \lex{too} or
+  \lex{so} in the same position. \\[1ex]
+\txx{Inversion} & Questions are formed by putting an auxiliary verb
+  before the subject NP. \\[1ex]
+\txx{Contraction} & Auxiliary verbs take negated forms, with
+  \lex{n’t} affixed. \\[1ex]
+\txx{Ellipsis} & Verb phrases immediately following an auxiliary verb
+  can be omitted. \\
+\end{tabular}
+\end{center}
+
+\qaslide{Negation (and Reaffirmation)}{
+\begin{itemize}
+\item Polar adverbs (sentential \lex{not}, \lex{so} and \lex{too})
+  appear immediately following an auxiliary:
+  \begin{exe}
+  \ex \eng{Pat will not leave.} \quad \eng{Pat will SO leave.} \quad
+      \eng{Pat will TOO leave.}
+  \end{exe}
+\item What about examples like \eng{Not many people left}?
+  \answer{\\ {\small\emp{That is constituent negation: \lex{not}
+    modifies the NP \eng{many people}, not the sentence.  We set it
+    aside.}}}
+\item What happens when you want to deny or reaffirm a sentence with
+  no auxiliary?
+  \begin{exe}
+  \ex \eng{Pat left.} \quad \eng{Pat did not leave.} \quad
+      \eng{Pat did TOO leave.}
+  \end{exe}
+  \answer{{\small\emp{An auxiliary appears from nowhere: \lex{do}.}}}
+\end{itemize}
+}
+
+\myslide{The Auxiliary \lex{do}}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Like modals, auxiliary \lex{do} only occurs in finite contexts:
+  \bad{Pat continued to do not leave}.
+\item Unlike modals, \lex{do} cannot be followed by other auxiliaries:
+  \bad{Pat did not have left}.
+\end{itemize}
+\begin{center}\small
+  \avm{< \textnormal{do}, [\type*{auxv-lxm}
+    syn & [ head & [ form & fin ] ] \\
+    arg-st & < X, [ syn & [ head & [\type*{verb} form & base \\ aux & $-$ ] ] \\
+                    sem & [ index & s ] ] > \\
+    sem & [ index & s \\ restr & < > ] ] >}
+\end{center}
+\emp{[\ft{aux} $-$] on the complement does the second job; like \lex{be},
+  \lex{do} adds no meaning of its own.}
+
+\myslide{The ADV$_{pol}$-Addition Lexical Rule}
+\begin{center}\small
+  \avm{[\type*{pi-rule}
+    input & < X, [ syn & [ head & [\type*{verb} form & fin \\ pol & $-$ \\ aux & $+$ ] ] \\
+                   arg-st & < \1 > $\oplus$ \tag{A} \\
+                   sem & [ index & s$_1$ ] ] > \\
+    output & < Y, [ syn & [ head & [ pol & $+$ ] \\ val & [ spr & < Z > ] ] \\
+                    arg-st & < \1 > $\oplus$ < ADV$_{pol}$ [ index & s$_2$ \\
+                                                             restr & < [ arg & s$_1$ ] > ] > $\oplus$ \tag{A} \\
+                    sem & [ index & s$_2$ ] ] > ]}
+\end{center}
+\emp{Take a finite auxiliary word and add a polar adverb right after
+  its subject on \ft{arg-st}; the adverb's predication takes the
+  auxiliary's situation as its argument.}
+
+\myslide{What Does the Type \typ{pi-rule} Mean?}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item It maps words to words (hence ``post-inflectional'').
+\item It preserves \ft{mod} values, \ft{head} values (defeasibly) and
+  \ft{sem} values (defeasibly).
+\end{itemize}
+\begin{center}
+  \avm{[ input & < / \tag{0}, [\type*{word}
+                   syn & [ head & / \1 \\ val & [ mod & \tag{A} ] ] \\
+                   sem & / \2 ] > \\
+         output & < / \tag{0}, [\type*{word}
+                   syn & [ head & / \1 \\ val & [ mod & \tag{A} ] ] \\
+                   sem & / \2 ] > ]}
+\end{center}
+\emp{So \ft{form} fin and \ft{aux} $+$ carry over to the output without
+  being mentioned; only \ft{pol} and \ft{index} are overridden.}
+
+\qaslide{Why Doesn’t the ADV$_{pol}$-Addition LR Mention \ft{comps}?}{
+\begin{center}\scriptsize
+  \avm{[\type*{pi-rule}
+    input & < X, [ syn & [ head & [\type*{verb} form & fin \\ pol & $-$ \\ aux & $+$ ] ] \\
+                   arg-st & < \1 > $\oplus$ \tag{A} \\
+                   sem & [ index & s$_1$ ] ] > \\
+    output & < Y, [ syn & [ head & [ pol & $+$ ] \\ val & [ spr & < Z > ] ] \\
+                    arg-st & < \1 > $\oplus$ < ADV$_{pol}$ [ index & s$_2$ \\
+                                                             restr & < [ arg & s$_1$ ] > ] > $\oplus$ \tag{A} \\
+                    sem & [ index & s$_2$ ] ] > ]}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The rule changes \ft{arg-st} but says nothing about \ft{comps}.  Why not?
+  \answer{\\ {\small\emp{The output is a word, so the Argument
+    Realization Principle fills in \ft{val} from \ft{arg-st}.  With
+    [\ft{spr} $\langle$Z$\rangle$] the first argument \avmbox{1} is the
+    specifier, and everything else, the new ADV$_{pol}$ first, lands on
+    \ft{comps}.}}}
+\end{itemize}
+}
+
+\qaslide{What Is the Role of These Indices?}{
+\begin{center}\scriptsize
+  \avm{[\type*{pi-rule}
+    input & < X, [ syn & [ head & [\type*{verb} form & fin \\ pol & $-$ \\ aux & $+$ ] ] \\
+                   arg-st & < \1 > $\oplus$ \tag{A} \\
+                   sem & [ index & \OV{s$_1$} ] ] > \\
+    output & < Y, [ syn & [ head & [ pol & $+$ ] \\ val & [ spr & < Z > ] ] \\
+                    arg-st & < \1 > $\oplus$ < ADV$_{pol}$ [ index & \OVB{s$_2$} \\
+                                                             restr & < [ arg & \OV{s$_1$} ] > ] > $\oplus$ \tag{A} \\
+                    sem & [ index & \OVB{s$_2$} ] ] > ]}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item $s_1$ and $s_2$: what do they do?
+  \answer{\\ {\small\emp{$s_1$ is the auxiliary's situation; the
+    adverb takes it as its \ft{arg}: \textbf{not}($s_1$).  $s_2$ is the
+    adverb's situation, and the output takes it as its \ft{index}, so
+    the negation becomes the main predication of the sentence.}}}
+\end{itemize}
+}
+
+\myslide{The Entry for \lex{not}}
+\begin{center}
+  \avm{< \textnormal{not}, ADV$_{pol}$ [ sem & [ index & s$_1$ \\
+      restr & < [ reln & \textbf{not} \\ sit & s$_1$ \\ arg & s$_2$ ] > ] ] >}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item An ADV$_{pol}$ is an adverb word with a one-place predication
+  and an index of its own.
+\item The rule on the previous slide unifies its \ft{arg} with the
+  auxiliary's index and passes its own index up.
+\item \lex{so} and \lex{too} are the same, with \textbf{so} and
+  \textbf{too} as their relations.
+\end{itemize}
+
+\myslide{``Scope'' of Negation with the ADV$_{pol}$-Addition LR}
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item Note that the formulation of this rule assumes that \lex{not}
+  takes ``wide scope''.
+\item \eng{You can not fall asleep}
+  \begin{itemize}
+  \item \lex{not} takes \lex{can} as a semantic argument,
+  \item resulting in the meaning where it is not the case that you are
+    able to fall asleep.
+  \end{itemize}
+\item vs.\ \eng{You must not fall asleep}
+  \begin{itemize}
+  \item here, the desired interpretation is ``you are not allowed to
+    fall asleep'',
+  \item however, that interpretation requires \lex{must} to take scope
+    over \lex{not},
+  \item so to properly handle this we would need another rule, but
+    this grammar fragment does not.
+  \end{itemize}
+\item This lexical difference is part of why we treat \lex{not} as a
+  complement and not a modifier.
+\end{itemize}
+
+\qaslide{Which \lex{not}s Does the Rule License?}{
+\begin{exe}
+\ex \eng{Andy must \ul{not} have been sleeping.}
+\ex \eng{Andy must have \ul{not} been sleeping.}
+\ex \eng{Andy must have been \ul{not} sleeping.}
+\ex \eng{Kleptomaniacs can\ul{not} not steal.}
+\ex \eng{Kleptomaniacs cannot \ul{not} steal.}
+\end{exe}
+\begin{itemize}
+\item For each underlined \lex{not}: is it the ADV$_{pol}$ complement
+  of a finite auxiliary?
+  \answer{\\ {\small\emp{(1) yes: first complement of finite
+    \lex{must}.  (2), (3) no: \lex{have} and \lex{been} are not
+    finite, so these are constituent negation.  (4) yes.  (5) no: the
+    rule needs a [\ft{pol} $-$] input and \lex{can} has already become
+    [\ft{pol} $+$], so the second \lex{not} is constituent negation of
+    \eng{steal}.  Key point: sentential \lex{not} must show up as the
+    first complement of a finite auxiliary.}}}
+\end{itemize}
+}
+
+\myslide{Negation and Reaffirmation: Sample Tree}
+\begin{center}
+\begin{forest}
+cat
+[{S} [{NP} [{Leslie}]]
+  [{VP} [{V} [{did}]] [{ADV$_{pol}$} [{SO}]] [{VP} [{eat the whole pizza}, roof]]]]
+\end{forest}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \lex{did} has three arguments: the subject, the ADV$_{pol}$ and
+  the base VP.  The lower VP is licensed by the Head-Complement Rule
+  with all of them.
+\end{itemize}
+
+\qaslide{Inversion}{
+\begin{itemize}
+\item Yes-no questions begin with an auxiliary: \eng{Will Robin win?}
+\item The NP after the auxiliary has all the properties of a subject
+  \begin{itemize}
+  \item Agreement: \eng{Have they left?} vs.\ \bad{Has they left?}
+  \item Case: \bad{Have them left?}
+  \item Raising: \eng{Will there continue to be food at the meetings?}
+  \end{itemize}
+\item What happens if you make a question out of a sentence without
+  an auxiliary?  \eng{Robin won.} \into\ ?
+  \answer{\\ {\small\emp{\eng{Did Robin win?}  Again \lex{do} steps in,
+    and \eng{Robin} still agrees with it: \eng{Does Robin win?}}}}
+\end{itemize}
+}
+
+\myslide{The Inversion Lexical Rule}
+\begin{center}
+  \avm{[\type*{pi-rule}
+    input & < W, [ syn & [ head & [\type*{verb} form & fin \\ aux & $+$ ] ] \\
+                   arg-st & \tag{A} \\
+                   sem & [ mode & prop ] ] > \\
+    output & < Z, [ syn & [ head & [ inv & $+$ ] \\ val & [ spr & < > ] ] \\
+                    arg-st & \tag{A} \\
+                    sem & [ mode & ques ] ] > ]}
+\end{center}
+\emp{Take a finite auxiliary word, keep its arguments, empty its
+  \ft{spr} list and make it a question.}
+
+\qaslide{How the Rule Yields Inverted Order}{
+\begin{center}\scriptsize
+  \avm{[\type*{pi-rule}
+    input & < W, [ syn & [ head & [\type*{verb} form & fin \\ aux & $+$ ] \\
+                           val & [ spr & \OV{< X >} ] ] \\
+                   arg-st & \tag{A} \\
+                   sem & [ mode & prop ] ] > \\
+    output & < Z, [ syn & [ head & [ inv & $+$ ] \\ val & [ spr & \OVB{< >} ] ] \\
+                    arg-st & \tag{A} \\
+                    sem & [ mode & ques ] ] > ]}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The \ft{arg-st} is unchanged.  So how does the subject end up
+  after the verb?
+  \answer{\\ {\small\emp{The ARP again: with \ft{spr} empty, every
+    argument including the subject is on \ft{comps}, and the
+    Head-Complement Rule puts complements after the head: V NP VP.  The
+    result has empty \ft{spr} and \ft{comps}, so it is an S.}}}
+\end{itemize}
+}
+
+\qaslide{The Feature \ft{inv}}{
+\begin{itemize}
+\item What is the \ft{inv} value of inputs to the Inversion LR?
+  \answer{\\ {\small\emp{Perhaps surprisingly, the input is also
+    [\ft{inv} $+$]: \val{pi-rule}s have default identity of \ft{head}
+    features, and the input gives no \ft{inv} value.}}}
+\item Then what work is the feature doing?
+  \answer{\\ {\small\emp{It marks auxiliaries that can't be inverted
+    against those that must be:
+    \eng{You better watch out} vs.\ \bad{Better you watch out}
+    (\lex{better} is [\ft{inv} $-$], so the rule cannot apply);
+    \eng{I shall go} (\lex{shall} $\approx$ `will') vs.\ \eng{Shall I
+      go?} (\lex{shall} $\approx$ `should'): two different words, one
+    [\ft{inv} $-$], one [\ft{inv} $+$].}}}
+\end{itemize}
+}
+
+\qaslide{Other Cases of Inversion}{
+\begin{itemize}
+\item Inversion is not limited to questions:
+  \begin{itemize}
+  \item Preposed negatives: \eng{Never have I been so upset!}
+  \item Conditionals: \eng{Had we known, we would have left.}
+  \item Exclamations: \eng{May your teeth fall out!}
+  \end{itemize}
+\item Does our rule account for these?
+  \answer{\\ {\small\emp{No.  Our rule's output says [\ft{mode} ques],
+    and each construction has slightly different idiosyncrasies.}}}
+\item How might we extend our analysis to cover them?
+  \answer{\\ {\small\emp{One option: define a type of inversion lexical
+    rules, sharing certain properties but with some differences.
+    Another: define more phrase structure rules that select for
+    [\ft{inv} $+$] things.}}}
+\end{itemize}
+}
+
+\myslide{Inversion: Sample Tree}
+\begin{center}
+\begin{forest}
+cat
+[{S} [{V} [{Did}]] [{NP} [{Leslie}]] [{VP} [{eat the entire pizza?}, roof]]]
+\end{forest}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item One flat S: the Head-Complement Rule with \lex{Did} and both of
+  its complements, the NP and the VP.  No Head-Specifier Rule is
+  involved.
+\end{itemize}
+
+\myslide{Contraction}
+\begin{itemize}
+\item There are several types of contraction in English, but we’re
+  only talking about words ending in \lex{n’t}.
+\item It may seem like it’s just \lex{not} said fast, but there’s more
+  to it:
+  \begin{itemize}
+  \item Only finite verbs can take \lex{n’t}: \bad{Terry must haven’t
+      seen us}.  If it was just \lex{not} said fast you’d expect to be
+    able to say this.
+  \item There are morphological irregularities: \lex{won’t} not
+    \bad{willn’t}; \%\lex{shan’t}, not \bad{shalln’t}; \lex{don’t}
+    pronounced \textit{doen’t}, not \textit{dewn’t}; \bad{amn’t}.
+  \end{itemize}
+\end{itemize}
+
+\myslide{The Contraction Lexical Rule}
+\begin{center}\footnotesize
+  \avm{[\type*{pi-rule}
+    input & < \2, [ syn & [ head & [\type*{verb} form & fin \\ aux & $+$ \\ pol & $-$ ] ] \\
+                    arg-st & \tag{B} \\
+                    sem & [ index & s$_1$ \\ restr & \tag{A} ] ] > \\
+    output & < F$_{NEG}$(\2), [ syn & [ head & [ pol & $+$ ] \\ val & [ spr & < X > ] ] \\
+                    arg-st & \tag{B} \\
+                    sem & [ index & s$_2$ \\
+                            restr & < [ reln & \textbf{not} \\ sit & s$_2$ \\ arg & s$_1$ ] > $\oplus$ \tag{A} ] ] > ]}
+\end{center}
+\emp{F$_{NEG}$ does the morphology: \lex{would} \into\ \lex{wouldn’t},
+  \lex{will} \into\ \lex{won’t}.}
+
+\qaslide{Most of the Work Is in the Semantics}{
+\begin{center}\scriptsize
+  \avm{[\type*{pi-rule}
+    input & < \2, [ syn & [ head & [\type*{verb} form & fin \\ aux & $+$ \\ pol & $-$ ] ] \\
+                    arg-st & \tag{B} \\
+                    sem & [ index & \OV{s$_1$} \\ restr & \OV{\tag{A}} ] ] > \\
+    output & < F$_{NEG}$(\2), [ syn & [ head & [ pol & $+$ ] \\ val & [ spr & < X > ] ] \\
+                    arg-st & \tag{B} \\
+                    sem & [ index & \OVB{s$_2$} \\
+                            restr & < \OVB{[ reln & \textbf{not} \\ sit & s$_2$ \\ arg & s$_1$ ]} > $\oplus$ \OV{\tag{A}} ] ] > ]}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Where does the \textbf{not} predication come from here?
+  \answer{\\ {\small\emp{No separate word carries it, so the rule adds
+    it to the verb's own \ft{restr} and makes $s_2$ the new \ft{index}:
+    \eng{would not} packed into one word.}}}
+\end{itemize}
+}
+
+\qaslide{What Does \ft{pol} Do?}{
+\begin{center}\scriptsize
+  \avm{[\type*{pi-rule}
+    input & < \2, [ syn & [ head & [\type*{verb} form & fin \\ aux & $+$ \\ pol & \OV{$-$} ] ] \\
+                    arg-st & \tag{B} \\
+                    sem & [ index & s$_1$ \\ restr & \tag{A} ] ] > \\
+    output & < F$_{NEG}$(\2), [ syn & [ head & [ pol & \OV{$+$} ] \\ val & [ spr & < X > ] ] \\
+                    arg-st & \tag{B} \\
+                    sem & [ \ldots ] ] > ]}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Both the Contraction LR and the ADV$_{pol}$-Addition LR go from
+  [\ft{pol} $-$] to [\ft{pol} $+$].  What does that buy us?
+  \answer{\\ {\small\emp{Each rule can apply only once, and not after
+    the other: it blocks \bad{We can’tn’t stop} and \bad{They won’t TOO
+      mind}.  Verbs are [\ft{pol} $-$] unless a rule has polarized them.}}}
+\end{itemize}
+}
+
+\myslide{Contraction: Sample Tree}
+\begin{center}
+\begin{forest}
+cat
+[{S} [{NP} [{Leslie}]]
+  [{VP} [{V} [{wouldn’t}]] [{VP} [{eat the entire pizza}, roof]]]]
+\end{forest}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Exactly the tree for \eng{Leslie would eat the entire pizza}:
+  the negation is inside the word \lex{wouldn’t}.
+\end{itemize}
+
+\qaslide{Ellipsis}{
+\begin{itemize}
+\item Ellipsis allows VPs to be omitted, so long as they would have
+  been preceded by an auxiliary:
+  \begin{exe}
+  \ex \eng{Pat couldn’t have been watching us, but Chris could have been.}
+  \ex \eng{Pat couldn’t have been watching us, but Chris could have.}
+  \ex \eng{Pat couldn’t have been watching us, but Chris could.}
+  \ex \bad{Pat couldn’t have been watching us, but Chris.}
+  \end{exe}
+\item Unlike the other NICE properties, this holds of all auxiliaries,
+  not just finite ones.
+\item What is the elliptical counterpart of a sentence with no
+  auxiliary?  \eng{Whenever Pat watches TV, Chris watches TV.}
+  \answer{\\ {\small\emp{\eng{Whenever Pat watches TV, Chris does.}
+    Once more, \lex{do}.}}}
+\end{itemize}
+}
+
+\qaslide{The Ellipsis Lexical Rule}{
+\begin{center}
+  \avm{[\type*{d-rule}
+    input & < \1, [\type*{auxv-lxm} arg-st & < \2 > $\oplus$ \tag{A} ] > \\
+    output & < \1, [\type*{dervv-lxm} arg-st & < \2 > ] > ]}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Note that this is a derivational LR (\val{d-rule}), that is,
+  lexeme-to-lexeme.
+\item This means that \ft{syn} and \ft{sem} are unchanged, by default.
+\item What is \val{dervv-lxm} and why do we have it?
+  \answer{\\ {\small\emp{A leaf type of \val{verb-lxm} (derived verb
+    lexeme) for the output: it is no longer an \val{auxv-lxm}, since it
+    has no VP complement, and it must say [\ft{aux} $+$] so as not to
+    inherit the default [\ft{aux} $-$] from \val{verb-lxm} (SWB
+    p.\,420).}}}
+\end{itemize}
+}
+
+\myslide{Ellipsis: Sample Output}
+\begin{center}\small
+  \avm{< \textnormal{could}, [\type*{dervv-lxm}
+    syn & [ head & [ form & fin \\ aux & $+$ \\ pol & $-$ \\ agr & \1 ] \\
+            val & [ spr & < [ agr & \1 ] > ] ] \\
+    arg-st & < NP > \\
+    sem & [ mode & prop \\ index & s$_1$ \\
+            restr & < [ reln & \textbf{could} \\ sit & s$_1$ \\ arg & s$_2$ ] > ] ] >}
+\end{center}
+\emp{A finite \lex{could} with only a subject, and a meaning whose
+  argument $s_2$ is not supplied by anything in the sentence.}
+
+\myslide{Ellipsis: Sample Tree}
+\begin{center}
+\scalebox{0.9}{\begin{forest}
+cat
+[{S} [{NP} [{Kim}]]
+  [{VP} [{V} [{could}]]
+    [{VP} [{V} [{have}]]
+      [{VP} [{V} [{been}]] [{VP} [{attending the conference}, roof]]]]]]
+\end{forest}}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The full sentence: three auxiliaries, each taking the next VP as
+  its complement.
+\end{itemize}
+
+\myslide{Ellipsis: Sample Trees, with the Ellipsis LR}
+\begin{center}
+\begin{minipage}[t]{0.36\textwidth}\vspace{0pt}\centering
+\scalebox{0.75}{\begin{forest}
+cat
+[{S} [{NP} [{Kim}]]
+  [{VP} [{V} [{could}]] [{VP} [{V} [{have}]] [{VP} [{V} [{been}]]]]]]
+\end{forest}}
+\end{minipage}
+\begin{minipage}[t]{0.3\textwidth}\vspace{0pt}\centering
+\scalebox{0.75}{\begin{forest}
+cat
+[{S} [{NP} [{Kim}]]
+  [{VP} [{V} [{could}]] [{VP} [{V} [{have}]]]]]
+\end{forest}}
+\end{minipage}
+\begin{minipage}[t]{0.25\textwidth}\vspace{0pt}\centering
+\scalebox{0.75}{\begin{forest}
+cat
+[{S} [{NP} [{Kim}]] [{VP} [{V} [{could}]]]]
+\end{forest}}
+\end{minipage}
+\end{center}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item The last auxiliary in each tree is a \val{dervv-lxm}: its VP
+  argument is gone, so the Head-Complement Rule applies with no
+  complements.
+\end{itemize}
+
+\qaslide{Semantics of Ellipsis}{
+\begin{center}
+\scalebox{0.7}{\begin{forest}
+cat
+[{S} [{NP} [{Kim}]] [{VP} [{V} [{could}]]]]
+\end{forest}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item What is the \ft{sem} value of the S node of this tree?
+  \answer{\\
+  \begin{center}\footnotesize
+    \avm{[ index & s$_1$ \\ mode & prop \\
+           restr & < [ reln & \textbf{name} \\ name & Kim \\ named & i ],
+                     [ reln & \textbf{could} \\ sit & s$_1$ \\ arg & s$_2$ ] > ]}
+  \end{center}
+  {\small\emp{Note: $s_2$ has to be filled in by context, which is
+    exactly what ellipsis feels like.}}}
+\end{itemize}
+}
+
+\myslide{Infinitival \lex{to} Revisited}
+\begin{itemize}
+\item VP ellipsis can occur after \lex{to}:
+  \begin{exe}
+  \ex \eng{We didn’t find the solution, but we tried to.}
+  \end{exe}
+\item This is covered by our Ellipsis LR if we say \lex{to} is
+  [\ft{aux} $+$].
+\item Since \ft{aux} is declared on type \val{verb}, it follows that
+  \lex{to} is a verb.
+\item That was the promise from Lecture 12: now kept.
+\end{itemize}
+
+\myslide{\lex{do} Revisited}
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item Chomsky’s old analysis: in sentences without auxiliaries
+  \begin{itemize}
+  \item Tense can get separated from the verb in various ways:
+    negation/reaffirmation inserts something between Tense and the
+    following verb; inversion moves Tense to the left of the subject NP;
+    ellipsis deletes what follows Tense.
+  \item When this happens, \lex{do} is inserted to support Tense.
+  \end{itemize}
+\item Our counterpart
+  \begin{itemize}
+  \item NICE properties hold only of auxiliaries.
+  \item \lex{do} is a semantically empty auxiliary.
+  \item So, negated, reaffirmed, inverted and elliptical sentences that
+    are the semantic counterparts to sentences without auxiliaries are
+    ones with \lex{do}.
+  \end{itemize}
+\end{itemize}
+
+\myslide{Summary}
+\begin{itemize}
+\item Our analysis employs straightforward mechanisms
+  \begin{itemize}
+  \item lexical entries for auxiliaries (a subtype of raising verbs)
+  \item 3 new features (\ft{aux}, \ft{pol}, \ft{inv})
+  \item 4 lexical rules (ADV$_{pol}$-Addition, Inversion, Contraction,
+    Ellipsis)
+  \end{itemize}
+\item We handle a complex array of facts
+  \begin{itemize}
+  \item co-occurrence restrictions (ordering and iteration)
+  \item the NICE properties
+  \item auxiliary \lex{do}
+  \item combinations of NICE constructions
+  \end{itemize}
+\end{itemize}
+
+\section[Step by step: \eng{Kim did not leave} and \eng{Did Kim leave?}]{Step by Step}
+
+\myslide{Step by Step: What \lex{did} Asks For}
+\begin{center}
+\scalebox{0.7}{\begin{forest}
+cat, for tree={align=center}
+[{S}
+[{\avmbox{1}NP} [{Kim}]]
+[{VP\\ {\small$[$ \ft{spr} $\langle \avmbox{1} \rangle$, \ft{comps} $\langle\ \rangle$ $]$}}
+[{V\\ {\small$[$ \ft{spr} $\langle \avmbox{1} \rangle$,}\\ {\small\ft{comps} $\langle \avmbox{2}, \avmbox{3} \rangle$ $]$}} [{did}]]
+[{\avmbox{2}ADV$_{pol}$} [{not}]]
+[{\avmbox{3}VP\\ {\small$[$ \ft{form} base, \ft{aux} $-$, \ft{spr} $\langle \avmbox{1} \rangle$ $]$}} [{leave}]]]]
+\end{forest}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item The lexeme \lex{do} has \ft{arg-st} $\langle$ \avmbox{1},
+  \avmbox{3}VP[\ft{form} base, \ft{aux} $-$, \ft{spr} $\langle$
+  \avmbox{1} $\rangle$] $\rangle$: a raising verb.
+\item The ADV$_{pol}$-Addition LR inserts \avmbox{2}: $\langle$
+  \avmbox{1}, \avmbox{2}, \avmbox{3} $\rangle$; the ARP puts \avmbox{1}
+  on \ft{spr} and the rest on \ft{comps}.
+\item \lex{leave} still wants \avmbox{1} as its subject: Kim is the
+  leaver, \lex{did} adds nothing, \lex{not} negates.
+\end{itemize}
+
+\qaslide{Which Lexical Rules License Each Word?}{
+\eng{Kim did not leave.}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \eng{Kim}?
+  \answer{\\ {\small\emp{Constant Lexeme LR (\val{pn-lxm}).}}}
+\item \eng{did}?
+  \answer{\\ {\small\emp{Two rules: the Past-Tense Verb LR (lexeme
+    \into\ word, \lex{do} \into\ \lex{did}, [\ft{form} fin] as the
+    lexeme already requires), then the ADV$_{pol}$-Addition LR (word
+    \into\ word, a \val{pi-rule}), which adds \lex{not} to \ft{arg-st}
+    and makes it [\ft{pol} $+$].}}}
+\item \eng{not}?
+  \answer{\\ {\small\emp{Constant Lexeme LR, from the ADV$_{pol}$ entry.}}}
+\item \eng{leave}?
+  \answer{\\ {\small\emp{Base Form LR: \lex{did} asks for [\ft{form}
+    base].}}}
+\end{itemize}
+}
+
+\myslide{Step by Step: \eng{Did Kim leave?}}
+\begin{center}
+\scalebox{0.75}{\begin{forest}
+cat, for tree={align=center}
+[{S\\ {\small$[$ \ft{spr} $\langle\ \rangle$, \ft{comps} $\langle\ \rangle$, \ft{mode} ques $]$}}
+[{V\\ {\small$[$ \ft{inv} $+$, \ft{spr} $\langle\ \rangle$,}\\ {\small\ft{comps} $\langle \avmbox{1}, \avmbox{2} \rangle$ $]$}} [{Did}]]
+[{\avmbox{1}NP} [{Kim}]]
+[{\avmbox{2}VP\\ {\small$[$ \ft{form} base, \ft{spr} $\langle \avmbox{1} \rangle$ $]$}} [{leave}]]]
+\end{forest}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item Same \ft{arg-st} as before the rule: $\langle$ \avmbox{1},
+  \avmbox{2} $\rangle$.  The Inversion LR only sets \ft{spr} to
+  $\langle\ \rangle$ and \ft{mode} to \val{ques}.
+\item So the ARP puts both arguments on \ft{comps}, and the subject
+  follows the verb.
+\item \avmbox{2} still has \ft{spr} $\langle$ \avmbox{1} $\rangle$:
+  Kim is the leaver, agreement and case are checked as usual.
+\end{itemize}
+
+\qaslide{Which Rule Licenses Each Node?}{
+\begin{center}
+\scalebox{0.6}{\begin{forest}
+cat
+[{S} [{NP} [{Kim}]]
+  [{VP} [{V} [{did}]] [{ADV$_{pol}$} [{not}]] [{VP} [{V} [{leave}]]]]]
+\end{forest}}
+\hspace{2em}
+\scalebox{0.6}{\begin{forest}
+cat
+[{S} [{V} [{Did}]] [{NP} [{Kim}]] [{VP} [{V} [{leave}]]]]
+\end{forest}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item Top S of \eng{Kim did not leave}?
+  \answer{{\small\emp{Head-Specifier Rule: the VP and its specifier \eng{Kim}.}}}
+\item VP \eng{did not leave}?
+  \answer{{\small\emp{Head-Complement Rule: \eng{did} and both complements.}}}
+\item VP \eng{leave}?
+  \answer{{\small\emp{Head-Complement Rule with no complements.}}}
+\item S of \eng{Did Kim leave?}
+  \answer{{\small\emp{Head-Complement Rule: \eng{Did} and both
+    complements; \ft{spr} and \ft{comps} are empty, so it is an S.}}}
+\end{itemize}
+}
+
+\myslide{If You Want to Try}
+\begin{itemize}
+\item There is no problem set for this lecture.
+\item If you would like to practise, \citet[Chapter 13]{sag:wasow:bender:2003}
+  Problems 1--3 cover the ground above:
+  \begin{itemize}
+  \item Problem 1: why there are no modal imperatives.
+  \item Problem 2: \lex{do} support without a \lex{do}-insertion rule.
+  \item Problem 3: trees for inverted sentences.
+  \end{itemize}
+\item Try \eng{You could do that, but you better not}: draw the tree,
+  and say which lexical type and which lexical rules license each word.
+\end{itemize}
+
+\overview
+\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 13}
+
+\myslide{Acknowledgments and References}
+
+\begin{itemize}
+\item Course design and slides borrow heavily from Emily Bender's course:
+\textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
+\\ \url{http://courses.washington.edu/ling566}
+\item This lecture complements \citet[Chapter 13]{sag:wasow:bender:2003}
+\end{itemize}
+\small
+\bibliographystyle{aclnat}
+\bibliography{abb,mtg,nlp,ling}
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-engine: xetex
+%%% End:
