@@ -619,10 +619,10 @@ want to change the order of things, \ldots
       comps & \tag{A} $\oplus$ < \1 > ] ] ] > ]
 }
 \end{center}
-
-\begin{itemize}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
 \item Why is the type \val{pi-rule}?
-  \answer{\\ {\small\emp{It takes a word to a word, after inflection: the verb has already agreed with its CP subject, and \lex{it} is 3sing too.}}}
+  \answer{\\ {\small\emp{It takes a word to a word, after inflection: the verb has already agreed with its CP subject, and \lex{it} is 3sing too.  (Also, no lexeme type fits the output.)}}}
 \item Why doesn’t it say anything about the semantics?
   \answer{\\ {\small\emp{The meaning doesn't change, and \val{l-rule}s copy \ft{sem} from input to output.}}}
 \item Why is the \ft{comps} value \avmbox{A} not $\langle \rangle$?
@@ -680,17 +680,19 @@ cat, for tree={align=center}
 
 \qaslide{Which Rule Licenses Each Node?}{
 \begin{minipage}[t]{0.4\textwidth}
-\begin{forest}
+\vspace{0pt}
+\scalebox{0.8}{\begin{forest}
 cat
 [{S} [{NP} [{It}]]
 [{VP} [{V} [{matters}]]
 [{CP} [{C} [{that}]]
 [{S} [{NP} [{Kim}]]
 [{VP} [{V} [{arrived}]]]]]]]
-\end{forest}
+\end{forest}}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.55\textwidth}
-\begin{itemize}\addtolength{\itemsep}{-1ex}
+\vspace{0pt}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
 \item Top S?
   \answer{\\ {\small\emp{Head-Specifier Rule: the VP and its specifier \eng{It}.}}}
 \item VP \eng{matters that Kim arrived}?
@@ -700,7 +702,7 @@ cat
 \item Lower S, VP \eng{arrived}?
   \answer{\\ {\small\emp{Head-Specifier Rule; Head-Complement Rule with no complements.}}}
 \item NP over \eng{It}, NP over \eng{Kim}?
-  \answer{\\ {\small\emp{None needed: pronouns and proper nouns are already saturated, so the word is an NP.}}}
+  \answer{\\ {\small\emp{None needed: pronouns and proper nouns are already NPs.}}}
 \end{itemize}
 \end{minipage}
 }
@@ -753,8 +755,7 @@ cat
 \end{center}
 
 
-\qaslide{Our Analyses of Idioms and Passives Interact\ldots{}}{
-
+\myslide{Our Analyses of Idioms and Passives Interact \ldots{}}
 
 \begin{itemize}
 \item We generate
@@ -767,16 +768,27 @@ with roughly the same meanings as
   \ex \eng{Many people took advantage of the situation.}
   \ex \eng{Someone keeps tabs on foreign students.}
 \end{exe}
-
-
 \item But not:
   \begin{exe} 
-    \ex \eng{Many people were taken advantage of.}
+    \ex \label{s:pseudo} \eng{Many people were taken advantage of.}
   \end{exe}
 \item Why not?
-  \answer{ {\small\emp{\eng{taken} is the output of the Passive LR, which makes the second \ft{arg-st} element (\eng{advantage}) the subject; \eng{many people} is inside the PP, third on the list.  This ``pseudo-passive'' would need a different rule, one that makes the PP's object the subject and leaves everything else in place.}}}
 \end{itemize}
-}
+
+\newpage
+
+\begin{itemize}
+\item Why is (\ref{s:pseudo}) not generated?
+  \begin{itemize}
+  \item \emp{\eng{taken} is the output of the Passive LR, which makes
+      the second \ft{arg-st} element (\eng{advantage}) the subject.}
+  \item \emp{\eng{many people} is inside the PP, third on the list, so
+      no rule we have can make it the subject.}
+  \item \emp{This ``pseudo-passive'' would need a different rule, one
+      that makes the PP's object the subject and leaves everything else
+      in place.}
+  \end{itemize}
+\end{itemize}
 
 \myslide{Overview}
 \MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 11}
@@ -823,6 +835,10 @@ says nothing about verb agreement.
 
   For me (Francis), only (\ref{s:is-sg}) and (\ref{s:are-pl}) are ok;
   for many speakers (\ref{s:is-pl}) is also ok.
+
+  Interestingly, the contracted form behaves differently: for me
+  \eng{There's a cat on the mat} and \eng{There's cats on the mat} are
+  both fine, although \eng{There is cats on the mat} is not.
 
   
   
