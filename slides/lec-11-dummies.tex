@@ -88,7 +88,7 @@ This takes only passive lexemes: \avm{[ form &  pass ]
 \item The \lex{be} in \eng{There is a page missing} cannot be the 
 same \lex{be} that occurs in sentences like \eng{Pat is tall} or 
 \eng{A cat was chased by a dog}.  Why not?
-  \answer{\\ {\small\emp{Here \lex{be} has two complements, and \lex{there} is not the subject of \eng{missing}.}}}
+  \answer{\\ {\small\emp{Here \lex{be} has two complements, and \lex{there} is not the subject of \eng{missing}.  Nor is \eng{a page missing} one [\ft{pred} +] phrase: it is not even a constituent (\bad{A page missing caused problems}).}}}
 \item So we need a separate lexical entry for this \lex{be}, 
   stipulating:
   \begin{itemize}
@@ -209,6 +209,94 @@ existentials?
     ] >
 }
 \end{center}
+}
+
+\myslide{Sample Tree for Existential \lex{be}}
+
+\begin{exe}
+  \ex \eng{There are cats in boxes.}
+\end{exe}
+
+\begin{minipage}[t]{0.45\textwidth}
+\begin{forest}
+cat
+[{S} [{NP} [{There}]]
+[{VP} [{V} [{are}]]
+[{NP} [{N} [{cats}]]]
+[{PP} [{P} [{in}]]
+[{NP} [{N} [{boxes}]]]]]]
+\end{forest}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.5\textwidth}
+\begin{itemize}
+\item \eng{cats} and \eng{in boxes} are sisters: two complements of
+  \lex{are}.
+\item \eng{cats in boxes} is not a constituent here (compare
+  \eng{Cats in boxes are cute}, where it is).
+\end{itemize}
+\end{minipage}
+
+\myslide{Step by Step: What \lex{are} Asks For}
+
+\begin{center}
+\scalebox{0.85}{\begin{forest}
+cat, for tree={align=center}
+[{S}
+[{\avmbox{1}NP\\ {\small$[$ \ft{form} there $]$}} [{There}]]
+[{VP\\ {\small$[$ \ft{spr} $\langle \avmbox{1} \rangle$, \ft{comps} $\langle\ \rangle$ $]$}}
+[{V\\ {\small$[$ \ft{spr} $\langle \avmbox{1} \rangle$,}\\ {\small\ft{comps} $\langle \avmbox{2}, \avmbox{3} \rangle$ $]$}} [{are}]]
+[{\avmbox{2}NP$_i$} [{cats}, roof]]
+[{\avmbox{3}PP\\ {\small$[$ \ft{pred} +, \ft{spr} $\langle \avmbox{2} \rangle$ $]$}} [{in boxes}, roof]]]]
+\end{forest}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item The \ft{arg-st} of existential \lex{be} is $\langle$ NP[\ft{form}
+  there], \avmbox{2}, \avmbox{3} $\rangle$; the ARP puts the first on
+  \ft{spr} and the rest on \ft{comps}.
+\item The PP \eng{in boxes} is [\ft{pred} +] and still wants a subject
+  (\ft{spr} $\langle \avmbox{2} \rangle$): that subject is \eng{cats},
+  so the cats are in the boxes.
+\end{itemize}
+
+\qaslide{Which Rule Licenses Each Node?}{
+\begin{minipage}[t]{0.4\textwidth}
+\begin{forest}
+cat
+[{S} [{NP} [{There}]]
+[{VP} [{V} [{are}]]
+[{NP} [{N} [{cats}]]]
+[{PP} [{P} [{in}]]
+[{NP} [{N} [{boxes}]]]]]]
+\end{forest}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.55\textwidth}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item S?
+  \answer{\\ {\small\emp{Head-Specifier Rule: the VP and its specifier \eng{There}.}}}
+\item VP?
+  \answer{\\ {\small\emp{Head-Complement Rule: \eng{are} and both its complements, NP and PP.}}}
+\item PP?
+  \answer{\\ {\small\emp{Head-Complement Rule: \eng{in} and its NP.}}}
+\item NP over \eng{cats}, NP over \eng{boxes}?
+  \answer{\\ {\small\emp{Head-Complement Rule with no complements (a plural noun's specifier is optional).}}}
+\item NP over \eng{There}?
+  \answer{\\ {\small\emp{None needed: a pronoun is already a saturated NP.}}}
+\end{itemize}
+\end{minipage}
+}
+
+\qaslide{Which Lexical Rule Licenses Each Word?}{
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \eng{There}?
+  \answer{\\ {\small\emp{Constant Lexeme LR: \val{pron-lxm} is a \val{const-lxm}; the word is the lexeme unchanged.}}}
+\item \eng{are}?
+  \answer{\\ {\small\emp{Non-3rd-Singular Verb LR applied to existential \lex{be} (\val{exist-be-lxm}); the form is irregular, \eng{are}.  Agreement with \eng{cats} is Problem Set 9, P1.}}}
+\item \eng{cats}, \eng{boxes}?
+  \answer{\\ {\small\emp{Plural Noun LR (\val{cntn-lxm} \into\ word, add \textit{-s}).}}}
+\item \eng{in}?
+  \answer{\\ {\small\emp{Constant Lexeme LR, from the predicative preposition lexeme (\val{predp-lxm}, [\ft{pred} +]).}}}
+\end{itemize}
 }
 
 \section{Dummy \lex{it}}
@@ -397,6 +485,28 @@ cat, for tree={font=\itshape}
 
 
 
+\qaslide{Is \lex{that} Really the Head?}{
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item We treat the complementizer as the head of \eng{that the Giants
+    lost}, although the S carries all the meaning.  Does that seem
+  strange?  What is the evidence for it?
+  \answer{
+  \begin{itemize}\addtolength{\itemsep}{-0.5ex}
+  \item \emp{The little word decides where the phrase can go: verbs select
+    a CP, and the S on its own will not do (\eng{That they won matters}
+    vs.\ \bad{They won matters}).}
+  \item \emp{The complementizer decides what kind of S it takes: \lex{that}
+    takes a finite S, \lex{for} takes an infinitive (\eng{For Kim to
+      leave would be sad}).  Selection is what heads do.}
+  \item \emp{It is the same pattern as the preposition in \eng{of the
+      election}: a small head, a big complement, no meaning of its own,
+    the \ft{index} passed up.}
+  \item \emp{The phrase is a CP, not an S, and [\ft{form} \val{cform}] is
+    what \lex{know}, \lex{matter}, \ldots\ look for.}
+  \end{itemize}}
+\end{itemize}
+}
+
 \myslide{Sample Verb with a CP Subject}
 
 
@@ -420,7 +530,7 @@ Note: the only constraint on the first argument is semantic.
 \item We constrained the subject of \lex{matter} only semantically.  However\ldots{}
 \item CP and S are semantically identical, but we get:
   \begin{exe} 
-    \ex \eng{That Bush won matters} vs.\ \bad{Bush won matters}
+    \ex \eng{That they won matters} vs.\ \bad{They won matters}
   \end{exe}
 \item Argument-marking PPs are semantically identical to their object 
   NPs, but we get:
@@ -526,6 +636,7 @@ want to change the order of things, \ldots
 \item Why doesn’t it say anything about the semantics?
   \answer{\\ {\small\emp{The meaning doesn't change, and \val{l-rule}s copy \ft{sem} from input to output.}}}
 \item Why is the \ft{comps} value \avmbox{A} not $\langle \rangle$?
+  \answer{\\ {\small\emp{Some verbs with CP subjects also have complements (next slide).  Whatever was on \ft{comps} stays, and the CP goes on the end, after them.}}}
 \end{itemize}
 }
 
@@ -537,6 +648,87 @@ want to change the order of things, \ldots
 \ex \eng{It occurred to Pat that Chris knew the answer.}
 \ex \eng{It endeared you to Andy that you wore a funny hat.}
 \end{exe}
+
+\myslide{Sample Tree with Extraposition}
+
+\begin{exe}
+  \ex \eng{It matters that Kim arrived.}
+\end{exe}
+
+\begin{center}
+\scalebox{0.8}{\begin{forest}
+cat
+[{S} [{NP} [{It}]]
+[{VP} [{V} [{matters}]]
+[{CP} [{C} [{that}]]
+[{S} [{NP} [{Kim}]]
+[{VP} [{V} [{arrived}]]]]]]]
+\end{forest}}
+\end{center}
+
+\myslide{Step by Step: What \lex{matters} Asks For}
+
+\begin{center}
+\scalebox{0.85}{\begin{forest}
+cat, for tree={align=center}
+[{S}
+[{\avmbox{1}NP\\ {\small$[$ \ft{form} it $]$}} [{It}]]
+[{VP\\ {\small$[$ \ft{spr} $\langle \avmbox{1} \rangle$, \ft{comps} $\langle\ \rangle$ $]$}}
+[{V\\ {\small$[$ \ft{spr} $\langle \avmbox{1} \rangle$, \ft{comps} $\langle \avmbox{2} \rangle$ $]$}} [{matters}]]
+[{\avmbox{2}CP\\ {\small$[$ \ft{index} $s$ $]$}} [{that Kim arrived}, roof]]]]
+\end{forest}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item Before extraposition \lex{matters} is [\ft{spr} $\langle$ \avmbox{2}CP
+  $\rangle$, \ft{comps} \el]: \eng{That Kim arrived matters}.
+\item The Extraposition LR swaps in a dummy subject: [\ft{spr} $\langle$
+  NP[\ft{form} it] $\rangle$, \ft{comps} $\langle$ \avmbox{2} $\rangle$].
+\item The semantics is untouched: the \ft{mattering} is still the
+  CP's \ft{index} $s$, the situation of Kim arriving.
+\end{itemize}
+
+\qaslide{Which Rule Licenses Each Node?}{
+\begin{minipage}[t]{0.4\textwidth}
+\begin{forest}
+cat
+[{S} [{NP} [{It}]]
+[{VP} [{V} [{matters}]]
+[{CP} [{C} [{that}]]
+[{S} [{NP} [{Kim}]]
+[{VP} [{V} [{arrived}]]]]]]]
+\end{forest}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.55\textwidth}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Top S?
+  \answer{\\ {\small\emp{Head-Specifier Rule: the VP and its specifier \eng{It}.}}}
+\item VP \eng{matters that Kim arrived}?
+  \answer{\\ {\small\emp{Head-Complement Rule: after extraposition the CP is a complement of \eng{matters}.}}}
+\item CP?
+  \answer{\\ {\small\emp{Head-Complement Rule: \eng{that} and its S complement.}}}
+\item Lower S, VP \eng{arrived}?
+  \answer{\\ {\small\emp{Head-Specifier Rule; Head-Complement Rule with no complements.}}}
+\item NP over \eng{It}, NP over \eng{Kim}?
+  \answer{\\ {\small\emp{None needed: pronouns and proper nouns are already saturated, so the word is an NP.}}}
+\end{itemize}
+\end{minipage}
+}
+
+\qaslide{Which Lexical Rule Licenses Each Word?}{
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item \eng{It}?
+  \answer{\\ {\small\emp{Constant Lexeme LR, from the dummy \lex{it} entry ([\ft{form} it], \ft{index} \val{none}).}}}
+\item \eng{matters}?
+  \answer{\\ {\small\emp{Two rules: the 3rd-Singular Verb LR (lexeme \into\ word, add \textit{-s}), then the Extraposition LR (word \into\ word, a \val{pi-rule}).}}}
+\item \eng{that}?
+  \answer{\\ {\small\emp{Constant Lexeme LR: \val{comp-lxm} is a \val{const-lxm}.}}}
+\item \eng{Kim}?
+  \answer{\\ {\small\emp{Constant Lexeme LR (\val{pn-lxm}).}}}
+\item \eng{arrived}?
+  \answer{\\ {\small\emp{Past-Tense Verb LR.}}}
+\end{itemize}
+}
 
 \section{Idioms}
 
@@ -592,7 +784,7 @@ with roughly the same meanings as
     \ex \eng{Many people were taken advantage of.}
   \end{exe}
 \item Why not?
-  \answer{ {\small\emp{Passive promotes the second \ft{arg-st} element (\eng{advantage}); \eng{many people} is inside the PP.}}}
+  \answer{ {\small\emp{\eng{taken} is the output of the Passive LR, which makes the second \ft{arg-st} element (\eng{advantage}) the subject; \eng{many people} is inside the PP, third on the list.  This ``pseudo-passive'' would need a different rule, one that makes the PP's object the subject and leaves everything else in place.}}}
 \end{itemize}
 }
 
