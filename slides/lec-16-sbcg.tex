@@ -2,7 +2,7 @@
 
 \input{headx-new.tex}
 \usepackage{tikz}
-\usetikzlibrary{matrix,positioning}
+\usetikzlibrary{matrix,positioning,calc,shapes.geometric}
 
 %%% langsci-avm styles attributes and types itself; see \avmsetup
 \begin{document}
@@ -12,22 +12,10 @@
 
 
 
-\myslide{Overview}
+\overview
 \MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 16}
 
-Chapter 16 framework (same analyses, 
-different underlying system)
-\begin{itemize}
-\item Construction grammar
-  \begin{itemize}
-  \item The construction grammar family
-  \item Differences between SBCG and HPSG
-  \end{itemize}
-\item Multiple inheritance: lexemes and clauses
-\item Everything is a sign: words, rules, principles and the root condition
-\end{itemize}
-
-\section{Construction Grammar}
+\section[Construction grammar: the same analyses in a different system; the family, and how SBCG differs from HPSG]{Construction Grammar}
 
 \myslide{Construction Grammar (CxG)}
 
@@ -74,7 +62,7 @@ grammar rules
 simplified
 \end{itemize}
 
-\section{Multiple Inheritance}
+\section[Multiple inheritance: lexemes and clauses]{Multiple Inheritance}
 
 \myslide{More Inheritance (Lexemes)}
 \newcommand{\twoline}[2]{\shortstack{\textit{#1}\\\textbf{#2}}}
@@ -218,7 +206,72 @@ simplified
 
 \end{tikzpicture}
 
-\section{Everything Is a Sign}
+\qaslide{What Does Each Lexeme Inherit?}{
+\begin{itemize}
+\item \lex{continue} is both a \typ{verb-lxm} and an \typ{sr-lxm}.
+  What comes from each parent?
+  \answer{\\ {\small\emp{From \typ{verb-lxm}: \ft{head} \typ{verb}, the
+    defaults for \ft{aux} and \ft{form}, \ft{mode} \val{prop}, a nominal
+    first argument.  From \typ{sr-lxm}: the shared tag between the first
+    argument and the complement's \ft{spr}, and the complement's
+    \ft{index} as the \ft{arg} of its predication.}}}
+\item \lex{likely} is an \typ{adj-lxm} and an \typ{sr-lxm}.  What is
+  the gain?
+  \answer{\\ {\small\emp{Raising is stated once, on \typ{sr-lxm}, and both
+    \lex{continue} and \lex{likely} inherit it; in Chapter 12 we had to
+    write the raising constraint into \typ{srv-lxm} and would have
+    needed it again for adjectives.  The same holds for the clause types:
+    \eng{Who do we see?} is at once an \typ{int-cl} and a
+    \typ{hd-fill-cx}.}}}
+\end{itemize}
+}
+
+\section[Everything is a sign: words, rules, principles, phonology and the root condition]{Everything Is a Sign}
+
+\myslide{Saussure's Sign}
+\MyLogo{\citet{saussure:1916}}
+\begin{minipage}[c]{0.42\textwidth}
+\begin{center}
+\begin{tikzpicture}
+  \node[draw, thick, ellipse, minimum width=62mm, minimum height=42mm] (sign) {};
+  \draw[thick] (sign.west) -- (sign.east);
+  \node[align=center] at ($(sign.center)+(0,9mm)$) {\emp{signifi\'e}\\ \small the concept};
+  \node[align=center] at ($(sign.center)+(0,-9mm)$) {\emp{signifiant}\\ \small the sound image};
+  \node[anchor=north, font=\small] at ($(sign.south)+(0,-1mm)$) {the sign: two sides of one sheet};
+\end{tikzpicture}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.55\textwidth}
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item For \citet{saussure:1916} a linguistic \txx{sign} is a
+  \emp{signified} (a concept) and a \emp{signifier} (a sound image)
+  bound together, like the two sides of a sheet of paper.
+\item The pairing is \txx{arbitrary}: nothing in the sound tells you
+  the meaning, so each sign has to be learned and stored.
+\item Signs combine into larger units (\emp{syntagmes}), which are
+  signs in their own right.
+\end{itemize}
+\end{minipage}
+
+\myslide{Our Signs Are Saussure's}
+\begin{center}
+\scalebox{0.8}{\avm{[\type*{word}
+   phon & < \textnormal{Kim} > \\
+   syn & [ head & [\type*{noun} agr & 3sing ] ] \\
+   sem & [ mode & ref \\ index & i \\
+           restr & < [ reln & \prd{name} \\ name & \textnormal{Kim} \\ named & i ] > ] ]}}
+\end{center}
+\vspace{-2ex}
+\begin{itemize}\addtolength{\itemsep}{-1.5ex}
+\item \ft{phon} is the signifier and \ft{sem} the signified, held in
+  one feature structure: neither exists without the other.
+\item The entry is stored in the lexicon because the pairing is
+  arbitrary; nothing predicts that \emp{Kim} names Kim.
+\item \ft{syn} adds how the sign combines with others, Saussure's
+  \emp{syntagmatic relations}; and phrases are signs too, their
+  signifier built by the Principle of Order (next slides) and their
+  signified by the Semantic Compositionality Principle.
+\end{itemize}
 
 \myslide{Words Are Signs}
     \avm{
@@ -232,7 +285,7 @@ simplified
 
     \avm{
      \ [\type*{word}
-        orth & < ``\textnormal{dog}'' > \\
+        phon & < \textnormal{dog} > \\
       syn &  [ head & \type{noun} \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < D > \\ comps & < > ] ]
@@ -275,6 +328,34 @@ $\rightarrow$\ \ \ \ \2\ \ \ \ \HD[ %\type{phrase}\\
   hd-dtr.syn.val & / \1  ]}
 \end{itemize} 
 
+\myslide{Phonology Is Built Too: The Principle of Order}
+\begin{center}
+\avm{\typ{cx}: [ mother & [ phon & \tag{A1} $\oplus \cdots \oplus$ \tag{An} ] \\
+                 dtrs & < [ phon & \tag{A1} ], \ldots, [ phon & \tag{An} ] > ]}
+\end{center}
+\begin{itemize}
+\item Every sign has a \ft{phon} list, and a construction's mother
+  just concatenates its daughters' lists, in order.
+\item So the tree is no longer a separate object: word order, structure
+  and meaning are all features of one sign.
+\end{itemize}
+
+\qaslide{Where Did the Head Feature Principle Go?}{
+\begin{itemize}
+\item In Chapter 4 the HFP was a principle applying to every headed
+  phrase.  Where is it now?
+  \answer{\\ {\small\emp{It is a constraint on the type \typ{hd-cx}
+    (headed construction).  Every headed construction, \typ{hd-spr-cx},
+    \typ{hd-comp-cx}, \typ{hd-fill-cx}, \ldots, inherits it; the
+    non-headed ones (imperative, coordination) simply do not have a
+    \ft{hd-dtr}.}}}
+\item What is left of ``well-formedness''?
+  \answer{\\ {\small\emp{Only this: a structure is well formed if it is the
+    \ft{mother} of some instance of some construction.  There are no
+    principles that look at trees from outside.}}}
+\end{itemize}
+}
+
 \myslide{The Root Condition (Start Symbol) Is a Sign}
 
 \avm{
@@ -293,7 +374,8 @@ $\rightarrow$\ \ \ \ \2\ \ \ \ \HD[ %\type{phrase}\\
 \item Most recent work on HPSG is effectively work on SBCG
 \end{itemize}
 
-Look at Ian Sag's slides if you want to know more!
+Look at Ivan Sag's slides if you want to know more:
+\url{https://bond-lab.github.io/Theories-of-Grammar/pdf/cc-intro-slides.pdf}
     
 
 \myslide{Acknowledgments and References}

@@ -1,5 +1,7 @@
 \documentclass[a4paper,landscape,headrule,footrule]{foils}
 \input{headx-new.tex}
+%%% an AVM in a table cell, with air above and below
+\newcommand{\padavm}[1]{\raisebox{0pt}[\dimexpr\height+1.5ex\relax][\dimexpr\depth+1.5ex\relax]{\avm{#1}}}
 
 %%% Extra lecture: students may read this on their own, so every
 %%% question slide carries its answer (\qaslide ... \answer).
@@ -55,24 +57,8 @@
   \bad{Pat can tapdancing.} \bad{Pat is tapdance.}
 \item When they co-occur, their order is fixed \\
   \eng{Pat must be tapdancing.} \bad{Pat is musting tapdance.}
-\item Auxiliaries of any given type cannot iterate \\
+\item Auxiliaries of any given type cannot iterate (in standard English)\\
   \bad{Pat could should tapdance.}
-\end{itemize}
-
-\myslide{A Little History}
-\begin{itemize}
-\item Chomsky’s first book, \textit{Syntactic Structures} (1957),
-  contained a detailed analysis of the English system of auxiliary
-  verbs.
-\item It showed how formal analysis could reveal subtle
-  generalizations.
-\item The power of Chomsky’s analysis of auxiliaries was one of the
-  early selling points for transformational grammar
-  \begin{itemize}
-  \item especially his unified treatment of auxiliary \lex{do}.
-  \end{itemize}
-\item So it’s a challenge to any theory of grammar to deal with the
-  same phenomena.
 \end{itemize}
 
 \myslide{Two Approaches to Analyzing Auxiliaries}
@@ -152,15 +138,15 @@ cat, for tree={font=\itshape, l sep=6mm, s sep=4mm}
 
 \myslide{Some Type Constraints (1)}
 \begin{center}\small
-\begin{tabular}{|l|l|l|}
+\setlength{\tabcolsep}{8pt}\begin{tabular}{|l|l|l|}
 \hline
 \textsc{type} & \textsc{features/constraints} & \textsc{ist} \\ \hline
 \val{verb-lxm} &
-  \avm{[ syn & [ head & [\type*{verb} aux & / $-$ ] ] \\
+  \padavm{[ syn & [ head & [\type*{verb} aux & / $-$ ] ] \\
          arg-st & < [ head & nominal ], \ldots > \\
          sem & [ mode & prop ] ]} & \val{infl-lxm} \\ \hline
 \val{srv-lxm} &
-  \avm{[ arg-st & < \1, [ spr & < \1 > \\ comps & < > ] > ]} &
+  \padavm{[ arg-st & < \1, [ spr & < \1 > \\ comps & < > ] > ]} &
   \val{verb-lxm} \\ \hline
 \end{tabular}
 \end{center}
@@ -170,14 +156,14 @@ cat, for tree={font=\itshape, l sep=6mm, s sep=4mm}
 
 \myslide{Some Type Constraints (2)}
 \begin{center}\small
-\begin{tabular}{|l|l|l|}
+\setlength{\tabcolsep}{8pt}\begin{tabular}{|l|l|l|}
 \hline
 \textsc{type} & \textsc{features/constraints} & \textsc{ist} \\ \hline
 \val{ic-srv-lxm} &
-  \avm{[ arg-st & < X, VP [ inf & $+$ \\ index & s ] > \\
+  \padavm{[ arg-st & < X, VP [ inf & $+$ \\ index & s ] > \\
          sem & [ restr & < [ arg & s ] > ] ]} & \val{srv-lxm} \\ \hline
 \val{auxv-lxm} &
-  \avm{[ syn & [ head & [ aux & $+$ ] ] ]} & \val{srv-lxm} \\ \hline
+  \padavm{[ syn & [ head & [ aux & $+$ ] ] ]} & \val{srv-lxm} \\ \hline
 \end{tabular}
 \end{center}
 \begin{itemize}\addtolength{\itemsep}{-1ex}
@@ -295,86 +281,6 @@ cat, for tree={font=\itshape, l sep=6mm, s sep=4mm}
     e.g.\ stipulating that auxiliary \lex{have} has no past participle.
   \end{itemize}
 \end{itemize}
-
-\section[The old transformational analysis, and a constituency argument against it]{Comparison: The Old Transformational Analysis}
-
-\myslide{Sketch of Chomsky’s Old Analysis}
-\begin{center}
-S \into\ NP AUX VP \qquad AUX \into\ T (M) (PERF) (PROG)
-
-\medskip
-\begin{forest}
-cat, for tree={s sep=5mm}
-[{S} [{NP} [{Chris}]]
-  [{AUX} [{T} [{\red{past}}]] [{M} [{could}]] [{PERF} [{have+\red{en}}]] [{PROG} [{be+\red{ing}}]]]
-  [{VP} [{V} [{eat}]]]]
-\end{forest}
-\end{center}
-\begin{itemize}\addtolength{\itemsep}{-1ex}
-\item A flat AUX node holds tense and the auxiliaries; each red
-  affix then hops onto the verb to its right: \eng{Chris could have
-    been eating}.
-\end{itemize}
-
-\myslide{How This Analysis Handles the Basic Facts}
-\begin{itemize}\addtolength{\itemsep}{-0.5ex}
-\item \txx{Optionality of auxiliaries:} stipulated in the phrase
-  structure rule (with parentheses).
-\item \txx{Auxiliaries precede non-auxiliary verbs:} built into the
-  phrase structure rule, with AUX before VP.
-\item \txx{Auxiliaries determine the form of the following verb:}
-  inflections are inserted with the auxiliaries and moved onto the
-  following verb transformationally.
-\item \txx{When auxiliaries co-occur, their order is fixed:}
-  stipulated in the phrase structure rule for AUX.
-\item \txx{Non-iterability of auxiliaries:} ditto.
-\end{itemize}
-
-\myslide{The Two Analyses Assign Very Different Trees}
-\begin{minipage}[t]{0.48\textwidth}\vspace{0pt}\centering
-\scalebox{0.8}{\begin{forest}
-cat
-[{S} [{NP}] [{VP} [{V} [{could}]] [{VP} [{V} [{have}]] [{VP} [{V} [{been}]] [{VP}]]]]]
-\end{forest}}
-
-\small
-\begin{itemize}\addtolength{\itemsep}{-1ex}
-\item \eng{could have been} VP, \eng{have been} VP and \eng{been} VP
-  are all constituents
-\item \eng{could have been} is not a constituent
-\end{itemize}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\textwidth}\vspace{0pt}\centering
-\scalebox{0.8}{\begin{forest}
-cat
-[{S} [{NP}] [{AUX} [{M} [{could}]] [{PERF} [{have}]] [{PROG} [{been}]]] [{VP}]]
-\end{forest}}
-
-\small
-\begin{itemize}\addtolength{\itemsep}{-1ex}
-\item \eng{could have been} VP, \eng{have been} VP and \eng{been} VP
-  are not constituents
-\item \eng{could have been} is a constituent
-\end{itemize}
-\end{minipage}
-
-\qaslide{Ellipsis and Constituency}{
-\begin{itemize}
-\item Consider:
-  \begin{exe}
-  \ex \eng{Pat couldn’t have been eating garlic, but Chris could have been.}
-  \ex \eng{Pat couldn’t have been eating garlic, but Chris could have.}
-  \ex \eng{Pat couldn’t have been eating garlic, but Chris could.}
-  \end{exe}
-\item What is missing in each case, and which analysis makes it a
-  constituent?
-  \answer{\\ {\small\emp{\eng{eating garlic}, \eng{been eating garlic},
-    \eng{have been eating garlic}.  On the nested analysis each is a
-    VP; on the flat analysis none of them is a constituent.  Ellipsis
-    normally removes constituents, so this argues for our analysis over
-    the old transformational one.}}}
-\end{itemize}
-}
 
 \myslide{Our Analysis of Auxiliaries So Far}
 \begin{itemize}
@@ -554,18 +460,18 @@ cat
 
 \qaslide{Which \lex{not}s Does the Rule License?}{
 \begin{exe}
-\ex \eng{Andy must \ul{not} have been sleeping.}
-\ex \eng{Andy must have \ul{not} been sleeping.}
-\ex \eng{Andy must have been \ul{not} sleeping.}
-\ex \eng{Kleptomaniacs can\ul{not} not steal.}
-\ex \eng{Kleptomaniacs cannot \ul{not} steal.}
+\ex \label{s:not1} \eng{Andy must \ul{not} have been sleeping.}
+\ex \label{s:not2} \eng{Andy must have \ul{not} been sleeping.}
+\ex \label{s:not3} \eng{Andy must have been \ul{not} sleeping.}
+\ex \label{s:not4} \eng{Kleptomaniacs can\ul{not} not steal.}
+\ex \label{s:not5} \eng{Kleptomaniacs cannot \ul{not} steal.}
 \end{exe}
 \begin{itemize}
 \item For each underlined \lex{not}: is it the ADV$_{pol}$ complement
   of a finite auxiliary?
-  \answer{\\ {\small\emp{(1) yes: first complement of finite
-    \lex{must}.  (2), (3) no: \lex{have} and \lex{been} are not
-    finite, so these are constituent negation.  (4) yes.  (5) no: the
+  \answer{\\ {\small\emp{(\ref{s:not1}) yes: first complement of finite
+    \lex{must}.  (\ref{s:not2}), (\ref{s:not3}) no: \lex{have} and \lex{been} are not
+    finite, so these are constituent negation.  (\ref{s:not4}) yes.  (\ref{s:not5}) no: the
     rule needs a [\ft{pol} $-$] input and \lex{can} has already become
     [\ft{pol} $+$], so the second \lex{not} is constituent negation of
     \eng{steal}.  Key point: sentential \lex{not} must show up as the
@@ -896,23 +802,19 @@ cat
 \end{itemize}
 
 \myslide{\lex{do} Revisited}
-\begin{itemize}\addtolength{\itemsep}{-0.5ex}
-\item Chomsky’s old analysis: in sentences without auxiliaries
-  \begin{itemize}
-  \item Tense can get separated from the verb in various ways:
-    negation/reaffirmation inserts something between Tense and the
-    following verb; inversion moves Tense to the left of the subject NP;
-    ellipsis deletes what follows Tense.
-  \item When this happens, \lex{do} is inserted to support Tense.
-  \end{itemize}
-\item Our counterpart
-  \begin{itemize}
-  \item NICE properties hold only of auxiliaries.
-  \item \lex{do} is a semantically empty auxiliary.
-  \item So, negated, reaffirmed, inverted and elliptical sentences that
-    are the semantic counterparts to sentences without auxiliaries are
-    ones with \lex{do}.
-  \end{itemize}
+\begin{itemize}
+\item The NICE properties hold only of auxiliaries: the four lexical
+  rules all ask for [\ft{aux} $+$].
+\item \lex{do} is a semantically empty auxiliary ([\ft{aux} $+$],
+  \ft{restr} \el, finite only).
+\item So a sentence with no auxiliary of its own gets negated,
+  reaffirmed, inverted or reduced by adding \lex{do}:
+  \begin{exe}
+  \ex \eng{Pat left.} \quad \eng{Pat did not leave.} \quad \eng{Pat DID leave.}
+  \ex \eng{Did Pat leave?} \quad \eng{Pat left, and Chris did too.}
+  \end{exe}
+\item No extra machinery: \lex{do} is just one more entry of type
+  \typ{auxv-lxm}, and the rules apply to it like any other auxiliary.
 \end{itemize}
 
 \myslide{Summary}
