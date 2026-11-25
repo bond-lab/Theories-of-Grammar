@@ -67,7 +67,7 @@
 \newcommand{\lurl}[1]{\MyLogo{\url{#1}}}
 
 \usepackage{langsci-gb4e}
-\let\eachwordone=\slshape
+\def\eachwordone{\slshape\addfontfeature{Color=008080}}  % first gloss line teal like \eng; \color here hangs cgloss (its \lastbox loop)
 %%% langsci-gb4e defines \thexnumi as \@roman\@xsi{xnumi}, which only works
 %%% inside an exe environment; some decks use xlisti on its own.  Restore
 %%% the plain gb4e definition so that keeps working.
@@ -90,11 +90,28 @@
 %%% \section{Title} is a divider page.  The starred form is what natbib's
 %%% thebibliography uses (\section*{References}); without this it printed a
 %%% divider page titled "*" followed by the word References.
+%%% \section[overview text]{Title}: a divider page, and one line on the
+%%% Overview slide (\overview).  The optional argument replaces the title
+%%% on the Overview slide, e.g. \section[Problem Set 9: SWB 11.1, 11.3]{Problem Set 9}.
+%%% The list is collected through the .aux file, so it needs two runs
+%%% (latexmk does that).  \overview[extra items] adds items at the end.
 \makeatletter
-\newcommand{\section}{\@ifstar{\sectionstar}{\sectionplain}}
+\newcommand{\ovlist}{}
+\newcommand{\ovitem}[1]{\g@addto@macro\ovlist{\item #1}}
+\NewDocumentCommand{\section}{s o m}{%
+  \IfBooleanTF{#1}{\sectionstar{#3}}{%
+    \IfNoValueTF{#2}{\immediate\write\@auxout{\unexpanded{\ovitem{#3}}}}%
+                    {\immediate\write\@auxout{\unexpanded{\ovitem{#2}}}}%
+    \sectionplain{#3}}}
 \makeatother
 \newcommand{\sectionplain}[1]{\myslide{}{\begin{center}\Huge \red{#1}\end{center}}}
 \newcommand{\sectionstar}[1]{\par\medskip\noindent\textbf{#1}\par\smallskip}
+\makeatletter
+\newcommand{\overview}[1][]{\myslide{Overview}%
+  \begin{itemize}%
+    \ifx\ovlist\@empty \item (rerun \LaTeX{} to fill in the sections)\else\ovlist\fi
+    #1\end{itemize}}
+\makeatother
 
 
 

@@ -11,21 +11,10 @@
 %
 
 
-\myslide{Overview}
+\overview
 \MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 12}
-\begin{itemize}
-\item Introduction: two kinds of NP-V-(NP)-\lex{to}-VP
-\item Infinitival \lex{to}
-\item Subject-raising verbs
-\item Subject-control verbs
-\item Raising and control in Transformational Grammar
-\item Object raising and object control
-\item Raising and control in Czech
-\item Problem Set 10: SWB 12.1, 12.2, 12.4, 12.6
-%\item If time: Problem 12.4
-\end{itemize}
 
-\section{Introduction}
+\section[Introduction: two kinds of NP-V-(NP)-\lex{to}-VP]{Introduction}
 
 \qaslide{Where We Are \& Where We’re Going}{
 
@@ -181,6 +170,49 @@ argument is exactly like \lex{be}.
 \end{itemize}
 }
 
+\myslide{Czech Has No \lex{to}}
+\begin{exe}
+\ex \gll Děti chtějí spát. \\
+    children want.\gm{3pl} sleep.\gm{inf} \\
+\trans `The children want to sleep.'
+\ex \gll Petr se snaží vyšetřovat pacienty. \\
+    Petr \gm{refl} tries examine.\gm{inf} patients \\
+\trans `Petr is trying to examine patients.'
+\end{exe}
+\begin{itemize}
+\item The infinitive is a \txx{form of the verb}: \eng{spá-t},
+  \eng{prše-t}, \eng{vyšetřova-t} (older \eng{spá-ti}; a few in
+  \eng{-ct}: \eng{moct}, \eng{péct}).
+\item Nothing separates it from the verb, and there is nothing to
+  strand: \eng{Chceš spát? --- Chci.} (not \bad{Chci to}).
+\item So there is no entry like \lex{to}: the infinitive comes from a
+  \txx{lexical rule}.  Which kind?
+\end{itemize}
+
+\qaslide{An Infinitive Lexical Rule for Czech}{
+\begin{center}
+  \avm{[\type*{i-rule}
+    input & < \1 , \type{verb-lxm} > \\
+    output & < F$_{\textsc{inf}}$(\1) , [ syn & [ head & [ form & inf ] ] ] > ]}
+\end{center}
+F$_{\textsc{inf}}$ adds \eng{-(c)t} to the infinitive stem: \eng{spá-}
+\into\ \eng{spát}.
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Why an \val{i-rule} and not a \val{d-rule}?
+  \answer{\\ {\small\emp{It goes straight from lexeme to word, like the Base
+    Form LR: \ft{arg-st} and \ft{sem} are copied, every verb has
+    exactly one infinitive, and nothing inflects further (no person,
+    number or tense on \eng{spát}).  A \val{d-rule} would make a new
+    lexeme that still had to be inflected.}}}
+\item What do \lex{začít} and \lex{snažit se} select?
+  \answer{\\ {\small\emp{VP[\ft{form} \val{inf}] where English has
+    VP[\ft{inf} $+$]: the same \val{srv-lxm} and \val{scv-lxm} types,
+    with the complement's \ft{form} as the selector.  The infinitive VP
+    still has its \ft{spr}, tagged with the subject for \lex{začít} and
+    coindexed for \lex{snažit se}, exactly as in English.}}}
+\end{itemize}
+}
+
 \section{Subject-Raising Verbs}
 
 \myslide{Dummies and \lex{continue}}
@@ -295,7 +327,7 @@ truth conditions of the whole sentence:
 \end{itemize}
 
 \myslide{\lex{continue} with Active Complement}
-\begin{minipage}[c]{0.58\textwidth}
+\begin{minipage}[t]{0.58\textwidth}\vspace{0pt}
 \scalebox{0.72}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_i$} [{Skeptics}]]
@@ -305,7 +337,7 @@ cat
 [{NP$_j$} [{your hypothesis}, roof]]]]]]
 \end{forest}}
 \end{minipage}\hfill
-\begin{minipage}[c]{0.4\textwidth}
+\begin{minipage}[t]{0.4\textwidth}\vspace{0pt}
 \scalebox{0.8}{\avm{[ restr & \avmbox{A} < [ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
         [ reln & \textbf{question} \\  sit  & s$_2$ \\ doubter & \OV{i} \\ doubted & j],
   \ldots > ]}}
@@ -316,7 +348,7 @@ cat
   gives it no role.}
 
 \myslide{\lex{continue} with Passive Complement}
-\begin{minipage}[c]{0.58\textwidth}
+\begin{minipage}[t]{0.58\textwidth}\vspace{0pt}
 \scalebox{0.6}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_j$} [{Your hypothesis}, roof]]
@@ -328,7 +360,7 @@ cat
 [{NP$_i$} [{skeptics}]]]]]]]]
 \end{forest}}
 \end{minipage}\hfill
-\begin{minipage}[c]{0.4\textwidth}
+\begin{minipage}[t]{0.4\textwidth}\vspace{0pt}
 \scalebox{0.8}{\avm{[ restr & \avmbox{A} <[ reln & \textbf{continue} \\  sit & s$_1$ \\ arg & s$_2$ ], \\
         [ reln & \textbf{question} \\ sit  & s$_2$ \\ doubter & i \\ doubted & \OV{j}],
   \ldots > ]}}
@@ -469,7 +501,7 @@ respects?
 }
 
 \myslide{\lex{try} with an Active Complement}
-\begin{minipage}[c]{0.58\textwidth}
+\begin{minipage}[t]{0.58\textwidth}\vspace{0pt}
 \scalebox{0.72}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_i$} [{The police}, roof]]
@@ -479,7 +511,7 @@ cat
 [{NP$_j$} [{the suspects}, roof]]]]]]
 \end{forest}}
 \end{minipage}\hfill
-\begin{minipage}[c]{0.4\textwidth}
+\begin{minipage}[t]{0.4\textwidth}\vspace{0pt}
 \scalebox{0.8}{\avm{[ restr & \avmbox{A} <
   [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & \OV{i} \\ arg & s$_2$ ], \\
   [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & \OV{i} \\ arrested & j],
@@ -490,7 +522,7 @@ cat
   the police are the \ft{trier} and the \ft{arrester}.}
 
 \myslide{\lex{try} with Passive Complement}
-\begin{minipage}[c]{0.58\textwidth}
+\begin{minipage}[t]{0.58\textwidth}\vspace{0pt}
 \scalebox{0.6}{\begin{forest}
 cat
 [{S\avmbox{A}} [{\avmbox{1} NP$_j$} [{The suspects}, roof]]
@@ -502,7 +534,7 @@ cat
 [{NP$_i$} [{the police}, roof]]]]]]]]
 \end{forest}}
 \end{minipage}\hfill
-\begin{minipage}[c]{0.4\textwidth}
+\begin{minipage}[t]{0.4\textwidth}\vspace{0pt}
 \scalebox{0.8}{\avm{[ restr & \avmbox{A} <
   [ reln & \textbf{try} \\ sit  & s$_1$ \\ trier & \OV{j} \\ arg & s$_2$ ], \\
   [ reln & \textbf{arrest} \\ sit  & s$_2$ \\ arrester & i \\ arrested & \OV{j}],
@@ -535,47 +567,47 @@ cat
 \end{itemize}
 }
 
-\section{Raising and Control in Transformational Grammar}
+% \section{Raising and Control in Transformational Grammar}
 
-\myslide{Raising \& Control in Transformational Grammar}
+% \myslide{Raising \& Control in Transformational Grammar}
 
 
-\begin{itemize}
-\item Raising
-  \begin{exe}
-    \ex    \eng{\rnode{A}{\rule{4em}{1pt}} continue [\rnode{B}{\ul{the dogs}} to bark]}
+% \begin{itemize}
+% \item Raising
+%   \begin{exe}
+%     \ex    \eng{\rnode{A}{\rule{4em}{1pt}} continue [\rnode{B}{\ul{the dogs}} to bark]}
     
-     \ncbar[offsetB=4pt,angleA=-90,nodesep=3pt]{<-}{A}{B}
-  \end{exe}
-\item Control
-  \begin{exe}
-    \ex \eng{[the dogs]$_i$ try [NP$_i$  to bark]}
-  \end{exe}
-  \begin{itemize}
-  \item In early TG, the NP got deleted.
-  \item In more recent TG, it’s a silent pronoun.
-  \end{itemize}
-\end{itemize}
+%      \ncbar[offsetB=4pt,angleA=-90,nodesep=3pt]{<-}{A}{B}
+%   \end{exe}
+% \item Control
+%   \begin{exe}
+%     \ex \eng{[the dogs]$_i$ try [NP$_i$  to bark]}
+%   \end{exe}
+%   \begin{itemize}
+%   \item In early TG, the NP got deleted.
+%   \item In more recent TG, it’s a silent pronoun.
+%   \end{itemize}
+% \end{itemize}
 
-\qaslide{Problems with the TG Accounts}{
+% \qaslide{Problems with the TG Accounts}{
 
 
-\begin{itemize}
-\item Details never fully worked out (e.g.,\ where does \lex{to}
-come from?)
+% \begin{itemize}
+% \item Details never fully worked out (e.g.,\ where does \lex{to}
+% come from?)
 
-\item What blocks 
-  \begin{xlisti}
-    \ex \bad{The cat continued (for) the dog to bark}
-    \ex \bad{The cat tried (for) the dog to bark}?
+% \item What blocks 
+%   \begin{xlisti}
+%     \ex \bad{The cat continued (for) the dog to bark}
+%     \ex \bad{The cat tried (for) the dog to bark}?
 
-  \end{xlisti}
-  \answer{{\small\emp{Nothing natural: the TG account needs an extra stipulation.  For us the complement is a VP whose \ft{spr} is the verb's subject, so there is no place for another subject.}}}
+%   \end{xlisti}
+%   \answer{{\small\emp{Nothing natural: the TG account needs an extra stipulation.  For us the complement is a VP whose \ft{spr} is the verb's subject, so there is no place for another subject.}}}
 
-\item Failure of experimental attempts to find evidence for 
-psychological reality of these transformations.
-\end{itemize}
-}
+% \item Failure of experimental attempts to find evidence for 
+% psychological reality of these transformations.
+% \end{itemize}
+% }
 
 \section{Object Raising and Object Control}
 
@@ -861,7 +893,42 @@ psychological reality of these transformations.
 \end{itemize}
 }
 
-\section{Problem Set 10}
+\qaslide{Czech Bonus: Adjectives}{
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item English has both kinds of adjective (Problem Set 10, P2):
+  \eng{Kim is eager to leave} (control) and \eng{Kim is likely to
+    leave} (raising).
+\item Czech adjectives that take an infinitive:
+  \begin{exe}
+  \ex \gll Petr je ochotný pomoci. \\
+      Petr is willing help.\gm{inf} \\
+  \ex \gll Děti jsou schopné vstát v šest. \\
+      children are able get.up.\gm{inf} at six \\
+  \ex \gll Jste povinen se dostavit. \\
+      are.\gm{2pl} obliged \gm{refl} appear.\gm{inf} \\
+  \end{exe}
+  Also \lex{připravený} `ready', \lex{líný} `too lazy to', \lex{zvyklý}
+  `used to'.  Control or raising?
+  \answer{\\ {\small\emp{All control: \bad{Je schopné pršet}, \bad{Je ochotno
+      jít o život}, and the subject is the one who is willing, able or
+      obliged.}}}
+\end{itemize}
+}
+
+\qaslide{Is There a Czech \lex{likely}?}{
+\begin{itemize}
+\item English raising adjectives: \eng{Kim is likely / certain / bound
+    to leave}, \eng{There is likely to be trouble}.
+\item Which Czech adjective takes an infinitive like that?
+  \answer{\\ {\small\emp{Not with an infinitive: \bad{Petr je pravděpodobný
+      přijít}.  Czech uses an impersonal adjective with a clause,
+      \eng{Je pravděpodobné, že Petr přijde}, or a raising verb,
+      \eng{Petr se zdá být unavený}.  Raising adjectives are a gap in
+      the Czech lexicon, so test P2 in class with this in mind.}}}
+\end{itemize}
+}
+
+\section[Problem Set 10: SWB 12.1, 12.2, 12.4, 12.6]{Problem Set 10}
 
 \myslide{P1: Classifying Verbs}
 \MyLogo{Based on \citet[Chapter 12, Problem 1]{sag:wasow:bender:2003}}
@@ -979,18 +1046,8 @@ idiosyncratic to the lexeme.
 
 
 
-\myslide{Overview}
+\overview
 \MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 12}
-\begin{itemize}
-\item Introduction: two kinds of NP-V-(NP)-\lex{to}-VP
-\item Infinitival \lex{to}
-\item Subject-raising verbs
-\item Subject-control verbs
-\item Raising and control in Transformational Grammar
-\item Object raising and object control
-\item Raising and control in Czech
-\item Problem Set 10: SWB 12.1, 12.2, 12.4, 12.6
-\end{itemize}
 
 
 
@@ -1004,6 +1061,7 @@ idiosyncratic to the lexeme.
 \textit{Linguistics 566: Introduction to Syntax for Computational Linguistics}
 \\ \url{http://courses.washington.edu/ling566}
 \item This lecture complements \citet[Chapter 12]{sag:wasow:bender:2003}
+\item Czech examples could be wrong!
 \end{itemize}
 \small
 \bibliographystyle{aclnat}
