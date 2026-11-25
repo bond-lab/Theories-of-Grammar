@@ -67,7 +67,19 @@
 \newcommand{\lurl}[1]{\MyLogo{\url{#1}}}
 
 \usepackage{langsci-gb4e}
-\def\eachwordone{\slshape\addfontfeature{Color=008080}}  % first gloss line teal like \eng; \color here hangs cgloss (its \lastbox loop)
+%%% First gloss line teal, like \eng.  cgloss (in langsci-gb4e) builds each
+%%% word as \hbox{\eachwordone\strut word{} } and later takes the boxes back
+%%% with \lastbox; \color's \aftergroup\reset@color would land *after* the
+%%% box and make that loop run forever.  So the two macros are re-stated
+%%% here with an inner group that keeps the colour reset inside the box.
+\makeatletter
+\def\lastword#1#2#3{\setbox#2=\vbox{\unvbox#2\global\setbox#3=\lastbox}%
+    \ifvoid#3\global\setbox#3=\hbox{{#1\strut{} }}\fi}
+\gdef\getwords(#1,#2)#3 #4\\{\setbox#1=\vbox{\hbox{{#2\strut#3{} }}\unvbox#1}%
+    \def\more{#4}\ifx\more\empty\let\more=\donewords\else\let\more=\getwords\fi
+    \more(#1,#2)#4\\}
+\makeatother
+\def\eachwordone{\color{teal}\slshape}
 %%% langsci-gb4e defines \thexnumi as \@roman\@xsi{xnumi}, which only works
 %%% inside an exe environment; some decks use xlisti on its own.  Restore
 %%% the plain gb4e definition so that keeps working.
