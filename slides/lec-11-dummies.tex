@@ -155,24 +155,11 @@ it occurs in?
   \answer{\\ {\small\emp{None: its \ft{restr} is empty and its \ft{index} is the third argument's.  The meaning comes from the predicate.}}}
 \item Can all [\ft{pred} +] predicates appear as the third argument in 
 existentials?
-  \answer{\\ {\small\emp{No: predicative NPs are [\ft{pred} +] too, and so are adjectives like \lex{tall} (\bad{There is a man tall}).}}}
-\item How do we rule out *\lex{There was a greyhound a good runner}?
-  \answer{\\ {\small\emp{The entry as it stands doesn't: we would need to add a constraint, e.g.\ that the third argument's \ft{head} is not \val{noun}.}}}  
+  \answer{\\ {\small\emp{No: predicative NPs are [\ft{pred} +] too (\bad{There was a greyhound a good runner}), and so is \lex{tall} (\bad{There is a man tall}), although \lex{available} is fine (\eng{There is a doctor available}).}}}
+\item How do we rule these out?
+  \answer{\\ {\small\emp{The NP by category: add a constraint that the third argument's \ft{head} is not \val{noun}.  Not the adjectives: APs are fine (\eng{fond of linguistics}, \eng{available}).  \lex{tall} vs.\ \lex{available} is a difference in meaning, a permanent property vs.\ a temporary state, which our features do not yet express.}}}  
 \end{itemize}
 
-\begin{center}
-  \begin{tiny}
-    \avm{< \textnormal{be},\ [\lbox{\textit{exist-be-lxm}}\\
-      arg-st & < !\shortstack{NP\\\avm{[ form
-          & there ]}}!, {\1},
-      [syn & [head & [ pred & $+$ ]\\
-      val & [spr & < {\1} > \\ comps & < > ]]\\
-      sem & [index & $s$ \ ]] > \\ %{\3}
-      sem & [index & \ $s$\\ %{\3}\\
-      restr & {< >} ] ] >
-}
-  \end{tiny}
-\end{center}
 }
 
 \myslide{The Entry for Existential \lex{there}}
