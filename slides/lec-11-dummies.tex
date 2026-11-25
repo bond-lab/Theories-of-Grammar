@@ -337,16 +337,17 @@ cat
 \end{center}
 
 \qaslide{Questions About Dummy \lex{it}}{
-
-
-\begin{itemize}
+\begin{itemize}\addtolength{\itemsep}{-2ex}
 \item How does it differ from the entry for dummy \lex{there}?
 Why do they differ in this way?
   \answer{\\ {\small\emp{\ft{form} \val{it}, and \ft{agr} \val{3sing}, not just 3rd person: dummy \lex{it} always takes a singular verb (\eng{It is raining}), while \lex{there} agrees with the NP after it.}}}
 \item Is this the only entry for \lex{it}?
-  \answer{\\ {\small\emp{No: referential \lex{it} (\eng{I saw it}) is a separate entry, with \ft{mode} \val{ref} and an index.}}}
+  \answer{\\ {\small\emp{No: referential \lex{it} (\eng{I saw it}) is a separate entry, with \ft{mode} \val{ref} and an index, and no \ft{form} value for verbs to select.}}}
 \end{itemize}
-\begin{center}\small
+\vspace{-2ex}
+\begin{center}\footnotesize
+\begin{tabular}{cc}
+  \emp{dummy} & \emp{referential} \\[0.5ex]
   \avm{< \textnormal{it},\ [\lbox{\textit{pron-lxm}}\\
     syn & [head & [ form & it \\
     agr  & 3sing   ] ]\\
@@ -354,7 +355,15 @@ Why do they differ in this way?
     index & none \\
     restr & < > ]
     ] >
+} &
+  \avm{< \textnormal{it},\ [\lbox{\textit{pron-lxm}}\\
+    syn & [head & [ agr  & 3sing [ gend & neut ] ] ]\\
+    sem & [mode & ref \\
+    index & i \\
+    restr & < > ]
+    ] >
 }
+\end{tabular}
 \end{center}
 }
 
