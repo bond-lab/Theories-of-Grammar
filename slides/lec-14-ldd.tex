@@ -355,6 +355,9 @@ gap.
 % \item This opens the door to non-transformational
 % analyses, in which the filler-gap dependency is
 % mediated by local information passing.
+\item So something is being kept track of all the way from the gap
+  to the filler.  That is what our analysis will do: pass the
+  information up step by step, through local information passing.
 \end{itemize}
 
 \section{Our Approach: The Feature \ft{gap}}
@@ -402,10 +405,28 @@ the Argument Realization Principle.
 distributed between \ft{comps} and \ft{gap}.
 \end{itemize}
 
+\qaslide{List Subtraction}{
+\begin{itemize}\addtolength{\itemsep}{-0.5ex}
+\item $\langle$ NP, PP $\rangle \ominus \langle$ NP $\rangle$ = ?
+  \answer{\emp{$\langle$ PP $\rangle$}}
+\item $\langle$ NP, PP, NP $\rangle \ominus \langle$ NP $\rangle$ = ?
+  \answer{\emp{$\langle$ PP, NP $\rangle$ or $\langle$ NP, PP $\rangle$: not unique}}
+\item $\langle$ NP, PP, NP $\rangle \ominus \langle$ NP, PP $\rangle$ = ?
+  \answer{\emp{$\langle$ NP $\rangle$}}
+\item $\langle$ NP, PP, NP $\rangle \ominus \langle$ NP, VP $\rangle$ = ?
+  \answer{\emp{undefined: there is no VP to take away}}
+\item $\langle$ VP, PP, NP $\rangle \ominus \langle$ NP, VP $\rangle$ = ?
+  \answer{\emp{undefined: order matters, the VP is not after the NP}}
+\end{itemize}
+\answer{\emp{So for \lex{hand} with \ft{arg-st} $\langle$ NP, NP, PP
+    $\rangle$ the ARP allows three words: nothing in \ft{gap}, the
+    NP in \ft{gap}, or the PP in \ft{gap} (next slides).}}
+}
+
 \myslide{A Word with a Non-Empty \ft{gap} Value}
 
     \avm{< \textnormal{hand}, \ [\type*{word}
-      syn & [ head & \type{verb} \\
+      syn & [ head & [\type*{verb} form & fin ] \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
       comps & < \3 PP:to > ] \\
@@ -417,7 +438,7 @@ distributed between \ft{comps} and \ft{gap}.
     \myslide{A Word with Another Non-Empty \ft{gap} Value}
 
     \avm{< \textnormal{hand}, \ [\type*{word}
-      syn & [ head & \type{verb} \\
+      syn & [ head & [\type*{verb} form & fin ] \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
       comps & < \tag{2NP} [ case & acc ] > ] \\
@@ -430,7 +451,7 @@ distributed between \ft{comps} and \ft{gap}.
 \MyLogo{The ARP gives rise to multiple lexemes}
 
     \avm{< \textnormal{hand}, \ [\type*{word}
-      syn & [ head & \type{verb} \\
+      syn & [ head & [\type*{verb} form & fin ] \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & < \1 NP [ case & nom \\ agr & non-3sing ] > \\ 
       comps & < \tag{2NP} [ case & acc ], \3 PP:to > ] \\
@@ -568,14 +589,14 @@ gaps are only filled once.
 
 \avm{[\type*{phrase}] \ \ \into \ \ 
 \ \ \1 [ gap & < > ]\ \  
-\HD [ head &  \val{verb}  \\
+\HD [ head & [\type*{verb} form & fin ] \\
        val & [ spr & < >\\
                 comps & < >] \\
        gap & < \1 > \\
        stop-gap & < \1 > ]
 }
 \begin{itemize}\addtolength{\itemsep}{-2ex}
-\item This only covers gap filling in Ss
+\item This only covers gap filling in finite Ss
 \item The filler has to be identical to the \ft{gap} value
 \item The \ft{stop-gap} value is also identical
 \item The \ft{gap} Principle ensures that the mother's \ft{gap} value is the
@@ -591,7 +612,7 @@ empty list
       val & [ spr & < \1 >\\
               comps & < \3 > ] \\
       stop-gap & < \2 >] \\
-      arg-st &      < \1 NP$_i$,  \3 VP [ inf & + \\ gap & < \2 NP$_i$ > ], \ldots  >   
+      arg-st &      < \1 NP$_i$,  \3 VP [ inf & + \\ gap & < \2 NP$_i$, \ldots > ] >   
       ]> \ \
 }}
 
@@ -602,6 +623,38 @@ value will be subtracted from the mother's \ft{gap} value.
 \item The first argument is coindexed with the \ft{gap} value,
 accounting for the interpretation of the subject as the filler.
 \end{itemize}
+
+\myslide{Other \lex{easy}-Adjectives}
+\begin{center}\large
+  \lex{alarming}, \lex{boring}, \lex{convenient}, \lex{cheap},
+  \lex{dangerous}, \lex{entertaining}, \lex{fruitless}, \lex{gross},
+  \lex{hazardous}, \lex{illegal}, \lex{kind}, \lex{logical},
+  \lex{motivating}, \lex{natural}, \lex{optional}, \lex{prudent},
+  \lex{risky}, \lex{sobering}, \lex{tedious}, \lex{useful},
+  \lex{valuable}, \lex{wise}, \ldots
+\end{center}
+\begin{itemize}
+\item All take an infinitival VP with a gap whose filler is the
+  subject: \eng{This form is tedious to fill in \blank},
+  \eng{Pat is dangerous to argue with \blank}.
+\item Same entry as \lex{easy} with a different predication.
+\end{itemize}
+
+\qaslide{Why Do We Need \ft{stop-gap} at All?}{
+\begin{itemize}
+\item Why not treat \ft{gap} like the valence features: give the
+  Head-Filler Rule a [\ft{gap} \el] mother and let the non-head
+  daughter be the filler?
+  \answer{\\ {\small\emp{That would work for topicalization, where the
+    filler is a daughter of the rule.  But \lex{easy}-adjectives do not
+    occur in the Head-Filler Rule: \eng{easy to talk to} is an ordinary
+    Head-Complement phrase, and \eng{Kim is easy to talk to} ordinary
+    Head-Specifier phrases.  The \ft{gap} Principle would pass the
+    complement's gap up through them, and no rule would be there to
+    cancel it.  \ft{stop-gap} lets the \emph{word} \lex{easy} do the
+    cancelling, wherever it occurs.}}}
+\end{itemize}
+}
 
 \myslide{A Tree for \eng{easy to talk to \blank}}
 \begin{tikzpicture}
@@ -638,40 +691,97 @@ say [\ft{stop-gap} $<$ $>$].
 \item Lexical rules preserve \ft{stop-gap} values.
 \end{itemize}
 
-\myslide{\ft{gap} Housekeeping}
+\myslide{Where Is \ft{stop-gap} Specified?}
+\begin{center}\small
+\begin{tabular}{p{0.36\textwidth}p{0.52\textwidth}}
+\textbf{Where} & \textbf{Value} \\ \hline
+lexemes & default \avm{[ stop-gap & / < > ]}; \lex{easy}-adjectives override it \\[0.5ex]
+head daughter of the Head-Complement Rule & a word, so the lexical default decides \\[0.5ex]
+head daughter of the Head-Specifier and Head-Modifier Rules & the rules say \avm{[ stop-gap & < > ]} \\[0.5ex]
+head daughter of the Head-Filler Rule & the rule says \avm{[ stop-gap & < \1 > ]}, the filler \\[0.5ex]
+mothers of any rule & unspecified; fixed when the phrase becomes a head daughter higher up \\
+\end{tabular}
+\end{center}
 \begin{itemize}
-\item[Q] The initial symbol must say [\ft{gap} $< >$ ]. Why?
-  \begin{itemize}
-  \item[A] To block \bad{Pat found} and \bad{Chris talked to} as
-    stand-alone sentences.
-  \end{itemize}
-\item[Q] The Imperative Rule must propagate \ft{gap} values.
-  Why?
-  \begin{itemize}
-  \item[A] It's not a headed rule, so the effect of the \ft{gap}
-    Principle must be replicated.
-  \item [A] Imperatives can have gaps:
-    \\ \eng{This book, put on the top shelf!}
-  \end{itemize}
+\item No principle passes \ft{stop-gap} anywhere: it is set where it is
+  used and nowhere else.
 \end{itemize}
+
+\qaslide{\ft{gap} Housekeeping}{
+\begin{itemize}
+\item The initial symbol must say [\ft{gap} $< >$ ]. Why?
+  \answer{\\ {\small\emp{To block \bad{Pat found} and \bad{Chris talked to} as
+    stand-alone sentences.}}}
+\item The Imperative Rule must propagate \ft{gap} values.  Why?
+  \answer{\\ {\small\emp{It's not a headed rule, so the effect of the \ft{gap}
+    Principle must be replicated, and imperatives can have gaps:
+    \eng{This book, put on the top shelf!}}}}
+\end{itemize}
+}
 
 \myslide{Sentences with Multiple Gaps}
 \begin{itemize}
 \item Famous examples:
   \begin{exe}
     \ex \eng{This violin$_i$, sonatas$_j$ are easy to play \blank$_j$ on \blank$_i$.}
-    \ex \bad{Sonatas$_j$, this violin$_i$ is easy to play \blank$_j$ on \blank$_i$.}
+    \ex ?\eng{Sonatas$_j$, this violin$_i$ is easy to play \blank$_j$ on \blank$_i$.}
   \end{exe}
+  The second is licensed, but only with the odd reading in which the
+  violin is played on the sonatas.
 \item Our analysis gets this:
   \begin{itemize}
   \item The subject of \lex{easy} is coindexed with the first
     element of the \ft{gap} list.
   \item The Head-Filler Rule only allows one \ft{gap}
     remaining.
+  \item Step by step on the next slides.
   \end{itemize}
 \item There are languages that allow multiple gaps more
 generally.
 \end{itemize}
+
+\qaslide{Step by Step: \ft{gap} and \ft{stop-gap} on Every Node}{
+\MyLogo{\eng{This violin, sonatas are easy to play \blank\ on \blank}}
+\begin{minipage}[t]{0.6\textwidth}\vspace{0pt}
+\scalebox{0.52}{\begin{tikzpicture}
+\tikzset{level distance=8.5ex}
+\tikzset{every tree node/.style={align=center,anchor=north}}
+\Tree [.\avn{S}{gap & < >}
+        [.\avn{\bx{1}NP$_i$}{gap & < >} \edge[roof]; {This violin} ]
+        \edge[style=double,very thick];
+        [.\avn{S}{gap & < \1 > \\ stop-gap & < \1 >}
+          [.\avn{\bx{2}NP$_j$}{gap & < >} sonatas ]
+          \edge[style=double,very thick];
+          [.\avn{VP}{gap & < \1 >}
+            \edge[style=double,very thick];
+            [.\avn{V}{gap & < >} are ]
+            [.\avn{AP}{gap & < \1 >}
+              \edge[style=double,very thick];
+              [.\avn{A}{gap & < > \\ stop-gap & < \2 >} easy ]
+              [.\avn{VP}{gap & < \2, \1 >}
+                \edge[style=double,very thick];
+                [.\avn{V}{gap & < >} to ]
+                [.\avn{VP}{gap & < \2, \1 >}
+                  \edge[style=double,very thick];
+                  [.\avn{V}{gap & < \2 NP$_j$ >} play ]
+                  [.\avn{PP}{gap & < \1 NP$_i$ >}
+                    \edge[style=double,very thick];
+                    [.\avn{P}{gap & < \1 NP$_i$ >} on ] ] ] ] ] ] ] ]
+\end{tikzpicture}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.38\textwidth}\vspace{0pt}
+\begin{itemize}
+\item Fill in \ft{gap} on every node, and \ft{stop-gap} where it is
+  not empty.
+\end{itemize}
+\answer{{\small\emp{\eng{play} and \eng{on} each put their object in
+  \ft{gap}; the Head-Complement Rule appends them, V first: $\langle$
+  \bx{2}, \bx{1} $\rangle$.  \lex{easy} cancels the first and
+  coindexes it with its subject \eng{sonatas}; the Head-Filler Rule
+  fills the one that is left with \eng{this violin}.  Swap the
+  fillers and the violin is what gets played.}}}
+\end{minipage}
+}
 
 \myslide{Where We Are}
 
@@ -725,7 +835,7 @@ moves the contents of the \ft{spr} list into the \ft{gap} list.
 \myslide{The Subject Extraction Lexical Rule}
 
 \scalebox{0.9}{\avm{[\type*{pi-rule}
-input & < X, [ syn & [ head & verb \\
+input & < X, [ syn & [ head & [\type*{verb} form & fin ] \\
                           val & [ spr & < Z > ] ] \\
                  arg-st & \tag{A}         ]   >\\
 output & <Y,  [ syn & [val & [ spr & < ~~  > ] \\ 
@@ -742,7 +852,7 @@ default for \val{pi-rule}s is to leave the phonology unchanged.
 
 \avm{< \textnormal{likes}, \ [\type*{word}
       syn & [
-      head & \type{verb} \\
+      head & [\type*{verb} form & fin ] \\
       % [\type*{agr-cat} agr & [ per & 3 \\ num & sg ] ]
       val & [ spr & <  >\\
               comps & < \2  > ] \\
@@ -779,6 +889,24 @@ default for \val{pi-rule}s is to leave the phonology unchanged.
                 [.\avn{NP}{gap & < >} Bobby ]  ] ] ] ]
 \end{tikzpicture}}
                     
+
+\qaslide{Which Node Has a Non-Empty \ft{stop-gap}?}{
+\MyLogo{\eng{Kim$_i$ we know  \blank$_i$ likes Bobby}}
+\begin{itemize}
+\item In the tree on the previous slide only one node has a
+  non-empty \ft{stop-gap}.  Which, and why?
+  \answer{\\ {\small\emp{The S \eng{we know \blank\ likes Bobby}, the
+    head daughter of the Head-Filler Rule: the rule gives it
+    [\ft{stop-gap} $\langle$ NP $\rangle$], the same NP as its
+    \ft{gap}, so the mother's \ft{gap} is empty.  Every other head
+    daughter is a word with the default empty \ft{stop-gap} or is
+    constrained to \el\ by the Head-Specifier Rule.}}}
+\item And the gapped \lex{likes}: which rule put the NP in its
+  \ft{gap}?
+  \answer{\\ {\small\emp{The Subject Extraction Lexical Rule, not the ARP:
+    the ARP only moves complements into \ft{gap}.}}}
+\end{itemize}
+}
 
 \section{Coordinate Structure Constraint}
 
@@ -820,7 +948,8 @@ with the same filler (\txx{across-the-board exception})
 \begin{itemize}
 \item In our analysis, the conjunct constraint is an immediate
 consequence: individual conjuncts are not on the \ft{arg-st} list
-of any word, so they can't be put on the \ft{gap} list.
+of any word (\lex{and} has an empty \ft{arg-st}), so they can't be
+put on the \ft{gap} list.
 \item The element constraint and ATB exception suggest that \ft{gap}
 is one of those features (along with \ft{val} and \ft{form}) that
 must agree across conjuncts.
@@ -832,14 +961,14 @@ must agree across conjuncts.
 
 \myslide{Our Coordination Rule, So Far}
 
-\scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ ]
+\scalebox{0.75}{\avm{[ form & \1 \\ val & \0 \\ ind & $s_0$ ]
     \ \into \ 
-  [  val & \0 \\ ind & $s_1$  ] \ \ldots \  
-   [  val & \0  \\ ind & $s_{n-1}$ ]
+  [ form & \1 \\ val & \0 \\ ind & $s_1$  ] \ \ldots \  
+   [ form & \1 \\ val & \0  \\ ind & $s_{n-1}$ ]
     [ head & conj \\
      ind  & $s_0$ \\ 
     restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
-  [  val & \0 \\ ind & $s_n$ ]
+  [ form & \1 \\ val & \0 \\ ind & $s_n$ ]
 }}
 
 
@@ -852,14 +981,14 @@ conjuncts at various times.
 
 \qaslide{Our Final Coordination Rule}{
 
-\scalebox{0.75}{\avm{[  val & \0 \\ ind & $s_0$ \\ gap & \tag{A} ]
+\scalebox{0.75}{\avm{[ form & \1 \\ val & \0 \\ ind & $s_0$ \\ gap & \tag{A} ]
     \ \into \ 
-  [  val & \0 \\ ind & $s_1$  \\ gap & \tag{A}] \ \ldots \  
-   [  val & \0  \\ ind & $s_{n-1}$ \\ gap & \tag{A}]
+  [ form & \1 \\ val & \0 \\ ind & $s_1$  \\ gap & \tag{A}] \ \ldots \  
+   [ form & \1 \\ val & \0  \\ ind & $s_{n-1}$ \\ gap & \tag{A}]
     [ head & conj \\
      ind  & $s_0$ \\ 
     restr & < [ args & < $s_1, \ldots, s_{n-1}, s_n$ > ] >  ]\ \ 
-  [  val & \0 \\ ind & $s_n$ \\ gap & \tag{A}]
+  [ form & \1 \\ val & \0 \\ ind & $s_n$ \\ gap & \tag{A}]
 }}
 
 \begin{itemize}
