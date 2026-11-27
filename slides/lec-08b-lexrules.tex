@@ -18,6 +18,8 @@
   inherits, licensing \lex{cats}, constant lexemes, \ft{arg-st} and the
   ARP, the feature \ft{form}
   \\ Activity: the word structure for \lex{writers}
+\item \txx{Plural and Mass NPs Without Specifiers}: the Bare NP Rule,
+  a rule with one daughter (SWB 8.2)
 \item \txx{Appendix}: the other lexical rules so far, for reference
 \end{enumerate}
 \bigskip
@@ -451,6 +453,176 @@ Why do we have default inheritance?
 \end{exe}
 }
 
+\section{Plural and Mass NPs Without Specifiers}
+
+\qaslide{A Problem with Common Nouns (SWB 8.2)}{
+\begin{itemize}
+\item \val{cn-lxm} says \avm{[ arg-st & < DP, \ldots > ]}: every
+  common noun wants a specifier.
+\item The Plural Noun LR (an \val{i-rule}) keeps the \ft{arg-st}, and
+  so the \ft{spr}; \val{massn-lxm} inherits it too.
+\item So in our grammar, \eng{dogs} and \eng{furniture} are words with
+  \avm{[ spr & < DP > ]}: not saturated, so not NPs.
+\item Give examples showing that, for a plural noun and for a mass
+  noun, the specifier is optional (permitted but not obligatory).
+  \answer{\\ \emp{\eng{(The) dogs bark.} \quad \eng{(The) furniture is
+      expensive.}  For a singular count noun it is obligatory:
+      \eng{The dog barks.} \quad \bad{Dog barks.}}}
+\end{itemize}
+}
+
+\qaslide{What Does Our Grammar Say?}{
+\begin{itemize}
+\item What does our grammar say about \eng{The dogs bark}?
+  \answer{\\ \emp{Fine: \eng{the dogs} is an NP by the Head-Specifier
+      Rule, \avm{[ spr & < > ]}, and so is the subject of \eng{bark} by
+      the same rule.}}
+\item And about \eng{Dogs bark}?
+  \answer{\\ \emp{No tree: the Head-Specifier Rule needs a subject with
+      \avm{[ spr & < > ]}, and the word \eng{dogs} has
+      \avm{[ spr & < DP > ]}.  The same for \eng{Furniture is expensive}.}}
+\end{itemize}
+}
+
+\myslide{Two Ways Out}
+\begin{enumerate}
+\item[(i)] Allow empty \ft{spr} lists in the entries for plural and
+  mass nouns: change the Plural Noun LR and \val{massn-lxm} to make the
+  first argument optional (and the \val{cn-lxm} constraint defeasible).
+\item[(ii)] Add a grammar rule, with one daughter, that licenses an NP
+  without a specifier, although its daughter still has
+  \avm{[ spr & < DP > ]}.
+\end{enumerate}
+
+\qaslide{Which Way?}{
+Think about prenominal modifiers (Problem Set 5):
+\begin{exe}
+\ex \eng{Cute puppies make people happy.} \label{s:cute}
+\ex \bad{Cute the puppies make people happy.} \label{s:cutethe}
+\end{exe}
+\begin{itemize}
+\item Under (i), empty \ft{spr} on the noun: what must \lex{cute} modify
+  to get (\ref{s:cute}), and what then goes wrong?
+  \answer{\\ \emp{Bare \eng{puppies} is an NP, \avm{[ spr & < > ]}, so
+      \lex{cute} must modify NPs; then nothing stops (\ref{s:cutethe}),
+      since \eng{the puppies} is an NP too.}}
+\item Under (ii), a one-daughter rule: what does \lex{cute} modify?
+  \answer{\\ \emp{A NOM, \avm{[ spr & < DP > ]}, as always.  The NOM
+      \eng{cute puppies} is then the daughter of the new rule, or the
+      head of the Head-Specifier Rule in \eng{the cute puppies}.  So:
+      (ii).}}
+\end{itemize}
+}
+
+\myslide{The Bare NP Rule}
+\MyLogo{\citet[Chapter 8, Problem 2]{sag:wasow:bender:2003}}
+
+\begin{center}
+\small
+\avm{[\type*{phrase}
+    val & [ spr & < > \\
+            comps & < > ] ]
+  \ \ $\rightarrow$\ \ \ \HD
+ [ head & \type{noun} \\
+   val & [ spr & < [ count & $-$ ] >\ $\vee$\ < [ agr & [ num & pl ] ] > \\
+           comps & < > ] ]}
+\end{center}
+
+\begin{itemize}
+\item One daughter: a NOM headed by a noun that wants a mass
+  determiner (\ft{count} $-$) or a plural one.  The mother is a
+  saturated NP.
+\item A rule with a single daughter is a \txx{pumping rule}: it
+  changes the features but adds no new material.  The Imperative Rule
+  is another one.
+\item The daughter is not a \val{word}: \eng{puppies} and
+  \eng{cute puppies} both fit.
+\end{itemize}
+
+\qaslide{Questions About the Bare NP Rule}{
+\begin{center}
+\footnotesize
+\avm{[\type*{phrase}
+    val & [ spr & < > \\
+            comps & < > ] ]
+  \ \ $\rightarrow$\ \ \ \HD
+ [ head & \type{noun} \\
+   val & [ spr & < [ count & $-$ ] >\ $\vee$\ < [ agr & [ num & pl ] ] > \\
+           comps & < > ] ]}
+\end{center}
+\begin{itemize}
+\item Why is the disjunction on the \ft{spr} list and not on the noun?
+  \answer{\\ \emp{Nouns are not marked for \ft{count}, their
+      determiners are (Lecture 4); plurality is on both, through the
+      SHAC.  The \ft{spr} list is the one place that separates all
+      three:}
+    \begin{center}\small\emp{\avm{< [ count & $-$ ] >} \quad
+      \avm{< [ count & + \\ agr & [ num & pl ] ] >} \quad
+      \avm{< [ count & + \\ agr & [ num & sg ] ] >}}\end{center}}
+\item What rules out \bad{Dog barks}?
+  \answer{\\ \emp{\eng{dog} wants the third kind of specifier: it
+      matches neither disjunct, so it stays a NOM and needs the
+      Head-Specifier Rule and a determiner.}}
+\end{itemize}
+}
+
+\qaslide{More Questions About the Bare NP Rule}{
+\begin{center}
+\footnotesize
+\avm{[\type*{phrase}
+    val & [ spr & < > \\
+            comps & < > ] ]
+  \ \ $\rightarrow$\ \ \ \HD
+ [ head & \type{noun} \\
+   val & [ spr & < [ count & $-$ ] >\ $\vee$\ < [ agr & [ num & pl ] ] > \\
+           comps & < > ] ]}
+\end{center}
+\begin{itemize}
+\item Why \avm{[ head & \type{noun} ]}?  What goes wrong without it?
+  \answer{\\ \emp{The VP \eng{bark} has \avm{[ spr & < NP[ agr & [ num &
+            pl ] ] > ]}: the rule would pump it up to a saturated S, and
+      \bad{Bark.} would be a declarative sentence.}}
+\item What is the semantics of the mother?
+  \answer{\\ \emp{The Semantic Inheritance Principle passes up \ft{mode}
+      and \ft{index}, the Semantic Compositionality Principle the
+      \ft{restr}: the NP means what the noun means.  No determiner, so
+      no quantifier.}}
+\end{itemize}
+}
+
+\myslide{Trees: \eng{Dogs bark} and \eng{Cute puppies bark}}
+
+\begin{center}
+\begin{minipage}[t]{0.35\textwidth}
+\begin{forest}
+cat, for tree={s sep=8mm}
+[{S}
+  [{NP$[$SPR $\langle\ \rangle]$}
+    [{NOM$[$SPR $\langle$DP$\rangle]$} [{dogs}]]]
+  [{VP} [{bark}]]]
+\end{forest}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.55\textwidth}
+\begin{forest}
+cat, for tree={s sep=8mm}
+[{S}
+  [{NP$[$SPR $\langle\ \rangle]$}
+    [{NOM$[$SPR $\langle$DP$\rangle]$}
+      [{AP} [{cute}]]
+      [{NOM$[$SPR $\langle$DP$\rangle]$} [{puppies}]]]]
+  [{VP} [{bark}]]]
+\end{forest}
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+\item NP over NOM: the Bare NP Rule; the word \eng{dogs} keeps its
+  \avm{[ spr & < DP > ]}.
+\item NOM over AP NOM: the Head-Modifier Rule, as in \eng{the cute
+    puppies}.  S: Head-Specifier Rule.
+\end{itemize}
+
 %%% p53
 \myslide{Review: Lexical Terminology}
 \begin{small}
@@ -557,6 +729,8 @@ starting from the lexical entry for \lex{write}:
   words
 \item The ARP links \ft{arg-st} to \ft{spr} and \ft{comps} on words;
   \ft{form} records which inflected form a word is
+\item The Bare NP Rule: a one-daughter (pumping) rule that makes an NP
+  out of a NOM headed by a plural or mass noun, so \eng{Dogs bark}
 \item Next: the passive, a derivational rule that rearranges
   \ft{arg-st}
 \end{itemize}
