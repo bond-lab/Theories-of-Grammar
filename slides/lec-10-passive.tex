@@ -11,21 +11,10 @@
 
 
 
-\myslide{Overview}
+\overview
 \MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 10}
 
-\begin{itemize}
-\item Arguments for a lexicalist account
-\item The Passive Lexical Rule
-  \begin{itemize}
-  \item Passives of intransitives
-  \item Passive input and output
-  \end{itemize}
-\item Passive \lex{be}
-\item Problem Set 8: passives and binding, the dative alternation (SWB 10.1, 10.3)
-\end{itemize}
-
-\section{Arguments for a Lexicalist Account}
+\section[Arguments for a lexicalist account]{Arguments for a Lexicalist Account}
 
 \myslide{The Passive in Transformational Grammar}
 
@@ -105,7 +94,7 @@ cooccurrence restrictions (that is, its valence).
   \end{itemize}
 \end{itemize}  
 
-\section{The Passive Lexical Rule}
+\section[The Passive Lexical Rule: passives of intransitives, input and output]{The Passive Lexical Rule}
 
 \myslide{The Passive Lexical Rule}
 \avm{[\type*{d-rule}\\
@@ -183,6 +172,33 @@ INDEX & $i$]] ) > ] >]
 \end{itemize}
 }
 
+\qaslide{Why a Lexeme-to-Lexeme Rule?}{
+
+\begin{footnotesize}\answer{\scriptsize}
+  \avm{[\type*{d-rule}\\
+    INPUT & < {\1} , [\type*{tv-lxm}\\
+    ARG-ST & < [ INDEX & $i$ ] >\ \ $\oplus$\ \ \tag{A}]>\\
+    OUTPUT & < F$_{PSP}$({\1}) ,
+    [\type*{part-lxm}\\
+    SYN & [HEAD & [ FORM &  pass ] ] \\
+    ARG-ST & \tag{A}\ \
+    $\oplus$\ \ < ([\hfil PP\\
+    [ FORM & by\\
+    INDEX & $i$]] ) > ] >]
+}
+\end{footnotesize}
+\begin{itemize}\addtolength{\itemsep}{-1ex}
+\item Why is this a \val{d-rule} and not an \val{i-rule}?
+  \answer{\\ {\small\emp{The \ft{arg-st} changes: an \val{i-rule} requires
+      the \ft{input} and \ft{output} to have the same \ft{arg-st}
+      (that is what makes it inflectional).}}}
+\item The output is a lexeme, not a word.  What happens to it next?
+  \answer{\\ {\small\emp{It goes through the Constant Lexeme LR, which
+      makes it a \val{word} with the same \ft{arg-st}; then the ARP
+      puts the first argument on \ft{spr} and the rest on \ft{comps}.}}}
+\end{itemize}
+}
+
 \myslide{Intransitives Have Passives in German}
 
 \begin{exe}
@@ -215,8 +231,8 @@ We need a separate (but related) rule for this.
 
 \myslide{Passive Input and Output}
 
-\begin{tabular}{cc}
-  This entry & also gets you this \\
+\scalebox{0.9}{\begin{tabular}{@{}c@{\hspace{1em}}c@{}}
+  If you have one of these \ldots & \ldots\ then you also get one of these \\
 \begin{tiny}
 \avm{< \textnormal{love},
   [\type*{stv-lxm}\\
@@ -248,9 +264,14 @@ We need a separate (but related) rule for this.
   LOVED & \ \ $j$ ] >] ]\ >
 } 
 \end{tiny}
-\end{tabular}
+\end{tabular}}
 
 Through the magic of the Passive Lexical Rule!
+
+\medskip
+\emp{Lexical rules declare relationships between (families of) lexical
+  sequences.  They are not procedural: nothing \txx{happens} to the
+  active entry, both lexemes are simply in the lexicon.}
 
 \myslide{And Also This}
 
@@ -349,7 +370,10 @@ cat
 \begin{minipage}[t]{0.5\textwidth}
 \begin{itemize}
 \item Which rule licenses each node?
-  \answer{\\ {\small\emp{S: Head-Specifier; the VPs and PP: Head-Complement; the words: lexical entries (via lexical rules).}}}
+  \answer{\\ {\small\emp{S: Head-Specifier Rule.  Both VPs and the
+      PP: Head-Complement Rule.  NP \lex{Kim}, NP \lex{everyone}: no rule;
+      names and pronouns have empty \ft{spr} and \ft{comps}, so the word
+      is the NP (Set 6).}}}
 \item What is the \ft{spr} value of the upper VP?
   \answer{\\ {\small\emp{\avm{< \1 >}, \lex{Kim}}}}
 \item What is the \ft{spr} value of the lower VP?
@@ -371,7 +395,9 @@ cat
   \begin{exe}
     \ex \bad{Them are noticed by everyone.}
   \end{exe}
-  \answer{{\small\emp{The subject of a finite verb must be nominative; \lex{them} is accusative.}}}
+  \answer{{\small\emp{The Non-3rd-Singular Verb LR gives \lex{are} a
+      \val{nom} \ft{spr}, and that \ft{spr} is shared with the passive VP;
+      \lex{them} is \val{acc}.}}}
 \end{itemize}
 }
 
@@ -381,7 +407,9 @@ cat
   \begin{exe}
     \ex \bad{They is noticed by everyone.}
   \end{exe}
-  \answer{{\small\emp{\lex{is} needs a 3rd singular subject; \lex{they} is plural.}}}
+  \answer{{\small\emp{The 3rd-Singular Verb LR gives \lex{is} a
+      \val{3sing} \ft{agr}, and the SHAC shares it with the \ft{spr};
+      \lex{they} is plural.}}}
 \item What would facts like these entail for a transformational
   analysis?
   \answer{\\ {\small\emp{Case and agreement follow the surface subject, not the underlying object, so they must be assigned after the passive transformation: the rules need an order.  We have no order: the constraints all hold at once.}}}
@@ -389,21 +417,63 @@ cat
 }
 
 
-\myslide{Overview}
-\MyLogo{\citet{sag:wasow:bender:2003} --- Chapter 10}
 
+\section[Review: which lexical type and which lexical rule licenses each word?]{Review}
+
+\qaslide{Every Word Comes from a Lexical Type and a Lexical Rule}{
+\begin{exe}
+\ex \eng{I raced against cars and bikes with my legs.}
+\end{exe}
+
+For each word, which lexical type is its lexeme, and which lexical rule
+makes it a word?
+
+\answer{
+\begin{center}\small
+\begin{tabular}{lll}
+\hline
+Word & Lexical type & Lexical rule \\
+\hline
+\lex{I} & \val{pron-lxm} & Constant Lexeme LR \\
+\lex{raced} & \val{siv-lxm} (or \val{piv-lxm}) & Past-Tense Verb LR \\
+\lex{against} & \val{predp-lxm} (or \val{argmkp-lxm}) & Constant Lexeme LR \\
+\lex{cars}, \lex{bikes}, \lex{legs} & \val{cntn-lxm} & Plural Noun LR \\
+\lex{and} & \val{conj-lxm} & Constant Lexeme LR \\
+\lex{with} & \val{predp-lxm} & Constant Lexeme LR \\
+\lex{my} & \val{det-lxm} & Constant Lexeme LR \\
+\hline
+\end{tabular}
+\end{center}
+\emp{\small If \lex{against cars and bikes} is a complement of
+  \lex{race} (like \lex{rely on}), then \lex{raced} is \val{piv-lxm} and
+  \lex{against} an argument-marking preposition; if it is a modifier,
+  \lex{raced} is \val{siv-lxm} and \lex{against} predicational.}
+}
+}
+
+\qaslide{Review: Lexical Rules}{
 \begin{itemize}
-\item Arguments for a lexicalist account
-\item The Passive Lexical Rule
-  \begin{itemize}
-  \item Passives of intransitives
-  \item Passive input and output
-  \end{itemize}
-\item Passive \lex{be}
-\item Problem Set 8: passives and binding, the dative alternation (SWB 10.1, 10.3)
+\item Which of the words in \eng{I raced against cars and bikes with my
+    legs} went through a \val{d-rule}?
+  \answer{\\ \emp{None: every word here is one \val{i-rule} away from its
+      lexeme.}}
+\item Rewrite the sentence so that one word does go through a
+  \val{d-rule}, and say which rule.
+  \answer{\\ \emp{E.g.\ \eng{The cars were raced by me}, with transitive
+      \lex{race}: \val{stv-lxm} $\to$ Passive LR $\to$ \val{part-lxm}
+      $\to$ Constant Lexeme LR $\to$ \val{word}.  Or \eng{I am a racer}:
+      \lex{race} is \val{siv-lxm} $\to$ Agent Nominalization LR $\to$
+      \lex{racer}, \val{cntn-lxm} $\to$ Singular Noun LR $\to$ \val{word}.}}
+\item How many lexical rules does \lex{raced} in \eng{The cars were
+    raced} go through, and in what order?
+  \answer{\\ \emp{Two: Passive LR (\val{d-rule}, lexeme to lexeme), then
+      Constant Lexeme LR (\val{i-rule}, lexeme to word).  The order is
+      fixed: an \val{i-rule} output is a \val{word}, and no rule takes a
+      \val{word} as input.}}
 \end{itemize}
+}
 
-\section{Problem Set 8}
+\section[Problem Set 8: passives and binding, the dative alternation (SWB 10.1, 10.3)]{Problem Set 8}
 
 \myslide{P1: Passives and Binding}
 \MyLogo{Based on \citet[Chapter 10, Problem 1]{sag:wasow:bender:2003}}
